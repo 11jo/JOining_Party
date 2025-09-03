@@ -202,12 +202,6 @@ BUT_ONLY
 ACTION_FOR_EACH Death_var IN
 // Imoen
 ~%IMOEN_DV%~
-~Jaheira~
-~Minsc~
-~Viconia~
-~Dorn~
-~Neera~
-~Rasaad~
 // bg1 start
 ~Ajantis~
 ~Alora~
@@ -218,20 +212,26 @@ ACTION_FOR_EACH Death_var IN
 ~Eldoth~
 ~Faldorn~
 ~Garrick~
+~Jaheira~
 ~Kagain~
 ~Khalid~
 ~Kivan~
+~Minsc~
 ~Montaron~
 ~Quayle~
 ~Safana~
 ~Sharteel~
 ~Skie~
 ~Tiax~
+~Viconia~
 ~Xan~
 ~Xzar~
 ~Yeslick~
 ~Xan~
 // bg1 end
+~Dorn~
+~Neera~
+~Rasaad~
 // SoD start
 // SoD end
 // bg2 start
@@ -250,13 +250,9 @@ ACTION_FOR_EACH Death_var IN
 ~Hexxat~
 ~Sarevok~
 // bg2 end
-// Mods BG1 start
-// Mods BG1 end
-// Mods BG2 start
- ~CMALORA~ // Alora BG2
- ~LK#YESLK~  // Yeslick BG2
+// Mods
+ ~LK#YESLK~
 ~cmninaf~ ~callisto~ // The Undying
-// Mods BG2 end
 BEGIN
 
 
@@ -397,7 +393,7 @@ ACTION_FOR_EACH joining_dlg IN
 ~%IMOEN_JOINED%~ ~IMOEN25J~
 // bg1
 ~%AJANTIS_JOINED%~
-~%ALORA_JOINED%~ ~CMALORAJ~ ~CMALO25J~
+~%ALORA_JOINED%~
 ~%BRANWEN_JOINED%~
 ~%CORAN_JOINED%~
 ~%DYNAHEIR_JOINED%~
@@ -445,7 +441,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%joining_dlg%.dlg~ BEGIN
 	
-		COMPILE EVALUATE_BUFFER ~JOining_Party/All_In.D~
+		COMPILE EVALUATE_BUFFER ~OneTestShot/All_In.D~
 
 	END
 END
@@ -503,12 +499,12 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party/All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~OneTestShot/All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
  
- COPY ~JOining_Party/JO_JOIN.spl~ ~override~
+ COPY ~OneTestShot/JO_JOIN.spl~ ~override~
 	SAY NAME1 ~Engagement~
 	SAY NAME2 ~Engagement~
 	SAY DESC ~Engagement
@@ -527,26 +523,26 @@ The only way to break this engagement will involve speaking to talk to the menti
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
 		END
 
-EXTEND_BOTTOM ~baldur.bcs~ ~JOining_Party/Join_ability.baf~
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party/Join_ability.baf~ 
+EXTEND_BOTTOM ~baldur.bcs~ ~OneTestShot/Join_ability.baf~
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~OneTestShot/Join_ability.baf~ 
  
  /*
  ACTION_IF GAME_IS ~bgt~ BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party/Join_ability.baf~
- EXTEND_BOTTOM ~AR0602.BCS~	~JOining_Party/Join_ability.baf~
- EXTEND_BOTTOM ~AR4500.BCS~	~JOining_Party/Join_ability.baf~
+ EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~OneTestShot/Join_ability.baf~
+ EXTEND_BOTTOM ~AR0602.BCS~	~OneTestShot/Join_ability.baf~
+ EXTEND_BOTTOM ~AR4500.BCS~	~OneTestShot/Join_ability.baf~
 	END ELSE ACTION_IF GAME_IS ~eet~ BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party/Join_ability.baf~
- EXTEND_BOTTOM ~Player3.BCS~	~JOining_Party/Join_ability.baf~
- EXTEND_BOTTOM ~AR0602.BCS~	~JOining_Party/Join_ability.baf~
- EXTEND_BOTTOM ~AR4500.BCS~	~JOining_Party/Join_ability.baf~
+ EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~OneTestShot/Join_ability.baf~
+ EXTEND_BOTTOM ~Player3.BCS~	~OneTestShot/Join_ability.baf~
+ EXTEND_BOTTOM ~AR0602.BCS~	~OneTestShot/Join_ability.baf~
+ EXTEND_BOTTOM ~AR4500.BCS~	~OneTestShot/Join_ability.baf~
 	END ELSE ACTION_IF (GAME_IS ~bgee~ AND GAME_INCLUDES ~sod~) BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party/Join_ability.baf~
- EXTEND_BOTTOM ~Player3.BCS~	~JOining_Party/Join_ability.baf~
+ EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~OneTestShot/Join_ability.baf~
+ EXTEND_BOTTOM ~Player3.BCS~	~OneTestShot/Join_ability.baf~
 	END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~sod~) BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party/Join_ability.baf~
+ EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~OneTestShot/Join_ability.baf~
 	END ELSE ACTION_IF GAME_IS ~bg2ee~BEGIN
- EXTEND_BOTTOM ~AR0602.BCS~	~JOining_Party/Join_ability.baf~
- EXTEND_BOTTOM ~AR4500.BCS~	~JOining_Party/Join_ability.baf~
+ EXTEND_BOTTOM ~AR0602.BCS~	~OneTestShot/Join_ability.baf~
+ EXTEND_BOTTOM ~AR4500.BCS~	~OneTestShot/Join_ability.baf~
 END
 */
