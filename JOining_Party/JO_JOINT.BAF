@@ -94,3 +94,47 @@ THEN
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
+
+// Mods //////////////////////////
+
+ // Alora BG2
+ 
+IF
+	HasItem("JO_JOIN","CMALORA")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("cmalo25",OVERRIDE)
+		SetDialog("CMALO25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // Yeslick BG2
+ 
+IF
+	HasItem("JO_JOIN","LK#YESLK")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("LK#YES25",OVERRIDE)
+		SetDialog("LK#YE25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // The Undying
+ 
+IF
+	HasItem("JO_JOIN","cmninaf")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMNINA25",OVERRIDE)
+		SetDialog("CMNINA25") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END

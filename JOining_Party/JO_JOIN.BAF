@@ -1,3 +1,5 @@
+ //////////////////////////
+
 IF
 	HasItem("JO_JOIN","%IMOEN_DV%")
 	Global("JO_JOIN","LOCALS",2)
@@ -94,7 +96,7 @@ THEN
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
-// BG1
+// BG1 //////////////////////////
 
 IF
 	HasItem("JO_JOIN","Ajantis")
@@ -115,6 +117,78 @@ THEN
 	RESPONSE #100
 		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
 		SetDialog("%ALORA_JOINED%") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","BAELOTH")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDBAELOT",OVERRIDE)
+		SetDialog("BAELOTHJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// SoD //////////////////////////
+
+// BG2 //////////////////////////
+
+// Mods //////////////////////////
+
+ // Alora BG2
+ 
+IF
+	HasItem("JO_JOIN","CMALORA")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("cmalora",OVERRIDE)
+		SetDialog("CMALORAJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // Yeslick BG2
+ 
+IF
+	HasItem("JO_JOIN","LK#YESLK")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("LK#YESL",OVERRIDE)
+		SetDialog("LK#YESJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // The Undying
+ 
+IF
+	HasItem("JO_JOIN","cmninaf")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMNINAF",OVERRIDE)
+		SetDialog("CMNINAFJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","callisto")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CALLISTO",OVERRIDE)
+		SetDialog("CMCALLIJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
