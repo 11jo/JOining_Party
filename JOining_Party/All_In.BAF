@@ -1,11 +1,48 @@
+/*
 IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+END
+*/
+
+IF
+	!Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN","LOCALS",1)
 THEN
 	RESPONSE #100
 		LeaveParty()
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
-		GiveItemCreate("MINHP1",Myself,0,0,0)
-		XEquipItem("MINHP1",Myself,SLOT_RING_LEFT,EQUIP)
-		SetGlobal("JO_JOIN","LOCALS",0)
+		GiveItemCreate("JO_JOIN",Myself,0,0,0)
+		SmallWait(2)
+		GiveItemCreate("JOMINHP1",Myself,0,0,0)
+		SmallWait(2)
+		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		SmallWait(2)
+		ChangeAIScript("JO_JOIN",OVERRIDE)
+		FaceObject(Player1)
+		SetGlobal("JO_JOIN","LOCALS",2)
+END
+
+IF
+	!Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN","LOCALS",1)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		LeaveParty()
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		AddFamiliar()
+		GiveItemCreate("JO_JOIN",Myself,0,0,0)
+		SmallWait(2)
+		GiveItemCreate("JOMINHP1",Myself,0,0,0)
+		SmallWait(2)
+		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		SmallWait(2)
+		ChangeAIScript("JO_JOINT",OVERRIDE)
+		FaceObject(Player1)
+		SetGlobal("JO_JOIN","LOCALS",2)
 END
