@@ -105,7 +105,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmalo25",OVERRIDE)
-		SetDialog("CMALO25J") 
+		SetDialog("CMALO25J")   // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
@@ -119,7 +119,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("LK#YES25",OVERRIDE)
-		SetDialog("LK#YE25J") 
+		SetDialog("LK#YE25J")   // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
@@ -133,8 +133,72 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNINA25",OVERRIDE)
-		SetDialog("CMNINA25") 
+		SetDialog("CMNINA25")   // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
+
+ // Summon Bhaalspawn
+
+IF
+	HasItem("JO_JOIN","BHAALSPW")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BHAALSPW",OVERRIDE)
+		SetDialog("bhal25j")  // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// NikitaRedux
+
+IF
+	HasItem("JO_JOIN","cmnikita")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMNIK25",OVERRIDE)
+		SetDialog("CMNIK25J") // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// VampireTales
+
+IF
+	HasItem("JO_JOIN","cmgmiriam")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMGMI25",OVERRIDE)
+		SetDialog("CMGMI25J")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// Kim
+
+IF
+	HasItem("JO_JOIN","Kim")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("Kim",OVERRIDE)
+		SetDialog("Kim25J") // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+
+
+
+
+
+
+
