@@ -435,7 +435,35 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Allegiance("%Death_var%",FAMILIAR)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+	InPartyAllowDead("%Death_var%")
+	Allegiance("%Death_var%",FAMILIAR)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(OR(3)\)
+\(^[%TAB% ]*!InParty("%Death_var%")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
+	StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	!InMyArea("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(OR(2)\)
+\(^[%TAB% ]*!InParty("%Death_var%")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
+	StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	!InMyArea("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -443,7 +471,9 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Allegiance("%Death_var%",FAMILIAR)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -451,7 +481,9 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Allegiance("%Death_var%",FAMILIAR)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -460,10 +492,11 @@ BEGIN
 \(^[%TAB% ]*!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -472,10 +505,11 @@ BEGIN
 \(^[%TAB% ]*!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -484,10 +518,11 @@ BEGIN
 \(^[%TAB% ]*!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -496,10 +531,11 @@ BEGIN
 \(^[%TAB% ]*!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -508,10 +544,11 @@ BEGIN
 \(^[%TAB% ]*!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -520,10 +557,11 @@ BEGIN
 \(^[%TAB% ]*!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -532,10 +570,11 @@ BEGIN
 \(^[%TAB% ]*!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -544,10 +583,11 @@ BEGIN
 \(^[%TAB% ]*!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -555,10 +595,11 @@ BEGIN
 			SPRINT textToReplace ~\(!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -568,7 +609,9 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -576,10 +619,11 @@ Allegiance("%Death_var%",FAMILIAR)~
 			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -589,7 +633,9 @@ Allegiance("%Death_var%",FAMILIAR)~
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -597,10 +643,11 @@ Allegiance("%Death_var%",FAMILIAR)~
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -610,7 +657,9 @@ Allegiance("%Death_var%",FAMILIAR)~
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -618,10 +667,11 @@ Allegiance("%Death_var%",FAMILIAR)~
 			SPRINT textToReplace ~\(!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -631,7 +681,9 @@ Allegiance("%Death_var%",FAMILIAR)~
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -666,10 +718,38 @@ OR(3)
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(OR(3)\)
+\(!InParty("%Death_var%")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
+	StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	!InMyArea("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(OR(2)\)
+\(!InParty("%Death_var%")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
+	StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	!InMyArea("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Allegiance("%Death_var%",FAMILIAR)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -677,7 +757,9 @@ OR(3)
 			SPRINT textToReplace ~\(^[%TAB% ]*InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Allegiance("%Death_var%",FAMILIAR)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -685,7 +767,9 @@ OR(3)
 			SPRINT textToReplace ~\(^[%TAB% ]*  InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Allegiance("%Death_var%",FAMILIAR)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -694,10 +778,11 @@ OR(3)
 \(^[%TAB% ]*!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -706,10 +791,11 @@ OR(3)
 \(^[%TAB% ]*!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -718,10 +804,11 @@ OR(3)
 \(^[%TAB% ]*!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -730,10 +817,11 @@ OR(3)
 \(^[%TAB% ]*!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -742,10 +830,11 @@ OR(3)
 \(^[%TAB% ]*!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -754,10 +843,11 @@ OR(3)
 \(^[%TAB% ]*!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -766,10 +856,11 @@ OR(3)
 \(^[%TAB% ]*!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -778,10 +869,11 @@ OR(3)
 \(^[%TAB% ]*!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -789,10 +881,11 @@ OR(3)
 			SPRINT textToReplace ~\(!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -802,7 +895,9 @@ OR(3)
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -810,10 +905,11 @@ Allegiance("%Death_var%",FAMILIAR)~
 			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -823,7 +919,9 @@ Allegiance("%Death_var%",FAMILIAR)~
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -831,10 +929,11 @@ Allegiance("%Death_var%",FAMILIAR)~
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -844,7 +943,9 @@ Allegiance("%Death_var%",FAMILIAR)~
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -852,10 +953,11 @@ Allegiance("%Death_var%",FAMILIAR)~
 			SPRINT textToReplace ~\(!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
 	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)~
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -865,7 +967,9 @@ Allegiance("%Death_var%",FAMILIAR)~
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea("%Death_var%")
 !StateCheck("%Death_var%",CD_STATE_NOTVALID)
-Allegiance("%Death_var%",FAMILIAR)~
+OR(2)
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -875,7 +979,7 @@ Allegiance("%Death_var%",FAMILIAR)~
 		END
 	BUT_ONLY
 
-/*
+
 COPY_EXISTING ~CEFALD04.dlg~
 				~HAERDA.dlg~
 				~TREVIL02.dlg~	~override~
@@ -885,14 +989,14 @@ COPY_EXISTING ~CEFALD04.dlg~
 \(^[%TAB% ]*OR(2)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
 	!Allegiance("Aerie",FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
 			~
 		END
 	END // Special Aerie
-*/
+
 
 END
 
