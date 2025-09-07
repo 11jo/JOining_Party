@@ -14,7 +14,7 @@ ALWAYS
 		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
 		PRINT ~Game is BGT
 		~
-	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN //  AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~
 		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
 		PRINT ~Game is EET 
 		~
@@ -22,7 +22,7 @@ ALWAYS
 		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
 		PRINT ~Game is BGEE
 		~
-	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN //  OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~
 	OUTER_SPRINT "AJANTIS_JOINED" "AJANTJ"
 	OUTER_SPRINT "ALORA_JOINED" "ALORAJ"
 	OUTER_SPRINT "BRANWEN_JOINED" "BRANWJ"
@@ -88,8 +88,16 @@ ALWAYS
 	
 END
 
+LANGUAGE ~English~
+         ~english~
+         ~JOining_Party_Select/Languages/english/setup.tra~
+
+/////////////////////////// Continuous NPCs ///////////////////////////
+
+
 BEGIN ~Imoen~
 DESIGNATED 10
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Imoen~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -99,6 +107,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 
 BEGIN ~Edwin~
 DESIGNATED 11
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Edwin~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -108,6 +117,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 
 BEGIN ~Jaheira~
 DESIGNATED 12
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Jaheira~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -117,6 +127,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 
 BEGIN ~Minsc~
 DESIGNATED 13
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Minsc~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -126,6 +137,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 
 BEGIN ~Viconia~
 DESIGNATED 14
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Viconia~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -135,6 +147,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 
 BEGIN ~Dorn~
 DESIGNATED 15
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Dorn~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -144,6 +157,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 
 BEGIN ~Neera~
 DESIGNATED 16
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Neera~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -153,6 +167,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 
 BEGIN ~Rasaad~
 DESIGNATED 17
+GROUP ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
 LABEL ~JOining_Party_Select-Rasaad~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET ~
 
@@ -160,11 +175,404 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT
 			REPLACE_TEXTUALLY ~// Original Rasaad~ ~~
 			REPLACE_TEXTUALLY ~// Original Rasaad~ ~~
 
-// Mods
+/////////////////////////// BG1 ///////////////////////////
+
+
+BEGIN ~Ajantis~
+DESIGNATED 30
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Ajantis~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Ajantis~ ~~
+			REPLACE_TEXTUALLY ~// Original Ajantis~ ~~
+
+BEGIN ~Alora~
+DESIGNATED 31
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Alora~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Alora~ ~~
+			REPLACE_TEXTUALLY ~// Original Alora~ ~~
+
+BEGIN ~Branwen~
+DESIGNATED 32
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Branwen~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Branwen~ ~~
+			REPLACE_TEXTUALLY ~// Original Branwen~ ~~
+
+BEGIN ~Dynaheir~
+DESIGNATED 33
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Dynaheir~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Dynaheir~ ~~
+			REPLACE_TEXTUALLY ~// Original Dynaheir~ ~~
+
+BEGIN ~Eldoth~
+DESIGNATED 34
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Eldoth~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Eldoth~ ~~
+			REPLACE_TEXTUALLY ~// Original Eldoth~ ~~
+
+BEGIN ~Faldorn~
+DESIGNATED 35
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Faldorn~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Faldorn~ ~~
+			REPLACE_TEXTUALLY ~// Original Faldorn~ ~~
+
+BEGIN ~Garrick~
+DESIGNATED 36
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Garrick~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Garrick~ ~~
+			REPLACE_TEXTUALLY ~// Original Garrick~ ~~
+
+BEGIN ~Kagain~
+DESIGNATED 37
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Kagain~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Kagain~ ~~
+			REPLACE_TEXTUALLY ~// Original Kagain~ ~~
+
+BEGIN ~Khalid~
+DESIGNATED 38
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Khalid~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Khalid~ ~~
+			REPLACE_TEXTUALLY ~// Original Khalid~ ~~
+
+BEGIN ~Kivan~
+DESIGNATED 39
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Kivan~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Kivan~ ~~
+			REPLACE_TEXTUALLY ~// Original Kivan~ ~~
+
+BEGIN ~Montaron~
+DESIGNATED 40
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Montaron~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Montaron~ ~~
+			REPLACE_TEXTUALLY ~// Original Montaron~ ~~
+
+BEGIN ~Quayle~
+DESIGNATED 41
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Quayle~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Quayle~ ~~
+			REPLACE_TEXTUALLY ~// Original Quayle~ ~~
+
+BEGIN ~Safana~
+DESIGNATED 42
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Safana~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Safana~ ~~
+			REPLACE_TEXTUALLY ~// Original Safana~ ~~
+
+BEGIN ~Sharteel~
+DESIGNATED 43
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Sharteel~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
+			REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
+
+BEGIN ~Skie~
+DESIGNATED 44
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Skie~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Skie~ ~~
+			REPLACE_TEXTUALLY ~// Original Skie~ ~~
+
+BEGIN ~Tiax~
+DESIGNATED 45
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Tiax~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Tiax~ ~~
+			REPLACE_TEXTUALLY ~// Original Tiax~ ~~
+
+BEGIN ~Xan~
+DESIGNATED 46
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Xan~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Xan~ ~~
+			REPLACE_TEXTUALLY ~// Original Xan~ ~~
+
+BEGIN ~Xzar~
+DESIGNATED 47
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Xzar~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Xzar~ ~~
+			REPLACE_TEXTUALLY ~// Original Xzar~ ~~
+
+BEGIN ~Yeslick~
+DESIGNATED 48
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Yeslick~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Yeslick~ ~~
+			REPLACE_TEXTUALLY ~// Original Yeslick~ ~~
+
+BEGIN ~Baeloth~
+DESIGNATED 49
+GROUP ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+LABEL ~JOining_Party_Select-Baeloth~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Baeloth~ ~~
+			REPLACE_TEXTUALLY ~// Original Baeloth~ ~~
+
+
+/////////////////////////// SoD ///////////////////////////
+
+
+BEGIN ~Voghiln~
+DESIGNATED 60
+GROUP ~Original NPCs for Sod (Voghiln, Corwin, Mkhiin, Glint)~
+LABEL ~JOining_Party_Select-Voghiln~
+REQUIRE_PREDICATE (GAME_INCLUDES ~SoD~) ~Necessite SoD~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Voghiln~ ~~
+			REPLACE_TEXTUALLY ~// Original Voghiln~ ~~
+
+BEGIN ~Corwin~
+DESIGNATED 61
+GROUP ~Original NPCs for Sod (Voghiln, Corwin, Mkhiin, Glint)~
+LABEL ~JOining_Party_Select-Corwin~
+REQUIRE_PREDICATE (GAME_INCLUDES ~SoD~) ~Necessite SoD~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Corwin~ ~~
+			REPLACE_TEXTUALLY ~// Original Corwin~ ~~
+
+BEGIN ~Mkhiin~
+DESIGNATED 62
+GROUP ~Original NPCs for Sod (Voghiln, Corwin, Mkhiin, Glint)~
+LABEL ~JOining_Party_Select-Mkhiin~
+REQUIRE_PREDICATE (GAME_INCLUDES ~SoD~) ~Necessite SoD~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Mkhiin~ ~~
+			REPLACE_TEXTUALLY ~// Original Mkhiin~ ~~
+
+BEGIN ~Glint~
+DESIGNATED 63
+GROUP ~Original NPCs for Sod (Voghiln, Corwin, Mkhiin, Glint)~
+LABEL ~JOining_Party_Select-Glint~
+REQUIRE_PREDICATE (GAME_INCLUDES ~SoD~) ~Necessite SoD~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Glint~ ~~
+			REPLACE_TEXTUALLY ~// Original Glint~ ~~
+
+
+/////////////////////////// BG2 ///////////////////////////
+
+
+BEGIN ~Aerie~
+DESIGNATED 70
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Aerie~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Aerie~ ~~
+			REPLACE_TEXTUALLY ~// Original Aerie~ ~~
+
+BEGIN ~Anomen~
+DESIGNATED 71
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Anomen~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Anomen~ ~~
+			REPLACE_TEXTUALLY ~// Original Anomen~ ~~
+
+BEGIN ~Cernd~
+DESIGNATED 72
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Cernd~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Cernd~ ~~
+			REPLACE_TEXTUALLY ~// Original Cernd~ ~~
+
+BEGIN ~Haerdalis~
+DESIGNATED 73
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Haerdalis~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Haerdalis~ ~~
+			REPLACE_TEXTUALLY ~// Original Haerdalis~ ~~
+
+BEGIN ~Hexxat~
+DESIGNATED 74
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Hexxat~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Hexxat~ ~~
+			REPLACE_TEXTUALLY ~// Original Hexxat~ ~~
+
+BEGIN ~Jan~
+DESIGNATED 75
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Jan~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Jan~ ~~
+			REPLACE_TEXTUALLY ~// Original Jan~ ~~
+
+BEGIN ~Keldorn~
+DESIGNATED 76
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Keldorn~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Keldorn~ ~~
+			REPLACE_TEXTUALLY ~// Original Keldorn~ ~~
+
+BEGIN ~Korgan~
+DESIGNATED 77
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Korgan~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Korgan~ ~~
+			REPLACE_TEXTUALLY ~// Original Korgan~ ~~
+
+BEGIN ~Mazzy~
+DESIGNATED 78
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Mazzy~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Mazzy~ ~~
+			REPLACE_TEXTUALLY ~// Original Mazzy~ ~~
+
+BEGIN ~Nalia~
+DESIGNATED 79
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Nalia~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Nalia~ ~~
+			REPLACE_TEXTUALLY ~// Original Nalia~ ~~
+
+BEGIN ~Sarevok~
+DESIGNATED 80
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Sarevok~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Sarevok~ ~~
+			REPLACE_TEXTUALLY ~// Original Sarevok~ ~~
+
+BEGIN ~Valygar~
+DESIGNATED 81
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Valygar~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Valygar~ ~~
+			REPLACE_TEXTUALLY ~// Original Valygar~ ~~
+
+BEGIN ~Wilson~
+DESIGNATED 82
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Wilson~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Wilson~ ~~
+			REPLACE_TEXTUALLY ~// Original Wilson~ ~~
+
+BEGIN ~Yoshimo~
+DESIGNATED 83
+GROUP ~Original bg2 NPCs (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)~
+LABEL ~JOining_Party_Select-Yoshimo~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet bgt~) ~Necessite BG2EE / BGT / EET ~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Yoshimo~ ~~
+			REPLACE_TEXTUALLY ~// Original Yoshimo~ ~~
+
+
 /////////////////////////// Mods BG1 ///////////////////////////
+
 
 BEGIN ~Ishlilka~
 DESIGNATED 100
+GROUP ~NPC Mods for bg1~
 LABEL ~JOining_Party_Select-Ishlilka~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~Ishlilkamod.TP2~ ~547~ ~Necessite Ishlilka~
 
@@ -172,12 +580,15 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~Ishlilkamod.TP2~ ~547~ ~Necessite Ishlilka~
 			REPLACE_TEXTUALLY ~// Mod Ishlilka~ ~~
 			REPLACE_TEXTUALLY ~// Mod Ishlilka~ ~~
 
+
 /////////////////////////// Mods BG2 ///////////////////////////
+
 
 BEGIN ~Alora BG2~
 DESIGNATED 101
+GROUP ~NPC Mods for bg2~
 LABEL ~JOining_Party_Select-Alora-BG2~
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ ~Necessite Ishlilka~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ ~Necessite Alora BG2~
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Mod Alora BG2~ ~~
@@ -185,8 +596,9 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ ~Necessite Ishlilka~
 
 BEGIN ~Yeslick BG2~
 DESIGNATED 102
+GROUP ~NPC Mods for bg2~
 LABEL ~JOining_Party_Select-Yeslick-BG2~
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~ ~Necessite Ishlilka~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~ ~Necessite Yeslick BG2~
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Mod Yeslick BG2~ ~~
@@ -194,12 +606,13 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~ ~Necessite Ishlilka~
 
 BEGIN ~Sandra~
 DESIGNATED 103
+GROUP ~NPC Mods for bg2~
 LABEL ~JOining_Party_Select-Sandra~
 REQUIRE_PREDICATE	(MOD_IS_INSTALLED ~SBS.tp2~ 0) ||
 					(MOD_IS_INSTALLED ~SBS.tp2~ 1) ||
 					(MOD_IS_INSTALLED ~SBS.tp2~ 2) ||
 					(MOD_IS_INSTALLED ~SBS.tp2~ 3) ||
-					(MOD_IS_INSTALLED ~SBS.tp2~ 4) ~Necessite Ishlilka~
+					(MOD_IS_INSTALLED ~SBS.tp2~ 4) ~Necessite Summon Bhaalspawn~
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Mod Sandra~ ~~
@@ -207,8 +620,9 @@ REQUIRE_PREDICATE	(MOD_IS_INSTALLED ~SBS.tp2~ 0) ||
 
 BEGIN ~Nikita~
 DESIGNATED 104
+GROUP ~NPC Mods for bg2~
 LABEL ~JOining_Party_Select-Nikita~
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~NIKITAREDUX.TP2~ ~0~ ~Necessite Ishlilka~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~NIKITAREDUX.TP2~ ~0~ ~Necessite Nikita Redux~
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Mod Nikita~ ~~
@@ -216,8 +630,9 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~NIKITAREDUX.TP2~ ~0~ ~Necessite Ishlilka~
 
 BEGIN ~Kim~
 DESIGNATED 105
+GROUP ~NPC Mods for bg2~
 LABEL ~JOining_Party_Select-Kim~
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~KIMNPC.TP2~ ~0~ ~Necessite Ishlilka~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~KIMNPC.TP2~ ~0~ ~Necessite Kim~
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Mod Kim~ ~~
@@ -225,8 +640,9 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~KIMNPC.TP2~ ~0~ ~Necessite Ishlilka~
 
 BEGIN ~Miriam~
 DESIGNATED 106
+GROUP ~NPC Mods for bg2~
 LABEL ~JOining_Party_Select-Miriam~
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~VAMPIRETALES.TP2~ ~1~ ~Necessite Ishlilka~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~VAMPIRETALES.TP2~ ~1~ ~Necessite Vampire Tales~
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Mod Miriam~ ~~

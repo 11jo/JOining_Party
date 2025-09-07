@@ -1,7 +1,18 @@
 				// ACTION_IF JOining_Party = 0 THEN BEGIN
+		
+/////////////////////////// Myself BCS
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InPartyAllowDead(Myself)
+Allegiance(Myself,FAMILIAR)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
 		SPRINT textToReplace ~\(^[%TAB% ]*!InParty(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
@@ -117,6 +128,48 @@ OR(2)
 		END*/
 	END
 BUT_ONLY
+				
+// Special Myself BCS
+
+COPY_EXISTING ~Cernd.bcs~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(OR(2)\)
+\(AreaCheck("AR1900")\)
+\(OR(2)\)
+\(InParty(Myself)\)
+\(Allegiance(Myself,FAMILIAR)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+	AreaCheck("AR1900")
+	InParty(Myself)
+	Allegiance(Myself,FAMILIAR)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			~
+		END
+	END
+
+COPY_EXISTING ~JANX.bcs~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(OR(2)\)
+\(Allegiance(Myself,ENEMY)\)
+\(OR(2)\)
+\(InParty(Myself)\)
+\(Allegiance(Myself,FAMILIAR)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+	Allegiance(Myself,ENEMY)
+	InParty(Myself)
+	Allegiance(Myself,FAMILIAR)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			~
+		END
+	END
+		
+/////////////////////////// Myself DLG
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
@@ -216,74 +269,23 @@ BUT_ONLY
 COPY_EXISTING ~SCRL72.ITM~ ~override/JO_JOIN.itm~
 	SAY NAME1 ~Engagement~
 	SAY NAME2 ~Engagement~
-	SAY DESC ~Engagement
-
-By the present <CHARNAME> includes a new compagnon in the party !
-
-The only way to break this engagement will involve speaking to the mentioned companion and part ways properly.
-
-Using this spell on a engaged companion will allow <CHARNAME> to talk about involvement :
-
-- Part ways properly
-- Change compagnion reaction in combat
-- Change compagnon reaction out of combat
-- Do nothing
-~
-	SAY UNIDENTIFIED_DESC ~Engagement
-
-By the present <CHARNAME> includes a new compagnon in the party !
-
-The only way to break this engagement will involve speaking to the mentioned companion and part ways properly.
-
-Using this spell on a engaged companion will allow <CHARNAME> to talk about involvement :
-
-- Part ways properly
-- Change compagnion reaction in combat
-- Change compagnon reaction out of combat
-- Do nothing
-~
+	SAY DESC @101
+	SAY UNIDENTIFIED_DESC @101
 
 COPY_EXISTING ~MINHP1.ITM~ ~override/JOMINHP1.itm~
 	SAY NAME1 ~JOMINHP1~
 	SAY NAME2 ~JOMINHP1~
-	WRITE_ASCII 0x3a ~ISCRL72~
-	LPF ALTER_ITEM_HEADER 
-		INT_VAR 
-			check_headers = 1
-		STR_VAR 
-			icon = ~ISCRL72~
-	END
+	WRITE_SHORT 0x1c ~10~
+	WRITE_ASCII 0x3a ~ISCRL72~ (8)
 	WRITE_LONG 0x18 (THIS | BIT2)
+	SAY DESC @101
+	SAY UNIDENTIFIED_DESC @101
  
  COPY ~JOining_Party_Select/JO_JOIN.spl~ ~override~
 	SAY NAME1 ~Engagement~
 	SAY NAME2 ~Engagement~
-	SAY DESC ~Engagement
-
-By the present <CHARNAME> includes a new compagnon in the party !
-
-The only way to break this engagement will involve speaking to the mentioned companion and part ways properly.
-
-Using this spell on a engaged companion will allow <CHARNAME> to talk about involvement :
-
-- Part ways properly
-- Change compagnion reaction in combat
-- Change compagnon reaction out of combat
-- Do nothing
-~
-	SAY UNIDENTIFIED_DESC ~Engagement
-
-By the present <CHARNAME> includes a new compagnon in the party !
-
-The only way to break this engagement will involve speaking to the mentioned companion and part ways properly.
-
-Using this spell on a engaged companion will allow <CHARNAME> to talk about involvement :
-
-- Part ways properly
-- Change compagnion reaction in combat
-- Change compagnon reaction out of combat
-- Do nothing
-~
+	SAY DESC @101
+	SAY UNIDENTIFIED_DESC @101
 		LPF ADD_SPELL_EFFECT
 		INT_VAR
 			opcode=139
@@ -326,94 +328,89 @@ END
 
 ACTION_FOR_EACH Death_var IN
 
-// Original Imoen ~%IMOEN_DV%~ // Imoen
+// Original Imoen ~%IMOEN_DV%~                       // Imoen
+// Original Edwin ~Edwin~                            // Edwin
+// Original Jaheira ~Jaheira~                        // Jaheira
+// Original Minsc ~Minsc~                            // Minsc
+// Original Viconia ~Viconia~                        // Viconia
+// Original Dorn ~Dorn~                              // Dorn
+// Original Neera ~Neera~                            // Neera
+// Original Rasaad ~Rasaad~                          // Rasaad
 
-// Original Edwin ~Edwin~ // Edwin
+/////////////////////////// bg1 ///////////////////////////
 
-// Original Jaheira ~Jaheira~ // Jaheira
+// Original Ajantis ~Ajantis~                          // Ajantis
+// Original Alora ~Alora~                              // Alora
+// Original Branwen ~Branwen~                          // Branwen
+// Original Coran ~Coran~                              // Coran
+// Original Dynaheir ~Dynaheir~                        // Dynaheir
 
-// Original Minsc ~Minsc~ // Minsc
+// Original Eldoth ~Eldoth~                            // Eldoth
+// Original Faldorn ~Faldorn~                          // Faldorn
+// Original Garrick ~Garrick~                          // Garrick
 
-// Original Viconia ~Viconia~ // Viconia
+// Original Kagain ~Kagain~                            // Kagain
+// Original Khalid ~Khalid~                            // Khalid
+// Original Kivan ~Kivan~                              // Kivan
 
-// Original Dorn ~Dorn~ // Dorn
+// Original Montaron ~Montaron~                        // Montaron
+// Original Quayle ~Quayle~                            // Quayle
+// Original Safana ~Safana~                            // Safana
+// Original Sharteel ~Sharteel~                        // Sharteel
+// Original Skie ~Skie~                                // Skie
+// Original Tiax ~Tiax~                                // Tiax
 
-// Original Neera ~Neera~ // Neera
+// Original Xan ~Xan~                                  // Xan
+// Original Xzar ~Xzar~                                // Xzar
+// Original Yeslick ~Yeslick~                          // Yeslick
 
-// Original Rasaad ~Rasaad~ // Rasaad
+// Original Baeloth ~Baeloth~                          // Baeloth
 
-// bg1 start
-// ~Ajantis~
-// ~Alora~
-// ~Branwen~
-// ~Coran~
-// ~Dynaheir~
-// ~Eldoth~
-// ~Faldorn~
-// ~Garrick~
-// ~Kagain~
-// ~Khalid~
-// ~Kivan~
-// ~Montaron~
-// ~Quayle~
-// ~Safana~
-// ~Sharteel~
-// ~Skie~
-// ~Tiax~
-// ~Xan~
-// ~Xzar~
-// ~Yeslick~
-// ~Baeloth~
-// bg1 end
 
-// SoD start
+/////////////////////////// SoD ///////////////////////////
 
-// ~Voghiln~
-// ~Corwin~
-// ~Mkhiin~
-// ~Glint~
 
-// SoD end
+// Original Voghiln ~Voghiln~                         // Voghiln
+// Original Corwin ~Corwin~                           // Corwin
+// Original Mkhiin ~Mkhiin~                           // Mkhiin
+// Original Glint ~Glint~                             // Glint
 
-// bg2 start
 
-// ~Anomen~
-// ~Korgan~
-// ~Aerie~
-// ~Mazzy~
-// ~Nalia~
-// ~Keldorn~
-// ~Cernd~
-// ~Haerdalis~
-// ~Valygar~
-// ~Yoshimo~
-// ~Jan~
-// ~Wilson~
-// ~Hexxat~
-// ~Sarevok~
+/////////////////////////// bg2 ///////////////////////////
 
-// bg2 end
 
-// Mods
+// Original Aerie ~Aerie~                               // Aerie
+// Original Anomen ~Anomen~                             // Anomen
+// Original Cernd ~Cernd~                               // Cernd
+// Original Haerdal ~Haerdalis~                         // Haerdal
+// Original Hexxat ~Hexxat~                             // Hexxat
+// Original Jan ~Jan~                                   // Jan
+// Original Keldorn ~Keldorn~                           // Keldorn
+// Original Korgan ~Korgan~                             // Korgan
+// Original Mazzy ~Mazzy~                               // Mazzy
+// Original Nalia ~Nalia~                               // Nalia
+// Original Sarevok ~Sarevok~                           // Sarevok
+// Original Valygar ~Valygar~                           // Valygar
+// Original Wilson ~Wilson~                             // Wilson
+// Original Yoshimo ~Yoshimo~                           // Yoshimo
+
+
 /////////////////////////// Mods BG1 ///////////////////////////
 
-// Mod Ishlilka ~#Ishy~ // Ishlilka_The-Wizard-Slayer
+
+// Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
+
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
-// Mod Alora BG2 ~CMALORA~ // Alora BG2
 
-// Mod Yeslick BG2 ~LK#YESLK~// Yeslick BG2
-
-// Mod Undying ~cmninaf~ ~callisto~ // The Undying
-
-// Mod Sandra ~BHAALSPW~  // Summon Bhaalspawn
-
-// Mod Nikita ~cmnikita~// NikitaRedux
-
-// Mod Miriam ~cmgmiriam~// VampireTales
-
-// Mod Kim ~Kim~ // Kim
+// Mod Alora BG2 ~CMALORA~                                          // Alora BG2
+// Mod Yeslick BG2 ~LK#YESLK~                                       // Yeslick BG2
+// Mod Undying ~cmninaf~ ~callisto~                                 // The Undying
+// Mod Sandra ~BHAALSPW~                                            // Summon Bhaalspawn
+// Mod Nikita ~cmnikita~                                            // NikitaRedux
+// Mod Miriam ~cmgmiriam~                                           // VampireTales
+// Mod Kim ~Kim~                                                    // Kim
 
 BEGIN
 
@@ -597,11 +594,11 @@ Allegiance("%Death_var%",FAMILIAR)~
 // Original Jaheira				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
 // Original Jaheira	StateCheck("%Death_var%",CD_STATE_NOTVALID)
 // Original Jaheira	!InMyArea("%Death_var%")
-// Original JaheiraOR(4)\)
-// Original Jaheira	Global("JaheiraRomanceActive","GLOBAL",0)\)
-// Original Jaheira	Global("JaheiraRomanceActive","GLOBAL",3)\)
-// Original Jaheira	Allegiance("%Death_var%",FAMILIAR)\)
-// Original Jaheira	!InPartySlot(LastTalkedToBy,0)\)~
+// Original JaheiraOR(4)
+// Original Jaheira	Global("JaheiraRomanceActive","GLOBAL",0)
+// Original Jaheira	Global("JaheiraRomanceActive","GLOBAL",3)
+// Original Jaheira	Allegiance("%Death_var%",FAMILIAR)
+// Original Jaheira	!InPartySlot(LastTalkedToBy,0)~
 // Original Jaheira				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 // Original Jaheira				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 // Original Jaheira				~
@@ -775,97 +772,91 @@ END
 
 ACTION_FOR_EACH joining_dlg IN
 
-// Original Imoen ~%IMOEN_JOINED%~ ~IMOEN25J~ // Imoen
+// Original Imoen ~%IMOEN_JOINED%~ ~IMOEN25J~                     // Imoen
+// Original Edwin ~%EDWIN_JOINED%~ ~EDWIN25J~                     // Edwin
+// Original Jaheira ~%JAHEIRA_JOINED%~ ~JAHEI25J~                 // Jaheira
+// Original Minsc ~%MINSC_JOINED%~ ~MINSC25J~                     // Minsc
+// Original Viconia ~%VICONIA_JOINED%~ ~VICON25J~                 // Viconia
+// Original Dorn ~%DORN_JOINED%~ ~DORN25J~                        // Dorn
+// Original Neera ~%NEERA_JOINED%~ ~NEERA25J~                     // Neera
+// Original Rasaad ~%RASAAD_JOINED%~ ~RASAA25J~                   // Rasaad
 
-// Original Edwin ~%EDWIN_JOINED%~ ~EDWIN25J~ // Edwin
 
-// Original Jaheira ~%JAHEIRA_JOINED%~ ~JAHEI25J~ // Jaheira
+/////////////////////////// bg1 ///////////////////////////
 
-// Original Minsc ~%MINSC_JOINED%~ ~MINSC25J~ // Minsc
 
-// Original Viconia ~%VICONIA_JOINED%~ ~VICON25J~ // Viconia
+// Original Ajantis ~%AJANTIS_JOINED%~                            // Ajantis
+// Original Alora ~%ALORA_JOINED%~                                // Alora
+// Original Branwen ~%BRANWEN_JOINED%~                            // Branwen
+// Original Coran ~%CORAN_JOINED%~                                // Coran
+// Original Dynaheir ~%DYNAHEIR_JOINED%~                          // Dynaheir
 
-// Original Dorn ~%DORN_JOINED%~ ~DORN25J~ // Dorn
+// Original Eldoth ~%ELDOTH_JOINED%~                              // Eldoth
+// Original Faldorn ~%FALDORN_JOINED%~                            // Faldorn
+// Original Garrick ~%GARRICK_JOINED%~                            // Garrick
 
-// Original Neera ~%NEERA_JOINED%~ ~NEERA25J~ // Neera
+// Original Kagain ~%KAGAIN_JOINED%~                              // Kagain
+// Original Khalid ~%KHALID_JOINED%~                              // Khalid
+// Original Kivan ~%KIVAN_JOINED%~                                // Kivan
 
-// Original Rasaad ~%RASAAD_JOINED%~ ~RASAA25J~ // Rasaad
+// Original Montaron ~%MONTARON_JOINED%~                          // Montaron
+// Original Quayle ~%QUAYLE_JOINED%~                              // Quayle
+// Original Safana ~%SAFANA_JOINED%~                              // Safana
+// Original Sharteel ~%SHARTEEL_JOINED%~                          // Sharteel
+// Original Skie ~%SKIE_JOINED%~                                  // Skie
+// Original Tiax ~%TIAX_JOINED%~                                  // Tiax
 
-// bg1
+// Original Xan ~%XAN_JOINED%~                                    // Xan
+// Original Xzar ~%XZAR_JOINED%~                                  // Xzar
+// Original Yeslick ~%YESLICK_JOINED%~                            // Yeslick
 
-// ~%AJANTIS_JOINED%~
-// ~%ALORA_JOINED%~
-// ~%BRANWEN_JOINED%~
-// ~%CORAN_JOINED%~
-// ~%DYNAHEIR_JOINED%~
-// 
-// ~%ELDOTH_JOINED%~
-// ~%FALDORN_JOINED%~
-// ~%GARRICK_JOINED%~
-// 
-// ~%KAGAIN_JOINED%~
-// ~%KHALID_JOINED%~
-// ~%KIVAN_JOINED%~
-// 
-// ~%MONTARON_JOINED%~
-// ~%QUAYLE_JOINED%~
-// ~%SAFANA_JOINED%~
-// ~%SHARTEEL_JOINED%~
-// ~%SKIE_JOINED%~
-// ~%TIAX_JOINED%~
-// 
-// ~%XAN_JOINED%~
-// ~%XZAR_JOINED%~
-// ~%YESLICK_JOINED%~
-// 
-// 
-// 
-// ~BAELOTHJ~
+// Original Baeloth ~BAELOTHJ~                                    // Baeloth
 
-// SoD
 
-// ~BDVOGHIJ~
-// ~BDCORWIJ~
-// ~BDMKHIIJ~
-// ~BDGLINTJ~
+/////////////////////////// SoD ///////////////////////////
 
-// bg2
 
-// ~AERIEJ~ ~AERIE25J~
-// ~ANOMENJ~ ~ANOME25J~
-// ~CERNDJ~ ~CERND25J~
-// ~HAERDAJ~ ~HAERD25J~
-// ~JANJ~ ~JAN25J~
-// ~KELDORJ~ ~KELDO25J~
-// ~KORGANJ~ ~KORGA25J~
-// ~MAZZYJ~ ~MAZZY25J~
-// ~NALIAJ~ ~NALIA25J~
-// ~VALYGARJ~ ~VALYG25J~
-// ~YOSHJ~
-// ~SAREV25J~
-// ~WILSONJ~
-// ~HEXXATJ~ ~HEXXA25J~
+// Original Voghiln ~BDVOGHIJ~                                    // Voghiln
+// Original Corwin ~BDCORWIJ~                                     // Corwin
+// Original Mkhiin ~BDMKHIIJ~                                     // Mkhiin
+// Original Glint ~BDGLINTJ~                                      // Glint
 
-// Mods
+
+/////////////////////////// bg2 ///////////////////////////
+
+
+// Original Aerie ~AERIEJ~ ~AERIE25J~                               // Aerie
+// Original Anomen ~ANOMENJ~ ~ANOME25J~                             // Anomen
+// Original Cernd ~CERNDJ~ ~CERND25J~                               // Cernd
+// Original Haerdal ~HAERDAJ~ ~HAERD25J~                            // Haerdal
+// Original Hexxat ~HEXXATJ~ ~HEXXA25J~                             // Hexxat
+// Original Jan ~JANJ~ ~JAN25J~                                     // Jan
+// Original Keldorn ~KELDORJ~ ~KELDO25J~                            // Keldorn
+// Original Korgan ~KORGANJ~ ~KORGA25J~                             // Korgan
+// Original Mazzy ~MAZZYJ~ ~MAZZY25J~                               // Mazzy
+// Original Nalia ~NALIAJ~ ~NALIA25J~                               // Nalia
+// Original Sarevok ~SAREV25J~                                      // Sarevok
+// Original Valygar ~VALYGARJ~ ~VALYG25J~                           // Valygar
+// Original Wilson ~WILSONJ~                                        // Wilson
+// Original Yoshimo ~YOSHJ~                                         // Yoshimo
+
+
 /////////////////////////// Mods BG1 ///////////////////////////
 
-// Mod Ishlilka ~IshyD~ ~bdishy~ // Ishlilka_The-Wizard-Slayer
+
+// Mod Ishlilka ~IshyD~ ~bdishy~                                                // Ishlilka_The-Wizard-Slayer
+
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
-// Mod Alora BG2 ~CMALORAJ~ ~CMALO25J~ // Alora BG2
 
-// Mod Yeslick BG2 ~LK#YESJ~ ~LK#YE25J~ // Yeslick BG2
-
-// Mod Undying ~CMNINAFJ~ ~CMCALLIJ~ ~CMNINA25~ // The Undying
-
-// Mod Sandra ~bhalspwj~ ~bhal25j~  // Summon Bhaalspawn
-
-// Mod Nikita ~CMNIKITJ~ ~CMNIK25~ // NikitaRedux
-
-// Mod Miriam ~CMGMIRIj~ ~CMGMI25J~ // VampireTales
-
-// Mod Kim ~KimJ~ ~Kim25J~ // Kim
+// Mod Alora BG2 ~CMALORAJ~ ~CMALO25J~                                          // Alora BG2
+// Mod Yeslick BG2 ~LK#YESJ~ ~LK#YE25J~                                         // Yeslick BG2
+// Mod Undying ~CMNINAFJ~ ~CMCALLIJ~ ~CMNINA25~                                 // The Undying
+// Mod Sandra ~bhalspwj~ ~bhal25j~                                              // Summon Bhaalspawn
+// Mod Nikita ~CMNIKITJ~ ~CMNIK25~                                              // NikitaRedux
+// Mod Miriam ~CMGMIRIj~ ~CMGMI25J~                                             // VampireTales
+// Mod Kim ~KimJ~ ~Kim25J~                                                      // Kim
 
 BEGIN
 
@@ -878,96 +869,91 @@ END
 
 ACTION_FOR_EACH bcs IN
 
-// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~ // Imoen
+// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~                    // Imoen
+// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~                    // Edwin
+// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~                // Jaheira
+// Original Minsc ~%MINSC_BCS%~ ~MINS25~                    // Minsc
+// Original Viconia ~%VICONIA_BCS%~ ~VICO25~                // Viconia
+// Original Dorn ~%DORN_BCS%~ ~DORN25~                      // Dorn
+// Original Neera ~%NEERA_BCS%~ ~NEER25~                    // Neera
+// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~                  // Rasaad
 
-// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~ // Edwin
-
-// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ // Jaheira
-
-// Original Minsc ~%MINSC_BCS%~ ~MINS25~ // Minsc
-
-// Original Viconia ~%VICONIA_BCS%~ ~VICO25~ // Viconia
-
-// Original Dorn ~%DORN_BCS%~ ~DORN25~ // Dorn
-
-// Original Neera ~%NEERA_BCS%~ ~NEER25~ // Neera
-
-// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~ // Rasaad
 
 /////////////////////////// bg1 ///////////////////////////
-// ~%AJANTIS_BCS%~
-// ~%ALORA_BCS%~
-// ~%BRANWEN_BCS%~
-// ~%CORAN_BCS%~
-// ~%DYNAHEIR_BCS%~
-// 
-// ~%ELDOTH_BCS%~
-// ~%FALDORN_BCS%~
-// ~%GARRICK_BCS%~
-// 
-// ~%KAGAIN_BCS%~
-// ~%KHALID_BCS%~
-// ~%KIVAN_BCS%~
-// 
-// ~%MONTARON_BCS%~
-// ~%QUAYLE_BCS%~
-// ~%SAFANA_BCS%~
-// ~%SHARTEEL_BCS%~
-// ~%SKIE_BCS%~
-// ~%TIAX_BCS%~
-// 
-// ~%XAN_BCS%~
-// ~%XZAR_BCS%~
-// ~%YESLICK_BCS%~
-// 
-// 
-// 
-// ~BDBAELOT~
+
+
+// Original Ajantis ~%AJANTIS_BCS%~                         // Ajantis
+// Original Alora ~%ALORA_BCS%~                             // Alora
+// Original Branwen ~%BRANWEN_BCS%~                         // Branwen
+// Original Coran ~%CORAN_BCS%~                             // Coran
+// Original Dynaheir ~%DYNAHEIR_BCS%~                       // Dynaheir
+
+// Original Eldoth ~%ELDOTH_BCS%~                           // Eldoth
+// Original Faldorn ~%FALDORN_BCS%~                         // Faldorn
+// Original Garrick ~%GARRICK_BCS%~                         // Garrick
+
+// Original Kagain ~%KAGAIN_BCS%~                           // Kagain
+// Original Khalid ~%KHALID_BCS%~                           // Khalid
+// Original Kivan ~%KIVAN_BCS%~                             // Kivan
+ /
+// Original Montaron ~%MONTARON_BCS%~                       // Montaron
+// Original Quayle ~%QUAYLE_BCS%~                           // Quayle
+// Original Safana ~%SAFANA_BCS%~                           // Safana
+// Original Sharteel ~%SHARTEEL_BCS%~                       // Sharteel
+// Original Skie ~%SKIE_BCS%~                               // Skie
+// Original Tiax ~%TIAX_BCS%~                               // Tiax
+
+// Original Xan ~%XAN_BCS%~                                 // Xan
+// Original Xzar ~%XZAR_BCS%~                               // Xzar
+// Original Yeslick ~%YESLICK_BCS%~                         // Yeslick
+
+// Original Baeloth ~BDBAELOT~                              // Baeloth
+
 
 /////////////////////////// SoD ///////////////////////////
 
-// ~BDVOGHIL~
-// ~BDCORWIN~
-// ~BDMKHIIN~
-// ~BDGLINT~
+
+// Original Voghiln ~BDVOGHIL~                             // Voghiln
+// Original Corwin ~BDCORWIN~                              // Corwin
+// Original Mkhiin ~BDMKHIIN~                              // Mkhiin
+// Original Glint ~BDGLINT~                                // Glint
+
 
 /////////////////////////// bg2 ///////////////////////////
 
-// ~AERIE~ ~AERI25~
-// ~ANOMEN~ ~ANOM25~
-// ~CERND~ ~CERN25~
-// ~HAERDALI~ ~HAER25~
-// ~JAN~ ~JAN25~
-// ~KELDORN~ ~KELD25~
-// ~KORGAN~ ~KORG25~
-// ~MAZZY~ ~MAZZ25~
-// ~NALIA~ ~NALI25~
-// ~VALYGAR~ ~VALY25~
-// ~YOSHIMO~ ~YOSH25~
-// ~SAREV25~
-// ~WILSON~
-// ~HEXXAT~ ~HEXXA25~
 
-// Mods
+// Original Aerie ~AERIE~ ~AERI25                               // Aerie
+// Original Anomen ~ANOMEN~ ~ANOM25~                            // Anomen
+// Original Cernd ~CERND~ ~CERN25~                              // Cernd
+// Original Haerdal ~HAERDALI~ ~HAER25~                         // Haerdal
+// Original Hexxat ~HEXXAT~ ~HEXXA25~                           // Hexxat
+// Original Jan ~JAN~ ~JAN25~                                   // Jan
+// Original Keldorn ~KELDORN~ ~KELD25~                          // Keldorn
+// Original Korgan ~KORGAN~ ~KORG25~                            // Korgan
+// Original Mazzy ~MAZZY~ ~MAZZ25~                              // Mazzy
+// Original Nalia ~NALIA~ ~NALI25~                              // Nalia
+// Original Sarevok ~SAREV25~                                   // Sarevok
+// Original Valygar ~VALYGAR~ ~VALY25~                          // Valygar
+// Original Wilson ~WILSON~                                     // Wilson
+// Original Yoshimo ~YOSHIMO~ ~YOSH25~                          // Yoshimo
+
+
 /////////////////////////// Mods BG1 ///////////////////////////
 
-// Mod Ishlilka ~ishyscrp~ // Ishlilka_The-Wizard-Slayer
+
+// Mod Ishlilka ~ishyscrp~                                                    // Ishlilka_The-Wizard-Slayer
+
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
-// Mod Alora BG2 ~cmalora~ ~cmalo25~ // Alora BG2
 
-// Mod Yeslick BG2 ~LK#YESL~ ~LK#YES25~ // Yeslick BG2
-
-// Mod Undying ~CMNINAF~ ~CALLISTO~ ~CMNINA25~ // The Undying
-
-// Mod Sandra ~BHAALSPW~  // Summon Bhaalspawn
-
-// Mod Nikita ~cmnikita~ ~CMNIK25~ // NikitaRedux
-
-// Mod Miriam ~CMGMIRI~ ~CMGMI25~ // VampireTales
-
-// Mod Kim ~Kim~ // Kim
+// Mod Alora BG2 ~cmalora~ ~cmalo25~                                          // Alora BG2
+// Mod Yeslick BG2 ~LK#YESL~ ~LK#YES25~                                       // Yeslick BG2
+// Mod Undying ~CMNINAF~ ~CALLISTO~ ~CMNINA25~                                // The Undying
+// Mod Sandra ~BHAALSPW~                                                      // Summon Bhaalspawn
+// Mod Nikita ~cmnikita~ ~CMNIK25~                                            // NikitaRedux
+// Mod Miriam ~CMGMIRI~ ~CMGMI25~                                             // VampireTales
+// Mod Kim ~Kim~                                                              // Kim
 
 BEGIN
 

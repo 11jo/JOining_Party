@@ -6,6 +6,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%IMOEN_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%IMOEN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -18,6 +19,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%EDWIN_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%EDWIN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -30,6 +32,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%JAHEIRA_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%JAHEIRA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -42,6 +45,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%MINSC_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%MINSC_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -54,6 +58,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%VICONIA_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%VICONIA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -66,6 +71,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%DORN_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%DORN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -78,6 +84,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%NEERA_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%NEERA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -90,13 +97,15 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%RASAAD_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%RASAAD_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
-// BG1 //////////////////////////
+
+////////////////////////// BG1 //////////////////////////
 
 IF
 	HasItem("JO_JOIN","Ajantis")
@@ -104,6 +113,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -116,6 +126,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%ALORA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -130,6 +141,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%BRANWEN_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%BRANWEN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -144,6 +156,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%CORAN_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%CORAN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -158,6 +171,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -172,6 +186,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -186,6 +201,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -200,6 +216,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -214,6 +231,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -228,6 +246,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -242,6 +261,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -256,6 +276,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -270,6 +291,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -284,6 +306,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -298,6 +321,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%SHARTEEL_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -312,6 +336,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%SKIE_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%SKIE_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -326,6 +351,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%TIAX_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%TIAX_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -340,6 +366,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%XAN_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%XAN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -354,6 +381,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%XZAR_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%XZAR_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -368,6 +396,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("%YESLICK_BCS%",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("%YESLICK_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -382,13 +411,79 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("BDBAELOT",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("BAELOTHJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
-// BG2 //////////////////////////
+////////////////////////// SoD //////////////////////////
+
+
+// Voghiln
+
+IF
+	HasItem("JO_JOIN","Voghiln")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDVOGHIL",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
+		SetDialog("BDVOGHIJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// Corwin 
+
+IF
+	HasItem("JO_JOIN","Corwin")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDCORWIN",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
+		SetDialog("BDCORWIJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// Mkhiin
+
+IF
+	HasItem("JO_JOIN","Mkhiin")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDMKHIIN",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
+		SetDialog("BDMKHIIJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// Glint
+
+IF
+	HasItem("JO_JOIN","Glint")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDGLINT",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
+		SetDialog("BDGLINTJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// Bdcaelar
+
+////////////////////////// BG2 //////////////////////////
 
 // Anomen
 // Korgan
@@ -405,7 +500,43 @@ END
 // Hexxat
 // Sarevok
 
-// Mods //////////////////////////
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+
+// Ishlilka_The-Wizard-Slayer
+
+IF
+	HasItem("JO_JOIN","#Ishy")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("ishyscrp",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
+		SetDialog("IshyD")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","#Ishy")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("ishyscrp",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
+		SetDialog("bdishy")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
 
  // Alora BG2
  
@@ -415,6 +546,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmalora",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("CMALORAJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -429,6 +561,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("LK#YESL",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("LK#YESJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -443,6 +576,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNINAF",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("CMNINAFJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -455,6 +589,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("CALLISTO",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("CMCALLIJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -469,22 +604,8 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("BHAALSPW",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("bhalspwj") 
-		DestroyItem("JO_JOIN")
-		SetGlobal("JO_JOIN","LOCALS",0)
-		DisplayStringHead(Myself,~We are now fellow travelers.~)
-END
-
-
-// Ishlilka_The-Wizard-Slayer
-
-IF
-	HasItem("JO_JOIN","#Ishy")
-	Global("JO_JOIN","LOCALS",2)
-THEN
-	RESPONSE #100
-		ChangeAIScript("ishyscrp",OVERRIDE)
-		SetDialog("BISHY") // To double check
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
@@ -498,6 +619,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmnikita",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("CMNIKITJ")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -512,6 +634,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMGMIRI",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("CMGMIRIj")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -526,6 +649,7 @@ IF
 THEN
 	RESPONSE #100
 		ChangeAIScript("Kim",OVERRIDE)
+		ChangeAIScript("DPLAYER2",DEFAULT)
 		SetDialog("KimJ")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
