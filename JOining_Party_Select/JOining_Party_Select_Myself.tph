@@ -123,7 +123,18 @@ OR(2)
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
 			~
-		END /*ELSE BEGIN
+		END
+			SPRINT textToReplace ~\(OR(2)\)
+\(^[%TAB% ]*!InParty(Myself)\)
+\(^[%TAB% ]*OR(2)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+	!InParty(Myself)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END /*ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find Myself in %SOURCE_FILESPEC%~
 		END*/
 	END

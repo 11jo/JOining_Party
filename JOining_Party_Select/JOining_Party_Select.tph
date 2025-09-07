@@ -477,7 +477,7 @@ OR(2)
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
-ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
+PATCH_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*!PartyHasItem("OHNMBIRD")\)
 \(^[%TAB% ]*OR(4)\)~
@@ -578,7 +578,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 				~
 			END
 END
-ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN
+PATCH_IF (GAME_INCLUDES ~SoD~) BEGIN
 			SPRINT textToReplace ~\(OR(4)\)
 \(^[%TAB% ]*Global("bd_move_%Death_var%","bd6200",0)\)
 \(^[%TAB% ]*Dead("%Death_var%")\)
@@ -661,32 +661,6 @@ END
 
 
 // INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
-
-
-ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN // A modifier !!!!!!!!!!!!
-	COPY_EXISTING ~DSHOP02.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",0)\)
-\(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",3)\)
-\(^[%TAB% ]*!IsValidForPartyDialogue("%Death_var%")\)
-\(^[%TAB% ]*!InPartySlot(LastTalkedToBy,0)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	StateCheck("%Death_var%",CD_STATE_NOTVALID)
-	!InMyArea("%Death_var%")
-	!Allegiance("%Death_var%",FAMILIAR)
-OR(3)
-	Global("JaheiraRomanceActive","GLOBAL",0)
-	Global("JaheiraRomanceActive","GLOBAL",3)
-	!InPartySlot(LastTalkedToBy,0)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
-			~
-		END
-	END // Special Jaheira DSHOP02.DLG
-END
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
@@ -1004,7 +978,7 @@ OR(2)
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
-ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
+PATCH_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*!PartyHasItem("OHNMBIRD")\)
 \(^[%TAB% ]*OR(4)\)~
@@ -1105,7 +1079,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 				~
 			END
 END
-ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN
+PATCH_IF (GAME_INCLUDES ~SoD~) BEGIN
 			SPRINT textToReplace ~\(OR(3)\)
 \(^[%TAB% ]*Dead("%Death_var%")\)
 \(^[%TAB% ]*!InMyArea("%Death_var%")\)
@@ -1137,6 +1111,22 @@ END			/*ELSE BEGIN
 	BUT_ONLY
 
 ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN // A modifier ?????????????
+	COPY_EXISTING ~DSHOP02.dlg~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(OR(4)\)
+\(^[%TAB% ]*Global("%Death_var%RomanceActive","GLOBAL",0)\)
+\(^[%TAB% ]*Global("%Death_var%RomanceActive","GLOBAL",3)\)
+\(^[%TAB% ]*(OR(4)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7)
+	Global("%Death_var%RomanceActive","GLOBAL",0)
+	Global("%Death_var%RomanceActive","GLOBAL",3)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			~
+		END
+	END // Special Jaheira DSHOP02.DLG
 	COPY_EXISTING ~CEFALD04.dlg~
 				~HAERDA.dlg~
 				~TREVIL02.dlg~	~override~
