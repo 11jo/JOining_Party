@@ -134,16 +134,12 @@ BUT_ONLY
 COPY_EXISTING ~Cernd.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 		SPRINT textToReplace ~\(OR(2)\)
-\(AreaCheck("AR1900")\)
-\(OR(2)\)
-\(InParty(Myself)\)
-\(Allegiance(Myself,FAMILIAR)\)~
+\(^[%TAB% ]*AreaCheck("AR1900")\)
+\(^[%TAB% ]*OR(2)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	AreaCheck("AR1900")
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+	AreaCheck("AR1900")~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
 			~
@@ -153,22 +149,18 @@ COPY_EXISTING ~Cernd.bcs~ ~override~
 COPY_EXISTING ~JANX.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 		SPRINT textToReplace ~\(OR(2)\)
-\(Allegiance(Myself,ENEMY)\)
-\(OR(2)\)
-\(InParty(Myself)\)
-\(Allegiance(Myself,FAMILIAR)\)~
+\(^[%TAB% ]*Allegiance(Myself,ENEMY)\)
+\(^[%TAB% ]*OR(2)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	Allegiance(Myself,ENEMY)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+	Allegiance(Myself,ENEMY)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
 			~
 		END
 	END
-		
+
 /////////////////////////// Myself DLG
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
@@ -295,7 +287,7 @@ COPY_EXISTING ~MINHP1.ITM~ ~override/JOMINHP1.itm~
 
 COMPILE ~JOining_Party_Select/JO_JOIN.baf~ EVALUATE_BUFFER
 COMPILE ~JOining_Party_Select/JO_JOINT.baf~ EVALUATE_BUFFER
-COMPILE ~JOining_Party_Select/JO_JOINB.baf~ EVALUATE_BUFFER
+// COMPILE ~JOining_Party_Select/JO_JOINB.baf~ EVALUATE_BUFFER
 
 EXTEND_BOTTOM ~baldur.bcs~ ~JOining_Party_Select/Join_ability.baf~
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Join_ability.baf~ 
@@ -382,7 +374,7 @@ ACTION_FOR_EACH Death_var IN
 // Original Aerie ~Aerie~                               // Aerie
 // Original Anomen ~Anomen~                             // Anomen
 // Original Cernd ~Cernd~                               // Cernd
-// Original Haerdal ~Haerdalis~                         // Haerdal
+// Original Haerdalis ~Haerdalis~                       // Haerdalis
 // Original Hexxat ~Hexxat~                             // Hexxat
 // Original Jan ~Jan~                                   // Jan
 // Original Keldorn ~Keldorn~                           // Keldorn
@@ -582,27 +574,31 @@ Allegiance("%Death_var%",FAMILIAR)~
 		END
 	BUT_ONLY
 
+COPY_EXISTING ~DSHOP02.dlg~ ~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(OR(4)\)
+\(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",0)\)
+\(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",3)\)
+\(^[%TAB% ]*!IsValidForPartyDialogue("%Death_var%")\)
+\(^[%TAB% ]*!InPartySlot(LastTalkedToBy,0)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+	StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	!InMyArea("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+OR(3)
+	Global("JaheiraRomanceActive","GLOBAL",0)
+	Global("JaheiraRomanceActive","GLOBAL",3)
+	!InPartySlot(LastTalkedToBy,0)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			~
+		END
+	END // Special Jaheira DSHOP02.DLG
+
 	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
-// Original Jaheira			SPRINT textToReplace ~\(OR(4)\)
-// Original Jaheira\(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",0)\)
-// Original Jaheira\(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",3)\)
-// Original Jaheira\(^[%TAB% ]*!IsValidForPartyDialogue("%Death_var%")\)
-// Original Jaheira\(^[%TAB% ]*!InPartySlot(LastTalkedToBy,0)\)~
-// Original Jaheira			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-// Original Jaheira			PATCH_IF (num_matches > 0) BEGIN
-// Original Jaheira				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
-// Original Jaheira	StateCheck("%Death_var%",CD_STATE_NOTVALID)
-// Original Jaheira	!InMyArea("%Death_var%")
-// Original JaheiraOR(4)
-// Original Jaheira	Global("JaheiraRomanceActive","GLOBAL",0)
-// Original Jaheira	Global("JaheiraRomanceActive","GLOBAL",3)
-// Original Jaheira	Allegiance("%Death_var%",FAMILIAR)
-// Original Jaheira	!InPartySlot(LastTalkedToBy,0)~
-// Original Jaheira				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-// Original Jaheira				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
-// Original Jaheira				~
-// Original Jaheira			END // Special Jaheira DSHOP02
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -767,7 +763,24 @@ Allegiance("%Death_var%",FAMILIAR)~
 			END*/
 		END
 	BUT_ONLY
-	
+
+COPY_EXISTING ~CEFALD04.dlg~
+				~HAERDA.dlg~
+				~TREVIL02.dlg~	~override~
+	DECOMPILE_AND_PATCH BEGIN
+		SPRINT textToReplace ~\(OR(3)\)
+\(^[%TAB% ]*Allegiance("%Death_var%",FAMILIAR)\)
+\(^[%TAB% ]*OR(2)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
+	!Allegiance("Aerie",FAMILIAR)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			~
+		END
+	END // Special Aerie
+
 END
 
 ACTION_FOR_EACH joining_dlg IN
@@ -828,7 +841,7 @@ ACTION_FOR_EACH joining_dlg IN
 // Original Aerie ~AERIEJ~ ~AERIE25J~                               // Aerie
 // Original Anomen ~ANOMENJ~ ~ANOME25J~                             // Anomen
 // Original Cernd ~CERNDJ~ ~CERND25J~                               // Cernd
-// Original Haerdal ~HAERDAJ~ ~HAERD25J~                            // Haerdal
+// Original Haerdalis ~HAERDAJ~ ~HAERD25J~                          // Haerdalis
 // Original Hexxat ~HEXXATJ~ ~HEXXA25J~                             // Hexxat
 // Original Jan ~JANJ~ ~JAN25J~                                     // Jan
 // Original Keldorn ~KELDORJ~ ~KELDO25J~                            // Keldorn
@@ -869,14 +882,14 @@ END
 
 ACTION_FOR_EACH bcs IN
 
-// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~                    // Imoen
-// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~                    // Edwin
-// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~                // Jaheira
-// Original Minsc ~%MINSC_BCS%~ ~MINS25~                    // Minsc
-// Original Viconia ~%VICONIA_BCS%~ ~VICO25~                // Viconia
-// Original Dorn ~%DORN_BCS%~ ~DORN25~                      // Dorn
-// Original Neera ~%NEERA_BCS%~ ~NEER25~                    // Neera
-// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~                  // Rasaad
+// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~     // EET_END ~IMOEN_~   // EET_ODD ~IMOEN2~      // Imoen
+// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~     // EET_END ~EDWIN_~   // EET_ODD ~EDWIN~       // Edwin
+// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ // EET_END ~JAHEIRA_~ // EET_ODD ~JAHEIRA~     // Jaheira
+// Original Minsc ~%MINSC_BCS%~ ~MINS25~     // EET_END ~MINSC_~   // EET_ODD ~MINSC~       // Minsc
+// Original Viconia ~%VICONIA_BCS%~ ~VICO25~ // EET_END ~VICONIA_~ // EET_ODD ~VICONIA~     // Viconia
+// Original Dorn ~%DORN_BCS%~ ~DORN25~       // EET_END ~DORN_~    // EET_ODD ~DORN~        // Dorn
+// Original Neera ~%NEERA_BCS%~ ~NEER25~     // EET_END ~NEERA_~   // EET_ODD ~NEERA~       // Neera
+// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~   // EET_END ~RASAAD_~  // EET_ODD ~RASAAD~      // Rasaad
 
 
 /////////////////////////// bg1 ///////////////////////////
@@ -895,7 +908,7 @@ ACTION_FOR_EACH bcs IN
 // Original Kagain ~%KAGAIN_BCS%~                           // Kagain
 // Original Khalid ~%KHALID_BCS%~                           // Khalid
 // Original Kivan ~%KIVAN_BCS%~                             // Kivan
- /
+
 // Original Montaron ~%MONTARON_BCS%~                       // Montaron
 // Original Quayle ~%QUAYLE_BCS%~                           // Quayle
 // Original Safana ~%SAFANA_BCS%~                           // Safana
@@ -922,10 +935,10 @@ ACTION_FOR_EACH bcs IN
 /////////////////////////// bg2 ///////////////////////////
 
 
-// Original Aerie ~AERIE~ ~AERI25                               // Aerie
+// Original Aerie ~AERIE~ ~AERI25~                              // Aerie
 // Original Anomen ~ANOMEN~ ~ANOM25~                            // Anomen
 // Original Cernd ~CERND~ ~CERN25~                              // Cernd
-// Original Haerdal ~HAERDALI~ ~HAER25~                         // Haerdal
+// Original Haerdalis ~HAERDALI~ ~HAER25~                       // Haerdalis
 // Original Hexxat ~HEXXAT~ ~HEXXA25~                           // Hexxat
 // Original Jan ~JAN~ ~JAN25~                                   // Jan
 // Original Keldorn ~KELDORN~ ~KELD25~                          // Keldorn

@@ -18,6 +18,13 @@ ALWAYS
 		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
 		PRINT ~Game is EET 
 		~
+		ACTION_IF (GAME_IS ~eet~) BEGIN
+		
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// EET_ODD~ ~~
+
+	   END
+			
 	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
 		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
 		PRINT ~Game is BGEE
@@ -84,6 +91,12 @@ ALWAYS
 	OUTER_SPRINT "IMOEN_BCS" "IMOEN2"
 		PRINT ~Game is BG2EE or EET_END is installed
 		~
+		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+		
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// EET_END~ ~~
+
+	   END
 	END
 	
 END
