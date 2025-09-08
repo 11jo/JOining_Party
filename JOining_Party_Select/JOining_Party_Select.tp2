@@ -149,7 +149,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bgee bg2ee eet~) ~Necessite BG2-ToB / BG2EE 
 /////////////////////////// BG1 ///////////////////////////
 
 
-BEGIN ~Original bg1 NPCs (Ajantis, Alora, Branwen, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
+BEGIN ~Original bg1 NPCs (Ajantis, Alora, Branwen, Coran, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
 DESIGNATED 30
 LABEL ~JOining_Party_Select-Original-bg1~
 REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
@@ -165,6 +165,10 @@ REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Original Branwen~ ~~
 			REPLACE_TEXTUALLY ~// Original Branwen~ ~~
+
+		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Original Coran~ ~~
+			REPLACE_TEXTUALLY ~// Original Coran~ ~~
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Original Dynaheir~ ~~
