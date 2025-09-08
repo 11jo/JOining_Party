@@ -17,9 +17,28 @@ THEN
 		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(2)
 		ChangeAIScript("JO_JOIN",OVERRIDE)
+		ChangeAIScript("JO_test",GENERAL)
 		FaceObject(Player1)
 		SetGlobal("JO_JOIN","LOCALS",2)
 END
+
+IF
+	Global("JO_JOIN_PARTY","LOCALS",1)
+THEN
+	RESPONSE #100
+		LeaveParty()
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		AddFamiliar()
+		SmallWait(2)
+		GiveItemCreate("JO_JOIN",Myself,0,0,0)
+		SmallWait(2)
+		ChangeAIScript("JO_JOIN",OVERRIDE)
+		ChangeAIScript("JO_JOINI",GENERAL)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",2)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",NINE_ROUNDS)
+END
+
 
 /*
 // ToB

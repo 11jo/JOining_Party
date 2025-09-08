@@ -1,0 +1,17 @@
+IF
+	Global("JO_FIRST_JOIN_JOIN","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",THREE_ROUNDS)
+		SetGlobal("JO_FIRST_JOIN_JOIN","LOCALS",1)
+END
+
+IF
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOINI","LOCALS",1)
+		JoinParty()
+END
+
