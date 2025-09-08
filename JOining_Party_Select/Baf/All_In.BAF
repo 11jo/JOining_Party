@@ -17,13 +17,13 @@ THEN
 		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(2)
 		ChangeAIScript("JO_JOIN",OVERRIDE)
-		ChangeAIScript("JO_test",GENERAL)
+		ChangeAIScript("JO_JOINI",GENERAL)
 		FaceObject(Player1)
 		SetGlobal("JO_JOIN","LOCALS",2)
 END
 
 IF
-	Global("JO_JOIN_PARTY","LOCALS",1)
+	Global("JO_JOINI","LOCALS",1)
 THEN
 	RESPONSE #100
 		LeaveParty()

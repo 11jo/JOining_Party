@@ -6,13 +6,13 @@ ALWAYS
 	
 	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~) BEGIN
 
-		COPY ~JOining_Party_Select/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 		
 	END
 	
 	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~) BEGIN
 
-		COPY ~JOining_Party_Select/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 		
 	END
 
@@ -32,7 +32,7 @@ ALWAYS
 	   END
 			
 	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
-		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
+		INCLUDE ~JOining_Party_Select/Lib/g3_bgee_cpmvars.tpa~
 		PRINT ~Game is BGEE
 		~
 	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN //  OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~
@@ -435,11 +435,11 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 END
 
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
-INCLUDE ~JOining_Party_Select/JOining_Party_Select_Myself.tph~
+INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
 
 
 BEGIN ~All-In~
 DESIGNATED 1
 LABEL ~JOining_Party-In~
 
-INCLUDE ~JOining_Party_Select/JOining_Party_Select_Core.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~

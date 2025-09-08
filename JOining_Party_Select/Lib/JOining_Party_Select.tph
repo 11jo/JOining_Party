@@ -89,7 +89,7 @@ ACTION_FOR_EACH Death_var IN
 BEGIN
 
 
-// INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
+// INCLUDE ~weidu_external/JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph~
 
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
@@ -599,7 +599,7 @@ END			/*ELSE BEGIN
 	BUT_ONLY
 
 
-// INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS_BGSoD.tph~
+// INCLUDE ~weidu_external/JOining_Party_Select/Lib/JOining_Party_Select_BCS_BGSoD.tph~
 
 ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN
 	COPY_EXISTING ~BDRHONDA.BCS~ ~override~
@@ -618,14 +618,14 @@ ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN
 	END
 END
 
-// INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG_BGSoD.tph~
+// INCLUDE ~weidu_external/JOining_Party_Select/Lib/JOining_Party_Select_DLG_BGSoD.tph~
 
 
 
 
 
 
-// INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
+// INCLUDE ~weidu_external/JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph~
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN

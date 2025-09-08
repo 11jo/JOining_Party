@@ -92,7 +92,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%joining_dlg%.dlg~ BEGIN
 	
-		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/All_In.D~
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/All_In.D~
 
 	END
 END
@@ -189,7 +189,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -213,7 +213,7 @@ COPY_EXISTING ~MINHP1.ITM~ ~override/JOMINHP1.itm~
 	SAY DESC @101
 	SAY UNIDENTIFIED_DESC @101
  
- COPY ~JOining_Party_Select/JO_JOIN.spl~ ~override~
+ COPY ~JOining_Party_Select/Spl/JO_JOIN.spl~ ~override~
 	SAY NAME1 ~Engagement~
 	SAY NAME2 ~Engagement~
 	SAY DESC @101
@@ -225,13 +225,13 @@ COPY_EXISTING ~MINHP1.ITM~ ~override/JOMINHP1.itm~
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
 		END
 
-COMPILE ~JOining_Party_Select/JO_JOIN.baf~ EVALUATE_BUFFER
-COMPILE ~JOining_Party_Select/JO_JOINT.baf~ EVALUATE_BUFFER
-COMPILE ~JOining_Party_Select/JO_JOINI.baf~ EVALUATE_BUFFER
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN.baf~ EVALUATE_BUFFER
+COMPILE ~JOining_Party_Select/Baf/JO_JOINT.baf~ EVALUATE_BUFFER
+COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
 // COMPILE ~JOining_Party_Select/JO_JOINB.baf~ EVALUATE_BUFFER
 
-EXTEND_BOTTOM ~baldur.bcs~ ~JOining_Party_Select/Join_ability.baf~
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Join_ability.baf~ 
+EXTEND_BOTTOM ~baldur.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
  
  /*
  ACTION_IF GAME_IS ~bgt~ BEGIN
