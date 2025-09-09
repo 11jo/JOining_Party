@@ -7,3 +7,55 @@ THEN
 		SetGlobal("JO_Join_ability","GLOBAL",1)
 		Continue()
 END
+
+IF
+	Global("JO_JOIN","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+END
+
+IF
+	OR(2)
+		HasItem("JO_JOIN",Myself)
+		HasItem("JOMINHP1",Myself)
+THEN
+	RESPONSE #100
+		DestroyItem("JO_JOIN")
+		DestroyItem("JOMINHP1")
+END
+
+IF
+	AreaCheck("%Candlekeep%")
+	Global("%JO_JOIN_BG%","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("%JO_JOIN_BG%","GLOBAL",1)
+		SetGlobal("JO_JOIN_BG2EE","GLOBAL",0)
+		SetGlobal("JO_JOIN_SoD","GLOBAL",0)
+		SetGlobal("JO_JOIN_ToB","GLOBAL",0)
+END
+
+IF
+	AreaCheck("AR0602")
+	Global("JO_JOIN_BG2EE","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_BG2EE","GLOBAL",1)
+		SetGlobal("%JO_JOIN_BG%","GLOBAL",0)
+		SetGlobal("JO_JOIN_SoD","GLOBAL",0)
+		SetGlobal("JO_JOIN_ToB","GLOBAL",0)
+END
+
+IF
+	AreaCheck("AR4500")
+	Global("JO_JOIN_ToB","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_ToB","GLOBAL",1)
+		SetGlobal("JO_JOIN_BG2EE","GLOBAL",0)
+		SetGlobal("%JO_JOIN_BG%","GLOBAL",0)
+		SetGlobal("JO_JOIN_SoD","GLOBAL",0)
+END
+
+

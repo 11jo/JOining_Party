@@ -24,8 +24,11 @@ ALWAYS
 		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
 		PRINT ~Game is EET 
 		~
+
+		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE_EET"
+
 		ACTION_IF (GAME_IS ~eet~) BEGIN
-		
+
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 			REPLACE_TEXTUALLY ~// EET_ODD~ ~~
 
@@ -35,6 +38,9 @@ ALWAYS
 		INCLUDE ~JOining_Party_Select/Lib/g3_bgee_cpmvars.tpa~
 		PRINT ~Game is BGEE
 		~
+		
+		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE"
+		
 	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN //  OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~
 	OUTER_SPRINT "AJANTIS_JOINED" "AJANTJ"
 	OUTER_SPRINT "ALORA_JOINED" "ALORAJ"
@@ -97,8 +103,15 @@ ALWAYS
 	OUTER_SPRINT "IMOEN_BCS" "IMOEN2"
 		PRINT ~Game is BG2EE or EET_END is installed
 		~
+
 		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
-		
+
+		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE_EET"
+
+		OUTER_SPRINT "Candlekeep" "BG2600"
+
+		OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
+
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 			REPLACE_TEXTUALLY ~// EET_END~ ~~
 

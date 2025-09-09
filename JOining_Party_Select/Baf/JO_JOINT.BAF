@@ -102,6 +102,7 @@ END
 IF
 	HasItem("JO_JOIN","CMALORA")
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmalo25",OVERRIDE)
@@ -116,6 +117,7 @@ END
 IF
 	HasItem("JO_JOIN","LK#YESLK")
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("LK#YES25",OVERRIDE)
@@ -130,6 +132,7 @@ END
 IF
 	HasItem("JO_JOIN","cmninaf")
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNINA25",OVERRIDE)
@@ -144,6 +147,7 @@ END
 IF
 	HasItem("JO_JOIN","BHAALSPW")
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BHAALSPW",OVERRIDE)
@@ -158,6 +162,7 @@ END
 IF
 	HasItem("JO_JOIN","cmnikita")
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNIK25",OVERRIDE)
@@ -172,6 +177,7 @@ END
 IF
 	HasItem("JO_JOIN","cmgmiriam")
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMGMI25",OVERRIDE)

@@ -7,11 +7,143 @@ THEN
 END
 
 IF
+	Global("JO_NOJOIN","GLOBAL",0)
+	ActionListEmpty()
 	!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 	NumInPartyLT(6)
+	CombatCounter(0)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOINI","LOCALS",1)
+		DestroyItem("JOMINHP1")
+		DisplayStringHead(Myself,~Hey.~)
+		SmallWait(2)
 		JoinParty()
 END
+
+
+// Reset
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SCRIPT_Player1","LOCALS",0)
+		SetGlobal("JO_JOIN_SCRIPT_Player2","LOCALS",0)
+		SetGlobal("JO_JOIN_SCRIPT_Player3","LOCALS",0)
+		SetGlobal("JO_JOIN_SCRIPT_Player4","LOCALS",0)
+		SetGlobal("JO_JOIN_SCRIPT","LOCALS",0)
+		Continue()
+END
+
+// Player1
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player1","LOCALS",1)
+	Range(Player1(Myself),30)
+THEN
+	RESPONSE #100
+	MoveToObject(Player1)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player1","LOCALS",2)
+THEN
+	RESPONSE #100
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player1","LOCALS",3)
+	!Range(Player1(Myself),5)
+THEN
+	RESPONSE #100
+	MoveToObject(Player1)
+END
+
+// Player2
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player2","LOCALS",1)
+	Range(Player2(Myself),30)
+THEN
+	RESPONSE #100
+	MoveToObject(Player2)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player2","LOCALS",2)
+THEN
+	RESPONSE #100
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player2","LOCALS",3)
+	!Range(Player2(Myself),5)
+THEN
+	RESPONSE #100
+	MoveToObject(Player2)
+END
+
+// Player3
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player3","LOCALS",1)
+	Range(Player3(Myself),30)
+THEN
+	RESPONSE #100
+	MoveToObject(Player3)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player3","LOCALS",2)
+THEN
+	RESPONSE #100
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player3","LOCALS",3)
+	!Range(Player3(Myself),5)
+THEN
+	RESPONSE #100
+	MoveToObject(Player3)
+END
+
+// Player4
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player4","LOCALS",1)
+	Range(Player4(Myself),30)
+THEN
+	RESPONSE #100
+	MoveToObject(Player4)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player4","LOCALS",2)
+THEN
+	RESPONSE #100
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SCRIPT_Player4","LOCALS",3)
+	!Range(Player4(Myself),5)
+THEN
+	RESPONSE #100
+	MoveToObject(Player4)
+END
+
 

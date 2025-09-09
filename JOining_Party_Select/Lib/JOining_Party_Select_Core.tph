@@ -99,14 +99,30 @@ END
 
 ACTION_FOR_EACH bcs IN
 
-// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~     // EET_END ~IMOEN_~   // EET_ODD ~IMOEN2~      // Imoen
-// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~     // EET_END ~EDWIN_~   // EET_ODD ~EDWIN~       // Edwin
-// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ // EET_END ~JAHEIRA_~ // EET_ODD ~JAHEIRA~     // Jaheira
-// Original Minsc ~%MINSC_BCS%~ ~MINS25~     // EET_END ~MINSC_~   // EET_ODD ~MINSC~       // Minsc
-// Original Viconia ~%VICONIA_BCS%~ ~VICO25~ // EET_END ~VICONIA_~ // EET_ODD ~VICONIA~     // Viconia
-// Original Dorn ~%DORN_BCS%~ ~DORN25~       // EET_END ~DORN_~    // EET_ODD ~DORN~        // Dorn
-// Original Neera ~%NEERA_BCS%~ ~NEER25~     // EET_END ~NEERA_~   // EET_ODD ~NEERA~       // Neera
-// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~   // EET_END ~RASAAD_~  // EET_ODD ~RASAAD~      // Rasaad
+// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~     
+// EET_END ~IMOEN_~   
+// EET_ODD ~IMOEN2~      // Imoen
+// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~     
+// EET_END ~EDWIN_~   
+// EET_ODD ~EDWIN~       // Edwin
+// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ 
+// EET_END ~JAHEIRA_~ 
+// EET_ODD ~JAHEIRA~     // Jaheira
+// Original Minsc ~%MINSC_BCS%~ ~MINS25~     
+// EET_END ~MINSC_~   
+// EET_ODD ~MINSC~       // Minsc
+// Original Viconia ~%VICONIA_BCS%~ ~VICO25~ 
+// EET_END ~VICONIA_~ 
+// EET_ODD ~VICONIA~     // Viconia
+// Original Dorn ~%DORN_BCS%~ ~DORN25~       
+// EET_END ~DORN_~    
+// EET_ODD ~DORN~        // Dorn
+// Original Neera ~%NEERA_BCS%~ ~NEER25~     
+// EET_END ~NEERA_~   
+// EET_ODD ~NEERA~       // Neera
+// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~   
+// EET_END ~RASAAD_~  
+// EET_ODD ~RASAAD~      // Rasaad
 
 
 /////////////////////////// bg1 ///////////////////////////
@@ -203,15 +219,37 @@ COPY_EXISTING ~SCRL72.ITM~ ~override/JO_JOIN.itm~
 	SAY NAME2 ~Engagement~
 	SAY DESC @101
 	SAY UNIDENTIFIED_DESC @101
-
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT3)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT6)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT5)
+	WRITE_LONG 0x18 (THIS | BIT2)
+	// WRITE_LONG 0x18 (THIS BAND BNOT BIT2)
+	
+/*
 COPY_EXISTING ~MINHP1.ITM~ ~override/JOMINHP1.itm~
 	SAY NAME1 ~JOMINHP1~
 	SAY NAME2 ~JOMINHP1~
 	WRITE_SHORT 0x1c ~10~
 	WRITE_ASCII 0x3a ~ISCRL72~ (8)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT3)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT6)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT5)
 	WRITE_LONG 0x18 (THIS | BIT2)
+	// WRITE_LONG 0x18 (THIS BAND BNOT BIT2)
 	SAY DESC @101
 	SAY UNIDENTIFIED_DESC @101
+*/
+
+COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
+	SAY NAME1 ~JOMINHP1~
+	SAY NAME2 ~JOMINHP1~
+	SAY DESC @101
+	SAY UNIDENTIFIED_DESC @101
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT3)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT6)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT5)
+	WRITE_LONG 0x18 (THIS | BIT2)
+	// WRITE_LONG 0x18 (THIS BAND BNOT BIT2)
  
  COPY ~JOining_Party_Select/Spl/JO_JOIN.spl~ ~override~
 	SAY NAME1 ~Engagement~
@@ -230,8 +268,12 @@ COMPILE ~JOining_Party_Select/Baf/JO_JOINT.baf~ EVALUATE_BUFFER
 COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
 // COMPILE ~JOining_Party_Select/JO_JOINB.baf~ EVALUATE_BUFFER
 
+EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ EVALUATE_BUFFER
+
+/*
 EXTEND_BOTTOM ~baldur.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
+ */
  
  /*
  ACTION_IF GAME_IS ~bgt~ BEGIN

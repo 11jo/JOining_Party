@@ -6,13 +6,14 @@ IF
 	HasItem("JO_JOIN","%IMOEN_DV%")
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("IMOEN_",OVERRIDE)
 		SetDialog("%IMOEN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Imoen BGEE
@@ -21,13 +22,14 @@ IF
 	HasItem("JO_JOIN","%IMOEN_DV%")
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("IMOEN",OVERRIDE)
 		SetDialog("%IMOEN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Imoen BG2EE
@@ -36,13 +38,14 @@ IF
 	HasItem("JO_JOIN","%IMOEN_DV%")
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("IMOEN2",OVERRIDE)
 		SetDialog("%IMOEN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Imoen
@@ -57,7 +60,7 @@ THEN
 		SetDialog("IMOEN25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END 
 
 ////////////////////////////////////////////////////
@@ -67,14 +70,15 @@ END
 IF
 	HasItem("JO_JOIN","Edwin")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("EDWIN_",OVERRIDE)
 		SetDialog("%EDWIN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Edwin BGEE BG2EE
@@ -85,13 +89,15 @@ IF
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("EDWIN",OVERRIDE)
 		SetDialog("%EDWIN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Edwin
@@ -106,10 +112,10 @@ THEN
 		SetDialog("BDEDWINJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
- // ToB Edwin Global("JO_JOIN_ToB","GLOBAL",1)
+ // ToB Edwin
 
 ////////////////////////////////////////////////////
 
@@ -118,14 +124,15 @@ END
 IF
 	HasItem("JO_JOIN","Jaheira")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("JAHEIRA_",OVERRIDE)
 		SetDialog("%JAHEIRA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Jaheira BGEE BG2EE
@@ -136,13 +143,15 @@ IF
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("JAHEIRA",OVERRIDE)
 		SetDialog("%JAHEIRA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Jaheira
@@ -157,7 +166,7 @@ THEN
 		SetDialog("BDJAHEIJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Jaheira
@@ -169,14 +178,15 @@ END
 IF
 	HasItem("JO_JOIN","Minsc")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("MINSC_",OVERRIDE)
 		SetDialog("%MINSC_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Minsc BGEE BG2EE
@@ -187,13 +197,15 @@ IF
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("MINSC",OVERRIDE)
 		SetDialog("%MINSC_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Minsc
@@ -208,7 +220,7 @@ THEN
 		SetDialog("BDMINSCJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Minsc
@@ -220,14 +232,15 @@ END
 IF
 	HasItem("JO_JOIN","Viconia")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("VICONIA_",OVERRIDE)
 		SetDialog("%VICONIA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Viconia BGEE BG2EE
@@ -238,13 +251,15 @@ IF
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("VICONIA",OVERRIDE)
 		SetDialog("%VICONIA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Viconia
@@ -259,7 +274,7 @@ THEN
 		SetDialog("BDVICONJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Viconia
@@ -271,14 +286,15 @@ END
 IF
 	HasItem("JO_JOIN","Dorn")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("DORN_",OVERRIDE)
 		SetDialog("%DORN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Dorn BGEE BG2EE
@@ -289,13 +305,15 @@ IF
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("DORN_",OVERRIDE)
 		SetDialog("%DORN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Dorn
@@ -310,7 +328,7 @@ THEN
 		SetDialog("BDDORNJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Dorn
@@ -323,14 +341,15 @@ END
 IF
 	HasItem("JO_JOIN","Neera")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("NEERA_",OVERRIDE)
 		SetDialog("%NEERA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Neera BGEE BG2EE
@@ -342,13 +361,15 @@ IF
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("NEERA",OVERRIDE)
 		SetDialog("%NEERA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Neera
@@ -363,7 +384,7 @@ THEN
 		SetDialog("BDNEERAJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Neera
@@ -375,14 +396,15 @@ END
 IF
 	HasItem("JO_JOIN","Rasaad")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("RASAAD_",OVERRIDE)
 		SetDialog("%RASAAD_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // Rasaad BGEE BG2EE
@@ -393,13 +415,15 @@ IF
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("RASAAD",OVERRIDE)
 		SetDialog("%RASAAD_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Rasaad
@@ -414,7 +438,7 @@ THEN
 		SetDialog("BDRASAAJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Rasaad
@@ -426,8 +450,6 @@ END
 
 ////////////////////////////////////////////////////
 
-// Ajantis
-
 IF
 	HasItem("JO_JOIN","Ajantis")
 	Global("JO_JOIN","LOCALS",2)
@@ -437,12 +459,13 @@ THEN
 		SetDialog("%AJANTIS_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
 // Alora
+
 
 IF
 	HasItem("JO_JOIN","Alora")
@@ -453,39 +476,23 @@ THEN
 		SetDialog("%ALORA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
-// Branwen BGEE EET
+// Branwen
 
 IF
 	HasItem("JO_JOIN","Branwen")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BRANWEN_",OVERRIDE)
+		ChangeAIScript("%BRANWEN_BCS%",OVERRIDE)
 		SetDialog("%BRANWEN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
-END
-
-// Branwen BGEE
-
-IF
-	HasItem("JO_JOIN","Branwen")
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
-THEN
-	RESPONSE #100
-		ChangeAIScript("BRANWEN",OVERRIDE)
-		SetDialog("%BRANWEN_JOINED%") 
-		DestroyItem("JO_JOIN")
-		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -501,7 +508,7 @@ THEN
 		SetDialog("%CORAN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -517,7 +524,7 @@ THEN
 		SetDialog("%DYNAHEIR_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -533,71 +540,39 @@ THEN
 		SetDialog("%ELDOTH_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
-// Faldorn BGEE EET
+// Faldorn
 
 IF
 	HasItem("JO_JOIN","Faldorn")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("FALDORN_",OVERRIDE)
+		ChangeAIScript("%FALDORN_BCS%",OVERRIDE)
 		SetDialog("%FALDORN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
-END
-
-// Faldorn BGEE
-
-IF
-	HasItem("JO_JOIN","Faldorn")
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
-THEN
-	RESPONSE #100
-		ChangeAIScript("FALDORN",OVERRIDE)
-		SetDialog("%FALDORN_JOINED%") 
-		DestroyItem("JO_JOIN")
-		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
-// Garrick BGEE EET
+// Garrick
 
 IF
 	HasItem("JO_JOIN","Garrick")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("GARRICK_",OVERRIDE)
+		ChangeAIScript("%GARRICK_BCS%",OVERRIDE)
 		SetDialog("%GARRICK_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
-END
-
-// Garrick BGEE
-
-IF
-	HasItem("JO_JOIN","Garrick")
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
-THEN
-	RESPONSE #100
-		ChangeAIScript("GARRICK",OVERRIDE)
-		SetDialog("%GARRICK_JOINED%") 
-		DestroyItem("JO_JOIN")
-		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -613,7 +588,7 @@ THEN
 		SetDialog("%KAGAIN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -629,7 +604,7 @@ THEN
 		SetDialog("%KHALID_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -645,12 +620,12 @@ THEN
 		SetDialog("%KIVAN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
-// Montaron BGEE EET
+// Montaron
 
 IF
 	HasItem("JO_JOIN","Montaron")
@@ -661,7 +636,7 @@ THEN
 		SetDialog("%MONTARON_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -677,12 +652,13 @@ THEN
 		SetDialog("%QUAYLE_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
 // Safana
+
 IF
 	HasItem("JO_JOIN","Safana")
 	Global("JO_JOIN","LOCALS",2)
@@ -692,7 +668,7 @@ THEN
 		SetDialog("%SAFANA_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -708,39 +684,23 @@ THEN
 		SetDialog("%SHARTEEL_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
-// Skie BGEE EET
+// Skie
 
 IF
 	HasItem("JO_JOIN","Skie")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("SKIE_",OVERRIDE)
+		ChangeAIScript("%SKIE_BCS%",OVERRIDE)
 		SetDialog("%SKIE_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
-END
-
-// Skie BGEE
-
-IF
-	HasItem("JO_JOIN","Skie")
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
-THEN
-	RESPONSE #100
-		ChangeAIScript("SKIE",OVERRIDE)
-		SetDialog("%SKIE_JOINED%") 
-		DestroyItem("JO_JOIN")
-		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -756,7 +716,7 @@ THEN
 		SetDialog("%TIAX_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -772,12 +732,13 @@ THEN
 		SetDialog("%XAN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
 // Xzar
+
 IF
 	HasItem("JO_JOIN","Xzar")
 	Global("JO_JOIN","LOCALS",2)
@@ -787,7 +748,7 @@ THEN
 		SetDialog("%XZAR_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -803,24 +764,23 @@ THEN
 		SetDialog("%YESLICK_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
 
-// Baeloth BGEE EET
+// Baeloth
 
 IF
 	HasItem("JO_JOIN","Baeloth")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BDBAELOT",OVERRIDE)
 		SetDialog("BAELOTHJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -841,7 +801,7 @@ THEN
 		SetDialog("BDVOGHIJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -857,7 +817,7 @@ THEN
 		SetDialog("BDCORWIJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -873,7 +833,7 @@ THEN
 		SetDialog("BDMKHIIJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -889,7 +849,7 @@ THEN
 		SetDialog("BDGLINTJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -907,14 +867,14 @@ END
 IF
 	HasItem("JO_JOIN","Aerie")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("AERIE",OVERRIDE)
 		SetDialog("AERIEJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Aerie
@@ -929,7 +889,7 @@ THEN
 		SetDialog("AERIE25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -939,14 +899,14 @@ END
 IF
 	HasItem("JO_JOIN","Anomen")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("ANOMEN",OVERRIDE)
 		SetDialog("ANOMENJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Anomen
@@ -961,7 +921,7 @@ THEN
 		SetDialog("ANOME25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -971,14 +931,14 @@ END
 IF
 	HasItem("JO_JOIN","Cernd")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CERND",OVERRIDE)
 		SetDialog("CERNDJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Cernd
@@ -993,7 +953,7 @@ THEN
 		SetDialog("CERND25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1003,14 +963,14 @@ END
 IF
 	HasItem("JO_JOIN","Haerdalis")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("HAERDALI",OVERRIDE)
 		SetDialog("HAERDAJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Haerdalis
@@ -1025,7 +985,7 @@ THEN
 		SetDialog("HAERD25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1035,14 +995,14 @@ END
 IF
 	HasItem("JO_JOIN","Hexxat")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("HEXXAT",OVERRIDE)
 		SetDialog("HEXXATJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Hexxat
@@ -1057,7 +1017,7 @@ THEN
 		SetDialog("HEXXA25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1067,14 +1027,14 @@ END
 IF
 	HasItem("JO_JOIN","Jan")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("JAN",OVERRIDE)
 		SetDialog("JANJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Jan
@@ -1089,7 +1049,7 @@ THEN
 		SetDialog("JAN25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1099,14 +1059,14 @@ END
 IF
 	HasItem("JO_JOIN","Keldorn")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("KELDORN",OVERRIDE)
 		SetDialog("KELDORJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Keldorn
@@ -1121,7 +1081,7 @@ THEN
 		SetDialog("KELDO25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1131,14 +1091,14 @@ END
 IF
 	HasItem("JO_JOIN","Korgan")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("KORGAN",OVERRIDE)
 		SetDialog("KORGANJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Korgan
@@ -1153,7 +1113,7 @@ THEN
 		SetDialog("KORGA25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1163,14 +1123,14 @@ END
 IF
 	HasItem("JO_JOIN","Mazzy")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("MAZZY",OVERRIDE)
 		SetDialog("MAZZYJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Mazzy
@@ -1185,7 +1145,7 @@ THEN
 		SetDialog("MAZZY25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1195,14 +1155,14 @@ END
 IF
 	HasItem("JO_JOIN","Nalia")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("NALIA",OVERRIDE)
 		SetDialog("NALIAJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Nalia
@@ -1217,7 +1177,7 @@ THEN
 		SetDialog("NALIA25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1233,7 +1193,7 @@ THEN
 		SetDialog("SAREV25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1243,14 +1203,14 @@ END
 IF
 	HasItem("JO_JOIN","Valygar")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_ToB","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("VALYGAR",OVERRIDE)
 		SetDialog("VALYGARJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Valygar
@@ -1265,7 +1225,7 @@ THEN
 		SetDialog("VALYG25J") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1281,7 +1241,7 @@ THEN
 		SetDialog("WILSONJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1297,7 +1257,7 @@ THEN
 		SetDialog("YOSHJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1320,7 +1280,7 @@ THEN
 		SetDialog("IshyD")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // SoD Ishlilka
@@ -1335,7 +1295,7 @@ THEN
 		SetDialog("bdishy")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1351,14 +1311,13 @@ END
 IF
 	HasItem("JO_JOIN","CMALORA")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmalora",OVERRIDE)
 		SetDialog("CMALORAJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Alora BG2
@@ -1373,7 +1332,7 @@ THEN
 		SetDialog("CMALO25J")   // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1383,14 +1342,13 @@ END
 IF
 	HasItem("JO_JOIN","LK#YESLK")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("LK#YESL",OVERRIDE)
 		SetDialog("LK#YESJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Yeslick BG2
@@ -1405,7 +1363,7 @@ THEN
 		SetDialog("LK#YE25J")   // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1415,14 +1373,13 @@ END
 IF
 	HasItem("JO_JOIN","cmninaf")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNINAF",OVERRIDE)
 		SetDialog("CMNINAFJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Undying
@@ -1437,7 +1394,7 @@ THEN
 		SetDialog("CMNINA25")   // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 IF
@@ -1449,7 +1406,7 @@ THEN
 		SetDialog("CMCALLIJ") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1465,7 +1422,7 @@ THEN
 		SetDialog("bhalspwj") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 /*
@@ -1481,7 +1438,7 @@ THEN
 		SetDialog("bhal25j")  // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 */
 
@@ -1492,14 +1449,13 @@ END
 IF
 	HasItem("JO_JOIN","cmnikita")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmnikita",OVERRIDE)
 		SetDialog("CMNIKITJ")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB NikitaRedux
@@ -1514,7 +1470,7 @@ THEN
 		SetDialog("CMNIK25J") // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1524,14 +1480,13 @@ END
 IF
 	HasItem("JO_JOIN","cmgmiriam")
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMGMIRI",OVERRIDE)
 		SetDialog("CMGMIRIj")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB VampireTales
@@ -1546,7 +1501,7 @@ THEN
 		SetDialog("CMGMI25J")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ////////////////////////////////////////////////////
@@ -1562,7 +1517,7 @@ THEN
 		SetDialog("KimJ")
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 /*
@@ -1578,7 +1533,7 @@ THEN
 		SetDialog("Kim25J") // Probably the same as bg2
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 */
 
