@@ -24,7 +24,7 @@
 ## Instruction :
 ----------------
 
-After mods that add any dialog or script option related to NPC.
+After mods that add any dialog or script options related to NPC.
 
 - Choose available NPC groups to modify
   - Continuous original NPC

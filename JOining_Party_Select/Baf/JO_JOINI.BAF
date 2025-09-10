@@ -1,3 +1,30 @@
+/*
+
+IF
+	HPLT(Myself,5)
+THEN
+	RESPONSE #100
+END
+
+IF
+	HPGT(Myself,5)
+THEN
+	RESPONSE #100
+END
+
+EquipItemEx(S:Object*,I:EquipUnEquip*)
+PlayDead(I:Time*)
+Deactivate(O:Object*)
+Activate(O:Object*)
+AnkhegEmerge()
+AnkhegHide()
+ReallyForceSpellRES(S:RES*,O:Target*) / ApplySpellRES(S:RES*,O:Target)
+MakeUnselectable(I:Time*)
+This action changes the active creature’s selection circle to purple and makes it unselectable. If engine_mode = 0 (default setting for BG1:EE) in engine.lua, the creature continues processing scripts while unselectable. If engine_mode = 1 (default setting for BG2:EE), the creature stops processing scripts while unselectable. For both BG1:EE and BG2:EE, you can use opcode 365 to make creatures unselectable without disabling their script processing.
+#365 (0x16D) Make unselectable
+
+*/
+
 // To verify if NPC leave and join as intended
 
 IF
@@ -48,6 +75,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOINI","LOCALS",1)
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",1)
 		DestroyItem("JOMINHP1")
 		DisplayStringHead(Myself,~Hey.~)
 		SmallWait(1)

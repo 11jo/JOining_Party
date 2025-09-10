@@ -42,7 +42,6 @@ THEN
 		ChangeAIScript("JO_JOINI",GENERAL)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",NINE_ROUNDS)
 END
  
@@ -52,6 +51,16 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+END
+
+IF
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		DisplayStringHead(Myself,~Yeah.~)
 END
 
 
