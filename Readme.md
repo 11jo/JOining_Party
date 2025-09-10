@@ -1,4 +1,4 @@
-# JOining_Party
+# JOining Party
 
 [![Release](https://img.shields.io/github/v/release/11jo/JOining_Party?include_prereleases&color=41788a)](https://github.com/11jo/JOining_Party/releases)
 [![Published](https://img.shields.io/github/release-date-pre/11jo/JOining_Party?display_date=published_at&label=published&color=014a69)](https://github.com/11jo/JOining_Party/releases/latest)
@@ -34,7 +34,7 @@ After mods that add any dialog or script options related to NPC.
   - Mods BG1 NPC
   - Mod BG2 NPC
 
-- Install componant All-Out (**Installation could last between 10 to 40 minutes depending f the number of NPCs chosen**)
+- Install componant All-Out (**Installation could last between 10 to 40 minutes depending of the number of NPCs chosen**)
   - Add to any InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead... Familiar reference to make it count as party member.
 
 - Install componant All-In
@@ -43,6 +43,11 @@ After mods that add any dialog or script options related to NPC.
 
 ## Description :
 ----------------
+
+- Use the the special ability to convert NPC to Familiar.
+- Keep one free party slot to allow NPC switch.
+- You can quickly acces (5 seconds) to stats and inventory when they switch in party.
+- You can completly reinteger the Npc in party, use again the same special ability and talk to the NPC they will have several dialog options **Don't use the "We need to adjust"** implementation is not working at the moment.
 
 
 ## Installation / Uninstallation :
