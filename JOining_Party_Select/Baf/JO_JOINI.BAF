@@ -1,3 +1,5 @@
+// To verify if NPC leave and join as intended
+
 IF
 	Global("JO_FIRST_JOIN_JOIN","LOCALS",0)
 THEN
@@ -6,21 +8,64 @@ THEN
 		SetGlobal("JO_FIRST_JOIN_JOIN","LOCALS",1)
 END
 
+// To avoid Familiar / NPC being in another area when switching in and out of the party
+
+IF
+	OR(2)
+		!Range(Player1(Myself),70)
+		!InMyArea(Player1)
+THEN
+	RESPONSE #100
+		MoveGlobalObject(Myself,Player1) // JumpToObject(Myself,Player1)
+END
+
+// Get close to PC before switching same reason as above
+
 IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	ActionListEmpty()
 	!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 	NumInPartyLT(6)
 	CombatCounter(0)
+	!Range(Player1(Myself),10)
+THEN
+	RESPONSE #100
+		MoveToObject(Player1) // MoveToObjectFollow(Player1) 
+END
+
+// Reintegrate NPC into party periodically (Every NINE_ROUNDS depending of other NPCs and Triggers above) 
+
+// Could be changed to more or less rounds for players convenience
+
+IF
+	Global("JO_NOJOIN","GLOBAL",0)
+	ActionListEmpty()
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
+	NumInPartyLT(6)
+	CombatCounter(0)
+	Range(Player1(Myself),10)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOINI","LOCALS",1)
 		DestroyItem("JOMINHP1")
 		DisplayStringHead(Myself,~Hey.~)
-		SmallWait(2)
+		SmallWait(1)
 		JoinParty()
 END
+
+// Maybe something could be done with :
+
+/*
+0x0004 Joins(O:Object*)
+Returns true if the specified object has joined the party in the last script round. This trigger is only sent to player characters. 
+
+0x0005 Leaves(O:Object*)
+Returns true if the specified object has left the party in the last script round. This trigger is only sent to player characters. 
+*/
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 
 // Reset
