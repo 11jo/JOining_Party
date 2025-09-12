@@ -4,28 +4,27 @@ VERSION ~~
 
 ALWAYS
 	
-	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~) BEGIN
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
-		
-	END
-	
 	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~) BEGIN
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
-		
+
 	END
 
 	ACTION_IF GAME_IS ~bgt~ BEGIN
 		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
 		PRINT ~Game is BGT
 		~
+
+		OUTER_SPRINT "Select" "EET"
+
 	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN //  AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~
 		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
 		PRINT ~Game is EET 
 		~
 
 		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE_EET"
+
+		OUTER_SPRINT "Select" "EET"
 
 		ACTION_IF (GAME_IS ~eet~) BEGIN
 
@@ -38,9 +37,11 @@ ALWAYS
 		INCLUDE ~JOining_Party_Select/Lib/g3_bgee_cpmvars.tpa~
 		PRINT ~Game is BGEE
 		~
-		
+
+		OUTER_SPRINT "Select" "BGSoD"
+
 		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE"
-		
+
 	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN //  OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~
 	OUTER_SPRINT "AJANTIS_JOINED" "AJANTJ"
 	OUTER_SPRINT "ALORA_JOINED" "ALORAJ"
@@ -104,6 +105,8 @@ ALWAYS
 		PRINT ~Game is BG2EE or EET_END is installed
 		~
 
+		OUTER_SPRINT "Select" "BG2EE"
+
 		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 
 		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE_EET"
@@ -112,10 +115,18 @@ ALWAYS
 
 		OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
 
+		OUTER_SPRINT "Select" "EET"
+
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 			REPLACE_TEXTUALLY ~// EET_END~ ~~
 
 	   END
+	END
+
+	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_%Select%.tph~) BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_%Select%.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_%Select%.tph~
+		
 	END
 	
 END
@@ -131,7 +142,6 @@ BEGIN ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Ne
 DESIGNATED 10
 LABEL ~JOining_Party_Select-Continuous~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bgee bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET~
-
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Imoen~ ~~
@@ -173,7 +183,7 @@ REQUIRE_PREDICATE (GAME_IS ~tob bgt bgee bg2ee eet~) ~Necessite BG2-ToB / BG2EE 
 BEGIN ~Original bg1 NPCs (Ajantis, Alora, Branwen, Coran, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)~
 DESIGNATED 30
 LABEL ~JOining_Party_Select-Original-bg1~
-REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET ~
+REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET~
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Ajantis~ ~~
@@ -373,6 +383,7 @@ GROUP ~NPC Mods for bg2~
 LABEL ~JOining_Party_Select-Alora-BG2~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ ~Necessite Alora BG2~
 
+
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Alora BG2~ ~~
 			REPLACE_TEXTUALLY ~// Mod Alora BG2~ ~~
@@ -450,14 +461,10 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10) ||
 
 // OUTER_SET JOining_Party = 0	
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
-		DECOMPILE_AND_PATCH BEGIN
-END
-COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
-		DECOMPILE_AND_PATCH BEGIN
-END
 
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+INCLUDE ~JOining_Party_Select/Lib/JOining_Party_%Select%.tph~
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_%Select%.tph~
 INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
 
 
@@ -466,4 +473,5 @@ DESIGNATED 1
 LABEL ~JOining_Party-In~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 0) ~Necessite component ALL-Out~
 
+INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~

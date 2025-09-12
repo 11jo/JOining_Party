@@ -1,5 +1,11 @@
 // Add D / Baf
 
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                                    DLG                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 ACTION_FOR_EACH joining_dlg IN
 
 // Original Imoen ~%IMOEN_JOINED%~ ~IMOEN25J~                     // Imoen
@@ -97,7 +103,19 @@ BEGIN
 	END
 END
 
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                                    BCS                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////// Continuous ///////////////////////////
+
+OUTER_SPRINT "JO_JOIN" "JO_JOIN1"
+
 ACTION_FOR_EACH bcs IN
+
+/////////////////////////// Continuous ///////////////////////////
 
 // Original Imoen ~%IMOEN_BCS%~ ~IMOE25~     
 // EET_END ~IMOEN_~   
@@ -124,6 +142,22 @@ ACTION_FOR_EACH bcs IN
 // EET_END ~RASAAD_~  
 // EET_ODD ~RASAAD~      // Rasaad
 
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////// bg1 ///////////////////////////
+
+OUTER_SPRINT "JO_JOIN" "JO_JOIN2"
+
+ACTION_FOR_EACH bcs IN
 
 /////////////////////////// bg1 ///////////////////////////
 
@@ -155,6 +189,20 @@ ACTION_FOR_EACH bcs IN
 
 // Original Baeloth ~BDBAELOT~                              // Baeloth
 
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// SoD ///////////////////////////
+
+OUTER_SPRINT "JO_JOIN" "JO_JOIN3"
+
+ACTION_FOR_EACH bcs IN
 
 /////////////////////////// SoD ///////////////////////////
 
@@ -164,30 +212,71 @@ ACTION_FOR_EACH bcs IN
 // Original Mkhiin ~BDMKHIIN~                              // Mkhiin
 // Original Glint ~BDGLINT~                                // Glint
 
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
 
 /////////////////////////// bg2 ///////////////////////////
 
+OUTER_SPRINT "JO_JOIN" "JO_JOIN4"
 
-// Original Aerie ~AERIE~ ~AERI25~                              // Aerie
-// Original Anomen ~ANOMEN~ ~ANOM25~                            // Anomen
-// Original Cernd ~CERND~ ~CERN25~                              // Cernd
-// Original Haerdalis ~HAERDALI~ ~HAER25~                       // Haerdalis
-// Original Hexxat ~HEXXAT~ ~HEXXA25~                           // Hexxat
-// Original Jan ~JAN~ ~JAN25~                                   // Jan
-// Original Keldorn ~KELDORN~ ~KELD25~                          // Keldorn
-// Original Korgan ~KORGAN~ ~KORG25~                            // Korgan
-// Original Mazzy ~MAZZY~ ~MAZZ25~                              // Mazzy
-// Original Nalia ~NALIA~ ~NALI25~                              // Nalia
-// Original Sarevok ~SAREV25~                                   // Sarevok
-// Original Valygar ~VALYGAR~ ~VALY25~                          // Valygar
-// Original Wilson ~WILSON~                                     // Wilson
-// Original Yoshimo ~YOSHIMO~ ~YOSH25~                          // Yoshimo
+ACTION_FOR_EACH bcs IN
 
+/////////////////////////// bg2 ///////////////////////////
+
+			// Aerie
+// Original Aerie ~AERIE~ ~AERI25~
+			// Anomen
+// Original Anomen ~ANOMEN~ ~ANOM25~
+			// Cernd
+// Original Cernd ~CERND~ ~CERN25~
+			// Haerdalis
+// Original Haerdalis ~HAERDALI~ ~HAER25~
+			// Hexxat
+// Original Hexxat ~HEXXAT~ ~HEXXA25~
+			// Jan
+// Original Jan ~JAN~ ~JAN25~
+			// Keldorn
+// Original Keldorn ~KELDORN~ ~KELD25~
+			// Korgan
+// Original Korgan ~KORGAN~ ~KORG25~
+			// Mazzy
+// Original Mazzy ~MAZZY~ ~MAZZ25~
+			// Nalia
+// Original Nalia ~NALIA~ ~NALI25~
+			// Sarevok
+// Original Sarevok ~SAREV25~
+			// Valygar
+// Original Valygar ~VALYGAR~ ~VALY25~
+			// Wilson
+// Original Wilson ~WILSON~
+			// Yoshimo
+// Original Yoshimo ~YOSHIMO~ ~YOSH25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Mods ///////////////////////////
+
+OUTER_SPRINT "JO_JOIN" "JO_JOIN5"
+
+ACTION_FOR_EACH bcs IN
 
 /////////////////////////// Mods BG1 ///////////////////////////
 
-
-// Mod Ishlilka ~ishyscrp~                                                    // Ishlilka_The-Wizard-Slayer
+			// Ishlilka_The-Wizard-Slayer
+// Mod Ishlilka ~ishyscrp~
 
 
 /////////////////////////// Mods BG2 ///////////////////////////
@@ -204,13 +293,17 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
-	
+
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
 
-				// END
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                                ITM SPL                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 // Files
 
@@ -263,17 +356,78 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
 		END
 
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN.baf~ EVALUATE_BUFFER
-COMPILE ~JOining_Party_Select/Baf/JO_JOINT.baf~ EVALUATE_BUFFER
-COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
-// COMPILE ~JOining_Party_Select/JO_JOINB.baf~ EVALUATE_BUFFER
+//////////////////////////////////////////////////////////////////////////////////////
 
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ EVALUATE_BUFFER
+//                                Scripts                                           //
 
-/*
-EXTEND_BOTTOM ~baldur.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
- */
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF GAME_IS ~eet~ BEGIN
+
+OUTER_SPRINT "25" ""
+
+		END ELSE BEGIN
+
+OUTER_SPRINT "25" "25"
+
+		END
+
+
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOIN.baf~ BEGIN
+
+		COMPILE ~JOining_Party_Select/Baf/JO_JOIN.baf~ EVALUATE_BUFFER
+
+	END
+
+	
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINI.baf~ BEGIN
+
+		COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
+
+	END
+
+//COMPILE ~JOining_Party_Select/Baf/JO_JOINT.baf~ EVALUATE_BUFFER
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN1.baf~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN1.baf~ EVALUATE_BUFFER
+		END
+
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 30 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN2.baf~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN2.baf~ EVALUATE_BUFFER
+		END
+
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 60 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN3.baf~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN3.baf~ EVALUATE_BUFFER
+		END
+
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 70 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN4.baf~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN4.baf~ EVALUATE_BUFFER
+		END
+
+	ACTION_IF ((MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 101) ||
+					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 102) ||
+					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 103) ||
+					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 104) ||
+					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 105) ||
+					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 106)
+					AND NOT FILE_EXISTS_IN_GAME ~JO_JOIN5.baf~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN5.baf~ EVALUATE_BUFFER
+		END
+
+// DPLAYER3.bcs additions
+
+EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
+
+		ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
+EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability-BGEE.baf~  EVALUATE_BUFFER
+		END
+		ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
+EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability-SoD.baf~  EVALUATE_BUFFER
+		END
+		ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
+EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
+		END 
  
  /*
  ACTION_IF GAME_IS ~bgt~ BEGIN
@@ -295,6 +449,4 @@ EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~
  EXTEND_BOTTOM ~AR4500.BCS~	~JOining_Party_Select/Join_ability.baf~
 END
 */
-
-				// END
 

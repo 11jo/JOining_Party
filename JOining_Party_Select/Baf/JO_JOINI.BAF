@@ -75,7 +75,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOINI","LOCALS",1)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",1)
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // Yeah (All_in_Baf)
 		DestroyItem("JOMINHP1")
 		DisplayStringHead(Myself,~Hey.~)
 		SmallWait(1)

@@ -14,10 +14,10 @@ THEN
 		SmallWait(1)
 		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(1)
-		ChangeAIScript("JO_JOIN",OVERRIDE)
+		ChangeAIScript("%JO_JOIN%",OVERRIDE)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		FaceObject(Player1)
-		SetGlobal("JO_JOIN_TALK","LOCALS",1)
+		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
 END
 
@@ -38,12 +38,14 @@ THEN
 		SmallWait(1)
 		// MoveGlobalObject(Myself,Player1)  // JumpToObject(Myself,Player1)
 		SmallWait(1)
-		ChangeAIScript("JO_JOIN",OVERRIDE)
+		ChangeAIScript("%JO_JOIN%",OVERRIDE)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",NINE_ROUNDS)
 END
+ 
+// fellow travelers
  
 IF
 	Global("JO_JOIN_TALK","LOCALS",1)
@@ -53,6 +55,8 @@ THEN
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 END
+
+// Yeah
 
 IF
 	Global("JO_JOIN","LOCALS",0)

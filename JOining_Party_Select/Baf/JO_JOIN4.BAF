@@ -1,0 +1,710 @@
+
+////////////////////////// BG2 //////////////////////////
+
+////////////////////////////////////////////////////
+
+// Aerie
+
+IF
+	HasItem("JO_JOIN","Aerie")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("AERIE",OVERRIDE)
+		SetDialog("AERIEJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Aerie
+
+IF
+	HasItem("JO_JOIN","Aerie")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("AERI25",OVERRIDE)
+		SetDialog("AERIE25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Anomen
+
+IF
+	HasItem("JO_JOIN","Anomen")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("ANOMEN",OVERRIDE)
+		SetDialog("ANOMENJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Anomen
+
+IF
+	HasItem("JO_JOIN","Aerie")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("ANOM25",OVERRIDE)
+		SetDialog("ANOME25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Cernd
+
+IF
+	HasItem("JO_JOIN","Cernd")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CERND",OVERRIDE)
+		SetDialog("CERNDJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Cernd
+
+IF
+	HasItem("JO_JOIN","Cernd")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CERN25",OVERRIDE)
+		SetDialog("CERND25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Haerdalis
+
+IF
+	HasItem("JO_JOIN","Haerdalis")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("HAERDALI",OVERRIDE)
+		SetDialog("HAERDAJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Haerdalis
+
+IF
+	HasItem("JO_JOIN","Haerdalis")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("HAER25",OVERRIDE)
+		SetDialog("HAERD25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Hexxat
+
+IF
+	HasItem("JO_JOIN","Hexxat")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("HEXXAT",OVERRIDE)
+		SetDialog("HEXXATJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Hexxat
+
+IF
+	HasItem("JO_JOIN","Hexxat")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("HEXXA25",OVERRIDE)
+		SetDialog("HEXXA25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Jan
+
+IF
+	HasItem("JO_JOIN","Jan")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("JAN",OVERRIDE)
+		SetDialog("JANJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Jan
+
+IF
+	HasItem("JO_JOIN","Jan")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("JAN25",OVERRIDE)
+		SetDialog("JAN25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Keldorn
+
+IF
+	HasItem("JO_JOIN","Keldorn")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("KELDORN",OVERRIDE)
+		SetDialog("KELDORJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Keldorn
+
+IF
+	HasItem("JO_JOIN","Keldorn")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("KELD25",OVERRIDE)
+		SetDialog("KELDO25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Korgan
+
+IF
+	HasItem("JO_JOIN","Korgan")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("KORGAN",OVERRIDE)
+		SetDialog("KORGANJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Korgan
+
+IF
+	HasItem("JO_JOIN","Korgan")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("KORG25",OVERRIDE)
+		SetDialog("KORGA25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Mazzy
+
+IF
+	HasItem("JO_JOIN","Mazzy")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("MAZZY",OVERRIDE)
+		SetDialog("MAZZYJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Mazzy
+
+IF
+	HasItem("JO_JOIN","Mazzy")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("MAZZ25",OVERRIDE)
+		SetDialog("MAZZY25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Nalia
+
+IF
+	HasItem("JO_JOIN","Nalia")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("NALIA",OVERRIDE)
+		SetDialog("NALIAJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Nalia
+
+IF
+	HasItem("JO_JOIN","Nalia")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("NALI25",OVERRIDE)
+		SetDialog("NALIA25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Sarevok
+
+IF
+	HasItem("JO_JOIN","Sarevok")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("SAREV25",OVERRIDE)
+		SetDialog("SAREV25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Valygar
+
+IF
+	HasItem("JO_JOIN","Valygar")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("VALYGAR",OVERRIDE)
+		SetDialog("VALYGARJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Valygar
+
+IF
+	HasItem("JO_JOIN","Valygar")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("VALY25",OVERRIDE)
+		SetDialog("VALYG25J") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Wilson
+
+IF
+	HasItem("JO_JOIN","Wilson")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("WILSON",OVERRIDE)
+		SetDialog("WILSONJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Yoshimo
+
+IF
+	HasItem("JO_JOIN","Yoshimo")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("YOSHIMO",OVERRIDE)
+		SetDialog("YOSHJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+////////////////////////////////////////////////////
+
+
+// Ishlilka_The-Wizard-Slayer
+
+IF
+	HasItem("JO_JOIN","#Ishy")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("ishyscrp",OVERRIDE)
+		SetDialog("IshyD")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // SoD Ishlilka
+
+IF
+	HasItem("JO_JOIN","#Ishy")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("ishyscrp",OVERRIDE)
+		SetDialog("bdishy")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+////////////////////////////////////////////////////
+
+
+ // Alora BG2
+ 
+IF
+	HasItem("JO_JOIN","CMALORA")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("cmalora",OVERRIDE)
+		SetDialog("CMALORAJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Alora BG2
+ 
+IF
+	HasItem("JO_JOIN","CMALORA")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("cmalo25",OVERRIDE)
+		SetDialog("CMALO25J")   // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+ // Yeslick BG2
+ 
+IF
+	HasItem("JO_JOIN","LK#YESLK")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("LK#YESL",OVERRIDE)
+		SetDialog("LK#YESJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Yeslick BG2
+ 
+IF
+	HasItem("JO_JOIN","LK#YESLK")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("LK#YES25",OVERRIDE)
+		SetDialog("LK#YE25J")   // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+ // The Undying
+ 
+IF
+	HasItem("JO_JOIN","cmninaf")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMNINAF",OVERRIDE)
+		SetDialog("CMNINAFJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB Undying
+ 
+IF
+	HasItem("JO_JOIN","cmninaf")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMNINA25",OVERRIDE)
+		SetDialog("CMNINA25")   // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","callisto")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CALLISTO",OVERRIDE)
+		SetDialog("CMCALLIJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+ // Summon Bhaalspawn
+
+IF
+	HasItem("JO_JOIN","BHAALSPW")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BHAALSPW",OVERRIDE)
+		SetDialog("bhalspwj") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+/*
+ // ToB Summon Bhaalspawn
+
+IF
+	HasItem("JO_JOIN","BHAALSPW")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BHAALSPW",OVERRIDE)
+		SetDialog("bhal25j")  // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+*/
+
+////////////////////////////////////////////////////
+
+// NikitaRedux
+
+IF
+	HasItem("JO_JOIN","cmnikita")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("cmnikita",OVERRIDE)
+		SetDialog("CMNIKITJ")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB NikitaRedux
+
+IF
+	HasItem("JO_JOIN","cmnikita")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMNIK25",OVERRIDE)
+		SetDialog("CMNIK25J") // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// VampireTales
+
+IF
+	HasItem("JO_JOIN","cmgmiriam")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMGMIRI",OVERRIDE)
+		SetDialog("CMGMIRIj")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+ // ToB VampireTales
+
+IF
+	HasItem("JO_JOIN","cmgmiriam")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("CMGMI25",OVERRIDE)
+		SetDialog("CMGMI25J")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+////////////////////////////////////////////////////
+
+// Kim
+
+IF
+	HasItem("JO_JOIN","Kim")
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("Kim",OVERRIDE)
+		SetDialog("KimJ")
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+/*
+ // ToB Kim
+
+IF
+	HasItem("JO_JOIN","Kim")
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("Kim",OVERRIDE)
+		SetDialog("Kim25J") // Probably the same as bg2
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+*/
+
+////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
