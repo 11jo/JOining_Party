@@ -15,7 +15,7 @@ ALWAYS
 		PRINT ~Game is BGT
 		~
 
-		OUTER_SPRINT "Select" "EET"
+//		OUTER_SPRINT "Select" "EET"
 
 	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN //  AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~
 		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
@@ -24,7 +24,7 @@ ALWAYS
 
 		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE_EET"
 
-		OUTER_SPRINT "Select" "EET"
+//		OUTER_SPRINT "Select" "EET"
 
 		ACTION_IF (GAME_IS ~eet~) BEGIN
 
@@ -38,7 +38,7 @@ ALWAYS
 		PRINT ~Game is BGEE
 		~
 
-		OUTER_SPRINT "Select" "BGSoD"
+//		OUTER_SPRINT "Select" "BGSoD"
 
 		OUTER_SPRINT "JO_JOIN_BG" "JO_JOIN_BGEE"
 
@@ -105,7 +105,7 @@ ALWAYS
 		PRINT ~Game is BG2EE or EET_END is installed
 		~
 
-		OUTER_SPRINT "Select" "BG2EE"
+//		OUTER_SPRINT "Select" "BG2EE"
 
 		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 
@@ -115,7 +115,7 @@ ALWAYS
 
 		OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
 
-		OUTER_SPRINT "Select" "EET"
+//		OUTER_SPRINT "Select" "EET"
 
 		COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 			REPLACE_TEXTUALLY ~// EET_END~ ~~
@@ -461,10 +461,15 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10) ||
 
 // OUTER_SET JOining_Party = 0	
 
+	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+		END
 
-INCLUDE ~JOining_Party_Select/Lib/JOining_Party_%Select%.tph~
+	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+		END
 
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_%Select%.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
 
 

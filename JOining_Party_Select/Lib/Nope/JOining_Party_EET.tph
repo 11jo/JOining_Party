@@ -9,7 +9,8 @@ BEGIN
 
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-	COPY_EXISTING ~%BCS%.BCS~ ~weidu_external/JOining_Party_Select/Oh-No_More-BCS~
+	COPY_EXISTING ~%BCS%.BCS~ ~override~
+//	COPY_EXISTING_REGEXP ~%BCS%.BCS~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 	END
 
@@ -34,7 +35,8 @@ BEGIN
 
 		ACTION_IF FILE_EXISTS_IN_GAME ~%DLG%.DLG~ BEGIN
 
-	COPY_EXISTING_REGEXP ~%DLG%.DLG~ ~weidu_external/JOining_Party_Select/Oh-No_More-DLG~
+	COPY_EXISTING ~%DLG%.DLG~ ~override~
+//	COPY_EXISTING_REGEXP ~%DLG%.DLG~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 	END
 
