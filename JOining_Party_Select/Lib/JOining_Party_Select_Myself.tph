@@ -145,7 +145,7 @@ BUT_ONLY
 
 ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 
-COPY_EXISTING ~Cernd.bcs~ ~override~
+COPY_EXISTING_REGEXP ~Cernd.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 		SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*AreaCheck("AR1900")\)
@@ -160,7 +160,7 @@ COPY_EXISTING ~Cernd.bcs~ ~override~
 		END
 	END
 
-COPY_EXISTING ~JANX.bcs~ ~override~
+COPY_EXISTING_REGEXP ~JANX.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 		SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*Allegiance(Myself,ENEMY)\)

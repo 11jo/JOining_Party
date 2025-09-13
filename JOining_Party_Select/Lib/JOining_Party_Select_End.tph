@@ -5,7 +5,7 @@
 
 ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN
 
-	COPY_EXISTING ~BDRHONDA.BCS~ ~override~
+	COPY_EXISTING_REGEXP ~BDRHONDA.BCS~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 		SPRINT textToReplace ~\(OR(5)\)
 \(^[%TAB% ]*!Allegiance(Myself,NEUTRAL)\)
@@ -31,13 +31,13 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 // BCS
 
 /*
-	COPY_EXISTING ~aaaaa.bcs~ ~override~
+	COPY_EXISTING_REGEXP ~aaaaa.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 	
 	END
 */	
 
-	COPY_EXISTING ~OHDTELW.BCS~ ~override~
+	COPY_EXISTING_REGEXP ~OHDTELW.BCS~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(5)\)
 \(^[%TAB% ]*StateCheck("imoen2",CD_STATE_NOTVALID)\)
@@ -60,7 +60,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END
 		END
 		
-	COPY_EXISTING ~AR0406.bcs~ ~override~
+	COPY_EXISTING_REGEXP ~AR0406.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*GlobalGT("HendakReleased","AR0406",2)\)
@@ -75,7 +75,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // AR0406.BCS
 	END
 		
-	COPY_EXISTING ~AR0900.bcs~ ~override~
+	COPY_EXISTING_REGEXP ~AR0900.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*GlobalLT("OHD_PLOT","GLOBAL",1)\)
@@ -90,7 +90,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // AR0900.BCS
 	END
 
-	COPY_EXISTING ~AR0502.BCS~  ~override~
+	COPY_EXISTING_REGEXP ~AR0502.BCS~  ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(4)\)
 \(^[%TAB% ]*InMyArea("Hexxat")\)
@@ -134,7 +134,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 		END
 	END
 
-	COPY_EXISTING ~AR2100.BCS~ ~override~
+	COPY_EXISTING_REGEXP ~AR2100.BCS~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(4)\)
 \(^[%TAB% ]*InMyArea("Hexxat")\)
@@ -178,7 +178,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 		END
 	END
 	
-	COPY_EXISTING ~DELON.bcs~ ~override~
+	COPY_EXISTING_REGEXP ~DELON.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(3)\)
 \(^[%TAB% ]*Global("Villagesaved","GLOBAL",1)\)
@@ -195,7 +195,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // DELON.BCS
 	
 	END
-	COPY_EXISTING ~KAYL1.bcs~ ~override~
+	COPY_EXISTING_REGEXP ~KAYL1.bcs~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*Global("AnomenTrial","GLOBAL",1)\)
@@ -214,13 +214,13 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 // DLG
 
 /*
-	COPY_EXISTING ~aaaaa.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~aaaaa.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 	
 	END
 */	
 
-	COPY_EXISTING ~AnomenP.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~AnomenP.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*!Global("AnomenHatesKeldorn","GLOBAL",1)\)
@@ -235,7 +235,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // AnomenP.dlg
 	END
 	
-	COPY_EXISTING ~BAERIE.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~BAERIE.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*Global("HaerDalisRomance","GLOBAL",3)\)
@@ -251,7 +251,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 	
 	END
 	
-	COPY_EXISTING ~BDPRST01.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~BDPRST01.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 		SPRINT textToReplace ~\(OR(4)\)
 \(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)~
@@ -283,7 +283,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 		END
 	END
 	
-	COPY_EXISTING ~BYSTAND1.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~BYSTAND1.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*Global("Jaheira1","LOCALS",1)\)
@@ -298,7 +298,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // BYSTAND1.dlg
 	END
 	
-	COPY_EXISTING ~DSHOP02.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~DSHOP02.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 		SPRINT textToReplace ~\(OR(4)\)
 \(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",0)\)
@@ -315,7 +315,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 		END // Special Jaheira DSHOP02.DLG
 	END
 	
-	COPY_EXISTING ~FARTHIN.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~FARTHIN.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(5)\)
 \(^[%TAB% ]*!Name("Nalia",LastTalkedToBy)\)
@@ -332,7 +332,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // FARTHIN.dlg
 	END
 	
-	COPY_EXISTING ~FUMIN.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~FUMIN.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(6)\)
 \(^[%TAB% ]*Global("SpokeToMinister","GLOBAL",0)\)
@@ -362,7 +362,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // FUMIN.dlg
 	END
 	
-	COPY_EXISTING ~isaea.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~isaea.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(5)\)
 \(^[%TAB% ]*!Name("Nalia",LastTalkedToBy(Myself))\)
@@ -379,7 +379,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // isaea.dlg
 	END
 	
-	COPY_EXISTING ~OHNGDUKE.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~OHNGDUKE.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*Global("OHN_NEERA_VS_GUL","OH6300",1)\)
@@ -394,7 +394,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // OHNGDUKE.dlg
 	END
 	
-	COPY_EXISTING ~OHNSNAKE.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~OHNSNAKE.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*!Range("neera",45)\)
@@ -409,7 +409,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 			END // OHNSNAKE.dlg
 	END
 	
-	COPY_EXISTING ~renal.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~renal.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(3)\)
 \(^[%TAB% ]*!Global("YoshimoShadowTrouble","GLOBAL",1)\)~
@@ -431,7 +431,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 				~
 			END // renal.dlg
 	END
-	COPY_EXISTING ~yoshj.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~yoshj.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(3)\)
 \(^[%TAB% ]*!Global("YoshimoShadowTrouble","GLOBAL",1)\)~
@@ -456,7 +456,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 	
 	
 	
-	COPY_EXISTING ~VALYGARJ.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~VALYGARJ.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*!Class("NALIA",MAGE_ALL)\)
@@ -470,7 +470,7 @@ ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
 				~
 			END // VALYGARJ.dlg
 	END
-	COPY_EXISTING ~VARA1.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~VARA1.dlg~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*!Detect("Mazzy")\)
@@ -578,7 +578,7 @@ Yoshimo ~Yoshimo~                           // Yoshimo
 
 BEGIN
 
-	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
+	COPY_EXISTING_REGEXP_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*InParty("%Death_var%")\)
@@ -593,7 +593,7 @@ BEGIN
 			END
 	END
 
-	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
+	COPY_EXISTING_REGEXP_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
