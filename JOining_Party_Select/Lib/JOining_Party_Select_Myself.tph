@@ -4,11 +4,18 @@
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead(Myself)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!AllowDead_Myself","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
 		SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InPartyAllowDead(Myself)
-Allegiance(Myself,FAMILIAR)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_AllowDead_Myself","LOCALS",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
@@ -16,8 +23,7 @@ Allegiance(Myself,FAMILIAR)~
 		SPRINT textToReplace ~\(^[%TAB% ]*!InParty(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!InParty_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -25,9 +31,7 @@ Allegiance(Myself,FAMILIAR)~
 		SPRINT textToReplace ~\(^[%TAB% ]*InParty(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_InParty_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -35,10 +39,31 @@ Allegiance(Myself,FAMILIAR)~
 		SPRINT textToReplace ~\(!IsValidForPartyDialogue(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
+		SPRINT textToReplace ~\(!IsValidForPartyDialog(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
+		SPRINT textToReplace ~\(!IfValidForPartyDialogue(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
+		SPRINT textToReplace ~\(!IfValidForPartyDialog(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -46,22 +71,7 @@ Allegiance(Myself,FAMILIAR)~
 		SPRINT textToReplace ~\(IsValidForPartyDialogue(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~\(!IsValidForPartyDialog(Myself)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -69,22 +79,7 @@ OR(2)
 		SPRINT textToReplace ~\(IsValidForPartyDialog(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~\(!IfValidForPartyDialogue(Myself)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -92,22 +87,7 @@ OR(2)
 		SPRINT textToReplace ~\(IfValidForPartyDialogue(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~\(!IfValidForPartyDialog(Myself)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -115,76 +95,40 @@ OR(2)
 		SPRINT textToReplace ~\(IfValidForPartyDialog(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
-		END
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*!InParty(Myself)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END /*ELSE BEGIN
+		END /*ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find Myself in %SOURCE_FILESPEC%~
 		END*/
 	END
 BUT_ONLY
-				
-// Special Myself BCS
-
-
-ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN
-
-COPY_EXISTING_REGEXP ~Cernd.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*AreaCheck("AR1900")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	AreaCheck("AR1900")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-	END
-
-COPY_EXISTING_REGEXP ~JANX.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Allegiance(Myself,ENEMY)\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	Allegiance(Myself,ENEMY)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-	END
-END
 
 /////////////////////////// Myself DLG
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 	DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead(Myself)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!AllowDead_Myself","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+		SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_AllowDead_Myself","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 		SPRINT textToReplace ~\(^[%TAB% ]*!InParty(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!InParty_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -192,9 +136,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		SPRINT textToReplace ~\(^[%TAB% ]*InParty(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_InParty_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -202,22 +144,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		SPRINT textToReplace ~\(!IsValidForPartyDialogue(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~IsValidForPartyDialogue(Myself)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -225,22 +152,7 @@ OR(2)
 		SPRINT textToReplace ~\(!IsValidForPartyDialog(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~IsValidForPartyDialog(Myself)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -248,22 +160,7 @@ OR(2)
 		SPRINT textToReplace ~\(!IfValidForPartyDialogue(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~IfValidForPartyDialogue(Myself)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
@@ -271,22 +168,39 @@ OR(2)
 		SPRINT textToReplace ~\(!IfValidForPartyDialog(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
-	StateCheck(Myself,CD_STATE_NOTVALID)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_!ValidForPartyDialog_Myself","LOCALS",3)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
-		SPRINT textToReplace ~IfValidForPartyDialog(Myself)~
+		SPRINT textToReplace ~\(IsValidForPartyDialogue(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InMyArea(Myself)
-!StateCheck(Myself,CD_STATE_NOTVALID)
-OR(2)
-	InParty(Myself)
-	Allegiance(Myself,FAMILIAR)~
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
+		SPRINT textToReplace ~\(IsValidForPartyDialog(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
+		SPRINT textToReplace ~\(IfValidForPartyDialogue(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
+		SPRINT textToReplace ~\(IfValidForPartyDialog(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_ValidForPartyDialog_Myself","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~

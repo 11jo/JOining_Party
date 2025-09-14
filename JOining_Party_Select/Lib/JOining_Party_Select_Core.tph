@@ -111,7 +111,7 @@ END
 
 /////////////////////////// Continuous ///////////////////////////
 
-OUTER_SPRINT "JO_JOIN" "JO_JOIN1"
+		OUTER_SPRINT "JO_JOIN" "JO_JOIN1"
 
 ACTION_FOR_EACH bcs IN
 
@@ -120,24 +120,101 @@ ACTION_FOR_EACH bcs IN
 // Original Imoen ~%IMOEN_BCS%~ ~IMOE25~     
 // EET_END ~IMOEN_~   
 // EET_ODD ~IMOEN2~      // Imoen
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_FOR_EACH bcs IN
 // Original Edwin ~%EDWIN_BCS%~ ~EDWI25~     
 // EET_END ~EDWIN_~   
 // EET_ODD ~EDWIN~       // Edwin
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Edwin_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_FOR_EACH bcs IN
 // Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ 
 // EET_END ~JAHEIRA_~ 
 // EET_ODD ~JAHEIRA~     // Jaheira
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Jaheira_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_FOR_EACH bcs IN
 // Original Minsc ~%MINSC_BCS%~ ~MINS25~     
 // EET_END ~MINSC_~   
 // EET_ODD ~MINSC~       // Minsc
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Minsc_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_FOR_EACH bcs IN
 // Original Viconia ~%VICONIA_BCS%~ ~VICO25~ 
 // EET_END ~VICONIA_~ 
 // EET_ODD ~VICONIA~     // Viconia
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Viconia_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_FOR_EACH bcs IN
 // Original Dorn ~%DORN_BCS%~ ~DORN25~       
 // EET_END ~DORN_~    
 // EET_ODD ~DORN~        // Dorn
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dorn_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_FOR_EACH bcs IN
 // Original Neera ~%NEERA_BCS%~ ~NEER25~     
 // EET_END ~NEERA_~   
 // EET_ODD ~NEERA~       // Neera
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Neera_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_FOR_EACH bcs IN
 // Original Rasaad ~%RASAAD_BCS%~ ~RASA25~   
 // EET_END ~RASAAD_~  
 // EET_ODD ~RASAAD~      // Rasaad
@@ -146,7 +223,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Rasaad_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
