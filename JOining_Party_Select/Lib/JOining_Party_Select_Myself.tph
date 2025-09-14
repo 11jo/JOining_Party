@@ -10,7 +10,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InPartyAllowDead(Myself)
 Allegiance(Myself,FAMILIAR)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
 		SPRINT textToReplace ~\(^[%TAB% ]*!InParty(Myself)\)~
@@ -19,7 +19,7 @@ Allegiance(Myself,FAMILIAR)~
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InParty(Myself)
 	!Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(^[%TAB% ]*InParty(Myself)\)~
@@ -29,7 +29,7 @@ Allegiance(Myself,FAMILIAR)~
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IsValidForPartyDialogue(Myself)\)~
@@ -40,7 +40,7 @@ Allegiance(Myself,FAMILIAR)~
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(IsValidForPartyDialogue(Myself)\)~
@@ -52,7 +52,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IsValidForPartyDialog(Myself)\)~
@@ -63,7 +63,7 @@ OR(2)
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(IsValidForPartyDialog(Myself)\)~
@@ -75,7 +75,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IfValidForPartyDialogue(Myself)\)~
@@ -86,7 +86,7 @@ OR(2)
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(IfValidForPartyDialogue(Myself)\)~
@@ -98,7 +98,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IfValidForPartyDialog(Myself)\)~
@@ -109,7 +109,7 @@ OR(2)
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(IfValidForPartyDialog(Myself)\)~
@@ -121,7 +121,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 			SPRINT textToReplace ~\(OR(2)\)
@@ -132,7 +132,7 @@ OR(2)
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
 	!InParty(Myself)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END /*ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find Myself in %SOURCE_FILESPEC%~
@@ -155,7 +155,7 @@ COPY_EXISTING_REGEXP ~Cernd.bcs~ ~override~
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
 	AreaCheck("AR1900")~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 	END
@@ -170,7 +170,7 @@ COPY_EXISTING_REGEXP ~JANX.bcs~ ~override~
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
 	Allegiance(Myself,ENEMY)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 	END
@@ -186,7 +186,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InParty(Myself)
 	!Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(^[%TAB% ]*InParty(Myself)\)~
@@ -196,7 +196,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IsValidForPartyDialogue(Myself)\)~
@@ -207,7 +207,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~IsValidForPartyDialogue(Myself)~
@@ -219,7 +219,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IsValidForPartyDialog(Myself)\)~
@@ -230,7 +230,7 @@ OR(2)
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~IsValidForPartyDialog(Myself)~
@@ -242,7 +242,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IfValidForPartyDialogue(Myself)\)~
@@ -253,7 +253,7 @@ OR(2)
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~IfValidForPartyDialogue(Myself)~
@@ -265,7 +265,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~\(!IfValidForPartyDialog(Myself)\)~
@@ -276,7 +276,7 @@ OR(2)
 	!Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,CD_STATE_NOTVALID)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
 		SPRINT textToReplace ~IfValidForPartyDialog(Myself)~
@@ -288,7 +288,7 @@ OR(2)
 	InParty(Myself)
 	Allegiance(Myself,FAMILIAR)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // Myself found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END /*ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find Myself in %SOURCE_FILESPEC%~

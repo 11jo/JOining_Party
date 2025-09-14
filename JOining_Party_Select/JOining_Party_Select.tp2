@@ -123,9 +123,9 @@ ALWAYS
 	   END
 	END
 
-	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_%Select%.tph~) BEGIN
+	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~) BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_%Select%.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_%Select%.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 		
 	END
 	

@@ -24,13 +24,13 @@ ACTION_FOR_EACH Death_var IN
 // Original Garrick ~Garrick~                          // Garrick
 
 // Original Kagain ~Kagain~                            // Kagain
-// Original Khalid ~Khalid~                            // Khalid
+// Original Khalid ~Khalid~ ~khaild~                   // Khalid
 // Original Kivan ~Kivan~                              // Kivan
 
 // Original Montaron ~Montaron~                        // Montaron
 // Original Quayle ~Quayle~                            // Quayle
 // Original Safana ~Safana~                            // Safana
-// Original Sharteel ~Sharteel~                        // Sharteel
+// Original Sharteel ~Sharteel~ ~Shar-teel~              // Sharteel
 // Original Skie ~Skie~                                // Skie
 // Original Tiax ~Tiax~                                // Tiax
 
@@ -661,6 +661,32 @@ PATCH_IF (GAME_INCLUDES ~SoD~) BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
+			END
+			SPRINT textToReplace ~\(OR(3)\)
+\(^[%TAB% ]*GlobalGT("Chapter","GLOBAL",9)\)
+\(^[%TAB% ]*StateCheck("%Death_var%",STATE_REALLY_DEAD)\)
+\(^[%TAB% ]*OR(2)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+	GlobalGT("Chapter","GLOBAL",9)
+	StateCheck("%Death_var%",STATE_REALLY_DEAD)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(OR(3)\)
+\(^[%TAB% ]*GlobalGT("Chapter","GLOBAL",8)\)
+\(^[%TAB% ]*StateCheck("%Death_var%",STATE_REALLY_DEAD)\)
+\(^[%TAB% ]*OR(2)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
+	GlobalGT("Chapter","GLOBAL",8)
+	StateCheck("%Death_var%",STATE_REALLY_DEAD)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
 			END	/*ELSE BEGIN
 				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
 			END*/
@@ -682,6 +708,25 @@ END	 // GAME_INCLUDES ~SoD~ END
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead("%Death_var%")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InPartyAllowDead("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead("%Death_var%")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+	InPartyAllowDead("%Death_var%")
+	Allegiance("%Death_var%",FAMILIAR)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -936,6 +981,17 @@ OR(2)
 			END
 			SPRINT textToReplace ~\(OR(2)\)
 \(^[%TAB% ]*Dead("%Death_var%")\)
+\(^[%TAB% ]*OR(2)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+	Dead("%Death_var%")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(OR(2)\)
+\(^[%TAB% ]*!Dead("%Death_var%")\)
 \(^[%TAB% ]*OR(2)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
