@@ -82,6 +82,21 @@ END
 IF
 	HasItem("JO_JOIN","Edwin")
 	Global("JO_JOIN","LOCALS",2)
+	Global("NEWGAME_SOA","GLOBAL",1)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("EDWIN",OVERRIDE)
+		SetDialog("EDWINJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","Edwin")
+	Global("JO_JOIN","LOCALS",2)
+	!Global("NEWGAME_SOA","GLOBAL",1)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
@@ -133,6 +148,20 @@ END
 IF
 	HasItem("JO_JOIN","Jaheira")
 	Global("JO_JOIN","LOCALS",2)
+	Global("NEWGAME_SOA","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("JAHEIRA",OVERRIDE)
+		SetDialog("JAHEIRAJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","Jaheira")
+	Global("JO_JOIN","LOCALS",2)
+	!Global("NEWGAME_SOA","GLOBAL",1)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
@@ -184,6 +213,21 @@ END
 IF
 	HasItem("JO_JOIN","Minsc")
 	Global("JO_JOIN","LOCALS",2)
+	Global("NEWGAME_SOA","GLOBAL",1)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("MINSC",OVERRIDE)
+		SetDialog("MINSCJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","Minsc")
+	Global("JO_JOIN","LOCALS",2)
+	!Global("NEWGAME_SOA","GLOBAL",1)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
@@ -235,6 +279,21 @@ END
 IF
 	HasItem("JO_JOIN","Viconia")
 	Global("JO_JOIN","LOCALS",2)
+	Global("NEWGAME_SOA","GLOBAL",1)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("VICONIA",OVERRIDE)
+		SetDialog("VICONIJ") 
+		DestroyItem("JO_JOIN")
+		SetGlobal("JO_JOIN","LOCALS",0)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+IF
+	HasItem("JO_JOIN","Viconia")
+	Global("JO_JOIN","LOCALS",2)
+	!Global("NEWGAME_SOA","GLOBAL",1)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
@@ -405,7 +464,7 @@ END
  // SoD Rasaad
 
 IF
-	HasItem("JO_JOIN","Jaheira")
+	HasItem("JO_JOIN","Rasaad")
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN

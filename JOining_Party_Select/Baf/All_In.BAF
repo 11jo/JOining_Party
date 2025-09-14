@@ -62,34 +62,23 @@ IF
 		!IfValidForPartyDialogue(Myself)
 		!IsValidForPartyDialog(Myself)
 		!IfValidForPartyDialog(Myself)
+	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",1)
-		SetGlobal("JO_NoValid_Myself","LOCALS",1)
+		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",3)
+		SetGlobal("JO_NoValid_Myself","LOCALS",3)
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
+		SetGlobal("JO_Valid_Myself","LOCALS",0)
 END
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
-	Global("JO_%Death_var%_NoValid","GLOBAL",1)
+	Global("JO_%Death_var%_NoValid","GLOBAL",0)
 	OR(3)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 		!InMyArea(Myself)
 		!InParty(Myself)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",2)
-		SetGlobal("JO_NoValid_Myself","LOCALS",2)
-		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
-END
- 
-// !Is(!If)ValidForPartyDialog(ue)
-IF
-	Global("JO_%Death_var%_NoValid","GLOBAL",2)
-	OR(3)
-		StateCheck(Myself,CD_STATE_NOTVALID)
-		!InMyArea(Myself)
-		!Allegiance(Myself,FAMILIAR)
+	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",3)

@@ -5,10 +5,10 @@ APPEND %joining_dlg%
 	SAY ~Hey ! Who could have foreseen that you would lead such a legion ?~
 	IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
 	IF ~~ THEN REPLY ~Join the group properly, please.~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(2) DestroyItem("JO_JOIN") SmallWait(2) JoinParty()~ EXIT
-	IF ~~ THEN REPLY ~We need to adjust our strategy.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
-	IF ~~ THEN REPLY ~We need to adjust our position.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
+//	IF ~~ THEN REPLY ~We need to adjust our strategy.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
+//	IF ~~ THEN REPLY ~We need to adjust our position.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
 	END
-
+/*
 IF ~~ THEN BEGIN JO_JOINYes
 	SAY ~Done !~
 	IF ~~ THEN EXIT
@@ -39,5 +39,5 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 	IF ~InPartySlot(LastTalkedToBy(Myself),3)~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_SCRIPT_Player4","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~InPartySlot(LastTalkedToBy(Myself),3)~ THEN REPLY ~Stay close.~ DO ~SetGlobal("JO_JOIN_SCRIPT_Player4","LOCALS",3)~ GOTO JO_JOINYes
 END
-
+*/
 END

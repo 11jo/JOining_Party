@@ -8,10 +8,10 @@
 
 ACTION_FOR_EACH joining_dlg IN
 
-// Original Imoen ~%IMOEN_JOINED%~ ~IMOEN25J~                     // Imoen
+// Original Imoen ~%IMOEN_JOINED%~ ~IMOEN25J~  ~TTIMOENJ~                    // Imoen
 // Original Edwin ~%EDWIN_JOINED%~ ~EDWIN25J~                     // Edwin
-// Original Jaheira ~%JAHEIRA_JOINED%~ ~JAHEI25J~                 // Jaheira
-// Original Minsc ~%MINSC_JOINED%~ ~MINSC25J~                     // Minsc
+// Original Jaheira ~%JAHEIRA_JOINED%~ ~JAHEI25J~ ~TTJAHEIJ~                 // Jaheira
+// Original Minsc ~%MINSC_JOINED%~ ~MINSC25J~ ~TTMINSCJ~                    // Minsc
 // Original Viconia ~%VICONIA_JOINED%~ ~VICON25J~                 // Viconia
 // Original Dorn ~%DORN_JOINED%~ ~DORN25J~                        // Dorn
 // Original Neera ~%NEERA_JOINED%~ ~NEERA25J~                     // Neera
@@ -23,7 +23,7 @@ ACTION_FOR_EACH joining_dlg IN
 
 // Original Ajantis ~%AJANTIS_JOINED%~                            // Ajantis
 // Original Alora ~%ALORA_JOINED%~                                // Alora
-// Original Branwen ~%BRANWEN_JOINED%~                            // Branwen
+// Original Branwen ~%BRANWEN_JOINED%~ ~TTBRANJ~                           // Branwen
 // Original Coran ~%CORAN_JOINED%~                                // Coran
 // Original Dynaheir ~%DYNAHEIR_JOINED%~                          // Dynaheir
 
@@ -42,7 +42,7 @@ ACTION_FOR_EACH joining_dlg IN
 // Original Skie ~%SKIE_JOINED%~                                  // Skie
 // Original Tiax ~%TIAX_JOINED%~                                  // Tiax
 
-// Original Xan ~%XAN_JOINED%~                                    // Xan
+// Original Xan ~%XAN_JOINED%~   ~TTXANJ~                                    // Xan
 // Original Xzar ~%XZAR_JOINED%~                                  // Xzar
 // Original Yeslick ~%YESLICK_JOINED%~                            // Yeslick
 
@@ -117,7 +117,7 @@ ACTION_FOR_EACH bcs IN
 
 /////////////////////////// Continuous ///////////////////////////
 
-// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~     
+// Original Imoen ~%IMOEN_BCS%~ ~IMOE25~ ~IMOEN~ ~TTIMOEN~
 // EET_END ~IMOEN_~   
 // EET_ODD ~IMOEN2~      // Imoen
 
@@ -139,13 +139,13 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Edwin_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
 
 ACTION_FOR_EACH bcs IN
-// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ 
+// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ ~TTJAHEIR~ 
 // EET_END ~JAHEIRA_~ 
 // EET_ODD ~JAHEIRA~     // Jaheira
 
@@ -153,13 +153,13 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Jaheira_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Jaheira_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
 
 ACTION_FOR_EACH bcs IN
-// Original Minsc ~%MINSC_BCS%~ ~MINS25~     
+// Original Minsc ~%MINSC_BCS%~ ~MINS25~ ~TTMINSC~    
 // EET_END ~MINSC_~   
 // EET_ODD ~MINSC~       // Minsc
 
@@ -167,7 +167,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Minsc_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Minsc_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -181,7 +181,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Viconia_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Viconia_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -195,7 +195,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dorn_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Dorn_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -209,7 +209,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Neera_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Neera_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -223,7 +223,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Rasaad_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Rasaad_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -234,66 +234,386 @@ END
 
 OUTER_SPRINT "JO_JOIN" "JO_JOIN2"
 
-ACTION_FOR_EACH bcs IN
-
 /////////////////////////// bg1 ///////////////////////////
 
+// Ajantis
 
-// Original Ajantis ~%AJANTIS_BCS%~                         // Ajantis
-// Original Alora ~%ALORA_BCS%~                             // Alora
-// Original Branwen ~%BRANWEN_BCS%~                         // Branwen
-// Original Coran ~%CORAN_BCS%~                             // Coran
-// Original Dynaheir ~%DYNAHEIR_BCS%~                       // Dynaheir
+ACTION_FOR_EACH bcs IN
 
-// Original Eldoth ~%ELDOTH_BCS%~                           // Eldoth
-// Original Faldorn ~%FALDORN_BCS%~                         // Faldorn
-// Original Garrick ~%GARRICK_BCS%~                         // Garrick
-
-// Original Kagain ~%KAGAIN_BCS%~                           // Kagain
-// Original Khalid ~%KHALID_BCS%~                           // Khalid
-// Original Kivan ~%KIVAN_BCS%~                             // Kivan
-
-// Original Montaron ~%MONTARON_BCS%~                       // Montaron
-// Original Quayle ~%QUAYLE_BCS%~                           // Quayle
-// Original Safana ~%SAFANA_BCS%~                           // Safana
-// Original Sharteel ~%SHARTEEL_BCS%~                       // Sharteel
-// Original Skie ~%SKIE_BCS%~                               // Skie
-// Original Tiax ~%TIAX_BCS%~                               // Tiax
-
-// Original Xan ~%XAN_BCS%~                                 // Xan
-// Original Xzar ~%XZAR_BCS%~                               // Xzar
-// Original Yeslick ~%YESLICK_BCS%~                         // Yeslick
-
-// Original Baeloth ~BDBAELOT~                              // Baeloth
+// Original Ajantis ~%AJANTIS_BCS%~
 
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ajantis_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
+
+// Alora
+
+ACTION_FOR_EACH bcs IN
+
+// Original Alora ~%ALORA_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Alora_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Branwen
+
+ACTION_FOR_EACH bcs IN
+
+// Original Branwen ~%BRANWEN_BCS%~ ~TTBRAN~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Branwen_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Coran
+
+ACTION_FOR_EACH bcs IN
+
+// Original Coran ~%CORAN_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Coran_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Dynaheir
+
+ACTION_FOR_EACH bcs IN
+
+// Original Dynaheir ~%DYNAHEIR_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Dynaheir_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Eldoth
+
+ACTION_FOR_EACH bcs IN
+
+// Original Eldoth ~%ELDOTH_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Eldoth_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Faldorn
+
+ACTION_FOR_EACH bcs IN
+
+// Original Faldorn ~%FALDORN_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Faldorn_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Garrick
+
+ACTION_FOR_EACH bcs IN
+
+// Original Garrick ~%GARRICK_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Garrick_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Kagain
+
+ACTION_FOR_EACH bcs IN
+
+// Original Kagain ~%KAGAIN_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kagain_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Khalid
+
+ACTION_FOR_EACH bcs IN
+
+// Original Khalid ~%KHALID_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Khalid_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Kivan
+
+ACTION_FOR_EACH bcs IN
+
+// Original Kivan ~%KIVAN_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kivan_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Montaron
+
+ACTION_FOR_EACH bcs IN
+
+// Original Montaron ~%MONTARON_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Montaron_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Quayle
+
+ACTION_FOR_EACH bcs IN
+
+// Original Quayle ~%QUAYLE_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Quayle_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Safana
+
+ACTION_FOR_EACH bcs IN
+
+// Original Safana ~%SAFANA_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Safana_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Sharteel
+
+ACTION_FOR_EACH bcs IN
+
+// Original Sharteel ~%SHARTEEL_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Skie
+
+ACTION_FOR_EACH bcs IN
+
+// Original Skie ~%SKIE_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Skie_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Tiax
+
+ACTION_FOR_EACH bcs IN
+
+// Original Tiax ~%TIAX_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Tiax_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Xan
+
+ACTION_FOR_EACH bcs IN
+
+// Original Xan ~%XAN_BCS%~ ~ttxan~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Xan_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Xzar
+
+ACTION_FOR_EACH bcs IN
+
+// Original Xzar ~%XZAR_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Xzar_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Yeslick
+
+ACTION_FOR_EACH bcs IN
+
+// Original Yeslick ~%YESLICK_BCS%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Yeslick_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Baeloth
+
+ACTION_FOR_EACH bcs IN
+
+// Original Baeloth ~BDBAELOT~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Baeloth_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
 
 /////////////////////////// SoD ///////////////////////////
 
 OUTER_SPRINT "JO_JOIN" "JO_JOIN3"
 
-ACTION_FOR_EACH bcs IN
-
 /////////////////////////// SoD ///////////////////////////
 
+// Voghiln
 
-// Original Voghiln ~BDVOGHIL~                             // Voghiln
-// Original Corwin ~BDCORWIN~                              // Corwin
-// Original Mkhiin ~BDMKHIIN~                              // Mkhiin
-// Original Glint ~BDGLINT~                                // Glint
+ACTION_FOR_EACH bcs IN
+
+// Original Voghiln ~BDVOGHIL~
 
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Voghiln_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Corwin
+
+ACTION_FOR_EACH bcs IN
+
+// Original Corwin ~BDCORWIN~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Corwin_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Mkhiin
+
+ACTION_FOR_EACH bcs IN
+
+// Original Mkhiin ~BDMKHIIN~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Mkhiin_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Glint
+
+ACTION_FOR_EACH bcs IN
+
+// Original Glint ~BDGLINT~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Glint_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -302,44 +622,215 @@ END
 
 OUTER_SPRINT "JO_JOIN" "JO_JOIN4"
 
-ACTION_FOR_EACH bcs IN
-
 /////////////////////////// bg2 ///////////////////////////
 
-			// Aerie
+// Aerie
+
+ACTION_FOR_EACH bcs IN
+
 // Original Aerie ~AERIE~ ~AERI25~
-			// Anomen
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Aerie_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Anomen
+
+ACTION_FOR_EACH bcs IN
+
 // Original Anomen ~ANOMEN~ ~ANOM25~
-			// Cernd
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Anomen_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Cernd
+
+ACTION_FOR_EACH bcs IN
+
 // Original Cernd ~CERND~ ~CERN25~
-			// Haerdalis
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Cernd_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Haerdalis
+
+ACTION_FOR_EACH bcs IN
+
+
 // Original Haerdalis ~HAERDALI~ ~HAER25~
-			// Hexxat
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Haerdalis_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Hexxat
+
+ACTION_FOR_EACH bcs IN
+
 // Original Hexxat ~HEXXAT~ ~HEXXA25~
-			// Jan
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Hexxat_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Jan
+
+ACTION_FOR_EACH bcs IN
+
 // Original Jan ~JAN~ ~JAN25~
-			// Keldorn
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Jan_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Keldorn
+
+ACTION_FOR_EACH bcs IN
+
 // Original Keldorn ~KELDORN~ ~KELD25~
-			// Korgan
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Keldorn_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Korgan
+
+ACTION_FOR_EACH bcs IN
+
 // Original Korgan ~KORGAN~ ~KORG25~
-			// Mazzy
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Korgan_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Mazzy
+
+ACTION_FOR_EACH bcs IN
+
 // Original Mazzy ~MAZZY~ ~MAZZ25~
-			// Nalia
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Mazzy_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Nalia
+
+ACTION_FOR_EACH bcs IN
+
 // Original Nalia ~NALIA~ ~NALI25~
-			// Sarevok
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Nalia_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Sarevok
+
+ACTION_FOR_EACH bcs IN
+
 // Original Sarevok ~SAREV25~
-			// Valygar
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sarevok_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Valygar
+
+ACTION_FOR_EACH bcs IN
+
 // Original Valygar ~VALYGAR~ ~VALY25~
-			// Wilson
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Valygar_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Wilson
+
+ACTION_FOR_EACH bcs IN
+
 // Original Wilson ~WILSON~
-			// Yoshimo
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Wilson_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Yoshimo
+
+ACTION_FOR_EACH bcs IN
+
 // Original Yoshimo ~YOSHIMO~ ~YOSH25~
 
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Yoshimo_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -348,30 +839,142 @@ END
 
 OUTER_SPRINT "JO_JOIN" "JO_JOIN5"
 
-ACTION_FOR_EACH bcs IN
-
 /////////////////////////// Mods BG1 ///////////////////////////
 
-			// Ishlilka_The-Wizard-Slayer
+// Ishlilka (#Ishy)
+
+ACTION_FOR_EACH bcs IN
+
 // Mod Ishlilka ~ishyscrp~
-
-
-/////////////////////////// Mods BG2 ///////////////////////////
-
-
-// Mod Alora BG2 ~cmalora~ ~cmalo25~                                          // Alora BG2
-// Mod Yeslick BG2 ~LK#YESL~ ~LK#YES25~                                       // Yeslick BG2
-// Mod Undying ~CMNINAF~ ~CALLISTO~ ~CMNINA25~                                // The Undying
-// Mod Sandra ~BHAALSPW~                                                      // Summon Bhaalspawn
-// Mod Nikita ~cmnikita~ ~CMNIK25~                                            // NikitaRedux
-// Mod Miriam ~CMGMIRI~ ~CMGMI25~                                             // VampireTales
-// Mod Kim ~Kim~                                                              // Kim
 
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_In.baf~ EVALUATE_BUFFER
+	END
+END
+
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+// Alora BG2 (CMALORA)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Alora BG2 ~cmalora~ ~cmalo25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMALORA_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Yeslick BG2 (LK#YESLK)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Yeslick BG2 ~LK#YESL~ ~LK#YES25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/LK#YESLK_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// The Undying (cmninaf)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Undying ~CMNINAF~ ~CMNINA25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmninaf_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// The Undying (callisto)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Undying ~CALLISTO~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/callisto_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Summon Bhaalspawn (BHAALSPW)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Sandra ~BHAALSPW~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/BHAALSPW_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Nikita Redux (cmnikita)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Nikita ~cmnikita~ ~CMNIK25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Vampire Tales (cmgmiriam)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Miriam ~CMGMIRI~ ~CMGMI25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmgmiriam_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Kim (Kim)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kim ~Kim~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kim_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
@@ -449,14 +1052,14 @@ OUTER_SPRINT "25" "25"
 
 		END
 
-
+/*
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOIN.baf~ BEGIN
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOIN.baf~ EVALUATE_BUFFER
 
 	END
+*/
 
-	
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINI.baf~ BEGIN
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
