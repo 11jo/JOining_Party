@@ -1,3 +1,106 @@
+// Base
+ 
+// !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
+IF
+	Global("JO_!AllowDead_%Death_var%","%Death_var%",0)
+	!InPartyAllowDead("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_!AllowDead_%Death_var%","%Death_var%",1)
+		SetGlobal("JO_AllowDead_%Death_var%","%Death_var%",0)
+END
+ 
+// InPartyAllowDead("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
+IF
+	Global("JO_AllowDead_%Death_var%","%Death_var%",0)
+	OR(2)
+		InPartyAllowDead("%Death_var%")
+		Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_AllowDead_%Death_var%","%Death_var%",1)
+		SetGlobal("JO_!AllowDead_%Death_var%","%Death_var%",0)
+END
+ 
+// !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
+IF
+	Global("JO_!InParty_%Death_var%","%Death_var%",0)
+	!InParty("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_!InParty_%Death_var%","%Death_var%",1)
+		SetGlobal("JO_InParty_%Death_var%","%Death_var%",0)
+END
+ 
+// InParty("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
+IF
+	Global("JO_InParty_%Death_var%","%Death_var%",0)
+	OR(2)
+		InParty("%Death_var%")
+		Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_InParty_%Death_var%","%Death_var%",1)
+		SetGlobal("JO_!InParty_%Death_var%","%Death_var%",0)
+END
+ 
+// !Is(!If)ValidForPartyDialog(ue)
+IF
+	Global("JO_!ValidForPartyDialog_%Death_var%","%Death_var%",0)
+	OR(4)
+		!IsValidForPartyDialogue("%Death_var%")
+		!IfValidForPartyDialogue("%Death_var%")
+		!IsValidForPartyDialog("%Death_var%")
+		!IfValidForPartyDialog("%Death_var%")
+THEN
+	RESPONSE #100
+		SetGlobal("JO_!ValidForPartyDialog_%Death_var%","%Death_var%",1)
+		SetGlobal("JO_ValidForPartyDialog_%Death_var%","%Death_var%",0)
+END
+ 
+// !Is(!If)ValidForPartyDialog(ue)
+IF
+	Global("JO_!ValidForPartyDialog_%Death_var%","%Death_var%",1)
+	StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	!InMyArea("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
+	!InParty("%Death_var%")
+THEN
+	RESPONSE #100
+		SetGlobal("JO_!ValidForPartyDialog_%Death_var%","%Death_var%",2)
+		SetGlobal("JO_ValidForPartyDialog_%Death_var%","%Death_var%",0)
+END
+ 
+// Is(!If)ValidForPartyDialog(ue)
+IF
+	Global("JO_ValidForPartyDialog_%Death_var%","%Death_var%",0)
+	OR(4)
+		IsValidForPartyDialogue("%Death_var%")
+		IfValidForPartyDialogue("%Death_var%")
+		IsValidForPartyDialog("%Death_var%")
+		IfValidForPartyDialog("%Death_var%")
+THEN
+	RESPONSE #100
+		SetGlobal("JO_ValidForPartyDialog_%Death_var%","%Death_var%",1)
+		SetGlobal("JO_!ValidForPartyDialog_%Death_var%","%Death_var%",0)
+END
+ 
+// Is(!If)ValidForPartyDialog(ue)
+IF
+	Global("JO_ValidForPartyDialog_%Death_var%","%Death_var%",0)
+	InMyArea("%Death_var%")
+	!StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	OR(2)
+		Allegiance("%Death_var%",FAMILIAR)
+		InParty("%Death_var%")
+THEN
+	RESPONSE #100
+		SetGlobal("JO_ValidForPartyDialog_%Death_var%","%Death_var%",1)
+		SetGlobal("JO_!ValidForPartyDialog_%Death_var%","%Death_var%",0)
+END
+
 // BG
 
 IF
