@@ -2,13 +2,11 @@
  
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
-	Global("JO_%Death_var%_NoAllowDead","GLOBAL",0)
+	!Global("JO_%Death_var%_AllowDead","GLOBAL",0)
 	!InPartyAllowDead(Myself)
 	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_NoAllowDead","GLOBAL",1)
-		SetGlobal("JO_NoAllowDead_Myself","LOCALS",1)
 		SetGlobal("JO_%Death_var%_AllowDead","GLOBAL",0)
 		SetGlobal("JO_AllowDead_Myself","LOCALS",0)
 END
@@ -23,19 +21,15 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_AllowDead","GLOBAL",1)
 		SetGlobal("JO_AllowDead_Myself","LOCALS",1)
-		SetGlobal("JO_%Death_var%_NoAllowDead","GLOBAL",0)
-		SetGlobal("JO_NoAllowDead_Myself","LOCALS",0)
 END
  
 // !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
-	Global("JO_%Death_var%_NoInParty","GLOBAL",0)
+	!Global("JO_%Death_var%_InParty","GLOBAL",0)
 	!InParty(Myself)
 	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_NoInParty","GLOBAL",1)
-		SetGlobal("JO_NoInParty_Myself","LOCALS",1)
 		SetGlobal("JO_%Death_var%_InParty","GLOBAL",0)
 		SetGlobal("JO_InParty_Myself","LOCALS",0)
 END
@@ -50,13 +44,11 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_InParty","GLOBAL",1)
 		SetGlobal("JO_InParty_Myself","LOCALS",1)
-		SetGlobal("JO_%Death_var%_NoInParty","GLOBAL",0)
-		SetGlobal("JO_NoInParty_Myself","LOCALS",0)
 END
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
-	Global("JO_%Death_var%_NoValid","GLOBAL",0)
+	!Global("JO_%Death_var%_Valid","GLOBAL",0)
 	OR(4)
 		!IsValidForPartyDialogue(Myself)
 		!IfValidForPartyDialogue(Myself)
@@ -65,15 +57,13 @@ IF
 	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",3)
-		SetGlobal("JO_NoValid_Myself","LOCALS",3)
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
 		SetGlobal("JO_Valid_Myself","LOCALS",0)
 END
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
-	Global("JO_%Death_var%_NoValid","GLOBAL",0)
+	!Global("JO_%Death_var%_Valid","GLOBAL",0)
 	OR(3)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 		!InMyArea(Myself)
@@ -81,8 +71,6 @@ IF
 	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",3)
-		SetGlobal("JO_NoValid_Myself","LOCALS",3)
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
 		SetGlobal("JO_Valid_Myself","LOCALS",0)
 END
@@ -99,8 +87,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",1)
 		SetGlobal("JO_Valid_Myself","LOCALS",1)
-		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",0)
-		SetGlobal("JO_NoValid_Myself","LOCALS",0)
 END
  
 // Is(If)ValidForPartyDialog(ue)
@@ -115,8 +101,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",1)
 		SetGlobal("JO_Valid_Myself","LOCALS",1)
-		SetGlobal("JO_%Death_var%_NoValid","GLOBAL",0)
-		SetGlobal("JO_NoValid_Myself","LOCALS",0)
 END
 
 // BG
@@ -180,11 +164,13 @@ END
 // Yeah
 
 IF
+	Delay(5)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		DisplayStringHead(Myself,~Yeah.~)
 END
 

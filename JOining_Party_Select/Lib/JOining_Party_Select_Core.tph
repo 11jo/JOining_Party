@@ -79,20 +79,34 @@ ACTION_FOR_EACH joining_dlg IN
 
 /////////////////////////// Mods BG1 ///////////////////////////
 
-
-// Mod Ishlilka ~IshyD~ ~bdishy~                                                // Ishlilka_The-Wizard-Slayer
-
+// Ishlilka
+// Mod Ishlilka ~IshyD~ ~bdishy~
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
+// Alora BG2
+// Mod Alora BG2 ~CMALORAJ~ ~CMALO25J~
 
-// Mod Alora BG2 ~CMALORAJ~ ~CMALO25J~                                          // Alora BG2
-// Mod Yeslick BG2 ~LK#YESJ~ ~LK#YE25J~                                         // Yeslick BG2
-// Mod Undying ~CMNINAFJ~ ~CMCALLIJ~ ~CMNINA25~                                 // The Undying
-// Mod Sandra ~bhalspwj~ ~bhal25j~                                              // Summon Bhaalspawn
-// Mod Nikita ~CMNIKITJ~ ~CMNIK25~                                              // NikitaRedux
-// Mod Miriam ~CMGMIRIj~ ~CMGMI25J~                                             // VampireTales
-// Mod Kim ~KimJ~ ~Kim25J~                                                      // Kim
+// Yeslick BG2
+// Mod Yeslick BG2 ~LK#YESJ~ ~LK#YE25J~
+
+// The Undying
+// Mod Undying ~CMNINAFJ~ ~CMCALLIJ~ ~CMNINA25~
+
+// Summon Bhaalspawn
+// Mod Sandra ~bhalspwj~ ~bhal25j~
+
+// NikitaRedux
+// Mod Nikita ~CMNIKITJ~ ~CMNIK25~
+
+// VampireTales
+// Mod Miriam ~CMGMIRIj~ ~CMGMI25J~
+
+// Kim
+// Mod Kim ~KimJ~ ~Kim25J~
+
+// Severian
+// Mod Severian ~#SeverJ~ ~#Sev25J~
 
 BEGIN
 
@@ -112,14 +126,16 @@ END
 /////////////////////////// Continuous ///////////////////////////
 
 		OUTER_SPRINT "JO_JOIN" "JO_JOIN1"
+		
+// Imoen
 
 ACTION_FOR_EACH bcs IN
 
 /////////////////////////// Continuous ///////////////////////////
 
 // Original Imoen ~%IMOEN_BCS%~ ~IMOE25~ ~IMOEN~ ~TTIMOEN~
-// EET_END ~IMOEN_~   
-// EET_ODD ~IMOEN2~      // Imoen
+// EET_END ~IMOEN_~
+// EET_ODD ~IMOEN2~
 
 BEGIN
 
@@ -130,10 +146,12 @@ BEGIN
 	END
 END
 
+// Edwin
+
 ACTION_FOR_EACH bcs IN
-// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~     
-// EET_END ~EDWIN_~   
-// EET_ODD ~EDWIN~       // Edwin
+// Original Edwin ~%EDWIN_BCS%~ ~EDWI25~
+// EET_END ~EDWIN_~
+// EET_ODD ~EDWIN~
 
 BEGIN
 
@@ -144,10 +162,12 @@ BEGIN
 	END
 END
 
+// Jaheira
+
 ACTION_FOR_EACH bcs IN
-// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ ~TTJAHEIR~ 
-// EET_END ~JAHEIRA_~ 
-// EET_ODD ~JAHEIRA~     // Jaheira
+// Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ ~TTJAHEIR~
+// EET_END ~JAHEIRA_~
+// EET_ODD ~JAHEIRA~
 
 BEGIN
 
@@ -158,10 +178,12 @@ BEGIN
 	END
 END
 
+// Minsc
+
 ACTION_FOR_EACH bcs IN
-// Original Minsc ~%MINSC_BCS%~ ~MINS25~ ~TTMINSC~    
-// EET_END ~MINSC_~   
-// EET_ODD ~MINSC~       // Minsc
+// Original Minsc ~%MINSC_BCS%~ ~MINS25~ ~TTMINSC~
+// EET_END ~MINSC_~
+// EET_ODD ~MINSC~
 
 BEGIN
 
@@ -172,10 +194,12 @@ BEGIN
 	END
 END
 
+// Viconia
+
 ACTION_FOR_EACH bcs IN
-// Original Viconia ~%VICONIA_BCS%~ ~VICO25~ 
-// EET_END ~VICONIA_~ 
-// EET_ODD ~VICONIA~     // Viconia
+// Original Viconia ~%VICONIA_BCS%~ ~VICO25~
+// EET_END ~VICONIA_~
+// EET_ODD ~VICONIA~
 
 BEGIN
 
@@ -186,10 +210,12 @@ BEGIN
 	END
 END
 
+// Dorn
+
 ACTION_FOR_EACH bcs IN
-// Original Dorn ~%DORN_BCS%~ ~DORN25~       
-// EET_END ~DORN_~    
-// EET_ODD ~DORN~        // Dorn
+// Original Dorn ~%DORN_BCS%~ ~DORN25~
+// EET_END ~DORN_~
+// EET_ODD ~DORN~
 
 BEGIN
 
@@ -200,10 +226,12 @@ BEGIN
 	END
 END
 
+// Neera
+
 ACTION_FOR_EACH bcs IN
-// Original Neera ~%NEERA_BCS%~ ~NEER25~     
-// EET_END ~NEERA_~   
-// EET_ODD ~NEERA~       // Neera
+// Original Neera ~%NEERA_BCS%~ ~NEER25~
+// EET_END ~NEERA_~
+// EET_ODD ~NEERA~
 
 BEGIN
 
@@ -214,10 +242,12 @@ BEGIN
 	END
 END
 
+// Rasaad
+
 ACTION_FOR_EACH bcs IN
-// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~   
-// EET_END ~RASAAD_~  
-// EET_ODD ~RASAAD~      // Rasaad
+// Original Rasaad ~%RASAAD_BCS%~ ~RASA25~
+// EET_END ~RASAAD_~
+// EET_ODD ~RASAAD~
 
 BEGIN
 
@@ -979,6 +1009,21 @@ BEGIN
 	END
 END
 
+// Severian (#Severian)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Severian ~#Sever~ ~#SevD25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Severian_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
 //////////////////////////////////////////////////////////////////////////////////////
 
 //                                ITM SPL                                           //
@@ -1042,6 +1087,7 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+/*
 	ACTION_IF GAME_IS ~eet~ BEGIN
 
 OUTER_SPRINT "25" ""
@@ -1051,6 +1097,7 @@ OUTER_SPRINT "25" ""
 OUTER_SPRINT "25" "25"
 
 		END
+*/
 
 /*
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOIN.baf~ BEGIN
@@ -1099,14 +1146,17 @@ COMPILE ~JOining_Party_Select/Baf/JO_JOIN5.baf~ EVALUATE_BUFFER
 
 EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
 
+EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability_TOP.baf~ 
+
 		ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability-BGEE.baf~  EVALUATE_BUFFER
+EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability-BGEE.baf~  EVALUATE_BUFFER
 		END
 		ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability-SoD.baf~  EVALUATE_BUFFER
+EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability-SoD.baf~  EVALUATE_BUFFER
 		END
 		ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability-ToB.baf~ EVALUATE_BUFFER
 		END 
  
  /*

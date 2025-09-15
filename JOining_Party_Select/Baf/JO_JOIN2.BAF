@@ -42,7 +42,7 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BRANWEN_",OVERRIDE)
+		ChangeAIScript("BRANWEN_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("%BRANWEN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -122,7 +122,7 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("FALDORN_",OVERRIDE)
+		ChangeAIScript("FALDORN_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("%FALDORN_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -154,7 +154,7 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("GARRICK_",OVERRIDE)
+		ChangeAIScript("GARRICK_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("%GARRICK_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -297,7 +297,7 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("SKIE_",OVERRIDE)
+		ChangeAIScript("SKIE_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("%SKIE_JOINED%") 
 		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)

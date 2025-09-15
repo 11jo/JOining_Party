@@ -2,10 +2,10 @@
 
 ACTION_FOR_EACH Death_var IN
 
-// Original Imoen ~%IMOEN_DV%~                       // Imoen
+// Original Imoen ~%IMOEN_DV%~ ~ttimoen~             // Imoen
 // Original Edwin ~Edwin~                            // Edwin
-// Original Jaheira ~Jaheira~                        // Jaheira
-// Original Minsc ~Minsc~                            // Minsc
+// Original Jaheira ~Jaheira~ ~ttjaheir~             // Jaheira
+// Original Minsc ~Minsc~ ~ttminsc~                  // Minsc
 // Original Viconia ~Viconia~                        // Viconia
 // Original Dorn ~Dorn~                              // Dorn
 // Original Neera ~Neera~                            // Neera
@@ -15,7 +15,7 @@ ACTION_FOR_EACH Death_var IN
 
 // Original Ajantis ~Ajantis~                          // Ajantis
 // Original Alora ~Alora~                              // Alora
-// Original Branwen ~Branwen~                          // Branwen
+// Original Branwen ~Branwen~ ~ttbran~                 // Branwen
 // Original Coran ~Coran~                              // Coran
 // Original Dynaheir ~Dynaheir~                        // Dynaheir
 
@@ -30,11 +30,11 @@ ACTION_FOR_EACH Death_var IN
 // Original Montaron ~Montaron~                        // Montaron
 // Original Quayle ~Quayle~                            // Quayle
 // Original Safana ~Safana~                            // Safana
-// Original Sharteel ~Sharteel~ ~Shar-teel~              // Sharteel
+// Original Sharteel ~Sharteel~ ~Shar-teel~            // Sharteel
 // Original Skie ~Skie~                                // Skie
 // Original Tiax ~Tiax~                                // Tiax
 
-// Original Xan ~Xan~                                  // Xan
+// Original Xan ~Xan~ ~ttxan~                          // Xan
 // Original Xzar ~Xzar~                                // Xzar
 // Original Yeslick ~Yeslick~                          // Yeslick
 
@@ -77,14 +77,29 @@ ACTION_FOR_EACH Death_var IN
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
+// Alora BG2
+// Mod Alora BG2 ~CMALORA~
 
-// Mod Alora BG2 ~CMALORA~                                          // Alora BG2
-// Mod Yeslick BG2 ~LK#YESLK~                                       // Yeslick BG2
-// Mod Undying ~cmninaf~ ~callisto~                                 // The Undying
-// Mod Sandra ~BHAALSPW~                                            // Summon Bhaalspawn
-// Mod Nikita ~cmnikita~                                            // NikitaRedux
-// Mod Miriam ~cmgmiriam~                                           // VampireTales
-// Mod Kim ~Kim~                                                    // Kim
+// Yeslick BG2
+// Mod Yeslick BG2 ~LK#YESLK~
+
+// The Undying
+// Mod Undying ~cmninaf~ ~callisto~
+
+// Summon Bhaalspawn
+// Mod Sandra ~BHAALSPW~
+
+// NikitaRedux
+// Mod Nikita ~cmnikita~
+
+// VampireTales
+// Mod Miriam ~cmgmiriam~
+
+// Kim
+// Mod Kim ~Kim~
+
+// Severian
+// Mod Severian ~#Severian~
 
 BEGIN
 
@@ -105,7 +120,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoAllowDead","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_AllowDead","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -123,7 +138,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoInParty","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_InParty","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -149,7 +164,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -157,7 +172,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -165,7 +180,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -174,7 +189,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -233,7 +248,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoAllowDead","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_AllowDead","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -251,7 +266,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoInParty","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_InParty","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -277,7 +292,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -285,7 +300,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -293,7 +308,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -302,7 +317,7 @@ BEGIN
 			SPRINT textToReplace ~\(!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_NoValid","GLOBAL",3)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~

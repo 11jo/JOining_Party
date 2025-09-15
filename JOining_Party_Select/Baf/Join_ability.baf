@@ -1,10 +1,10 @@
 IF
 	Delay(10)
-	Global("JO_Join_ability","GLOBAL",0)
+	Global("JO_Join_ability","LOCALS",0)
 THEN
 	RESPONSE #100
 		ActionOverride(Player1,AddSpecialAbility("jo_join"))
-		SetGlobal("JO_Join_ability","GLOBAL",1)
+		SetGlobal("JO_Join_ability","LOCALS",1)
 		Continue()
 END
 
@@ -13,14 +13,112 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
 END
 
 IF
 	OR(2)
-		HasItem("JO_JOIN",Myself)
-		HasItem("JOMINHP1",Myself)
+		HasItem("JO_JOIN",Player1)
+		HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
 		DestroyItem("JO_JOIN")
 		DestroyItem("JOMINHP1")
+END
+
+// Base
+ 
+// !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
+IF
+	!Global("JO_AllowDead_Myself","LOCALS",0)
+	!InPartyAllowDead(Myself)
+	!Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_AllowDead_Myself","LOCALS",0)
+END
+ 
+// InPartyAllowDead("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
+IF
+	Global("JO_AllowDead_Myself","LOCALS",0)
+	OR(2)
+		InPartyAllowDead(Myself)
+		Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_AllowDead_Myself","LOCALS",1)
+END
+ 
+// !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
+IF
+	!Global("JO_InParty_Myself","LOCALS",0)
+	!InParty(Myself)
+	!Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_InParty_Myself","LOCALS",0)
+END
+ 
+// InParty("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
+IF
+	Global("JO_InParty_Myself","LOCALS",0)
+	OR(2)
+		InParty(Myself)
+		Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_InParty_Myself","LOCALS",1)
+END
+ 
+// !Is(!If)ValidForPartyDialog(ue)
+IF
+	!Global("JO_Valid_Myself","LOCALS",0)
+	OR(4)
+		!IsValidForPartyDialogue(Myself)
+		!IfValidForPartyDialogue(Myself)
+		!IsValidForPartyDialog(Myself)
+		!IfValidForPartyDialog(Myself)
+	!Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Valid_Myself","LOCALS",0)
+END
+ 
+// !Is(!If)ValidForPartyDialog(ue)
+IF
+	!Global("JO_Valid_Myself","LOCALS",0)
+	OR(3)
+		StateCheck(Myself,CD_STATE_NOTVALID)
+		!InMyArea(Myself)
+		!InParty(Myself)
+	!Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Valid_Myself","LOCALS",0)
+END
+ 
+// Is(If)ValidForPartyDialog(ue)
+IF
+	Global("JO_Valid_Myself","LOCALS",0)
+	OR(4)
+		IsValidForPartyDialogue(Myself)
+		IfValidForPartyDialogue(Myself)
+		IsValidForPartyDialog(Myself)
+		IfValidForPartyDialog(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Valid_Myself","LOCALS",1)
+END
+ 
+// Is(If)ValidForPartyDialog(ue)
+IF
+	Global("JO_Valid_Myself","LOCALS",0)
+	InMyArea(Myself)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		InParty(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Valid_Myself","LOCALS",1)
 END
