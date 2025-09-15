@@ -1,10 +1,9 @@
+
 IF
-	Global("JO_Join_InParty_Myself","LOCALS",0)
+	Global("JO_Join_InParty_Myself","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_Join_InParty_Myself","LOCALS",1)
-		SetGlobal("JO_InParty_Myself","LOCALS",1)
-		SetGlobal("JO_AllowDead_Myself","LOCALS",1)
-		SetGlobal("JO_Valid_Myself","LOCALS",1)
+		SetGlobal("JO_Join_InParty_Myself","GLOBAL",1)
+		ActionOverride(Player1,ChangeAIScript("DPLAYER3",DEFAULT))
 		Continue()
 END

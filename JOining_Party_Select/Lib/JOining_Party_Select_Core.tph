@@ -1144,9 +1144,11 @@ COMPILE ~JOining_Party_Select/Baf/JO_JOIN5.baf~ EVALUATE_BUFFER
 
 // DPLAYER3.bcs additions
 
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
+EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
 
-EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability_TOP.baf~ 
+EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability_TOP.baf~ 
+
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability_TOP.baf~ 
 
 		ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
 EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability-BGEE.baf~  EVALUATE_BUFFER

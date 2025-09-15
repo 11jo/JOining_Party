@@ -1,29 +1,13 @@
+
 IF
-	Delay(10)
-	Global("JO_Join_ability","LOCALS",0)
+	Global("JO_Join_InParty_Myself","LOCALS",0)
 THEN
 	RESPONSE #100
-		ActionOverride(Player1,AddSpecialAbility("jo_join"))
-		SetGlobal("JO_Join_ability","LOCALS",1)
+		SetGlobal("JO_Join_InParty_Myself","LOCALS",1)
+		SetGlobal("JO_InParty_Myself","LOCALS",1)
+		SetGlobal("JO_AllowDead_Myself","LOCALS",1)
+		SetGlobal("JO_Valid_Myself","LOCALS",1)
 		Continue()
-END
-
-IF
-	Global("JO_JOIN","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-END
-
-IF
-	OR(2)
-		HasItem("JO_JOIN",Player1)
-		HasItem("JOMINHP1",Player1)
-THEN
-	RESPONSE #100
-		DestroyItem("JO_JOIN")
-		DestroyItem("JOMINHP1")
 END
 
 // Base
@@ -121,4 +105,31 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Valid_Myself","LOCALS",1)
+END
+
+IF
+	Global("JO_Join_ability","LOCALS",0)
+THEN
+	RESPONSE #100
+		ActionOverride(Player1,AddSpecialAbility("jo_join"))
+		SetGlobal("JO_Join_ability","LOCALS",1)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+END
+
+IF
+	OR(2)
+		HasItem("JO_JOIN",Player1)
+		HasItem("JOMINHP1",Player1)
+THEN
+	RESPONSE #100
+		DestroyItem("JO_JOIN")
+		DestroyItem("JOMINHP1")
 END
