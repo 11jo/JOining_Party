@@ -1,3 +1,4 @@
+
 // Base
  
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
@@ -49,12 +50,12 @@ END
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_%Death_var%_Valid","GLOBAL",0)
-	OR(4)
+	OR(5)
 		!IsValidForPartyDialogue(Myself)
 		!IfValidForPartyDialogue(Myself)
 		!IsValidForPartyDialog(Myself)
 		!IfValidForPartyDialog(Myself)
-	!Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
@@ -64,11 +65,11 @@ END
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_%Death_var%_Valid","GLOBAL",0)
-	OR(3)
+	OR(4)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 		!InMyArea(Myself)
 		!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
@@ -77,6 +78,7 @@ END
  
 // Is(If)ValidForPartyDialog(ue)
 IF
+	Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
 	Global("JO_%Death_var%_Valid","GLOBAL",0)
 	OR(4)
 		IsValidForPartyDialogue(Myself)
@@ -91,6 +93,7 @@ END
  
 // Is(If)ValidForPartyDialog(ue)
 IF
+	Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
 	Global("JO_%Death_var%_Valid","GLOBAL",0)
 	InMyArea(Myself)
 	!StateCheck(Myself,CD_STATE_NOTVALID)
@@ -103,7 +106,59 @@ THEN
 		SetGlobal("JO_Valid_Myself","LOCALS",1)
 END
 
-// BG
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Related to Join_ability.baf destroy item before 
+
+IF
+	!Allegiance(Myself,FAMILIAR)
+	OR(2)
+		HasItem("JO_JOIN",Myself)
+		HasItem("JOMINHP1",Myself)
+THEN
+	RESPONSE #100
+		DestroyItem("JO_JOIN")
+		DestroyItem("JOMINHP1")
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Related to Jo_JOINI.baf set statut when Dead but not really
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_DEADLY_DEAD","LOCALS",1)
+		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
+		SetGlobal("JO_Valid_Myself","LOCALS",0)
+END
+
+// Related to Jo_JOINI.baf set statut when No more Dead 
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_DEADLY_DEAD","LOCALS",0)
+		SetGlobal("JO_%Death_var%_Valid","GLOBAL",1)
+		SetGlobal("JO_Valid_Myself","LOCALS",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// First time from party to familiar
 
 IF
 	!Allegiance(Myself,FAMILIAR)
@@ -117,14 +172,32 @@ THEN
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
-		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		EquipItemEx("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(1)
-		ChangeAIScript("%JO_JOIN%",OVERRIDE)
-		ChangeAIScript("JO_JOINI",GENERAL)
 		FaceObject(Player1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
+		ChangeAIScript("JO_JOINI",GENERAL)
+		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 END
+ 
+// fellow travelers (End first time from party to familiar)
+ 
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_TALK","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Switch between familiar and party
 
 IF
 	Global("JO_JOINI","LOCALS",1)
@@ -139,34 +212,108 @@ THEN
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
-		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		EquipItemEx("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(1)
 		// MoveGlobalObject(Myself,Player1)  // JumpToObject(Myself,Player1)
 		SmallWait(1)
-		ChangeAIScript("%JO_JOIN%",OVERRIDE)
-		ChangeAIScript("JO_JOINI",GENERAL)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",NINE_ROUNDS)
-END
- 
-// fellow travelers
- 
-IF
-	Global("JO_JOIN_TALK","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_TALK","LOCALS",0)
-		DisplayStringHead(Myself,~We are now fellow travelers.~)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobalTimer("JO_JOIN_JOIN","GLOBAL",NINE_ROUNDS)
+		ChangeAIScript("JO_JOINI",GENERAL)
+		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 END
 
-// Yeah
+// Yeah Start ( Switch between familiar and party)
 
 IF
+	Allegiance(Myself,FAMILIAR)
+	!Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
 	Delay(1)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOIN_CLEAR","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
+		MoveToObject(Player1)
+		Continue() // Go to Yeah End
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
+		MoveToObject(InPartySlot([PC],1)
+		Continue() // Go to Yeah End
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
+		MoveToObject(InPartySlot([PC],2)
+		Continue() // Go to Yeah End
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
+		MoveToObject(InPartySlot([PC],3)
+		Continue() // Go to Yeah End
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
+		MoveToObject(InPartySlot([PC],4)
+		Continue() // Go to Yeah End
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Yeah End (End Switch between familiar and party)
+
+// Basic without script Global("JO_JOIN_ACTION","LOCALS",0)
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Delay(1)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
@@ -174,27 +321,292 @@ THEN
 		DisplayStringHead(Myself,~Yeah.~)
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
+// All_In_D (We need to adjust our strategy)  !Global("JO_JOIN_ACTION","LOCALS",0)
 
 /*
-// ToB
-
 IF
-	!Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN","LOCALS",1)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",1)
 THEN
 	RESPONSE #100
-		LeaveParty()
-		ChangeEnemyAlly(Myself,FAMILIAR)
-		AddFamiliar()
-		GiveItemCreate("JO_JOIN",Myself,0,0,0)
-		SmallWait(2)
-		GiveItemCreate("JOMINHP1",Myself,0,0,0)
-		SmallWait(2)
-		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
-		SmallWait(2)
-		ChangeAIScript("JO_JOINT",OVERRIDE)
-		FaceObject(Player1)
-		SetGlobal("JO_JOIN","LOCALS",2)
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION1",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION2",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",3)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION3",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",4)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION4",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",5)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION5",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION6",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",7)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION7",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",8)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION8",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",9)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION9",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",10)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION10",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",11)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION11",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",12)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION12",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",13)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION13",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",14)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION14",RACE)
+		DisplayStringHead(Myself,~Yeah.~)
 END
 */
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+// Hit
+
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentLT(Myself,70)
+	!HPPercentLT(Myself,50)
+	!HPPercentLT(Myself,30)
+	!HPPercentLT(Myself,15)
+	!GlobalGT("JO_JOIN_FEELING","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~I took a hit.~)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentLT(Myself,50)
+	!HPPercentLT(Myself,30)
+	!HPPercentLT(Myself,15)
+	!GlobalGT("JO_JOIN_FEELING","LOCALS",1)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I took a heavy blow.~)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentLT(Myself,30)
+	!HPPercentLT(Myself,15)
+	!GlobalGT("JO_JOIN_FEELING","LOCALS",2)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I really don't feel well.~)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentLT(Myself,15)
+	Global("JO_JOIN_FEELING","LOCALS",3)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I'm at the end of me.~)
+END
+
+
+// Heal
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentGT(Myself,29)
+	!HPPercentGT(Myself,49)
+	!HPPercentGT(Myself,70)
+	!HPPercentGT(Myself,99)
+	GlobalGT("JO_JOIN_FEELING","LOCALS",3)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentGT(Myself,49)
+	!HPPercentGT(Myself,79)
+	!HPPercentGT(Myself,99)
+	GlobalGT("JO_JOIN_FEELING","LOCALS",2)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentGT(Myself,79)
+	!HPPercentGT(Myself,99)
+	GlobalGT("JO_JOIN_FEELING","LOCALS",1)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPPercentGT(Myself,99)
+	!Global("JO_JOIN_FEELING","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+END

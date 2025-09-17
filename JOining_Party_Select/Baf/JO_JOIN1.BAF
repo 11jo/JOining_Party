@@ -8,10 +8,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("IMOEN_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("IMOEN2J") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("IMOEN_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -23,10 +24,11 @@ IF
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("IMOEN",OVERRIDE)
 		SetDialog("IMOEN2") // Joined Dialogue for BGEE only
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("IMOEN",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -38,10 +40,11 @@ IF
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("IMOEN2",OVERRIDE)
 		SetDialog("IMOEN2J") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("IMOEN2",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -53,14 +56,17 @@ IF
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("IMOE25",OVERRIDE)
 		SetDialog("IMOEN25J") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("IMOE25",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END 
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
  // Edwin BGEE EET
  
@@ -70,10 +76,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("EDWIN_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("EDWINJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("EDWIN_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -87,10 +94,11 @@ IF
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("EDWIN",OVERRIDE)
 		SetDialog("EDWINJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("EDWIN",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -102,16 +110,19 @@ IF
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDEDWIN",OVERRIDE)
 		SetDialog("BDEDWINJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDEDWIN",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Edwin Global("JO_JOIN_ToB","GLOBAL",1)
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
  // Jaheira BGEE EET
 
@@ -121,10 +132,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("JAHEIRA_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("JAHEIRAJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("JAHEIRA_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -136,10 +148,11 @@ IF
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("JAHEIRA",OVERRIDE)
 		SetDialog("JAHEIJ") // Joined Dialogue for BGEE only
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("JAHEIRA",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -151,10 +164,11 @@ IF
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("JAHEIRA",OVERRIDE)
 		SetDialog("JAHEIRAJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("JAHEIRA",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -166,16 +180,19 @@ IF
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDJAHEIR",OVERRIDE)
 		SetDialog("BDJAHEIJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDJAHEIR",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Jaheira
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
  // Minsc BGEE EET
 
@@ -185,10 +202,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("MINSC_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("MINSCJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("MINSC_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -202,10 +220,11 @@ IF
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("MINSC",OVERRIDE)
 		SetDialog("MINSCJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("MINSC",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -217,16 +236,19 @@ IF
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDMINSC",OVERRIDE)
 		SetDialog("BDMINSCJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDMINSC",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Minsc
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
  // Viconia BGEE EET
 
@@ -236,10 +258,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("VICONIA_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("VICONIJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("VICONIA_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -251,10 +274,11 @@ IF
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("VICONIA",OVERRIDE)
 		SetDialog("VICONJ")  // Joined Dialogue for BGEE only
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("VICONIA",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -266,10 +290,11 @@ IF
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("VICONIA",OVERRIDE)
 		SetDialog("VICONIJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("VICONIA",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -281,16 +306,19 @@ IF
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDVICONI",OVERRIDE)
 		SetDialog("BDVICONJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDVICONI",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Viconia
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
  // Dorn BGEE EET
 
@@ -300,10 +328,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("DORN_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("DORNJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("DORN_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -317,10 +346,11 @@ IF
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("DORN_",OVERRIDE)
 		SetDialog("DORNJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("DORN_",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -332,16 +362,19 @@ IF
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDDORN",OVERRIDE)
 		SetDialog("BDDORNJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDDORN",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Dorn
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
  // Neera BGEE EET
 
@@ -352,10 +385,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("NEERA_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("NEERAJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("NEERA_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -370,10 +404,11 @@ IF
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("NEERA",OVERRIDE)
 		SetDialog("NEERAJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("NEERA",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -385,16 +420,19 @@ IF
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDNEERA",OVERRIDE)
 		SetDialog("BDNEERAJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDNEERA",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Neera
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
  // Rasaad BGEE EET
 
@@ -404,10 +442,11 @@ IF
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("RASAAD_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("RASAADJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("RASAAD_",OVERRIDE) //Script for BGEE in EET
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -421,10 +460,11 @@ IF
 		Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("RASAAD",OVERRIDE)
 		SetDialog("RASAADJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("RASAAD",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
@@ -436,13 +476,16 @@ IF
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDRASAAD",OVERRIDE)
 		SetDialog("BDRASAAJ") 
 		DestroyItem("JO_JOIN")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDRASAAD",OVERRIDE)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
  // ToB Rasaad
 
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////

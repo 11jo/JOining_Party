@@ -1,85 +1,324 @@
 /*
-
-IF
-	HPLT(Myself,5)
-THEN
-	RESPONSE #100
-END
-
-IF
-	HPGT(Myself,5)
-THEN
-	RESPONSE #100
-END
-
-EquipItemEx(S:Object*,I:EquipUnEquip*)
-PlayDead(I:Time*)
-Deactivate(O:Object*)
-Activate(O:Object*)
 AnkhegEmerge()
 AnkhegHide()
-ReallyForceSpellRES(S:RES*,O:Target*) / ApplySpellRES(S:RES*,O:Target)
-MakeUnselectable(I:Time*)
-This action changes the active creature’s selection circle to purple and makes it unselectable. If engine_mode = 0 (default setting for BG1:EE) in engine.lua, the creature continues processing scripts while unselectable. If engine_mode = 1 (default setting for BG2:EE), the creature stops processing scripts while unselectable. For both BG1:EE and BG2:EE, you can use opcode 365 to make creatures unselectable without disabling their script processing.
-#365 (0x16D) Make unselectable
-
+AddXPObject(AddXPObject(O:Object*,I:XP*) )
 */
 
-// To verify if NPC leave and join as intended
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// To verify if NPC leave and join as intended after first time from party to familiar
 
 IF
 	Global("JO_FIRST_JOIN_JOIN","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",THREE_ROUNDS)
+		SetGlobalTimer("JO_JOIN_JOIN","GLOBAL",THREE_ROUNDS)
 		SetGlobal("JO_FIRST_JOIN_JOIN","LOCALS",1)
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 // To avoid Familiar / NPC being in another area when switching in and out of the party
 
+// Player1
+
 IF
+	!Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
 	OR(2)
 		!Range(Player1(Myself),70)
 		!InMyArea(Player1)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player1) // JumpToObject(Myself,Player1)
 END
 
-// Get close to PC before switching same reason as above
+///////////////////////////////////////////////////////////////////////////////
+
+// Player2
+
+// No Player2
 
 IF
+	OR(3)
+		!InParty([PC],1)
+		!Exists(InPartySlot([PC],1)
+		!Dead(InPartySlot([PC],1)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
+		SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
+END
+
+// Linked to Player2
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+	OR(2)
+		!Range(InPartySlot([PC],1(Myself),70)
+		!InMyArea(InPartySlot([PC],1)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveGlobalObject(Myself,InPartySlot([PC],1) // JumpToObject(Myself,Player1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Player3
+
+// No Player3
+
+IF
+	OR(3)
+		!InParty([PC],2)
+		!Exists(InPartySlot([PC],2)
+		!Dead(InPartySlot([PC],2)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
+		SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
+END
+
+// Linked to Player3
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	OR(2)
+		!Range(InPartySlot([PC],1(Myself),70)
+		!InMyArea(InPartySlot([PC],2)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveGlobalObject(Myself,InPartySlot([PC],2) // JumpToObject(Myself,Player1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Player4
+
+// No Player4
+
+IF
+	OR(3)
+		!InParty([PC],3)
+		!Exists(InPartySlot([PC],3)
+		!Dead(InPartySlot([PC],3)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
+		SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
+END
+
+// Linked to Player4
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	OR(2)
+		!Range(InPartySlot([PC],1(Myself),70)
+		!InMyArea(InPartySlot([PC],3)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveGlobalObject(Myself,InPartySlot([PC],3) // JumpToObject(Myself,Player1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Player5
+
+// No Player5
+
+IF
+	OR(3)
+		!InParty([PC],4)
+		!Exists(InPartySlot([PC],4)
+		!Dead(InPartySlot([PC],4)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)
+		SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
+END
+
+// Linked to Player5
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	OR(2)
+		!Range(InPartySlot([PC],1(Myself),70)
+		!InMyArea(InPartySlot([PC],4)
+//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveGlobalObject(Myself,InPartySlot([PC],4) // JumpToObject(Myself,Player1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Get close to PC before switching same reason as above
+
+// Player2
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
+	InMyArea(InPartySlot([PC],1)
+	ActionListEmpty()
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+	NumInPartyLT(6)
+	CombatCounter(0)
+	!Range(InPartySlot([PC],1)(Myself),10)
+THEN
+	RESPONSE #100
+		MoveToObject(InPartySlot([PC],1) // MoveToObjectFollow(Player2)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player3
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
+	InMyArea(InPartySlot([PC],2)
+	ActionListEmpty()
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+	NumInPartyLT(6)
+	CombatCounter(0)
+	!Range(InPartySlot([PC],1)(Myself),10)
+THEN
+	RESPONSE #100
+		MoveToObject(InPartySlot([PC],2) // MoveToObjectFollow(Player3)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player4
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
+	InMyArea(InPartySlot([PC],3)
+	ActionListEmpty()
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+	NumInPartyLT(6)
+	CombatCounter(0)
+	!Range(InPartySlot([PC],1)(Myself),10)
+THEN
+	RESPONSE #100
+		MoveToObject(InPartySlot([PC],3) // MoveToObjectFollow(Player4)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player5
+
+IF
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
+	InMyArea(InPartySlot([PC],4)
+	ActionListEmpty()
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+	NumInPartyLT(6)
+	CombatCounter(0)
+	!Range(InPartySlot([PC],1)(Myself),10)
+THEN
+	RESPONSE #100
+		MoveToObject(InPartySlot([PC],4) // MoveToObjectFollow(Player5)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player1
+
+IF
+	!Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
 	ActionListEmpty()
-	!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 	NumInPartyLT(6)
 	CombatCounter(0)
 	!Range(Player1(Myself),10)
 THEN
 	RESPONSE #100
-		MoveToObject(Player1) // MoveToObjectFollow(Player1) 
+		MoveToObject(Player1) // MoveToObjectFollow(Player1)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
 END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
 // Reintegrate NPC into party periodically (Every NINE_ROUNDS depending of other NPCs and Triggers above) 
 
 // Could be changed to more or less rounds for players convenience
 
 IF
+	Global("JO_JOIN_RANGE","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
 	ActionListEmpty()
-	!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
+	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 	NumInPartyLT(6)
 	CombatCounter(0)
-	Range(Player1(Myself),10)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_RANGE","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOINI","LOCALS",1)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // Yeah (All_in_Baf)
 		DestroyItem("JOMINHP1")
+		SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
 		SmallWait(1)
-		JoinParty()
+		JoinParty() // Go to All_In_Baf Switch between familiar and party
 END
 
 // Maybe something could be done with :
@@ -92,30 +331,17 @@ Returns true if the specified object has joined the party in the last script rou
 Returns true if the specified object has left the party in the last script round. This trigger is only sent to player characters. 
 */
 
+///////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
-
-// Reset
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SCRIPT_Player1","LOCALS",0)
-		SetGlobal("JO_JOIN_SCRIPT_Player2","LOCALS",0)
-		SetGlobal("JO_JOIN_SCRIPT_Player3","LOCALS",0)
-		SetGlobal("JO_JOIN_SCRIPT_Player4","LOCALS",0)
-		SetGlobal("JO_JOIN_SCRIPT","LOCALS",0)
-		Continue()
-END
+// All_In_D (We need to adjust our position)
 
 // Player1
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player1","LOCALS",1)
+	Global("JO_JOIN_SIGHT_Player1","LOCALS",1)
 	Range(Player1(Myself),30)
 THEN
 	RESPONSE #100
@@ -124,15 +350,8 @@ END
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player1","LOCALS",2)
-THEN
-	RESPONSE #100
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player1","LOCALS",3)
-	!Range(Player1(Myself),5)
+	Global("JO_JOIN_CLOSE_Player1","LOCALS",1)
+	Range(Player1(Myself),5)
 THEN
 	RESPONSE #100
 	MoveToObject(Player1)
@@ -142,81 +361,258 @@ END
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player2","LOCALS",1)
-	Range(Player2(Myself),30)
+	Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+	!Range(InPartySlot([PC],1)(Myself),30)
 THEN
 	RESPONSE #100
-	MoveToObject(Player2)
+	MoveToObject(InPartySlot([PC],1))
 END
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player2","LOCALS",2)
+	Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+	!Range(InPartySlot([PC],1)(Myself),5)
 THEN
 	RESPONSE #100
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player2","LOCALS",3)
-	!Range(Player2(Myself),5)
-THEN
-	RESPONSE #100
-	MoveToObject(Player2)
+	MoveToObject(InPartySlot([PC],1))
 END
 
 // Player3
 
+
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player3","LOCALS",1)
-	Range(Player3(Myself),30)
+	Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Range(InPartySlot([PC],2)(Myself),30)
 THEN
 	RESPONSE #100
-	MoveToObject(Player3)
+	MoveToObject(InPartySlot([PC],2))
 END
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player3","LOCALS",2)
+	Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Range(InPartySlot([PC],2)(Myself),5)
 THEN
 	RESPONSE #100
+	MoveToObject(InPartySlot([PC],2))
+END
+
+// Player5
+
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	!Range(InPartySlot([PC],4)(Myself),30)
+THEN
+	RESPONSE #100
+	MoveToObject(InPartySlot([PC],4))
 END
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player3","LOCALS",3)
-	!Range(Player3(Myself),5)
+	Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	!Range(InPartySlot([PC],4)(Myself),5)
 THEN
 	RESPONSE #100
-	MoveToObject(Player3)
+	MoveToObject(InPartySlot([PC],4))
 END
 
-// Player4
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+// Dead but not really  (// Related to AllInBaf set statut when Dead but not really )
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	Gender(Myself,MALE)
+	OR(3)
+		Race(Myself,AASIMAR)
+		Race(Myself,HUMAN)
+		Race(Myself,HALFORC)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	Polymorph(SLEEPING_MAN_HUMAN)
+	ReallyForceSpellRES("JOIN648","Myself")
+END
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	Gender(Myself,FEMALE)
+	OR(3)
+		Race(Myself,AASIMAR)
+		Race(Myself,HUMAN)
+		Race(Myself,HALFORC)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	Polymorph(SLEEPING_WOMAN_HUMAN)
+	ReallyForceSpellRES("JOIN648","Myself")
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	Race(Myself,HALFLING)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	Polymorph(SLEEPING_MAN_HALFLING)
+	ReallyForceSpellRES("JOIN648","Myself")
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	OR(5)
+		Race(Myself,GNOME)
+		Race(Myself,DWARF)
+		Race(Myself,DUERGAR)
+		Race(Myself,DWARF_UNDERDARK)
+		Race(Myself,SVIRFNEBLIN)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	Polymorph(SLEEPING_DWARF)
+	ReallyForceSpellRES("JOIN648","Myself")
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	Gender(Myself,FEMALE)
+	OR(4)
+		Race(Myself,ELF)
+		Race(Myself,TIEFLING)
+		Race(Myself,DROW)
+		Race(Myself,HALF_ELF)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	Polymorph(SLEEPING_WOMAN_ELF)
+	ReallyForceSpellRES("JOIN648","Myself")
+END
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	Gender(Myself,MALE)
+	OR(4)
+		Race(Myself,ELF)
+		Race(Myself,DROW)
+		Race(Myself,HALF_ELF)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	Polymorph(SLEEPING_MAN_ELF)
+	ReallyForceSpellRES("JOIN648","Myself")
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Frennedan
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	Race(Myself,DOPPLEGANGER)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	Polymorph(SLEEPING_FAT_MAN_HUMAN)
+	ReallyForceSpellRES("JOIN648","Myself")
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Other
+
+IF
+	!GlobalGT("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
+	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,5)
+	OR()
+		!Race(Myself,AASIMAR)
+		!Race(Myself,HUMAN)
+		!Race(Myself,HALFORC)
+		!Race(Myself,ELF)
+		!Race(Myself,DROW)
+		!Race(Myself,HALF_ELF)
+		!Race(Myself,GNOME)
+		!Race(Myself,DWARF)
+		!Race(Myself,DUERGAR)
+		!Race(Myself,HALFLING)
+		!Race(Myself,DWARF_UNDERDARK)
+		!Race(Myself,SVIRFNEBLIN)
+THEN
+	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
+	SetSequence(SEQ_DIE)
+	Wait(2)
+	ReallyForceSpellRES("JOIN648","Myself")
+	// Polymorph(SLEEPING_MAN_HUMAN)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// No more Dead  (// Related to AllInBaf set statut when No more Dead )
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player4","LOCALS",1)
-	Range(Player4(Myself),30)
+	HPGT(Myself,4)
+	GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
-	MoveToObject(Player4)
+	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	ReallyForceSpellRES("JOIR648","Myself")
+	SetSequence(SEQ_AWAKE)
 END
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player4","LOCALS",2)
+	HPGT(Myself,4)
+	GlobalGT("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
 THEN
 	RESPONSE #100
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
+	ReallyForceSpellRES("JOIR648","Myself")
+	SetSequence(SEQ_AWAKE)
 END
 
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_SCRIPT_Player4","LOCALS",3)
-	!Range(Player4(Myself),5)
-THEN
-	RESPONSE #100
-	MoveToObject(Player4)
-END
+///////////////////////////////////////////////////////////////////////////////
 
-
+///////////////////////////////////////////////////////////////////////////////

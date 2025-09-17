@@ -1032,6 +1032,18 @@ END
 
 // Files
 
+COPY ~JOIN648.SPL~ ~override~
+		LPF ADD_SPELL_CFEFFECT
+		INT_VAR
+			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Carry on without me...~)
+		END
+
+COPY ~JOIR648.SPL~ ~override~
+		LPF ADD_SPELL_CFEFFECT
+		INT_VAR
+			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Still alive !~)
+		END
+
 COPY_EXISTING ~SCRL72.ITM~ ~override/JO_JOIN.itm~
 	SAY NAME1 ~Engagement~
 	SAY NAME2 ~Engagement~
