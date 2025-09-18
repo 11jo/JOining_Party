@@ -134,8 +134,8 @@ ACTION_FOR_EACH bcs IN
 /////////////////////////// Continuous ///////////////////////////
 
 // Original Imoen ~%IMOEN_BCS%~ ~IMOE25~ ~IMOEN~ ~TTIMOEN~
-// EET_END ~IMOEN_~
-// EET_ODD ~IMOEN2~
+// Original Imoen // EET_END ~IMOEN_~
+// Original Imoen // EET_ODD ~IMOEN2~
 
 BEGIN
 
@@ -149,9 +149,10 @@ END
 // Edwin
 
 ACTION_FOR_EACH bcs IN
+
 // Original Edwin ~%EDWIN_BCS%~ ~EDWI25~
-// EET_END ~EDWIN_~
-// EET_ODD ~EDWIN~
+// Original Edwin // EET_END ~EDWIN_~
+// Original Edwin // EET_ODD ~EDWIN~
 
 BEGIN
 
@@ -165,9 +166,10 @@ END
 // Jaheira
 
 ACTION_FOR_EACH bcs IN
+
 // Original Jaheira ~%JAHEIRA_BCS%~ ~JAHE25~ ~TTJAHEIR~
-// EET_END ~JAHEIRA_~
-// EET_ODD ~JAHEIRA~
+// Original Jaheira // EET_END ~JAHEIRA_~
+// Original Jaheira // EET_ODD ~JAHEIRA~
 
 BEGIN
 
@@ -181,9 +183,10 @@ END
 // Minsc
 
 ACTION_FOR_EACH bcs IN
+
 // Original Minsc ~%MINSC_BCS%~ ~MINS25~ ~TTMINSC~
-// EET_END ~MINSC_~
-// EET_ODD ~MINSC~
+// Original Minsc // EET_END ~MINSC_~
+// Original Minsc // EET_ODD ~MINSC~
 
 BEGIN
 
@@ -197,9 +200,10 @@ END
 // Viconia
 
 ACTION_FOR_EACH bcs IN
+
 // Original Viconia ~%VICONIA_BCS%~ ~VICO25~
-// EET_END ~VICONIA_~
-// EET_ODD ~VICONIA~
+// Original Viconia // EET_END ~VICONIA_~
+// Original Viconia // EET_ODD ~VICONIA~
 
 BEGIN
 
@@ -213,9 +217,10 @@ END
 // Dorn
 
 ACTION_FOR_EACH bcs IN
+
 // Original Dorn ~%DORN_BCS%~ ~DORN25~
-// EET_END ~DORN_~
-// EET_ODD ~DORN~
+// Original Dorn // EET_END ~DORN_~
+// Original Dorn // EET_ODD ~DORN~
 
 BEGIN
 
@@ -229,9 +234,10 @@ END
 // Neera
 
 ACTION_FOR_EACH bcs IN
+
 // Original Neera ~%NEERA_BCS%~ ~NEER25~
-// EET_END ~NEERA_~
-// EET_ODD ~NEERA~
+// Original Neera // EET_END ~NEERA_~
+// Original Neera // EET_ODD ~NEERA~
 
 BEGIN
 
@@ -245,9 +251,10 @@ END
 // Rasaad
 
 ACTION_FOR_EACH bcs IN
+
 // Original Rasaad ~%RASAAD_BCS%~ ~RASA25~
-// EET_END ~RASAAD_~
-// EET_ODD ~RASAAD~
+// Original Rasaad // EET_END ~RASAAD_~
+// Original Rasaad // EET_ODD ~RASAAD~
 
 BEGIN
 
@@ -703,7 +710,6 @@ END
 
 ACTION_FOR_EACH bcs IN
 
-
 // Original Haerdalis ~HAERDALI~ ~HAER25~
 
 BEGIN
@@ -1032,13 +1038,13 @@ END
 
 // Files
 
-COPY ~JOIN648.SPL~ ~override~
+COPY ~JOining_Party_Select/Spl/JOIN648.SPL~ ~override~
 		LPF ADD_SPELL_CFEFFECT
 		INT_VAR
 			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Carry on without me...~)
 		END
 
-COPY ~JOIR648.SPL~ ~override~
+COPY ~JOining_Party_Select/Spl/JOIR648.SPL~ ~override~
 		LPF ADD_SPELL_CFEFFECT
 		INT_VAR
 			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Still alive !~)

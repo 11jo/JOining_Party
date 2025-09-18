@@ -51,10 +51,9 @@ END
 // No Player2
 
 IF
-	OR(3)
-		!InParty([PC],1)
-		!Exists(InPartySlot([PC],1)
-		!Dead(InPartySlot([PC],1)
+	OR(2)
+		!InParty(Player2)
+		!Exists(Player2)
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
@@ -72,12 +71,12 @@ IF
 		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
 	OR(2)
-		!Range(InPartySlot([PC],1(Myself),70)
-		!InMyArea(InPartySlot([PC],1)
+		!Range(Player2(Myself),70)
+		!InMyArea(Player2)
 //	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,InPartySlot([PC],1) // JumpToObject(Myself,Player1)
+		MoveGlobalObject(Myself,Player2) // JumpToObject(Myself,Player1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -87,10 +86,9 @@ END
 // No Player3
 
 IF
-	OR(3)
-		!InParty([PC],2)
-		!Exists(InPartySlot([PC],2)
-		!Dead(InPartySlot([PC],2)
+	OR(2)
+		!InParty(Player3)
+		!Exists(Player3)
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
@@ -108,12 +106,12 @@ IF
 		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
 	OR(2)
-		!Range(InPartySlot([PC],1(Myself),70)
-		!InMyArea(InPartySlot([PC],2)
+		!Range(Player3(Myself),70)
+		!InMyArea(Player3)
 //	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,InPartySlot([PC],2) // JumpToObject(Myself,Player1)
+		MoveGlobalObject(Myself,Player3) // JumpToObject(Myself,Player1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -123,10 +121,9 @@ END
 // No Player4
 
 IF
-	OR(3)
-		!InParty([PC],3)
-		!Exists(InPartySlot([PC],3)
-		!Dead(InPartySlot([PC],3)
+	OR(2)
+		!InParty(Player4)
+		!Exists(Player4)
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
@@ -144,12 +141,12 @@ IF
 		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
 	OR(2)
-		!Range(InPartySlot([PC],1(Myself),70)
-		!InMyArea(InPartySlot([PC],3)
+		!Range(Player4(Myself),70)
+		!InMyArea(Player4)
 //	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,InPartySlot([PC],3) // JumpToObject(Myself,Player1)
+		MoveGlobalObject(Myself,Player4) // JumpToObject(Myself,Player1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -159,10 +156,9 @@ END
 // No Player5
 
 IF
-	OR(3)
-		!InParty([PC],4)
-		!Exists(InPartySlot([PC],4)
-		!Dead(InPartySlot([PC],4)
+	OR(2)
+		!InParty(Player5)
+		!Exists(Player5)
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
@@ -180,12 +176,12 @@ IF
 		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
 	OR(2)
-		!Range(InPartySlot([PC],1(Myself),70)
-		!InMyArea(InPartySlot([PC],4)
+		!Range(Player5(Myself),70)
+		!InMyArea(Player5)
 //	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,InPartySlot([PC],4) // JumpToObject(Myself,Player1)
+		MoveGlobalObject(Myself,Player5) // JumpToObject(Myself,Player1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -201,15 +197,15 @@ IF
 		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
-	InMyArea(InPartySlot([PC],1)
+	InMyArea(Player2)
 	ActionListEmpty()
 	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 	NumInPartyLT(6)
 	CombatCounter(0)
-	!Range(InPartySlot([PC],1)(Myself),10)
+	!Range(Player2(Myself),10)
 THEN
 	RESPONSE #100
-		MoveToObject(InPartySlot([PC],1) // MoveToObjectFollow(Player2)
+		MoveToObject(Player2) // MoveToObjectFollow(Player2)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
 END
 
@@ -220,15 +216,15 @@ IF
 		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
-	InMyArea(InPartySlot([PC],2)
+	InMyArea(Player3)
 	ActionListEmpty()
 	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 	NumInPartyLT(6)
 	CombatCounter(0)
-	!Range(InPartySlot([PC],1)(Myself),10)
+	!Range(Player3(Myself),10)
 THEN
 	RESPONSE #100
-		MoveToObject(InPartySlot([PC],2) // MoveToObjectFollow(Player3)
+		MoveToObject(Player3) // MoveToObjectFollow(Player3)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
 END
 
@@ -239,15 +235,15 @@ IF
 		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
-	InMyArea(InPartySlot([PC],3)
+	InMyArea(Player4)
 	ActionListEmpty()
 	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 	NumInPartyLT(6)
 	CombatCounter(0)
-	!Range(InPartySlot([PC],1)(Myself),10)
+	!Range(Player4(Myself),10)
 THEN
 	RESPONSE #100
-		MoveToObject(InPartySlot([PC],3) // MoveToObjectFollow(Player4)
+		MoveToObject(Player4) // MoveToObjectFollow(Player4)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
 END
 
@@ -258,15 +254,15 @@ IF
 		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
-	InMyArea(InPartySlot([PC],4)
+	InMyArea(Player5)
 	ActionListEmpty()
 	!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 	NumInPartyLT(6)
 	CombatCounter(0)
-	!Range(InPartySlot([PC],1)(Myself),10)
+	!Range(Player5(Myself),10)
 THEN
 	RESPONSE #100
-		MoveToObject(InPartySlot([PC],4) // MoveToObjectFollow(Player5)
+		MoveToObject(Player5) // MoveToObjectFollow(Player5)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
 END
 
@@ -362,19 +358,19 @@ END
 IF
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
-	!Range(InPartySlot([PC],1)(Myself),30)
+	!Range(Player2(Myself),30)
 THEN
 	RESPONSE #100
-	MoveToObject(InPartySlot([PC],1))
+	MoveToObject(Player2)
 END
 
 IF
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
-	!Range(InPartySlot([PC],1)(Myself),5)
+	!Range(Player2(Myself),5)
 THEN
 	RESPONSE #100
-	MoveToObject(InPartySlot([PC],1))
+	MoveToObject(Player2)
 END
 
 // Player3
@@ -383,20 +379,42 @@ END
 IF
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
-	!Range(InPartySlot([PC],2)(Myself),30)
+	!Range(Player3(Myself),30)
 THEN
 	RESPONSE #100
-	MoveToObject(InPartySlot([PC],2))
+	MoveToObject(Player3)
 END
 
 IF
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
-	!Range(InPartySlot([PC],2)(Myself),5)
+	!Range(Player3(Myself),5)
 THEN
 	RESPONSE #100
-	MoveToObject(InPartySlot([PC],2))
+	MoveToObject(Player3)
 END
+
+// Player4
+
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Range(Player4(Myself),30)
+THEN
+	RESPONSE #100
+	MoveToObject(Player4)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Range(Player4(Myself),5)
+THEN
+	RESPONSE #100
+	MoveToObject(Player4)
+END
+
 
 // Player5
 
@@ -404,19 +422,19 @@ END
 IF
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
-	!Range(InPartySlot([PC],4)(Myself),30)
+	!Range(Player5(Myself),30)
 THEN
 	RESPONSE #100
-	MoveToObject(InPartySlot([PC],4))
+	MoveToObject(Player5)
 END
 
 IF
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
-	!Range(InPartySlot([PC],4)(Myself),5)
+	!Range(Player5(Myself),5)
 THEN
 	RESPONSE #100
-	MoveToObject(InPartySlot([PC],4))
+	MoveToObject(Player5)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -441,7 +459,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	Polymorph(SLEEPING_MAN_HUMAN)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 END
 
 IF
@@ -459,7 +477,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	Polymorph(SLEEPING_WOMAN_HUMAN)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -475,7 +493,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	Polymorph(SLEEPING_MAN_HALFLING)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -485,19 +503,19 @@ IF
 	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,5)
-	OR(5)
+	OR(3)
 		Race(Myself,GNOME)
 		Race(Myself,DWARF)
 		Race(Myself,DUERGAR)
-		Race(Myself,DWARF_UNDERDARK)
-		Race(Myself,SVIRFNEBLIN)
+//		Race(Myself,DWARF_UNDERDARK)
+//		Race(Myself,SVIRFNEBLIN)
 THEN
 	RESPONSE #100
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	Polymorph(SLEEPING_DWARF)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -507,10 +525,10 @@ IF
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,5)
 	Gender(Myself,FEMALE)
-	OR(4)
+	OR(3)
 		Race(Myself,ELF)
 		Race(Myself,TIEFLING)
-		Race(Myself,DROW)
+//		Race(Myself,DROW)
 		Race(Myself,HALF_ELF)
 THEN
 	RESPONSE #100
@@ -518,7 +536,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	Polymorph(SLEEPING_WOMAN_ELF)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 END
 
 IF
@@ -526,9 +544,9 @@ IF
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,5)
 	Gender(Myself,MALE)
-	OR(4)
+	OR(2)
 		Race(Myself,ELF)
-		Race(Myself,DROW)
+//		Race(Myself,DROW)
 		Race(Myself,HALF_ELF)
 THEN
 	RESPONSE #100
@@ -536,7 +554,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	Polymorph(SLEEPING_MAN_ELF)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -554,7 +572,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	Polymorph(SLEEPING_FAT_MAN_HUMAN)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -565,25 +583,25 @@ IF
 	!GlobalGT("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,5)
-	OR()
+	OR(9)
 		!Race(Myself,AASIMAR)
 		!Race(Myself,HUMAN)
 		!Race(Myself,HALFORC)
 		!Race(Myself,ELF)
-		!Race(Myself,DROW)
+//		!Race(Myself,DROW)
 		!Race(Myself,HALF_ELF)
 		!Race(Myself,GNOME)
 		!Race(Myself,DWARF)
 		!Race(Myself,DUERGAR)
 		!Race(Myself,HALFLING)
-		!Race(Myself,DWARF_UNDERDARK)
-		!Race(Myself,SVIRFNEBLIN)
+//		!Race(Myself,DWARF_UNDERDARK)
+//		!Race(Myself,SVIRFNEBLIN)
 THEN
 	RESPONSE #100
 	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
 	SetSequence(SEQ_DIE)
 	Wait(2)
-	ReallyForceSpellRES("JOIN648","Myself")
+	ReallyForceSpellRES("JOIN648",Myself)
 	// Polymorph(SLEEPING_MAN_HUMAN)
 END
 
@@ -598,7 +616,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	ReallyForceSpellRES("JOIR648","Myself")
+	ReallyForceSpellRES("JOIR648",Myself)
 	SetSequence(SEQ_AWAKE)
 END
 
@@ -609,7 +627,7 @@ IF
 THEN
 	RESPONSE #100
 	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
-	ReallyForceSpellRES("JOIR648","Myself")
+	ReallyForceSpellRES("JOIR648",Myself)
 	SetSequence(SEQ_AWAKE)
 END
 

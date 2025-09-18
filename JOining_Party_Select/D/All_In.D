@@ -57,7 +57,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 													SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 													SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
 //	IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),0)~
+	IF ~InPartySlot(LastTalkedToBy,0)~
 		THEN REPLY ~Stay on sight.~
 			DO ~SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",1)
 					SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -69,7 +69,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 					SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 					SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 					SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),0)~
+	IF ~InPartySlot(LastTalkedToBy,0)~
 		THEN REPLY ~Stay close.~
 			DO ~SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",1)
 					SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
@@ -81,7 +81,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 					SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 					SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 					SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),1)~
+	IF ~InPartySlot(LastTalkedToBy,1)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -93,7 +93,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),1)~
+	IF ~InPartySlot(LastTalkedToBy,1)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -105,7 +105,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),2)~
+	IF ~InPartySlot(LastTalkedToBy,2)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -117,7 +117,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),2)~
+	IF ~InPartySlot(LastTalkedToBy,2)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -129,7 +129,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),3)~
+	IF ~InPartySlot(LastTalkedToBy,3)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -141,7 +141,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),3)~
+	IF ~InPartySlot(LastTalkedToBy,3)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -153,7 +153,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),4~
+	IF ~InPartySlot(LastTalkedToBy,4)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -165,7 +165,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy(Myself),4)~
+	IF ~InPartySlot(LastTalkedToBy,4)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)

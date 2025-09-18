@@ -4,8 +4,9 @@
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
 	!Global("JO_%Death_var%_AllowDead","GLOBAL",0)
-	!InPartyAllowDead(Myself)
-	!Allegiance(Myself,FAMILIAR)
+	OR(2)
+		!InPartyAllowDead(Myself)
+		!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_AllowDead","GLOBAL",0)
@@ -46,7 +47,8 @@ THEN
 		SetGlobal("JO_%Death_var%_InParty","GLOBAL",1)
 		SetGlobal("JO_InParty_Myself","LOCALS",1)
 END
- 
+
+/*
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_%Death_var%_Valid","GLOBAL",0)
@@ -56,26 +58,33 @@ IF
 		!IsValidForPartyDialog(Myself)
 		!IfValidForPartyDialog(Myself)
 		Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
+	OR(2)
+		InParty(Myself)
+		Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
 		SetGlobal("JO_Valid_Myself","LOCALS",0)
 END
+ */
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_%Death_var%_Valid","GLOBAL",0)
-	OR(4)
+	OR(3)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 		!InMyArea(Myself)
-		!InParty(Myself)
 		Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
+	OR(2)
+		InParty(Myself)
+		Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
 		SetGlobal("JO_Valid_Myself","LOCALS",0)
 END
  
+ /*
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
@@ -85,11 +94,15 @@ IF
 		IfValidForPartyDialogue(Myself)
 		IsValidForPartyDialog(Myself)
 		IfValidForPartyDialog(Myself)
+	OR(2)
+		InParty(Myself)
+		Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",1)
 		SetGlobal("JO_Valid_Myself","LOCALS",1)
 END
+ */
  
 // Is(If)ValidForPartyDialog(ue)
 IF
@@ -172,7 +185,7 @@ THEN
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
-		EquipItemEx("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(1)
 		FaceObject(Player1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
@@ -212,7 +225,7 @@ THEN
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
-		EquipItemEx("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(1)
 		// MoveGlobalObject(Myself,Player1)  // JumpToObject(Myself,Player1)
 		SmallWait(1)
@@ -255,7 +268,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(InPartySlot([PC],1)
+		MoveToObject(Player2)
 		Continue() // Go to Yeah End
 END
 
@@ -269,7 +282,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(InPartySlot([PC],2)
+		MoveToObject(Player3)
 		Continue() // Go to Yeah End
 END
 
@@ -283,7 +296,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(InPartySlot([PC],3)
+		MoveToObject(Player4)
 		Continue() // Go to Yeah End
 END
 
@@ -297,7 +310,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(InPartySlot([PC],4)
+		MoveToObject(Player5)
 		Continue() // Go to Yeah End
 END
 

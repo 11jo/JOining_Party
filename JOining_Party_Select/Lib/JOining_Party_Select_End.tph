@@ -1,1582 +1,262 @@
 
-///////////////////////////////////////////////////////////////////////////
-
-// SoD
-
-ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN
-
-	COPY_EXISTING_REGEXP ~BDRHONDA.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(5)\)
-\(^[%TAB% ]*!Allegiance(Myself,NEUTRAL)\)
-\(^[%TAB% ]*OR(4)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(8)
-	!Allegiance(Myself,NEUTRAL)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
+//JOINABLE NPCS ARRAY MACRO__________________________________________________________
+//
+DEFINE_ACTION_MACRO JOINABLE_NPC_ARRAYS BEGIN
+	//PDIALOG.2DA exists in all games
+	ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~PDIALOG~ => ~~ END
+	//Check PDIALOG.2DA file variants referenced in CAMPAIGN.2DA
+	ACTION_IF FILE_EXISTS_IN_GAME ~CAMPAIGN.2DA~ BEGIN
+		COPY_EXISTING ~CAMPAIGN.2DA~ ~CAMPAIGN.2DA~
+			COUNT_2DA_ROWS 32 "cntrow"
+			FOR (i = 0; i < cntrow; i = i + 1) BEGIN
+				READ_2DA_ENTRY i 11 32 file
+				TO_UPPER file
+				DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~%file%~ => ~~ END
+			END
+		BUT_ONLY
+	END
+	//Generate array with joinable NPC DV
+	ACTION_PHP_EACH JOINABLE_NPC_ARRAY_2da AS file => ~~ BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN
+			COPY_EXISTING ~%file%.2da~ ~override~
+				COUNT_2DA_ROWS 3 "cntrow"
+				FOR (i = 1; i < cntrow; i = i + 1) BEGIN
+					READ_2DA_ENTRY i 0 3 "dv"
+					TO_UPPER dv
+					DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN ~%dv%~ => ~~ END
+				END
+			BUT_ONLY
 		END
 	END
-
-	COPY_EXISTING_REGEXP ~bd0103.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*InMyArea("shar-teel")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
-	InMyArea("shar-teel")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
+	//Generate array with joinable NPC cre files
+	COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
+		READ_ASCII DEATHVAR "dv" (32) NULL
+		TO_UPPER dv
+		PATCH_IF VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
+			DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
 		END
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InPartyAllowDead("Sharteel")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~InPartyAllowDead("Sharteel")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
+		PATCH_IF NOT VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
+			DEFINE_ASSOCIATIVE_ARRAY NON_JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
 		END
-	END
-
-	COPY_EXISTING_REGEXP ~BDCORWIN.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("khalid")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("khalid")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDCORWIN.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDDORN.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("mkhiin")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("mkhiin")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDDORN.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDDYNAHE.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("glint")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("glint")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDDYNAHE.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDKHALID.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("VOGHILN")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("VOGHILN")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDKHALID.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDMINSC.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("baeloth")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("baeloth")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDMINSC.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDMKHIIN.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("dynaheir")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("dynaheir")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDMKHIIN.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDNEERA.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("baeloth")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("baeloth")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDNEERA.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDSAFANA.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("corwin")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("corwin")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDSAFANA.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDVICONI.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("corwin")\)
-\(^[%TAB% ]*OR(2)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("corwin")~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // BDVICONI.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~BDIMOEN.DLG~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Global("bd_dynaheir_response","LOCALS",1)\)
-\(^[%TAB% ]*OR(4)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	Global("bd_dynaheir_response","LOCALS",1)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-	END
-	
-	COPY_EXISTING_REGEXP ~BDJULANN.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Global("Jaheira1","LOCALS",1)\)
-\(^[%TAB% ]*OR(4)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	Global("Jaheira1","LOCALS",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(OR(5)\)
-\(^[%TAB% ]*StateCheck("Minsc",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*!InMyArea("Minsc")\)
-\(^[%TAB% ]*!Allegiance("Minsc",FAMILIAR)\)
-\(^[%TAB% ]*!InParty("Minsc")\)
-\(^[%TAB% ]*OR(4)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(8)
-	StateCheck("Minsc",CD_STATE_NOTVALID)
-	!InMyArea("Minsc")
-	!Allegiance("Minsc",FAMILIAR)
-	!InParty("Minsc")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BYSTAND1.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~BDKHALID.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(3)\)
-\(^[%TAB% ]*!See("jaheira")\)
-\(^[%TAB% ]*Dead("jaheira")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	!See("jaheira")
-	Dead("jaheira")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BYSTAND1.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~BDMEROME.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*Class(Player1,CLERIC_ALL)\)
-\(^[%TAB% ]*Allegiance("Glint",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Glint")\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	Class(Player1,CLERIC_ALL)
-	Allegiance("Glint",FAMILIAR)
-	InParty("Glint")
-	Allegiance("Viconia",FAMILIAR)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(OR(3)\)
-\(^[%TAB% ]*Class(Player1,CLERIC_ALL)\)
-\(^[%TAB% ]*InParty("Glint")\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
-	Class(Player1,CLERIC_ALL)
-	InParty("Glint")
-	Allegiance("Viconia",FAMILIAR)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BYSTAND1.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~BDRIGAH.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*InMyArea("Minsc")\)
-\(^[%TAB% ]*!StateCheck("Minsc",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Minsc",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Minsc")\)
-\(^[%TAB% ]*InMyArea("Dynaheir")\)
-\(^[%TAB% ]*!StateCheck("Dynaheir",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(10)
-	InMyArea("Minsc")
-	!StateCheck("Minsc",CD_STATE_NOTVALID)
-	Allegiance("Minsc",FAMILIAR)
-	InParty("Minsc")
-	InMyArea("Dynaheir")
-	!StateCheck("Dynaheir",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*InMyArea("Minsc")\)
-\(^[%TAB% ]*!StateCheck("Minsc",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Minsc",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Minsc")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("Dynaheir")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7)
-	InMyArea("Minsc")
-	!StateCheck("Minsc",CD_STATE_NOTVALID)
-	Allegiance("Minsc",FAMILIAR)
-	InParty("Minsc")
-	IsValidForPartyDialogue("Dynaheir")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BDRIGAH.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~TARIS.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*GlobalLT("DORNPLOT","GLOBAL",2)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	GlobalLT("DORNPLOT","GLOBAL",2)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BYSTAND1.dlg
-	END
-
-END // SoD END
-
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
-
-ACTION_IF (GAME_IS ~eet~) BEGIN 
-
-	COPY_EXISTING_REGEXP ~DORNJ_.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(28)\)
-\(^[%TAB% ]*InMyArea("Dynaheir")\)
-\(^[%TAB% ]*!StateCheck("Dynaheir",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Dynaheir",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Dynaheir")\)
-\(^[%TAB% ]*InMyArea("imoen2")\)
-\(^[%TAB% ]*!StateCheck("imoen2",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("imoen2",FAMILIAR)\)
-\(^[%TAB% ]*InParty("imoen2")\)
-\(^[%TAB% ]*InMyArea("Khalid")\)
-\(^[%TAB% ]*!StateCheck("Khalid",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Khalid",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Khalid")\)
-\(^[%TAB% ]*InMyArea("Minsc")\)
-\(^[%TAB% ]*!StateCheck("Minsc",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Minsc",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Minsc")\)
-\(^[%TAB% ]*InMyArea("Alora")\)
-\(^[%TAB% ]*!StateCheck("Alora",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Alora",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Alora")\)
-\(^[%TAB% ]*InMyArea("Coran")\)
-\(^[%TAB% ]*!StateCheck("Coran",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Coran",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Coran")\)
-\(^[%TAB% ]*InMyArea("Kivan")\)
-\(^[%TAB% ]*!StateCheck("Kivan",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Kivan",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Kivan")\)
-\(^[%TAB% ]*InMyArea("Xan")\)
-\(^[%TAB% ]*!StateCheck("Xan",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Xan",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Xan")\)
-\(^[%TAB% ]*InMyArea("Branwen")\)
-\(^[%TAB% ]*!StateCheck("Branwen",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Branwen",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Branwen")\)
-\(^[%TAB% ]*InMyArea("Faldorn")\)
-\(^[%TAB% ]*!StateCheck("Faldorn",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Faldorn",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Faldorn")\)
-\(^[%TAB% ]*InMyArea("Jaheira")\)
-\(^[%TAB% ]*!StateCheck("Jaheira",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Jaheira",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Jaheira")\)
-\(^[%TAB% ]*InMyArea("Skie")\)
-\(^[%TAB% ]*!StateCheck("Skie",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Skie",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Skie")\)
-\(^[%TAB% ]*InMyArea("Garrick")\)
-\(^[%TAB% ]*!StateCheck("Garrick",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Garrick",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Garrick")\)
-\(^[%TAB% ]*InMyArea("Quayle")\)
-\(^[%TAB% ]*!StateCheck("Quayle",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Quayle",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Quayle")\)
-\(^[%TAB% ]*InMyArea("Safana")\)
-\(^[%TAB% ]*!StateCheck("Safana",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Safana",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Safana")\)
-\(^[%TAB% ]*InMyArea("Edwin")\)
-\(^[%TAB% ]*!StateCheck("Edwin",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Edwin",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Edwin")\)
-\(^[%TAB% ]*InMyArea("Kagain")\)
-\(^[%TAB% ]*!StateCheck("Kagain",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Kagain",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Kagain")\)
-\(^[%TAB% ]*InMyArea("Eldoth")\)
-\(^[%TAB% ]*!StateCheck("Eldoth",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Eldoth",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Eldoth")\)
-\(^[%TAB% ]*InMyArea("Montaron")\)
-\(^[%TAB% ]*!StateCheck("Montaron",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Montaron",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Montaron")\)
-\(^[%TAB% ]*InMyArea("Viconia")\)
-\(^[%TAB% ]*!StateCheck("Viconia",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Viconia")\)
-\(^[%TAB% ]*InMyArea("Sharteel")\)
-\(^[%TAB% ]*!StateCheck("Sharteel",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Sharteel",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Sharteel")\)
-\(^[%TAB% ]*InMyArea("Tiax")\)
-\(^[%TAB% ]*!StateCheck("Tiax",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Tiax",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Tiax")\)
-\(^[%TAB% ]*InMyArea("Xzar")\)
-\(^[%TAB% ]*!StateCheck("Xzar",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Xzar",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Xzar")\)
-\(^[%TAB% ]*InMyArea("Rasaad")\)
-\(^[%TAB% ]*!StateCheck("Rasaad",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Rasaad",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Rasaad")\)
-\(^[%TAB% ]*InMyArea("Neera")\)
-\(^[%TAB% ]*!StateCheck("Neera",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Neera",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Neera")\)
-\(^[%TAB% ]*InMyArea("Baeloth")\)
-\(^[%TAB% ]*!StateCheck("Baeloth",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Baeloth",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Baeloth")\)
-\(^[%TAB% ]*InMyArea("Yeslick")\)
-\(^[%TAB% ]*!StateCheck("Yeslick",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Yeslick",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Yeslick")\)
-\(^[%TAB% ]*InMyArea("Ajantis")\)
-\(^[%TAB% ]*!StateCheck("Ajantis",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Ajantis",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Ajantis")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(46)
-InMyArea("Dynaheir")
-!StateCheck("Dynaheir",CD_STATE_NOTVALID)
-InMyArea("imoen2")
-!StateCheck("imoen2",CD_STATE_NOTVALID)
-InMyArea("Khalid")
-!StateCheck("Khalid",CD_STATE_NOTVALID)
-InMyArea("Minsc")
-!StateCheck("Minsc",CD_STATE_NOTVALID)
-InMyArea("Alora")
-!StateCheck("Alora",CD_STATE_NOTVALID)
-InMyArea("Coran")
-!StateCheck("Coran",CD_STATE_NOTVALID)
-InMyArea("Kivan")
-!StateCheck("Kivan",CD_STATE_NOTVALID)
-InMyArea("Xan")
-!StateCheck("Xan",CD_STATE_NOTVALID)
-InMyArea("Branwen")
-!StateCheck("Branwen",CD_STATE_NOTVALID)
-InMyArea("Faldorn")
-!StateCheck("Faldorn",CD_STATE_NOTVALID)
-InMyArea("Jaheira")
-!StateCheck("Jaheira",CD_STATE_NOTVALID)
-InMyArea("Skie")
-!StateCheck("Skie",CD_STATE_NOTVALID)
-InMyArea("Garrick")
-!StateCheck("Garrick",CD_STATE_NOTVALID)
-InMyArea("Quayle")
-!StateCheck("Quayle",CD_STATE_NOTVALID)
-InMyArea("Safana")
-!StateCheck("Safana",CD_STATE_NOTVALID)
-InMyArea("Edwin")
-!StateCheck("Edwin",CD_STATE_NOTVALID)
-InMyArea("Kagain")
-!StateCheck("Kagain",CD_STATE_NOTVALID)
-InMyArea("Eldoth")
-!StateCheck("Eldoth",CD_STATE_NOTVALID)
-InMyArea("Montaron")
-!StateCheck("Montaron",CD_STATE_NOTVALID)
-InMyArea("Viconia")
-!StateCheck("Viconia",CD_STATE_NOTVALID)
-InMyArea("Sharteel")
-!StateCheck("Sharteel",CD_STATE_NOTVALID)
-InMyArea("Tiax")
-!StateCheck("Tiax",CD_STATE_NOTVALID)
-InMyArea("Xzar")
-!StateCheck("Xzar",CD_STATE_NOTVALID)
-InMyArea("Rasaad")
-!StateCheck("Rasaad",CD_STATE_NOTVALID)
-InMyArea("Neera")
-!StateCheck("Neera",CD_STATE_NOTVALID)
-InMyArea("Baeloth")
-!StateCheck("Baeloth",CD_STATE_NOTVALID)
-InMyArea("Yeslick")
-!StateCheck("Yeslick",CD_STATE_NOTVALID)
-InMyArea("Ajantis")
-!StateCheck("Ajantis",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(OR(28)\)
-\(^[%TAB% ]*IsValidForPartyDialogue("DYNAHEIR")\)
-\(^[%TAB% ]*InMyArea("imoen2")\)
-\(^[%TAB% ]*!StateCheck("imoen2",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("imoen2",FAMILIAR)\)
-\(^[%TAB% ]*InParty("imoen2")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("KHALID")\)
-\(^[%TAB% ]*InMyArea("Minsc")\)
-\(^[%TAB% ]*!StateCheck("Minsc",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Minsc",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Minsc")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("ALORA")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("CORAN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("KIVAN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("XAN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("BRANWEN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("FALDORN")\)
-\(^[%TAB% ]*InMyArea("Jaheira")\)
-\(^[%TAB% ]*!StateCheck("Jaheira",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Jaheira",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Jaheira")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("SKIE")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("GARRICK")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("QUAYLE")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("SAFANA")\)
-\(^[%TAB% ]*InMyArea("Edwin")\)
-\(^[%TAB% ]*!StateCheck("Edwin",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Edwin",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Edwin")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("KAGAIN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("ELDOTH")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("MONTARON")\)
-\(^[%TAB% ]*InMyArea("Viconia")\)
-\(^[%TAB% ]*!StateCheck("Viconia",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Viconia")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("SHARTEEL")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("TIAX")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("XZAR")\)
-\(^[%TAB% ]*InMyArea("Rasaad")\)
-\(^[%TAB% ]*!StateCheck("Rasaad",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Rasaad",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Rasaad")\)
-\(^[%TAB% ]*InMyArea("Neera")\)
-\(^[%TAB% ]*!StateCheck("Neera",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Neera",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Neera")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("BAELOTH")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("YESLICK")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("AJANTIS")\)
-~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(46)
-InMyArea("Dynaheir")
-!StateCheck("Dynaheir",CD_STATE_NOTVALID)
-InMyArea("imoen2")
-!StateCheck("imoen2",CD_STATE_NOTVALID)
-InMyArea("Khalid")
-!StateCheck("Khalid",CD_STATE_NOTVALID)
-InMyArea("Minsc")
-!StateCheck("Minsc",CD_STATE_NOTVALID)
-InMyArea("Alora")
-!StateCheck("Alora",CD_STATE_NOTVALID)
-InMyArea("Coran")
-!StateCheck("Coran",CD_STATE_NOTVALID)
-InMyArea("Kivan")
-!StateCheck("Kivan",CD_STATE_NOTVALID)
-InMyArea("Xan")
-!StateCheck("Xan",CD_STATE_NOTVALID)
-InMyArea("Branwen")
-!StateCheck("Branwen",CD_STATE_NOTVALID)
-InMyArea("Faldorn")
-!StateCheck("Faldorn",CD_STATE_NOTVALID)
-InMyArea("Jaheira")
-!StateCheck("Jaheira",CD_STATE_NOTVALID)
-InMyArea("Skie")
-!StateCheck("Skie",CD_STATE_NOTVALID)
-InMyArea("Garrick")
-!StateCheck("Garrick",CD_STATE_NOTVALID)
-InMyArea("Quayle")
-!StateCheck("Quayle",CD_STATE_NOTVALID)
-InMyArea("Safana")
-!StateCheck("Safana",CD_STATE_NOTVALID)
-InMyArea("Edwin")
-!StateCheck("Edwin",CD_STATE_NOTVALID)
-InMyArea("Kagain")
-!StateCheck("Kagain",CD_STATE_NOTVALID)
-InMyArea("Eldoth")
-!StateCheck("Eldoth",CD_STATE_NOTVALID)
-InMyArea("Montaron")
-!StateCheck("Montaron",CD_STATE_NOTVALID)
-InMyArea("Viconia")
-!StateCheck("Viconia",CD_STATE_NOTVALID)
-InMyArea("Sharteel")
-!StateCheck("Sharteel",CD_STATE_NOTVALID)
-InMyArea("Tiax")
-!StateCheck("Tiax",CD_STATE_NOTVALID)
-InMyArea("Xzar")
-!StateCheck("Xzar",CD_STATE_NOTVALID)
-InMyArea("Rasaad")
-!StateCheck("Rasaad",CD_STATE_NOTVALID)
-InMyArea("Neera")
-!StateCheck("Neera",CD_STATE_NOTVALID)
-InMyArea("Baeloth")
-!StateCheck("Baeloth",CD_STATE_NOTVALID)
-InMyArea("Yeslick")
-!StateCheck("Yeslick",CD_STATE_NOTVALID)
-InMyArea("Ajantis")
-!StateCheck("Ajantis",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // DORNJ_.dlg
-	END
+	BUT_ONLY
 END
-
-	COPY_EXISTING_REGEXP ~DORNJ.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(28)\)
-\(^[%TAB% ]*InMyArea("Dynaheir")\)
-\(^[%TAB% ]*!StateCheck("Dynaheir",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Dynaheir",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Dynaheir")\)
-\(^[%TAB% ]*InMyArea("imoen2")\)
-\(^[%TAB% ]*!StateCheck("imoen2",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("imoen2",FAMILIAR)\)
-\(^[%TAB% ]*InParty("imoen2")\)
-\(^[%TAB% ]*InMyArea("Khalid")\)
-\(^[%TAB% ]*!StateCheck("Khalid",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Khalid",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Khalid")\)
-\(^[%TAB% ]*InMyArea("Minsc")\)
-\(^[%TAB% ]*!StateCheck("Minsc",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Minsc",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Minsc")\)
-\(^[%TAB% ]*InMyArea("Alora")\)
-\(^[%TAB% ]*!StateCheck("Alora",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Alora",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Alora")\)
-\(^[%TAB% ]*InMyArea("Coran")\)
-\(^[%TAB% ]*!StateCheck("Coran",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Coran",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Coran")\)
-\(^[%TAB% ]*InMyArea("Kivan")\)
-\(^[%TAB% ]*!StateCheck("Kivan",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Kivan",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Kivan")\)
-\(^[%TAB% ]*InMyArea("Xan")\)
-\(^[%TAB% ]*!StateCheck("Xan",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Xan",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Xan")\)
-\(^[%TAB% ]*InMyArea("Branwen")\)
-\(^[%TAB% ]*!StateCheck("Branwen",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Branwen",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Branwen")\)
-\(^[%TAB% ]*InMyArea("Faldorn")\)
-\(^[%TAB% ]*!StateCheck("Faldorn",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Faldorn",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Faldorn")\)
-\(^[%TAB% ]*InMyArea("Jaheira")\)
-\(^[%TAB% ]*!StateCheck("Jaheira",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Jaheira",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Jaheira")\)
-\(^[%TAB% ]*InMyArea("Skie")\)
-\(^[%TAB% ]*!StateCheck("Skie",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Skie",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Skie")\)
-\(^[%TAB% ]*InMyArea("Garrick")\)
-\(^[%TAB% ]*!StateCheck("Garrick",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Garrick",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Garrick")\)
-\(^[%TAB% ]*InMyArea("Quayle")\)
-\(^[%TAB% ]*!StateCheck("Quayle",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Quayle",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Quayle")\)
-\(^[%TAB% ]*InMyArea("Safana")\)
-\(^[%TAB% ]*!StateCheck("Safana",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Safana",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Safana")\)
-\(^[%TAB% ]*InMyArea("Edwin")\)
-\(^[%TAB% ]*!StateCheck("Edwin",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Edwin",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Edwin")\)
-\(^[%TAB% ]*InMyArea("Kagain")\)
-\(^[%TAB% ]*!StateCheck("Kagain",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Kagain",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Kagain")\)
-\(^[%TAB% ]*InMyArea("Eldoth")\)
-\(^[%TAB% ]*!StateCheck("Eldoth",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Eldoth",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Eldoth")\)
-\(^[%TAB% ]*InMyArea("Montaron")\)
-\(^[%TAB% ]*!StateCheck("Montaron",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Montaron",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Montaron")\)
-\(^[%TAB% ]*InMyArea("Viconia")\)
-\(^[%TAB% ]*!StateCheck("Viconia",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Viconia")\)
-\(^[%TAB% ]*InMyArea("Sharteel")\)
-\(^[%TAB% ]*!StateCheck("Sharteel",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Sharteel",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Sharteel")\)
-\(^[%TAB% ]*InMyArea("Tiax")\)
-\(^[%TAB% ]*!StateCheck("Tiax",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Tiax",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Tiax")\)
-\(^[%TAB% ]*InMyArea("Xzar")\)
-\(^[%TAB% ]*!StateCheck("Xzar",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Xzar",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Xzar")\)
-\(^[%TAB% ]*InMyArea("Rasaad")\)
-\(^[%TAB% ]*!StateCheck("Rasaad",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Rasaad",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Rasaad")\)
-\(^[%TAB% ]*InMyArea("Neera")\)
-\(^[%TAB% ]*!StateCheck("Neera",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Neera",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Neera")\)
-\(^[%TAB% ]*InMyArea("Baeloth")\)
-\(^[%TAB% ]*!StateCheck("Baeloth",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Baeloth",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Baeloth")\)
-\(^[%TAB% ]*InMyArea("Yeslick")\)
-\(^[%TAB% ]*!StateCheck("Yeslick",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Yeslick",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Yeslick")\)
-\(^[%TAB% ]*InMyArea("Ajantis")\)
-\(^[%TAB% ]*!StateCheck("Ajantis",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Ajantis",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Ajantis")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(46)
-InMyArea("Dynaheir")
-!StateCheck("Dynaheir",CD_STATE_NOTVALID)
-InMyArea("imoen2")
-!StateCheck("imoen2",CD_STATE_NOTVALID)
-InMyArea("Khalid")
-!StateCheck("Khalid",CD_STATE_NOTVALID)
-InMyArea("Minsc")
-!StateCheck("Minsc",CD_STATE_NOTVALID)
-InMyArea("Alora")
-!StateCheck("Alora",CD_STATE_NOTVALID)
-InMyArea("Coran")
-!StateCheck("Coran",CD_STATE_NOTVALID)
-InMyArea("Kivan")
-!StateCheck("Kivan",CD_STATE_NOTVALID)
-InMyArea("Xan")
-!StateCheck("Xan",CD_STATE_NOTVALID)
-InMyArea("Branwen")
-!StateCheck("Branwen",CD_STATE_NOTVALID)
-InMyArea("Faldorn")
-!StateCheck("Faldorn",CD_STATE_NOTVALID)
-InMyArea("Jaheira")
-!StateCheck("Jaheira",CD_STATE_NOTVALID)
-InMyArea("Skie")
-!StateCheck("Skie",CD_STATE_NOTVALID)
-InMyArea("Garrick")
-!StateCheck("Garrick",CD_STATE_NOTVALID)
-InMyArea("Quayle")
-!StateCheck("Quayle",CD_STATE_NOTVALID)
-InMyArea("Safana")
-!StateCheck("Safana",CD_STATE_NOTVALID)
-InMyArea("Edwin")
-!StateCheck("Edwin",CD_STATE_NOTVALID)
-InMyArea("Kagain")
-!StateCheck("Kagain",CD_STATE_NOTVALID)
-InMyArea("Eldoth")
-!StateCheck("Eldoth",CD_STATE_NOTVALID)
-InMyArea("Montaron")
-!StateCheck("Montaron",CD_STATE_NOTVALID)
-InMyArea("Viconia")
-!StateCheck("Viconia",CD_STATE_NOTVALID)
-InMyArea("Sharteel")
-!StateCheck("Sharteel",CD_STATE_NOTVALID)
-InMyArea("Tiax")
-!StateCheck("Tiax",CD_STATE_NOTVALID)
-InMyArea("Xzar")
-!StateCheck("Xzar",CD_STATE_NOTVALID)
-InMyArea("Rasaad")
-!StateCheck("Rasaad",CD_STATE_NOTVALID)
-InMyArea("Neera")
-!StateCheck("Neera",CD_STATE_NOTVALID)
-InMyArea("Baeloth")
-!StateCheck("Baeloth",CD_STATE_NOTVALID)
-InMyArea("Yeslick")
-!StateCheck("Yeslick",CD_STATE_NOTVALID)
-InMyArea("Ajantis")
-!StateCheck("Ajantis",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(OR(28)\)
-\(^[%TAB% ]*IsValidForPartyDialogue("DYNAHEIR")\)
-\(^[%TAB% ]*InMyArea("imoen2")\)
-\(^[%TAB% ]*!StateCheck("imoen2",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("imoen2",FAMILIAR)\)
-\(^[%TAB% ]*InParty("imoen2")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("KHALID")\)
-\(^[%TAB% ]*InMyArea("Minsc")\)
-\(^[%TAB% ]*!StateCheck("Minsc",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Minsc",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Minsc")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("ALORA")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("CORAN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("KIVAN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("XAN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("BRANWEN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("FALDORN")\)
-\(^[%TAB% ]*InMyArea("Jaheira")\)
-\(^[%TAB% ]*!StateCheck("Jaheira",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Jaheira",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Jaheira")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("SKIE")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("GARRICK")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("QUAYLE")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("SAFANA")\)
-\(^[%TAB% ]*InMyArea("Edwin")\)
-\(^[%TAB% ]*!StateCheck("Edwin",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Edwin",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Edwin")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("KAGAIN")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("ELDOTH")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("MONTARON")\)
-\(^[%TAB% ]*InMyArea("Viconia")\)
-\(^[%TAB% ]*!StateCheck("Viconia",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Viconia")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("SHARTEEL")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("TIAX")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("XZAR")\)
-\(^[%TAB% ]*InMyArea("Rasaad")\)
-\(^[%TAB% ]*!StateCheck("Rasaad",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Rasaad",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Rasaad")\)
-\(^[%TAB% ]*InMyArea("Neera")\)
-\(^[%TAB% ]*!StateCheck("Neera",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Neera",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Neera")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("BAELOTH")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("YESLICK")\)
-\(^[%TAB% ]*IsValidForPartyDialogue("AJANTIS")\)
-~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(46)
-InMyArea("Dynaheir")
-!StateCheck("Dynaheir",CD_STATE_NOTVALID)
-InMyArea("imoen2")
-!StateCheck("imoen2",CD_STATE_NOTVALID)
-InMyArea("Khalid")
-!StateCheck("Khalid",CD_STATE_NOTVALID)
-InMyArea("Minsc")
-!StateCheck("Minsc",CD_STATE_NOTVALID)
-InMyArea("Alora")
-!StateCheck("Alora",CD_STATE_NOTVALID)
-InMyArea("Coran")
-!StateCheck("Coran",CD_STATE_NOTVALID)
-InMyArea("Kivan")
-!StateCheck("Kivan",CD_STATE_NOTVALID)
-InMyArea("Xan")
-!StateCheck("Xan",CD_STATE_NOTVALID)
-InMyArea("Branwen")
-!StateCheck("Branwen",CD_STATE_NOTVALID)
-InMyArea("Faldorn")
-!StateCheck("Faldorn",CD_STATE_NOTVALID)
-InMyArea("Jaheira")
-!StateCheck("Jaheira",CD_STATE_NOTVALID)
-InMyArea("Skie")
-!StateCheck("Skie",CD_STATE_NOTVALID)
-InMyArea("Garrick")
-!StateCheck("Garrick",CD_STATE_NOTVALID)
-InMyArea("Quayle")
-!StateCheck("Quayle",CD_STATE_NOTVALID)
-InMyArea("Safana")
-!StateCheck("Safana",CD_STATE_NOTVALID)
-InMyArea("Edwin")
-!StateCheck("Edwin",CD_STATE_NOTVALID)
-InMyArea("Kagain")
-!StateCheck("Kagain",CD_STATE_NOTVALID)
-InMyArea("Eldoth")
-!StateCheck("Eldoth",CD_STATE_NOTVALID)
-InMyArea("Montaron")
-!StateCheck("Montaron",CD_STATE_NOTVALID)
-InMyArea("Viconia")
-!StateCheck("Viconia",CD_STATE_NOTVALID)
-InMyArea("Sharteel")
-!StateCheck("Sharteel",CD_STATE_NOTVALID)
-InMyArea("Tiax")
-!StateCheck("Tiax",CD_STATE_NOTVALID)
-InMyArea("Xzar")
-!StateCheck("Xzar",CD_STATE_NOTVALID)
-InMyArea("Rasaad")
-!StateCheck("Rasaad",CD_STATE_NOTVALID)
-InMyArea("Neera")
-!StateCheck("Neera",CD_STATE_NOTVALID)
-InMyArea("Baeloth")
-!StateCheck("Baeloth",CD_STATE_NOTVALID)
-InMyArea("Yeslick")
-!StateCheck("Yeslick",CD_STATE_NOTVALID)
-InMyArea("Ajantis")
-!StateCheck("Ajantis",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // DORNJ.dlg
-	END
-
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
-
-// BG2EE END
-
-ACTION_IF (GAME_IS ~bg2ee bgt eet~) BEGIN 
-
-// BCS
-
-/*
-	COPY_EXISTING_REGEXP ~aaaaa.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-	
-	END
-*/	
-
-	COPY_EXISTING_REGEXP ~OHDTELW.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(5)\)
-\(^[%TAB% ]*StateCheck("imoen2",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*!InMyArea("imoen2")\)
-\(^[%TAB% ]*!Allegiance("imoen2",FAMILIAR)\)
-\(^[%TAB% ]*!InParty("imoen2")\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*!Allegiance("imoen2",FAMILIAR)\)
-\(^[%TAB% ]*!InParty("imoen2")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
-	StateCheck("imoen2",CD_STATE_NOTVALID)
-	!InMyArea("imoen2")
-	!Allegiance("imoen2",FAMILIAR)
-	!InParty("imoen2")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-		END
-		
-	COPY_EXISTING_REGEXP ~AR0406.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*GlobalGT("HendakReleased","AR0406",2)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	GlobalGT("HendakReleased","AR0406",2)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // AR0406.BCS
-	END
-		
-	COPY_EXISTING_REGEXP ~OH5500.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*InParty("hexxat")\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Dorn",FAMILIAR)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	InParty("hexxat")
-	Allegiance("Dorn",FAMILIAR)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*IfValidForPartyDialog("hexxat")\)
-\(^[%TAB% ]*InMyArea("Dorn")\)
-\(^[%TAB% ]*!StateCheck("Dorn",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Dorn",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Dorn")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	IfValidForPartyDialog("hexxat")
-	InMyArea("Dorn")
-	!StateCheck("Dorn",CD_STATE_NOTVALID)
-	Allegiance("Dorn",FAMILIAR)
-	InParty("Dorn")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // OH5500.BCS
-	END
-		
-	COPY_EXISTING_REGEXP ~AR0502.bcs~ ~override~ ////////////////////////////6YRDR6UR6U6RDJIKD
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*IfValidForPartyDialog("hexxat")\)
-\(^[%TAB% ]*InMyArea("Dorn")\)
-\(^[%TAB% ]*!StateCheck("Dorn",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	IfValidForPartyDialog("hexxat"
-	InMyArea("Dorn")
-	!StateCheck("Dorn",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*InMyArea("Hexxat")\)
-\(^[%TAB% ]*!StateCheck("Hexxat",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	InMyArea("Hexxat")
-	!StateCheck("Hexxat",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // AR0502.BCS
-	END
-		
-	COPY_EXISTING_REGEXP ~AR2100.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*IfValidForPartyDialog("hexxat")\)
-\(^[%TAB% ]*InMyArea("Dorn")\)
-\(^[%TAB% ]*!StateCheck("Dorn",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	IfValidForPartyDialog("hexxat"
-	InMyArea("Dorn")
-	!StateCheck("Dorn",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // AR2100.BCS
-	END
-		
-	COPY_EXISTING_REGEXP ~AR0900.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*GlobalLT("OHD_PLOT","GLOBAL",1)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	GlobalLT("OHD_PLOT","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // AR0900.BCS
-	END
-
-	COPY_EXISTING_REGEXP ~AR0502.BCS~  ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*InMyArea("Hexxat")\)
-\(^[%TAB% ]*!StateCheck("Hexxat",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Hexxat",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Hexxat")\)
-\(^[%TAB% ]*InMyArea("Dorn")\)
-\(^[%TAB% ]*!StateCheck("Dorn",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Dorn",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Dorn")\)
-\(^[%TAB% ]*InMyArea("Neera")\)
-\(^[%TAB% ]*!StateCheck("Neera",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Neera",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Neera")\)
-\(^[%TAB% ]*InMyArea("Rasaad")\)
-\(^[%TAB% ]*!StateCheck("Rasaad",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(16)
-	InMyArea("Hexxat")
-	!StateCheck("Hexxat",CD_STATE_NOTVALID)
-	Allegiance("Hexxat",FAMILIAR)
-	InParty("Hexxat")
-	InMyArea("Dorn")
-	!StateCheck("Dorn",CD_STATE_NOTVALID)
-	Allegiance("Dorn",FAMILIAR)
-	InParty("Dorn")
-	InMyArea("Neera")
-	!StateCheck("Neera",CD_STATE_NOTVALID)
-	Allegiance("Neera",FAMILIAR)
-	InParty("Neera")
-	InMyArea("Rasaad")
-	!StateCheck("Rasaad",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-		END
-	END
-
-	COPY_EXISTING_REGEXP ~AR2100.BCS~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*InMyArea("Hexxat")\)
-\(^[%TAB% ]*!StateCheck("Hexxat",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Hexxat",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Hexxat")\)
-\(^[%TAB% ]*InMyArea("Dorn")\)
-\(^[%TAB% ]*!StateCheck("Dorn",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Dorn",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Dorn")\)
-\(^[%TAB% ]*InMyArea("Neera")\)
-\(^[%TAB% ]*!StateCheck("Neera",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)
-\(^[%TAB% ]*Allegiance("Neera",FAMILIAR)\)
-\(^[%TAB% ]*InParty("Neera")\)
-\(^[%TAB% ]*InMyArea("Rasaad")\)
-\(^[%TAB% ]*!StateCheck("Rasaad",CD_STATE_NOTVALID)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(16)
-	InMyArea("Hexxat")
-	!StateCheck("Hexxat",CD_STATE_NOTVALID)
-	Allegiance("Hexxat",FAMILIAR)
-	InParty("Hexxat")
-	InMyArea("Dorn")
-	!StateCheck("Dorn",CD_STATE_NOTVALID)
-	Allegiance("Dorn",FAMILIAR)
-	InParty("Dorn")
-	InMyArea("Neera")
-	!StateCheck("Neera",CD_STATE_NOTVALID)
-	Allegiance("Neera",FAMILIAR)
-	InParty("Neera")
-	InMyArea("Rasaad")
-	!StateCheck("Rasaad",CD_STATE_NOTVALID)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-		END
-	END
-	
-	COPY_EXISTING_REGEXP ~DELON.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(3)\)
-\(^[%TAB% ]*Global("Villagesaved","GLOBAL",1)\)
-\(^[%TAB% ]*Global("TalkedToLloyd","GLOBAL",1)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
-	Global("Villagesaved","GLOBAL",1)
-	Global("TalkedToLloyd","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // DELON.BCS
-	
-	END
-	COPY_EXISTING_REGEXP ~KAYL1.bcs~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Global("AnomenTrial","GLOBAL",1)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
-	Global("AnomenTrial","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // KAYL1.BCS
-	END
+//__________________________________________________________________________________
 
 
-// DLG
 
-/*
-	COPY_EXISTING_REGEXP ~aaaaa.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-	
-	END
-*/	
+LAM JOINABLE_NPC_ARRAYS
 
-	COPY_EXISTING_REGEXP ~AnomenP.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*!Global("AnomenHatesKeldorn","GLOBAL",1)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!Global("AnomenHatesKeldorn","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // AnomenP.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~BAERIE.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Global("HaerDalisRomance","GLOBAL",3)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	Global("HaerDalisRomance","GLOBAL",3)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BAERIE.dlg
-	
-	END
-	
-	COPY_EXISTING_REGEXP ~IGOLEM2.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(5)\)
-\(^[%TAB% ]*Global("IMOENGOLEM","GLOBAL",1)\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
-	Global("IMOENGOLEM","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BYSTAND1.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~BDPRST01.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*Allegiance("Viconia",FAMILIAR)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
-	Allegiance("Viconia",FAMILIAR)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Allegiance("Aerie",FAMILIAR)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Allegiance("Aerie",FAMILIAR)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Allegiance("Anomen",FAMILIAR)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Allegiance("Anomen",FAMILIAR)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-	END
-	
-	COPY_EXISTING_REGEXP ~BYSTAND1.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Global("Jaheira1","LOCALS",1)\)
-\(^[%TAB% ]*OR(4)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	Global("Jaheira1","LOCALS",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // BYSTAND1.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~DSHOP02.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-		SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*Global("JaheiraRomanceActive","GLOBAL",0)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
-	Global("JaheiraRomanceActive","GLOBAL",0)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END
-		SPRINT textToReplace ~\(OR(4)\)
-\(^[%TAB% ]*StateCheck("Jaheira",CD_STATE_NOTVALID)\)~
-		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
-			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StateCheck("Jaheira",CD_STATE_NOTVALID)~
-			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-			~
-		END // Special Jaheira DSHOP02.DLG
-	END
-	
-	COPY_EXISTING_REGEXP ~FARTHIN.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(5)\)
-\(^[%TAB% ]*!Name("Nalia",LastTalkedToBy)\)
-\(^[%TAB% ]*Dead("Nalia")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
-	!Name("Nalia",LastTalkedToBy)
-	Dead("Nalia")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // FARTHIN.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~FUMIN.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(6)\)
-\(^[%TAB% ]*Global("SpokeToMinister","GLOBAL",0)\)
-\(^[%TAB% ]*!IsGabber("Nalia")\)
-\(^[%TAB% ]*Dead("Nalia")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7)
-	Global("SpokeToMinister","GLOBAL",0)
-	!IsGabber("Nalia")
-	Dead("Nalia")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // FUMIN.dlg
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Global("SpokeToNalia","GLOBAL",1)\)
-\(^[%TAB% ]*OR(4)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	Global("SpokeToNalia","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // FUMIN.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~isaea.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(5)\)
-\(^[%TAB% ]*!Name("Nalia",LastTalkedToBy(Myself))\)
-\(^[%TAB% ]*Dead("Nalia")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(6)
-	!Name("Nalia",LastTalkedToBy(Myself))
-	Dead("Nalia")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // isaea.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~OHNGDUKE.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*Global("OHN_NEERA_VS_GUL","OH6300",1)\)
-\(^[%TAB% ]*OR(4)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	Global("OHN_NEERA_VS_GUL","OH6300",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // OHNGDUKE.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~OHNSNAKE.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*!Range("neera",45)\)
-\(^[%TAB% ]*OR(4)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	!Range("neera",45)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // OHNSNAKE.dlg
-	END
-	
-	COPY_EXISTING_REGEXP ~renal.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(3)\)
-\(^[%TAB% ]*!Global("YoshimoShadowTrouble","GLOBAL",1)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
-	!Global("YoshimoShadowTrouble","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(!See("Yoshimo")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!See("Yoshimo")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // renal.dlg
-	END
-	COPY_EXISTING_REGEXP ~yoshj.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(3)\)
-\(^[%TAB% ]*!Global("YoshimoShadowTrouble","GLOBAL",1)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(4)
-	!Global("YoshimoShadowTrouble","GLOBAL",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(!See("Yoshimo")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!See("Yoshimo")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // yoshj.dlg
-	END
-	
-	
-	
-	COPY_EXISTING_REGEXP ~VALYGARJ.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*!Class("NALIA",MAGE_ALL)\)
-\(^[%TAB% ]*OR(4)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(5)
-	!Class("NALIA",MAGE_ALL)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // VALYGARJ.dlg
-	END
-	COPY_EXISTING_REGEXP ~VARA1.dlg~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(OR(2)\)
-\(^[%TAB% ]*!Detect("Mazzy")\)
-\(^[%TAB% ]*OR(2)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-	!Detect("Mazzy")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END // VARA1.dlg
-	END
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+// 	PRINT ~%cre% => %dv%~ 
 
-END // BG2EE END
+  COPY_EXISTING ~%cre%~ ~override~
+    READ_ASCII 0x248 override_script
+    PATCH_IF NOT (~%override_script%~ STRING_EQUAL_CASE ~idiot01~)
+// Imoen
+// Original Imoen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%IMOEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOE25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTIMOEN~)
+// Original Imoen // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN_~)
+// Original Imoen // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN2~)
+
+// Edwin
+// Original Edwin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%EDWIN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWI25~)
+// Original Edwin // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWIN_~)
+// Original Edwin // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWIN~)
+
+// Jaheira
+// Original Jaheira AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%JAHEIRA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHE25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTJAHEIR~)
+// Original Jaheira // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHEIRA_~)
+// Original Jaheira // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHEIRA~)
+
+// Minsc
+// Original Minsc AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%MINSC_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINS25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTMINSC~)
+// Original Minsc // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINSC_~)
+// Original Minsc // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINSC~)
+
+// Viconia
+// Original Viconia AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%VICONIA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICO25~)
+// Original Viconia // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICONIA_~)
+// Original Viconia // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICONIA~)
+
+// Dorn
+// Original Dorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DORN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN25~)
+// Original Dorn // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN_~)
+// Original Dorn // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN~)
+
+// Neera
+// Original Neera AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEERA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEER25~)
+// Original Neera // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEERA_~)
+// Original Neera // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEERA~)
+
+// Rasaad
+// Original Rasaad AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%RASAAD_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASA25~)
+// Original Rasaad // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASAAD_~)
+// Original Rasaad // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASAAD~)
+
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// bg1 ///////////////////////////
+// Ajantis
+// Original Ajantis AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%AJANTIS_BCS%~)
+
+// Alora
+// Original Alora AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ALORA_BCS%~)
+
+// Branwen
+// Original Branwen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%BRANWEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTBRAN~)
+
+// Coran
+// Original Coran AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%CORAN_BCS%~)
+
+// Dynaheir
+// Original Dynaheir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DYNAHEIR_BCS%~)
+
+// Eldoth
+// Original Eldoth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ELDOTH_BCS%~
+
+// Faldorn
+// Original Faldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%FALDORN_BCS%~)
+
+// Garrick
+// Original Garrick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%GARRICK_BCS%~)
+
+// Kagain
+// Original Kagain AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KAGAIN_BCS%~)
+
+// Khalid
+// Original Khalid AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KHALID_BCS%~)
+
+// Kivan
+// Original Kivan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KIVAN_BCS%~)
+
+// Montaron
+// Original Montaron AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%MONTARON_BCS%~)
+
+// Quayle
+// Original Quayle AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%QUAYLE_BCS%~)
+
+// Safana
+// Original Safana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SAFANA_BCS%~)
+
+// Sharteel
+// Original Sharteel AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~)
+
+// Skie
+// Original Skie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SKIE_BCS%~)
+
+// Tiax
+// Original Tiax AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%TIAX_BCS%~)
+
+// Xan
+// Original Xan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%XAN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ttxan~)
+
+// Xzar
+// Original Xzar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%XZAR_BCS%~)
+
+// Yeslick
+// Original Yeslick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%YESLICK_BCS%~)
+
+// Baeloth
+// Original Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDBAELOT~)
+
+/////////////////////////// SoD ///////////////////////////
+// Voghiln
+// Original Voghiln AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDVOGHIL~)
+
+// Corwin
+// Original Corwin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDCORWIN~)
+
+// Mkhiin
+// Original Mkhiin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDMKHIIN~)
+
+// Glint
+// Original Glint AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDGLINT~)
+
+/////////////////////////// bg2 ///////////////////////////
+
+// Aerie
+// Original Aerie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~AERIE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~AERI25~)
+
+// Anomen
+// Original Anomen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ANOMEN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ANOM25~)
+
+// Cernd
+// Original Cernd AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CERND~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CERN25~)
+
+// Haerdalis
+// Original Haerdalis AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HAERDALI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HAER25~)
+
+// Hexxat
+// Original Hexxat AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HEXXAT~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HEXXA25~)
+
+// Jan
+// Original Jan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAN25~)
+
+// Keldorn
+// Original Keldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KELDORN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KELD25~)
+
+// Korgan
+// Original Korgan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KORGAN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KORG25~)
+
+// Mazzy
+// Original Mazzy AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MAZZY~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MAZZ25~)
+
+// Nalia
+// Original Nalia AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NALIA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NALI25~)
+
+// Sarevok
+// Original Sarevok AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SAREV25~)
+
+// Valygar
+// Original Valygar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VALYGAR~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VALY25~)
+
+// Wilson
+// Original Wilson AND NOT (~%override_script%~ STRING_EQUAL_CASE ~WILSON~)
+
+// Yoshimo
+// Original Yoshimo AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YOSHIMO~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YOSH25~)
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+// Ishlilka (#Ishy)
+// Mod Ishlilka AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ishyscrp~)
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+// Alora BG2 (CMALORA)
+// Mod Alora BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalora~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalo25~)
+
+// Yeslick BG2 (LK#YESLK)
+// Mod Yeslick BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#YESL~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#YES25~)
+
+// The Undying (cmninaf)
+// Mod Undying AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNINAF~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNINA25~)
+
+// The Undying (callisto)
+// Mod Undying AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CALLISTO~)
+
+// Summon Bhaalspawn (BHAALSPW)
+// Mod Sandra AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BHAALSPW~)
+
+// Nikita Redux (cmnikita)
+// Mod Nikita AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmnikita~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNIK25~)
+
+// Vampire Tales (cmgmiriam)
+// Mod Miriam AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMIRI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMI25~)
+
+// Kim (Kim)
+// Mod Kim AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Kim~)
+
+// Severian (#Severian)
+// Mod Severian AND NOT (~%override_script%~ STRING_EQUAL_CASE ~#Sever~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~#SevD25~)
+
+	BEGIN 
+      SPRINT $npc_scripts (~%override_script%~)~1~
+    END
+  BUT_ONLY
+END
+ACTION_PHP_EACH npc_scripts AS script => ind BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%script%.bcs~) BEGIN
+    EXTEND_BOTTOM ~%script%.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~%script%.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+END
