@@ -1,9 +1,0 @@
-IF
-	Delay(10)
-	Global("JO_Join_ability","GLOBAL",0)
-THEN
-	RESPONSE #100
-		ActionOverride(Player1,AddSpecialAbility("jo_join"))
-		SetGlobal("JO_Join_ability","GLOBAL",1)
-		Continue()
-END
