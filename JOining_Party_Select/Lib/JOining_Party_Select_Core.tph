@@ -1039,16 +1039,20 @@ END
 // Files
 
 COPY ~JOining_Party_Select/Spl/JOIN648.SPL~ ~override~
-		LPF ADD_SPELL_CFEFFECT
+	SAY NAME1 ~Dying~
+	SAY NAME2 ~Dying~
+/*		LPF ADD_SPELL_CFEFFECT
 		INT_VAR
 			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Carry on without me...~)
-		END
+		END*/
 
 COPY ~JOining_Party_Select/Spl/JOIR648.SPL~ ~override~
-		LPF ADD_SPELL_CFEFFECT
+	SAY NAME1 ~Recovering~
+	SAY NAME2 ~Recovering~
+/*		LPF ADD_SPELL_CFEFFECT
 		INT_VAR
 			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Still alive !~)
-		END
+		END*/
 
 COPY_EXISTING ~SCRL72.ITM~ ~override/JO_JOIN.itm~
 	SAY NAME1 ~Engagement~

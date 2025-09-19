@@ -34,7 +34,7 @@ After mods that add any dialog or script options related to NPC.
   - Mods BG1 NPC
   - Mod BG2 NPC
 
-- Install componant All-Out (**Installation could last between 10 to 40 minutes depending of the number of NPCs chosen**)
+- Install componant All-Out (**Installation could last between 10 to 20 minutes depending of the number of NPCs chosen**)
   - Add to any InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead... Familiar reference to make it count as party member.
 
 - Install componant All-In
@@ -47,7 +47,7 @@ After mods that add any dialog or script options related to NPC.
 - Use the the special ability to convert NPC to Familiar.
 - Keep one free party slot to allow NPC switch.
 - You can quickly acces (5 seconds) to stats and inventory when they switch in party.
-- You can completly reinteger the Npc in party, use again the same special ability on the chosen NPC and talk to the NPC, they will have several dialog options **Don't use the "We need to adjust"** implementation is not working at the moment.
+- You can completly reinteger the Npc in party, use again the same special ability on the chosen NPC and talk to the NPC, they will have several dialog options.
 - When loading a save the NPCs have to switch once before being reliably available for script and dialog.
 
 Files : 
@@ -59,13 +59,16 @@ Files :
    - Search `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each existing Myself.
 
 - [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core.tph)  
-   - Implement scripts and dialogs for each each selected NPCs.
+   - Implement scripts and dialogs for each selected NPCs.
+
+- [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
+   - Implement a little script to other (not selected) NPCs.
 
 - [All_In.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/All_In.BAF)  
    - Added to each selected NPCs to deal with Npc to Familiar switch.
 
-- [JO_JOIN.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOIN.BAF)  
-   -  Script added to Familiar OVERRIDE script, only for a short time, it will set the right dialog and script depending of the NPC.
+- [JO_JOIN.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf)  
+   -  JO_JOIN1.BAF to JO_JOIN5.BAF are scripts added to Familiar OVERRIDE script, only for a short time, it will set the right dialog and script depending of the NPC.
 
 - [JO_JOINI.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOINI.BAF)  
    - Script added to Familiar GENERAL script, will remain, it will deal with switch order and Familiar behavior.
@@ -84,9 +87,6 @@ Files :
 
 - [jo_join.spl](https://github.com/11jo/JOining_Party/tree/main/JOining_Party_Select/Spl)  
    - Special ability for Charname, will simply set a LOCALS to 1 on the targeted NPC.
-
-
-- [https://github.com/11jo/JOining_Party/blob/main/Other/EET_remaining_issues.jpg](https://github.com/11jo/JOining_Party/blob/main/Other/EET_remaining_issues.jpg)
 
 
 
@@ -112,3 +112,7 @@ Afterwards, you may delete the following files:
 --------------------
 
 - Alpha.0.0.0
+
+- Alpha.0.0.1
+
+- Alpha.0.0.2

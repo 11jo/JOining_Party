@@ -4,9 +4,8 @@
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
 	!Global("JO_%Death_var%_AllowDead","GLOBAL",0)
-	OR(2)
-		!InPartyAllowDead(Myself)
-		!Allegiance(Myself,FAMILIAR)
+	!InPartyAllowDead(Myself)
+	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_AllowDead","GLOBAL",0)
@@ -537,7 +536,34 @@ IF
 	!HPPercentLT(Myself,15)
 	!GlobalGT("JO_JOIN_FEELING","LOCALS",0)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~I took a hit.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~Aïe !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~Just a scratch.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~I took a hit.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~Don't make me laugh.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~I took a hit.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~I took a hit.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~I took a hit.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~I took a hit.~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
 	DisplayStringHead(Myself,~I took a hit.~)
 END
@@ -549,7 +575,34 @@ IF
 	!HPPercentLT(Myself,15)
 	!GlobalGT("JO_JOIN_FEELING","LOCALS",1)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I took a heavy blow.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~Ouch !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~A scratch...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I took a heavy blow.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~It tickles when I laugh.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I took a heavy blow.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I took a heavy blow.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I took a heavy blow.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I took a heavy blow.~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
 	DisplayStringHead(Myself,~I took a heavy blow.~)
 END
@@ -560,7 +613,31 @@ IF
 	!HPPercentLT(Myself,15)
 	!GlobalGT("JO_JOIN_FEELING","LOCALS",2)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I really don't feel well.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I really don't feel well.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~All right, it stings a little.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I really don't feel well.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~Dangerous ? I laugh in the face of danger.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I really don't feel well.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I really don't feel well.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I really don't feel well.~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
 	DisplayStringHead(Myself,~I really don't feel well.~)
 END
@@ -570,7 +647,34 @@ IF
 	HPPercentLT(Myself,15)
 	Global("JO_JOIN_FEELING","LOCALS",3)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I'm at the end of me.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~The end is near.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I can keep going... Can I ?~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I will survive !!!~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I laugh in the face of death...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I'm at the end of me.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I'm at the end of me.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I'm at the end of me.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
+	DisplayStringHead(Myself,~I'm at the end of me.~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
 	DisplayStringHead(Myself,~I'm at the end of me.~)
 END
@@ -586,7 +690,34 @@ IF
 	!HPPercentGT(Myself,99)
 	GlobalGT("JO_JOIN_FEELING","LOCALS",3)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~Ha ha ha !!!~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
+	DisplayStringHead(Myself,~I will make it, probably...~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
 	DisplayStringHead(Myself,~I will make it, probably...~)
 END
@@ -598,7 +729,34 @@ IF
 	!HPPercentGT(Myself,99)
 	GlobalGT("JO_JOIN_FEELING","LOCALS",2)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~A lot of fun.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
+	DisplayStringHead(Myself,~I feel better.~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
 	DisplayStringHead(Myself,~I feel better.~)
 END
@@ -609,7 +767,34 @@ IF
 	!HPPercentGT(Myself,99)
 	GlobalGT("JO_JOIN_FEELING","LOCALS",1)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~Want to hear something funny ?~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
+	DisplayStringHead(Myself,~All right, I am back !~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
 	DisplayStringHead(Myself,~All right, I am back !~)
 END
@@ -619,7 +804,34 @@ IF
 	HPPercentGT(Myself,99)
 	!Global("JO_JOIN_FEELING","LOCALS",0)
 THEN
-	RESPONSE #100
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~Joke aside, I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
+	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
+	DisplayStringHead(Myself,~I feel Great.~)
+	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
 	DisplayStringHead(Myself,~I feel Great.~)
 END
