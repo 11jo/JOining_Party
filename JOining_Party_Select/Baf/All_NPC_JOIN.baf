@@ -63,9 +63,8 @@ END
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_Valid_Myself","LOCALS",0)
-	OR(2)
-		StateCheck(Myself,CD_STATE_NOTVALID)
-		!InMyArea(Myself)
+	StateCheck(Myself,CD_STATE_NOTVALID)
+	!IsValidForPartyDialogue(Myself)
 	OR(2)
 		InParty(Myself)
 		Allegiance(Myself,FAMILIAR)
@@ -92,8 +91,9 @@ END
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_Valid_Myself","LOCALS",0)
-	InMyArea(Myself)
-	!StateCheck(Myself,CD_STATE_NOTVALID)
+	OR(2)
+		IsValidForPartyDialogue(Myself)
+		!StateCheck(Myself,CD_STATE_NOTVALID)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		InParty(Myself)
