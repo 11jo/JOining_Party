@@ -1,0 +1,9 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWBOLT02","%Death_var%")  // Carreau d'étourdissement elfe noir +1
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWBOLT02","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END

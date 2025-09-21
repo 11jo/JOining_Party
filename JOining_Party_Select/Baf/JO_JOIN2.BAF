@@ -5,13 +5,12 @@
 // Ajantis
 
 IF
-	HasItem("JO_JOIN","Ajantis")
+	CharName("Ajantis",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
-		SetDialog("%AJANTIS_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%AJANTIS_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -21,13 +20,12 @@ END
 // Alora
 
 IF
-	HasItem("JO_JOIN","Alora")
+	CharName("Alora",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
-		SetDialog("%ALORA_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%ALORA_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -37,14 +35,13 @@ END
 // Branwen BGEE EET
 
 IF
-	HasItem("JO_JOIN","Branwen")
+	CharName("Branwen",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BRANWEN_",OVERRIDE) //Script for BGEE in EET
-		SetDialog("%BRANWEN_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%BRANWEN_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -52,14 +49,13 @@ END
 // Branwen BGEE
 
 IF
-	HasItem("JO_JOIN","Branwen")
+	CharName("Branwen",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BRANWEN",OVERRIDE)
-		SetDialog("%BRANWEN_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%BRANWEN_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -69,13 +65,12 @@ END
 // Coran
 
 IF
-	HasItem("JO_JOIN","Coran")
+	CharName("Coran",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%CORAN_BCS%",OVERRIDE)
-		SetDialog("%CORAN_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%CORAN_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -85,13 +80,12 @@ END
 // Dynaheir
 
 IF
-	HasItem("JO_JOIN","Dynaheir")
+	CharName("Dynaheir",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%DYNAHEIR_BCS%",OVERRIDE)
-		SetDialog("%DYNAHEIR_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%DYNAHEIR_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -101,13 +95,12 @@ END
 // Eldoth
 
 IF
-	HasItem("JO_JOIN","Eldoth")
+	CharName("Eldoth",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%ELDOTH_BCS%",OVERRIDE)
-		SetDialog("%ELDOTH_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%ELDOTH_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -117,14 +110,13 @@ END
 // Faldorn BGEE EET
 
 IF
-	HasItem("JO_JOIN","Faldorn")
+	CharName("Faldorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("FALDORN_",OVERRIDE) //Script for BGEE in EET
-		SetDialog("%FALDORN_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%FALDORN_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -132,14 +124,13 @@ END
 // Faldorn BGEE
 
 IF
-	HasItem("JO_JOIN","Faldorn")
+	CharName("Faldorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("FALDORN",OVERRIDE)
-		SetDialog("%FALDORN_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%FALDORN_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -149,14 +140,13 @@ END
 // Garrick BGEE EET
 
 IF
-	HasItem("JO_JOIN","Garrick")
+	CharName("Garrick",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("GARRICK_",OVERRIDE) //Script for BGEE in EET
 		SetDialog("%GARRICK_JOINED%") 
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -164,14 +154,13 @@ END
 // Garrick BGEE
 
 IF
-	HasItem("JO_JOIN","Garrick")
+	CharName("Garrick",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("GARRICK",OVERRIDE)
-		SetDialog("%GARRICK_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%GARRICK_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -181,13 +170,12 @@ END
 // Kagain
 
 IF
-	HasItem("JO_JOIN","Kagain")
+	CharName("Kagain",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%KAGAIN_BCS%",OVERRIDE)
-		SetDialog("%KAGAIN_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%KAGAIN_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -197,13 +185,12 @@ END
 // Khalid
 
 IF
-	HasItem("JO_JOIN","Khalid")
+	CharName("Khalid",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%KHALID_BCS%",OVERRIDE)
-		SetDialog("%KHALID_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%KHALID_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -213,13 +200,12 @@ END
 // Kivan
 
 IF
-	HasItem("JO_JOIN","Kivan")
+	CharName("Kivan",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%KIVAN_BCS%",OVERRIDE)
 		SetDialog("%KIVAN_JOINED%") 
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -229,13 +215,12 @@ END
 // Montaron BGEE EET
 
 IF
-	HasItem("JO_JOIN","Montaron")
+	CharName("Montaron",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%MONTARON_BCS%",OVERRIDE)
-		SetDialog("%MONTARON_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%MONTARON_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -245,13 +230,12 @@ END
 // Quayle
 
 IF
-	HasItem("JO_JOIN","Quayle")
+	CharName("Quayle",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%QUAYLE_BCS%",OVERRIDE)
-		SetDialog("%QUAYLE_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%QUAYLE_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -260,13 +244,12 @@ END
 
 // Safana
 IF
-	HasItem("JO_JOIN","Safana")
+	CharName("Safana",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%SAFANA_BCS%",OVERRIDE)
-		SetDialog("%SAFANA_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%SAFANA_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -276,13 +259,12 @@ END
 // Sharteel
 
 IF
-	HasItem("JO_JOIN","Sharteel")
+	CharName("Sharteel",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE)
-		SetDialog("%SHARTEEL_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%SHARTEEL_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -292,14 +274,13 @@ END
 // Skie BGEE EET
 
 IF
-	HasItem("JO_JOIN","Skie")
+	CharName("Skie",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("SKIE_",OVERRIDE) //Script for BGEE in EET
-		SetDialog("%SKIE_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%SKIE_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -307,14 +288,13 @@ END
 // Skie BGEE
 
 IF
-	HasItem("JO_JOIN","Skie")
+	CharName("Skie",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("SKIE",OVERRIDE)
-		SetDialog("%SKIE_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%SKIE_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -324,13 +304,12 @@ END
 // Tiax
 
 IF
-	HasItem("JO_JOIN","Tiax")
+	CharName("Tiax",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%TIAX_BCS%",OVERRIDE)
-		SetDialog("%TIAX_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%TIAX_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -340,13 +319,12 @@ END
 // Xan
 
 IF
-	HasItem("JO_JOIN","Xan")
+	CharName("Xan",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%XAN_BCS%",OVERRIDE)
-		SetDialog("%XAN_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%XAN_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -355,13 +333,12 @@ END
 
 // Xzar
 IF
-	HasItem("JO_JOIN","Xzar")
+	CharName("Xzar",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%XZAR_BCS%",OVERRIDE)
-		SetDialog("%XZAR_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%XZAR_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -371,13 +348,12 @@ END
 // Yeslick
 
 IF
-	HasItem("JO_JOIN","Yeslick")
+	CharName("Yeslick",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("%YESLICK_BCS%",OVERRIDE)
-		SetDialog("%YESLICK_JOINED%") 
-		DestroyItem("JO_JOIN")
+		SetDialog("%YESLICK_JOINED%")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -387,14 +363,13 @@ END
 // Baeloth BGEE EET
 
 IF
-	HasItem("JO_JOIN","Baeloth")
+	CharName("Baeloth",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BDBAELOT",OVERRIDE)
-		SetDialog("BAELOTHJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("BAELOTHJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END

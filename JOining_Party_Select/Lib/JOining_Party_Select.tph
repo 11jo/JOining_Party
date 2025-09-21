@@ -225,14 +225,54 @@ BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
+			END
+// Rest situation
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player2,Rest())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player2,Rest())
+				SetGlobal("JO_%Death_var%_REST","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
+// ClearActions situation
+			SPRINT textToReplace ~\(^[%TAB% ]*ClearActions(Player2)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions(Player2)
+				SetGlobal("JO_%Death_var%_ClearActions","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
 			END	/*ELSE BEGIN
 				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
 			END*/
 
 		END
 	BUT_ONLY
+/*
+
+HasItem("CDHLYSYM",Player2)
 
 
+
+
+CreateVisualEffectObject("SPPROIMG",Player2)
+CreateCreatureObjectCopy("jclone01",Player2,0,0,0)
+MoveToObject(Player2)
+PolymorphCopy(Player2)
+ReallyForceSpell(Player2,CLERIC_CALL_LIGHTNING)
+ActionOverride(Player2,Face(SSE))
+AddXPObject(Player2,45000)
+ActionOverride(Player2,ReallyForceSpell(Myself,CLERIC_LESSER_RESTORATION))
+CreateVisualEffectObject("SPCLOUD1",Player2)
+ActionOverride(Player2,CreateVisualEffectObject("SPCLOUD1",Myself))
+FakeEffectExpiryCheck(Player2,150000)
+CreateVisualEffectObject("SPSTRENH",Player2)
+ActionOverride(Player2,DropItem("SW1H56",[-1.-1]))
+ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -356,10 +396,41 @@ BEGIN
 			END*/ /*ELSE BEGIN
 				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
 			END*/
+// Rest situation
+			SPRINT textToReplace ~\(ActionOverride(Player2,Rest())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player2,Rest())
+				SetGlobal("JO_%Death_var%_REST","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END 
+// ClearActions situation
+			SPRINT textToReplace ~\(^[%TAB% ]*ClearActions(Player2)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions(Player2)
+				SetGlobal("JO_%Death_var%_ClearActions","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				~
+			END
 
 		END
 	BUT_ONLY
 
 COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
+
+EXTEND_BOTTOM ~OHBARC01.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BDDROWFT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BDDROWFT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~ar2500.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~ar2500.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~ar2500.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ar2500.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ar2500.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~AR2102.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/AR2102.baf~ EVALUATE_BUFFER
 
 END

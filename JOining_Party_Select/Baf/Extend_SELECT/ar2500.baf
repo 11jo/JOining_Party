@@ -1,0 +1,110 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWCHAN01","%Death_var%")  // Cotte de mailles elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWCHAN01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWCHAN02","%Death_var%")  // Cotte de mailles elfe noir +5
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWCHAN02","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWSW1H01","%Death_var%")  // Cimeterre elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWSW1H01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWSW1H02","%Death_var%")  // Épée longue elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWSW1H02","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWBLUN01","%Death_var%")  // Fléau d'armes elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWBLUN01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWHALB01","%Death_var%")  // Hallebarde elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWHALB01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWSPER01","%Death_var%")  // Lance elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWSPER01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWSHLD01","%Death_var%")  // Bouclier elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWSHLD01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWCLCK01","%Death_var%")  // Cape piwafwi elfe noir
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWCLCK01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWCLCK01","%Death_var%")  // Cape piwafwi elfe noir
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWCLCK01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWPLAT01","%Death_var%")  // Armure de plates complète elfe noir +5
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWPLAT01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END

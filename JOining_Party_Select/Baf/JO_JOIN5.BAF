@@ -7,14 +7,13 @@
 // Ishlilka_The-Wizard-Slayer
 
 IF
-	HasItem("JO_JOIN","#Ishy")
+	CharName("#Ishy",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("ishyscrp",OVERRIDE)
 		SetDialog("IshyD")
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -22,14 +21,13 @@ END
  // SoD Ishlilka
 
 IF
-	HasItem("JO_JOIN","#Ishy")
+	CharName("#Ishy",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("ishyscrp",OVERRIDE)
 		SetDialog("bdishy")
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -45,14 +43,13 @@ END
  // Alora BG2
  
 IF
-	HasItem("JO_JOIN","CMALORA")
+	CharName("CMALORA",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmalora",OVERRIDE)
-		SetDialog("CMALORAJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("CMALORAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -60,14 +57,13 @@ END
  // ToB Alora BG2
  
 IF
-	HasItem("JO_JOIN","CMALORA")
+	CharName("CMALORA",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmalo25",OVERRIDE)
 		SetDialog("CMALO25J")   // Probably the same as bg2
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -77,14 +73,13 @@ END
  // Yeslick BG2
  
 IF
-	HasItem("JO_JOIN","LK#YESLK")
+	CharName("LK#YESLK",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("LK#YESL",OVERRIDE)
-		SetDialog("LK#YESJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("LK#YESJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -92,14 +87,13 @@ END
  // ToB Yeslick BG2
  
 IF
-	HasItem("JO_JOIN","LK#YESLK")
+	CharName("LK#YESLK",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("LK#YES25",OVERRIDE)
 		SetDialog("LK#YE25J")   // Probably the same as bg2
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -109,14 +103,13 @@ END
  // The Undying
  
 IF
-	HasItem("JO_JOIN","cmninaf")
+	CharName("cmninaf",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNINAF",OVERRIDE)
-		SetDialog("CMNINAFJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("CMNINAFJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -124,26 +117,24 @@ END
  // ToB Undying
  
 IF
-	HasItem("JO_JOIN","cmninaf")
+	CharName("cmninaf",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNINA25",OVERRIDE)
 		SetDialog("CMNINA25")   // Probably the same as bg2
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 IF
-	HasItem("JO_JOIN","callisto")
+	CharName("callisto",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CALLISTO",OVERRIDE)
-		SetDialog("CMCALLIJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("CMCALLIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -153,13 +144,12 @@ END
  // Summon Bhaalspawn
 
 IF
-	HasItem("JO_JOIN","BHAALSPW")
+	CharName("BHAALSPW",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BHAALSPW",OVERRIDE)
-		SetDialog("bhalspwj") 
-		DestroyItem("JO_JOIN")
+		SetDialog("bhalspwj")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -168,14 +158,13 @@ END
  // ToB Summon Bhaalspawn
 
 IF
-	HasItem("JO_JOIN","BHAALSPW")
+	CharName("BHAALSPW",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BHAALSPW",OVERRIDE)
 		SetDialog("bhal25j")  // Probably the same as bg2
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -186,14 +175,13 @@ END
 // NikitaRedux
 
 IF
-	HasItem("JO_JOIN","cmnikita")
+	CharName("cmnikita",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("cmnikita",OVERRIDE)
 		SetDialog("CMNIKITJ")
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -201,14 +189,13 @@ END
  // ToB NikitaRedux
 
 IF
-	HasItem("JO_JOIN","cmnikita")
+	CharName("cmnikita",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMNIK25",OVERRIDE)
 		SetDialog("CMNIK25J") // Probably the same as bg2
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -218,14 +205,13 @@ END
 // VampireTales
 
 IF
-	HasItem("JO_JOIN","cmgmiriam")
+	CharName("cmgmiriam",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMGMIRI",OVERRIDE)
 		SetDialog("CMGMIRIj")
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -233,14 +219,13 @@ END
  // ToB VampireTales
 
 IF
-	HasItem("JO_JOIN","cmgmiriam")
+	CharName("cmgmiriam",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("CMGMI25",OVERRIDE)
 		SetDialog("CMGMI25J")
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -250,13 +235,12 @@ END
 // Kim
 
 IF
-	HasItem("JO_JOIN","Kim")
+	CharName("Kim",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("Kim",OVERRIDE)
 		SetDialog("KimJ")
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -265,14 +249,13 @@ END
  // ToB Kim
 
 IF
-	HasItem("JO_JOIN","Kim")
+	CharName("Kim",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		ChangeAIScript("Kim",OVERRIDE)
 		SetDialog("Kim25J") // Probably the same as bg2
-		DestroyItem("JO_JOIN")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END

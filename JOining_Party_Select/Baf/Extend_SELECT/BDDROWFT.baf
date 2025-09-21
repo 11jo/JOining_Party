@@ -1,0 +1,29 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWXBOW01","%Death_var%")  // Arbalète de vitesse elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWXBOW01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWBOLT01","%Death_var%")  // Carreau de sommeil elfe noir +1
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWBOLT01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWBOLT03","%Death_var%")  // Carreau elfe noir +1
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWBOLT03","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END

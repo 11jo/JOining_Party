@@ -7,13 +7,12 @@
 // Voghiln
 
 IF
-	HasItem("JO_JOIN","Voghiln")
+	CharName("Voghiln",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BDVOGHIL",OVERRIDE)
-		SetDialog("BDVOGHIJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("BDVOGHIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -23,13 +22,12 @@ END
 // Corwin 
 
 IF
-	HasItem("JO_JOIN","Corwin")
+	CharName("Corwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BDCORWIN",OVERRIDE)
-		SetDialog("BDCORWIJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("BDCORWIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -39,13 +37,12 @@ END
 // Mkhiin
 
 IF
-	HasItem("JO_JOIN","Mkhiin")
+	CharName("Mkhiin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BDMKHIIN",OVERRIDE)
-		SetDialog("BDMKHIIJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("BDMKHIIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
@@ -55,13 +52,12 @@ END
 // Glint
 
 IF
-	HasItem("JO_JOIN","Glint")
+	CharName("Glint",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		ChangeAIScript("BDGLINT",OVERRIDE)
-		SetDialog("BDGLINTJ") 
-		DestroyItem("JO_JOIN")
+		SetDialog("BDGLINTJ",Myself)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		// DisplayStringHead(Myself,~We are now fellow travelers.~)
 END

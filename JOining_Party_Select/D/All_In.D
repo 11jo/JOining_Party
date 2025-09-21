@@ -4,7 +4,7 @@ APPEND %joining_dlg%
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN 1
 	SAY ~Hey ! Who could have foreseen that you would lead such a legion ?~
 	IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
-	IF ~~ THEN REPLY ~Join the group properly, please.~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(2) DestroyItem("JO_JOIN") SmallWait(2) JoinParty()~ EXIT
+	IF ~~ THEN REPLY ~Join the group properly, please.~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(2) JoinParty()~ EXIT //  SmallWait(2) DestroyItem("JO_JOIN")
 //	IF ~~ THEN REPLY ~We need to adjust our strategy.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
 	IF ~~ THEN REPLY ~We need to adjust our position.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
 	END
@@ -57,7 +57,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 													SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 													SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
 //	IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,0)~
+	IF ~IsGabber(Player1)~
 		THEN REPLY ~Stay on sight.~
 			DO ~SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",1)
 					SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -69,7 +69,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 					SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 					SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 					SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,0)~
+	IF ~IsGabber(Player1)~
 		THEN REPLY ~Stay close.~
 			DO ~SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",1)
 					SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
@@ -81,7 +81,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 					SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 					SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 					SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,1)~
+	IF ~IsGabber(Player2)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -93,7 +93,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,1)~
+	IF ~IsGabber(Player2)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -105,7 +105,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,2)~
+	IF ~IsGabber(Player3)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -117,7 +117,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,2)~
+	IF ~IsGabber(Player3)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -129,7 +129,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,3)~
+	IF ~IsGabber(Player4)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -141,7 +141,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,3)~
+	IF ~IsGabber(Player4)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -153,7 +153,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,4)~
+	IF ~IsGabber(Player5)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
@@ -165,7 +165,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~InPartySlot(LastTalkedToBy,4)~
+	IF ~IsGabber(Player5)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",1)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)

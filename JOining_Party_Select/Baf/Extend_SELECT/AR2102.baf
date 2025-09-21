@@ -1,0 +1,10 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("PlayerLooksLikeDrow","GLOBAL",1)
+	Global("changed_%Death_var%","AR2102",0)
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",ApplySpell(Myself,DROW_CHANGE))
+		Wait(1)
+		SetGlobal("changed_%Death_var%","AR2102",1)
+END

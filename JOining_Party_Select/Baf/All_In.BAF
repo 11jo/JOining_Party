@@ -127,12 +127,12 @@ END
 
 IF
 	!Allegiance(Myself,FAMILIAR)
-	OR(2)
-		HasItem("JO_JOIN",Myself)
+//	OR(2)
+//		HasItem("JO_JOIN",Myself)
 		HasItem("JOMINHP1",Myself)
 THEN
 	RESPONSE #100
-		DestroyItem("JO_JOIN")
+//		DestroyItem("JO_JOIN")
 		DestroyItem("JOMINHP1")
 END
 
@@ -179,14 +179,14 @@ IF
 THEN
 	RESPONSE #100
 		LeaveParty()
-		ChangeEnemyAlly(Myself,FAMILIAR)
-		AddFamiliar()
-		GiveItemCreate("JO_JOIN",Myself,0,0,0)
+//		SetGlobal("JO_JOIN_ITEM", "LOCALS",1) // GiveItemCreate("JO_JOIN",Myself,0,0,0)
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		AddFamiliar()
 		FaceObject(Player1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
@@ -218,20 +218,23 @@ IF
 THEN
 	RESPONSE #100
 		LeaveParty()
-		ChangeEnemyAlly(Myself,FAMILIAR)
-		AddFamiliar()
-		SmallWait(1)
-		GiveItemCreate("JO_JOIN",Myself,0,0,0)
+//		SetGlobal("JO_JOIN_ITEM", "LOCALS",1) // GiveItemCreate("JO_JOIN",Myself,0,0,0)
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
 		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		AddFamiliar()
 		// MoveGlobalObject(Myself,Player1)  // JumpToObject(Myself,Player1)
 		SmallWait(1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobalTimer("JO_JOIN_JOIN","GLOBAL",NINE_ROUNDS)
+// Player2 situation
+		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",0)
+		SetGlobal("JO_%Death_var%_REST","LOCALS",0)
+// Add switch familiar related  script
 		ChangeAIScript("JO_JOINI",GENERAL)
 		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 END
@@ -248,7 +251,6 @@ IF
 	!Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
 	!Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
 	!Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
-	Delay(1)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
@@ -324,7 +326,6 @@ END
 
 IF
 	Allegiance(Myself,FAMILIAR)
-	Delay(1)
 	Global("JO_JOIN_CLEAR","LOCALS",2)
 	Global("JO_JOIN_ACTION","LOCALS",0)
 THEN
@@ -334,6 +335,7 @@ THEN
 		DisplayStringHead(Myself,~Yeah.~)
 END
 
+///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
 // All_In_D (We need to adjust our strategy)  !Global("JO_JOIN_ACTION","LOCALS",0)
@@ -524,315 +526,3 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
-// Hit
-
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentLT(Myself,70)
-	!HPPercentLT(Myself,50)
-	!HPPercentLT(Myself,30)
-	!HPPercentLT(Myself,15)
-	!GlobalGT("JO_JOIN_FEELING","LOCALS",0)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~I took a hit.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~Aïe !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~Just a scratch.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~I took a hit.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~Don't make me laugh.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~I took a hit.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~I took a hit.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~I took a hit.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~I took a hit.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~I took a hit.~)
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentLT(Myself,50)
-	!HPPercentLT(Myself,30)
-	!HPPercentLT(Myself,15)
-	!GlobalGT("JO_JOIN_FEELING","LOCALS",1)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I took a heavy blow.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~Ouch !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~A scratch...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I took a heavy blow.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~It tickles when I laugh.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I took a heavy blow.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I took a heavy blow.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I took a heavy blow.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I took a heavy blow.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I took a heavy blow.~)
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentLT(Myself,30)
-	!HPPercentLT(Myself,15)
-	!GlobalGT("JO_JOIN_FEELING","LOCALS",2)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I really don't feel well.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I really don't feel well.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~All right, it stings a little.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I really don't feel well.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~Dangerous ? I laugh in the face of danger.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I really don't feel well.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I really don't feel well.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I really don't feel well.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I really don't feel well.~)
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentLT(Myself,15)
-	Global("JO_JOIN_FEELING","LOCALS",3)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I'm at the end of me.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~The end is near.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I can keep going... Can I ?~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I will survive !!!~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I laugh in the face of death...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I'm at the end of me.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I'm at the end of me.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I'm at the end of me.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I'm at the end of me.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",4)
-	DisplayStringHead(Myself,~I'm at the end of me.~)
-END
-
-
-// Heal
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentGT(Myself,29)
-	!HPPercentGT(Myself,49)
-	!HPPercentGT(Myself,70)
-	!HPPercentGT(Myself,99)
-	GlobalGT("JO_JOIN_FEELING","LOCALS",3)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~Ha ha ha !!!~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",3)
-	DisplayStringHead(Myself,~I will make it, probably...~)
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentGT(Myself,49)
-	!HPPercentGT(Myself,79)
-	!HPPercentGT(Myself,99)
-	GlobalGT("JO_JOIN_FEELING","LOCALS",2)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~A lot of fun.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",2)
-	DisplayStringHead(Myself,~I feel better.~)
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentGT(Myself,79)
-	!HPPercentGT(Myself,99)
-	GlobalGT("JO_JOIN_FEELING","LOCALS",1)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~Want to hear something funny ?~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~All right, I am back !~)
-END
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPPercentGT(Myself,99)
-	!Global("JO_JOIN_FEELING","LOCALS",0)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~Joke aside, I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_FEELING","LOCALS",0)
-	DisplayStringHead(Myself,~I feel Great.~)
-END

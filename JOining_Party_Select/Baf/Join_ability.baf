@@ -146,12 +146,12 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	OR(2)
-		HasItem("JO_JOIN",Player1)
+//	OR(2)
+//		HasItem("JO_JOIN",Player1)
 		HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
-		DestroyItem("JO_JOIN")
+//		DestroyItem("JO_JOIN")
 		DestroyItem("JOMINHP1")
 END
 
