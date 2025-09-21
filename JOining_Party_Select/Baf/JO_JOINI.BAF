@@ -329,6 +329,7 @@ IF
 	CombatCounter(0)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOINI","LOCALS",1)
@@ -338,6 +339,7 @@ THEN
 		DisplayStringHead(Myself,~Hey.~)
 		SmallWait(1)
 		JoinParty() // Go to All_In_Baf Switch between familiar and party
+		SetInterrupt(TRUE)
 END
 
 // Maybe something could be done with :

@@ -178,6 +178,7 @@ IF
 	Global("JO_JOIN","LOCALS",1)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		LeaveParty()
 //		SetGlobal("JO_JOIN_ITEM", "LOCALS",1) // GiveItemCreate("JO_JOIN",Myself,0,0,0)
 		SmallWait(1)
@@ -192,6 +193,7 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",2)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
+		SetInterrupt(TRUE)
 END
  
 // fellow travelers (End first time from party to familiar)
@@ -217,6 +219,7 @@ IF
 	Delay(5)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		LeaveParty()
 //		SetGlobal("JO_JOIN_ITEM", "LOCALS",1) // GiveItemCreate("JO_JOIN",Myself,0,0,0)
 		SmallWait(1)
@@ -237,6 +240,7 @@ THEN
 // Add switch familiar related  script
 		ChangeAIScript("JO_JOINI",GENERAL)
 		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
+		SetInterrupt(TRUE)
 END
 
 // Yeah Start ( Switch between familiar and party)
