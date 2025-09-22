@@ -84,9 +84,9 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 	IF ~IsGabber(Player2)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",1)
+				SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
-				SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
@@ -96,9 +96,9 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 	IF ~IsGabber(Player2)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",1)
+				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
-				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
@@ -108,11 +108,11 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 	IF ~IsGabber(Player3)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",1)
+				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
-				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
@@ -120,11 +120,11 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 	IF ~IsGabber(Player3)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",1)
+				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
-				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
@@ -132,30 +132,30 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 	IF ~IsGabber(Player4)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",1)
+				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
-				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
-				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player4)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",1)
+				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
-				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player5)~
 	THEN REPLY ~Stay on sight.~
 		DO ~SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",1)
+				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
@@ -163,11 +163,11 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
-				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
-				SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
+				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player5)~
 	THEN REPLY ~Stay close.~
 		DO ~SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",1)
+				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)
@@ -175,7 +175,6 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 				SetGlobal("JO_JOIN_SIGHT_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
 				SetGlobal("JO_JOIN_SIGHT_Player4","LOCALS",0)
-				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
-				SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)~ GOTO JO_JOINYes
+				SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)~ GOTO JO_JOINYes
 END
 END

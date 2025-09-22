@@ -63,11 +63,10 @@ END
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_Valid_Myself","LOCALS",0)
-	StateCheck(Myself,CD_STATE_NOTVALID)
 	!IsValidForPartyDialogue(Myself)
 	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,FAMILIAR)
+		!Allegiance(Myself,FAMILIAR)
+		StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Valid_Myself","LOCALS",0)

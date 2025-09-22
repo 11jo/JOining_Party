@@ -1,5 +1,19 @@
 ////////////////////////////////////////////////////
 
+IF
+	CharName("IMOEN",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	AreaCheck("AR0602")
+	AreaCheck("AR0603")
+THEN
+	RESPONSE #100
+		SetDialog("IMOENJ") 
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("IMOEN",OVERRIDE)
+		// DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
  // Imoen BGEE EET
 
 IF

@@ -70,13 +70,11 @@ END
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_%Death_var%_Valid","GLOBAL",0)
-	OR(2)
+	!IsValidForPartyDialogue(Myself)
+	OR(3)
+		!Allegiance(Myself,FAMILIAR)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 		Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
-	!IsValidForPartyDialogue(Myself)
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
@@ -184,7 +182,7 @@ THEN
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
-		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		EquipItemEx("JOMINHP1",0)
 		SmallWait(1)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
@@ -216,7 +214,7 @@ END
 
 IF
 	Global("JO_JOINI","LOCALS",1)
-	Delay(5)
+	Delay(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -224,8 +222,7 @@ THEN
 //		SetGlobal("JO_JOIN_ITEM", "LOCALS",1) // GiveItemCreate("JO_JOIN",Myself,0,0,0)
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
-		SmallWait(1)
-		XEquipItem("JOMINHP1",Myself,SLOT_RING_LEFT,EQUIP)
+		EquipItemEx("JOMINHP1",0)
 		SmallWait(1)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
@@ -259,9 +256,10 @@ IF
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
 	RESPONSE #100
+		DisplayStringHead(Myself,~Yeah.~)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(Player1)
-		Continue() // Go to Yeah End
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		Continue() // Go to ScriptAction
 END
 
 IF
@@ -273,9 +271,10 @@ IF
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
 	RESPONSE #100
+		DisplayStringHead(Myself,~Yeah.~)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(Player2)
-		Continue() // Go to Yeah End
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		Continue() // Go to ScriptAction
 END
 
 IF
@@ -287,9 +286,10 @@ IF
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
 	RESPONSE #100
+		DisplayStringHead(Myself,~Yeah.~)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(Player3)
-		Continue() // Go to Yeah End
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		Continue() // Go to ScriptAction
 END
 
 IF
@@ -301,9 +301,10 @@ IF
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
 	RESPONSE #100
+		DisplayStringHead(Myself,~Yeah.~)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(Player4)
-		Continue() // Go to Yeah End
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		Continue() // Go to ScriptAction
 END
 
 IF
@@ -315,9 +316,10 @@ IF
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
 	RESPONSE #100
+		DisplayStringHead(Myself,~Yeah.~)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		MoveToObject(Player5)
-		Continue() // Go to Yeah End
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		Continue() // Go to ScriptAction
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -335,8 +337,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		DisplayStringHead(Myself,~Yeah.~)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -530,3 +530,42 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+ 
+// Rest situation
+
+IF
+	Global("JO_%Death_var%_REST","LOCALS",1)
+	Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_%Death_var%_REST","LOCALS",0)
+		Rest()
+END
+
+IF
+	Global("JO_%Death_var%_REST","LOCALS",1)
+	!Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_%Death_var%_REST","LOCALS",0)
+END
+
+ 
+// ClearActions situation
+
+IF
+	Global("JO_%Death_var%_ClearActions","LOCALS",1)
+	Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",0)
+		ClearActions(Myself)
+END
+IF
+	Global("JO_%Death_var%_ClearActions","LOCALS",1)
+	!Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",0)
+END
