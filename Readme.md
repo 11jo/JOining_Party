@@ -61,13 +61,13 @@ Files :
 - [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core.tph)  
    - Implement scripts and dialogs for each selected NPCs.
 
-- [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
+- [JOining_Party_Select_End.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
    - Implement a little script to other (not selected) NPCs.
 
 - [All_In.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/All_In.BAF)  
    - Added to each selected NPCs to deal with Npc to Familiar switch.
 
-- [JO_JOIN.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf)  
+- [%JO_JOIN%.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf)  
    -  JO_JOIN1.BAF to JO_JOIN5.BAF are scripts added to Familiar OVERRIDE script, only for a short time, it will set the right dialog and script depending of the NPC.
 
 - [JO_JOINI.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOINI.BAF)  
@@ -87,6 +87,145 @@ Files :
 
 - [jo_join.spl](https://github.com/11jo/JOining_Party/tree/main/JOining_Party_Select/Spl)  
    - Special ability for Charname, will simply set a LOCALS to 1 on the targeted NPC.
+
+
+## Variables :
+----------------
+
+---
+
+GLOBAL :
+
+---
+
+- Global("JO_%Death_var%_AllowDead","GLOBAL",0)
+- Global("JO_%Death_var%_InParty","GLOBAL",0)
+- Global("JO_%Death_var%_Valid","GLOBAL",0)
+   - Replace regular (InParty, IsValidForPartyDialogue and InPartyAllowDead)
+
+---
+
+- Global("JO_NOJOIN","GLOBAL",0)
+   - Prevent two NPC to switch at the same time.
+
+---
+
+- GlobalTimer("JO_JOIN_JOIN","GLOBAL",NINE_ROUNDS)
+   - Timer for switching Familiar to NPCs regulary.
+
+---
+
+- Global("JO_JOIN_BGEE_EET","GLOBAL",0)
+- Global("JO_JOIN_BG2EE","GLOBAL",0)
+- Global("JO_JOIN_ToB","GLOBAL",0)
+- Global("%JO_JOIN_BG%","GLOBAL",0)
+- Global("JO_JOIN_SoD","GLOBAL",0)
+   - Set variable corresponding to game campaign to enable relevant override scripts and joining dialog. Used in %JO_JOIN%.baf (1.2.3.4.5).
+
+---
+
+- Global("JO_Join_InParty_Myself","GLOBAL",0)
+   - Special Charname at character creation, to be sure DPLAYER3.BCS is set.
+
+---
+
+LOCALS :
+
+---
+
+- Global("JO_AllowDead_Myself","LOCALS",0)
+- Global("JO_InParty_Myself","LOCALS",0)
+- Global("JO_Valid_Myself","LOCALS",0)
+   - Same as the GLOBAL %Death_var% above but for Myself.
+
+---
+
+- Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
+   - Used along "IsValid" when familiar are dead but not really.
+
+---
+
+- Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+   - Set when Familiar health is belove 5HP.
+
+---
+
+- Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
+   - Same as above but not implemented yet.
+
+---
+
+- Global("JO_JOIN_TALK","LOCALS",0)
+   - For first time becoming a familiar and have the relevant text line "We are now fellow travelers."
+
+---
+
+- Global("JO_JOINI","LOCALS",0)
+   - Set when familiar switch in party, and enable block to return to familiar state.
+
+---
+
+- Global("JO_%Death_var%_ClearActions","LOCALS",0)
+   - Not tested yet, to make familiar rest or clearaction along party members.
+
+---
+
+- Global("JO_%Death_var%_REST","LOCALS",0)
+   - Not tested yet, to make familiar rest or clearaction along party members.
+
+---
+
+- Global("JO_JOIN_CLOSE_PlayerX","LOCALS",0)
+   - Through dialog with familiar, used to link a familiar to a specific party member. See All_In.D
+
+---
+
+- Global("JO_JOIN_SIGHT_PlayerX","LOCALS",0)
+   - Through dialog with familiar, used to link a familiar to a specific party member. See All_In.D
+
+---
+
+- Global("JO_JOIN","LOCALS",0)
+   - Used by Charname ability to change NPC to familiar.
+   - Used by Charname to allow special dialog with familiar.
+   - Used in %JO_JOIN%.baf (1.2.3.4.5) to set relevant override scripts and joining dialog.
+
+---
+
+- Global("JO_JOIN_CLEAR","LOCALS",0)
+   - Not implemented yet, will be used to keep assigned script when switching in and out party.
+
+---
+
+- Global("JO_JOIN_ACTION","LOCALS",0)
+   - Not implemented yet, used along Global("JO_JOIN_CLEAR","LOCALS",0).
+
+---
+
+- Global("JO_FIRST_JOIN_JOIN","LOCALS",0)
+   - Not meant to stay after release, it just launch the switch "only one time" quickly after becoming a familiar for the first time, to verify that the switch work for the choosen NPC.
+
+---
+
+- Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",0)
+   - Not implemented yet, Through dialog with familiar, used to make it not follow the group. See All_In.D
+
+---
+
+- Global("JO_JOIN_RANGE","LOCALS",0)
+   - The familiar will go close to Charname or linked party member before switching in party.
+
+---
+
+- Global("JO_JOIN_FEELING","LOCALS",0)
+   - Not quite tested yet, DisplayStringHead to notify familiar health statut.
+
+---
+
+- Global("JO_JOIN_XPGT_X","LOCALS",0)
+   - Not implemented yet, will hopefully add the relevant XP to familiar to be on the same level as party members.
+
+---
 
 
 

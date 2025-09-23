@@ -3,8 +3,9 @@
 IF
 	CharName("IMOEN",Myself)
 	Global("JO_JOIN","LOCALS",2)
-	AreaCheck("AR0602")
-	AreaCheck("AR0603")
+	OR()
+		AreaCheck("AR0602")
+		AreaCheck("AR0603")
 THEN
 	RESPONSE #100
 		SetDialog("IMOENJ") 
