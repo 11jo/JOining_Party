@@ -92,8 +92,6 @@ Files :
 ## Variables :
 ----------------
 
----
-
 GLOBAL :
 
 ---
@@ -146,7 +144,7 @@ LOCALS :
 ---
 
 - Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-   - Set when Familiar health is belove 5HP.
+   - Set when Familiar health is below 5HP.
 
 ---
 
@@ -187,7 +185,7 @@ LOCALS :
 
 - Global("JO_JOIN","LOCALS",0)
    - Used by Charname ability to change NPC to familiar.
-   - Used by Charname to allow special dialog with familiar.
+   - Used by Charname ability to allow special dialog with familiar.
    - Used in %JO_JOIN%.baf (1.2.3.4.5) to set relevant override scripts and joining dialog.
 
 ---

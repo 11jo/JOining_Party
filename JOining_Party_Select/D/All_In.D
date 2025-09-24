@@ -56,7 +56,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 													SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
 													SetGlobal("JO_JOIN_SIGHT_Player5","LOCALS",0)
 													SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)~ GOTO JO_JOINYes
-//	IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_NOFOLLOW","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player1)~
 		THEN REPLY ~Stay on sight.~
 			DO ~SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",1)

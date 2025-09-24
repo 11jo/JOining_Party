@@ -8,6 +8,18 @@ AddXPObject(AddXPObject(O:Object*,I:XP*) )
 
 ///////////////////////////////////////////////////////////////////////////////
 
+IF
+    CutSceneBroken()
+    Global("JO_JOIN_CUTSCENE", "GLOBAL", 1)
+THEN
+	RESPONSE #100
+        SetGlobal("JO_JOIN_CUTSCENE", "GLOBAL", 0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 // To verify if NPC leave and join as intended after first time from party to familiar
 
 IF
@@ -38,7 +50,8 @@ IF
 	OR(2)
 		!Range(Player1,70)
 		!InMyArea(Player1)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player1) // JumpToObject(Myself,Player1)
@@ -57,7 +70,8 @@ IF
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLOSE_Player2","LOCALS",0)
@@ -73,7 +87,8 @@ IF
 	OR(2)
 		!Range(Player2,70)
 		!InMyArea(Player2)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player2) // JumpToObject(Myself,Player1)
@@ -93,7 +108,8 @@ IF
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLOSE_Player3","LOCALS",0)
@@ -109,7 +125,8 @@ IF
 	OR(2)
 		!Range(Player3,70)
 		!InMyArea(Player3)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player3) // JumpToObject(Myself,Player1)
@@ -129,7 +146,8 @@ IF
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLOSE_Player4","LOCALS",0)
@@ -145,7 +163,8 @@ IF
 	OR(2)
 		!Range(Player4,70)
 		!InMyArea(Player4)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player4) // JumpToObject(Myself,Player1)
@@ -165,7 +184,8 @@ IF
 	OR(2)
 		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
 		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CLOSE_Player5","LOCALS",0)
@@ -181,7 +201,8 @@ IF
 	OR(2)
 		!Range(Player5,70)
 		!InMyArea(Player5)
-//	!Global("JO_JOIN_SCRIPT_NOMOVE","LOCALS",1)
+	!Global("JO_JOIN_NOFOLLOW","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player5) // JumpToObject(Myself,Player1)

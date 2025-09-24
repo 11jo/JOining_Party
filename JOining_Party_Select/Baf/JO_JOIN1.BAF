@@ -3,7 +3,7 @@
 IF
 	CharName("IMOEN",Myself)
 	Global("JO_JOIN","LOCALS",2)
-	OR()
+	OR(2)
 		AreaCheck("AR0602")
 		AreaCheck("AR0603")
 THEN
