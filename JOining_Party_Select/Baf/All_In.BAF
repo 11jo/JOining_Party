@@ -121,6 +121,22 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// JO_JOIN_RESET_ACTION (JO_JOINI.BAF // Reintegrate NPC into party periodically)
+ 
+IF
+	Global("JO_JOIN_RESET_ACTION","LOCALS",1) 
+THEN
+	RESPONSE #100
+		SetGlobal("JO_%Death_var%_ClearActions","GLOBAL",0)
+		SetGlobal("JO_%Death_var%_Rest","GLOBAL",0)
+		SetGlobal("JO_JOIN_CUTSCENE", "GLOBAL",0)
+		SetGlobal("JO_JOIN_RESET_ACTION","LOCALS",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Related to Join_ability.baf destroy item before 
 
 IF
