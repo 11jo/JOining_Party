@@ -550,8 +550,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-	Polymorph(SLEEPING_MAN_HUMAN)
-
+//	Polymorph(SLEEPING_MAN_HUMAN)
 END
 
 IF
@@ -620,8 +619,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-	Polymorph(SLEEPING_WOMAN_HUMAN)
-
+//	Polymorph(SLEEPING_WOMAN_HUMAN)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -684,8 +682,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-	Polymorph(SLEEPING_MAN_HALFLING)
-
+//	Polymorph(SLEEPING_MAN_HALFLING)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -759,8 +756,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-	Polymorph(SLEEPING_DWARF)
-
+//	Polymorph(SLEEPING_DWARF)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -830,8 +826,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-	Polymorph(SLEEPING_WOMAN_ELF)
-
+//	Polymorph(SLEEPING_WOMAN_ELF)
 END
 
 IF
@@ -898,8 +893,7 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-	Polymorph(SLEEPING_MAN_ELF)
-
+//	Polymorph(SLEEPING_MAN_ELF)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -955,11 +949,8 @@ THEN
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-	Polymorph(SLEEPING_FAT_MAN_HUMAN)
-
+//	Polymorph(SLEEPING_FAT_MAN_HUMAN)
 END
-
-///////////////////////////////////////////////////////////////////////////////
 
 // Other
 
@@ -1038,6 +1029,8 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////
+
 // No more Dead  (// Related to AllInBaf set statut when No more Dead )
 
 IF
@@ -1057,43 +1050,43 @@ IF
 THEN
 	RESPONSE #10
 	DisplayStringHead(Myself,~Still alive !~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Dead ? No more !~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~The sun shines, and I am amazed to see another day.~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Perhaps I'll survive longer than I had originally thought.~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~You didn't abandon me !~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~It was a... Nice experiment...~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Well, I guess we have to go on...~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~I may have overreacted.~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Of "curse"... I didn't mean it.~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Well, that escalated quickly...~)
-	Wait(2)
+	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 END
 /*
