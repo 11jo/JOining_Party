@@ -266,22 +266,67 @@ END
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(StartCutScene\)~
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("Imoen",EndCutSceneMode())\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE", "GLOBAL", 1)
-	StartCutScene~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(StartCutScene\)~
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("hlketta",EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("sarmist",EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("Ployer",EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player1,EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
+	StartCutSceneMode()~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*EndCutSceneMode()\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~EndCutSceneMode()
-	SetGlobal("JO_JOIN_CUTSCENE", "GLOBAL", 0)~
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
 				~
 			END
 
@@ -291,24 +336,70 @@ END
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(StartCutScene\)~
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("Imoen",EndCutSceneMode())\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE", "GLOBAL", 1)
-	StartCutScene~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(StartCutScene\)~
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("hlketta",EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("sarmist",EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride("Ployer",EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player1,EndCutSceneMode())\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player1,EndCutSceneMode())
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
+	StartCutSceneMode()~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*EndCutSceneMode()\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~EndCutSceneMode()
-	SetGlobal("JO_JOIN_CUTSCENE", "GLOBAL", 0)~
+	SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
 				~
 			END
 
 		END
 	BUT_ONLY
+
