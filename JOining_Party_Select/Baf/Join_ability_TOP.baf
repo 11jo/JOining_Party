@@ -7,3 +7,15 @@ THEN
 		ActionOverride(Player1,ChangeAIScript("DPLAYER3",DEFAULT))
 		Continue()
 END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+    CutSceneBroken()
+    Global("JO_JOIN_CUTSCENE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+END

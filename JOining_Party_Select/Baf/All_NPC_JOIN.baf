@@ -42,24 +42,6 @@ THEN
 		SetGlobal("JO_InParty_Myself","LOCALS",1)
 END
  
- /*
-// !Is(!If)ValidForPartyDialog(ue)
-IF
-	!Global("JO_Valid_Myself","LOCALS",0)
-	OR(4)
-		!IsValidForPartyDialogue(Myself)
-		!IfValidForPartyDialogue(Myself)
-		!IsValidForPartyDialog(Myself)
-		!IfValidForPartyDialog(Myself)
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,FAMILIAR)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_Valid_Myself","LOCALS",0)
-END
- */
- 
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_Valid_Myself","LOCALS",0)
@@ -71,21 +53,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_Valid_Myself","LOCALS",0)
 END
-
-/*
-// Is(If)ValidForPartyDialog(ue)
-IF
-	Global("JO_Valid_Myself","LOCALS",0)
-	OR(4)
-		IsValidForPartyDialogue(Myself)
-		IfValidForPartyDialogue(Myself)
-		IsValidForPartyDialog(Myself)
-		IfValidForPartyDialog(Myself)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_Valid_Myself","LOCALS",1)
-END
- */
  
 // Is(If)ValidForPartyDialog(ue)
 IF

@@ -45,7 +45,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINDLG3
 	SAY ~What do you need ?~
-	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_SCRIPT_NOMOVE","LOCALS",0)
+	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_NOFOLLOW","LOCALS",0)
 													SetGlobal("JO_JOIN_SIGHT_Player1","LOCALS",0)
 													SetGlobal("JO_JOIN_CLOSE_Player1","LOCALS",0)
 													SetGlobal("JO_JOIN_SIGHT_Player2","LOCALS",0)

@@ -57,22 +57,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_InParty_Myself","LOCALS",1)
 END
-
-/*
-// !Is(!If)ValidForPartyDialog(ue)
-IF
-	!Global("JO_Valid_Myself","LOCALS",0)
-	OR(4)
-		!IsValidForPartyDialogue(Myself)
-		!IfValidForPartyDialogue(Myself)
-		!IsValidForPartyDialog(Myself)
-		!IfValidForPartyDialog(Myself)
-	!Allegiance(Myself,FAMILIAR)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_Valid_Myself","LOCALS",0)
-END
- */
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
@@ -85,21 +69,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_Valid_Myself","LOCALS",0)
 END
-
-/*
-// Is(If)ValidForPartyDialog(ue)
-IF
-	Global("JO_Valid_Myself","LOCALS",0)
-	OR(4)
-		IsValidForPartyDialogue(Myself)
-		IfValidForPartyDialogue(Myself)
-		IsValidForPartyDialog(Myself)
-		IfValidForPartyDialog(Myself)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_Valid_Myself","LOCALS",1)
-END
- */
  
 // Is(If)ValidForPartyDialog(ue)
 IF
@@ -113,18 +82,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Valid_Myself","LOCALS",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-    CutSceneBroken()
-    Global("JO_JOIN_CUTSCENE", "GLOBAL", 1)
-THEN
-	RESPONSE #100
-        SetGlobal("JO_JOIN_CUTSCENE", "GLOBAL", 0)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -157,12 +114,9 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-//	OR(2)
-//		HasItem("JO_JOIN",Player1)
 		HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
-//		DestroyItem("JO_JOIN")
 		DestroyItem("JOMINHP1")
 END
 
