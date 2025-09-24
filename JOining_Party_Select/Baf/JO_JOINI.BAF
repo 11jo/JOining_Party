@@ -489,11 +489,6 @@ IF
 	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,5)
-	Gender(Myself,MALE)
-	OR(3)
-		Race(Myself,AASIMAR)
-		Race(Myself,HUMAN)
-		Race(Myself,HALFORC)
 THEN
 	RESPONSE #10
 	DisplayStringHead(Myself,~Carry on without me...~)
@@ -504,15 +499,7 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~<CHARNAME> ! I curse you !!!~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,~You're next...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Aaarghhh...~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -527,52 +514,11 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~Don't you dare leaving me here to rot !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,~<CHARNAME> ! For the gods sake...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-END
-
-IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	Allegiance(Myself,FAMILIAR)
-	Gender(Myself,MALE)
-	OR(3)
-		Race(Myself,AASIMAR)
-		Race(Myself,HUMAN)
-		Race(Myself,HALFORC)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-//	Polymorph(SLEEPING_MAN_HUMAN)
-END
-
-IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	HPLT(Myself,5)
-	Gender(Myself,FEMALE)
-	OR(3)
-		Race(Myself,AASIMAR)
-		Race(Myself,HUMAN)
-		Race(Myself,HALFORC)
-THEN
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~I don't want to go...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I'll return to finish you off.~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -603,59 +549,8 @@ THEN
 	DisplayStringHead(Myself,~<CHARNAME> ! For the gods sake...~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-END
-
-IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	Allegiance(Myself,FAMILIAR)
-	Gender(Myself,FEMALE)
-	OR(3)
-		Race(Myself,AASIMAR)
-		Race(Myself,HUMAN)
-		Race(Myself,HALFORC)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-//	Polymorph(SLEEPING_WOMAN_HUMAN)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	HPLT(Myself,5)
-	Race(Myself,HALFLING)
-THEN
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I don't want to go...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I saw it coming... I guess.~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Aaarghhh...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Keep going, I will catch up...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -664,51 +559,6 @@ THEN
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~<CHARNAME> ! For the gods sake...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-END
-
-IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	Allegiance(Myself,FAMILIAR)
-	Race(Myself,HALFLING)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-//	Polymorph(SLEEPING_MAN_HALFLING)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-
-IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	HPLT(Myself,5)
-	OR(3)
-		Race(Myself,GNOME)
-		Race(Myself,DWARF)
-		Race(Myself,DUERGAR)
-//		Race(Myself,DWARF_UNDERDARK)
-//		Race(Myself,SVIRFNEBLIN)
-THEN
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Ooooh ! I can see the light !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I'll return to finish you off.~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -736,43 +586,6 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~Don't you dare leaving me here to rot !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-END
-
-IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	Allegiance(Myself,FAMILIAR)
-	OR(3)
-		Race(Myself,GNOME)
-		Race(Myself,DWARF)
-		Race(Myself,DUERGAR)
-//		Race(Myself,DWARF_UNDERDARK)
-//		Race(Myself,SVIRFNEBLIN)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-//	Polymorph(SLEEPING_DWARF)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	HPLT(Myself,5)
-	Gender(Myself,FEMALE)
-	OR(3)
-		Race(Myself,ELF)
-		Race(Myself,TIEFLING)
-//		Race(Myself,DROW)
-		Race(Myself,HALF_ELF)
-THEN
-	RESPONSE #10
 	DisplayStringHead(Myself,~Carry on without me...~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
@@ -797,74 +610,11 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Not like this... Not like this !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-END
-
-IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	Gender(Myself,FEMALE)
-	OR(2)
-		Race(Myself,ELF)
-		Race(Myself,HALF_ELF)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-//	Polymorph(SLEEPING_WOMAN_ELF)
-END
-
-IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	HPLT(Myself,5)
-	Gender(Myself,MALE)
-	OR(2)
-		Race(Myself,ELF)
-//		Race(Myself,DROW)
-		Race(Myself,HALF_ELF)
-THEN
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,~I don't want to go...~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,#4887)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -876,156 +626,29 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~<CHARNAME> ! For the gods sake...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-END
-
-IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	Gender(Myself,MALE)
-	OR(2)
-		Race(Myself,ELF)
-		Race(Myself,HALF_ELF)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-//	Polymorph(SLEEPING_MAN_ELF)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Frennedan
-
-IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	HPLT(Myself,5)
-	Race(Myself,DOPPLEGANGER)
-THEN
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-//	SetSequence(SEQ_DIE)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,#4887)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~I'll return to finish you off.~)
+	DisplayStringHead(Myself,~I will return to finish you off.~)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Don't you dare leaving me here to rot !~)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~I know your true nature, <CHARNAME>. You'll kill us all...~)
+	DisplayStringHead(Myself,~I know your true nature, <CHARNAME>. You're gonna kill all of us...~)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 END
 
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	Allegiance(Myself,FAMILIAR)
-	Race(Myself,DOPPLEGANGER)
 THEN
 	RESPONSE #10
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
-//	Polymorph(SLEEPING_FAT_MAN_HUMAN)
 END
-
-// Other
-
-/*
-IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	HPLT(Myself,5)
-	!Race(Myself,AASIMAR)
-	!Race(Myself,HUMAN)
-	!Race(Myself,HALFORC)
-	!Race(Myself,ELF)
-//	!Race(Myself,DROW)
-	!Race(Myself,HALF_ELF)
-	!Race(Myself,GNOME)
-	!Race(Myself,DWARF)
-	!Race(Myself,DUERGAR)
-	!Race(Myself,HALFLING)
-//	!Race(Myself,DWARF_UNDERDARK)
-//	!Race(Myself,SVIRFNEBLIN)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	DisplayStringHead(Myself,~Carry on without me...~)
-END
-
-IF
-	Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-	Allegiance(Myself,FAMILIAR)
-	OR(9)
-		!Race(Myself,AASIMAR)
-		!Race(Myself,HUMAN)
-		!Race(Myself,HALFORC)
-		!Race(Myself,ELF)
-		!Race(Myself,HALF_ELF)
-		!Race(Myself,GNOME)
-		!Race(Myself,DWARF)
-		!Race(Myself,DUERGAR)
-		!Race(Myself,HALFLING)
-THEN
-	RESPONSE #10
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-
-END
-*/
 
 ///////////////////////////////////////////////////////////////////////////////
 
