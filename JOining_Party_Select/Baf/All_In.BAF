@@ -84,7 +84,7 @@ END
 // JO_JOIN_RESET_ACTION (JO_JOINI.BAF // Reintegrate NPC into party periodically)
 
 IF
-	Allegiance(Myself, FAMILIAR)
+	Allegiance(Myself,FAMILIAR)
 	!GlobalsEqual("JO_JOIN_ClearActions","JO_%Death_var%_ClearActions")
 	Global("JO_%Death_var%_ClearActions","LOCALS",1)
 THEN
@@ -94,7 +94,7 @@ THEN
 END
 
 IF
-	Allegiance(Myself, FAMILIAR)
+	Allegiance(Myself,FAMILIAR)
 	!GlobalsEqual("JO_JOIN_Rest","JO_%Death_var%_Rest")
 	!Global("JO_%Death_var%_ClearActions","LOCALS",1)
 THEN
@@ -104,7 +104,7 @@ THEN
 END
 
 IF
-	Allegiance(Myself, FAMILIAR)
+	Allegiance(Myself,FAMILIAR)
 	!GlobalsEqual("JO_JOIN_CUTSCENE","JO_%Death_var%_CUTSCENE")
 	!Global("JO_%Death_var%_CUTSCENE","LOCALS",1)
 THEN
