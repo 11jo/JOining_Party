@@ -1054,17 +1054,6 @@ COPY ~JOining_Party_Select/Spl/JOIR648.SPL~ ~override~
 			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Still alive !~)
 		END*/
 
-COPY_EXISTING ~SCRL72.ITM~ ~override/JO_JOIN.itm~
-	SAY NAME1 ~Engagement~
-	SAY NAME2 ~Engagement~
-	SAY DESC @101
-	SAY UNIDENTIFIED_DESC @101
-	WRITE_LONG 0x18 (THIS BAND BNOT BIT3)
-	WRITE_LONG 0x18 (THIS BAND BNOT BIT6)
-	WRITE_LONG 0x18 (THIS BAND BNOT BIT5)
-	WRITE_LONG 0x18 (THIS | BIT2)
-	// WRITE_LONG 0x18 (THIS BAND BNOT BIT2)
-	
 /*
 COPY_EXISTING ~MINHP1.ITM~ ~override/JOMINHP1.itm~
 	SAY NAME1 ~JOMINHP1~
@@ -1109,27 +1098,8 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-/*
-	ACTION_IF GAME_IS ~eet~ BEGIN
 
-OUTER_SPRINT "25" ""
-
-		END ELSE BEGIN
-
-OUTER_SPRINT "25" "25"
-
-		END
-*/
-
-/*
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOIN.baf~ BEGIN
-
-		COMPILE ~JOining_Party_Select/Baf/JO_JOIN.baf~ EVALUATE_BUFFER
-
-	END
-*/
-
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINI.baf~ BEGIN
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINI.bcs~ BEGIN
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
 
@@ -1138,20 +1108,20 @@ OUTER_SPRINT "25" "25"
 //COMPILE ~JOining_Party_Select/Baf/JO_JOINT.baf~ EVALUATE_BUFFER
 
 
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN1.baf~) THEN BEGIN
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN1.baf~ EVALUATE_BUFFER
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN1.bcs~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.baf~ EVALUATE_BUFFER
 		END
 
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 30 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN2.baf~) THEN BEGIN
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN2.baf~ EVALUATE_BUFFER
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 30 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN2.bcs~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.baf~ EVALUATE_BUFFER
 		END
 
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 60 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN3.baf~) THEN BEGIN
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN3.baf~ EVALUATE_BUFFER
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 60 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN3.bcs~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.baf~ EVALUATE_BUFFER
 		END
 
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 70 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN4.baf~) THEN BEGIN
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN4.baf~ EVALUATE_BUFFER
+	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 70 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN4.bcs~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.baf~ EVALUATE_BUFFER
 		END
 
 	ACTION_IF ((MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 101) ||
@@ -1160,47 +1130,25 @@ COMPILE ~JOining_Party_Select/Baf/JO_JOIN4.baf~ EVALUATE_BUFFER
 					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 104) ||
 					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 105) ||
 					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 106)
-					AND NOT FILE_EXISTS_IN_GAME ~JO_JOIN5.baf~) THEN BEGIN
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN5.baf~ EVALUATE_BUFFER
+					AND NOT FILE_EXISTS_IN_GAME ~JO_JOIN5.bcs~) THEN BEGIN
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN5.baf~ EVALUATE_BUFFER
 		END
 
 // DPLAYER3.bcs additions
 
-EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability.baf~ 
+EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability.baf~ 
 
-EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability_TOP.baf~ 
+EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ 
 
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability_TOP.baf~ 
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ 
 
 		ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
-EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability-BGEE.baf~  EVALUATE_BUFFER
+EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
 		END
 		ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
-EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability-SoD.baf~  EVALUATE_BUFFER
+EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 		END
 		ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
-EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability-ToB.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 		END 
- 
- /*
- ACTION_IF GAME_IS ~bgt~ BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party_Select/Join_ability.baf~
- EXTEND_BOTTOM ~AR0602.BCS~	~JOining_Party_Select/Join_ability.baf~
- EXTEND_BOTTOM ~AR4500.BCS~	~JOining_Party_Select/Join_ability.baf~
-	END ELSE ACTION_IF GAME_IS ~eet~ BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party_Select/Join_ability.baf~
- EXTEND_BOTTOM ~Player3.BCS~	~JOining_Party_Select/Join_ability.baf~
- EXTEND_BOTTOM ~AR0602.BCS~	~JOining_Party_Select/Join_ability.baf~
- EXTEND_BOTTOM ~AR4500.BCS~	~JOining_Party_Select/Join_ability.baf~
-	END ELSE ACTION_IF (GAME_IS ~bgee~ AND GAME_INCLUDES ~sod~) BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party_Select/Join_ability.baf~
- EXTEND_BOTTOM ~Player3.BCS~	~JOining_Party_Select/Join_ability.baf~
-	END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~sod~) BEGIN
- EXTEND_BOTTOM ~%Candlekeep_BCS%.BCS~	~JOining_Party_Select/Join_ability.baf~
-	END ELSE ACTION_IF GAME_IS ~bg2ee~BEGIN
- EXTEND_BOTTOM ~AR0602.BCS~	~JOining_Party_Select/Join_ability.baf~
- EXTEND_BOTTOM ~AR4500.BCS~	~JOining_Party_Select/Join_ability.baf~
-END
-*/
-

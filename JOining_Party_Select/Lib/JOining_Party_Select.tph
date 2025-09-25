@@ -166,7 +166,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
@@ -174,7 +174,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
@@ -182,7 +182,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			END
@@ -191,7 +191,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 // Is(If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",1)
@@ -200,7 +200,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(IfValidForPartyDialogue("%Death_var%")\)~
@@ -208,7 +208,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(IsValidForPartyDialog("%Death_var%")\)~
@@ -216,14 +216,14 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			SPRINT textToReplace ~\(IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END	/*ELSE BEGIN
 				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
@@ -314,7 +314,7 @@ ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
@@ -322,33 +322,32 @@ ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END/*
+			END
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
 			END
 			SPRINT textToReplace ~\(!IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END*/
+			END
 // Is(If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",1)
 			SPRINT textToReplace ~\(IsValidForPartyDialogue("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(IfValidForPartyDialogue("%Death_var%")\)~
@@ -356,24 +355,25 @@ ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END/*
+			END
 			SPRINT textToReplace ~\(IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
+			END
 			SPRINT textToReplace ~\(IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END*/ /*ELSE BEGIN
+			END /*ELSE BEGIN
 				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
 			END*/
 // Rest situation
