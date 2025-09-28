@@ -6,13 +6,12 @@
 // Aerie
 
 IF
-	CharName("Aerie",Myself)
+	Name("Aerie",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("AERIEJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("AERIE",OVERRIDE)
 END
@@ -20,13 +19,12 @@ END
  // ToB Aerie
 
 IF
-	CharName("Aerie",Myself)
+	Name("Aerie",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("AERIE25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("AERI25",OVERRIDE)
 END
@@ -36,13 +34,12 @@ END
 // Anomen
 
 IF
-	CharName("Anomen",Myself)
+	Name("Anomen",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("ANOMENJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("ANOMEN",OVERRIDE)
 END
@@ -50,13 +47,12 @@ END
  // ToB Anomen
 
 IF
-	CharName("Anomen",Myself)
+	Name("Anomen",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("ANOME25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("ANOM25",OVERRIDE)
 END
@@ -66,13 +62,12 @@ END
 // Cernd
 
 IF
-	CharName("Cernd",Myself)
+	Name("Cernd",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("CERNDJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("CERND",OVERRIDE)
 END
@@ -80,13 +75,12 @@ END
  // ToB Cernd
 
 IF
-	CharName("Cernd",Myself)
+	Name("Cernd",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("CERND25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("CERN25",OVERRIDE)
 END
@@ -96,13 +90,12 @@ END
 // Haerdalis
 
 IF
-	CharName("Haerdalis",Myself)
+	Name("Haerdalis",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("HAERDAJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("HAERDALI",OVERRIDE)
 END
@@ -110,13 +103,12 @@ END
  // ToB Haerdalis
 
 IF
-	CharName("Haerdalis",Myself)
+	Name("Haerdalis",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("HAERD25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("HAER25",OVERRIDE)
 END
@@ -126,13 +118,12 @@ END
 // Hexxat
 
 IF
-	CharName("Hexxat",Myself)
+	Name("Hexxat",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("HEXXATJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("HEXXAT",OVERRIDE)
 END
@@ -140,13 +131,12 @@ END
  // ToB Hexxat
 
 IF
-	CharName("Hexxat",Myself)
+	Name("Hexxat",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("HEXXA25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("HEXXA25",OVERRIDE)
 END
@@ -156,13 +146,12 @@ END
 // Jan
 
 IF
-	CharName("Jan",Myself)
+	Name("Jan",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("JANJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("JAN",OVERRIDE)
 END
@@ -170,13 +159,12 @@ END
  // ToB Jan
 
 IF
-	CharName("Jan",Myself)
+	Name("Jan",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("JAN25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("JAN25",OVERRIDE)
 END
@@ -186,13 +174,12 @@ END
 // Keldorn
 
 IF
-	CharName("Keldorn",Myself)
+	Name("Keldorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("KELDORJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("KELDORN",OVERRIDE)
 END
@@ -200,13 +187,12 @@ END
  // ToB Keldorn
 
 IF
-	CharName("Keldorn",Myself)
+	Name("Keldorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("KELDO25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("KELD25",OVERRIDE)
 END
@@ -216,13 +202,12 @@ END
 // Korgan
 
 IF
-	CharName("Korgan",Myself)
+	Name("Korgan",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("KORGANJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("KORGAN",OVERRIDE)
 END
@@ -230,13 +215,12 @@ END
  // ToB Korgan
 
 IF
-	CharName("Korgan",Myself)
+	Name("Korgan",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("KORGA25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("KORG25",OVERRIDE)
 END
@@ -246,13 +230,12 @@ END
 // Mazzy
 
 IF
-	CharName("Mazzy",Myself)
+	Name("Mazzy",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("MAZZYJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("MAZZY",OVERRIDE)
 END
@@ -260,13 +243,12 @@ END
  // ToB Mazzy
 
 IF
-	CharName("Mazzy",Myself)
+	Name("Mazzy",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("MAZZY25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("MAZZ25",OVERRIDE)
 END
@@ -276,13 +258,12 @@ END
 // Nalia
 
 IF
-	CharName("Nalia",Myself)
+	Name("Nalia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("NALIAJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("NALIA",OVERRIDE)
 END
@@ -290,13 +271,12 @@ END
  // ToB Nalia
 
 IF
-	CharName("Nalia",Myself)
+	Name("Nalia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("NALIA25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("NALI25",OVERRIDE)
 END
@@ -306,12 +286,11 @@ END
 // Sarevok
 
 IF
-	CharName("Sarevok",Myself)
+	Name("Sarevok",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		SetDialog("SAREV25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("SAREV25",OVERRIDE)
 END
@@ -321,13 +300,12 @@ END
 // Valygar
 
 IF
-	CharName("Valygar",Myself)
+	Name("Valygar",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("VALYGARJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("VALYGAR",OVERRIDE)
 END
@@ -335,13 +313,12 @@ END
  // ToB Valygar
 
 IF
-	CharName("Valygar",Myself)
+	Name("Valygar",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("VALYG25J")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("VALY25",OVERRIDE)
 END
@@ -351,12 +328,11 @@ END
 // Wilson
 
 IF
-	CharName("Wilson",Myself)
+	Name("Wilson",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		SetDialog("WILSONJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("WILSON",OVERRIDE)
 END
@@ -366,12 +342,11 @@ END
 // Yoshimo
 
 IF
-	CharName("Yoshimo",Myself)
+	Name("Yoshimo",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
 		SetDialog("YOSHJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("YOSHIMO",OVERRIDE)
 END

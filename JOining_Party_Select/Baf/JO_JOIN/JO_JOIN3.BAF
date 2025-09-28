@@ -12,7 +12,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("BDVOGHIJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDVOGHIL",OVERRIDE)
 END
@@ -27,7 +26,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("BDCORWIJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDCORWIN",OVERRIDE)
 END
@@ -42,7 +40,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("BDMKHIIJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDMKHIIN",OVERRIDE)
 END
@@ -57,7 +54,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("BDGLINTJ",Myself)
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDGLINT",OVERRIDE)
 END

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////
 
 IF
-	CharName("IMOEN",Myself)
+	Name("IMOEN",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		AreaCheck("AR0602")
@@ -9,7 +9,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("IMOENJ") 
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("IMOEN",OVERRIDE)
 END
@@ -17,7 +16,7 @@ END
  // Imoen BGEE EET
 
 IF
-	CharName("%IMOEN_DV%",Myself)
+	Name("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -31,7 +30,7 @@ END
  // Imoen BGEE
 
 IF
-	CharName("%IMOEN_DV%",Myself)
+	Name("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
@@ -45,7 +44,7 @@ END
  // Imoen BG2EE
 
 IF
-	CharName("%IMOEN_DV%",Myself)
+	Name("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
@@ -59,7 +58,7 @@ END
  // ToB Imoen
 
 IF
-	CharName("%IMOEN_DV%",Myself)
+	Name("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -77,7 +76,7 @@ END
  // Edwin BGEE EET
  
 IF
-	CharName("Edwin",Myself)
+	Name("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -91,7 +90,7 @@ END
  // Edwin BGEE BG2EE
 
 IF
-	CharName("Edwin",Myself)
+	Name("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -107,7 +106,7 @@ END
  // SoD Edwin
 
 IF
-	CharName("Edwin",Myself)
+	Name("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -127,7 +126,7 @@ END
  // Jaheira BGEE EET
 
 IF
-	CharName("Jaheira",Myself)
+	Name("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -141,7 +140,7 @@ END
  // Jaheira BGEE
 
 IF
-	CharName("Jaheira",Myself)
+	Name("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
@@ -155,7 +154,7 @@ END
  // Jaheira BG2EE
 
 IF
-	CharName("Jaheira",Myself)
+	Name("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
@@ -169,7 +168,7 @@ END
  // SoD Jaheira
 
 IF
-	CharName("Jaheira",Myself)
+	Name("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -189,7 +188,7 @@ END
  // Minsc BGEE EET
 
 IF
-	CharName("Minsc",Myself)
+	Name("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -203,7 +202,7 @@ END
  // Minsc BGEE BG2EE
 
 IF
-	CharName("Minsc",Myself)
+	Name("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -219,7 +218,7 @@ END
  // SoD Minsc
 
 IF
-	CharName("Minsc",Myself)
+	Name("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -239,7 +238,7 @@ END
  // Viconia BGEE EET
 
 IF
-	CharName("Viconia",Myself)
+	Name("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -253,7 +252,7 @@ END
  // Viconia BGEE
 
 IF
-	CharName("Viconia",Myself)
+	Name("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
@@ -267,7 +266,7 @@ END
  // Viconia BG2EE
 
 IF
-	CharName("Viconia",Myself)
+	Name("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
@@ -281,7 +280,7 @@ END
  // SoD Viconia
 
 IF
-	CharName("Viconia",Myself)
+	Name("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -301,7 +300,7 @@ END
  // Dorn BGEE EET
 
 IF
-	CharName("Dorn",Myself)
+	Name("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -315,7 +314,7 @@ END
  // Dorn BGEE BG2EE
 
 IF
-	CharName("Dorn",Myself)
+	Name("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -331,7 +330,7 @@ END
  // SoD Dorn
 
 IF
-	CharName("Dorn",Myself)
+	Name("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -352,7 +351,7 @@ END
 
 
 IF
-	CharName("Neera",Myself)
+	Name("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -367,7 +366,7 @@ END
 
 
 IF
-	CharName("Neera",Myself)
+	Name("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -383,7 +382,7 @@ END
  // SoD Neera
 
 IF
-	CharName("Neera",Myself)
+	Name("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -403,7 +402,7 @@ END
  // Rasaad BGEE EET
 
 IF
-	CharName("Rasaad",Myself)
+	Name("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -417,7 +416,7 @@ END
  // Rasaad BGEE BG2EE
 
 IF
-	CharName("Rasaad",Myself)
+	Name("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -433,7 +432,7 @@ END
  // SoD Rasaad
 
 IF
-	CharName("Rasaad",Myself)
+	Name("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN

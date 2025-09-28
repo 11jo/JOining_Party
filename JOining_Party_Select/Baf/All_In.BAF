@@ -188,6 +188,7 @@ END
 // Player2
 
 IF
+	Allegiance(Myself,FAMILIAR)
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 		OnCreation()
@@ -211,6 +212,7 @@ END
 // Player3
 
 IF
+	Allegiance(Myself,FAMILIAR)
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 		OnCreation()
@@ -234,6 +236,7 @@ END
 // Player4
 
 IF
+	Allegiance(Myself,FAMILIAR)
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 		OnCreation()
@@ -257,6 +260,7 @@ END
 // Player5
 
 IF
+	Allegiance(Myself,FAMILIAR)
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 		OnCreation()
@@ -280,6 +284,7 @@ END
 // Player1
 
 IF
+	Allegiance(Myself,FAMILIAR)
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
 		OnCreation()
@@ -311,6 +316,7 @@ END
 // Reintegrate NPC into party periodically (Every NINE_ROUNDS depending of other NPCs and Triggers above) 
 
 IF
+	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_RANGE","LOCALS",1)
 	ActionListEmpty()
 	NumInPartyLT(6)
