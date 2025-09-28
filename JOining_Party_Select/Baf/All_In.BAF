@@ -204,9 +204,6 @@ THEN
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobalTimer("JO_JOIN_JOIN","GLOBAL",NINE_ROUNDS)
-// Player2 situation
-		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",0)
-		SetGlobal("JO_%Death_var%_REST","LOCALS",0)
 // Add switch familiar related  script
 //		ChangeAIScript("",RACE)
 //		ChangeAIScript("",CLASS)
@@ -215,6 +212,7 @@ THEN
 		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
 END
+
 
 // Yeah Start ( Switch between familiar and party)
 

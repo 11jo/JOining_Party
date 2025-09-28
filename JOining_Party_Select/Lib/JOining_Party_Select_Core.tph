@@ -876,11 +876,16 @@ END
 
 /////////////////////////// Mods ///////////////////////////
 
-OUTER_SPRINT "JO_JOIN" "JO_JOIN5"
+ OUTER_SPRINT "JO_JOIN" "JO_JOIN5"
 
 /////////////////////////// Mods BG1 ///////////////////////////
 
 // Ishlilka (#Ishy)
+
+OUTER_SPRINT "BG1_JOINED" "IshyD"
+OUTER_SPRINT "BG1_BCS" "ishyscrp"
+OUTER_SPRINT "SoD_JOINED" "bdishy"
+OUTER_SPRINT "SoD_BCS" "ishyscrp"
 
 ACTION_FOR_EACH bcs IN
 
@@ -889,8 +894,24 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
-	
+
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/All_In/JO_JOINBG1.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
@@ -899,6 +920,11 @@ END
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2 (CMALORA)
+
+OUTER_SPRINT "BG2_JOINED" "CMALORAJ"
+OUTER_SPRINT "BG2_BCS" "cmalora"
+OUTER_SPRINT "TOB_JOINED" "CMALO25J"   // Probably the same as bg2
+OUTER_SPRINT "TOB_BCS" "cmalo25"
 
 ACTION_FOR_EACH bcs IN
 
@@ -909,11 +935,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMALORA_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // Yeslick BG2 (LK#YESLK)
+
+OUTER_SPRINT "BG2_JOINED" "LK#YESJ"
+OUTER_SPRINT "BG2_BCS" "LK#YESL"
+OUTER_SPRINT "TOB_JOINED" "LK#YE25J"   // Probably the same as bg2
+OUTER_SPRINT "TOB_BCS" "LK#YES25"
 
 ACTION_FOR_EACH bcs IN
 
@@ -924,11 +971,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/LK#YESLK_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // The Undying (cmninaf)
+
+OUTER_SPRINT "BG2_JOINED" "CMNINAFJ"
+OUTER_SPRINT "BG2_BCS" "CMNINAF"
+OUTER_SPRINT "TOB_JOINED" "CMNINA25"   // Probably the same as bg2
+OUTER_SPRINT "TOB_BCS" "CMNINA25"
 
 ACTION_FOR_EACH bcs IN
 
@@ -939,11 +1007,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmninaf_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // The Undying (callisto)
+
+OUTER_SPRINT "BG2_JOINED" "CMCALLIJ"
+OUTER_SPRINT "BG2_BCS" "CALLISTO"
+OUTER_SPRINT "TOB_JOINED" "CMCALLIJ"
+OUTER_SPRINT "TOB_BCS" "CALLISTO"
 
 ACTION_FOR_EACH bcs IN
 
@@ -954,11 +1043,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/callisto_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // Summon Bhaalspawn (BHAALSPW)
+
+OUTER_SPRINT "BG2_JOINED" "bhalspwj"
+OUTER_SPRINT "BG2_BCS" "BHAALSPW"
+OUTER_SPRINT "TOB_JOINED" "bhalspwj"
+OUTER_SPRINT "TOB_BCS" "BHAALSPW"
 
 ACTION_FOR_EACH bcs IN
 
@@ -969,11 +1079,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/BHAALSPW_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // Nikita Redux (cmnikita)
+
+OUTER_SPRINT "BG2_JOINED" "CMNIKITJ"
+OUTER_SPRINT "BG2_BCS" "cmnikita"
+OUTER_SPRINT "TOB_JOINED" "CMNIK25J" // Probably the same as bg2
+OUTER_SPRINT "TOB_BCS" "CMNIK25"
 
 ACTION_FOR_EACH bcs IN
 
@@ -984,11 +1115,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // Vampire Tales (cmgmiriam)
+
+OUTER_SPRINT "BG2_JOINED" "CMGMIRIj"
+OUTER_SPRINT "BG2_BCS" "CMGMIRI"
+OUTER_SPRINT "TOB_JOINED" "CMGMI25J"
+OUTER_SPRINT "TOB_BCS" "CMGMI25"
 
 ACTION_FOR_EACH bcs IN
 
@@ -999,11 +1151,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmgmiriam_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // Kim (Kim)
+
+OUTER_SPRINT "BG2_JOINED" "KimJ"
+OUTER_SPRINT "BG2_BCS" "Kim"
+OUTER_SPRINT "TOB_JOINED" "Kim25J"
+OUTER_SPRINT "TOB_BCS" "Kim"
 
 ACTION_FOR_EACH bcs IN
 
@@ -1014,11 +1187,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kim_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // Severian (#Severian)
+
+OUTER_SPRINT "BG2_JOINED" "#SeverJ"
+OUTER_SPRINT "BG2_BCS" "#Sever"
+OUTER_SPRINT "TOB_JOINED" "#Sev25J"
+OUTER_SPRINT "TOB_BCS" "#SevD25"
 
 ACTION_FOR_EACH bcs IN
 
@@ -1029,11 +1223,32 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Severian_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END
 
 // Frennedan (fren)
+
+OUTER_SPRINT "BG2_JOINED" ""
+OUTER_SPRINT "BG2_BCS" ""
+OUTER_SPRINT "TOB_JOINED" ""
+OUTER_SPRINT "TOB_BCS" ""
 
 ACTION_FOR_EACH bcs IN
 
@@ -1044,6 +1259,22 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Frennedan_All_In.baf~ EVALUATE_BUFFER
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
+	
+COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
+				~
+			END
+
+		END
+	BUT_ONLY
 
 	END
 END

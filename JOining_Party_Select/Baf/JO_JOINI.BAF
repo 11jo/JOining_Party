@@ -221,6 +221,7 @@ IF
 //	Range(Player2,10)
 THEN
 	RESPONSE #100
+		ClearAllActions()
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player2) // MoveToObjectFollow(Player2)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
@@ -244,6 +245,7 @@ IF
 //	Range(Player3,10)
 THEN
 	RESPONSE #100
+		ClearAllActions()
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player3) // MoveToObjectFollow(Player3)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
@@ -267,6 +269,7 @@ IF
 //	Range(Player4,10)
 THEN
 	RESPONSE #100
+		ClearAllActions()
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player4) // MoveToObjectFollow(Player4)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
@@ -290,6 +293,7 @@ IF
 //	Range(Player5,10)
 THEN
 	RESPONSE #100
+		ClearAllActions()
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player5) // MoveToObjectFollow(Player5)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
@@ -317,6 +321,7 @@ IF
 //	Range(Player1,10)
 THEN
 	RESPONSE #100
+		ClearAllActions()
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player1) // MoveToObjectFollow(Player1)
 		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
