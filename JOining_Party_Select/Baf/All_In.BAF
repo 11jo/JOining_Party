@@ -3,7 +3,9 @@
  
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
-	!Global("JO_%Death_var%_AllowDead","GLOBAL",0)
+	OR(2)
+		!Global("JO_%Death_var%_AllowDead","GLOBAL",0)
+		!Global("JO_AllowDead_Myself","LOCALS",0)
 	!InPartyAllowDead(Myself)
 	!Allegiance(Myself,FAMILIAR)
 THEN
@@ -14,7 +16,9 @@ END
  
 // InPartyAllowDead("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
 IF
-	Global("JO_%Death_var%_AllowDead","GLOBAL",0)
+	OR(2)
+		Global("JO_%Death_var%_AllowDead","GLOBAL",0)
+		Global("JO_AllowDead_Myself","LOCALS",0)
 	OR(2)
 		InPartyAllowDead(Myself)
 		Allegiance(Myself,FAMILIAR)
@@ -26,7 +30,9 @@ END
  
 // !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
-	!Global("JO_%Death_var%_InParty","GLOBAL",0)
+	OR(2)
+		!Global("JO_%Death_var%_InParty","GLOBAL",0)
+		!Global("JO_InParty_Myself","LOCALS",0)
 	!InParty(Myself)
 	!Allegiance(Myself,FAMILIAR)
 THEN
@@ -37,7 +43,9 @@ END
  
 // InParty("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
 IF
-	Global("JO_%Death_var%_InParty","GLOBAL",0)
+	OR(2)
+		Global("JO_%Death_var%_InParty","GLOBAL",0)
+		Global("JO_InParty_Myself","LOCALS",0)
 	OR(2)
 		InParty(Myself)
 		Allegiance(Myself,FAMILIAR)
@@ -49,12 +57,14 @@ END
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
-	!Global("JO_%Death_var%_Valid","GLOBAL",0)
+	OR(2)
+		!Global("JO_%Death_var%_Valid","GLOBAL",0)
+		!Global("JO_Valid_Myself","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
 	OR(3)
 		!Allegiance(Myself,FAMILIAR)
 		StateCheck(Myself,CD_STATE_NOTVALID)
-		Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
+		!Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
@@ -64,7 +74,9 @@ END
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
-	Global("JO_%Death_var%_Valid","GLOBAL",0)
+	OR(2)
+		Global("JO_%Death_var%_Valid","GLOBAL",0)
+		Global("JO_Valid_Myself","LOCALS",0)
 	OR(2)
 		IsValidForPartyDialogue(Myself)
 		!StateCheck(Myself,CD_STATE_NOTVALID)
