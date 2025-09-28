@@ -120,9 +120,11 @@ BEGIN
 	END
 END
 
+
 //////////////////////////////////////////////////////////////////////////////////////
 
 //                                    BCS                                           //
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -268,7 +270,10 @@ BEGIN
 	END
 END
 
-//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 
 /////////////////////////// bg1 ///////////////////////////
 
@@ -592,6 +597,10 @@ BEGIN
 END
 
 
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
 /////////////////////////// SoD ///////////////////////////
 
 OUTER_SPRINT "JO_JOIN" "JO_JOIN3"
@@ -657,6 +666,11 @@ BEGIN
 
 	END
 END
+
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 
 /////////////////////////// bg2 ///////////////////////////
 
@@ -874,13 +888,18 @@ BEGIN
 	END
 END
 
-/////////////////////////// Mods ///////////////////////////
 
- OUTER_SPRINT "JO_JOIN" "JO_JOIN5"
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
 
 /////////////////////////// Mods BG1 ///////////////////////////
 
-// Ishlilka (#Ishy)
+
+
+
+// Ishlilka ///////////////////////////
 
 OUTER_SPRINT "BG1_JOINED" "IshyD"
 OUTER_SPRINT "BG1_BCS" "ishyscrp"
@@ -897,13 +916,18 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
 
+
 /////////////////////////// Mods BG2 ///////////////////////////
 
-// Alora BG2 (CMALORA)
+
+
+// Alora BG2 ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "CMALORAJ"
 OUTER_SPRINT "BG2_BCS" "cmalora"
@@ -920,10 +944,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMALORA_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// Yeslick BG2 (LK#YESLK)
+// Yeslick BG2 ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "LK#YESJ"
 OUTER_SPRINT "BG2_BCS" "LK#YESL"
@@ -940,10 +966,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/LK#YESLK_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// The Undying (cmninaf)
+// The Undying ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "CMNINAFJ"
 OUTER_SPRINT "BG2_BCS" "CMNINAF"
@@ -960,10 +988,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmninaf_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// The Undying (callisto)
+// The Undying ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "CMCALLIJ"
 OUTER_SPRINT "BG2_BCS" "CALLISTO"
@@ -980,10 +1010,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/callisto_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// Summon Bhaalspawn (BHAALSPW)
+// Summon Bhaalspawn ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "bhalspwj"
 OUTER_SPRINT "BG2_BCS" "BHAALSPW"
@@ -1000,10 +1032,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/BHAALSPW_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// Nikita Redux (cmnikita)
+// Nikita Redux ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "CMNIKITJ"
 OUTER_SPRINT "BG2_BCS" "cmnikita"
@@ -1020,10 +1054,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// Vampire Tales (cmgmiriam)
+// Vampire Tales ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "CMGMIRIj"
 OUTER_SPRINT "BG2_BCS" "CMGMIRI"
@@ -1040,10 +1076,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmgmiriam_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// Kim (Kim)
+// Kim ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "KimJ"
 OUTER_SPRINT "BG2_BCS" "Kim"
@@ -1060,10 +1098,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kim_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// Severian (#Severian)
+// Severian ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" "#SeverJ"
 OUTER_SPRINT "BG2_BCS" "#Sever"
@@ -1080,10 +1120,12 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Severian_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
-// Frennedan (fren)
+// Frennedan ///////////////////////////
 
 OUTER_SPRINT "BG2_JOINED" ""
 OUTER_SPRINT "BG2_BCS" ""
@@ -1100,6 +1142,8 @@ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Frennedan_All_In.baf~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
@@ -1114,33 +1158,10 @@ END
 COPY ~JOining_Party_Select/Spl/JOIN648.SPL~ ~override~
 	SAY NAME1 ~Dying~
 	SAY NAME2 ~Dying~
-/*		LPF ADD_SPELL_CFEFFECT
-		INT_VAR
-			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Carry on without me...~)
-		END*/
 
 COPY ~JOining_Party_Select/Spl/JOIR648.SPL~ ~override~
 	SAY NAME1 ~Recovering~
 	SAY NAME2 ~Recovering~
-/*		LPF ADD_SPELL_CFEFFECT
-		INT_VAR
-			opcode=139 target=1 parameter1= RESOLVE_STR_REF (~Still alive !~)
-		END*/
-
-/*
-COPY_EXISTING ~MINHP1.ITM~ ~override/JOMINHP1.itm~
-	SAY NAME1 ~JOMINHP1~
-	SAY NAME2 ~JOMINHP1~
-	WRITE_SHORT 0x1c ~10~
-	WRITE_ASCII 0x3a ~ISCRL72~ (8)
-	WRITE_LONG 0x18 (THIS BAND BNOT BIT3)
-	WRITE_LONG 0x18 (THIS BAND BNOT BIT6)
-	WRITE_LONG 0x18 (THIS BAND BNOT BIT5)
-	WRITE_LONG 0x18 (THIS | BIT2)
-	// WRITE_LONG 0x18 (THIS BAND BNOT BIT2)
-	SAY DESC @101
-	SAY UNIDENTIFIED_DESC @101
-*/
 
 COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 	SAY NAME1 ~JOMINHP1~
@@ -1150,7 +1171,6 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 	WRITE_LONG 0x18 (THIS BAND BNOT BIT3)
 	WRITE_LONG 0x18 (THIS BAND BNOT BIT6)
 	WRITE_LONG 0x18 (THIS BAND BNOT BIT5)
-//	WRITE_LONG 0x18 (THIS | BIT2)
 	WRITE_LONG 0x18 (THIS BAND BNOT BIT2)
  
  COPY ~JOining_Party_Select/Spl/JO_JOIN.spl~ ~override~
@@ -1178,23 +1198,29 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 
 	END
 
-//COMPILE ~JOining_Party_Select/Baf/JO_JOINT.baf~ EVALUATE_BUFFER
-
 
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN1.bcs~) THEN BEGIN
+	
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.baf~ EVALUATE_BUFFER
+
 		END
 
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 30 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN2.bcs~) THEN BEGIN
+	
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.baf~ EVALUATE_BUFFER
+
 		END
 
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 60 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN3.bcs~) THEN BEGIN
+	
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.baf~ EVALUATE_BUFFER
+
 		END
 
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 70 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN4.bcs~) THEN BEGIN
+	
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.baf~ EVALUATE_BUFFER
+
 		END
 
 // DPLAYER3.bcs additions
@@ -1205,13 +1231,24 @@ EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_T
 
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ 
 
-		ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
-EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
-		END
-		ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
-EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
-		END
-		ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
-EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
-		END 
+
+// Starting areas additions
+
+ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
+
+		EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
+
+END
+
+ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
+
+		EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
+
+END
+
+ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
+
+		EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
+
+END 

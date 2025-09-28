@@ -442,34 +442,16 @@ BEGIN
 
 		END
 	BUT_ONLY
-/*
-
-HasItem("CDHLYSYM",Player2)
 
 
 
-
-CreateVisualEffectObject("SPPROIMG",Player2)
-CreateCreatureObjectCopy("jclone01",Player2,0,0,0)
-MoveToObject(Player2)
-PolymorphCopy(Player2)
-ReallyForceSpell(Player2,CLERIC_CALL_LIGHTNING)
-ActionOverride(Player2,Face(SSE))
-AddXPObject(Player2,45000)
-ActionOverride(Player2,ReallyForceSpell(Myself,CLERIC_LESSER_RESTORATION))
-CreateVisualEffectObject("SPCLOUD1",Player2)
-ActionOverride(Player2,CreateVisualEffectObject("SPCLOUD1",Myself))
-FakeEffectExpiryCheck(Player2,150000)
-CreateVisualEffectObject("SPSTRENH",Player2)
-ActionOverride(Player2,DropItem("SW1H56",[-1.-1]))
-ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
-*/
 
 //////////////////////////////////////////////////////////////////////////////////////
 
 //                                    DLG                                           //
 
 //////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -633,16 +615,19 @@ ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ClearActions found in %SOURCE_FILESPEC% FOR %Death_var%
 				~
-			END /*ELSE BEGIN
-				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
-			END*/
-// Rest situation
+			END
 
 		END
 	BUT_ONLY
 
+//
+
+COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
+
+//
 
 	ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
+
 EXTEND_BOTTOM ~OHBARC01.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~BDDROWFT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~BDDROWFT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
@@ -653,10 +638,19 @@ EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.ba
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ar2500.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~AR2102.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/AR2102.baf~ EVALUATE_BUFFER
+
 	END
 
 
 END
+
+
+
+
+/////////////////////////// Original BG ///////////////////////////
+
+
+
 
 ACTION_FOR_EACH Death_var IN
 
@@ -729,65 +723,41 @@ ACTION_FOR_EACH Death_var IN
 
 BEGIN
 
-COPY ~JOining_Party_Select/Baf/All_In_BG.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
+COPY ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~
+			REPLACE_TEXTUALLY ~// JO_JOIN.BAF~ ~~
 
 END
 
 
-ACTION_FOR_EACH Death_var IN
-
-/////////////////////////// Mods BG1 ///////////////////////////
 
 
-// Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
 
 
-/////////////////////////// Mods BG2 ///////////////////////////
-
-// Alora BG2
-// Mod Alora BG2 ~CMALORA~
-
-// Yeslick BG2
-// Mod Yeslick BG2 ~LK#YESLK~
-
-// The Undying
-// Mod Undying ~cmninaf~ ~callisto~
-
-// Summon Bhaalspawn
-// Mod Sandra ~BHAALSPW~
-
-// NikitaRedux
-// Mod Nikita ~cmnikita~
-
-// VampireTales
-// Mod Miriam ~cmgmiriam~
-
-// Kim
-// Mod Kim ~Kim~
-
-// Severian
-// Mod Severian ~#Severian~
-
-// Frennedan
-// Mod Frennedan ~Frennedan~
-
-BEGIN
-
-COPY ~JOining_Party_Select/Baf/All_In_MOD2.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
-
-END
 
 
-ACTION_FOR_EACH Death_var IN
-
-/////////////////////////// Mods BG1 ///////////////////////////
 
 
-// Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
 
-BEGIN
 
-COPY ~JOining_Party_Select/Baf/All_In_MOD1.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
 
-END
 
+
+
+
+	
+/*
+CreateVisualEffectObject("SPPROIMG",Player2)
+CreateCreatureObjectCopy("jclone01",Player2,0,0,0)
+MoveToObject(Player2)
+PolymorphCopy(Player2)
+ReallyForceSpell(Player2,CLERIC_CALL_LIGHTNING)
+ActionOverride(Player2,Face(SSE))
+AddXPObject(Player2,45000)
+ActionOverride(Player2,ReallyForceSpell(Myself,CLERIC_LESSER_RESTORATION))
+CreateVisualEffectObject("SPCLOUD1",Player2)
+ActionOverride(Player2,CreateVisualEffectObject("SPCLOUD1",Myself))
+FakeEffectExpiryCheck(Player2,150000)
+CreateVisualEffectObject("SPSTRENH",Player2)
+ActionOverride(Player2,DropItem("SW1H56",[-1.-1]))
+ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
+*/

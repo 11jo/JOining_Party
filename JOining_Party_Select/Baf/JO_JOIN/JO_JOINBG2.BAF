@@ -1,0 +1,32 @@
+/////////////////////////// Mods BG2 ///////////////////////////
+
+////////////////////////////////////////////////////
+
+
+ // BG2
+ 
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%BG2_JOINED%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("%BG2_BCS%",OVERRIDE)
+END
+
+ // ToB BG2
+ 
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%TOB_JOINED%")   // Probably the same as bg2
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("%TOB_BCS%",OVERRIDE)
+END
+
+////////////////////////////////////////////////////
