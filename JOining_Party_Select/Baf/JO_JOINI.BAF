@@ -8,20 +8,6 @@ AddXPObject(AddXPObject(O:Object*,I:XP*) )
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// To verify if NPC leave and join as intended after first time from party to familiar
-
-IF
-	Global("JO_FIRST_JOIN_JOIN","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobalTimer("JO_JOIN_JOIN","GLOBAL",THREE_ROUNDS)
-		SetGlobal("JO_FIRST_JOIN_JOIN","LOCALS",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
 // To avoid Familiar / NPC being in another area when switching in and out of the party
 
 // Player1

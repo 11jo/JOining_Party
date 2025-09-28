@@ -897,22 +897,6 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/All_In/JO_JOINBG1.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
-
 	END
 END
 
@@ -935,22 +919,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMALORA_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -971,22 +939,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/LK#YESLK_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1007,22 +959,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmninaf_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1043,22 +979,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/callisto_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1079,22 +999,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/BHAALSPW_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1115,22 +1019,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1151,22 +1039,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmgmiriam_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1187,22 +1059,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kim_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1223,22 +1079,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Severian_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1259,22 +1099,6 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Frennedan_All_In.baf~ EVALUATE_BUFFER
-	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.baf~ EVALUATE_BUFFER
-	
-COPY_EXISTING_REGEXP ~%bcs%.bcs~  ~override/%bcs%.bcs~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~\(^[%TAB% ]*ChangeAIScript("JO_JOIN5",OVERRIDE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ChangeAIScript("JO_JOIN5",OVERRIDE) found in %SOURCE_FILESPEC%
-				~
-			END
-
-		END
-	BUT_ONLY
 
 	END
 END
@@ -1371,16 +1195,6 @@ COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.baf~ EVALUATE_BUFFER
 
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 70 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN4.bcs~) THEN BEGIN
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.baf~ EVALUATE_BUFFER
-		END
-
-	ACTION_IF ((MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 101) ||
-					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 102) ||
-					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 103) ||
-					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 104) ||
-					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 105) ||
-					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 106)
-					AND NOT FILE_EXISTS_IN_GAME ~JO_JOIN5.bcs~) THEN BEGIN
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN5.baf~ EVALUATE_BUFFER
 		END
 
 // DPLAYER3.bcs additions
