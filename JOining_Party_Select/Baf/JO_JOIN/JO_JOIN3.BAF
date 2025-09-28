@@ -11,9 +11,10 @@ IF
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDVOGHIL",OVERRIDE)
 		SetDialog("BDVOGHIJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDVOGHIL",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -25,9 +26,10 @@ IF
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDCORWIN",OVERRIDE)
 		SetDialog("BDCORWIJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDCORWIN",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -39,9 +41,10 @@ IF
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDMKHIIN",OVERRIDE)
 		SetDialog("BDMKHIIJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDMKHIIN",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -53,9 +56,10 @@ IF
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BDGLINT",OVERRIDE)
 		SetDialog("BDGLINTJ",Myself)
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BDGLINT",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////

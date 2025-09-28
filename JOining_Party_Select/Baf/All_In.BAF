@@ -246,6 +246,7 @@ THEN
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		EquipItemEx("JOMINHP1",0)
 		SmallWait(1)
+//		MakeGlobal()
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		// MoveGlobalObject(Myself,Player1)  // JumpToObject(Myself,Player1)
@@ -257,6 +258,9 @@ THEN
 		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",0)
 		SetGlobal("JO_%Death_var%_REST","LOCALS",0)
 // Add switch familiar related  script
+//		ChangeAIScript("",RACE)
+//		ChangeAIScript("",CLASS)
+//		ChangeAIScript("",GENERAL)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
@@ -552,3 +556,16 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+// DROW_CHANGE / UNDER_NORM
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("ADrowTimerHasExpired","GLOBAL",1)
+	Global("DrowUNDER_NORM","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("DrowUNDER_NORM","LOCALS",1)
+		ApplySpell(Myself,UNDER_NORM)
+END
+

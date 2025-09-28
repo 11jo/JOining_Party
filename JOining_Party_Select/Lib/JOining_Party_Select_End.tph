@@ -248,6 +248,9 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Severian (#Severian)
 // Mod Severian AND NOT (~%override_script%~ STRING_EQUAL_CASE ~#Sever~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~#SevD25~)
 
+// Frennedan (fren)
+// Mod Frennedan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~fren~)
+
 	BEGIN 
       SPRINT $npc_scripts (~%override_script%~)~1~
     END
@@ -446,7 +449,7 @@ END
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player2,Rest())
-				SetGlobal("JO_JOIN_Rest","GLOBAL",1)~
+				ActionOverride([FAMILIAR],Rest())~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -456,16 +459,16 @@ END
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions(Player2)
-				SetGlobal("JO_JOIN_ClearActions","GLOBAL",1)~
+				ClearActions([FAMILIAR])~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(^[%TAB% ]*ClearActions(Player5)\)~
+			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player2,ClearActions())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions(Player5)
-				SetGlobal("JO_JOIN_ClearActions","GLOBAL",0)~
+				ActionOverride([FAMILIAR],ClearActions())~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -474,3 +477,5 @@ END
 		END
 	BUT_ONLY
 
+
+// ClearActions([FAMILIAR])

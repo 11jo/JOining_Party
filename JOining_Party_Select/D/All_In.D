@@ -1,4 +1,4 @@
-APPEND %joining_dlg%
+APPEND ~%joining_dlg%~
 
 	IF WEIGHT #-1
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN 1

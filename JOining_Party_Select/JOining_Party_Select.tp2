@@ -469,6 +469,16 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~Severian.TP2~ ~0~ ~Necessite Severian~
 			REPLACE_TEXTUALLY ~// Mod Severian~ ~~
 			REPLACE_TEXTUALLY ~// Mod Severian~ ~~
 
+BEGIN ~Frennedan~
+DESIGNATED 108
+GROUP ~NPC Mods for bg2~
+LABEL ~JOining_Party_Select-Frennedan~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~Frennedan.TP2~ ~0~ ~Necessite Frennedan~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
+			REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
+
 ///////////////////////////  ///////////////////////////
 
 

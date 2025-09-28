@@ -7,27 +7,29 @@
 // Ishlilka_The-Wizard-Slayer
 
 IF
-	CharName("#Ishy",Myself)
+	Name("#Ishy",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",0)
 THEN
 	RESPONSE #100
-		ChangeAIScript("ishyscrp",OVERRIDE)
 		SetDialog("IshyD")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("ishyscrp",OVERRIDE)
 END
 
  // SoD Ishlilka
 
 IF
-	CharName("#Ishy",Myself)
+	Name("#Ishy",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("ishyscrp",OVERRIDE)
 		SetDialog("bdishy")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("ishyscrp",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -41,27 +43,29 @@ END
  // Alora BG2
  
 IF
-	CharName("CMALORA",Myself)
+	Name("CMALORA",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("cmalora",OVERRIDE)
 		SetDialog("CMALORAJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("cmalora",OVERRIDE)
 END
 
  // ToB Alora BG2
  
 IF
-	CharName("CMALORA",Myself)
+	Name("CMALORA",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("cmalo25",OVERRIDE)
 		SetDialog("CMALO25J")   // Probably the same as bg2
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("cmalo25",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -69,27 +73,29 @@ END
  // Yeslick BG2
  
 IF
-	CharName("LK#YESLK",Myself)
+	Name("LK#YESLK",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("LK#YESL",OVERRIDE)
 		SetDialog("LK#YESJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("LK#YESL",OVERRIDE)
 END
 
  // ToB Yeslick BG2
  
 IF
-	CharName("LK#YESLK",Myself)
+	Name("LK#YESLK",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("LK#YES25",OVERRIDE)
 		SetDialog("LK#YE25J")   // Probably the same as bg2
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("LK#YES25",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -97,37 +103,40 @@ END
  // The Undying
  
 IF
-	CharName("cmninaf",Myself)
+	Name("cmninaf",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("CMNINAF",OVERRIDE)
 		SetDialog("CMNINAFJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("CMNINAF",OVERRIDE)
 END
 
  // ToB Undying
  
 IF
-	CharName("cmninaf",Myself)
+	Name("cmninaf",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("CMNINA25",OVERRIDE)
 		SetDialog("CMNINA25")   // Probably the same as bg2
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("CMNINA25",OVERRIDE)
 END
 
 IF
-	CharName("callisto",Myself)
+	Name("callisto",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
-		ChangeAIScript("CALLISTO",OVERRIDE)
 		SetDialog("CMCALLIJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("CALLISTO",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -135,27 +144,29 @@ END
  // Summon Bhaalspawn
 
 IF
-	CharName("BHAALSPW",Myself)
+	Name("BHAALSPW",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BHAALSPW",OVERRIDE)
 		SetDialog("bhalspwj")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BHAALSPW",OVERRIDE)
 END
 
 /*
  // ToB Summon Bhaalspawn
 
 IF
-	CharName("BHAALSPW",Myself)
+	Name("BHAALSPW",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("BHAALSPW",OVERRIDE)
 		SetDialog("bhal25j")  // Probably the same as bg2
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("BHAALSPW",OVERRIDE)
 END
 */
 
@@ -164,27 +175,29 @@ END
 // NikitaRedux
 
 IF
-	CharName("cmnikita",Myself)
+	Name("cmnikita",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("cmnikita",OVERRIDE)
 		SetDialog("CMNIKITJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("cmnikita",OVERRIDE)
 END
 
  // ToB NikitaRedux
 
 IF
-	CharName("cmnikita",Myself)
+	Name("cmnikita",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("CMNIK25",OVERRIDE)
 		SetDialog("CMNIK25J") // Probably the same as bg2
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("CMNIK25",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -192,27 +205,29 @@ END
 // VampireTales
 
 IF
-	CharName("cmgmiriam",Myself)
+	Name("cmgmiriam",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("CMGMIRI",OVERRIDE)
 		SetDialog("CMGMIRIj")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("CMGMIRI",OVERRIDE)
 END
 
  // ToB VampireTales
 
 IF
-	CharName("cmgmiriam",Myself)
+	Name("cmgmiriam",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("CMGMI25",OVERRIDE)
 		SetDialog("CMGMI25J")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("CMGMI25",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -220,31 +235,64 @@ END
 // Kim
 
 IF
-	CharName("Kim",Myself)
+	Name("Kim",Myself)
 	Global("JO_JOIN","LOCALS",2)
 THEN
 	RESPONSE #100
-		ChangeAIScript("Kim",OVERRIDE)
 		SetDialog("KimJ")
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("Kim",OVERRIDE)
 END
 
 /*
  // ToB Kim
 
 IF
-	CharName("Kim",Myself)
+	Name("Kim",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		ChangeAIScript("Kim",OVERRIDE)
 		SetDialog("Kim25J") // Probably the same as bg2
+		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("Kim",OVERRIDE)
 END
 */
 
 ////////////////////////////////////////////////////
+
+// Severian
+
+IF
+	Name("#Severian",Myself)
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetDialog("#SeverJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("#Sever",OVERRIDE)
+END
+
+
+ // ToB Severian
+
+IF
+	Name("#Severian",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("#Sev25J")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		ChangeAIScript("#SevD25",OVERRIDE)
+END
+
+////////////////////////////////////////////////////
+
 
 
 

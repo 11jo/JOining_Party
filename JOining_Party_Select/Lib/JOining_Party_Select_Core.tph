@@ -108,6 +108,9 @@ ACTION_FOR_EACH joining_dlg IN
 // Severian
 // Mod Severian ~#SeverJ~ ~#Sev25J~
 
+// Frennedan
+// Mod Frennedan ~frenJ~
+
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%joining_dlg%.dlg~ BEGIN
@@ -1025,7 +1028,22 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Severian_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Severian_All_In.baf~ EVALUATE_BUFFER
+
+	END
+END
+
+// Frennedan (fren)
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Frennedan ~fren~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Frennedan_All_In.baf~ EVALUATE_BUFFER
 
 	END
 END
