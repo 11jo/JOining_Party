@@ -83,62 +83,12 @@ END
 
 // JO_JOIN_RESET_ACTION (JO_JOINI.BAF // Reintegrate NPC into party periodically)
 
-// ClearActions
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	!GlobalsEqual("JO_JOIN_ClearActions","JO_%Death_var%_ClearActions")
-	Global("JO_%Death_var%_ClearActions","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",1)
-		ClearActions(Myself)
-END
-
-IF
-	Global("JO_JOIN_ClearActions","GLOBAL",0)
-	OR(2)
-		Global("JO_%Death_var%_ClearActions","LOCALS",1)
-		Global("JO_%Death_var%_ClearActions","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",0)
-		SetGlobal("JO_%Death_var%_ClearActions","GLOBAL",0)
-END
-
-// Rest
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	!GlobalsEqual("JO_JOIN_Rest","JO_%Death_var%_Rest")
-	!Global("JO_%Death_var%_ClearActions","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",1)
-		Rest()
-END
-
-IF
-	Global("JO_JOIN_Rest","GLOBAL",0)
-	OR(2)
-		Global("JO_%Death_var%_Rest","LOCALS",1)
-		Global("JO_%Death_var%_Rest","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_%Death_var%_Rest","LOCALS",0)
-		SetGlobal("JO_%Death_var%_Rest","GLOBAL",0)
-END
-
 // RESET
  
 IF
 	Global("JO_JOIN_RESET_ACTION","LOCALS",1) 
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_ClearActions","LOCALS",0)
-		SetGlobal("JO_%Death_var%_ClearActions","GLOBAL",0)
-		SetGlobal("JO_%Death_var%_Rest","LOCALS",0)
-		SetGlobal("JO_%Death_var%_Rest","GLOBAL",0)
 		SetGlobal("JO_%Death_var%_CUTSCENE", "LOCALS",0)
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 		SetGlobal("JO_JOIN_RESET_ACTION","LOCALS",0)

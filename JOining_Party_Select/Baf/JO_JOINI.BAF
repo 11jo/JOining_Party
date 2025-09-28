@@ -346,7 +346,6 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
-		ActionOverride(Myself,MakeGlobalOverride())
 		DisplayStringHead(Myself,~Hey.~)
 // All_In.BAF // JO_JOIN_RESET_ACTION
 		SetGlobal("JO_JOIN_RESET_ACTION","LOCALS",1)
