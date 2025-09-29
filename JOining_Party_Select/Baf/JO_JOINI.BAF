@@ -8,20 +8,6 @@ AddXPObject(AddXPObject(O:Object*,I:XP*) )
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// To verify if NPC leave and join as intended after first time from party to familiar
-
-IF
-	Global("JO_FIRST_JOIN_JOIN","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobalTimer("JO_JOIN_JOIN","GLOBAL",THREE_ROUNDS)
-		SetGlobal("JO_FIRST_JOIN_JOIN","LOCALS",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
 // To avoid Familiar / NPC being in another area when switching in and out of the party
 
 // Player1
@@ -42,7 +28,8 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,Player1) // JumpToObject(Myself,Player1)
+//		MoveGlobalObject(Myself,Player1)
+		JumpToObject(Player1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -79,8 +66,8 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,Player2) // JumpToObject(Myself,Player1)
-//		MoveToObject(Player2)
+//		MoveGlobalObject(Myself,Player2)
+		JumpToObject(Player2)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -117,8 +104,8 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,Player3) // JumpToObject(Myself,Player1)
-//		MoveToObject(Player3)
+//		MoveGlobalObject(Myself,Player3)
+		JumpToObject(Player3)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -155,8 +142,8 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL", 0)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,Player4) // JumpToObject(Myself,Player1)
-//		MoveToObject(Player4)
+//		MoveGlobalObject(Myself,Player4)
+		JumpToObject(Player4)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -193,8 +180,8 @@ IF
 	Global("JO_JOIN_CUTSCENE", "GLOBAL",0)
 THEN
 	RESPONSE #100
-		MoveGlobalObject(Myself,Player5) // JumpToObject(Myself,Player1)
-//		MoveToObject(Player5)
+//		MoveGlobalObject(Myself,Player5)
+		JumpToObject(Player5)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1099,215 +1086,8 @@ THEN
 	DisplayStringHead(Myself,~I feel Great.~)
 END
 
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
 
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 
-/*
-// Progression 1
-IF // 2500       // 2
-	OR(2)
-		Class(Player1,MAGE_ALL)
-		Class(Player1,DRUID_ALL)
-	LevelLT(Myself,2)
-	LevelPartyGT(Player2,1)
-	Global("JO_JOIN_XPGT_2","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_2","LOCALS",1)
-		AddXPObject(Myself,2500)
-END
-
-IF // 5000       // 3
-	LevelLT(Myself,3)
-	LevelPartyGT(Player2,2)
-	Global("JO_JOIN_XPGT_3","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_3","LOCALS",1)
-		AddXPObject(Myself,2500)
-END
-
-IF // 10000      // 4
-	LevelLT(Myself,4)
-	LevelPartyGT(Player2,3)
-	Global("JO_JOIN_XPGT_4","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_4","LOCALS",1)
-		AddXPObject(Myself,5000)
-END
-
-IF // 20000      // 5
-	LevelLT(Myself,5)
-	LevelPartyGT(Player2,4)
-	Global("JO_JOIN_XPGT_5","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_5","LOCALS",1)
-		AddXPObject(Myself,10000)
-END
-
-IF // 40000      // 6
-	LevelLT(Myself,6)
-	LevelPartyGT(Player2,5)
-	Global("JO_JOIN_XPGT_6","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_6","LOCALS",1)
-		AddXPObject(Myself,20000)
-END
-
-IF // 60000      // 7
-	LevelLT(Myself,7)
-	LevelPartyGT(Player2,6)
-	Global("JO_JOIN_XPGT_7","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_7","LOCALS",1)
-		AddXPObject(Myself,20000)
-END
-
-IF // 90000      // 8
-	LevelLT(Myself,8)
-	LevelPartyGT(Player2,7)
-	Global("JO_JOIN_XPGT_8","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_8","LOCALS",1)
-		AddXPObject(Myself,30000)
-END
-
-IF // 135000      // 9
-	LevelLT(Myself,9)
-	LevelPartyGT(Player2,8)
-	Global("JO_JOIN_XPGT_9","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_9","LOCALS",1)
-		AddXPObject(Myself,45000)
-END
-
-IF // 250000     // 10
-
-IF // 375000     // 11
-
-IF // 750000     // 12
-
-IF // 1125000    // 13
-
-IF // 1500000    // 14
-
-IF // 1875000    // 15
-
-IF // 2250000    // 16
-
-IF // 2625000    // 17
-
-IF // 3000000    // 18
-
-IF // 3375000    // 19
-
-IF // 3750000    // 20
-                 
-IF // 4125000    // 21
-                 
-IF // 4500000    // 22
-                 
-IF // 4875000    // 23
-                 
-IF // 5250000    // 24
-                 
-IF // 5625000    // 25
-                 
-IF // 6000000    // 26
-                 
-IF // 6375000    // 27
-                 
-IF // 6750000    // 28
-                 
-IF // 7125000    // 29
-                 
-IF // 7500000    // 30
-                 
-IF // 7875000    // 31
-                 
-IF // 8250000    // 32
-                 
-IF // 8625000    // 33
-                 
-IF // 9000000    // 34
-                 
-IF // 9375000    // 35
-                 
-IF // 9750000    // 36
-                 
-IF // 10125000   // 37
-                 
-IF // 10500000   // 38
-                 
-IF // 10875000   // 38
-
-IF // 11250000   // 40
-
-// Progression 2
-IF // 1250         // 2 
-	OR(2)
-		Class(Player1,FIGHTER_ALL)
-		Class(Player1,BARD_ALL)
-		Class(Player1,THIEF_ALL)
-		Class(Player1,CLERIC_ALL)
-		Class(Player1,PALADIN_ALL)
-		Class(Player1,RANGER_ALL)
-	LevelLT(Myself,2)
-	LevelPartyGT(Player2,1)
-	Global("JO_JOIN_XPGT_2","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_2","LOCALS",1)
-		AddXPObject(Myself,1250)
-END
-IF // 2500         // 3 
-IF // 5000         // 4 
-IF // 10000        // 5 
-IF // 20000        // 6 
-IF // 40000        // 7 
-IF // 70000        // 8 
-IF // 110000       // 9 
-IF // 160000       // 10
-IF // 220000       // 11
-IF // 440000       // 12
-IF // 660000       // 13
-IF // 880000       // 14
-IF // 1100000      // 15
-IF // 1320000      // 16
-IF // 1540000      // 17
-IF // 1760000      // 18
-IF // 1980000      // 19
-IF // 2200000      // 20
-IF // 2420000      // 21
-IF // 2640000      // 22
-IF // 2860000      // 23
-IF // 3080000      // 24
-IF // 3300000      // 25
-IF // 3520000      // 26
-IF // 3740000      // 27
-IF // 3960000      // 28
-IF // 4180000      // 29
-IF // 4400000      // 30
-IF // 4620000      // 31
-IF // 4840000      // 32
-IF // 5060000      // 33
-IF // 5280000      // 34
-IF // 5500000      // 35
-IF // 5720000      // 36
-IF // 5940000      // 37
-IF // 6160000      // 38
-IF // 6380000      // 39
-IF // 8000000      // 40
-*/

@@ -1,39 +1,4 @@
-
-/////////////////////////// Mods BG1 ///////////////////////////
-
-////////////////////////////////////////////////////
-
-
-// BG1
-
-IF
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetDialog("%BG1_JOINED%")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("%BG1_BCS%",OVERRIDE)
-END
-
- // SoD
-
-IF
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("%SoD_JOINED%")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("%SoD_BCS%",OVERRIDE)
-END
-
-////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////
-
+/////////////////////////// Original BG ///////////////////////////
 
 // Yeah Start ( Switch between familiar and party)
 
@@ -63,6 +28,7 @@ THEN
 		ChangeAIScript("JO_JOINX",RACE)// Go to JO_JOINX (ScriptAction / XP)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",3)
 END
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

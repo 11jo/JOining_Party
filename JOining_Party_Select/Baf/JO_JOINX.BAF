@@ -1,0 +1,1420 @@
+// JO_JOINX 
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+// Progression 1
+IF // 2500       // 2
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,2)
+	LevelPartyGT(1)
+	Global("JO_JOIN_XPGT_2","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_2","LOCALS",1)
+		AddXPObject(Myself,2500)
+END
+
+IF // 5000       // 3
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,3)
+	LevelPartyGT(2)
+	Global("JO_JOIN_XPGT_3","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_3","LOCALS",1)
+		AddXPObject(Myself,2500)
+END
+
+IF // 10000      // 4
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,4)
+	LevelPartyGT(3)
+	Global("JO_JOIN_XPGT_4","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_4","LOCALS",1)
+		AddXPObject(Myself,5000)
+END
+
+IF // 20000      // 5
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,5)
+	LevelPartyGT(4)
+	Global("JO_JOIN_XPGT_5","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_5","LOCALS",1)
+		AddXPObject(Myself,10000)
+END
+
+IF // 40000      // 6
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,6)
+	LevelPartyGT(5)
+	Global("JO_JOIN_XPGT_6","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_6","LOCALS",1)
+		AddXPObject(Myself,20000)
+END
+
+IF // 60000      // 7
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,7)
+	LevelPartyGT(6)
+	Global("JO_JOIN_XPGT_7","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_7","LOCALS",1)
+		AddXPObject(Myself,20000)
+END
+
+IF // 90000      // 8
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,8)
+	LevelPartyGT(7)
+	Global("JO_JOIN_XPGT_8","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_8","LOCALS",1)
+		AddXPObject(Myself,30000)
+END
+
+IF // 135000      // 9
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,9)
+	LevelPartyGT(8)
+	Global("JO_JOIN_XPGT_9","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_9","LOCALS",1)
+		AddXPObject(Myself,45000)
+END
+
+IF // 250000     // 10
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,10)
+	LevelPartyGT(9)
+	Global("JO_JOIN_XPGT_10","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_10","LOCALS",1)
+		AddXPObject(Myself,115000)
+END
+
+IF // 375000     // 11
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,11)
+	LevelPartyGT(10)
+	Global("JO_JOIN_XPGT_11","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_11","LOCALS",1)
+		AddXPObject(Myself,125000)
+END
+
+IF // 750000     // 12
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,12)
+	LevelPartyGT(11)
+	Global("JO_JOIN_XPGT_12","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_12","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 1125000    // 13
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,13)
+	LevelPartyGT(12)
+	Global("JO_JOIN_XPGT_13","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_13","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 1500000    // 14
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,14)
+	LevelPartyGT(13)
+	Global("JO_JOIN_XPGT_14","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_14","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 1875000    // 15
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,15)
+	LevelPartyGT(14)
+	Global("JO_JOIN_XPGT_15","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_15","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 2250000    // 16
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,16)
+	LevelPartyGT(15)
+	Global("JO_JOIN_XPGT_16","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_16","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 2625000    // 17
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,17)
+	LevelPartyGT(16)
+	Global("JO_JOIN_XPGT_17","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_17","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 3000000    // 18
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,18)
+	LevelPartyGT(17)
+	Global("JO_JOIN_XPGT_18","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_18","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 3375000    // 19
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,19)
+	LevelPartyGT(18)
+	Global("JO_JOIN_XPGT_19","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_19","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 3750000    // 20
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,20)
+	LevelPartyGT(19)
+	Global("JO_JOIN_XPGT_20","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_20","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 4125000    // 21
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,21)
+	LevelPartyGT(20)
+	Global("JO_JOIN_XPGT_21","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_21","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 4500000    // 22
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,22)
+	LevelPartyGT(21)
+	Global("JO_JOIN_XPGT_22","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_22","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 4875000    // 23
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,23)
+	LevelPartyGT(22)
+	Global("JO_JOIN_XPGT_23","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_23","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 5250000    // 24
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,24)
+	LevelPartyGT(23)
+	Global("JO_JOIN_XPGT_24","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_24","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 5625000    // 25
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,25)
+	LevelPartyGT(24)
+	Global("JO_JOIN_XPGT_25","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_25","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 6000000    // 26
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,26)
+	LevelPartyGT(25)
+	Global("JO_JOIN_XPGT_26","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_26","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 6375000    // 27
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,27)
+	LevelPartyGT(26)
+	Global("JO_JOIN_XPGT_27","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_27","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 6750000    // 28
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,28)
+	LevelPartyGT(27)
+	Global("JO_JOIN_XPGT_28","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_28","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 7125000    // 29
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,29)
+	LevelPartyGT(28)
+	Global("JO_JOIN_XPGT_29","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_29","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 7500000    // 30
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,30)
+	LevelPartyGT(29)
+	Global("JO_JOIN_XPGT_30","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_30","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 7875000    // 31
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,31)
+	LevelPartyGT(30)
+	Global("JO_JOIN_XPGT_31","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_31","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 8250000    // 32
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,32)
+	LevelPartyGT(31)
+	Global("JO_JOIN_XPGT_32","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_32","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 8625000    // 33
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,33)
+	LevelPartyGT(32)
+	Global("JO_JOIN_XPGT_33","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_33","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 9000000    // 34
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,34)
+	LevelPartyGT(33)
+	Global("JO_JOIN_XPGT_34","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_34","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 9375000    // 35
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,35)
+	LevelPartyGT(34)
+	Global("JO_JOIN_XPGT_35","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_35","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 9750000    // 36
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,36)
+	LevelPartyGT(35)
+	Global("JO_JOIN_XPGT_36","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_36","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 10125000   // 37
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,37)
+	LevelPartyGT(36)
+	Global("JO_JOIN_XPGT_37","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_37","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 10500000   // 38
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,38)
+	LevelPartyGT(37)
+	Global("JO_JOIN_XPGT_38","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_38","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+                 
+IF // 10875000   // 38
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,39)
+	LevelPartyGT(38)
+	Global("JO_JOIN_XPGT_39","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_39","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 11250000   // 40
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,40)
+	LevelPartyGT(39)
+	Global("JO_JOIN_XPGT_40","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_40","LOCALS",1)
+		AddXPObject(Myself,375000)
+END
+
+IF // 13000000   // 41
+	OR(2)
+		Class(Myself,MAGE_ALL)
+		Class(Myself,DRUID_ALL)
+	LevelLT(Myself,41)
+	LevelPartyGT(40)
+	Global("JO_JOIN_XPGT_41","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_41","LOCALS",1)
+		AddXPObject(Myself,1750000)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Progression 2
+IF // 1250         // 2 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,2)
+	LevelPartyGT(1)
+	Global("JO_JOIN_XPGT_2","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_2","LOCALS",1)
+		AddXPObject(Myself,1250)
+END
+
+IF // 2500         // 3 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,3)
+	LevelPartyGT(2)
+	Global("JO_JOIN_XPGT_3","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_3","LOCALS",1)
+		AddXPObject(Myself,2500)
+END
+
+IF // 5000         // 4 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,4)
+	LevelPartyGT(3)
+	Global("JO_JOIN_XPGT_4","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_4","LOCALS",1)
+		AddXPObject(Myself,5000)
+END
+
+IF // 10000        // 5 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,5)
+	LevelPartyGT(4)
+	Global("JO_JOIN_XPGT_5","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_5","LOCALS",1)
+		AddXPObject(Myself,10000)
+END
+
+IF // 20000        // 6 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,6)
+	LevelPartyGT(5)
+	Global("JO_JOIN_XPGT_6","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_6","LOCALS",1)
+		AddXPObject(Myself,20000)
+END
+
+IF // 40000        // 7 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,7)
+	LevelPartyGT(6)
+	Global("JO_JOIN_XPGT_7","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_7","LOCALS",1)
+		AddXPObject(Myself,30000)
+END
+
+IF // 70000        // 8 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,8)
+	LevelPartyGT(7)
+	Global("JO_JOIN_XPGT_8","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_8","LOCALS",1)
+		AddXPObject(Myself,40000)
+END
+
+IF // 110000       // 9 
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,9)
+	LevelPartyGT(8)
+	Global("JO_JOIN_XPGT_9","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_9","LOCALS",1)
+		AddXPObject(Myself,50000)
+END
+
+IF // 160000       // 10
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,10)
+	LevelPartyGT(9)
+	Global("JO_JOIN_XPGT_10","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_10","LOCALS",1)
+		AddXPObject(Myself,60000)
+END
+
+IF // 220000       // 11
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,11)
+	LevelPartyGT(10)
+	Global("JO_JOIN_XPGT_11","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_11","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 440000       // 12
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,12)
+	LevelPartyGT(11)
+	Global("JO_JOIN_XPGT_12","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_12","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 660000       // 13
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,13)
+	LevelPartyGT(12)
+	Global("JO_JOIN_XPGT_13","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_13","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 880000       // 14
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,14)
+	LevelPartyGT(13)
+	Global("JO_JOIN_XPGT_14","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_14","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 1100000      // 15
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,15)
+	LevelPartyGT(14)
+	Global("JO_JOIN_XPGT_15","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_15","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 1320000      // 16
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,16)
+	LevelPartyGT(15)
+	Global("JO_JOIN_XPGT_16","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_16","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 1540000      // 17
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,17)
+	LevelPartyGT(16)
+	Global("JO_JOIN_XPGT_17","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_17","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 1760000      // 18
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,18)
+	LevelPartyGT(17)
+	Global("JO_JOIN_XPGT_18","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_18","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 1980000      // 19
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,19)
+	LevelPartyGT(18)
+	Global("JO_JOIN_XPGT_19","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_19","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 2200000      // 20
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,20)
+	LevelPartyGT(19)
+	Global("JO_JOIN_XPGT_20","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_20","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 2420000      // 21
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,21)
+	LevelPartyGT(20)
+	Global("JO_JOIN_XPGT_21","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_21","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 2640000      // 22
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,22)
+	LevelPartyGT(21)
+	Global("JO_JOIN_XPGT_22","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_22","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 2860000      // 23
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,23)
+	LevelPartyGT(22)
+	Global("JO_JOIN_XPGT_23","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_23","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 3080000      // 24
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,24)
+	LevelPartyGT(23)
+	Global("JO_JOIN_XPGT_24","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_24","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 3300000      // 25
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,25)
+	LevelPartyGT(24)
+	Global("JO_JOIN_XPGT_25","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_25","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 3520000      // 26
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,26)
+	LevelPartyGT(25)
+	Global("JO_JOIN_XPGT_26","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_26","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 3740000      // 27
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,27)
+	LevelPartyGT(26)
+	Global("JO_JOIN_XPGT_27","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_27","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 3960000      // 28
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,28)
+	LevelPartyGT(27)
+	Global("JO_JOIN_XPGT_28","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_28","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 4180000      // 29
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,29)
+	LevelPartyGT(28)
+	Global("JO_JOIN_XPGT_29","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_29","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 4400000      // 30
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,30)
+	LevelPartyGT(29)
+	Global("JO_JOIN_XPGT_30","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_30","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 4620000      // 31
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,31)
+	LevelPartyGT(30)
+	Global("JO_JOIN_XPGT_31","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_31","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 4840000      // 32
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,32)
+	LevelPartyGT(31)
+	Global("JO_JOIN_XPGT_32","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_32","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 5060000      // 33
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,33)
+	LevelPartyGT(32)
+	Global("JO_JOIN_XPGT_33","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_33","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 5280000      // 34
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,34)
+	LevelPartyGT(33)
+	Global("JO_JOIN_XPGT_34","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_34","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 5500000      // 35
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,35)
+	LevelPartyGT(34)
+	Global("JO_JOIN_XPGT_35","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_35","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 5720000      // 36
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,36)
+	LevelPartyGT(35)
+	Global("JO_JOIN_XPGT_36","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_36","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 5940000      // 37
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,37)
+	LevelPartyGT(36)
+	Global("JO_JOIN_XPGT_37","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_37","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 6160000      // 38
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,38)
+	LevelPartyGT(37)
+	Global("JO_JOIN_XPGT_38","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_38","LOCALS",1)
+		AddXPObject(Myself,220000)
+END
+
+IF // 6380000      // 39
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,39)
+	LevelPartyGT(38)
+	Global("JO_JOIN_XPGT_39","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_39","LOCALS",1)
+		AddXPObject(Myself,1620000)
+END
+
+IF // 8000000      // 40
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,40)
+	LevelPartyGT(39)
+	Global("JO_JOIN_XPGT_40","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_40","LOCALS",1)
+		AddXPObject(Myself,1620000)
+END
+
+IF // 9000000      // 41
+	OR(2)
+		Class(Myself,FIGHTER_ALL)
+		Class(Myself,BARD_ALL)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,CLERIC_ALL)
+		Class(Myself,PALADIN_ALL)
+		Class(Myself,RANGER_ALL)
+	LevelLT(Myself,41)
+	LevelPartyGT(40)
+	Global("JO_JOIN_XPGT_41","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_XPGT_41","LOCALS",1)
+		AddXPObject(Myself,1000000)
+END
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+// Basic without script Global("JO_JOIN_ACTION","LOCALS",0)
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",3)
+	Global("JO_JOIN_ACTION","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		ChangeAIScript("",RACE)
+END
+
+
+// All_In_D (We need to adjust our strategy)  !Global("JO_JOIN_ACTION","LOCALS",0)
+
+/*
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION1",RACE)
+		DisplayStringHead(Myself,~I will stay out of combat.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION2",RACE)
+		DisplayStringHead(Myself,~I will dive in melee.~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",3)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION3",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",4)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION4",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",5)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION5",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION6",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",7)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION7",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",8)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION8",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",9)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION9",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",10)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION10",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",11)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION11",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",12)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION12",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",13)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION13",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+
+IF
+	Delay(1)
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CLEAR","LOCALS",2)
+	Global("JO_JOIN_ACTION","LOCALS",14)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		ChangeAIScript("ACTION14",RACE)
+		DisplayStringHead(Myself,~I will .~)
+END
+*/
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
