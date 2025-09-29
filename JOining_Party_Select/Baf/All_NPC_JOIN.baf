@@ -2,61 +2,61 @@
  
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
-	!Global("JO_AllowDead_Myself","LOCALS",0)
+	!Global("JO_Myself_AllowDead","LOCALS",0)
 	!InPartyAllowDead(Myself)
 	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_AllowDead_Myself","LOCALS",0)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 END
  
 // InPartyAllowDead("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
 IF
-	Global("JO_AllowDead_Myself","LOCALS",0)
+	Global("JO_Myself_AllowDead","LOCALS",0)
 	OR(2)
 		InPartyAllowDead(Myself)
 		Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_AllowDead_Myself","LOCALS",1)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
 END
  
 // !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
-	!Global("JO_InParty_Myself","LOCALS",0)
+	!Global("JO_Myself_InParty","LOCALS",0)
 	!InParty(Myself)
 	!Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_InParty_Myself","LOCALS",0)
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
 END
  
 // InParty("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
 IF
-	Global("JO_InParty_Myself","LOCALS",0)
+	Global("JO_Myself_InParty","LOCALS",0)
 	OR(2)
 		InParty(Myself)
 		Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_InParty_Myself","LOCALS",1)
+		SetGlobal("JO_Myself_InParty","LOCALS",1)
 END
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
-	!Global("JO_Valid_Myself","LOCALS",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
 	OR(2)
 		!Allegiance(Myself,FAMILIAR)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_Valid_Myself","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
 END
  
 // Is(If)ValidForPartyDialog(ue)
 IF
-	Global("JO_Valid_Myself","LOCALS",0)
+	Global("JO_Myself_Valid","LOCALS",0)
 	OR(2)
 		IsValidForPartyDialogue(Myself)
 		!StateCheck(Myself,CD_STATE_NOTVALID)
@@ -65,5 +65,5 @@ IF
 		InParty(Myself)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_Valid_Myself","LOCALS",1)
+		SetGlobal("JO_Myself_Valid","LOCALS",1)
 END

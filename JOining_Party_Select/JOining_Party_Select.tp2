@@ -479,6 +479,16 @@ REQUIRE_PREDICATE MOD_IS_INSTALLED ~Frennedan.TP2~ ~0~ ~Necessite Frennedan~
 			REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
 			REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
 
+BEGIN ~The Undying~
+DESIGNATED 109
+GROUP ~NPC Mods for bg2~
+LABEL ~JOining_Party_Select-Undying~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~TheUndying.TP2~ ~0~ ~Necessite The Undying~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Undying~ ~~
+			REPLACE_TEXTUALLY ~// Mod Undying~ ~~
+
 ///////////////////////////  ///////////////////////////
 
 

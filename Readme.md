@@ -131,9 +131,9 @@ LOCALS :
 
 ---
 
-- Global("JO_AllowDead_Myself","LOCALS",0)
-- Global("JO_InParty_Myself","LOCALS",0)
-- Global("JO_Valid_Myself","LOCALS",0)
+- Global("JO_Myself_AllowDead","LOCALS",0)
+- Global("JO_Myself_InParty","LOCALS",0)
+- Global("JO_Myself_Valid","LOCALS",0)
    - Same as the GLOBAL %Death_var% above but for Myself.
 
 ---
