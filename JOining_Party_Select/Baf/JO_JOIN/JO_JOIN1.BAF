@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////
 
 IF
-	Name("IMOEN",Myself)
+	CharName("IMOEN",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		AreaCheck("AR0602")
@@ -16,13 +16,12 @@ END
  // Imoen BGEE EET
 
 IF
-	Name("%IMOEN_DV%",Myself)
+	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("IMOEN2J") 
-		SmallWait(1)
+		SetDialog("IMOEN2J")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("IMOEN_",OVERRIDE) //Script for BGEE in EET
 END
@@ -30,13 +29,12 @@ END
  // Imoen BGEE
 
 IF
-	Name("%IMOEN_DV%",Myself)
+	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("IMOEN2") // Joined Dialogue for BGEE only
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("IMOEN",OVERRIDE)
 END
@@ -44,13 +42,12 @@ END
  // Imoen BG2EE
 
 IF
-	Name("%IMOEN_DV%",Myself)
+	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("IMOEN2J") 
-		SmallWait(1)
+		SetDialog("IMOEN2J")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("IMOEN2",OVERRIDE)
 END
@@ -58,13 +55,12 @@ END
  // ToB Imoen
 
 IF
-	Name("%IMOEN_DV%",Myself)
+	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("IMOEN25J") 
-		SmallWait(1)
+		SetDialog("IMOEN25J")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("IMOE25",OVERRIDE)
 END 
@@ -76,13 +72,12 @@ END
  // Edwin BGEE EET
  
 IF
-	Name("Edwin",Myself)
+	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("EDWINJ") 
-		SmallWait(1)
+		SetDialog("EDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("EDWIN_",OVERRIDE) //Script for BGEE in EET
 END
@@ -90,7 +85,7 @@ END
  // Edwin BGEE BG2EE
 
 IF
-	Name("Edwin",Myself)
+	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -98,7 +93,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("EDWINJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("EDWIN",OVERRIDE)
 END
@@ -106,13 +100,12 @@ END
  // SoD Edwin
 
 IF
-	Name("Edwin",Myself)
+	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("BDEDWINJ") 
-		SmallWait(1)
+		SetDialog("BDEDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDEDWIN",OVERRIDE)
 END
@@ -126,13 +119,12 @@ END
  // Jaheira BGEE EET
 
 IF
-	Name("Jaheira",Myself)
+	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("JAHEIRAJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("JAHEIRA_",OVERRIDE) //Script for BGEE in EET
 END
@@ -140,13 +132,12 @@ END
  // Jaheira BGEE
 
 IF
-	Name("Jaheira",Myself)
+	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("JAHEIJ") // Joined Dialogue for BGEE only
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("JAHEIRA",OVERRIDE)
 END
@@ -154,13 +145,12 @@ END
  // Jaheira BG2EE
 
 IF
-	Name("Jaheira",Myself)
+	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("JAHEIRAJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("JAHEIRA",OVERRIDE)
 END
@@ -168,13 +158,12 @@ END
  // SoD Jaheira
 
 IF
-	Name("Jaheira",Myself)
+	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("BDJAHEIJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDJAHEIR",OVERRIDE)
 END
@@ -188,13 +177,12 @@ END
  // Minsc BGEE EET
 
 IF
-	Name("Minsc",Myself)
+	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("MINSC_",OVERRIDE) //Script for BGEE in EET
 END
@@ -202,7 +190,7 @@ END
  // Minsc BGEE BG2EE
 
 IF
-	Name("Minsc",Myself)
+	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -210,7 +198,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("MINSC",OVERRIDE)
 END
@@ -218,13 +205,12 @@ END
  // SoD Minsc
 
 IF
-	Name("Minsc",Myself)
+	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("BDMINSCJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDMINSC",OVERRIDE)
 END
@@ -238,13 +224,12 @@ END
  // Viconia BGEE EET
 
 IF
-	Name("Viconia",Myself)
+	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("VICONIJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("VICONIA_",OVERRIDE) //Script for BGEE in EET
 END
@@ -252,13 +237,12 @@ END
  // Viconia BGEE
 
 IF
-	Name("Viconia",Myself)
+	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("VICONJ")  // Joined Dialogue for BGEE only
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("VICONIA",OVERRIDE)
 END
@@ -266,13 +250,12 @@ END
  // Viconia BG2EE
 
 IF
-	Name("Viconia",Myself)
+	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("VICONIJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("VICONIA",OVERRIDE)
 END
@@ -280,13 +263,12 @@ END
  // SoD Viconia
 
 IF
-	Name("Viconia",Myself)
+	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("BDVICONJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDVICONI",OVERRIDE)
 END
@@ -300,13 +282,12 @@ END
  // Dorn BGEE EET
 
 IF
-	Name("Dorn",Myself)
+	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("DORN_",OVERRIDE) //Script for BGEE in EET
 END
@@ -314,7 +295,7 @@ END
  // Dorn BGEE BG2EE
 
 IF
-	Name("Dorn",Myself)
+	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -322,7 +303,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("DORN_",OVERRIDE)
 END
@@ -330,13 +310,12 @@ END
  // SoD Dorn
 
 IF
-	Name("Dorn",Myself)
+	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("BDDORNJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDDORN",OVERRIDE)
 END
@@ -351,13 +330,12 @@ END
 
 
 IF
-	Name("Neera",Myself)
+	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("NEERA_",OVERRIDE) //Script for BGEE in EET
 END
@@ -366,7 +344,7 @@ END
 
 
 IF
-	Name("Neera",Myself)
+	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -374,7 +352,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("NEERA",OVERRIDE)
 END
@@ -382,13 +359,12 @@ END
  // SoD Neera
 
 IF
-	Name("Neera",Myself)
+	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("BDNEERAJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDNEERA",OVERRIDE)
 END
@@ -402,13 +378,12 @@ END
  // Rasaad BGEE EET
 
 IF
-	Name("Rasaad",Myself)
+	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("RASAAD_",OVERRIDE) //Script for BGEE in EET
 END
@@ -416,7 +391,7 @@ END
  // Rasaad BGEE BG2EE
 
 IF
-	Name("Rasaad",Myself)
+	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -424,7 +399,6 @@ IF
 THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")
-		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("RASAAD",OVERRIDE)
 END
@@ -432,13 +406,12 @@ END
  // SoD Rasaad
 
 IF
-	Name("Rasaad",Myself)
+	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("BDRASAAJ") 
-		SmallWait(1)
+		SetDialog("BDRASAAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		ChangeAIScript("BDRASAAD",OVERRIDE)
 END

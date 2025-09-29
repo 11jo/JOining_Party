@@ -1,30 +1,21 @@
+/*
+AnkhegEmerge()
+AnkhegHide()
+AddXPObject(AddXPObject(O:Object*,I:XP*) )
+*/
 
-// End of switch from All_In.baf
+///////////////////////////////////////////////////////////////////////////////
 
-// Yeah Start ( Switch between familiar and party)
+///////////////////////////////////////////////////////////////////////////////
 
-IF
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOIN_CLEAR","LOCALS",1)
-THEN
-	RESPONSE #100
-		DisplayStringHead(Myself,~Yeah.~)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		Continue() // Go to ScriptAction 
-END
-
-// Yeah End (End Switch between familiar and party)
-
-// Basic without script Global("JO_JOIN_ACTION","LOCALS",0)
+// To verify if NPC leave and join as intended after first time from party to familiar
 
 IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",0)
+	Global("JO_FIRST_JOIN_JOIN","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_JOIN","GLOBAL",THREE_ROUNDS)
+		SetGlobal("JO_FIRST_JOIN_JOIN","LOCALS",1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -89,6 +80,7 @@ IF
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player2) // JumpToObject(Myself,Player1)
+//		MoveToObject(Player2)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -126,6 +118,7 @@ IF
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player3) // JumpToObject(Myself,Player1)
+//		MoveToObject(Player3)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -163,6 +156,7 @@ IF
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player4) // JumpToObject(Myself,Player1)
+//		MoveToObject(Player4)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -200,7 +194,179 @@ IF
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player5) // JumpToObject(Myself,Player1)
+//		MoveToObject(Player5)
 END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Get close to PC before switching same reason as above
+
+// Player2
+
+IF
+	OR(2)
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		OnCreation()
+	Global("JO_JOIN_RANGE","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+	InMyArea(Player2)
+	ActionListEmpty()
+	NumInPartyLT(6)
+	CombatCounter(0)
+	Global("JO_NOJOIN","GLOBAL",0)
+//	Range(Player2,10)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		MoveToObject(Player2) // MoveToObjectFollow(Player2)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player3
+
+IF
+	OR(2)
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		OnCreation()
+	Global("JO_JOIN_RANGE","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	InMyArea(Player3)
+	ActionListEmpty()
+	NumInPartyLT(6)
+	CombatCounter(0)
+	Global("JO_NOJOIN","GLOBAL",0)
+//	Range(Player3,10)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		MoveToObject(Player3) // MoveToObjectFollow(Player3)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player4
+
+IF
+	OR(2)
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		OnCreation()
+	Global("JO_JOIN_RANGE","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	InMyArea(Player4)
+	ActionListEmpty()
+	NumInPartyLT(6)
+	CombatCounter(0)
+	Global("JO_NOJOIN","GLOBAL",0)
+//	Range(Player4,10)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		MoveToObject(Player4) // MoveToObjectFollow(Player4)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player5
+
+IF
+	OR(2)
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		OnCreation()
+	Global("JO_JOIN_RANGE","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+		Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	InMyArea(Player5)
+	ActionListEmpty()
+	NumInPartyLT(6)
+	CombatCounter(0)
+	Global("JO_NOJOIN","GLOBAL",0)
+//	Range(Player5,10)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		MoveToObject(Player5) // MoveToObjectFollow(Player5)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+// Player1
+
+IF
+	OR(2)
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		OnCreation()
+	Global("JO_JOIN_RANGE","LOCALS",0)
+	!Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player4","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player3","LOCALS",1)
+	!Global("JO_JOIN_CLOSE_Player2","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player5","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player4","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player3","LOCALS",1)
+	!Global("JO_JOIN_SIGHT_Player2","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
+	ActionListEmpty()
+	NumInPartyLT(6)
+	CombatCounter(0)
+//	Range(Player1,10)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		MoveToObject(Player1) // MoveToObjectFollow(Player1)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",1) // Go to Reintegrate NPC into party periodically
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Reintegrate NPC into party periodically (Every NINE_ROUNDS depending of other NPCs and Triggers above) 
+
+// Could be changed to more or less rounds for players convenience
+
+IF
+	Global("JO_JOIN_RANGE","LOCALS",1)
+	ActionListEmpty()
+	NumInPartyLT(6)
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_RANGE","LOCALS",0)
+//		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOINI","LOCALS",1)
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // ScriptAction (All_in_Baf)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SmallWait(1)
+		DisplayStringHead(Myself,~Hey.~)
+// All_In.BAF // JO_JOIN_RESET_ACTION
+		SetGlobal("JO_JOIN_RESET_ACTION","LOCALS",1)
+		JoinParty() // Go to All_In_Baf Switch between familiar and party
+		SetInterrupt(TRUE)
+END
+
+// Maybe something could be done with :
+
+/*
+0x0004 Joins(O:Object*)
+Returns true if the specified object has joined the party in the last script round. This trigger is only sent to player characters. 
+
+0x0005 Leaves(O:Object*)
+Returns true if the specified object has left the party in the last script round. This trigger is only sent to player characters. 
+*/
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -217,6 +383,7 @@ IF
 THEN
 	RESPONSE #100
 	MoveToObject(Player1)
+//	ProtectObject(Player1,30)
 END
 
 IF
@@ -237,6 +404,7 @@ IF
 THEN
 	RESPONSE #100
 	MoveToObject(Player2)
+//	ProtectObject(Player2,30)
 END
 
 IF
@@ -258,6 +426,7 @@ IF
 THEN
 	RESPONSE #100
 	MoveToObject(Player3)
+//	ProtectObject(Player3,30)
 END
 
 IF
@@ -279,6 +448,7 @@ IF
 THEN
 	RESPONSE #100
 	MoveToObject(Player4)
+//	ProtectObject(Player4,30)
 END
 
 IF
@@ -301,6 +471,7 @@ IF
 THEN
 	RESPONSE #100
 	MoveToObject(Player5)
+//	ProtectObject(Player5,30)
 END
 
 IF
@@ -546,7 +717,56 @@ THEN
 	Wait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 END
+/*
+IF
+	Allegiance(Myself,FAMILIAR)
+	HPGT(Myself,4)
+	Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
+THEN
+	RESPONSE #10
+	DisplayStringHead(Myself,~Still alive !~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+//	SetSequence(SEQ_AWAKE)
+	RESPONSE #10
+	DisplayStringHead(Myself,~Still alive !~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~Still alive !~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~Still alive !~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~You didn't abandon me !~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~It was a... Nice experiment...~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~Well, I guess we have to go on...~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~I may have overreacted.~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~Of curse... I didn't mean it.~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+	RESPONSE #10
+	DisplayStringHead(Myself,~Well, that escalated quickly...~)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+END
 
+IF
+	Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
+THEN
+	RESPONSE #10
+	ReallyForceSpellRES("JOIR648",Myself)
+	Wait(2)
+	SetSequence(SEQ_EMERGE)
+	Wait(1)
+	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
+END
+*/
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -883,6 +1103,11 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 /*
 // Progression 1
 IF // 2500       // 2
@@ -1086,209 +1311,3 @@ IF // 6160000      // 38
 IF // 6380000      // 39
 IF // 8000000      // 40
 */
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-// All_In_D (We need to adjust our strategy)  !Global("JO_JOIN_ACTION","LOCALS",0)
-
-/*
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION1",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",2)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION2",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",3)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION3",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",4)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION4",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",5)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION5",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",6)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION6",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",7)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION7",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",8)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION8",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",9)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION9",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",10)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION10",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",11)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION11",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",12)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION12",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",13)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION13",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-
-IF
-	Delay(1)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-	Global("JO_JOIN_ACTION","LOCALS",14)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		ChangeAIScript("ACTION14",RACE)
-		DisplayStringHead(Myself,~Yeah.~)
-END
-*/
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-// DROW_CHANGE / UNDER_NORM
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("ADrowTimerHasExpired","GLOBAL",1)
-	Global("DrowUNDER_NORM","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("DrowUNDER_NORM","LOCALS",1)
-		ApplySpell(Myself,UNDER_NORM)
-END
-
-
