@@ -108,11 +108,6 @@ GLOBAL :
 
 ---
 
-- GlobalTimer("JO_JOIN_JOIN","GLOBAL",NINE_ROUNDS)
-   - Timer for switching Familiar to NPCs regulary.
-
----
-
 - Global("JO_JOIN_BGEE_EET","GLOBAL",0)
 - Global("JO_JOIN_BG2EE","GLOBAL",0)
 - Global("JO_JOIN_ToB","GLOBAL",0)
@@ -131,6 +126,11 @@ LOCALS :
 
 ---
 
+- GlobalTimer("JO_JOIN_JOIN","LOCALS",NINE_ROUNDS)
+   - Timer for switching Familiar to NPCs regulary.
+
+---
+
 - Global("JO_Myself_AllowDead","LOCALS",0)
 - Global("JO_Myself_InParty","LOCALS",0)
 - Global("JO_Myself_Valid","LOCALS",0)
@@ -144,17 +144,15 @@ LOCALS :
 ---
 
 - Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-   - Set when Familiar health is below 5HP.
+   - Set to 1 when Familiar health is below 5HP.
+   - Set to 2 when Familiar health is below 5HP and after spell JOIN648 is applied.
+   - Set to 3 when Familiar health is above 4HP and after spell JOIR648 is applied.
+
 
 ---
 
 - Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
    - Same as above but not implemented yet.
-
----
-
-- Global("JO_JOIN_TALK","LOCALS",0)
-   - For first time becoming a familiar and have the relevant text line "We are now fellow travelers."
 
 ---
 
