@@ -176,13 +176,20 @@ LOCALS :
 
 ---
 
-- Global("JO_JOIN_CLOSE_PlayerX","LOCALS",0)
+- Global("JO_LINK_PLAYER_ID","LOCALS",X)
    - Through dialog with familiar, used to link a familiar to a specific party member. See All_In.D
+   - 0: Player1Fill
+   - 1: Player1
+   ...
+   - 6: Player6
 
 ---
 
-- Global("JO_JOIN_SIGHT_PlayerX","LOCALS",0)
+- Global("JO_LINK_TYPE","LOCALS",X)
    - Through dialog with familiar, used to link a familiar to a specific party member. See All_In.D
+   - 0: No follow
+   - 1: Close, range 5
+   - 2: Sight, range 50
 
 ---
 
@@ -213,7 +220,7 @@ LOCALS :
 
 ---
 
-- Global("JO_JOIN_RANGE","LOCALS",0)
+- Global("JO_IS_JOINING","LOCALS",0)
    - The familiar will go close to Charname or linked party member before switching in party.
 
 ---
