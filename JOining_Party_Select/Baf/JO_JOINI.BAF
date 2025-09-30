@@ -194,7 +194,7 @@ END
 
 IF
 	OR(2)
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 		OnCreation()
 	Global("JO_JOIN_RANGE","LOCALS",0)
 	OR(2)
@@ -218,7 +218,7 @@ END
 
 IF
 	OR(2)
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 		OnCreation()
 	Global("JO_JOIN_RANGE","LOCALS",0)
 	OR(2)
@@ -242,7 +242,7 @@ END
 
 IF
 	OR(2)
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 		OnCreation()
 	Global("JO_JOIN_RANGE","LOCALS",0)
 	OR(2)
@@ -266,7 +266,7 @@ END
 
 IF
 	OR(2)
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 		OnCreation()
 	Global("JO_JOIN_RANGE","LOCALS",0)
 	OR(2)
@@ -290,7 +290,7 @@ END
 
 IF
 	OR(2)
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","GLOBAL")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 		OnCreation()
 	Global("JO_JOIN_RANGE","LOCALS",0)
 	!Global("JO_JOIN_CLOSE_Player5","LOCALS",1)
@@ -339,8 +339,7 @@ THEN
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
-// All_In.BAF // JO_JOIN_RESET_ACTION
-		SetGlobal("JO_JOIN_RESET_ACTION","LOCALS",1)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0) // TODO: security, find a better way to do it
 		JoinParty() // Go to All_In_Baf Switch between familiar and party
 		SetInterrupt(TRUE)
 END
