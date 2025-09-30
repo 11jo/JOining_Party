@@ -153,15 +153,26 @@ THEN
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)
 		SmallWait(1)
-		DisplayStringHead(Myself,~We are now fellow travelers.~)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		FaceObject(Player1)
+		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
+END
+
+// fellow travelers (End first time from party to familiar)
+ 
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_TALK","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
