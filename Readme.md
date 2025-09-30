@@ -156,6 +156,11 @@ LOCALS :
 
 ---
 
+- Global("JO_JOIN_TALK","LOCALS",0)
+   - For first time becoming a familiar and have the relevant text line "We are now fellow travelers."
+
+---
+
 - Global("JO_JOINI","LOCALS",0)
    - Set when familiar switch in party, and enable block to return to familiar state.
 
