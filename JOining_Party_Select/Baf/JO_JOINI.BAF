@@ -10,70 +10,80 @@ AddXPObject(AddXPObject(O:Object*,I:XP*) )
 
 // Broken links
 
-IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",1)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+IF // unexpected values
 	OR(2)
-		!InParty(Player1)
-		!Exists(Player1)
+		GlobalLT("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
+		GlobalGT("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_LINK_PLAYER_ID","LOCALS",0)
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 END
 
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",2)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(2)
+		!InParty(Player1)
+		!Exists(Player1) // TODO: useful ?
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
+END
+
+IF
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	OR(2)
 		!InParty(Player2)
 		!Exists(Player2)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_LINK_PLAYER_ID","LOCALS",0)
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 END
 
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",3)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	OR(2)
 		!InParty(Player3)
 		!Exists(Player3)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_LINK_PLAYER_ID","LOCALS",0)
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 END
 
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",4)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	OR(2)
 		!InParty(Player4)
 		!Exists(Player4)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_LINK_PLAYER_ID","LOCALS",0)
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 END
 
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",5)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	OR(2)
 		!InParty(Player5)
 		!Exists(Player5)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_LINK_PLAYER_ID","LOCALS",0)
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 END
 
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",6)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	OR(2)
 		!InParty(Player6)
 		!Exists(Player6)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_LINK_PLAYER_ID","LOCALS",0)
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 END
 
 
@@ -84,9 +94,9 @@ END
 
 // Large range or different area
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // no linked
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
 	Allegiance(Myself,FAMILIAR)
 	!Range(Player1Fill,70)
 THEN
@@ -96,13 +106,13 @@ END
 
 // Short range
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0) // follow with authorised move
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
 	Allegiance(Myself,FAMILIAR)
 	!PersonalSpaceDistance(Player1Fill,5) // PersonalSpaceDistance is more reliable than Range at such a low range
 	OR(2)
-		Global("JO_LINK_TYPE","LOCALS",1)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2) // follow close
 		!Range(Player1Fill,50)
 THEN
 	RESPONSE #100
@@ -114,8 +124,8 @@ END
 
 // Large range or different area
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	!Range(Player1,70)
@@ -126,13 +136,13 @@ END
 
 // Short range
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!PersonalSpaceDistance(Player1,5) // PersonalSpaceDistance is more reliable than Range at such a low range
+	!PersonalSpaceDistance(Player1,5)
 	OR(2)
-		Global("JO_LINK_TYPE","LOCALS",1)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2)
 		!Range(Player1,50)
 THEN
 	RESPONSE #100
@@ -144,8 +154,8 @@ END
 
 // Large range or different area
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	!Range(Player2,70)
@@ -156,13 +166,13 @@ END
 
 // Short range
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!PersonalSpaceDistance(Player2,5) // PersonalSpaceDistance is more reliable than Range at such a low range
+	!PersonalSpaceDistance(Player2,5)
 	OR(2)
-		Global("JO_LINK_TYPE","LOCALS",1)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2)
 		!Range(Player2,50)
 THEN
 	RESPONSE #100
@@ -174,8 +184,8 @@ END
 
 // Large range or different area
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	!Range(Player3,70)
@@ -186,13 +196,13 @@ END
 
 // Short range
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!PersonalSpaceDistance(Player3,5) // PersonalSpaceDistance is more reliable than Range at such a low range
+	!PersonalSpaceDistance(Player3,5)
 	OR(2)
-		Global("JO_LINK_TYPE","LOCALS",1)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2)
 		!Range(Player3,50)
 THEN
 	RESPONSE #100
@@ -204,8 +214,8 @@ END
 
 // Large range or different area
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	!Range(Player4,70)
@@ -216,13 +226,13 @@ END
 
 // Short range
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!PersonalSpaceDistance(Player4,5) // PersonalSpaceDistance is more reliable than Range at such a low range
+	!PersonalSpaceDistance(Player4,5)
 	OR(2)
-		Global("JO_LINK_TYPE","LOCALS",1)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2)
 		!Range(Player4,50)
 THEN
 	RESPONSE #100
@@ -234,8 +244,8 @@ END
 
 // Large range or different area
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	!Range(Player5,70)
@@ -246,13 +256,13 @@ END
 
 // Short range
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!PersonalSpaceDistance(Player5,5) // PersonalSpaceDistance is more reliable than Range at such a low range
+	!PersonalSpaceDistance(Player5,5)
 	OR(2)
-		Global("JO_LINK_TYPE","LOCALS",1)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2)
 		!Range(Player5,50)
 THEN
 	RESPONSE #100
@@ -264,8 +274,8 @@ END
 
 // Large range or different area
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	!Range(Player6,70)
@@ -276,13 +286,13 @@ END
 
 // Short range
 IF
-	Global("JO_LINK_PLAYER_ID","LOCALS",0)
-	!Global("JO_LINK_TYPE","LOCALS",0)
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!PersonalSpaceDistance(Player6,5) // PersonalSpaceDistance is more reliable than Range at such a low range
+	!PersonalSpaceDistance(Player6,5)
 	OR(2)
-		Global("JO_LINK_TYPE","LOCALS",1)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2)
 		!Range(Player6,50)
 THEN
 	RESPONSE #100
@@ -302,7 +312,7 @@ IF
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 		OnCreation()
-	Switch("JO_LINK_PLAYER_ID","LOCALS")
+	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
 THEN
 	RESPONSE #0
 		ClearActions(Myself)

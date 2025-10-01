@@ -45,56 +45,56 @@ END
 
 IF ~~ THEN BEGIN JO_JOINDLG3
 	SAY ~What do you need ?~
-	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_LINK_TYPE","LOCALS",2)
-													SetGlobal("JO_LINK_PLAYER_ID","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_LINK_TYPE","LOCALS",0)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)
+													SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player1)~
 		THEN REPLY ~Stay on sight.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",1)
-					SetGlobal("JO_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player1)~
 		THEN REPLY ~Stay close.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",1)
-					SetGlobal("JO_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player2)~
 		THEN REPLY ~Stay on sight.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",2)
-					SetGlobal("JO_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player2)~
 		THEN REPLY ~Stay close.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",2)
-					SetGlobal("JO_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player3)~
 		THEN REPLY ~Stay on sight.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",3)
-					SetGlobal("JO_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player3)~
 		THEN REPLY ~Stay close.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",3)
-					SetGlobal("JO_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player4)~
 		THEN REPLY ~Stay on sight.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",4)
-					SetGlobal("JO_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player4)~
 		THEN REPLY ~Stay close.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",4)
-					SetGlobal("JO_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player5)~
 		THEN REPLY ~Stay on sight.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",5)
-					SetGlobal("JO_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player5)~
 		THEN REPLY ~Stay close.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",5)
-					SetGlobal("JO_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player6)~
 		THEN REPLY ~Stay on sight.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",6)
-					SetGlobal("JO_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player6)~
 		THEN REPLY ~Stay close.~
-			DO ~SetGlobal("JO_LINK_PLAYER_ID","LOCALS",6)
-					SetGlobal("JO_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
+			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
+					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 END
 END

@@ -176,20 +176,22 @@ LOCALS :
 
 ---
 
-- Global("JO_LINK_PLAYER_ID","LOCALS",X)
+- Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",X)
    - Through dialog with familiar, used to link a familiar to a specific party member. See All_In.D
-   - 0: Player1Fill
+   - 0: Player1Fill (default case)
    - 1: Player1
-   ...
+   - ...
    - 6: Player6
+   - Other: Player1Fill
 
 ---
 
-- Global("JO_LINK_TYPE","LOCALS",X)
+- Global("JO_JOIN_LINK_TYPE","LOCALS",X)
    - Through dialog with familiar, used to link a familiar to a specific party member. See All_In.D
-   - 0: No follow
-   - 1: Close, range 5
-   - 2: Sight, range 50
+   - -1: Static, no move or teleport
+   - 0: Do anything, no move but teleport if range > 70 (default case)
+   - 1: Sight, teleport if > 70, move if range > 50
+   - 2: Close, teleport if > 70, move if range > 5
 
 ---
 
