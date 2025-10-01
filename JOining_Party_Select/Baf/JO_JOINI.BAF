@@ -308,6 +308,7 @@ IF
 	!ActuallyInCombat()
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_NOJOIN","GLOBAL",0)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
 	NumInPartyLT(6)
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
@@ -315,37 +316,30 @@ IF
 	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
 THEN
 	RESPONSE #0
-		ClearActions(Myself)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player1Fill)
 		SetGlobal("JO_IS_JOINING","LOCALS",1)
 	RESPONSE #1
-		ClearActions(Myself)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player1)
 		SetGlobal("JO_IS_JOINING","LOCALS",1)
 	RESPONSE #2
-		ClearActions(Myself)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player2)
 		SetGlobal("JO_IS_JOINING","LOCALS",1)
 	RESPONSE #3
-		ClearActions(Myself)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player3)
 		SetGlobal("JO_IS_JOINING","LOCALS",1)
 	RESPONSE #4
-		ClearActions(Myself)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player4)
 		SetGlobal("JO_IS_JOINING","LOCALS",1)
 	RESPONSE #5
-		ClearActions(Myself)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player5)
 		SetGlobal("JO_IS_JOINING","LOCALS",1)
 	RESPONSE #6
-		ClearActions(Myself)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player6)
 		SetGlobal("JO_IS_JOINING","LOCALS",1)
