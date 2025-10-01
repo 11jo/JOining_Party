@@ -318,31 +318,31 @@ THEN
 	RESPONSE #0
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player1Fill)
-		SetGlobal("JO_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 	RESPONSE #1
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player1)
-		SetGlobal("JO_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 	RESPONSE #2
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player2)
-		SetGlobal("JO_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 	RESPONSE #3
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player3)
-		SetGlobal("JO_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 	RESPONSE #4
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player4)
-		SetGlobal("JO_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 	RESPONSE #5
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player5)
-		SetGlobal("JO_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 	RESPONSE #6
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		MoveToObject(Player6)
-		SetGlobal("JO_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 END
 
 
@@ -355,14 +355,14 @@ END
 // Could be changed to more or less rounds for players convenience
 
 IF
-	Global("JO_IS_JOINING","LOCALS",1)
+	Global("JO_JOIN_IS_JOINING","LOCALS",1)
 	ActionListEmpty()
 	NumInPartyLT(6)
 	!ActuallyInCombat()
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("JO_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOINI","LOCALS",1)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // ScriptAction (All_in_Baf)
 		EquipItemEx("JOMINHP1",1)

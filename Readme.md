@@ -222,7 +222,7 @@ LOCALS :
 
 ---
 
-- Global("JO_IS_JOINING","LOCALS",0)
+- Global("JO_JOIN_IS_JOINING","LOCALS",0)
    - The familiar will go close to Charname or linked party member before switching in party.
 
 ---
