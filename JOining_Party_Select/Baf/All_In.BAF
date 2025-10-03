@@ -200,7 +200,7 @@ THEN
 		SmallWait(1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",NINE_ROUNDS)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_TURNS)
 // Add switch familiar related  script
 //		ChangeAIScript("",RACE)
 //		ChangeAIScript("",CLASS)
