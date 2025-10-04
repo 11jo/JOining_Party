@@ -1,0 +1,90 @@
+// BALDUR and BALDUR25
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	CheckSpellState("%Death_var%",DRAGON_BLADE)
+	!HasItemEquipedReal("BDSW2H01","%Death_var%")
+THEN
+	RESPONSE #100
+		ReallyForceSpellDeadRES("BDDRAGB2","%Death_var%")
+		Continue()
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HasItem("CDHLYSYM","%Death_var%")
+	!Name("Anomen","%Death_var%")
+	!Name("Aerie","%Death_var%")
+	!Name("Viconia","%Death_var%")
+	Kit("%Death_var%",OHTEMPUS)
+THEN
+	RESPONSE #100
+		ApplySpellRES("CDHLYSY2","%Death_var%")
+		ActionOverride("%Death_var%",TransformItem("CDHLYSYM","ohtempus"))
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HasItem("CDHLYSYM","%Death_var%")
+	!Name("Anomen","%Death_var%")
+	!Name("Aerie","%Death_var%")
+	!Name("Viconia","%Death_var%")
+	Kit("%Death_var%",OHTYR)
+THEN
+	RESPONSE #100
+		ApplySpellRES("CDHLYSY2","%Death_var%")
+		ActionOverride("%Death_var%",TransformItem("CDHLYSYM","beltty"))
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HasItem("CDHLYSYM","%Death_var%")
+	!Name("Anomen","%Death_var%")
+	!Name("Aerie","%Death_var%")
+	!Name("Viconia","%Death_var%")
+	OR(4)
+		Alignment("%Death_var%",CHAOTIC_NEUTRAL)
+		Alignment("%Death_var%",NEUTRAL_EVIL)
+		Alignment("%Death_var%",CHAOTIC_EVIL)
+		Kit("%Death_var%",GODTALOS)
+THEN
+	RESPONSE #100
+		ApplySpellRES("CDHLYSY2","%Death_var%")
+		ActionOverride("%Death_var%",TransformItem("CDHLYSYM","BELT14"))
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HasItem("CDHLYSYM","%Death_var%")
+	!Name("Anomen","%Death_var%")
+	!Name("Aerie","%Death_var%")
+	!Name("Viconia","%Death_var%")
+	!Kit("%Death_var%",GODLATHANDER)
+	OR(5)
+		GlobalGT("CDWorkingForHelm","GLOBAL",0)
+		Alignment("%Death_var%",LAWFUL_NEUTRAL)
+		Alignment("%Death_var%",NEUTRAL)
+		Alignment("%Death_var%",LAWFUL_EVIL)
+		Kit("%Death_var%",GODHELM)
+THEN
+	RESPONSE #100
+		ApplySpellRES("CDHLYSY2","%Death_var%")
+		ActionOverride("%Death_var%",TransformItem("CDHLYSYM","BELT13"))
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	HasItem("CDHLYSYM","%Death_var%")
+	!Name("Anomen","%Death_var%")
+	!Name("Aerie","%Death_var%")
+	!Name("Viconia","%Death_var%")
+	!Kit("%Death_var%",GODHELM)
+	OR(3)
+		GlobalGT("CDWorkingForLathander","GLOBAL",0)
+		Alignment("%Death_var%",MASK_GOOD)
+		Kit("%Death_var%",GODLATHANDER)
+THEN
+	RESPONSE #100
+		ApplySpellRES("CDHLYSY2","%Death_var%")
+		ActionOverride("%Death_var%",TransformItem("CDHLYSYM","BELT12"))
+END

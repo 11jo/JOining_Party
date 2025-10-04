@@ -1,0 +1,35 @@
+IF
+	IsOverMe("%Death_var%")
+THEN
+	RESPONSE #25
+		DisplayString("%Death_var%",14381)  // Piège activé
+		ApplyDamage("%Death_var%",3,PIERCING)
+		Continue()
+	RESPONSE #20
+		DisplayString("%Death_var%",14381)  // Piège activé
+		ApplyDamage("%Death_var%",5,PIERCING)
+		Continue()
+	RESPONSE #20
+		DisplayString("%Death_var%",14381)  // Piège activé
+		ApplyDamage("%Death_var%",7,PIERCING)
+		Continue()
+	RESPONSE #10
+		DisplayString("%Death_var%",14381)  // Piège activé
+		ApplyDamage("%Death_var%",10,PIERCING)
+		Continue()
+	RESPONSE #5
+		DisplayString("%Death_var%",14381)  // Piège activé
+		ApplyDamage("%Death_var%",15,PIERCING)
+		Continue()
+END
+
+IF
+	IsOverMe("%Death_var%")
+	HasItem("ohhstatu","%Death_var%")  // Statue dorée
+	!Global("ohh_negatetraps","OH7200",1)  // Hexxat - Bottom Right Quarter (Zakhara)
+THEN
+	RESPONSE #100
+		TakeItemReplace("ohhstat1","ohhstatu","%Death_var%")  // Statue dorée
+		DisplayStringHead("%Death_var%",99898)  // Vous ressentez soudainement une sensation de lourdeur et vous êtes incapable d'avancer plus.
+		Continue()
+END

@@ -209,20 +209,3 @@ THEN
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
 END
-
-/////////////////////////////////////// To see with select tph
-
-// DROW_CHANGE / UNDER_NORM 
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("ADrowTimerHasExpired","GLOBAL",1)
-	Global("DrowUNDER_NORM","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("DrowUNDER_NORM","LOCALS",1)
-		ApplySpell(Myself,UNDER_NORM)
-END
-
-/////////////////////////////////////// To see with select tph
-

@@ -1,0 +1,14 @@
+IF
+	OR(2)
+		IsOverMe("%Death_var%")
+		Entered("%Death_var%")
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("SPFLESHS","%Death_var%")
+		PlaySound("EFF_M63")
+		SmallWait(7)
+		CreateVisualEffect("SPFLESHS",[1133.1669])
+		ActionOverride("%Death_var%",JumpToPoint([1133.1669]))
+		MoveViewPoint([1133.1669],INSTANT)
+		Continue()
+END

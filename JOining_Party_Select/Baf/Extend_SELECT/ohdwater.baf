@@ -1,0 +1,19 @@
+IF
+	IsOverMe("%Death_var%")
+THEN
+	RESPONSE #100
+		ApplyDamage("%Death_var%",5,COLD)
+		Continue()
+	RESPONSE #20
+		ApplyDamage("%Death_var%",7,COLD)
+		Continue()
+	RESPONSE #20
+		ApplyDamage("%Death_var%",9,COLD)
+		Continue()
+	RESPONSE #10
+		ApplyDamage("%Death_var%",14,COLD)
+		Continue()
+	RESPONSE #5
+		ApplyDamage("%Death_var%",20,COLD)
+		Continue()
+END

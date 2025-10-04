@@ -1,0 +1,14 @@
+IF
+	IsOverMe("%Death_var%")
+	!Name("ohhfak","%Death_var%")  // Hexxat
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("SPFLESHS","%Death_var%")
+		PlaySound("EFF_M63")
+		SmallWait(7)
+		CreateVisualEffect("SPFLESHS",[1133.1669])
+		ActionOverride("%Death_var%",JumpToPoint([1133.1669]))
+		MoveViewPoint([1133.1669],INSTANT)
+		SetGlobal("OHH_BarrierWarn","GLOBAL",1)
+		Continue()
+END
