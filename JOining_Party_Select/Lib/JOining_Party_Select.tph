@@ -2,7 +2,7 @@
 
 ACTION_FOR_EACH Death_var IN
 
-// Original Imoen ~%IMOEN_DV%~ ~ttimoen~             // Imoen
+// Original Imoen ~%IMOEN_DV%~ ~ttimoen~ ~Imoen~     // Imoen
 // Original Edwin ~Edwin~                            // Edwin
 // Original Jaheira ~Jaheira~ ~ttjaheir~             // Jaheira
 // Original Minsc ~Minsc~ ~ttminsc~                  // Minsc
@@ -163,22 +163,22 @@ BEGIN
 				~
 			END
 // !Is(!If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_NoValid","GLOBAL",1)
-			SPRINT textToReplace ~\(!IsValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(!IsValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(!IfValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END/*
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -194,24 +194,24 @@ BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END*/
 // Is(If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",1)
-			SPRINT textToReplace ~\(IsValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(IsValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(IfValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(IfValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END/*
 			SPRINT textToReplace ~\(IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -227,7 +227,7 @@ BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END*/
 // HabibAppearance situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem("\([^)]*\)",\[-1\.-1\]))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -237,15 +237,6 @@ BEGIN
 				PATCH_PRINT ~... // HabibAppearance found in %SOURCE_FILESPEC% FOR %Death_var%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem("\([^)]*\)",[-1.-1]))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",DropItem("\1",[-1.-1]))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // HabibAppearance found in %SOURCE_FILESPEC% FOR %Death_var%
-				~
-			END
-
 // Lilarcor situation
 			SPRINT textToReplace ~\(^[%TAB% ]*OR(6)\)
 \(^[%TAB% ]*HasItemEquipedReal("sw2h14",Player1)\)~
@@ -502,22 +493,22 @@ BEGIN
 				~
 			END
 // !Is(!If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_NoValid","GLOBAL",1)
-			SPRINT textToReplace ~\(!IsValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(!IsValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(!IfValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(!IfValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END/*
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -533,28 +524,28 @@ BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END*/
 // Is(If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",1)
-			SPRINT textToReplace ~\(IsValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(IsValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(IfValidForPartyDialogue("%Death_var%")\)~
+			SPRINT textToReplace ~\(IfValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END/*
 			SPRINT textToReplace ~\(IsValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
@@ -562,11 +553,11 @@ BEGIN
 			SPRINT textToReplace ~\(IfValidForPartyDialog("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
-			END
+			END*/
 // HabibAppearance situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem("\([^)]*\)",\[-1\.-1\]))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -576,15 +567,6 @@ BEGIN
 				PATCH_PRINT ~... // HabibAppearance found in %SOURCE_FILESPEC% FOR %Death_var%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem("\([^)]*\)",[-1.-1]))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",DropItem("\1",[-1.-1]))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // HabibAppearance found in %SOURCE_FILESPEC% FOR %Death_var%
-				~
-			END
-
 // Lilarcor situation
 			SPRINT textToReplace ~\(^[%TAB% ]*OR(6)\)
 \(^[%TAB% ]*HasItemEquipedReal("sw2h14",Player1)\)~
