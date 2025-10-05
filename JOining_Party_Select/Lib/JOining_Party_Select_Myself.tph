@@ -41,7 +41,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",0)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // !ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(!IsValidForPartyDialog(Myself)\)~
@@ -57,7 +57,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",0)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // !ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(!IfValidForPartyDialog(Myself)\)~
@@ -73,7 +73,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(IsValidForPartyDialog(Myself)\)~
@@ -89,7 +89,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(IfValidForPartyDialog(Myself)\)~
@@ -146,7 +146,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",0)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // !ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(!IsValidForPartyDialog(Myself)\)~
@@ -162,7 +162,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",0)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // !ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(!IfValidForPartyDialog(Myself)\)~
@@ -178,7 +178,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(IsValidForPartyDialog(Myself)\)~
@@ -194,7 +194,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		PATCH_IF (num_matches > 0) BEGIN
 			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_Valid","LOCALS",1)~
 			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			PATCH_PRINT ~... // ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END/*
 		SPRINT textToReplace ~\(IfValidForPartyDialog(Myself)\)~

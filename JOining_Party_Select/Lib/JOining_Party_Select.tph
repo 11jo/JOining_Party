@@ -168,7 +168,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // !(...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(!IfValidForParty\([^)]*\)("%Death_var%")\)~
@@ -176,7 +176,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // !(...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END/*
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
@@ -498,7 +498,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // !(...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(!IfValidForParty\([^)]*\)("%Death_var%")\)~
@@ -506,7 +506,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // !(...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
 				~
 			END/*
 			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
