@@ -242,6 +242,28 @@ REQUIRE_PREDICATE (GAME_IS ~bgee eet bgt~) ~Necessite BGEE / BGT / EET~
 			REPLACE_TEXTUALLY ~// Original Khalid~ ~~
 			REPLACE_TEXTUALLY ~// Original Khalid~ ~~
 
+	COPY_EXISTING ~BDMUMMY.dlg~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+// khaild
+			SPRINT textToReplace ~\(^[%TAB% ]*!IfValidForPartyDialog("khaild")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!IfValidForPartyDialog("Khalid")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*IfValidForPartyDialog("khaild")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~IfValidForPartyDialog("Khalid")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+	BUT_ONLY
+
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Kivan~ ~~
 			REPLACE_TEXTUALLY ~// Original Kivan~ ~~

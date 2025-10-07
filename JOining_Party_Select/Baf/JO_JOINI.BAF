@@ -94,6 +94,7 @@ END
 
 // Large range or different area
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // no linked
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
@@ -106,6 +107,7 @@ END
 
 // Short range
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0) // follow with authorised move
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
@@ -124,6 +126,7 @@ END
 
 // Large range or different area
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -136,6 +139,7 @@ END
 
 // Short range
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -154,6 +158,7 @@ END
 
 // Large range or different area
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -166,6 +171,7 @@ END
 
 // Short range
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -184,6 +190,7 @@ END
 
 // Large range or different area
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -196,6 +203,7 @@ END
 
 // Short range
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -214,6 +222,7 @@ END
 
 // Large range or different area
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -226,6 +235,7 @@ END
 
 // Short range
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -244,6 +254,7 @@ END
 
 // Large range or different area
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -256,6 +267,7 @@ END
 
 // Short range
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -274,6 +286,7 @@ END
 
 // Large range or different area
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -286,6 +299,7 @@ END
 
 // Short range
 IF
+	ActionListEmpty()
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
