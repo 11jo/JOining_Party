@@ -530,16 +530,24 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10) ||
 
 // OUTER_SET JOining_Party = 0	
 
-	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
-		DECOMPILE_AND_PATCH BEGIN
-		END
+	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
+		DECOMPILE_BCS_TO_BAF
 
-	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
-		DECOMPILE_AND_PATCH BEGIN
-		END
+	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+		DECOMPILE_DLG_TO_D
 
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
+
+COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
+	COMPILE_BAF_TO_BCS
+BUT_ONLY
+
+COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
+	COMPILE_D_TO_DLG
+BUT_ONLY
+
 
 
 BEGIN ~All-In~
@@ -547,5 +555,4 @@ DESIGNATED 1
 LABEL ~JOining_Party-In~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 0) ~Necessite component ALL-Out~
 
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~

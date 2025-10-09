@@ -2,8 +2,7 @@
 		
 /////////////////////////// Myself BCS
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead(Myself)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -102,13 +101,11 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		END*/ /*ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find Myself in %SOURCE_FILESPEC%~
 		END*/
-	END
 BUT_ONLY
 
 /////////////////////////// Myself DLG
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
-	DECOMPILE_AND_PATCH BEGIN
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_DLG~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead(Myself)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -207,5 +204,4 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		END*/ /*ELSE BEGIN
 			PATCH_WARN ~WARNING: could not find Myself in %SOURCE_FILESPEC%~
 		END*/
-	END
 BUT_ONLY
