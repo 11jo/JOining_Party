@@ -230,7 +230,7 @@ BEGIN
 // DROW_CHANGE / UNDER_NORM situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT44C.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~UDCBACK.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~DRAGSILV.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT44C.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~UDCBACK.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~DRAGSILV.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell(Myself,UNDER_NORM))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // UNDER_NORM found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -239,7 +239,7 @@ BEGIN
 // CreateVisualEffectObject situation
 			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHFAKOK.BCS~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHBARHX.BCS~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK02.BCS~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~#SCTSAR2.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHFAKOK.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHBARHX.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK02.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~#SCTSAR2.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 CreateVisualEffectObject(\1,"%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -254,19 +254,25 @@ BEGIN
 				PATCH_PRINT ~... // CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
 				~
 			END/*
+			
+:: Moved to _END
+
 // CreateVisualEffectObject situation ///////////// SPECIAL SPSISPMA do not exist
 			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject("SPSISPMA","%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~ohhretrn.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~ohhretrn.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Delete SPSISPMA in %SOURCE_FILESPEC% FOR %Death_var%
 				~
 			END
+			
+:: Moved to _END
+
 // CreateVisualEffectObject situation ///////////// SPECIAL spfleshp do not exist
 			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject("spfleshp","%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT09.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT10.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT11.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT09.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT10.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT11.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Delete SPSISPMA in %SOURCE_FILESPEC% FOR %Death_var%
@@ -428,7 +434,7 @@ BEGIN
 // HabibAppearance situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem("\([^)]*\)",\[-1\.-1\]))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",DropItem("\1",[-1.-1]))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // HabibAppearance found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -438,7 +444,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%TAB% ]*OR(6)\)
 \(^[%TAB% ]*HasItemEquipedReal("sw2h14",Player1)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7)
 	HasItemEquipedReal("sw2h14",Player1)
 	HasItemEquipedReal("sw2h14",Familiar)~
@@ -467,7 +473,7 @@ BEGIN
 // PLAYER_WEREWOLF_CHANGE situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Myself,PLAYER_WEREWOLF_CHANGE))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR25.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDBALDUR.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR25.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDBALDUR.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell(Myself,PLAYER_WEREWOLF_CHANGE))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // PLAYER_WEREWOLF_CHANGE found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -476,7 +482,7 @@ BEGIN
 // APPLY_NON_PERMANENT_DEATH situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,APPLY_NON_PERMANENT_DEATH)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR2906.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT57C.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR2906.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT57C.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",APPLY_NON_PERMANENT_DEATH)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // APPLY_NON_PERMANENT_DEATH found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -485,7 +491,7 @@ BEGIN
 // REMOVE_NON_PERMANENT_DEATH situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,REMOVE_NON_PERMANENT_DEATH)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR2900.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR2900.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",REMOVE_NON_PERMANENT_DEATH)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // REMOVE_NON_PERMANENT_DEATH found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -494,7 +500,7 @@ BEGIN
 // MIND_CRIPPLE situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,MIND_CRIPPLE)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44D.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44D.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",MIND_CRIPPLE)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // MIND_CRIPPLE found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -502,7 +508,7 @@ BEGIN
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("udmind03",ReallyForceSpell(Player2,MIND_CRIPPLE))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44AA.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44AA.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("udmind03",ReallyForceSpell("%Death_var%",MIND_CRIPPLE))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // MIND_CRIPPLE found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -528,7 +534,7 @@ BEGIN
 // BDREP1 situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("BDREP1",Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR25.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT08.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR25.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT08.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("BDREP1","%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // BDREP1 found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -537,7 +543,7 @@ BEGIN
 // BDSLOW situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("BDSLOW",Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT08.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT09.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT08.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT09.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("BDSLOW","%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // BDSLOW found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -554,7 +560,7 @@ BEGIN
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ReallyForceSpellRES("bdrejuve",Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT00Z.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT00Z.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ReallyForceSpellRES("bdrejuve","%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // bdrejuve found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -563,7 +569,7 @@ BEGIN
 // SPSREST situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("SPSREST",Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BPHUB.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT22.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTEX.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTX2.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BPHUB.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT22.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTEX~.bcs) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTX2.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("SPSREST","%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // SPSREST found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -571,7 +577,7 @@ BEGIN
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("ohbbarte",ApplySpellRES("SPSREST",Player2))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT03.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT03.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("ohbbarte",ApplySpellRES("SPSREST","%Death_var%"))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // SPSREST found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -580,7 +586,7 @@ BEGIN
 // BPDISPEL situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("BPDISPEL",Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BPHUB.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT22.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTEX.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTX2.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT03.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BPHUB.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT22.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTEX.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTX2.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT03.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("BPDISPEL","%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // BPDISPEL found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -589,7 +595,7 @@ BEGIN
 // K#UNREST situation
 			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("K#UNREST",Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("K#UNREST","%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // K#UNREST found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -598,7 +604,7 @@ BEGIN
 // K#ImportContainersituation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("K#ImportContainer",TakeCreatureItems(Player2,ALL))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("K#ImportContainer",TakeCreatureItems("%Death_var%",ALL))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // K#UNREST found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -734,7 +740,7 @@ BUT_ONLY
 // DROW_CHANGE / UNDER_NORM situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT44C.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~UDCBACK.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~DRAGSILV.BCS~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell(Myself,UNDER_NORM))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // UNDER_NORM found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -743,7 +749,7 @@ BUT_ONLY
 // CreateVisualEffectObject situation
 			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHFAKOK.BCS~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHBARHX.BCS~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK02.BCS~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~#SCTSAR2.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 CreateVisualEffectObject(\1,"%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
@@ -918,44 +924,6 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 
 //
 
-	ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
-
-EXTEND_BOTTOM ~OHBARC01.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BDDROWFT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BDDROWFT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~ar2500.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~ar2500.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~ar2500.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ar2500.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBARC01.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDDROWFT.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ar2500.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~AR2102.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/AR2102.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~OHHBARHX.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHBARHX.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~OHHFAKOK.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHFAKOK.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~ohhspike.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohhspike.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~ohdwater.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohdwater.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~HALL1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/HALL1.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BALDUR.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BALDUR.baf~ EVALUATE_BUFFER
-
-	END
-// To see
-// RERAK02
-// OHHGFORM
-// ohbthass
-// HELLPOOL
-// bdviconc
-//BDANOMEC
-// OHBARE1
-// BD6100 // AMBUSH
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-
 
 
 END
@@ -1044,8 +1012,60 @@ COPY ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ ~weidu_
 
 END
 
+//////////////////////////////////////////////////////////////////
+// Global("JO_JOIN_CUTSCENE", "GLOBAL", 0) 
+
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),EndCutSceneMode())~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+	\0~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*EndCutSceneMode()\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+	EndCutSceneMode()~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
+BUT_ONLY
 
 
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_DLG~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),EndCutSceneMode())~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+	\0~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
+	StartCutSceneMode()~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*EndCutSceneMode()\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+	EndCutSceneMode()~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
+BUT_ONLY
 
 
 

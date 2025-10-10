@@ -1,5 +1,6 @@
 IF
 	IsOverMe("%Death_var%")
+	Allegiance("%Death_var%",FAMILIAR)
 THEN
 	RESPONSE #25
 		DisplayString("%Death_var%",14381)  // Piège activé
@@ -25,6 +26,7 @@ END
 
 IF
 	IsOverMe("%Death_var%")
+	Allegiance("%Death_var%",FAMILIAR)
 	HasItem("ohhstatu","%Death_var%")  // Statue dorée
 	!Global("ohh_negatetraps","OH7200",1)  // Hexxat - Bottom Right Quarter (Zakhara)
 THEN

@@ -538,7 +538,6 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10) ||
 
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 
 COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
 	COMPILE_BAF_TO_BCS
@@ -555,4 +554,5 @@ DESIGNATED 1
 LABEL ~JOining_Party-In~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 0) ~Necessite component ALL-Out~
 
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~

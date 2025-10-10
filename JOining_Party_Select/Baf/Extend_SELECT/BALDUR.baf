@@ -1,7 +1,7 @@
 // BALDUR and BALDUR25
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	Allegiance("%Death_var%",FAMILIAR)
 	CheckSpellState("%Death_var%",DRAGON_BLADE)
 	!HasItemEquipedReal("BDSW2H01","%Death_var%")
 THEN
@@ -11,7 +11,7 @@ THEN
 END
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	Allegiance("%Death_var%",FAMILIAR)
 	HasItem("CDHLYSYM","%Death_var%")
 	!Name("Anomen","%Death_var%")
 	!Name("Aerie","%Death_var%")
@@ -24,7 +24,7 @@ THEN
 END
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	Allegiance("%Death_var%",FAMILIAR)
 	HasItem("CDHLYSYM","%Death_var%")
 	!Name("Anomen","%Death_var%")
 	!Name("Aerie","%Death_var%")
@@ -37,7 +37,7 @@ THEN
 END
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	Allegiance("%Death_var%",FAMILIAR)
 	HasItem("CDHLYSYM","%Death_var%")
 	!Name("Anomen","%Death_var%")
 	!Name("Aerie","%Death_var%")
@@ -54,7 +54,7 @@ THEN
 END
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	Allegiance("%Death_var%",FAMILIAR)
 	HasItem("CDHLYSYM","%Death_var%")
 	!Name("Anomen","%Death_var%")
 	!Name("Aerie","%Death_var%")
@@ -73,7 +73,7 @@ THEN
 END
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	Allegiance("%Death_var%",FAMILIAR)
 	HasItem("CDHLYSYM","%Death_var%")
 	!Name("Anomen","%Death_var%")
 	!Name("Aerie","%Death_var%")
