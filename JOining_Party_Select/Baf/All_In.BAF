@@ -158,6 +158,7 @@ THEN
 		FaceObject(Player1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN)
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
@@ -200,7 +201,7 @@ THEN
 		SmallWait(1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_TURNS)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",FOUR_HOURS) // 20mn
 // Add switch familiar related  script
 //		ChangeAIScript("",RACE)
 //		ChangeAIScript("",CLASS)

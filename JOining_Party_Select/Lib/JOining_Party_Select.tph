@@ -465,7 +465,7 @@ BEGIN
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,FollowObjectFormation(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",FollowObjectFormation(\([^)]*\)))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",FollowObjectFormation(\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // !CheckStatGT TRUE_SIGHT found in %SOURCE_FILESPEC% FOR %Death_var%
 				~
@@ -477,6 +477,15 @@ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell(Myself,PLAYER_WEREWOLF_CHANGE))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // PLAYER_WEREWOLF_CHANGE found in %SOURCE_FILESPEC% FOR %Death_var%
+				~
+			END
+// CreateCreatureObjectCopy situation
+			SPRINT textToReplace ~^[%TAB% ]*CreateCreatureObjectCopy(\([^)]*\),Player2,0,0,0)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 CreateCreatureObjectCopy(\1,"%Death_var%",0,0,0)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // CreateCreatureObjectCopy found in %SOURCE_FILESPEC% FOR %Death_var%
 				~
 			END
 // APPLY_NON_PERMANENT_DEATH situation

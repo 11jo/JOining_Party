@@ -1,0 +1,8 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		PlayDead(40)
+END

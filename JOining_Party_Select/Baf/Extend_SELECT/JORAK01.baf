@@ -1,0 +1,9 @@
+IF
+	InMyArea("%Death_var%")
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("JORAK_%Death_var%","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JORAK_%Death_var%","MYAREA",1)
+		CreateCreatureObject("JORAK07","%Death_var%",0,0,0)
+END

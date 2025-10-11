@@ -1,0 +1,10 @@
+IF
+	Global("RerakFight","GLOBAL",1)
+	!Global("JORAK_%Death_var%","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JORAK_%Death_var%","MYAREA",2)
+		CreateVisualEffectObject("SPFLESHS",Myself)
+		PolymorphCopy("%Death_var%")
+		ChangeEnemyAlly(Myself,EVILBUTGREEN)
+END

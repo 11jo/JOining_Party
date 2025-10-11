@@ -1,0 +1,12 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		Wait(3)
+		ReallyForceSpell("%Death_var%",BEHOLDER_BLAST_VISUAL2) 
+		Wait(1)
+		CreateVisualEffect("SPFIREPI",[1853.616])
+		SmallWait(4)
+END

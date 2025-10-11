@@ -1,0 +1,7 @@
+IF
+	Global("RerakFight","GLOBAL",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~I am not involved in... Whatever this is...~)
+		EscapeArea()
+END

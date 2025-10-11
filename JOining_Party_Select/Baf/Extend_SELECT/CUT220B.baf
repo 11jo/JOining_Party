@@ -1,0 +1,9 @@
+IF
+	True()
+	Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		Wait(1)
+		CreateVisualEffect("SPDISPMA",[2068.1214])
+END
