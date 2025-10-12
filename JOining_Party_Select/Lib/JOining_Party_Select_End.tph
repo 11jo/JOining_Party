@@ -388,7 +388,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~ar1901.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 FakeEffectExpiryCheck("%Death_var%",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // FakeEffectExpiryCheck() found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : FakeEffectExpiryCheck() found in %SOURCE_FILESPEC%
 				~
 			END
 		END
@@ -404,7 +404,7 @@ BEGIN
 				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~ohhretrn.bcs~)*/ BEGIN
 					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
 					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // Delete SPSISPMA in %SOURCE_FILESPEC% FOR %Death_var%
+					PATCH_PRINT ~... // %Death_var% : Delete SPSISPMA in %SOURCE_FILESPEC%
 					~
 				END
 			END
@@ -420,7 +420,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT220A.bcs~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpellRES("jwtrue",Myself))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // jwtrue found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : jwtrue found in %SOURCE_FILESPEC%
 				~
 			END
 		END
@@ -438,7 +438,7 @@ BEGIN
 				PATCH_IF (num_matches > 0) BEGIN
 					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
 					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
+					PATCH_PRINT ~... // %Death_var% : CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
 					~
 				END
 			END
@@ -449,7 +449,7 @@ BEGIN
 	ACTION_FOR_EACH bcs IN OHHCUT09 OHHCUT10 OHHCUT11 BEGIN
 	
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
-		COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
 	// CreateVisualEffectObject situation ///////////// SPECIAL spfleshp do not exist
 				SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject("spfleshp","%Death_var%")~
@@ -457,13 +457,40 @@ BEGIN
 				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT09.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT10.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT11.bcs~)*/ BEGIN
 					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
 					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // Delete SPSISPMA in %SOURCE_FILESPEC% FOR %Death_var%
+					PATCH_PRINT ~... // %Death_var% : Delete SPSISPMA in %SOURCE_FILESPEC%
 					~
 				END
 			END
 			BUT_ONLY
 		END
 	END // ACTION_FOR_EACH // spfleshp
+
+	ACTION_FOR_EACH bcs IN K#TELBGT AR0602 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// K#ImportContainer situation
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride("K#ImportContainer",TakeCreatureItems(Player2,ALL))~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.bcs~)*/ BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("K#ImportContainer",TakeCreatureItems("%Death_var%",ALL))~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : K#ImportContainer found in %SOURCE_FILESPEC%
+					~
+				END
+				SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("K#UNREST",Player2)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.bcs~) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("K#UNREST","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : K#UNREST found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // K#ImportContainer
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -530,6 +557,7 @@ ACTION_FOR_EACH bcs IN cutskip cutskip1 cutskip2 BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 	  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
+	// SetCutSceneBreakable situation
 			SPRINT textToReplace ~\(SetCutSceneBreakable(FALSE)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~)*/ BEGIN
@@ -543,24 +571,24 @@ ACTION_FOR_EACH bcs IN cutskip cutskip1 cutskip2 BEGIN
 			BUT_ONLY
 	END
 
-END
+END // ACTION_FOR_EACH // SetCutSceneBreakable
 
 	ACTION_FOR_EACH bcs IN AR0041 AR0042 AR0043 AR0044 AR0045 AR0046 BEGIN
 	
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
-	// CreateVisualEffectObject situation
+	// RERAK02 situation
 				SPRINT textToReplace ~^[%TAB% ]*CreateCreature("RERAK02",\[500\.454\],\([^)]*\))~
 				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 				PATCH_IF (num_matches > 0) BEGIN
 					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 CreateCreature("JORAK00",[600.400],10)~
 					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
+					PATCH_PRINT ~... // RERAK02 found in %SOURCE_FILESPEC%
 					~
 				END
 			END
 				BUT_ONLY
 		END
-	END // ACTION_FOR_EACH // CreateVisualEffectObject
+	END // ACTION_FOR_EACH // RERAK02
 
