@@ -13,7 +13,7 @@ THEN
 		SetDialog("%BG2_JOINED%")
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("%BG2_BCS%",OVERRIDE)
+//		ChangeAIScript("%BG2_BCS%",OVERRIDE)
 END
 
  // ToB BG2
@@ -26,7 +26,7 @@ THEN
 		SetDialog("%TOB_JOINED%")   // Probably the same as bg2
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("%TOB_BCS%",OVERRIDE)
+//		ChangeAIScript("%TOB_BCS%",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////

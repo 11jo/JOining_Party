@@ -130,9 +130,22 @@ END
 
 /////////////////////////// Continuous ///////////////////////////
 
+ OUTER_SET JOining_Imoen = 0
+ OUTER_SET JOining_Edwin = 0
+ OUTER_SET JOining_Jaheira = 0
+ OUTER_SET JOining_Minsc = 0
+ OUTER_SET JOining_Viconia = 0
+ OUTER_SET JOining_Dorn = 0
+ OUTER_SET JOining_Neera = 0
+ OUTER_SET JOining_Rasaad = 0
+
+/////////////////////////// Continuous ///////////////////////////
+
 		OUTER_SPRINT "JO_JOIN" "JO_JOIN1"
 		
 // Imoen
+
+ OUTER_SET JOining_Imoen = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -147,13 +160,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Imoen = 0
+
 // Edwin
+
+ OUTER_SET JOining_Edwin = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -166,13 +185,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Edwin = 0
+
 // Jaheira
+
+ OUTER_SET JOining_Jaheira = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -185,13 +210,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Jaheira_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Jaheira = 0
+
 // Minsc
+
+ OUTER_SET JOining_Minsc = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -204,13 +235,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Minsc_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Minsc = 0
+
 // Viconia
+
+ OUTER_SET JOining_Viconia = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -223,13 +260,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Viconia_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Viconia = 0
+
 // Dorn
+
+ OUTER_SET JOining_Dorn = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -242,13 +285,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Dorn_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Dorn = 0
+
 // Neera
+
+ OUTER_SET JOining_Neera = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -261,13 +310,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Neera_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Neera = 0
+
 // Rasaad
+
+ OUTER_SET JOining_Rasaad = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -280,11 +335,15 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Rasaad_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
+
+ OUTER_SET JOining_Rasaad = 0
 
 
 //////////////////////////////////////////////////////
@@ -1299,13 +1358,13 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 
 	END
 
-
+/*
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN1.bcs~) THEN BEGIN
 	
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.baf~ EVALUATE_BUFFER
 
 		END
-
+*/
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 30 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN2.bcs~) THEN BEGIN
 	
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.baf~ EVALUATE_BUFFER

@@ -1,5 +1,9 @@
 ////////////////////////////////////////////////////
 
+	ACTION_IF JOining_Imoen = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Imoen.baf
+
 IF
 	CharName("IMOEN",Myself)
 	Global("JO_JOIN","LOCALS",2)
@@ -10,7 +14,7 @@ THEN
 	RESPONSE #100
 		SetDialog("IMOENJ") 
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("IMOEN",OVERRIDE)
+//		ChangeAIScrip("IMOEN",OVERRIDE)
 END
 
  // Imoen BGEE EET
@@ -23,7 +27,7 @@ THEN
 	RESPONSE #100
 		SetDialog("IMOEN2J")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("IMOEN_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("IMOEN_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Imoen BGEE
@@ -36,7 +40,7 @@ THEN
 	RESPONSE #100
 		SetDialog("IMOEN2") // Joined Dialogue for BGEE only
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("IMOEN",OVERRIDE)
+//		ChangeAIScrip("IMOEN",OVERRIDE)
 END
 
  // Imoen BG2EE
@@ -49,7 +53,7 @@ THEN
 	RESPONSE #100
 		SetDialog("IMOEN2J")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("IMOEN2",OVERRIDE)
+//		ChangeAIScrip("IMOEN2",OVERRIDE)
 END
 
  // ToB Imoen
@@ -60,14 +64,23 @@ IF
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("IMOEN25J")
+		SetDialog("%IMOEN25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("IMOE25",OVERRIDE)
-END 
+//		ChangeAIScrip("IMOE25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Imoen.baf~ EVALUATE_BUFFER
+
+END
 
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Edwin = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Edwin.baf
 
  // Edwin BGEE EET
  
@@ -79,7 +92,7 @@ THEN
 	RESPONSE #100
 		SetDialog("EDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("EDWIN_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("EDWIN_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Edwin BGEE BG2EE
@@ -94,7 +107,7 @@ THEN
 	RESPONSE #100
 		SetDialog("EDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("EDWIN",OVERRIDE)
+//		ChangeAIScrip("EDWIN",OVERRIDE)
 END
 
  // SoD Edwin
@@ -107,14 +120,34 @@ THEN
 	RESPONSE #100
 		SetDialog("BDEDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDEDWIN",OVERRIDE)
+//		ChangeAIScrip("BDEDWIN",OVERRIDE)
 END
 
  // ToB Edwin Global("JO_JOIN_ToB","GLOBAL",1)
 
+IF
+	CharName("Edwin",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%EDWIN25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScrip("edwi25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Edwin.baf~ EVALUATE_BUFFER
+
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Jaheira = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Jaheira.baf
 
  // Jaheira BGEE EET
 
@@ -126,7 +159,7 @@ THEN
 	RESPONSE #100
 		SetDialog("JAHEIRAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("JAHEIRA_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("JAHEIRA_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Jaheira BGEE
@@ -139,7 +172,7 @@ THEN
 	RESPONSE #100
 		SetDialog("JAHEIJ") // Joined Dialogue for BGEE only
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("JAHEIRA",OVERRIDE)
+//		ChangeAIScrip("JAHEIRA",OVERRIDE)
 END
 
  // Jaheira BG2EE
@@ -152,7 +185,7 @@ THEN
 	RESPONSE #100
 		SetDialog("JAHEIRAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("JAHEIRA",OVERRIDE)
+//		ChangeAIScrip("JAHEIRA",OVERRIDE)
 END
 
  // SoD Jaheira
@@ -165,14 +198,34 @@ THEN
 	RESPONSE #100
 		SetDialog("BDJAHEIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDJAHEIR",OVERRIDE)
+//		ChangeAIScrip("BDJAHEIR",OVERRIDE)
 END
 
  // ToB Jaheira
 
+IF
+	CharName("Jaheira",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%JAHEI25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScrip("jahe25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jaheira.baf~ EVALUATE_BUFFER
+
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Minsc = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Minsc.baf
 
  // Minsc BGEE EET
 
@@ -184,7 +237,7 @@ THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("MINSC_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("MINSC_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Minsc BGEE BG2EE
@@ -199,7 +252,7 @@ THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("MINSC",OVERRIDE)
+//		ChangeAIScrip("MINSC",OVERRIDE)
 END
 
  // SoD Minsc
@@ -212,14 +265,34 @@ THEN
 	RESPONSE #100
 		SetDialog("BDMINSCJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDMINSC",OVERRIDE)
+//		ChangeAIScrip("BDMINSC",OVERRIDE)
 END
 
  // ToB Minsc
 
+IF
+	CharName("Minsc",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%MINSC25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScrip("mins25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Minsc.baf~ EVALUATE_BUFFER
+
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Viconia = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Viconia.baf
 
  // Viconia BGEE EET
 
@@ -231,7 +304,7 @@ THEN
 	RESPONSE #100
 		SetDialog("VICONIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("VICONIA_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("VICONIA_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Viconia BGEE
@@ -244,7 +317,7 @@ THEN
 	RESPONSE #100
 		SetDialog("VICONJ")  // Joined Dialogue for BGEE only
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("VICONIA",OVERRIDE)
+//		ChangeAIScrip("VICONIA",OVERRIDE)
 END
 
  // Viconia BG2EE
@@ -257,7 +330,7 @@ THEN
 	RESPONSE #100
 		SetDialog("VICONIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("VICONIA",OVERRIDE)
+//		ChangeAIScrip("VICONIA",OVERRIDE)
 END
 
  // SoD Viconia
@@ -270,14 +343,34 @@ THEN
 	RESPONSE #100
 		SetDialog("BDVICONJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDVICONI",OVERRIDE)
+//		ChangeAIScrip("BDVICONI",OVERRIDE)
 END
 
  // ToB Viconia
 
+IF
+	CharName("Viconia",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%VICON25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScrip("vico25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Viconia.baf~ EVALUATE_BUFFER
+
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Dorn = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Dorn.baf
 
  // Dorn BGEE EET
 
@@ -289,7 +382,7 @@ THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("DORN_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("DORN_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Dorn BGEE BG2EE
@@ -304,7 +397,7 @@ THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("DORN_",OVERRIDE)
+//		ChangeAIScrip("DORN_",OVERRIDE)
 END
 
  // SoD Dorn
@@ -317,14 +410,34 @@ THEN
 	RESPONSE #100
 		SetDialog("BDDORNJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDDORN",OVERRIDE)
+//		ChangeAIScrip("BDDORN",OVERRIDE)
 END
 
  // ToB Dorn
 
+IF
+	CharName("Dorn",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%DORN25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScrip("DORN25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dorn.baf~ EVALUATE_BUFFER
+
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Neera = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Neera.baf
 
  // Neera BGEE EET
 
@@ -337,7 +450,7 @@ THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("NEERA_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("NEERA_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Neera BGEE BG2EE
@@ -353,7 +466,7 @@ THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("NEERA",OVERRIDE)
+//		ChangeAIScrip("NEERA",OVERRIDE)
 END
 
  // SoD Neera
@@ -366,14 +479,34 @@ THEN
 	RESPONSE #100
 		SetDialog("BDNEERAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDNEERA",OVERRIDE)
+//		ChangeAIScrip("BDNEERA",OVERRIDE)
 END
 
  // ToB Neera
 
+IF
+	CharName("Neera",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%NEERA25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScrip("NEER25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Neera.baf~ EVALUATE_BUFFER
+
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Rasaad = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Rasaad.baf
 
  // Rasaad BGEE EET
 
@@ -385,7 +518,7 @@ THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("RASAAD_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScrip("RASAAD_",OVERRIDE) //Script for BGEE in EET
 END
 
  // Rasaad BGEE BG2EE
@@ -400,7 +533,7 @@ THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("RASAAD",OVERRIDE)
+//		ChangeAIScrip("RASAAD",OVERRIDE)
 END
 
  // SoD Rasaad
@@ -413,10 +546,26 @@ THEN
 	RESPONSE #100
 		SetDialog("BDRASAAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDRASAAD",OVERRIDE)
+//		ChangeAIScrip("BDRASAAD",OVERRIDE)
 END
 
  // ToB Rasaad
+
+IF
+	CharName("Rasaad",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%RASAA25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScrip("RASA25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Rasaad.baf~ EVALUATE_BUFFER
+
+END
 
 ///////////////////////////////////////////////////////////////////////////////
 
