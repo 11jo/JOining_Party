@@ -45,7 +45,6 @@ THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~Yeah.~)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		Continue() // Go to Yeah End
 END
 
