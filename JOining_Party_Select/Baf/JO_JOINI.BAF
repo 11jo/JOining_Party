@@ -6,6 +6,32 @@ AddXPObject(AddXPObject(O:Object*,I:XP*) )
 
 ///////////////////////////////////////////////////////////////////////////////
 
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
+//	OR(2)
+//		Global("JO_JOIN_DEACTIVATE","LOCALS",0)
+		IsActive(Myself)
+THEN
+	RESPONSE #100
+//		SetGlobal("JO_JOIN_DEACTIVATE","LOCALS",1)
+//		SetGlobal("JO_JOIN_ACTIVATE","LOCALS",0)
+		Deactivate(Myself)
+END
+
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+//	OR(2)
+//		Global("JO_JOIN_ACTIVATE","LOCALS",0)
+		!IsActive(Myself)
+THEN
+	RESPONSE #100
+		Activate(Myself)
+//		SetGlobal("JO_JOIN_ACTIVATE","LOCALS",1)
+//		SetGlobal("JO_JOIN_DEACTIVATE","LOCALS",0)
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Broken links
@@ -317,11 +343,21 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 // Go to Reintegrate NPC into party periodically
 
+IF // security check
+	Global("JO_JOIN_IS_JOINING","LOCALS",1)
+	OnCreation()
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+END
+
 IF
 	ActionListEmpty()
 	!ActuallyInCombat()
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
 	NumInPartyLT(6)
 	OR(2)
@@ -331,32 +367,46 @@ IF
 THEN
 	RESPONSE #0
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		MoveToObject(Player1Fill)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		MoveToObject(Player1Fill)
+		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		MoveToObject(Player1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		MoveToObject(Player1)
+		SetInterrupt(TRUE)
 	RESPONSE #2
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		MoveToObject(Player2)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		MoveToObject(Player2)
+		SetInterrupt(TRUE)
 	RESPONSE #3
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		MoveToObject(Player3)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		MoveToObject(Player3)
+		SetInterrupt(TRUE)
 	RESPONSE #4
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		MoveToObject(Player4)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		MoveToObject(Player4)
+		SetInterrupt(TRUE)
 	RESPONSE #5
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		MoveToObject(Player5)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		MoveToObject(Player5)
+		SetInterrupt(TRUE)
 	RESPONSE #6
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		MoveToObject(Player6)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		MoveToObject(Player6)
+		SetInterrupt(TRUE)
 END
 
 
@@ -369,10 +419,11 @@ END
 // Could be changed to more or less rounds for players convenience
 
 IF
-	Global("JO_JOIN_IS_JOINING","LOCALS",1)
 	ActionListEmpty()
-	NumInPartyLT(6)
 	!ActuallyInCombat()
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_IS_JOINING","LOCALS",1)
+	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
