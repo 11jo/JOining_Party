@@ -148,8 +148,8 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		LeaveParty()
-		SmallWait(1)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)
@@ -192,8 +192,8 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		LeaveParty()
-		SmallWait(1)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)

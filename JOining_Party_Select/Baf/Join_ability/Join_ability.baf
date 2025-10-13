@@ -115,7 +115,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-		HasItem("JOMINHP1",Player1)
+	HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
 		DestroyItem("JOMINHP1")

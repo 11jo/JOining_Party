@@ -353,6 +353,13 @@ THEN
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_MINUTE)
 END
 
+IF // security check 2
+	OnCreation()
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+END
+
 IF
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -1074,6 +1081,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_PANIC)
 	!GlobalTimerNotExpired("JO_JOIN_PANIC","LOCALS")
@@ -1087,6 +1095,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_POISONED)
 	!GlobalTimerNotExpired("JO_JOIN_POISONED","LOCALS")
@@ -1103,6 +1112,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_BLIND)
 	!GlobalTimerNotExpired("JO_JOIN_BLIND","LOCALS")
@@ -1116,6 +1126,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	CheckSpellState(Myself,DISEASED)
 	!GlobalTimerNotExpired("JO_JOIN_DISEASED","LOCALS")
@@ -1129,6 +1140,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	CheckSpellState(Myself,DEAFENED)
 	!GlobalTimerNotExpired("JO_JOIN_DEAFENED","LOCALS")
@@ -1145,6 +1157,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_SILENCED)
 	!GlobalTimerNotExpired("JO_JOIN_SILENCED","LOCALS")
@@ -1161,6 +1174,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_CHANT)
 	!GlobalTimerNotExpired("JO_JOIN_CHANT","LOCALS")
@@ -1177,6 +1191,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_CHANTBAD)
 	!GlobalTimerNotExpired("JO_JOIN_CHANTBAD","LOCALS")
@@ -1193,6 +1208,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_INFRAVISION)
 	!GlobalTimerNotExpired("JO_JOIN_INFRAVISION","LOCALS")
@@ -1209,6 +1225,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	StateCheck(Myself,STATE_FEEBLEMINDED)
 	!GlobalTimerNotExpired("JO_JOIN_FEEBLEMINDED","LOCALS")
