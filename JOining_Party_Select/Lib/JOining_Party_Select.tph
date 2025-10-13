@@ -177,23 +177,7 @@ BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : !(...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
-			END/*
-			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
-				~
 			END
-			SPRINT textToReplace ~\(!IfValidForPartyDialog("%Death_var%")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
-				~
-			END*/
 // Is(If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",1)
 			SPRINT textToReplace ~\(IsValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -210,38 +194,40 @@ BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
-			END/*
-			SPRINT textToReplace ~\(IsValidForPartyDialog("%Death_var%")\)~
+			END
+// ApplySpell situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Myself,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ApplySpell(Myself,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell(Myself,\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ApplySpell found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(IfValidForPartyDialog("%Death_var%")\)~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ApplySpell(Player3,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell("%Death_var%",\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ApplySpell found in %SOURCE_FILESPEC%
 				~
-			END*/
-// DROW_CHANGE / UNDER_NORM situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
-^[%TAB% ]*ActionOverride(Player3,ApplySpell(Myself,UNDER_NORM))~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,\([^)]*\))
+^[%TAB% ]*ApplySpell(Player3,\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT44C.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~UDCBACK.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~DRAGSILV.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell(Myself,UNDER_NORM))~
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : UNDER_NORM found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : NOHOLD_PARTY found in %SOURCE_FILESPEC%
 				~
 			END
 // CreateVisualEffectObject situation
 			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player2)
 ^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player3)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHFAKOK.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHBARHX.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK02.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~#SCTSAR2.bcs~)*/ BEGIN
+			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 CreateVisualEffectObject(\1,"%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : CreateVisualEffectObject found in %SOURCE_FILESPEC%
@@ -276,35 +262,56 @@ BEGIN
 				PATCH_PRINT ~... // %Death_var% : SetSequence found in %SOURCE_FILESPEC%
 				~
 			END
-// HOLD_PARTY situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ReallyForceSpell(Myself,HOLD_PARTY))
-^[%TAB% ]*ActionOverride(Player3,ReallyForceSpell(Myself,HOLD_PARTY))~
+// ReallyForceSpell situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ReallyForceSpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ReallyForceSpell(Player3,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ReallyForceSpell(Myself,HOLD_PARTY))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ReallyForceSpell("%Death_var%",\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : HOLD_PARTY found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Player2,HOLD_PARTY))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ReallyForceSpell(Myself,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ReallyForceSpell(Myself,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell("%Death_var%",HOLD_PARTY))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ReallyForceSpell(Myself,\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : HOLD_PARTY found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
-// NOHOLD_PARTY situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,NOHOLD_PARTY)~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell(Player3,\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44AA.bcs~)*/ BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,ReallyForceSpell("%Death_var%",\2))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : MIND_CRIPPLE found in %SOURCE_FILESPEC%
+				~
+			END
+// ForceSpell situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ForceSpell(Player3,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",NOHOLD_PARTY)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell("%Death_var%",\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : NOHOLD_PARTY found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ForceSpell found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Myself,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ForceSpell(Myself,\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell(Myself,\1))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : ForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
 // MakeUnselectable situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,MakeUnselectable(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,MakeUnselectable(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,MakeUnselectable(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",MakeUnselectable(\1))~
@@ -313,61 +320,38 @@ BEGIN
 				~
 			END
 // PlayDead situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,PlayDead\([^)]*\)(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,PlayDead\([^)]*\)(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,PlayDead\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",PlayDead\1(\2))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : PlayDead / PlayDeadInterruptable found in %SOURCE_FILESPEC%
 				~
-			END/*
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,PlayDead(\([^)]*\)))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",PlayDead(\1))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : PlayDead() found in %SOURCE_FILESPEC%
-				~
-			END*/
+			END
 // Face situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player6,Face\([^)]*\)(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player5,Face\([^)]*\)(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player6,Face\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",Face\1(\2))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : Face / FaceObject found in %SOURCE_FILESPEC%
 				~
-			END/*
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player6,Face(\([^)]*\)))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",Face(\1))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : Face found in %SOURCE_FILESPEC%
-				~
-			END*/
-// Rest situation
-			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player2,Rest())\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player2,Rest())
-				ActionOverride("%Death_var%",Rest())~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : Rest found in %SOURCE_FILESPEC%
-				~
 			END
-// ApplySpell(Player2,SURE_SLEEP) situation
-			SPRINT textToReplace ~\(^[%TAB% ]*ApplySpell(Player2,SURE_SLEEP)\)~
+// Rest situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,Rest())
+^[%TAB% ]*ActionOverride(Player3,Rest())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ApplySpell(Player2,SURE_SLEEP)
-				ApplySpell("%Death_var%",SURE_SLEEP)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",Rest())~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : Rest found in %SOURCE_FILESPEC%
 				~
 			END
 // ClearActions situation
-			SPRINT textToReplace ~^[%TAB% ]*ClearActions(Player2)~
+			SPRINT textToReplace ~^[%TAB% ]*ClearActions(Player2)
+^[%TAB% ]*ClearActions(Player3)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ClearActions("%Death_var%")~
@@ -375,7 +359,8 @@ BEGIN
 				PATCH_PRINT ~... // %Death_var% : ClearActions found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ClearActions())~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ClearActions())
+^[%TAB% ]*ActionOverride(Player3,ClearActions())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ClearActions())~
@@ -393,7 +378,8 @@ BEGIN
 				~
 			END*/
 // Kill situation
-			SPRINT textToReplace ~^[%TAB% ]*Kill(Player2)~
+			SPRINT textToReplace ~^[%TAB% ]*Kill(Player2)
+^[%TAB% ]*Kill(Player3)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 Kill("%Death_var%")~
@@ -401,30 +387,13 @@ BEGIN
 				PATCH_PRINT ~... // %Death_var% : Kill found in %SOURCE_FILESPEC%
 				~
 			END
-// DISPEL_NO_SAVE situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,DISPEL_NO_SAVE)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",DISPEL_NO_SAVE)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : DISPEL_NO_SAVE found in %SOURCE_FILESPEC%
-				~
-			END
-// HEAL_NO_VISUAL situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,HEAL_NO_VISUAL)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",HEAL_NO_VISUAL)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : HEAL_NO_VISUAL found in %SOURCE_FILESPEC%
-				~
-			END
 ////////////////// BCS ONLY //////////////////
 // HabibAppearance situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem("\([^)]*\)",\[-1\.-1\]))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem(\([^)]*\),\[-1\.-1\]))
+^[%TAB% ]*ActionOverride(Player3,DropItem("\([^)]*\)",\[-1\.-1\]))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",DropItem("\1",[-1.-1]))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",DropItem(\1,[-1.-1]))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : HabibAppearance found in %SOURCE_FILESPEC%
 				~
@@ -441,17 +410,19 @@ BEGIN
 				PATCH_PRINT ~... // %Death_var% : HabibAppearance found in %SOURCE_FILESPEC%
 				~
 			END
-// !CheckStatGT(TRUE_SIGHT) situation
-			SPRINT textToReplace ~^[%TAB% ]*!CheckStatGT(Player2,\0,TRUE_SIGHT)~
+// !CheckStatGT situation
+			SPRINT textToReplace ~^[%TAB% ]*!CheckStatGT(Player2,\0,\([^)]*\))
+^[%TAB% ]*!CheckStatGT(Player3,\0,\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 !CheckStatGT("%Death_var%",0,TRUE_SIGHT)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 !CheckStatGT("%Death_var%",0,\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : !CheckStatGT TRUE_SIGHT found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : !CheckStatGT  found in %SOURCE_FILESPEC%
 				~
 			END
 // FollowObjectFormation situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,FollowObjectFormation(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,FollowObjectFormation(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,FollowObjectFormation(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",FollowObjectFormation(\1))~
@@ -459,17 +430,9 @@ BEGIN
 				PATCH_PRINT ~... // %Death_var% : !CheckStatGT TRUE_SIGHT found in %SOURCE_FILESPEC%
 				~
 			END
-// PLAYER_WEREWOLF_CHANGE situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Myself,PLAYER_WEREWOLF_CHANGE))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR25.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDBALDUR.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell(Myself,PLAYER_WEREWOLF_CHANGE))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : PLAYER_WEREWOLF_CHANGE found in %SOURCE_FILESPEC%
-				~
-			END
 // CreateCreatureObjectCopy situation
-			SPRINT textToReplace ~^[%TAB% ]*CreateCreatureObjectCopy(\([^)]*\),Player2,0,0,0)~
+			SPRINT textToReplace ~^[%TAB% ]*CreateCreatureObjectCopy(\([^)]*\),Player2,0,0,0)
+^[%TAB% ]*CreateCreatureObjectCopy(\([^)]*\),Player3,0,0,0)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 CreateCreatureObjectCopy(\1,"%Death_var%",0,0,0)~
@@ -477,117 +440,60 @@ BEGIN
 				PATCH_PRINT ~... // %Death_var% : CreateCreatureObjectCopy found in %SOURCE_FILESPEC%
 				~
 			END
-// APPLY_NON_PERMANENT_DEATH situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,APPLY_NON_PERMANENT_DEATH)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR2906.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CUT57C.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",APPLY_NON_PERMANENT_DEATH)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : APPLY_NON_PERMANENT_DEATH found in %SOURCE_FILESPEC%
-				~
-			END
-// REMOVE_NON_PERMANENT_DEATH situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,REMOVE_NON_PERMANENT_DEATH)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR2900.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",REMOVE_NON_PERMANENT_DEATH)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : REMOVE_NON_PERMANENT_DEATH found in %SOURCE_FILESPEC%
-				~
-			END
-// MIND_CRIPPLE situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,MIND_CRIPPLE)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44D.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",MIND_CRIPPLE)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : MIND_CRIPPLE found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("udmind03",ReallyForceSpell(Player2,MIND_CRIPPLE))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44AA.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("udmind03",ReallyForceSpell("%Death_var%",MIND_CRIPPLE))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : MIND_CRIPPLE found in %SOURCE_FILESPEC%
-				~
-			END
-// RESTORE_FULL_HEALTH situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,RESTORE_FULL_HEALTH)~
+// ApplySpellRES situation
+			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES(\([^)]*\),Player2)
+^[%TAB% ]*ApplySpellRES(\([^)]*\),Player2)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",RESTORE_FULL_HEALTH)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES(\1,"%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : RESTORE_FULL_HEALTH found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ApplySpellRES found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Player2,RESTORE_FULL_HEALTH))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpellRES(\([^)]*\),Myself))
+^[%TAB% ]*ActionOverride(Player3,ApplySpellRES(\([^)]*\),Myself))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell("%Death_var%",RESTORE_FULL_HEALTH))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpellRES(\1,Myself))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : RESTORE_FULL_HEALTH found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ApplySpellRES found in %SOURCE_FILESPEC%
 				~
 			END
-// BDREP1 situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("BDREP1",Player2)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR25.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT08.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("BDREP1","%Death_var%")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : BDREP1 found in %SOURCE_FILESPEC%
-				~
-			END
-// BDSLOW situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("BDSLOW",Player2)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT08.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT09.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("BDSLOW","%Death_var%")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : BDSLOW found in %SOURCE_FILESPEC%
-				~
-			END
-// bdrejuve situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("bdrejuve",Player2)~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpellRES(\([^)]*\),Player2))
+^[%TAB% ]*ActionOverride(Player3,ApplySpellRES(\([^)]*\),Player3))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("bdrejuve","%Death_var%")~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpellRES(\1,"%Death_var%"))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : bdrejuve found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ApplySpellRES found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ReallyForceSpellRES("bdrejuve",Player2)~
+// ReallyForceSpellRES situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ReallyForceSpellRES(\([^)]*\),Player2))
+^[%TAB% ]*ActionOverride(Player3,ReallyForceSpellRES(\([^)]*\),Player3))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT00Z.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ReallyForceSpellRES("bdrejuve","%Death_var%")~
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ReallyForceSpellRES(\1,"%Death_var%"))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : bdrejuve found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
 				~
 			END
-// SPSREST situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("SPSREST",Player2)~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ReallyForceSpellRES(\([^)]*\),Myself))
+^[%TAB% ]*ActionOverride(Player3,ReallyForceSpellRES(\([^)]*\),Myself))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BPHUB.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT22.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTEX~.bcs) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTX2.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("SPSREST","%Death_var%")~
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ReallyForceSpellRES(\1,Myself))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : SPSREST found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ApplySpellRES("SPSREST",Player2))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpellRES(\([^)]*\),Player2))
+^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpellRES(\([^)]*\),Player3))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT03.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,ApplySpellRES("SPSREST","%Death_var%"))~
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,ReallyForceSpellRES(\2,"%Death_var%"))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : SPSREST found in %SOURCE_FILESPEC%
-				~
-			END
-// BPDISPEL situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("BPDISPEL",Player2)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BPHUB.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT22.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTEX.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUTX2.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHBCUT03.bcs~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("BPDISPEL","%Death_var%")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : BPDISPEL found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
 				~
 			END/*ELSE BEGIN
 				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
@@ -631,7 +537,7 @@ BUT_ONLY
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_InParty","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : !InParty found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... //  %Death_var% : !InParty found in %SOURCE_FILESPEC%
 				~
 			END
 // InParty("%Death_var%") /////////////// Global("JO_%Death_var%_InParty","GLOBAL",1)
@@ -657,7 +563,7 @@ BUT_ONLY
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : !(...)ValidForParty(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : !(...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(!IfValidForParty\([^)]*\)("%Death_var%")\)~
@@ -665,25 +571,9 @@ BUT_ONLY
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : !(...)ValidForParty(...) in %SOURCE_FILESPEC%
-				~
-			END/*
-			SPRINT textToReplace ~\(!IsValidForPartyDialog("%Death_var%")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : !(...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(!IfValidForPartyDialog("%Death_var%")\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",0)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
-				~
-			END*/
 // Is(If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",1)
 			SPRINT textToReplace ~\(IsValidForParty\([^)]*\)("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -700,34 +590,38 @@ BUT_ONLY
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
-			END/*
-			SPRINT textToReplace ~\(IsValidForPartyDialog("%Death_var%")\)~
+			END
+// ApplySpell situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Myself,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ApplySpell(Myself,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell(Myself,\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ApplySpell found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(IfValidForPartyDialog("%Death_var%")\)~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ApplySpell(Player3,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_%Death_var%_Valid","GLOBAL",1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell("%Death_var%",\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // (...)ValidForPartyDialog(...) %Death_var% found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ApplySpell found in %SOURCE_FILESPEC%
 				~
-			END*/
-// DROW_CHANGE / UNDER_NORM situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,\([^)]*\))
+^[%TAB% ]*ApplySpell(Player3,\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ApplySpell(Myself,UNDER_NORM))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : UNDER_NORM found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : NOHOLD_PARTY found in %SOURCE_FILESPEC%
 				~
 			END
 // CreateVisualEffectObject situation
-			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player2)~
+			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player2)
+^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player3)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 CreateVisualEffectObject(\1,"%Death_var%")~
@@ -736,7 +630,8 @@ BUT_ONLY
 				~
 			END
 // CreateVisualEffectObject situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,CreateVisualEffectObject(\([^)]*\),Player2))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,CreateVisualEffectObject(\([^)]*\),Player2))
+^[%TAB% ]*ActionOverride(Player3,CreateVisualEffectObject(\([^)]*\),Player3))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",CreateVisualEffectObject(\1,"%Death_var%"))~
@@ -744,8 +639,18 @@ BUT_ONLY
 				PATCH_PRINT ~... // %Death_var% : CreateVisualEffectObject found in %SOURCE_FILESPEC%
 				~
 			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,CreateVisualEffectObject(\([^)]*\),Myself))
+^[%TAB% ]*ActionOverride(Player3,CreateVisualEffectObject(\([^)]*\),Myself))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",CreateVisualEffectObject(\1,Myself))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : CreateVisualEffectObject found in %SOURCE_FILESPEC%
+				~
+			END
 // SetSequence situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,SetSequence(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,SetSequence(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,SetSequence(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",SetSequence(\1))~
@@ -753,35 +658,56 @@ BUT_ONLY
 				PATCH_PRINT ~... // %Death_var% : SetSequence found in %SOURCE_FILESPEC%
 				~
 			END
-// HOLD_PARTY situation
-			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player2,ReallyForceSpell(Myself,HOLD_PARTY))\)~
+// ReallyForceSpell situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ReallyForceSpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ReallyForceSpell(Player3,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player2,ReallyForceSpell(Myself,HOLD_PARTY))
-	ActionOverride("%Death_var%",ReallyForceSpell(Myself,HOLD_PARTY))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ReallyForceSpell("%Death_var%",\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : HOLD_PARTY found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Player2,HOLD_PARTY))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ReallyForceSpell(Myself,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ReallyForceSpell(Myself,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell("%Death_var%",HOLD_PARTY))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ReallyForceSpell(Myself,\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : HOLD_PARTY found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
-// NOHOLD_PARTY situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,NOHOLD_PARTY)~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell(Player3,\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~CU44AA.bcs~)*/ BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,ReallyForceSpell("%Death_var%",\2))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : MIND_CRIPPLE found in %SOURCE_FILESPEC%
+				~
+			END
+// ForceSpell situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Player2,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ForceSpell(Player3,\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",NOHOLD_PARTY)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell("%Death_var%",\1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : NOHOLD_PARTY found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : ForceSpell found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ForceSpell(Myself,\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,ForceSpell(Myself,\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ForceSpell(Myself,\1))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : ForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
 // MakeUnselectable situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,MakeUnselectable(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,MakeUnselectable(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,MakeUnselectable(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",MakeUnselectable(\1))~
@@ -790,61 +716,38 @@ BUT_ONLY
 				~
 			END
 // PlayDead situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,PlayDead\([^)]*\)(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,PlayDead\([^)]*\)(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player3,PlayDead\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",PlayDead\1(\2))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : PlayDead / PlayDeadInterruptable found in %SOURCE_FILESPEC%
 				~
-			END/*
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,PlayDead(\([^)]*\)))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",PlayDead(\1))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // PlayDead() found in %SOURCE_FILESPEC%
-				~
-			END*/
+			END
 // Face situation
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player6,Face\([^)]*\)(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player5,Face\([^)]*\)(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player6,Face\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",Face\1(\2))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : Face / FaceObject found in %SOURCE_FILESPEC%
 				~
-			END/*
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player6,Face(\([^)]*\)))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",Face(\1))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // Face found in %SOURCE_FILESPEC%
-				~
-			END*/
-// Rest situation
-			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player2,Rest())\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(Player2,Rest())
-				ActionOverride("%Death_var%",Rest())~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : Rest found in %SOURCE_FILESPEC%
-				~
 			END
-// ApplySpell(Player2,SURE_SLEEP) situation
-			SPRINT textToReplace ~\(^[%TAB% ]*ApplySpell(Player2,SURE_SLEEP)\)~
+// Rest situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,Rest())
+^[%TAB% ]*ActionOverride(Player3,Rest())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ApplySpell(Player2,SURE_SLEEP)
-				ApplySpell("%Death_var%",SURE_SLEEP)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",Rest())~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : Rest found in %SOURCE_FILESPEC%
 				~
 			END
 // ClearActions situation
-			SPRINT textToReplace ~^[%TAB% ]*ClearActions(Player2)~
+			SPRINT textToReplace ~^[%TAB% ]*ClearActions(Player2)
+^[%TAB% ]*ClearActions(Player3)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ClearActions("%Death_var%")~
@@ -852,7 +755,8 @@ BUT_ONLY
 				PATCH_PRINT ~... // %Death_var% : ClearActions found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ClearActions())~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,ClearActions())
+^[%TAB% ]*ActionOverride(Player3,ClearActions())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",ClearActions())~
@@ -866,34 +770,17 @@ BUT_ONLY
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 AddXPObject("%Death_var%",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // AddXPObject found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // %Death_var% : AddXPObject found in %SOURCE_FILESPEC%
 				~
 			END*/
 // Kill situation
-			SPRINT textToReplace ~^[%TAB% ]*Kill(Player2)~
+			SPRINT textToReplace ~^[%TAB% ]*Kill(Player2)
+^[%TAB% ]*Kill(Player3)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 Kill("%Death_var%")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : Kill found in %SOURCE_FILESPEC%
-				~
-			END
-// DISPEL_NO_SAVE situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,DISPEL_NO_SAVE)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",DISPEL_NO_SAVE)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : DISPEL_NO_SAVE found in %SOURCE_FILESPEC%
-				~
-			END
-// HEAL_NO_VISUAL situation
-			SPRINT textToReplace ~^[%TAB% ]*ApplySpell(Player2,HEAL_NO_VISUAL)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpell("%Death_var%",HEAL_NO_VISUAL)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %Death_var% : HEAL_NO_VISUAL found in %SOURCE_FILESPEC%
 				~
 			END
 BUT_ONLY
