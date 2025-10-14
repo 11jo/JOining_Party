@@ -358,6 +358,7 @@ IF // security check 2
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		Continue()
 END
 
 IF
