@@ -2,6 +2,8 @@
 
 	ACTION_IF JOining_Imoen = 1 THEN BEGIN
 
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
 <<<<<<<< .../JOining_Imoen.baf
 
 IF
@@ -14,36 +16,10 @@ THEN
 	RESPONSE #100
 		SetDialog("IMOENJ") 
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("IMOEN",OVERRIDE)
+//		ChangeAIScript("IMOEN",OVERRIDE)
 END
 
- // Imoen BGEE EET
-
-IF
-	CharName("%IMOEN_DV%",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("IMOEN2J")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("IMOEN_",OVERRIDE) //Script for BGEE in EET
-END
-
- // Imoen BGEE
-
-IF
-	CharName("%IMOEN_DV%",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("IMOEN2") // Joined Dialogue for BGEE only
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("IMOEN",OVERRIDE)
-END
-
- // Imoen BG2EE
+/////////////////////////////////////////////////// Imoen BG2EE
 
 IF
 	CharName("%IMOEN_DV%",Myself)
@@ -53,7 +29,7 @@ THEN
 	RESPONSE #100
 		SetDialog("IMOEN2J")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("IMOEN2",OVERRIDE)
+//		ChangeAIScript("IMOEN2",OVERRIDE)
 END
 
  // ToB Imoen
@@ -66,36 +42,80 @@ THEN
 	RESPONSE #100
 		SetDialog("%IMOEN25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("IMOE25",OVERRIDE)
+//		ChangeAIScript("IMOE25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Imoen.baf~ EVALUATE_BUFFER
 
-END
+END // GAME_IS ~bg2ee eet~
 
-///////////////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
-///////////////////////////////////////////////////////////////////////////////
 
-	ACTION_IF JOining_Edwin = 1 THEN BEGIN
+/////////////////////////////////////////////////// Imoen BGEE only for EET
 
-<<<<<<<< .../JOining_Edwin.baf
+<<<<<<<< .../JOining_Imoen.baf
 
- // Edwin BGEE EET
- 
+ // Imoen BGEE EET
+
 IF
-	CharName("Edwin",Myself)
+	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("EDWINJ")
+		SetDialog("IMOEN2J")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("EDWIN_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScript("IMOEN_",OVERRIDE) //Script for BGEE in EET
 END
 
- // Edwin BGEE BG2EE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Imoen.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Imoen.baf
+
+/////////////////////////////////////////////////// Imoen BGEE
+
+IF
+	CharName("%IMOEN_DV%",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BGEE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("IMOEN2") // Joined Dialogue for BGEE only
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("IMOEN",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Imoen.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+	END // JOining_Imoen = 1
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	ACTION_IF JOining_Edwin = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Edwin.baf
+
+/////////////////////////////////////////////////// Edwin BG2EE (Same as BGEE)
 
 IF
 	CharName("Edwin",Myself)
@@ -107,20 +127,7 @@ THEN
 	RESPONSE #100
 		SetDialog("EDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("EDWIN",OVERRIDE)
-END
-
- // SoD Edwin
-
-IF
-	CharName("Edwin",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("BDEDWINJ")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("BDEDWIN",OVERRIDE)
+//		ChangeAIScript("EDWIN",OVERRIDE)
 END
 
  // ToB Edwin Global("JO_JOIN_ToB","GLOBAL",1)
@@ -133,49 +140,101 @@ THEN
 	RESPONSE #100
 		SetDialog("%EDWIN25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("edwi25",OVERRIDE)
+//		ChangeAIScript("edwi25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Edwin.baf~ EVALUATE_BUFFER
 
-END
+END // GAME_IS ~bg2ee eet~
 
-///////////////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
-///////////////////////////////////////////////////////////////////////////////
+<<<<<<<< .../JOining_Edwin.baf
 
-	ACTION_IF JOining_Jaheira = 1 THEN BEGIN
-
-<<<<<<<< .../JOining_Jaheira.baf
-
- // Jaheira BGEE EET
-
+/////////////////////////////////////////////////// Edwin BGEE only for EET
+ 
 IF
-	CharName("Jaheira",Myself)
+	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("JAHEIRAJ")
+		SetDialog("EDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("JAHEIRA_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScript("EDWIN_",OVERRIDE) //Script for BGEE in EET
 END
 
- // Jaheira BGEE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Edwin.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Edwin.baf
+
+/////////////////////////////////////////////////// Edwin BGEE (Same as BG2EE)
 
 IF
-	CharName("Jaheira",Myself)
+	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
+	OR(2)
+		Global("JO_JOIN_BGEE","GLOBAL",1)
+		Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("JAHEIJ") // Joined Dialogue for BGEE only
+		SetDialog("EDWINJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("JAHEIRA",OVERRIDE)
+//		ChangeAIScript("EDWIN",OVERRIDE)
 END
 
- // Jaheira BG2EE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Edwin.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Edwin.baf
+
+/////////////////////////////////////////////////// SoD Edwin
+
+IF
+	CharName("Edwin",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("BDEDWINJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDEDWIN",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Edwin.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
+	END // JOining_Edwin = 1
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	ACTION_IF JOining_Jaheira = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Jaheira.baf
+
+/////////////////////////////////////////////////// Jaheira BG2EE
 
 IF
 	CharName("Jaheira",Myself)
@@ -185,20 +244,7 @@ THEN
 	RESPONSE #100
 		SetDialog("JAHEIRAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("JAHEIRA",OVERRIDE)
-END
-
- // SoD Jaheira
-
-IF
-	CharName("Jaheira",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("BDJAHEIJ")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("BDJAHEIR",OVERRIDE)
+//		ChangeAIScript("JAHEIRA",OVERRIDE)
 END
 
  // ToB Jaheira
@@ -211,36 +257,99 @@ THEN
 	RESPONSE #100
 		SetDialog("%JAHEI25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("jahe25",OVERRIDE)
+//		ChangeAIScript("jahe25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jaheira.baf~ EVALUATE_BUFFER
 
-END
+END // GAME_IS ~bg2ee eet~
 
-///////////////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
-///////////////////////////////////////////////////////////////////////////////
+<<<<<<<< .../JOining_Jaheira.baf
 
-	ACTION_IF JOining_Minsc = 1 THEN BEGIN
-
-<<<<<<<< .../JOining_Minsc.baf
-
- // Minsc BGEE EET
+/////////////////////////////////////////////////// Jaheira BGEE only for EET
 
 IF
-	CharName("Minsc",Myself)
+	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("MINSCJ")
+		SetDialog("JAHEIRAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("MINSC_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScript("JAHEIRA_",OVERRIDE) //Script for BGEE in EET
 END
 
- // Minsc BGEE BG2EE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jaheira.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Jaheira.baf
+
+/////////////////////////////////////////////////// Jaheira BGEE
+
+IF
+	CharName("Jaheira",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BGEE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("JAHEIJ") // Joined Dialogue for BGEE only
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("JAHEIRA",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jaheira.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Jaheira.baf
+
+/////////////////////////////////////////////////// SoD Jaheira
+
+IF
+	CharName("Jaheira",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("BDJAHEIJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDJAHEIR",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jaheira.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
+	END // JOining_Jaheira = 1
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	ACTION_IF JOining_Minsc = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Minsc.baf
+
+/////////////////////////////////////////////////// Minsc BG2EE (Same as BGEE)
 
 IF
 	CharName("Minsc",Myself)
@@ -252,20 +361,7 @@ THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("MINSC",OVERRIDE)
-END
-
- // SoD Minsc
-
-IF
-	CharName("Minsc",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("BDMINSCJ")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("BDMINSC",OVERRIDE)
+//		ChangeAIScript("MINSC",OVERRIDE)
 END
 
  // ToB Minsc
@@ -278,49 +374,101 @@ THEN
 	RESPONSE #100
 		SetDialog("%MINSC25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("mins25",OVERRIDE)
+//		ChangeAIScript("mins25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Minsc.baf~ EVALUATE_BUFFER
 
-END
+END // GAME_IS ~bg2ee eet~
 
-///////////////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
-///////////////////////////////////////////////////////////////////////////////
+<<<<<<<< .../JOining_Minsc.baf
 
-	ACTION_IF JOining_Viconia = 1 THEN BEGIN
-
-<<<<<<<< .../JOining_Viconia.baf
-
- // Viconia BGEE EET
+/////////////////////////////////////////////////// Minsc BGEE only for EET
 
 IF
-	CharName("Viconia",Myself)
+	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("VICONIJ")
+		SetDialog("MINSCJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("VICONIA_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScript("MINSC_",OVERRIDE) //Script for BGEE in EET
 END
 
- // Viconia BGEE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Minsc.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Minsc.baf
+
+/////////////////////////////////////////////////// Minsc BGEE (Same as BG2EE)
 
 IF
-	CharName("Viconia",Myself)
+	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
+	OR(2)
+		Global("JO_JOIN_BGEE","GLOBAL",1)
+		Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("VICONJ")  // Joined Dialogue for BGEE only
+		SetDialog("MINSCJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("VICONIA",OVERRIDE)
+//		ChangeAIScript("MINSC",OVERRIDE)
 END
 
- // Viconia BG2EE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Minsc.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Minsc.baf
+
+/////////////////////////////////////////////////// SoD Minsc
+
+IF
+	CharName("Minsc",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("BDMINSCJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDMINSC",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Minsc.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
+	END // JOining_Minsc = 1
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	ACTION_IF JOining_Viconia = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Viconia.baf
+
+/////////////////////////////////////////////////// Viconia BG2EE
 
 IF
 	CharName("Viconia",Myself)
@@ -330,20 +478,7 @@ THEN
 	RESPONSE #100
 		SetDialog("VICONIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("VICONIA",OVERRIDE)
-END
-
- // SoD Viconia
-
-IF
-	CharName("Viconia",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("BDVICONJ")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("BDVICONI",OVERRIDE)
+//		ChangeAIScript("VICONIA",OVERRIDE)
 END
 
  // ToB Viconia
@@ -356,36 +491,99 @@ THEN
 	RESPONSE #100
 		SetDialog("%VICON25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("vico25",OVERRIDE)
+//		ChangeAIScript("vico25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Viconia.baf~ EVALUATE_BUFFER
 
-END
+END // GAME_IS ~bg2ee eet~
 
-///////////////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
-///////////////////////////////////////////////////////////////////////////////
+<<<<<<<< .../JOining_Viconia.baf
 
-	ACTION_IF JOining_Dorn = 1 THEN BEGIN
-
-<<<<<<<< .../JOining_Dorn.baf
-
- // Dorn BGEE EET
+/////////////////////////////////////////////////// Viconia BGEE only for EET
 
 IF
-	CharName("Dorn",Myself)
+	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("DORNJ")
+		SetDialog("VICONIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("DORN_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScript("VICONIA_",OVERRIDE) //Script for BGEE in EET
 END
 
- // Dorn BGEE BG2EE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Viconia.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Viconia.baf
+
+/////////////////////////////////////////////////// Viconia BGEE
+
+IF
+	CharName("Viconia",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BGEE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("VICONJ")  // Joined Dialogue for BGEE only
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("VICONIA",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Viconia.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Viconia.baf
+
+/////////////////////////////////////////////////// SoD Viconia
+
+IF
+	CharName("Viconia",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("BDVICONJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDVICONI",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Viconia.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
+	END // JOining_Viconia = 1
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	ACTION_IF JOining_Dorn = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Dorn.baf
+
+/////////////////////////////////////////////////// Dorn BG2EE (Same as BGEE)
 
 IF
 	CharName("Dorn",Myself)
@@ -397,20 +595,7 @@ THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("DORN_",OVERRIDE)
-END
-
- // SoD Dorn
-
-IF
-	CharName("Dorn",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("BDDORNJ")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("BDDORN",OVERRIDE)
+//		ChangeAIScript("DORN",OVERRIDE) //Script for BGEE in EET
 END
 
  // ToB Dorn
@@ -423,38 +608,101 @@ THEN
 	RESPONSE #100
 		SetDialog("%DORN25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("DORN25",OVERRIDE)
+//		ChangeAIScript("DORN25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dorn.baf~ EVALUATE_BUFFER
 
-END
+END // GAME_IS ~bg2ee eet~
 
-///////////////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
-///////////////////////////////////////////////////////////////////////////////
+<<<<<<<< .../JOining_Dorn.baf
 
-	ACTION_IF JOining_Neera = 1 THEN BEGIN
-
-<<<<<<<< .../JOining_Neera.baf
-
- // Neera BGEE EET
-
+/////////////////////////////////////////////////// Dorn BGEE only for EET
 
 IF
-	CharName("Neera",Myself)
+	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("NEERAJ")
+		SetDialog("DORNJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("NEERA_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScript("DORN_",OVERRIDE) //Script for BGEE in EET
 END
 
- // Neera BGEE BG2EE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dorn.baf~ EVALUATE_BUFFER
 
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Dorn.baf
+
+/////////////////////////////////////////////////// Dorn BG2EE (Same as BGEE)
+
+IF
+	CharName("Dorn",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	OR(2)
+		Global("JO_JOIN_BGEE","GLOBAL",1)
+		Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("DORNJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("DORN",OVERRIDE) //Script for BGEE in EET
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dorn.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Dorn.baf
+
+/////////////////////////////////////////////////// SoD Dorn
+
+IF
+	CharName("Dorn",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("BDDORNJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDDORN",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dorn.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
+	END // JOining_Dorn = 1
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	ACTION_IF JOining_Neera = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Neera.baf
+
+/////////////////////////////////////////////////// Neera BG2EE (Same as BGEE)
 
 IF
 	CharName("Neera",Myself)
@@ -466,20 +714,7 @@ THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("NEERA",OVERRIDE)
-END
-
- // SoD Neera
-
-IF
-	CharName("Neera",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("BDNEERAJ")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("BDNEERA",OVERRIDE)
+//		ChangeAIScript("NEERA",OVERRIDE)
 END
 
  // ToB Neera
@@ -492,36 +727,101 @@ THEN
 	RESPONSE #100
 		SetDialog("%NEERA25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("NEER25",OVERRIDE)
+//		ChangeAIScript("NEER25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Neera.baf~ EVALUATE_BUFFER
 
-END
+END // GAME_IS ~bg2ee eet~
 
-///////////////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
-///////////////////////////////////////////////////////////////////////////////
+<<<<<<<< .../JOining_Neera.baf
 
-	ACTION_IF JOining_Rasaad = 1 THEN BEGIN
-
-<<<<<<<< .../JOining_Rasaad.baf
-
- // Rasaad BGEE EET
+/////////////////////////////////////////////////// Neera BGEE only for EET
 
 IF
-	CharName("Rasaad",Myself)
+	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetDialog("RASAADJ")
+		SetDialog("NEERAJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("RASAAD_",OVERRIDE) //Script for BGEE in EET
+//		ChangeAIScript("NEERA_",OVERRIDE) //Script for BGEE in EET
 END
 
- // Rasaad BGEE BG2EE
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Neera.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Neera.baf
+
+/////////////////////////////////////////////////// Neera BG2EE (Same as BGEE)
+
+IF
+	CharName("Neera",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	OR(2)
+		Global("JO_JOIN_BGEE","GLOBAL",1)
+		Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("NEERAJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("NEERA",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Neera.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Neera.baf
+
+/////////////////////////////////////////////////// SoD Neera
+
+IF
+	CharName("Neera",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("BDNEERAJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDNEERA",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Neera.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
+	END // JOining_Neera = 1
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	ACTION_IF JOining_Rasaad = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Rasaad.baf
+
+/////////////////////////////////////////////////// Rasaad BG2EE (Same as BGEE)
 
 IF
 	CharName("Rasaad",Myself)
@@ -533,20 +833,7 @@ THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("RASAAD",OVERRIDE)
-END
-
- // SoD Rasaad
-
-IF
-	CharName("Rasaad",Myself)
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_SoD","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetDialog("BDRASAAJ")
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("BDRASAAD",OVERRIDE)
+//		ChangeAIScript("RASAAD",OVERRIDE)
 END
 
  // ToB Rasaad
@@ -559,13 +846,83 @@ THEN
 	RESPONSE #100
 		SetDialog("%RASAA25J%")
 		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScrip("RASA25",OVERRIDE)
+//		ChangeAIScript("RASA25",OVERRIDE)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Rasaad.baf~ EVALUATE_BUFFER
 
+END // GAME_IS ~bg2ee eet~
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Rasaad.baf
+
+/////////////////////////////////////////////////// Rasaad BGEE only for EET
+
+IF
+	CharName("Rasaad",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("RASAADJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("RASAAD_",OVERRIDE) //Script for BGEE in EET
 END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Rasaad.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Rasaad.baf
+
+/////////////////////////////////////////////////// Rasaad BG2EE (Same as BGEE)
+
+IF
+	CharName("Rasaad",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	OR(2)
+		Global("JO_JOIN_BGEE","GLOBAL",1)
+		Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("RASAADJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("RASAAD",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Rasaad.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Rasaad.baf
+
+/////////////////////////////////////////////////// SoD Rasaad
+
+IF
+	CharName("Rasaad",Myself)
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_SoD","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("BDRASAAJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDRASAAD",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Rasaad.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
+	END // JOining_Rasaad = 1
 
 ///////////////////////////////////////////////////////////////////////////////
 
