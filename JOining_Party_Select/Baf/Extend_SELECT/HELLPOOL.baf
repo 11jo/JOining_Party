@@ -1,0 +1,19 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("RoomPride","GLOBAL",1)
+	IsOverMe("%Death_var%")
+THEN
+	RESPONSE #100
+		ForceSpell("%Death_var%",HELL_PRIDE_GOOD)  // SPIN752.SPL (No such index)
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("RoomPride","GLOBAL",2)
+	IsOverMe("%Death_var%")
+THEN
+	RESPONSE #100
+		ForceSpell("%Death_var%",HELL_PRIDE_EVIL)  // SPIN751.SPL (No such index)
+		Continue()
+END

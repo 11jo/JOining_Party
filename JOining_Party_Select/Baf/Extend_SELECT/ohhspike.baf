@@ -32,6 +32,6 @@ IF
 THEN
 	RESPONSE #100
 		TakeItemReplace("ohhstat1","ohhstatu","%Death_var%")  // Statue dorée
-		DisplayStringHead("%Death_var%",99898)  // Vous ressentez soudainement une sensation de lourdeur et vous êtes incapable d'avancer plus.
+		DisplayStringHead("%Death_var%",#99898)
 		Continue()
 END

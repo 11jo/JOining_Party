@@ -3,8 +3,9 @@ IF
 	!See([PC])
 	!StateCheck("%Death_var%",STATE_INVISIBLE)
 	!StateCheck("%Death_var%",STATE_IMPROVEDINVISIBILITY)
-	Global("Hallbattle1","AR6101",1)  // Main Entrance Sendai's Lair
+	Global("%Hallbattle%","AR6101",1)  // Main Entrance Sendai's Lair
 THEN
 	RESPONSE #100
+		%Wait%
 		MoveToObject("%Death_var%")
 END

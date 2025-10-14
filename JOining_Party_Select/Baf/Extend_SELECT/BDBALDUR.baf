@@ -1,0 +1,34 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	CheckSpellState("%Death_var%",DRAGON_BLADE)
+	!HasItemEquipedReal("BDSW2H01","%Death_var%")  // Lame du dragon +3
+THEN
+	RESPONSE #100
+		ApplySpellRES("BDDRAGB2","%Death_var%")  // No such index
+		Continue()
+END
+
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("bdboot05","global",1)
+	HasItemEquiped("bdboot05","%Death_var%")  // Bottes de rapidité
+	!ObjectActionListEmpty("%Death_var%")
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("bdboot05","global",2)
+		ActionOverride("%Death_var%",MakeUnselectable(1))
+		ActionOverride("%Death_var%",MoveToOffset([-10.-10]))
+		ActionOverride("%Death_var%",MoveToOffset([-10.10]))
+		ActionOverride("%Death_var%",ApplyDamage("%Death_var%",10,STUNNING))
+		ActionOverride("%Death_var%",PlayDead(1))
+		ActionOverride("%Death_var%",MoveToOffset([10.-10]))
+		ActionOverride("%Death_var%",MoveToOffset([10.10]))
+		ActionOverride("%Death_var%",ApplyDamage("%Death_var%",10,STUNNING))
+		ActionOverride("%Death_var%",PlayDead(1))
+		ActionOverride("%Death_var%",DestroyItem("bdboot05"))  // Bottes de rapidité
+		ActionOverride("%Death_var%",MakeUnselectable(0))
+		AddJournalEntry(#%252034%,QUEST)
+		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
+END

@@ -1,6 +1,46 @@
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWXBOW01","%Death_var%")  // Arbalète de vitesse elfe noir +3
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWXBOW01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWBOLT02","%Death_var%")  // Carreau d'étourdissement elfe noir +1
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWBOLT02","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWBOLT01","%Death_var%")  // Carreau de sommeil elfe noir +1
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWBOLT01","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("DWBOLT03","%Death_var%")  // Carreau elfe noir +1
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWBOLT03","%Death_var%")  // Poussière d'adamantium
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
 	HasItem("DWCHAN01","%Death_var%")  // Cotte de mailles elfe noir +3
 THEN
 	RESPONSE #100
@@ -75,16 +115,6 @@ IF
 THEN
 	RESPONSE #100
 		TakeItemReplace("DWDUST","DWSHLD01","%Death_var%")  // Poussière d'adamantium
-		Continue()
-END
-
-IF
-	Allegiance("%Death_var%",FAMILIAR)
-	Global("DROWITEMCHECKDONE","GLOBAL",0)
-	HasItem("DWCLCK01","%Death_var%")  // Cape piwafwi elfe noir
-THEN
-	RESPONSE #100
-		TakeItemReplace("DWDUST","DWCLCK01","%Death_var%")  // Poussière d'adamantium
 		Continue()
 END
 
