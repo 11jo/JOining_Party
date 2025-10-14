@@ -766,7 +766,7 @@ THEN
 	DisplayString(Myself,~I took a hit.~)
 	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
-	DisplayStringHead(Myself,~Aïe !~)
+	DisplayStringHead(Myself,~AÃ¯e !~)
 	RESPONSE #10
 	SetGlobal("JO_JOIN_FEELING","LOCALS",1)
 	DisplayString(Myself,~Just a scratch.~)
@@ -1148,7 +1148,7 @@ IF
 THEN
 	RESPONSE #40
 		SetGlobalTimer("JO_JOIN_DEAFENED","LOCALS",ONE_TURN) // 1mn
-		DisplayString(Myself,~Speak up, speak up !~) // Parlez plus fort, plus fort ! (@11086)
+		DisplayString(Myself,~Speak up, speak up !~) // Parlez plus fort, plus fortÂ ! (@11086)
 	RESPONSE #30
 		SetGlobalTimer("JO_JOIN_DEAFENED","LOCALS",ONE_TURN)
 		DisplayStringHead(Myself,~What did you say ?~)
@@ -1185,7 +1185,7 @@ THEN
 		DisplayStringHead(Myself,~It's showtime ! My friend will shine !~)
 	RESPONSE #30
 		SetGlobalTimer("JO_JOIN_CHANT","LOCALS",TWO_TURNS)
-		DisplayString(Myself,~A little mélopée...~)
+		DisplayString(Myself,~A little mÃ©lopÃ©e...~)
 	RESPONSE #30
 		SetGlobalTimer("JO_JOIN_CHANT","LOCALS",TWO_TURNS)
 		DisplayStringHead(Player1,~<GABBER> can sing !~)
