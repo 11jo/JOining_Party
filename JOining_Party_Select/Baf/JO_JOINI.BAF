@@ -150,6 +150,24 @@ END
 
 // Linked to Player1
 
+// Special security
+IF
+	Global("JO_JOIN_ME","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("JO_JOIN_ME","LOCALS",FIVE_ROUNDS)
+		MoveGlobalObject(Myself,Player1)
+		SetGlobal("JO_JOIN_ME","LOCALS",1) // See Join_ability Special security
+END
+
+IF
+	!GlobalTimerNotExpired("JO_JOIN_ME","LOCALS")
+	Global("JO_JOIN_ME","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_ME","LOCALS",0)
+END
+
 // Large range or different area
 IF
 	ActionListEmpty()

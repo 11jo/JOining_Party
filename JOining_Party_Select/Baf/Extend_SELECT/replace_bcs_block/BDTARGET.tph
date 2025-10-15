@@ -1,0 +1,52 @@
+<<<<<<<<BDTARGET_rep.baf
+IF
+	AreaCheck("bd2000")
+	Name("knockdown",Myself)
+	Global("bd_knock_down_pc","BD2000",1)
+	IsOverMe(Player6)
+	OR(2)
+		GlobalLT("bd_bridgefort_plot","global",9)
+		GlobalLT("BD_PLOT","global",240)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_knock_down_pc","BD2000",0)
+		ActionOverride(Player6,PlayDead(25))
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<BDTARGET_add.baf
+IF
+	AreaCheck("bd2000")
+	Name("knockdown",Myself)
+	Global("bd_knock_down_pc","BD2000",1)
+	IsOverMe(Player6)
+	OR(2)
+		GlobalLT("bd_bridgefort_plot","global",9)
+		GlobalLT("BD_PLOT","global",240)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_knock_down_pc","BD2000",0)
+		ActionOverride(Player6,PlayDead(25))
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	AreaCheck("bd2000")
+	Name("knockdown",Myself)
+	Global("bd_knock_down_pc","BD2000",1)
+	IsOverMe("%Death_var%")
+	OR(2)
+		GlobalLT("bd_bridgefort_plot","global",9)
+		GlobalLT("BD_PLOT","global",240)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_knock_down_pc","BD2000",0)
+		ActionOverride("%Death_var%",PlayDead(25))
+		Continue()
+END
+
+>>>>>>>>
+COPY_EXISTING ~BDTARGET.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~BDTARGET_rep.baf~ ~BDTARGET_add.baf~ EVALUATE_BUFFER

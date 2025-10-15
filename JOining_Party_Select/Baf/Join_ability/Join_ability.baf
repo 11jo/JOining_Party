@@ -101,13 +101,24 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Special security
 IF
 	Global("JO_JOIN","LOCALS",1)
 THEN
 	RESPONSE #100
+		SetGlobalTimer("JO_JOIN_ME","LOCALS",FIVE_ROUNDS)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_ME","GLOBAL",1) // See Jo_JOINI Special security
+END
+
+IF
+	!GlobalTimerNotExpired("JO_JOIN_ME","LOCALS")
+	Global("JO_JOIN_ME","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_ME","GLOBAL",0)
 END
 
 ///////////////////////////////////////////////////////////////////////////////

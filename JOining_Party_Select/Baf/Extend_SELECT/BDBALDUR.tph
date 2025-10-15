@@ -1,0 +1,77 @@
+<<<<<<<<bdbaldur_rep.baf
+IF
+	Global("bdboot05","global",1)
+	HasItemEquiped("bdboot05",Player6)
+	!ObjectActionListEmpty(Player6)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("bdboot05","global",2)
+		ActionOverride(Player6,MakeUnselectable(1))
+		ActionOverride(Player6,MoveToOffset([-10.-10]))
+		ActionOverride(Player6,MoveToOffset([-10.10]))
+		ActionOverride(Player6,ApplyDamage(Player6,10,STUNNING))
+		ActionOverride(Player6,PlayDead(1))
+		ActionOverride(Player6,MoveToOffset([10.-10]))
+		ActionOverride(Player6,MoveToOffset([10.10]))
+		ActionOverride(Player6,ApplyDamage(Player6,10,STUNNING))
+		ActionOverride(Player6,PlayDead(1))
+		ActionOverride(Player6,DestroyItem("bdboot05"))
+		ActionOverride(Player6,MakeUnselectable(0))
+		AddJournalEntry(%252034%,QUEST)
+		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
+END
+>>>>>>>>
+
+<<<<<<<<bdbaldur_add.baf
+IF
+	Global("bdboot05","global",1)
+	HasItemEquiped("bdboot05",Player6)
+	!ObjectActionListEmpty(Player6)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("bdboot05","global",2)
+		ActionOverride(Player6,MakeUnselectable(1))
+		ActionOverride(Player6,MoveToOffset([-10.-10]))
+		ActionOverride(Player6,MoveToOffset([-10.10]))
+		ActionOverride(Player6,ApplyDamage(Player6,10,STUNNING))
+		ActionOverride(Player6,PlayDead(1))
+		ActionOverride(Player6,MoveToOffset([10.-10]))
+		ActionOverride(Player6,MoveToOffset([10.10]))
+		ActionOverride(Player6,ApplyDamage(Player6,10,STUNNING))
+		ActionOverride(Player6,PlayDead(1))
+		ActionOverride(Player6,DestroyItem("bdboot05"))
+		ActionOverride(Player6,MakeUnselectable(0))
+		AddJournalEntry(#%252034%,QUEST)
+		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("bdboot05","global",1)
+	HasItemEquiped("bdboot05","%Death_var%")
+	!ObjectActionListEmpty("%Death_var%")
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("bdboot05","global",2)
+		ActionOverride("%Death_var%",MakeUnselectable(1))
+		ActionOverride("%Death_var%",MoveToOffset([-10.-10]))
+		ActionOverride("%Death_var%",MoveToOffset([-10.10]))
+		ActionOverride("%Death_var%",ApplyDamage("%Death_var%",10,STUNNING))
+		ActionOverride("%Death_var%",PlayDead(1))
+		ActionOverride("%Death_var%",MoveToOffset([10.-10]))
+		ActionOverride("%Death_var%",MoveToOffset([10.10]))
+		ActionOverride("%Death_var%",ApplyDamage("%Death_var%",10,STUNNING))
+		ActionOverride("%Death_var%",PlayDead(1))
+		ActionOverride("%Death_var%",DestroyItem("bdboot05"))
+		ActionOverride("%Death_var%",MakeUnselectable(0))
+		AddJournalEntry(#%252034%,QUEST)
+		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
+END
+
+>>>>>>>>
+COPY_EXISTING ~baldur.bcs~ ~override~
+              ~baldur25.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~bdbaldur_rep.baf~ ~bdbaldur_add.baf~

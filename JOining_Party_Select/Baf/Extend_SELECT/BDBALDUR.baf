@@ -8,7 +8,7 @@ THEN
 		Continue()
 END
 
-
+/*
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("bdboot05","global",1)
@@ -31,4 +31,18 @@ THEN
 		ActionOverride("%Death_var%",MakeUnselectable(0))
 		AddJournalEntry(#%252034%,QUEST)
 		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
+END
+*/
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	InParty("%Death_var%")
+	!StateCheck("%Death_var%",STATE_REALLY_DEAD)
+	Class("%Death_var%",PALADIN_ALL)
+	!Kit("%Death_var%",Blackguard)
+	TriggerOverride("%Death_var%",Global("ChultRobe","LOCALS",0))
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",ApplySpellRES("60CLCKIR",Myself))  // No such index
+		ActionOverride("%Death_var%",SetGlobal("ChultRobe","LOCALS",1))
 END

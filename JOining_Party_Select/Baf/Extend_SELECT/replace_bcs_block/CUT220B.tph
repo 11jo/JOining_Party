@@ -1,0 +1,35 @@
+<<<<<<<<cut220b_rep.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(1)
+		CreateVisualEffect("SPDISPMA",[2068.1214])
+		JumpToPoint([2068.1214])
+END
+>>>>>>>>
+
+<<<<<<<<cut220b_add.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(1)
+		CreateVisualEffect("SPDISPMA",[2068.1214])
+		JumpToPoint([2068.1214])
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		Wait(1)
+		CreateVisualEffectObject("SPDISPMA","%Death_var%")
+END
+
+>>>>>>>>
+COPY_EXISTING ~cut220b.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~cut220b_rep.baf~ ~cut220b_add.baf~ EVALUATE_BUFFER

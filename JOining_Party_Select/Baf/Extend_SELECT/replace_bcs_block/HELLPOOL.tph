@@ -1,0 +1,70 @@
+<<<<<<<<hellpool_good_rep.baf
+IF
+	Global("RoomPride","GLOBAL",1)
+	IsOverMe(Player6)
+THEN
+	RESPONSE #100
+		ForceSpell(Player6,HELL_PRIDE_GOOD)
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<hellpool_good_add.baf
+IF
+	Global("RoomPride","GLOBAL",1)
+	IsOverMe(Player6)
+THEN
+	RESPONSE #100
+		ForceSpell(Player6,HELL_PRIDE_GOOD)
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("RoomPride","GLOBAL",1)
+	IsOverMe("%Death_var%")
+THEN
+	RESPONSE #100
+		ForceSpell("%Death_var%",HELL_PRIDE_GOOD)
+		Continue()
+END
+
+>>>>>>>>
+
+/////////////////////////////////////////////////////////////////////
+
+<<<<<<<<hellpool_evil_rep.baf
+IF
+	Global("RoomPride","GLOBAL",2)
+	IsOverMe(Player6)
+THEN
+	RESPONSE #100
+		ForceSpell(Player6,HELL_PRIDE_EVIL)
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<hellpool_evil_add.baf
+IF
+	Global("RoomPride","GLOBAL",2)
+	IsOverMe(Player6)
+THEN
+	RESPONSE #100
+		ForceSpell(Player6,HELL_PRIDE_EVIL)
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("RoomPride","GLOBAL",2)
+	IsOverMe("%Death_var%")
+THEN
+	RESPONSE #100
+		ForceSpell("%Death_var%",HELL_PRIDE_EVIL)
+		Continue()
+END
+
+>>>>>>>>
+COPY_EXISTING ~hellpool.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~hellpool_good_rep.baf~ ~hellpool_good_add.baf~ EVALUATE_BUFFER
+  REPLACE_BCS_BLOCK ~hellpool_evil_rep.baf~ ~hellpool_evil_add.baf~ EVALUATE_BUFFER

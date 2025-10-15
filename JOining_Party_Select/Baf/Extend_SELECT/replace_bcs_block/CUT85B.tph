@@ -1,0 +1,46 @@
+<<<<<<<<cut85b_rep.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		SmallWait(8)
+		Wait(3)
+		ForceSpellPoint([2034.651],BEHOLDER_BLAST_VISUAL2)  // SPIN665.SPL (No such index)
+		Wait(1)
+		CreateVisualEffect("SPFIREPI",[2034.651])
+		SmallWait(4)
+		JumpToPoint([2034.651])
+END
+>>>>>>>>
+
+<<<<<<<<cut85b_add.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		SmallWait(8)
+		Wait(3)
+		ForceSpellPoint([2034.651],BEHOLDER_BLAST_VISUAL2)  // SPIN665.SPL (No such index)
+		Wait(1)
+		CreateVisualEffect("SPFIREPI",[2034.651])
+		SmallWait(4)
+		JumpToPoint([2034.651])
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		Wait(3)
+		ReallyForceSpell("%Death_var%",BEHOLDER_BLAST_VISUAL2) 
+		Wait(1)
+		CreateVisualEffectObject("SPFIREPI","%Death_var%")
+		SmallWait(4)
+END
+
+>>>>>>>>
+COPY_EXISTING ~cut85b.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~cut85b_rep.baf~ ~cut85b_add.baf~ EVALUATE_BUFFER

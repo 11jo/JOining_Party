@@ -1,0 +1,37 @@
+<<<<<<<<ar4000_rep.baf
+IF
+	Global("K#NewGame","AR4000",0)
+	InPartyAllowDead(Player6)
+	!Name("None",Player6)
+THEN
+	RESPONSE #100
+		ActionOverride(Player6,SetGlobal("K#PartyToB","LOCALS",1))
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<ar4000_add.baf
+IF
+	Global("K#NewGame","AR4000",0)
+	InPartyAllowDead(Player6)
+	!Name("None",Player6)
+THEN
+	RESPONSE #100
+		ActionOverride(Player6,SetGlobal("K#PartyToB","LOCALS",1))
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("K#NewGame","AR4000",0)
+	InPartyAllowDead("%Death_var%")
+	!Name("None","%Death_var%")
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("K#PartyToB","LOCALS",1))
+		Continue()
+END
+
+>>>>>>>>
+COPY_EXISTING ~ar4000.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~ar4000_rep.baf~ ~ar4000_add.baf~ EVALUATE_BUFFER

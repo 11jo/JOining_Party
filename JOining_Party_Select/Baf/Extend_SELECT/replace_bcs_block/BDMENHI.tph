@@ -1,0 +1,30 @@
+<<<<<<<<BDMENHI_rep.baf
+IF
+	WalkedToTrigger(Player6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		ActionOverride("%bdmenhi%",StartDialogueNoSet(Player6))
+END
+>>>>>>>>
+
+<<<<<<<<BDMENHI_add.baf
+IF
+	WalkedToTrigger(Player6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		ActionOverride("%bdmenhi%",StartDialogueNoSet(Player6))
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	WalkedToTrigger("%Death_var%")
+THEN
+	RESPONSE #100
+		ActionOverride("%bdmenhi%",StartDialogueNoSet("%Death_var%"))
+END
+
+>>>>>>>>
+COPY_EXISTING ~%BDMENHI%.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~BDMENHI_rep.baf~ ~BDMENHI_add.baf~ EVALUATE_BUFFER

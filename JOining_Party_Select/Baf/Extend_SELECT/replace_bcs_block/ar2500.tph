@@ -1,3 +1,24 @@
+<<<<<<<<ar2500_rep.baf
+IF
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("MISC9W",Player6)
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","MISC9W",Player6)
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<ar2500_add.baf
+IF
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	HasItem("MISC9W",Player6)
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","MISC9W",Player6)
+		Continue()
+END
+
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
@@ -138,3 +159,7 @@ THEN
 		TakeItemReplace("DWDUST","DWPLAT01","%Death_var%")  // Poussière d'adamantium
 		Continue()
 END
+
+>>>>>>>>
+COPY_EXISTING ~ar2500.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~ar2500_rep.baf~ ~ar2500_add.baf~ EVALUATE_BUFFER

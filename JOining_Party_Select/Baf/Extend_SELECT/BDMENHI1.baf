@@ -1,7 +1,0 @@
-IF
-	Allegiance("%Death_var%",FAMILIAR)
-	WalkedToTrigger("%Death_var%")
-THEN
-	RESPONSE #100
-		ActionOverride("%bdmenhi%",StartDialogueNoSet("%Death_var%"))
-END

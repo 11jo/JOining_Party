@@ -1,0 +1,41 @@
+
+<<<<<<<<bd0103_rep.baf
+IF
+	Global("K#PartySoD","BD0103",0)
+	InPartyAllowDead(Player6)
+	!Name("None",Player6)
+THEN
+	RESPONSE #100
+		ActionOverride(Player6,SetGlobal("K#PartySoD","LOCALS",1))
+		SetGlobal("K#PartySoD","BD0103",1)
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<bd0103_add.baf
+IF
+	Global("K#PartySoD","BD0103",0)
+	InPartyAllowDead(Player6)
+	!Name("None",Player6)
+THEN
+	RESPONSE #100
+		ActionOverride(Player6,SetGlobal("K#PartySoD","LOCALS",1))
+		SetGlobal("K#PartySoD","BD0103",1)
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("K#PartySoD","BD0103",0)
+	InPartyAllowDead("%Death_var%")
+	!Name("None","%Death_var%")
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("K#PartySoD","LOCALS",1))
+		SetGlobal("K#PartySoD","BD0103",1)
+		Continue()
+END
+
+>>>>>>>>
+COPY_EXISTING ~bd0103.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~bd0103_rep.baf~ ~bd0103_add.baf~ EVALUATE_BUFFER

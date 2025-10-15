@@ -512,32 +512,44 @@ HasItemEquipedReal(\1,Player1)~
 		END
 	END // ACTION_FOR_EACH // spfleshp
 
-	ACTION_FOR_EACH bcs IN K#TELBGT AR0602 BEGIN
+	ACTION_FOR_EACH bcs IN K#TELBGT AR0602 IWSHCUT1 IDSHCUT1 BDCUT62 BD0103 BEGIN
 	
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
-	// K#ImportContainer situation
-				SPRINT textToReplace ~^[%TAB% ]*ActionOverride("K#ImportContainer",TakeCreatureItems(Player2,ALL))~
+	// TakeCreatureItems situation
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),TakeCreatureItems(Player4,\([^)]*\)))~
 				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.bcs~)*/ BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("K#ImportContainer",TakeCreatureItems("%Death_var%",ALL))~
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,TakeCreatureItems("%Death_var%",\2))~
 					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : K#ImportContainer found in %SOURCE_FILESPEC%
+					PATCH_PRINT ~... // %Death_var% : TakeCreatureItems found in %SOURCE_FILESPEC%
 					~
-				END/*
-				SPRINT textToReplace ~^[%TAB% ]*ApplySpellRES("K#UNREST",Player2)~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~K#TELBGT.bcs~) BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ApplySpellRES("K#UNREST","%Death_var%")~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : K#UNREST found in %SOURCE_FILESPEC%
-					~
-				END*/
+				END
 			END
 			BUT_ONLY
 		END
-	END // ACTION_FOR_EACH // K#ImportContainer
+	END // ACTION_FOR_EACH // TakeCreatureItems
+
+	ACTION_FOR_EACH bcs IN BDCUT61A BDCUT62 BDCUT65 K#TELBGT BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// DisableAI situation
+				SPRINT textToReplace ~^[%TAB% ]*DisableAI(Player3,\([^)]*\)
+^[%TAB% ]*DisableAI(Player4,\1)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 DisableAI("%Death_var%",\1)~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : DisableAI found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // DisableAI
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -549,35 +561,41 @@ OUTER_SPRINT ~252034~ ~252034~
 OUTER_SPRINT ~252034~ ~52034~
 	END
 
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDBALDUR.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/HELLPOOL.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
+
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER
 
-EXTEND_BOTTOM ~BDTARGET.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDTARGET.baf~ EVALUATE_BUFFER
-	
-EXTEND_BOTTOM ~HELLPOOL.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/HELLPOOL.baf~ EVALUATE_BUFFER
-	
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi1~
-EXTEND_BOTTOM ~BDMENHI1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDMENHI1.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi2~
-EXTEND_BOTTOM ~BDMENHI1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDMENHI1.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi3~
-EXTEND_BOTTOM ~BDMENHI1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDMENHI1.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi4~
-EXTEND_BOTTOM ~BDMENHI1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDMENHI1.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi5~
-EXTEND_BOTTOM ~BDMENHI1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDMENHI1.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi6~
-EXTEND_BOTTOM ~BDMENHI1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDMENHI1.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 
 	END
 
 	ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
 
-EXTEND_BOTTOM ~ar2500.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ar2500.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ar2500.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~OHHBARHX.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHBARHX.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~OHHFAKOK.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHFAKOK.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ohhspike.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohhspike.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ohdwater.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohdwater.baf~ EVALUATE_BUFFER
+
+		ACTION_IF GAME_IS ~eet~ BEGIN
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/AR4000.tph~
+		END
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/ar2500.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/cut85b.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/cut220b.tph~
 
 OUTER_SPRINT ~Wait~ ~~
 OUTER_SPRINT ~Hallbattle~ ~Hallbattle1~
@@ -599,9 +617,7 @@ EXTEND_BOTTOM ~HALL6.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/HALL1.baf~ EVA
 
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BALDUR.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BALDUR.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~CUT220B.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/CUT220B.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~CUT218E.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/CUT218E.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~CUT85B.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/CUT85B.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~JORAK07.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/JORAK07.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~JORAK00.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/JORAK01.baf~ EVALUATE_BUFFER
 
@@ -678,16 +694,5 @@ END // ACTION_FOR_EACH // SetCutSceneBreakable
 		END
 	END // ACTION_FOR_EACH // RERAK02
 
-
-
-
-
-
-
-
-
-
-
-// 63VESE.dlg  IWD2_EET TATOO
 
 // CutSceneId(Player2)

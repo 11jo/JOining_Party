@@ -508,6 +508,25 @@ BEGIN
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : CreateCreatureObjectCopy found in %SOURCE_FILESPEC%
 				~
+			END
+// SetGlobal situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player3,SetGlobal(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player4,SetGlobal(\1))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",SetGlobal(\1))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),SetGlobal(\([^)]*\)))
+^[%TAB% ]*ActionOverride(\1,SetGlobal(\2))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,SetGlobal(\2))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
+				~
 			END /*ELSE BEGIN
 				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
 			END*/
@@ -887,8 +906,29 @@ BUT_ONLY
 				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
 				~
 			END
+// SetGlobal situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player3,SetGlobal(\([^)]*\)))
+^[%TAB% ]*ActionOverride(Player4,SetGlobal(\1))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",SetGlobal(\1))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),SetGlobal(\([^)]*\)))
+^[%TAB% ]*ActionOverride(\1,SetGlobal(\2))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,SetGlobal(\2))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : ReallyForceSpellRES found in %SOURCE_FILESPEC%
+				~
+			END
 BUT_ONLY
 
+
+// ActionOverride(Player4,SetGlobal("#L_BSRefSarvSib","LOCALS",1))
 //
 
 COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
@@ -1078,39 +1118,3 @@ BUT_ONLY
 				~
 			END
 BUT_ONLY
-
-
-
-
-
-
-
-
-
-
-	
-/*
-CreateVisualEffectObject("SPPROIMG",Player2)
-CreateCreatureObjectCopy("jclone01",Player2,0,0,0)
-MoveToObject(Player2)
-PolymorphCopy(Player2)
-ReallyForceSpell(Player2,CLERIC_CALL_LIGHTNING)
-ActionOverride(Player2,Face(SSE))
-AddXPObject(Player2,45000)
-ActionOverride(Player2,ReallyForceSpell(Myself,CLERIC_LESSER_RESTORATION))
-CreateVisualEffectObject("SPCLOUD1",Player2)
-ActionOverride(Player2,CreateVisualEffectObject("SPCLOUD1",Myself))
-FakeEffectExpiryCheck(Player2,150000)
-CreateVisualEffectObject("SPSTRENH",Player2)
-ActionOverride(Player2,DropItem("SW1H56",[-1.-1]))
-ActionOverride(Player2,ApplySpell(Myself,UNDER_NORM))
-*/
-
-
-
-// !HasItemEquiped("BDLEAT05",Player3) / HasItemEquiped("BDSHLD05",Player6)
-
-// GiveItemCreate("LEAT01",Player3Fill,0,0,0)
-
-// ActionOverride(Player4,SetGlobal("#L_BSRefSarvSib","LOCALS",1))
-
