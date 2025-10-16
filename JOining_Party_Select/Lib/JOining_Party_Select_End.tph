@@ -565,8 +565,11 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDBALDUR.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/HELLPOOL.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
 
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~ICELAND.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~ICELAND1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND1.baf~ EVALUATE_BUFFER
 
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi1~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
@@ -589,6 +592,8 @@ EXTEND_BOTTOM ~OHHBARHX.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHBARHX.ba
 EXTEND_BOTTOM ~OHHFAKOK.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHFAKOK.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ohhspike.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohhspike.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ohdwater.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohdwater.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~OHBGREST.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBGREST.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~OHRDLG01.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHRDLG01.baf~ EVALUATE_BUFFER
 
 		ACTION_IF GAME_IS ~eet~ BEGIN
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/AR4000.tph~
@@ -623,16 +628,11 @@ EXTEND_TOP ~JORAK00.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/JORAK01.baf~ EV
 
 	END
 // To see
-// OHHGFORM
-// HELLPOOL
+// OHHGFORM // Hexxat
+
 // BD6100 // AMBUSH
-// OHBGREST
-// OHRDLG01
-// INITINV
-// OHRDLG01
-// ICELAND
-// OHBMESSE
-// 
+
+
 
 END // ACTION_FOR_EACH MAIN
 

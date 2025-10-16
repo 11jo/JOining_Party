@@ -140,7 +140,7 @@ END
 
 IF
 	Allegiance("%Death_var%",FAMILIAR)
-	InParty("%Death_var%")
+	Global("JO_%Death_var%_AllowDead","GLOBAL",1)
 	!StateCheck("%Death_var%",STATE_REALLY_DEAD)
 	Class("%Death_var%",PALADIN_ALL)
 	!Kit("%Death_var%",Blackguard)

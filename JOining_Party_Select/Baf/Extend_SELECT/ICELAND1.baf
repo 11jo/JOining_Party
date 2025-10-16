@@ -1,0 +1,9 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		CreateVisualEffectObject("spdimndr","%Death_var%")
+		SmallWait(77)
+		CreateVisualEffectObject("spdimndr","%Death_var%")
+END

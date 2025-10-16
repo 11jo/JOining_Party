@@ -1,0 +1,10 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	NumberOfTimesTalkedTo(0)
+	!Detect([PC])
+	InMyArea("%Death_var%")
+	!StateCheck("%Death_var%",CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		MoveToObject("%Death_var%")
+END

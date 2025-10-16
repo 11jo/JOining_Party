@@ -8,35 +8,8 @@ THEN
 		Continue()
 END
 
-/*
 IF
 	Allegiance("%Death_var%",FAMILIAR)
-	Global("bdboot05","global",1)
-	HasItemEquiped("bdboot05","%Death_var%")  // Bottes de rapidité
-	!ObjectActionListEmpty("%Death_var%")
-THEN
-	RESPONSE #100
-		ClearAllActions()
-		SetGlobal("bdboot05","global",2)
-		ActionOverride("%Death_var%",MakeUnselectable(1))
-		ActionOverride("%Death_var%",MoveToOffset([-10.-10]))
-		ActionOverride("%Death_var%",MoveToOffset([-10.10]))
-		ActionOverride("%Death_var%",ApplyDamage("%Death_var%",10,STUNNING))
-		ActionOverride("%Death_var%",PlayDead(1))
-		ActionOverride("%Death_var%",MoveToOffset([10.-10]))
-		ActionOverride("%Death_var%",MoveToOffset([10.10]))
-		ActionOverride("%Death_var%",ApplyDamage("%Death_var%",10,STUNNING))
-		ActionOverride("%Death_var%",PlayDead(1))
-		ActionOverride("%Death_var%",DestroyItem("bdboot05"))  // Bottes de rapidité
-		ActionOverride("%Death_var%",MakeUnselectable(0))
-		AddJournalEntry(#%252034%,QUEST)
-		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
-END
-*/
-
-IF
-	Allegiance("%Death_var%",FAMILIAR)
-	InParty("%Death_var%")
 	!StateCheck("%Death_var%",STATE_REALLY_DEAD)
 	Class("%Death_var%",PALADIN_ALL)
 	!Kit("%Death_var%",Blackguard)

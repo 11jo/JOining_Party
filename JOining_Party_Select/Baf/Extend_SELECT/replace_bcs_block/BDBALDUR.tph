@@ -72,6 +72,5 @@ THEN
 END
 
 >>>>>>>>
-COPY_EXISTING ~baldur.bcs~ ~override~
-              ~baldur25.bcs~ ~override~
+COPY_EXISTING ~bdbaldur.bcs~ ~override~
   REPLACE_BCS_BLOCK ~bdbaldur_rep.baf~ ~bdbaldur_add.baf~ EVALUATE_BUFFER

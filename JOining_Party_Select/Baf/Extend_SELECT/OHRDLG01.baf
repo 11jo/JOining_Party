@@ -1,0 +1,11 @@
+IF
+	NumberOfTimesTalkedTo(0)
+	Allegiance("%Death_var%",FAMILIAR)
+	InMyArea("%Death_var%")
+	!StateCheck("%Death_var%",STATE_INVISIBLE)
+	!StateCheck("%Death_var%",STATE_CHARMED)
+	!StateCheck("%Death_var%",CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		MoveToObject("%Death_var%")
+END

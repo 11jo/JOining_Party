@@ -27,7 +27,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("K#PartySoD","BD0103",0)
-	InPartyAllowDead("%Death_var%")
+	Global("JO_%Death_var%_AllowDead","GLOBAL",1)
 	!Name("None","%Death_var%")
 THEN
 	RESPONSE #100

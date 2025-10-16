@@ -1,0 +1,9 @@
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		ActionOverride("SHANDAL2",ForceSpell("%Death_var%",DRYAD_TELEPORT))
+		SmallWait(78)
+		CreateVisualEffectObject("spdimndr","%Death_var%")
+END

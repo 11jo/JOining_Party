@@ -1,0 +1,76 @@
+<<<<<<<<BD6100_bdfinal_rep.baf
+IF
+	Global("bd_player6_sleep","bd6100",0)
+	StateCheck(Player6,STATE_SLEEPING)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_player6_sleep","bd6100",1)
+		ActionOverride(Player6,MakeUnselectable(3600000))
+		ApplySpellRES("bdfinal",Player6)
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<BD6100_bdfinal_add.baf
+IF
+	Global("bd_player6_sleep","bd6100",0)
+	StateCheck(Player6,STATE_SLEEPING)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_player6_sleep","bd6100",1)
+		ActionOverride(Player6,MakeUnselectable(3600000))
+		ApplySpellRES("bdfinal",Player6)
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("bd_%Death_var%_sleep","bd6100",0)
+	StateCheck("%Death_var%",STATE_SLEEPING)
+THEN
+	RESPONSE #100
+		SetGlobal("bd_%Death_var%_sleep","bd6100",1)
+		ActionOverride("%Death_var%",MakeUnselectable(3600000))
+		ApplySpellRES("bdfinal","%Death_var%")
+		Continue()
+END
+
+<<<<<<<<BD6100_bdsleep_rep.baf
+IF
+	Global("bd_finale","bd6100",4)
+	Global("bd_player6_down","bd6100",0)
+	!GlobalTimerNotExpired("bd_sleep_timer","bd6100")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bd_sleep_timer","bd6100",THREE_MINUTES)
+		ApplySpellRES("bdsleep",Player6)
+END
+>>>>>>>>
+
+<<<<<<<<BD6100_bdsleep_add.baf
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("bd_finale","bd6100",4)
+	Global("bd_%Death_var%_down","bd6100",0)
+	!GlobalTimerNotExpired("bd_sleep_timer","bd6100")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bd_sleep_timer","bd6100",THREE_MINUTES)
+		ApplySpellRES("bdsleep","%Death_var%")
+END
+
+IF
+	Global("bd_finale","bd6100",4)
+	Global("bd_player6_down","bd6100",0)
+	!GlobalTimerNotExpired("bd_sleep_timer","bd6100")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("bd_sleep_timer","bd6100",THREE_MINUTES)
+		ApplySpellRES("bdsleep",Player6)
+END
+
+>>>>>>>>
+COPY_EXISTING ~BD6100.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~BD6100_bdfinal_rep.baf~ ~BD6100_bdfinal_add.baf~ EVALUATE_BUFFER
+  REPLACE_BCS_BLOCK ~BD6100_bdsleep_rep.baf~ ~BD6100_bdsleep_add.baf~ EVALUATE_BUFFER
+ 

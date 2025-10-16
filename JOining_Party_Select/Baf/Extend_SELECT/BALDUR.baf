@@ -93,7 +93,6 @@ END
 
 IF
 	Allegiance("%Death_var%",FAMILIAR)
-	InParty("%Death_var%")
 	!StateCheck("%Death_var%",STATE_REALLY_DEAD)
 	Class("%Death_var%",PALADIN_ALL)
 	!Kit("%Death_var%",Blackguard)
