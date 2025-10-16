@@ -555,7 +555,7 @@ HasItemEquipedReal(\1,Player1)~
 
 ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
 
-	ACTION_IF (GAME_IS ~eet~ AND GAME_INCLUDES ~SoD~) BEGIN
+	ACTION_IF (GAME_IS ~eet~) BEGIN
 OUTER_SPRINT ~252034~ ~252034~
 	END ELSE ACTION_IF (NOT GAME_IS ~eet~ AND GAME_INCLUDES ~SoD~) BEGIN
 OUTER_SPRINT ~252034~ ~52034~
@@ -563,8 +563,10 @@ OUTER_SPRINT ~252034~ ~52034~
 
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDBALDUR.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
-INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/HELLPOOL.tph~
+
+		ACTION_IF GAME_IS ~eet~ BEGIN
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
+		END
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
 
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER
@@ -572,16 +574,27 @@ EXTEND_BOTTOM ~ICELAND.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND.baf~
 EXTEND_BOTTOM ~ICELAND1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND1.baf~ EVALUATE_BUFFER
 
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi1~
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
+
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi2~
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
+
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi3~
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
+
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi4~
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
+
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi5~
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
+
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi6~
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 
 	END
@@ -598,9 +611,11 @@ EXTEND_BOTTOM ~OHRDLG01.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHRDLG01.ba
 		ACTION_IF GAME_IS ~eet~ BEGIN
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/AR4000.tph~
 		END
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/ar2500.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/cut85b.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/cut220b.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/HELLPOOL.tph~
 
 OUTER_SPRINT ~Wait~ ~~
 OUTER_SPRINT ~Hallbattle~ ~Hallbattle1~

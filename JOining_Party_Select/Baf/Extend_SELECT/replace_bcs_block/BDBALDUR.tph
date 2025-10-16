@@ -1,4 +1,4 @@
-<<<<<<<<bdbaldur_rep.baf
+<<<<<<<<bdbaldur_tph_rep.baf
 IF
 	Global("bdboot05","global",1)
 	HasItemEquiped("bdboot05",Player6)
@@ -23,7 +23,7 @@ THEN
 END
 >>>>>>>>
 
-<<<<<<<<bdbaldur_add.baf
+<<<<<<<<bdbaldur_tph_add.baf
 IF
 	Global("bdboot05","global",1)
 	HasItemEquiped("bdboot05",Player6)
@@ -43,7 +43,7 @@ THEN
 		ActionOverride(Player6,PlayDead(1))
 		ActionOverride(Player6,DestroyItem("bdboot05"))
 		ActionOverride(Player6,MakeUnselectable(0))
-		AddJournalEntry(#%252034%,QUEST)
+		AddJournalEntry(%252034%,QUEST)
 		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
 END
 
@@ -67,10 +67,10 @@ THEN
 		ActionOverride("%Death_var%",PlayDead(1))
 		ActionOverride("%Death_var%",DestroyItem("bdboot05"))
 		ActionOverride("%Death_var%",MakeUnselectable(0))
-		AddJournalEntry(#%252034%,QUEST)
+		AddJournalEntry(%252034%,QUEST)
 		SetGlobal("BD_SDD215_TYPE","GLOBAL",3)
 END
-
 >>>>>>>>
+
 COPY_EXISTING ~bdbaldur.bcs~ ~override~
-  REPLACE_BCS_BLOCK ~bdbaldur_rep.baf~ ~bdbaldur_add.baf~ EVALUATE_BUFFER
+  REPLACE_BCS_BLOCK EVALUATE_BUFFER ~bdbaldur_tph_rep.baf~ ~bdbaldur_tph_add.baf~
