@@ -149,7 +149,7 @@ END
 
 
 // Linked to Player1
-
+/*
 // Special security
 IF
 	Global("JO_JOIN_ME","GLOBAL",1)
@@ -167,7 +167,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_ME","LOCALS",0)
 END
-
+*/
 // Large range or different area
 IF
 	ActionListEmpty()
@@ -362,15 +362,30 @@ END
 // Go to Reintegrate NPC into party periodically
 
 IF // security check
-	Global("JO_JOIN_IS_JOINING","LOCALS",1)
 	OnCreation()
+	Global("JO_JOIN_IS_JOINING","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_MINUTE)
 END
-
+/*
+IF // security check
+	OnCreation()
+	OR(3)
+		Global("JO_JOIN_IS_JOINING","LOCALS",1)
+		Global("JO_NOJOIN","GLOBAL",1)
+		Global("JO_JOIN_CUTSCENE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_MINUTE)
+END
+*/
+/*
 IF // security check 2
 	OnCreation()
 THEN
@@ -378,8 +393,11 @@ THEN
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 		Continue()
 END
-
+*/
 IF
+	OR(2)
+		OnCreation()
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
 	ActionListEmpty()
 	!ActuallyInCombat()
 	Allegiance(Myself,FAMILIAR)
@@ -387,9 +405,6 @@ IF
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
 	NumInPartyLT(6)
-	OR(2)
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
-		OnCreation()
 	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
 THEN
 	RESPONSE #0
