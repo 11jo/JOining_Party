@@ -1,3 +1,19 @@
+	ACTION_IF FILE_EXISTS_IN_GAME ~CBDRWRNG.ITM~ BEGIN
+
+<<<<<<<<ar2500_rep.baf
+IF
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	!HasItem("CBDRWRNG",Player6)  // Ring of the Drow
+	HasItem("MISC9W",Player6)
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","MISC9W",Player6)
+		Continue()
+END
+>>>>>>>>
+
+	END ELSE BEGIN
+
 <<<<<<<<ar2500_rep.baf
 IF
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
@@ -8,6 +24,8 @@ THEN
 		Continue()
 END
 >>>>>>>>
+
+	END
 
 <<<<<<<<ar2500_add.baf
 IF

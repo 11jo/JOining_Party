@@ -17,38 +17,77 @@
 **Author** : ***
 
 
-### Work In Progress : Only for testing purpose !!!
+### Beta state !
+
+
+**Installation could last between 10 to 30+ minutes depending of the number of NPCs chosen and the number of mods installed**
+
+- Use the Charname **special ability** to convert NPC to Familiar.
+- Keep **one free party slot** to allow NPC switch.
+- You can **quickly acces** (5 seconds) to stats and inventory when they switch in party.
+- You can **completly reinteger** the Npc in party, use again the same special ability on the chosen NPC and talk to the NPC, they will have **several dialog options**.
+
+- When loading a save the **NPCs have to switch** once before being reliably available for script and dialog.
+- When loading a save, familiar will switch **one by one**, it's an important state that need to happen to make them reliably available for script and dialog.
 
 
 
-## Instruction :
+## Instruction :  
 ----------------
 
-After mods that add any dialog or script options related to NPC.
+Compatibility : BGEE, SOD, BG2EE and EET.  
 
-- Choose available NPC groups to modify
-  - Continuous original NPC
-  - BG1 original NPC
-  - SoD original NPC
-  - BG2EE original NPC
-  - Mods BG1 NPC
-  - Mod BG2 NPC
+- Install JOining Party **AFTER** mods that add any dialog or script options related to NPC.  
 
-- Install componant All-Out (**Installation could last between 10 to 20 minutes depending of the number of NPCs chosen**)
-  - Add to any InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead... Familiar reference to make it count as party member.
+Componant :  
 
-- Install componant All-In
-  - Install scripts, dialogs, items, spells... used to make the mod work.
+- Choose wich NPC will be allowed to become Familiar. (This don't prevent to have them in party as regular member if wanted.)  
+
+  1. Continuous original NPC (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)  
+  2. BG1 original NPC (Ajantis, Alora, Branwen, Coran, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)  
+  3. SoD original NPC (Voghiln, Corwin, Mkhiin, Glint)  
+  4. BG2EE original NPC (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)  
+  5. Mods BG1 NPC ([Ishlilka](https://github.com/The-Gate-Project/Ishlilka_The-Wizard-Slayer))  
+  6. Mod BG2 NPC ([Alora BG2](https://github.com/The-Gate-Project/Alora-NPC-for-BG2), [Yeslick BG2](https://github.com/Spellhold-Studios/Yeslick-NPC), [Sandra](https://github.com/11jo/Summon_Bhaalspawn), [Nikita](https://github.com/The-Gate-Project/NikitaRedux), [Kim](https://github.com/11jo/Kim_NPC), [Miriam](https://github.com/The-Gate-Project/VampireTales), [Severian](https://github.com/The-Gate-Project/Severian-de-Demerya), ~[The Undying](https://github.com/11jo/The-Undying)~)  
+
+- **Mandatory** Install componant All-Out, 
+  - Replace any InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead... by Familiar reference to make them count as party member and allow quests and interjections to process.  
+  - Add new lines to scripts and dialog to make Familiars follow party movement and state.
+  
+  1.  All-Out 
+
+- **Mandatory** Install componant All-In,
+  - Install / Expand scripts, dialogs, items, spells... used to make the familiar situation work.
+  
+  1.  All-In 
+
+
+---
+
+
+In game :
+
+Starting a new game, Charname receive a special ability.
+ - **Using the ability**, on a party member selected at installation, will **change it to familiar**.
+ - Using the ability on a familiar, will **allow to talk to the familiar** and modify their behavior.
+    - Follow (Close or at sight) the party member who initiate the talk.
+	- Make the familiar joining the party as regular party member.
+	- Make the familiar joining the party just an instant, to deal with statistic, inventory or level, then automatically returning to familiar state.
+
+**Familiar will "switch"** in party some time to time to allow them **to be considered as party member** continually.
+  - If a party slot remain empty.
+  - Every 20mn.
+  - When loading a save (very important !!!).
+  - If not in combat or in the process of doing something.
+  
+**Before** a switch they will move to Charname or a party member and say "Hey", before joining the group.
+When returning temporarly in party, statistic, inventory or level are available. (Use Pause to take your time if actions on it are needed.)
+**After** the switch is completed they will say "Yeah", after leaving the group.
+
 
 
 ## Description :
 ----------------
-
-- Use the the special ability to convert NPC to Familiar.
-- Keep one free party slot to allow NPC switch.
-- You can quickly acces (5 seconds) to stats and inventory when they switch in party.
-- You can completly reinteger the Npc in party, use again the same special ability on the chosen NPC and talk to the NPC, they will have several dialog options.
-- When loading a save the NPCs have to switch once before being reliably available for script and dialog.
 
 Files : 
 
@@ -65,10 +104,10 @@ Files :
    - Implement a little script to other (not selected) NPCs.
 
 - [All_In.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/All_In.BAF)  
-   - Added to each selected NPCs to deal with Npc to Familiar switch.
+   - Added to each selected NPCs to deal with Npc to Familiar switch and statut.
 
 - [%JO_JOIN%.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf)  
-   -  JO_JOIN1.BAF to JO_JOIN5.BAF are scripts added to Familiar OVERRIDE script, only for a short time, it will set the right dialog and script depending of the NPC.
+   -  JO_JOIN1.BAF to JO_JOIN5.BAF are scripts added to Familiar OVERRIDE script, only for a short time, it will set the right dialog and script depending of the NPC/Familiar.
 
 - [JO_JOINI.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOINI.BAF)  
    - Script added to Familiar GENERAL script, will remain, it will deal with switch order and Familiar behavior.
@@ -80,10 +119,10 @@ Files :
    - Workaround for EET and else, NPC choice and core installation
 
 - [All_In.D](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/D/All_In.D)  
-   - Block dialog added to each NPC dialogJ, Triggering when talking to familiar after using special ability.
+   - Block dialog added to each NPC Joining_dialog, Triggering when talking to familiar after using special ability.
 
 - [jominhp1.itm](https://github.com/11jo/JOining_Party/tree/main/JOining_Party_Select/Itm)  
-   - Lesser copy of MINHP1 to avoid only death
+   - Lesser copy of MINHP1 to avoid only permanent death
 
 - [jo_join.spl](https://github.com/11jo/JOining_Party/tree/main/JOining_Party_Select/Spl)  
    - Special ability for Charname, will simply set a LOCALS to 1 on the targeted NPC.
@@ -126,7 +165,7 @@ LOCALS :
 
 ---
 
-- GlobalTimer("JO_JOIN_JOIN","LOCALS",NINE_ROUNDS)
+- GlobalTimer("JO_JOIN_JOIN","LOCALS",FOUR_HOURS)
    - Timer for switching Familiar to NPCs regulary.
 
 ---

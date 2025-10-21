@@ -1,0 +1,269 @@
+
+//JOINABLE NPCS ARRAY MACRO__________________________________________________________
+//
+DEFINE_ACTION_MACRO JOINABLE_NPC_ARRAYS BEGIN
+	//PDIALOG.2DA exists in all games
+	ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~PDIALOG~ => ~~ END
+	//Check PDIALOG.2DA file variants referenced in CAMPAIGN.2DA
+	ACTION_IF FILE_EXISTS_IN_GAME ~CAMPAIGN.2DA~ BEGIN
+		COPY_EXISTING ~CAMPAIGN.2DA~ ~CAMPAIGN.2DA~
+			COUNT_2DA_ROWS 32 "cntrow"
+			FOR (i = 0; i < cntrow; i = i + 1) BEGIN
+				READ_2DA_ENTRY i 11 32 file
+				TO_UPPER file
+				DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~%file%~ => ~~ END
+			END
+		BUT_ONLY
+	END
+	//Generate array with joinable NPC DV
+	ACTION_PHP_EACH JOINABLE_NPC_ARRAY_2da AS file => ~~ BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN
+			COPY_EXISTING ~%file%.2da~ ~override~
+				COUNT_2DA_ROWS 3 "cntrow"
+				FOR (i = 1; i < cntrow; i = i + 1) BEGIN
+					READ_2DA_ENTRY i 0 3 "dv"
+					TO_UPPER dv
+					DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN ~%dv%~ => ~~ END
+				END
+			BUT_ONLY
+		END
+	END
+	//Generate array with joinable NPC cre files
+	COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
+		READ_ASCII DEATHVAR "dv" (32) NULL
+		TO_UPPER dv
+		PATCH_IF VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
+			DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
+		END
+		PATCH_IF NOT VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
+			DEFINE_ASSOCIATIVE_ARRAY NON_JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
+		END
+	BUT_ONLY
+END
+//__________________________________________________________________________________
+
+
+
+LAM JOINABLE_NPC_ARRAYS
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+// 	PRINT ~%cre% => %dv%~ 
+
+  COPY_EXISTING ~%cre%~ ~override~
+    READ_ASCII 0x248 override_script
+    PATCH_IF NOT (~%override_script%~ STRING_EQUAL_CASE ~idiot01~)
+// Imoen
+// Original Imoen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%IMOEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOE25~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTIMOEN~)
+// Original Imoen // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN_~)
+// Original Imoen // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN2~)
+
+// Edwin
+// Original Edwin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%EDWIN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWI25~)
+// Original Edwin // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWIN_~)
+// Original Edwin // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWIN~)
+
+// Jaheira
+// Original Jaheira AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%JAHEIRA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHE25~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTJAHEIR~)
+// Original Jaheira // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHEIRA_~)
+// Original Jaheira // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHEIRA~)
+
+// Minsc
+// Original Minsc AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%MINSC_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINS25~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTMINSC~)
+// Original Minsc // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINSC_~)
+// Original Minsc // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINSC~)
+
+// Viconia
+// Original Viconia AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%VICONIA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICO25~)
+// Original Viconia // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICONIA_~)
+// Original Viconia // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICONIA~)
+
+// Dorn
+// Original Dorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DORN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN25~)
+// Original Dorn // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN_~)
+// Original Dorn // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN~)
+
+// Neera
+// Original Neera AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEERA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEER25~)
+// Original Neera // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEERA_~)
+// Original Neera // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEERA~)
+
+// Rasaad
+// Original Rasaad AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%RASAAD_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASA25~)
+// Original Rasaad // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASAAD_~)
+// Original Rasaad // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASAAD~)
+
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// bg1 ///////////////////////////
+// Ajantis
+// Original Ajantis AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%AJANTIS_BCS%~)
+
+// Alora
+// Original Alora AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ALORA_BCS%~)
+
+// Branwen
+// Original Branwen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%BRANWEN_BCS%~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTBRAN~)
+
+// Coran
+// Original Coran AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%CORAN_BCS%~)
+
+// Dynaheir
+// Original Dynaheir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DYNAHEIR_BCS%~)
+
+// Eldoth
+// Original Eldoth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ELDOTH_BCS%~)
+
+// Faldorn
+// Original Faldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%FALDORN_BCS%~)
+
+// Garrick
+// Original Garrick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%GARRICK_BCS%~)
+
+// Kagain
+// Original Kagain AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KAGAIN_BCS%~)
+
+// Khalid
+// Original Khalid AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KHALID_BCS%~)
+
+// Kivan
+// Original Kivan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KIVAN_BCS%~)
+
+// Montaron
+// Original Montaron AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%MONTARON_BCS%~)
+
+// Quayle
+// Original Quayle AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%QUAYLE_BCS%~)
+
+// Safana
+// Original Safana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SAFANA_BCS%~)
+
+// Sharteel
+// Original Sharteel AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~)
+
+// Skie
+// Original Skie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SKIE_BCS%~)
+
+// Tiax
+// Original Tiax AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%TIAX_BCS%~)
+
+// Xan
+// Original Xan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%XAN_BCS%~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ttxan~)
+
+// Xzar
+// Original Xzar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%XZAR_BCS%~)
+
+// Yeslick
+// Original Yeslick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%YESLICK_BCS%~)
+
+// Baeloth
+// Original Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDBAELOT~)
+
+/////////////////////////// SoD ///////////////////////////
+// Voghiln
+// Original Voghiln AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDVOGHIL~)
+
+// Corwin
+// Original Corwin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDCORWIN~)
+
+// Mkhiin
+// Original Mkhiin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDMKHIIN~)
+
+// Glint
+// Original Glint AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDGLINT~)
+
+/////////////////////////// bg2 ///////////////////////////
+
+// Aerie
+// Original Aerie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~AERIE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~AERI25~)
+
+// Anomen
+// Original Anomen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ANOMEN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ANOM25~)
+
+// Cernd
+// Original Cernd AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CERND~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CERN25~)
+
+// Haerdalis
+// Original Haerdalis AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HAERDALI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HAER25~)
+
+// Hexxat
+// Original Hexxat AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HEXXAT~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HEXXA25~)
+
+// Jan
+// Original Jan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAN25~)
+
+// Keldorn
+// Original Keldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KELDORN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KELD25~)
+
+// Korgan
+// Original Korgan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KORGAN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~KORG25~)
+
+// Mazzy
+// Original Mazzy AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MAZZY~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MAZZ25~)
+
+// Nalia
+// Original Nalia AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NALIA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NALI25~)
+
+// Sarevok
+// Original Sarevok AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SAREV25~)
+
+// Valygar
+// Original Valygar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VALYGAR~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VALY25~)
+
+// Wilson
+// Original Wilson AND NOT (~%override_script%~ STRING_EQUAL_CASE ~WILSON~)
+
+// Yoshimo
+// Original Yoshimo AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YOSHIMO~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YOSH25~)
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+// Ishlilka (#Ishy)
+// Mod Ishlilka AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ishyscrp~)
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+// Alora BG2 (CMALORA)
+// Mod Alora BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalora~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalo25~)
+
+// Yeslick BG2 (LK#YESLK)
+// Mod Yeslick BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#YESL~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#YES25~)
+
+// The Undying (cmninaf)
+// Mod Undying AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNINAF~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNINA25~)
+
+// The Undying (callisto)
+// Mod Undying AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CALLISTO~)
+
+// Summon Bhaalspawn (BHAALSPW)
+// Mod Sandra AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BHAALSPW~)
+
+// Nikita Redux (cmnikita)
+// Mod Nikita AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmnikita~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNIK25~)
+
+// Vampire Tales (cmgmiriam)
+// Mod Miriam AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMIRI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMI25~)
+
+// Kim (Kim)
+// Mod Kim AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Kim~)
+
+// Severian (#Severian)
+// Mod Severian AND NOT (~%override_script%~ STRING_EQUAL_CASE ~#Sever~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~#SevD25~)
+
+// Frennedan (fren)
+// Mod Frennedan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~fren~)
+
+	BEGIN 
+      SPRINT $npc_scripts (~%override_script%~)~1~
+    END
+  BUT_ONLY
+END
+ACTION_PHP_EACH npc_scripts AS script => ind BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%script%.bcs~) BEGIN
+    EXTEND_BOTTOM ~%script%.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~%script%.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////

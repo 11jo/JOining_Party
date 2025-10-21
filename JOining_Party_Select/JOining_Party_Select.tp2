@@ -129,28 +129,34 @@ ALWAYS
 		OUTER_SPRINT "RASAA25J" "RASAA25J"
 
 		END
-	
-	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~) BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
+	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~) BEGIN
 
-	END
-
-	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~) BEGIN
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
 		
 	END
-	
-	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_Myself.tph~) BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Myself.tph~
+	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~) BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
+		
+	END
+
+	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~) BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
 
 	END
-	
+
 	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~) BEGIN
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
+
+	END
+
+	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~) BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 
 	END
 
@@ -543,24 +549,22 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10) ||
 					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 105) ||
 					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 106) ~Necessite to choose some NPCs~
 
-// OUTER_SET JOining_Party = 0	
+OUTER_SET JOining_Party = 0	
 
-	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
-		DECOMPILE_BCS_TO_BAF
+COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
+	DECOMPILE_BCS_TO_BAF
 
-	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
-		DECOMPILE_DLG_TO_D
+COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+	DECOMPILE_DLG_TO_D
 
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
-INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
 
 COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
 	COMPILE_BAF_TO_BCS
-BUT_ONLY
 
 COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
 	COMPILE_D_TO_DLG
-BUT_ONLY
 
 
 
@@ -569,5 +573,7 @@ DESIGNATED 1
 LABEL ~JOining_Party-In~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 0) ~Necessite component ALL-Out~
 
+INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
+INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Cutscene.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
