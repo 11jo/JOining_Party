@@ -96,7 +96,7 @@ ALWAYS
 
 			OUTER_SPRINT "CAMPAIGN" "5"
 
-			OUTER_SPRINT "Candlekeep" "BG2600"
+			OUTER_SPRINT "Candlekeep_BCS" "BG2600"
 
 			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
 
@@ -573,19 +573,24 @@ REQUIRE_PREDICATE (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10) ||
 					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 105) ||
 					(MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 106) ~Necessite to choose some NPCs~
 
-OUTER_SET JOining_Party = 0	
+// OUTER_SET JOining_Party = 0
+
+// BCS
 
 COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
 	DECOMPILE_BCS_TO_BAF
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
-	DECOMPILE_DLG_TO_D
-
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
 
 COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
 	COMPILE_BAF_TO_BCS
+
+// DLG
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+	DECOMPILE_DLG_TO_D
+	
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
 
 COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
 	COMPILE_D_TO_DLG

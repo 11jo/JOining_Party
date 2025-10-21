@@ -258,7 +258,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 END
 ACTION_PHP_EACH npc_scripts AS script => ind BEGIN
   ACTION_IF (FILE_EXISTS_IN_GAME ~%script%.bcs~) BEGIN
-    EXTEND_TOP ~%script%.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+    EXTEND_BOTTOM ~%script%.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
 	PRINT ~%script%.BCS extended with All_NPC_JOIN.baf
 	~
   END
