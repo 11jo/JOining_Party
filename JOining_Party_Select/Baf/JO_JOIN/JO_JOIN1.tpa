@@ -7,7 +7,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 <<<<<<<< .../JOining_Imoen.baf
 
 IF
-	CharName("IMOEN",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		AreaCheck("AR0602")
@@ -22,7 +21,6 @@ END
 /////////////////////////////////////////////////// Imoen BG2EE
 
 IF
-	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
@@ -35,7 +33,6 @@ END
  // ToB Imoen
 
 IF
-	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -60,7 +57,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
  // Imoen BGEE EET
 
 IF
-	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -82,7 +78,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Imoen BGEE
 
 IF
-	CharName("%IMOEN_DV%",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
@@ -100,13 +95,9 @@ END // GAME_IS ~bgee eet~
 	END // JOining_Imoen = 1
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
 
 
 	ACTION_IF JOining_Edwin = 1 THEN BEGIN
@@ -118,7 +109,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Edwin BG2EE (Same as BGEE)
 
 IF
-	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -133,7 +123,6 @@ END
  // ToB Edwin Global("JO_JOIN_ToB","GLOBAL",1)
 
 IF
-	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -155,7 +144,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 /////////////////////////////////////////////////// Edwin BGEE only for EET
  
 IF
-	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -177,7 +165,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Edwin BGEE (Same as BG2EE)
 
 IF
-	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -201,7 +188,6 @@ ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
 /////////////////////////////////////////////////// SoD Edwin
 
 IF
-	CharName("Edwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -219,13 +205,9 @@ END // GAME_INCLUDES ~SoD~
 	END // JOining_Edwin = 1
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
 
 
 	ACTION_IF JOining_Jaheira = 1 THEN BEGIN
@@ -237,7 +219,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Jaheira BG2EE
 
 IF
-	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
@@ -250,7 +231,6 @@ END
  // ToB Jaheira
 
 IF
-	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -272,7 +252,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 /////////////////////////////////////////////////// Jaheira BGEE only for EET
 
 IF
-	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -294,7 +273,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Jaheira BGEE
 
 IF
-	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
@@ -316,7 +294,6 @@ ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
 /////////////////////////////////////////////////// SoD Jaheira
 
 IF
-	CharName("Jaheira",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -352,7 +329,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Minsc BG2EE (Same as BGEE)
 
 IF
-	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -367,7 +343,6 @@ END
  // ToB Minsc
 
 IF
-	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -389,7 +364,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 /////////////////////////////////////////////////// Minsc BGEE only for EET
 
 IF
-	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -411,7 +385,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Minsc BGEE (Same as BG2EE)
 
 IF
-	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -435,7 +408,6 @@ ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
 /////////////////////////////////////////////////// SoD Minsc
 
 IF
-	CharName("Minsc",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -471,7 +443,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Viconia BG2EE
 
 IF
-	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BG2EE","GLOBAL",1)
 THEN
@@ -484,7 +455,6 @@ END
  // ToB Viconia
 
 IF
-	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -506,7 +476,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 /////////////////////////////////////////////////// Viconia BGEE only for EET
 
 IF
-	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -528,7 +497,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Viconia BGEE
 
 IF
-	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE","GLOBAL",1)
 THEN
@@ -550,7 +518,6 @@ ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
 /////////////////////////////////////////////////// SoD Viconia
 
 IF
-	CharName("Viconia",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -568,13 +535,9 @@ END // GAME_INCLUDES ~SoD~
 	END // JOining_Viconia = 1
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
 
 
 	ACTION_IF JOining_Dorn = 1 THEN BEGIN
@@ -586,7 +549,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Dorn BG2EE (Same as BGEE)
 
 IF
-	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -601,7 +563,6 @@ END
  // ToB Dorn
 
 IF
-	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -623,7 +584,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 /////////////////////////////////////////////////// Dorn BGEE only for EET
 
 IF
-	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -645,7 +605,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Dorn BG2EE (Same as BGEE)
 
 IF
-	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -669,7 +628,6 @@ ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
 /////////////////////////////////////////////////// SoD Dorn
 
 IF
-	CharName("Dorn",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -687,13 +645,9 @@ END // GAME_INCLUDES ~SoD~
 	END // JOining_Dorn = 1
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
 
 
 	ACTION_IF JOining_Neera = 1 THEN BEGIN
@@ -705,7 +659,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Neera BG2EE (Same as BGEE)
 
 IF
-	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -720,7 +673,6 @@ END
  // ToB Neera
 
 IF
-	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -742,7 +694,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 /////////////////////////////////////////////////// Neera BGEE only for EET
 
 IF
-	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -764,7 +715,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Neera BG2EE (Same as BGEE)
 
 IF
-	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -788,7 +738,6 @@ ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
 /////////////////////////////////////////////////// SoD Neera
 
 IF
-	CharName("Neera",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN
@@ -806,13 +755,9 @@ END // GAME_INCLUDES ~SoD~
 	END // JOining_Neera = 1
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
 
 
 	ACTION_IF JOining_Rasaad = 1 THEN BEGIN
@@ -824,7 +769,6 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Rasaad BG2EE (Same as BGEE)
 
 IF
-	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -839,7 +783,6 @@ END
  // ToB Rasaad
 
 IF
-	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_ToB","GLOBAL",1)
 THEN
@@ -861,7 +804,6 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 /////////////////////////////////////////////////// Rasaad BGEE only for EET
 
 IF
-	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
 THEN
@@ -883,7 +825,6 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 /////////////////////////////////////////////////// Rasaad BG2EE (Same as BGEE)
 
 IF
-	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
 		Global("JO_JOIN_BGEE","GLOBAL",1)
@@ -907,7 +848,6 @@ ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
 /////////////////////////////////////////////////// SoD Rasaad
 
 IF
-	CharName("Rasaad",Myself)
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_SoD","GLOBAL",1)
 THEN

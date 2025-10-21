@@ -1,18 +1,31 @@
 	ACTION_IF FILE_EXISTS_IN_GAME ~CBDRWRNG.ITM~ BEGIN
 
+OUTER_SPRINT ~CBDRWRNG~ ~!HasItem("CBDRWRNG",Player6)~
+
 <<<<<<<<ar2500_rep.baf
 IF
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
-	!HasItem("CBDRWRNG",Player6)  // Ring of the Drow
+	!HasItem("CBDRWRNG",Player6)
 	HasItem("MISC9W",Player6)
 THEN
 	RESPONSE #100
 		TakeItemReplace("DWDUST","MISC9W",Player6)
 		Continue()
 END
+IF
+	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	!HasItem("CBDRWRNG",Player6)
+	HasItem("DWCHAN01",Player6)
+THEN
+	RESPONSE #100
+		TakeItemReplace("DWDUST","DWCHAN01",Player6)
+		Continue()
+END
 >>>>>>>>
 
 	END ELSE BEGIN
+	
+OUTER_SPRINT ~CBDRWRNG~ ~~
 
 <<<<<<<<ar2500_rep.baf
 IF
@@ -30,6 +43,7 @@ END
 <<<<<<<<ar2500_add.baf
 IF
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("MISC9W",Player6)
 THEN
 	RESPONSE #100
@@ -40,6 +54,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWXBOW01","%Death_var%")  // Arbalète de vitesse elfe noir +3
 THEN
 	RESPONSE #100
@@ -50,6 +65,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWBOLT02","%Death_var%")  // Carreau d'étourdissement elfe noir +1
 THEN
 	RESPONSE #100
@@ -60,6 +76,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWBOLT01","%Death_var%")  // Carreau de sommeil elfe noir +1
 THEN
 	RESPONSE #100
@@ -70,6 +87,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWBOLT03","%Death_var%")  // Carreau elfe noir +1
 THEN
 	RESPONSE #100
@@ -80,6 +98,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWCHAN01","%Death_var%")  // Cotte de mailles elfe noir +3
 THEN
 	RESPONSE #100
@@ -90,6 +109,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWCHAN02","%Death_var%")  // Cotte de mailles elfe noir +5
 THEN
 	RESPONSE #100
@@ -100,6 +120,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWSW1H01","%Death_var%")  // Cimeterre elfe noir +3
 THEN
 	RESPONSE #100
@@ -110,6 +131,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWSW1H02","%Death_var%")  // Épée longue elfe noir +3
 THEN
 	RESPONSE #100
@@ -120,6 +142,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWBLUN01","%Death_var%")  // Fléau d'armes elfe noir +3
 THEN
 	RESPONSE #100
@@ -130,6 +153,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWHALB01","%Death_var%")  // Hallebarde elfe noir +3
 THEN
 	RESPONSE #100
@@ -140,6 +164,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWSPER01","%Death_var%")  // Lance elfe noir +3
 THEN
 	RESPONSE #100
@@ -150,6 +175,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWSHLD01","%Death_var%")  // Bouclier elfe noir +3
 THEN
 	RESPONSE #100
@@ -160,6 +186,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWCLCK01","%Death_var%")  // Cape piwafwi elfe noir
 THEN
 	RESPONSE #100
@@ -171,6 +198,7 @@ END
 IF
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("DROWITEMCHECKDONE","GLOBAL",0)
+	%CBDRWRNG%
 	HasItem("DWPLAT01","%Death_var%")  // Armure de plates complète elfe noir +5
 THEN
 	RESPONSE #100
@@ -180,4 +208,4 @@ END
 
 >>>>>>>>
 COPY_EXISTING ~ar2500.bcs~ ~override~
-  REPLACE_BCS_BLOCK ~ar2500_rep.baf~ ~ar2500_add.baf~ EVALUATE_BUFFER
+  REPLACE_BCS_BLOCK EVALUATE_BUFFER ~ar2500_rep.baf~ ~ar2500_add.baf~

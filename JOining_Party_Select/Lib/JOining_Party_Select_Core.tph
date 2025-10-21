@@ -799,11 +799,28 @@ END
 
 /////////////////////////// bg2 ///////////////////////////
 
+ OUTER_SET JOining_Aerie = 0
+ OUTER_SET JOining_Anomen = 0
+ OUTER_SET JOining_Cernd = 0
+ OUTER_SET JOining_Haerdalis = 0
+ OUTER_SET JOining_Hexxat = 0
+ OUTER_SET JOining_Jan = 0
+ OUTER_SET JOining_Keldorn = 0
+ OUTER_SET JOining_Korgan = 0
+ OUTER_SET JOining_Mazzy = 0
+ OUTER_SET JOining_Nalia = 0
+ OUTER_SET JOining_Sarevok = 0
+ OUTER_SET JOining_Valygar = 0
+ OUTER_SET JOining_Wilson = 0
+ OUTER_SET JOining_Yoshimo = 0
+
 OUTER_SPRINT "JO_JOIN" "JO_JOIN4"
 
 /////////////////////////// bg2 ///////////////////////////
 
 // Aerie
+
+ OUTER_SET JOining_Aerie = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -814,13 +831,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Aerie_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Aerie = 0
+
 // Anomen
+
+ OUTER_SET JOining_Anomen = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -831,13 +854,20 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Anomen_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Anomen = 0
+
 // Cernd
+
+ OUTER_SET JOining_Cernd = 1
+
 
 ACTION_FOR_EACH bcs IN
 
@@ -848,13 +878,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Cernd_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Cernd = 0
+
 // Haerdalis
+
+ OUTER_SET JOining_Haerdalis  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -865,13 +901,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Haerdalis_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Haerdalis = 0
+
 // Hexxat
+
+ OUTER_SET JOining_Hexxat  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -882,13 +924,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Hexxat_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Hexxat = 0
+
 // Jan
+
+ OUTER_SET JOining_Jan  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -899,13 +947,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Jan_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Jan = 0
+
 // Keldorn
+
+ OUTER_SET JOining_Keldorn  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -916,13 +970,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Keldorn_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Keldorn = 0
+
 // Korgan
+
+ OUTER_SET JOining_Korgan  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -933,13 +993,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Korgan_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Korgan = 0
+
 // Mazzy
+
+ OUTER_SET JOining_Mazzy  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -950,13 +1016,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Mazzy_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Mazzy = 0
+
 // Nalia
+
+ OUTER_SET JOining_Nalia  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -967,13 +1039,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Nalia_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Nalia = 0
+
 // Sarevok
+
+ OUTER_SET JOining_Sarevok  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -984,13 +1062,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sarevok_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Sarevok = 0
+
 // Valygar
+
+ OUTER_SET JOining_Valygar  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -1001,13 +1085,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Valygar_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Valygar = 0
+
 // Wilson
+
+ OUTER_SET JOining_Wilson  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -1018,13 +1108,19 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Wilson_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
 
+ OUTER_SET JOining_Wilson = 0
+
 // Yoshimo
+
+ OUTER_SET JOining_Yoshimo  = 1
 
 ACTION_FOR_EACH bcs IN
 
@@ -1035,11 +1131,15 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Yoshimo_All_In.baf~ EVALUATE_BUFFER
+		
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
+
+ OUTER_SET JOining_Yoshimo = 0
 
 
 //////////////////////////////////////////////////////
@@ -1376,12 +1476,13 @@ COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.baf~ EVALUATE_BUFFER
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.baf~ EVALUATE_BUFFER
 
 		END
-
+/*
 	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 70 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN4.bcs~) THEN BEGIN
 	
 COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.baf~ EVALUATE_BUFFER
 
 		END
+*/
 
 // DPLAYER3.bcs additions
 

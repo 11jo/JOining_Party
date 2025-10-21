@@ -1,0 +1,532 @@
+////////////////////////// BG2 //////////////////////////
+
+////////////////////////////////////////////////////
+
+// Aerie
+
+	ACTION_IF JOining_Aerie = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Aerie.baf
+
+/////////////////////////////////////////////////// Aerie BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+		Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("AERIEJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("AERIE",OVERRIDE)
+END
+
+ // ToB Aerie
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%AERIE25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("AERI25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Aerie.baf~ EVALUATE_BUFFER
+
+	END // JOining_Aerie = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Anomen
+
+	ACTION_IF JOining_Anomen = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Anomen.baf
+
+/////////////////////////////////////////////////// Anomen BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+		Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("ANOMENJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("ANOMEN",OVERRIDE)
+END
+
+ // ToB Anomen
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%ANOME25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("ANOM25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Anomen.baf~ EVALUATE_BUFFER
+
+	END // JOining_Anomen = 1
+
+////////////////////////////////////////////////////
+
+// Cernd
+
+	ACTION_IF JOining_Cernd = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Cernd.baf
+
+/////////////////////////////////////////////////// Cernd BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("CERNDJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("CERND",OVERRIDE)
+END
+
+ // ToB Cernd
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%CERND25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("CERN25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Cernd.baf~ EVALUATE_BUFFER
+
+	END // JOining_Cernd = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Haerdalis
+
+	ACTION_IF JOining_Haerdalis = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Haerdalis.baf
+
+/////////////////////////////////////////////////// Haerdalis BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("HAERDAJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("HAERDALI",OVERRIDE)
+END
+
+ // ToB Haerdalis
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%HAERD25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("HAER25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Haerdalis.baf~ EVALUATE_BUFFER
+
+	END // JOining_Haerdalis = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Hexxat
+
+	ACTION_IF JOining_Hexxat = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Hexxat.baf
+
+/////////////////////////////////////////////////// Hexxat BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("HEXXATJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("HEXXAT",OVERRIDE)
+END
+
+ // ToB Hexxat
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%HEXXA25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("HEXXA25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Hexxat.baf~ EVALUATE_BUFFER
+
+	END // JOining_Hexxat = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Jan
+
+	ACTION_IF JOining_Jan = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Jan.baf
+
+/////////////////////////////////////////////////// Jan BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("JANJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("JAN",OVERRIDE)
+END
+
+ // ToB Jan
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%JAN25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("JAN25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jan.baf~ EVALUATE_BUFFER
+
+	END // JOining_Jan = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Keldorn
+
+	ACTION_IF JOining_Keldorn = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Keldorn.baf
+
+/////////////////////////////////////////////////// Keldorn BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("KELDORJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("KELDORN",OVERRIDE)
+END
+
+ // ToB Keldorn
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%KELDO25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("KELD25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Keldorn.baf~ EVALUATE_BUFFER
+
+	END // JOining_Keldorn = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Korgan
+
+	ACTION_IF JOining_Korgan = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Korgan.baf
+
+/////////////////////////////////////////////////// Korgan BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("KORGANJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("KORGAN",OVERRIDE)
+END
+
+ // ToB Korgan
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%KORGA25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("KORG25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Korgan.baf~ EVALUATE_BUFFER
+
+	END // JOining_Korgan = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Mazzy
+
+	ACTION_IF JOining_Mazzy = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Mazzy.baf
+
+/////////////////////////////////////////////////// Mazzy BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("MAZZYJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("MAZZY",OVERRIDE)
+END
+
+ // ToB Mazzy
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%MAZZY25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("MAZZ25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Mazzy.baf~ EVALUATE_BUFFER
+
+	END // JOining_Mazzy = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Nalia
+
+	ACTION_IF JOining_Nalia = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Nalia.baf
+
+/////////////////////////////////////////////////// Nalia BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("NALIAJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("NALIA",OVERRIDE)
+END
+
+ // ToB Nalia
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%NALIA25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("NALI25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Nalia.baf~ EVALUATE_BUFFER
+
+	END // JOining_Nalia = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Sarevok
+
+	ACTION_IF JOining_Sarevok = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Sarevok.baf
+
+/////////////////////////////////////////////////// Sarevok BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetDialog("SAREV25J")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("SAREV25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Sarevok.baf~ EVALUATE_BUFFER
+
+	END // JOining_Sarevok = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Valygar
+
+	ACTION_IF JOining_Valygar = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Valygar.baf
+
+/////////////////////////////////////////////////// Valygar BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_BG2EE","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("VALYGARJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("VALYGAR",OVERRIDE)
+END
+
+ // ToB Valygar
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_ToB","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetDialog("%VALYG25J%")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("VALY25",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Valygar.baf~ EVALUATE_BUFFER
+
+	END // JOining_Valygar = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Wilson
+
+	ACTION_IF JOining_Wilson = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Wilson.baf
+
+/////////////////////////////////////////////////// Wilson BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetDialog("WILSONJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("WILSON",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Wilson.baf~ EVALUATE_BUFFER
+
+	END // JOining_Wilson = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+
+// Yoshimo
+
+	ACTION_IF JOining_Yoshimo = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Yoshimo.baf
+
+/////////////////////////////////////////////////// Yoshimo BG2EE
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetDialog("YOSHJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("YOSHIMO",OVERRIDE)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Yoshimo.baf~ EVALUATE_BUFFER
+
+	END // JOining_Yoshimo = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
