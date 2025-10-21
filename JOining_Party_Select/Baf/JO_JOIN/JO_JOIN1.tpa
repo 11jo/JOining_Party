@@ -22,7 +22,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("IMOEN2J")
@@ -34,7 +34,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%IMOEN25J%")
@@ -58,7 +58,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("IMOEN2J")
@@ -79,7 +79,7 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("IMOEN2") // Joined Dialogue for BGEE only
@@ -111,8 +111,8 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("EDWINJ")
@@ -120,11 +120,11 @@ THEN
 //		ChangeAIScript("EDWIN",OVERRIDE)
 END
 
- // ToB Edwin Global("JO_JOIN_ToB","GLOBAL",1)
+ // ToB Edwin Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%EDWIN25J%")
@@ -145,7 +145,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
  
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("EDWINJ")
@@ -167,8 +167,8 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("EDWINJ")
@@ -220,7 +220,7 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("JAHEIRAJ")
@@ -232,7 +232,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%JAHEI25J%")
@@ -253,7 +253,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("JAHEIRAJ")
@@ -274,7 +274,7 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("JAHEIJ") // Joined Dialogue for BGEE only
@@ -331,8 +331,8 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
@@ -344,7 +344,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%MINSC25J%")
@@ -365,7 +365,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
@@ -387,8 +387,8 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("MINSCJ")
@@ -444,7 +444,7 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BG2EE","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("VICONIJ")
@@ -456,7 +456,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%VICON25J%")
@@ -477,7 +477,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("VICONIJ")
@@ -498,7 +498,7 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetDialog("VICONJ")  // Joined Dialogue for BGEE only
@@ -551,8 +551,8 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
@@ -564,7 +564,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%DORN25J%")
@@ -585,7 +585,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
@@ -607,8 +607,8 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("DORNJ")
@@ -661,8 +661,8 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
@@ -674,7 +674,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%NEERA25J%")
@@ -695,7 +695,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
@@ -717,8 +717,8 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("NEERAJ")
@@ -771,8 +771,8 @@ ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")
@@ -784,7 +784,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_ToB","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("%RASAA25J%")
@@ -805,7 +805,7 @@ ACTION_IF GAME_IS ~eet~ THEN BEGIN
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_BGEE_EET","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")
@@ -827,8 +827,8 @@ ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
-		Global("JO_JOIN_BGEE","GLOBAL",1)
-		Global("JO_JOIN_BG2EE","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("RASAADJ")

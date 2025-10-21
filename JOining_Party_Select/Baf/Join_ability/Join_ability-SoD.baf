@@ -1,9 +1,6 @@
 IF
-	Global("JO_JOIN_SoD","GLOBAL",0)
+	!Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SoD","GLOBAL",1)
-		SetGlobal("JO_JOIN_BG2EE","GLOBAL",0)
-		SetGlobal("JO_JOIN_ToB","GLOBAL",0)
-		SetGlobal("%JO_JOIN_BG%","GLOBAL",0)
+		SetGlobal("JO_JOIN_CAMPAIGN","GLOBAL",2)
 END

@@ -7,13 +7,13 @@
 // Voghiln
 
 IF
-	CharName("Voghiln",Myself)
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDVOGHIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDVOGHIL",OVERRIDE)
+//		ChangeAIScript("BDVOGHIL",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -21,13 +21,13 @@ END
 // Corwin 
 
 IF
-	CharName("Corwin",Myself)
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDCORWIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDCORWIN",OVERRIDE)
+//		ChangeAIScript("BDCORWIN",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -35,13 +35,13 @@ END
 // Mkhiin
 
 IF
-	CharName("Mkhiin",Myself)
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDMKHIIJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDMKHIIN",OVERRIDE)
+//		ChangeAIScript("BDMKHIIN",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
@@ -49,13 +49,13 @@ END
 // Glint
 
 IF
-	CharName("Glint",Myself)
 	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDGLINTJ")
 		SetGlobal("JO_JOIN","LOCALS",0)
-		ChangeAIScript("BDGLINT",OVERRIDE)
+//		ChangeAIScript("BDGLINT",OVERRIDE)
 END
 
 ////////////////////////////////////////////////////
