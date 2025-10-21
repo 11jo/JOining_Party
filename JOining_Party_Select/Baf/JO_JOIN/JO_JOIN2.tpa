@@ -554,7 +554,6 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Yeslick.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("BAELOTHJ")

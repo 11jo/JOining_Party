@@ -8,7 +8,9 @@
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+	OR(2)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetDialog("%BG1_JOINED%")
