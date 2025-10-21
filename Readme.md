@@ -91,26 +91,35 @@ When returning temporarly in party, statistic, inventory or level are available.
 
 Files : 
 
-- [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select.tph)  
-   - Search `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable.
+- [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph)  
+   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable in BCS.
+   
+- [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph)  
+   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable in DLG.
 
 - [JOining_Party_Select_Myself.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph)  
-   - Search `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each existing Myself.
+   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each existing Myself in DLG and BCS.
+
+- [JOining_Party_Select_End.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph)  
+   - Implement a little script to other (not selected) NPCs.
+
+- [JOining_Party_Select_End.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
+   - Workarounds / Corrections for scripts, dialogue and else.
 
 - [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core.tph)  
    - Implement scripts and dialogs for each selected NPCs.
 
-- [JOining_Party_Select_End.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
-   - Implement a little script to other (not selected) NPCs.
-
 - [All_In.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/All_In.BAF)  
    - Added to each selected NPCs to deal with Npc to Familiar switch and statut.
 
-- [%JO_JOIN%.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf)  
-   -  JO_JOIN1.BAF to JO_JOIN5.BAF are scripts added to Familiar OVERRIDE script, only for a short time, it will set the right dialog and script depending of the NPC/Familiar.
+- [%JO_JOIN%.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOIN)  
+   -  JO_JOIN1.tpa to JO_JOIN5.tpa are specific additions for Familiar, it will set the right dialog and script depending of the campaign and NPC/Familiar.
 
 - [JO_JOINI.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOINI.BAF)  
    - Script added to Familiar GENERAL script, will remain, it will deal with switch order and Familiar behavior.
+
+- [JO_JOINI.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOINX.BAF)  
+   - Script added to Familiar RACE script for a very short moment, in order to deal with XP and  other settings for Familiar.
 
 - [Join_ability](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/Join_ability.baf)  
    - Add special ability to Charname, deal with dialog options with familiars and set NPCs files depending of the game (BGEE / BG2EE)
@@ -147,12 +156,8 @@ GLOBAL :
 
 ---
 
-- Global("JO_JOIN_BGEE_EET","GLOBAL",0)
-- Global("JO_JOIN_BG2EE","GLOBAL",0)
-- Global("JO_JOIN_ToB","GLOBAL",0)
-- Global("%JO_JOIN_BG%","GLOBAL",0)
-- Global("JO_JOIN_SoD","GLOBAL",0)
-   - Set variable corresponding to game campaign to enable relevant override scripts and joining dialog. Used in %JO_JOIN%.baf (1.2.3.4.5).
+- Global("JO_JOIN_CAMPAIGN","GLOBAL",0)
+   - Set variable corresponding to game campaign to enable relevant override scripts and joining dialog. Used in %JO_JOIN%.tpa (1.2.3.4.5).
 
 ---
 
@@ -187,7 +192,6 @@ LOCALS :
    - Set to 2 when Familiar health is below 5HP and after spell JOIN648 is applied.
    - Set to 3 when Familiar health is above 4HP and after spell JOIR648 is applied.
 
-
 ---
 
 - Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
@@ -202,16 +206,6 @@ LOCALS :
 
 - Global("JO_JOINI","LOCALS",0)
    - Set when familiar switch in party, and enable block to return to familiar state.
-
----
-
-- Global("JO_%Death_var%_ClearActions","LOCALS",0)
-   - Not tested yet, to make familiar rest or clearaction along party members.
-
----
-
-- Global("JO_%Death_var%_REST","LOCALS",0)
-   - Not tested yet, to make familiar rest or clearaction along party members.
 
 ---
 
@@ -242,7 +236,7 @@ LOCALS :
 ---
 
 - Global("JO_JOIN_CLEAR","LOCALS",0)
-   - Not implemented yet, will be used to keep assigned script when switching in and out party.
+   - Used to deal with familiar XP and keeping assigned script when switching in and out party.
 
 ---
 
@@ -268,11 +262,12 @@ LOCALS :
 
 - Global("JO_JOIN_FEELING","LOCALS",0)
    - Not quite tested yet, DisplayStringHead to notify familiar health statut.
+   - Some States are implemented too.
 
 ---
 
 - Global("JO_JOIN_XPGT_X","LOCALS",0)
-   - Not implemented yet, will hopefully add the relevant XP to familiar to be on the same level as party members.
+   - Will hopefully add the relevant XP to familiar to be on the same level as party members.
 
 ---
 
