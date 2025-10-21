@@ -6,6 +6,12 @@
 
 // Voghiln
 
+	ACTION_IF JOining_Voghiln = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Voghiln.baf
+
+/////////////////////////////////////////////////// Voghiln BG2EE
+
 IF
 	Global("JO_JOIN","LOCALS",2)
 	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
@@ -16,9 +22,20 @@ THEN
 //		ChangeAIScript("BDVOGHIL",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Voghiln.baf~ EVALUATE_BUFFER
+
+	END // JOining_Voghiln = 1
+
 ////////////////////////////////////////////////////
 
 // Corwin 
+
+	ACTION_IF JOining_Corwin = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Corwin.baf
+
+/////////////////////////////////////////////////// Corwin BG2EE
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -30,9 +47,20 @@ THEN
 //		ChangeAIScript("BDCORWIN",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Corwin.baf~ EVALUATE_BUFFER
+
+	END // JOining_Corwin = 1
+
 ////////////////////////////////////////////////////
 
 // Mkhiin
+
+	ACTION_IF JOining_Mkhiin = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Mkhiin.baf
+
+/////////////////////////////////////////////////// Mkhiin BG2EE
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -44,9 +72,20 @@ THEN
 //		ChangeAIScript("BDMKHIIN",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Mkhiin.baf~ EVALUATE_BUFFER
+
+	END // JOining_Mkhiin = 1
+
 ////////////////////////////////////////////////////
 
 // Glint
+
+	ACTION_IF JOining_Glint = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Glint.baf
+
+/////////////////////////////////////////////////// Glint BG2EE
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -57,6 +96,11 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("BDGLINT",OVERRIDE)
 END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Glint.baf~ EVALUATE_BUFFER
+
+	END // JOining_Glint = 1
 
 ////////////////////////////////////////////////////
 

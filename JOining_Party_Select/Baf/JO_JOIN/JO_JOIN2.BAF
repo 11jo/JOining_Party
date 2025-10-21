@@ -4,6 +4,10 @@
 
 // Ajantis
 
+	ACTION_IF JOining_Ajantis = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Ajantis.baf
+
 IF
 	Global("JO_JOIN","LOCALS",2)
 THEN
@@ -13,9 +17,18 @@ THEN
 //		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Ajantis.baf~ EVALUATE_BUFFER
+
+	END // JOining_Ajantis = 1
+
 ////////////////////////////////////////////////////
 
 // Alora
+
+	ACTION_IF JOining_Alora = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Alora.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -26,9 +39,20 @@ THEN
 //		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Alora.baf~ EVALUATE_BUFFER
+
+	END // JOining_Alora = 1
+
 ////////////////////////////////////////////////////
 
 // Branwen BGEE EET
+
+	ACTION_IF JOining_Branwen = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Branwen.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -39,6 +63,15 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("BRANWEN_",OVERRIDE) //Script for BGEE in EET
 END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Branwen.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Branwen.baf
 
 // Branwen BGEE
 
@@ -52,9 +85,20 @@ THEN
 //		ChangeAIScript("BRANWEN",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Branwen.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+	END // JOining_Branwen = 1
+
 ////////////////////////////////////////////////////
 
 // Coran
+
+	ACTION_IF JOining_Coran = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Coran.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -65,9 +109,18 @@ THEN
 //		ChangeAIScript("%CORAN_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Coran.baf~ EVALUATE_BUFFER
+
+	END // JOining_Coran = 1
+
 ////////////////////////////////////////////////////
 
 // Dynaheir
+
+	ACTION_IF JOining_Dynaheir = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Dynaheir.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -78,9 +131,18 @@ THEN
 //		ChangeAIScript("%DYNAHEIR_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dynaheir.baf~ EVALUATE_BUFFER
+
+	END // JOining_Dynaheir = 1
+
 ////////////////////////////////////////////////////
 
 // Eldoth
+
+	ACTION_IF JOining_Eldoth = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Eldoth.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -91,9 +153,20 @@ THEN
 //		ChangeAIScript("%ELDOTH_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Eldoth.baf~ EVALUATE_BUFFER
+
+	END // JOining_Eldoth = 1
+
 ////////////////////////////////////////////////////
 
 // Faldorn BGEE EET
+
+	ACTION_IF JOining_Faldorn = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Faldorn.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -104,6 +177,15 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("FALDORN_",OVERRIDE) //Script for BGEE in EET
 END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Faldorn.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Faldorn.baf
 
 // Faldorn BGEE
 
@@ -117,9 +199,22 @@ THEN
 //		ChangeAIScript("FALDORN",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Faldorn.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+	END // JOining_Faldorn = 1
+
 ////////////////////////////////////////////////////
 
 // Garrick BGEE EET
+
+	ACTION_IF JOining_Garrick = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Garrick.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -130,6 +225,15 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("GARRICK_",OVERRIDE) //Script for BGEE in EET
 END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Garrick.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Garrick.baf
 
 // Garrick BGEE
 
@@ -143,9 +247,20 @@ THEN
 //		ChangeAIScript("GARRICK",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Garrick.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+	END // JOining_Garrick = 1
+
 ////////////////////////////////////////////////////
 
 // Kagain
+
+	ACTION_IF JOining_Kagain = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Kagain.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -156,9 +271,18 @@ THEN
 //		ChangeAIScript("%KAGAIN_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Kagain.baf~ EVALUATE_BUFFER
+
+	END // JOining_Kagain = 1
+
 ////////////////////////////////////////////////////
 
 // Khalid
+
+	ACTION_IF JOining_Khalid = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Khalid.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -169,9 +293,18 @@ THEN
 //		ChangeAIScript("%KHALID_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Khalid.baf~ EVALUATE_BUFFER
+
+	END // JOining_Khalid = 1
+
 ////////////////////////////////////////////////////
 
 // Kivan
+
+	ACTION_IF JOining_Kivan = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Kivan.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -182,9 +315,18 @@ THEN
 //		ChangeAIScript("%KIVAN_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Kivan.baf~ EVALUATE_BUFFER
+
+	END // JOining_Kivan = 1
+
 ////////////////////////////////////////////////////
 
-// Montaron BGEE EET
+// Montaron
+
+	ACTION_IF JOining_Montaron = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Montaron.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -195,9 +337,18 @@ THEN
 //		ChangeAIScript("%MONTARON_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Montaron.baf~ EVALUATE_BUFFER
+
+	END // JOining_Montaron = 1
+
 ////////////////////////////////////////////////////
 
 // Quayle
+
+	ACTION_IF JOining_Quayle = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Quayle.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -208,9 +359,18 @@ THEN
 //		ChangeAIScript("%QUAYLE_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Quayle.baf~ EVALUATE_BUFFER
+
+	END // JOining_Quayle = 1
+
 ////////////////////////////////////////////////////
 
 // Safana
+
+	ACTION_IF JOining_Safana = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Safana.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -221,9 +381,18 @@ THEN
 //		ChangeAIScript("%SAFANA_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Safana.baf~ EVALUATE_BUFFER
+
+	END // JOining_Safana = 1
+
 ////////////////////////////////////////////////////
 
 // Sharteel
+
+	ACTION_IF JOining_Sharteel = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Sharteel.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -234,9 +403,20 @@ THEN
 //		ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Sharteel.baf~ EVALUATE_BUFFER
+
+	END // JOining_Sharteel = 1
+
 ////////////////////////////////////////////////////
 
 // Skie BGEE EET
+
+	ACTION_IF JOining_Skie = 1 THEN BEGIN
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Skie.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -247,6 +427,15 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("SKIE_",OVERRIDE) //Script for BGEE in EET
 END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Skie.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~eet~
+
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< .../JOining_Skie.baf
 
 // Skie BGEE
 
@@ -260,9 +449,20 @@ THEN
 //		ChangeAIScript("SKIE",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Skie.baf~ EVALUATE_BUFFER
+
+END // GAME_IS ~bgee eet~
+
+	END // JOining_Skie = 1
+
 ////////////////////////////////////////////////////
 
 // Tiax
+
+	ACTION_IF JOining_Tiax = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Tiax.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -273,9 +473,18 @@ THEN
 //		ChangeAIScript("%TIAX_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Tiax.baf~ EVALUATE_BUFFER
+
+	END // JOining_Tiax = 1
+
 ////////////////////////////////////////////////////
 
 // Xan
+
+	ACTION_IF JOining_Xan = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Xan.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -286,9 +495,18 @@ THEN
 //		ChangeAIScript("%XAN_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Xan.baf~ EVALUATE_BUFFER
+
+	END // JOining_Xan = 1
+
 ////////////////////////////////////////////////////
 
 // Xzar
+
+	ACTION_IF JOining_Xzar = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Xzar.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -299,9 +517,18 @@ THEN
 //		ChangeAIScript("%XZAR_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Xzar.baf~ EVALUATE_BUFFER
+
+	END // JOining_Xzar = 1
+
 ////////////////////////////////////////////////////
 
 // Yeslick
+
+	ACTION_IF JOining_Yeslick = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Yeslick.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -312,9 +539,18 @@ THEN
 //		ChangeAIScript("%YESLICK_BCS%",OVERRIDE)
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Yeslick.baf~ EVALUATE_BUFFER
+
+	END // JOining_Yeslick = 1
+
 ////////////////////////////////////////////////////
 
-// Baeloth BGEE EET
+// Baeloth BGEE
+
+	ACTION_IF JOining_Baeloth = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Baeloth.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
@@ -325,5 +561,10 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("BDBAELOT",OVERRIDE)
 END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Baeloth.baf~ EVALUATE_BUFFER
+
+	END // JOining_Baeloth = 1
 
 ////////////////////////////////////////////////////

@@ -413,7 +413,7 @@ EXTEND_TOP ~JORAK00.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/JORAK01.baf~ EV
 
 END // ACTION_FOR_EACH MAIN
 
-
+/*
 ///////////////////////////////////////////////////////////////////////////////
 // All_In.baf    VS    JO_JOIN.BAF
 ///////////////////////////////////////////////////////////////////////////////
@@ -451,15 +451,6 @@ ACTION_FOR_EACH Death_var IN
 // Original Baeloth ~Baeloth~                          // Baeloth
 
 
-/////////////////////////// SoD ///////////////////////////
-
-
-// Original Voghiln ~Voghiln~                         // Voghiln
-// Original Corwin ~Corwin~                           // Corwin
-// Original Mkhiin ~Mkhiin~                           // Mkhiin
-// Original Glint ~Glint~                             // Glint
-
-
 BEGIN
 
 COPY ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~
@@ -468,6 +459,6 @@ COPY ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ ~weidu_
 				~
 
 END
-
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////
