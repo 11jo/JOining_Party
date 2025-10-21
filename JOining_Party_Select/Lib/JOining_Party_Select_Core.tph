@@ -140,8 +140,6 @@ END
  OUTER_SET JOining_Rasaad = 0
 
 /////////////////////////// Continuous ///////////////////////////
-
-		OUTER_SPRINT "JO_JOIN" "JO_JOIN1"
 		
 // Imoen
 
@@ -373,8 +371,6 @@ END
  OUTER_SET JOining_Xzar = 0
  OUTER_SET JOining_Yeslick = 0
  OUTER_SET JOining_Baeloth = 0
-
-OUTER_SPRINT "JO_JOIN" "JO_JOIN2"
 
 /////////////////////////// bg1 ///////////////////////////
 
@@ -868,14 +864,12 @@ END
 
 /////////////////////////// SoD ///////////////////////////
 
-OUTER_SPRINT "JO_JOIN" "JO_JOIN3"
-
-/////////////////////////// SoD ///////////////////////////
-
  OUTER_SET JOining_Voghiln = 0
  OUTER_SET JOining_Corwin = 0
  OUTER_SET JOining_Mkhiin = 0
  OUTER_SET JOining_Glint = 0
+
+/////////////////////////// SoD ///////////////////////////
 
 // Voghiln
 
@@ -990,8 +984,6 @@ END
  OUTER_SET JOining_Valygar = 0
  OUTER_SET JOining_Wilson = 0
  OUTER_SET JOining_Yoshimo = 0
-
-OUTER_SPRINT "JO_JOIN" "JO_JOIN4"
 
 /////////////////////////// bg2 ///////////////////////////
 
@@ -1628,41 +1620,11 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 
 	END
 
-
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINX.bcs~ BEGIN
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINX.baf~ EVALUATE_BUFFER
 
 	END
-
-/*
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 10 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN1.bcs~) THEN BEGIN
-	
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.baf~ EVALUATE_BUFFER
-
-		END
-*/
-/*
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 30 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN2.bcs~) THEN BEGIN
-	
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.baf~ EVALUATE_BUFFER
-
-		END
-*/
-/*
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 60 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN3.bcs~) THEN BEGIN
-	
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.baf~ EVALUATE_BUFFER
-
-		END
-*/
-/*
-	ACTION_IF (MOD_IS_INSTALLED ~JOining_Party_Select.tp2~ 70 AND  NOT FILE_EXISTS_IN_GAME ~JO_JOIN4.bcs~) THEN BEGIN
-	
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.baf~ EVALUATE_BUFFER
-
-		END
-*/
 
 // DPLAYER3.bcs additions
 
