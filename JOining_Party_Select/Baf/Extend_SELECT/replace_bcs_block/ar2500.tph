@@ -12,15 +12,6 @@ THEN
 		TakeItemReplace("DWDUST","MISC9W",Player6)
 		Continue()
 END
-IF
-	Global("DROWITEMCHECKDONE","GLOBAL",0)
-	!HasItem("CBDRWRNG",Player6)
-	HasItem("DWCHAN01",Player6)
-THEN
-	RESPONSE #100
-		TakeItemReplace("DWDUST","DWCHAN01",Player6)
-		Continue()
-END
 >>>>>>>>
 
 	END ELSE BEGIN

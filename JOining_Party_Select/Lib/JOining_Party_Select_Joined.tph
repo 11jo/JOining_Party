@@ -102,6 +102,8 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Branwen
 // Original Branwen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%BRANWEN_BCS%~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTBRAN~)
+// Original Branwen // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN_~)
+// Original Branwen // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN~)
 
 // Coran
 // Original Coran AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%CORAN_BCS%~)
@@ -114,9 +116,13 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Faldorn
 // Original Faldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%FALDORN_BCS%~)
+// Original Faldorn // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~FALDORN_~)
+// Original Faldorn // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~FALDORN~)
 
 // Garrick
 // Original Garrick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%GARRICK_BCS%~)
+// Original Garrick // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GARRICK_~)
+// Original Garrick // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GARRICK~)
 
 // Kagain
 // Original Kagain AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KAGAIN_BCS%~)
@@ -141,6 +147,8 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Skie
 // Original Skie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SKIE_BCS%~)
+// Original Skie // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SKIE_~)
+// Original Skie // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SKIE~)
 
 // Tiax
 // Original Tiax AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%TIAX_BCS%~)
