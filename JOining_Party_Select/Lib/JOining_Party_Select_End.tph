@@ -21,6 +21,50 @@
 		END
 	END // ACTION_FOR_EACH // RERAK02
 
+	ACTION_FOR_EACH bcs IN BDBALDUR BDELEV02 BDEXITBF BDNORES2 HELLPOOL BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// IsOverMe situation
+				SPRINT textToReplace ~^[%TAB% ]*OR(6)
+^[%TAB% ]*IsOverMe(Player1)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7) 
+IsOverMe(Familiar)
+IsOverMe(Player1)~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : OR(6) IsOverMe found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+				BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // CreateVisualEffectObject
+
+	ACTION_FOR_EACH bcs IN BALDUR BALDUR25 BDBALDUR BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// Lilarcor situation
+				SPRINT textToReplace ~^[%TAB% ]*OR(6)
+^[%TAB% ]*HasItemEquipedReal(\([^)]*\),Player1)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7)
+HasItemEquipedReal(\1,Familiar)
+HasItemEquipedReal(\1,Player1)~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : OR(6) HasItemEquipedReal found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+				BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // CreateVisualEffectObject
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // All_In.baf
@@ -178,18 +222,6 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
-	// IsOverMe situation
-				SPRINT textToReplace ~^[%TAB% ]*OR(6)
-^[%TAB% ]*IsOverMe(Player1)~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7) 
-IsOverMe(Familiar)
-IsOverMe(Player1)~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : OR(6) IsOverMe found in %SOURCE_FILESPEC%
-					~
-				END
 				SPRINT textToReplace ~^[%TAB% ]*!IsOverMe(Player2)
 ^[%TAB% ]*!IsOverMe(Player3)~
 				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -209,18 +241,6 @@ IsOverMe(Player1)~
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
-	// Lilarcor situation
-				SPRINT textToReplace ~^[%TAB% ]*OR(6)
-^[%TAB% ]*HasItemEquipedReal(\([^)]*\),Player1)~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7)
-HasItemEquipedReal(\1,Familiar)
-HasItemEquipedReal(\1,Player1)~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : OR(6) HasItemEquipedReal found in %SOURCE_FILESPEC%
-					~
-				END
 	// HabibAppearance situation
 				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem(\([^)]*\),\[-1\.-1\]))
 	^[%TAB% ]*ActionOverride(Player3,DropItem("\([^)]*\)",\[-1\.-1\]))~

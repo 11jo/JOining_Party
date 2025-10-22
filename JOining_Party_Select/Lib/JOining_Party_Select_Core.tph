@@ -622,7 +622,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kivan_All_In.baf~
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kivan_All_In.baf~ EVALUATE_BUFFER
 		
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
 
@@ -645,7 +645,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Montaron_All_In.baf~
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Montaron_All_In.baf~ EVALUATE_BUFFER
 		
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
 
@@ -668,7 +668,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Quayle_All_In.baf~
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Quayle_All_In.baf~ EVALUATE_BUFFER
 		
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
 
@@ -691,7 +691,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Safana_All_In.baf~
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Safana_All_In.baf~ EVALUATE_BUFFER
 		
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
 
@@ -714,7 +714,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~ EVALUATE_BUFFER
 		
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
 
@@ -739,7 +739,7 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 	
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Skie_All_In.baf~
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Skie_All_In.baf~ EVALUATE_BUFFER
 		
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
 

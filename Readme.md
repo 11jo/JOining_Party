@@ -31,6 +31,13 @@
 - When loading a save, familiar will switch **one by one**, it's an important state that need to happen to make them reliably available for script and dialog.
 
 
+## Overwiew :  
+----------------
+
+This mod aims to provide a way to extend the limit of 6 characters in party by using the familiar status, while preserving quests, interjections, and banters in order to enjoy the NPCs as party member.
+
+There is no real limitation as for the number of familiar players can have along side them.
+
 
 ## Instruction :  
 ----------------
@@ -86,7 +93,7 @@ When returning temporarly in party, statistic, inventory or level are available.
 
 
 
-## Description :
+## Files Description :
 ----------------
 
 Files : 
