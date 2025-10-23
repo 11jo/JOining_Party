@@ -17,6 +17,7 @@ THEN
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("%BG1_BCS%",OVERRIDE)
+		Continue()
 END
 
  // SoD
@@ -30,6 +31,7 @@ THEN
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("%SoD_BCS%",OVERRIDE)
+		Continue()
 END
 
 ////////////////////////////////////////////////////
