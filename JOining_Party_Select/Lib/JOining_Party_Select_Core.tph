@@ -1621,7 +1621,6 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-
 	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINI.bcs~ BEGIN
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
