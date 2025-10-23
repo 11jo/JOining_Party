@@ -162,7 +162,7 @@ THEN
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN)
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
-		MakeGlobal(Myself)
+		MakeGlobal()
 		SetInterrupt(TRUE)
 END
 
@@ -210,6 +210,8 @@ THEN
 //		ChangeAIScript("",CLASS)
 //		ChangeAIScript("",GENERAL)
 		ChangeAIScript("JO_JOINI",GENERAL)
+		MakeGlobal()
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
+		Continue()
 END
