@@ -1,0 +1,293 @@
+// 1
+
+IF
+	Allegiance("Edwin",FAMILIAR)
+	Global("JO_JOIN_Edwin","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDEDWIN",OVERRIDE)
+		SetGlobal("JO_JOIN_Edwin","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Jaheira",FAMILIAR)
+	Global("JO_JOIN_Jaheira","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDJAHEIR",OVERRIDE)
+		SetGlobal("JO_JOIN_Jaheira","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Minsc",FAMILIAR)
+	Global("JO_JOIN_Minsc","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDMINSC",OVERRIDE)
+		SetGlobal("JO_JOIN_Minsc","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Viconia",FAMILIAR)
+	Global("JO_JOIN_Viconia","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDVICONI",OVERRIDE)
+		SetGlobal("JO_JOIN_Viconia","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Dorn",FAMILIAR)
+	Global("JO_JOIN_Dorn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDDORN",OVERRIDE)
+		SetGlobal("JO_JOIN_Dorn","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Neera",FAMILIAR)
+	Global("JO_JOIN_Neera","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDNEERA",OVERRIDE)
+		SetGlobal("JO_JOIN_Neera","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Rasaad",FAMILIAR)
+	Global("JO_JOIN_Rasaad","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDRASAAD",OVERRIDE)
+		SetGlobal("JO_JOIN_Rasaad","MYAREA",1)
+		
+END
+
+// 2
+
+IF
+	Allegiance("Ajantis",FAMILIAR)
+	Global("JO_JOIN_Ajantis","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Ajantis","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Alora",FAMILIAR)
+	Global("JO_JOIN_Alora","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Alora","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Branwen",FAMILIAR)
+	Global("JO_JOIN_Branwen","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%BRANWEN_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Branwen","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Coran",FAMILIAR)
+	Global("JO_JOIN_Coran","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%CORAN_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Coran","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Dynaheir",FAMILIAR)
+	Global("JO_JOIN_Dynaheir","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDDYNAHE",OVERRIDE)
+		SetGlobal("JO_JOIN_Dynaheir","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Eldoth",FAMILIAR)
+	Global("JO_JOIN_Eldoth","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%ELDOTH_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Eldoth","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Faldorn",FAMILIAR)
+	Global("JO_JOIN_Faldorn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%FALDORN_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Faldorn","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Garrick",FAMILIAR)
+	Global("JO_JOIN_Garrick","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%GARRICK_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Garrick","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Minsc",FAMILIAR)
+	Global("JO_JOIN_Minsc","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDMINSC",OVERRIDE)
+		SetGlobal("JO_JOIN_Minsc","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Kagain",FAMILIAR)
+	Global("JO_JOIN_Kagain","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%KAGAIN_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Kagain","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Khalid",FAMILIAR)
+	Global("JO_JOIN_Khalid","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDKHALID",OVERRIDE)
+		SetGlobal("JO_JOIN_Khalid","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Kivan",FAMILIAR)
+	Global("JO_JOIN_Kivan","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%KIVAN_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Kivan","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Montaron",FAMILIAR)
+	Global("JO_JOIN_Montaron","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%MONTARON_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Montaron","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Quayle",FAMILIAR)
+	Global("JO_JOIN_Quayle","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%QUAYLE_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Quayle","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Safana",FAMILIAR)
+	Global("JO_JOIN_Safana","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDSAFANA",OVERRIDE)
+		SetGlobal("JO_JOIN_Safana","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Sharteel",FAMILIAR)
+	Global("JO_JOIN_Sharteel","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Sharteel","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Skie",FAMILIAR)
+	Global("JO_JOIN_Skie","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%SKIE_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Skie","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Tiax",FAMILIAR)
+	Global("JO_JOIN_Tiax","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%TIAX_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Tiax","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Xan",FAMILIAR)
+	Global("JO_JOIN_Xan","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%XAN_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Xan","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Xzar",FAMILIAR)
+	Global("JO_JOIN_Xzar","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%XZAR_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Xzar","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Yeslick",FAMILIAR)
+	Global("JO_JOIN_Yeslick","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("%YESLICK_BCS%",OVERRIDE)
+		SetGlobal("JO_JOIN_Yeslick","MYAREA",1)
+		
+END
+
+IF
+	Allegiance("Baeloth",FAMILIAR)
+	Global("JO_JOIN_Baeloth","MYAREA",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BDBAELOT",OVERRIDE)
+		SetGlobal("JO_JOIN_Baeloth","MYAREA",1)
+		
+END

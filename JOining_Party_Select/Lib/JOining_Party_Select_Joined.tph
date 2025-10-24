@@ -58,37 +58,37 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Imoen // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN2~)
 
 // Edwin
-// Original Edwin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%EDWIN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWI25~)
+// Original Edwin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%EDWIN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWI25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDEDWIN~)
 // Original Edwin // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWIN_~)
 // Original Edwin // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EDWIN~)
 
 // Jaheira
-// Original Jaheira AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%JAHEIRA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHE25~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTJAHEIR~)
+// Original Jaheira AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%JAHEIRA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHE25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDJAHEIR~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTJAHEIR~)
 // Original Jaheira // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHEIRA_~)
 // Original Jaheira // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JAHEIRA~)
 
 // Minsc
-// Original Minsc AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%MINSC_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINS25~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTMINSC~)
+// Original Minsc AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%MINSC_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINS25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDMINSC~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTMINSC~)
 // Original Minsc // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINSC_~)
 // Original Minsc // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~MINSC~)
 
 // Viconia
-// Original Viconia AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%VICONIA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICO25~)
+// Original Viconia AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%VICONIA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICO25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDVICONI~)
 // Original Viconia // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICONIA_~)
 // Original Viconia // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VICONIA~)
 
 // Dorn
-// Original Dorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DORN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN25~)
+// Original Dorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DORN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDDORN~)
 // Original Dorn // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN_~)
 // Original Dorn // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DORN~)
 
 // Neera
-// Original Neera AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEERA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEER25~)
+// Original Neera AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEERA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEER25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDNEERA~)
 // Original Neera // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEERA_~)
 // Original Neera // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NEERA~)
 
 // Rasaad
-// Original Rasaad AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%RASAAD_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASA25~)
+// Original Rasaad AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%RASAAD_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASA25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDRASAAD~)
 // Original Rasaad // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASAAD_~)
 // Original Rasaad // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASAAD~)
 
@@ -109,7 +109,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Coran AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%CORAN_BCS%~)
 
 // Dynaheir
-// Original Dynaheir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DYNAHEIR_BCS%~)
+// Original Dynaheir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DYNAHEIR_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDDYNAHE~)
 
 // Eldoth
 // Original Eldoth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ELDOTH_BCS%~)
@@ -128,7 +128,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Kagain AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KAGAIN_BCS%~)
 
 // Khalid
-// Original Khalid AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KHALID_BCS%~)
+// Original Khalid AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KHALID_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDKHALID~)
 
 // Kivan
 // Original Kivan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KIVAN_BCS%~)
@@ -140,7 +140,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Quayle AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%QUAYLE_BCS%~)
 
 // Safana
-// Original Safana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SAFANA_BCS%~)
+// Original Safana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SAFANA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDSAFANA~)
 
 // Sharteel
 // Original Sharteel AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~)

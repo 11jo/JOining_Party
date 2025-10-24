@@ -129,6 +129,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Coran.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
+	!Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("%DYNAHEIR_JOINED%")
@@ -139,6 +140,29 @@ END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dynaheir.baf~ EVALUATE_BUFFER
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Dynaheir.baf
+
+/////////////////////////////////////////////////// SoD Dynaheir
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetDialog("BDDYNAHJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDDYNAHE",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dynaheir.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
 
 	END // JOining_Dynaheir = 1
 
@@ -298,6 +322,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Kagain.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
+	!Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("%KHALID_JOINED%")
@@ -308,6 +333,29 @@ END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Khalid.baf~ EVALUATE_BUFFER
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Khalid.baf
+
+/////////////////////////////////////////////////// SoD Khalid
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetDialog("BDKHALIJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDKHALID",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Khalid.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
 
 	END // JOining_Khalid = 1
 
@@ -390,6 +438,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Quayle.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
+	!Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("%SAFANA_JOINED%")
@@ -400,6 +449,29 @@ END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Safana.baf~ EVALUATE_BUFFER
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Safana.baf
+
+/////////////////////////////////////////////////// SoD Safana
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetDialog("BDSAFANJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDSAFANA",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Safana.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
 
 	END // JOining_Safana = 1
 
@@ -578,6 +650,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Yeslick.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
+	!Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BAELOTHJ")
@@ -588,6 +661,29 @@ END
 
 >>>>>>>>
 EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Baeloth.baf~ EVALUATE_BUFFER
+
+ACTION_IF GAME_INCLUDES ~SoD~ THEN BEGIN
+
+<<<<<<<< .../JOining_Baeloth.baf
+
+/////////////////////////////////////////////////// SoD Baeloth
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetDialog("BDBAELOJ")
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDBAELOT",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Baeloth.baf~ EVALUATE_BUFFER
+
+END // GAME_INCLUDES ~SoD~
+
 
 	END // JOining_Baeloth = 1
 
