@@ -148,7 +148,6 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		LeaveParty()
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
@@ -175,7 +174,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
