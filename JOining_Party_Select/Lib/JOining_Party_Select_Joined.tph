@@ -275,3 +275,17 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+
+
+	ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_IS ~eet~) BEGIN
+
+EXTEND_TOP ~BD0120.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BD0120_bgee.baf~ EVALUATE_BUFFER
+
+	END
+
+	ACTION_IF GAME_IS ~eet~ BEGIN
+
+EXTEND_TOP ~BD0120.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BD0120_eet.baf~ EVALUATE_BUFFER
+
+	END

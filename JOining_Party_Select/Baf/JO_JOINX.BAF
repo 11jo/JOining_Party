@@ -1,41 +1,7 @@
 // JO_JOINX 
 
 
-///////////////////////////////////////////////////////////////////////////////...
-
-IF
-    XPLT(Myself,650000)
-	XPGT(Player1,750000)
-THEN
-	RESPONSE #100
-		AddXPObject(Myself,100000)
-END
-
-...
-
-IF
-    XPLT(Myself,9000)
-    XPGT(Player1,10000)
-THEN
-	RESPONSE #100
-		AddXPObject(Myself,1000)
-END
-
-IF
-    XPLT(Myself,4500)
-    XPGT(Player1,5000)
-THEN
-	RESPONSE #100
-		AddXPObject(Myself,500)
-END
-
-IF
-    XPLT(Myself,2000)
-    XPGT(Player1,2500)
-THEN
-	RESPONSE #100
-		AddXPObject(Myself,500)
-END
+///////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1013,7 +979,7 @@ IF // 880000       // 14
 		Class(Myself,FIGHTER_DRUID)
 		Class(Myself,FIGHTER_MAGE_CLERIC)
 		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK))
+		Class(Myself,MONK)
 	LevelLT(Myself,14)
 	LevelPartyGT(13)
 	Global("JO_JOIN_XPGT_14","LOCALS",0)
@@ -1220,7 +1186,7 @@ IF // 2640000      // 22
 		Class(Myself,CLERIC_THIEF)
 		Class(Myself,FIGHTER_DRUID)
 		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER
+		Class(Myself,CLERIC_RANGER)
 		Class(Myself,MONK)
 	LevelLT(Myself,22)
 	LevelPartyGT(21)

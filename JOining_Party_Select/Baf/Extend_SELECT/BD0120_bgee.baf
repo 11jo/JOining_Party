@@ -1,0 +1,424 @@
+// 1
+
+IF
+	InMyArea("Edwin")
+	Global("JO_JOIN_Edwin","MYAREA",0)
+	Global("JO_TRAVELER_Edwin","GLOBAL",1)
+	Global("JO_TRAVELER_Edwin","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Edwin",ChangeAIScript("BDEDWIN",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Edwin","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Edwin","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Edwin","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Jaheira")
+	Global("JO_JOIN_Jaheira","MYAREA",0)
+	Global("JO_TRAVELER_Jaheira","GLOBAL",1)
+	Global("JO_TRAVELER_Jaheira","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Jaheira",ChangeAIScript("BDJAHEIR",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Jaheira","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Jaheira","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Minsc")
+	Global("JO_JOIN_Minsc","MYAREA",0)
+	Global("JO_TRAVELER_Minsc","GLOBAL",1)
+	Global("JO_TRAVELER_Minsc","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Minsc",ChangeAIScript("BDMINSC",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Minsc","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Minsc","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Viconia")
+	Global("JO_JOIN_Viconia","MYAREA",0)
+	Global("JO_TRAVELER_Viconia","GLOBAL",1)
+	Global("JO_TRAVELER_Viconia","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Viconia",ChangeAIScript("BDVICONI",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Viconia","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Viconia","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Dorn")
+	Global("JO_JOIN_Dorn","MYAREA",0)
+	Global("JO_TRAVELER_Dorn","GLOBAL",1)
+	Global("JO_TRAVELER_Dorn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Dorn",ChangeAIScript("BDDORN",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Dorn","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Dorn","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Neera")
+	Global("JO_JOIN_Neera","MYAREA",0)
+	Global("JO_TRAVELER_Neera","GLOBAL",1)
+	Global("JO_TRAVELER_Neera","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Neera",ChangeAIScript("BDNEERA",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Neera","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Neera","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Rasaad")
+	Global("JO_JOIN_Rasaad","MYAREA",0)
+	Global("JO_TRAVELER_Rasaad","GLOBAL",1)
+	Global("JO_TRAVELER_Rasaad","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Rasaad",ChangeAIScript("BDRASAAD",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Rasaad","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Rasaad","MYAREA",1)
+		Continue()
+END
+
+// 2
+
+IF
+	InMyArea("Ajantis")
+	Global("JO_JOIN_Ajantis","MYAREA",0)
+	Global("JO_TRAVELER_Ajantis","GLOBAL",1)
+	Global("JO_TRAVELER_Ajantis","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Ajantis","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Ajantis","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Alora")
+	Global("JO_JOIN_Alora","MYAREA",0)
+	Global("JO_TRAVELER_Alora","GLOBAL",1)
+	Global("JO_TRAVELER_Alora","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Alora","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Alora","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Branwen")
+	Global("JO_JOIN_Branwen","MYAREA",0)
+	Global("JO_TRAVELER_Branwen","GLOBAL",1)
+	Global("JO_TRAVELER_Branwen","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Branwen","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Branwen","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Coran")
+	Global("JO_JOIN_Coran","MYAREA",0)
+	Global("JO_TRAVELER_Coran","GLOBAL",1)
+	Global("JO_TRAVELER_Coran","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Coran","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Coran","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Dynaheir")
+	Global("JO_JOIN_Dynaheir","MYAREA",0)
+	Global("JO_TRAVELER_Dynaheir","GLOBAL",1)
+	Global("JO_TRAVELER_Dynaheir","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Dynaheir",ChangeAIScript("BDDYNAHE",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Dynaheir","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Dynaheir","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Eldoth")
+	Global("JO_JOIN_Eldoth","MYAREA",0)
+	Global("JO_TRAVELER_Eldoth","GLOBAL",1)
+	Global("JO_TRAVELER_Eldoth","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Eldoth","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Eldoth","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Faldorn")
+	Global("JO_JOIN_Faldorn","MYAREA",0)
+	Global("JO_TRAVELER_Faldorn","GLOBAL",1)
+	Global("JO_TRAVELER_Faldorn","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Faldorn","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Faldorn","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Garrick")
+	Global("JO_JOIN_Garrick","MYAREA",0)
+	Global("JO_TRAVELER_Garrick","GLOBAL",1)
+	Global("JO_TRAVELER_Garrick","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Garrick","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Garrick","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Kagain")
+	Global("JO_JOIN_Kagain","MYAREA",0)
+	Global("JO_TRAVELER_Kagain","GLOBAL",1)
+	Global("JO_TRAVELER_Kagain","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Kagain","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Kagain","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Khalid")
+	Global("JO_JOIN_Khalid","MYAREA",0)
+	Global("JO_TRAVELER_Khalid","GLOBAL",1)
+	Global("JO_TRAVELER_Khalid","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Khalid",ChangeAIScript("BDKHALID",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Khalid","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Khalid","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Kivan")
+	Global("JO_JOIN_Kivan","MYAREA",0)
+	Global("JO_TRAVELER_Kivan","GLOBAL",1)
+	Global("JO_TRAVELER_Kivan","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Kivan","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Kivan","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Montaron")
+	Global("JO_JOIN_Montaron","MYAREA",0)
+	Global("JO_TRAVELER_Montaron","GLOBAL",1)
+	Global("JO_TRAVELER_Montaron","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Montaron","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Montaron","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Quayle")
+	Global("JO_JOIN_Quayle","MYAREA",0)
+	Global("JO_TRAVELER_Quayle","GLOBAL",1)
+	Global("JO_TRAVELER_Quayle","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Quayle","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Quayle","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Safana")
+	Global("JO_JOIN_Safana","MYAREA",0)
+	Global("JO_TRAVELER_Safana","GLOBAL",1)
+	Global("JO_TRAVELER_Safana","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Safana",ChangeAIScript("BDSAFANA",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Safana","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Safana","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Sharteel")
+	Global("JO_JOIN_Sharteel","MYAREA",0)
+	Global("JO_TRAVELER_Sharteel","GLOBAL",1)
+	Global("JO_TRAVELER_Sharteel","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Sharteel","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Sharteel","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Skie")
+	Global("JO_JOIN_Skie","MYAREA",0)
+	Global("JO_TRAVELER_Skie","GLOBAL",1)
+	Global("JO_TRAVELER_Skie","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Skie","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Skie","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Tiax")
+	Global("JO_JOIN_Tiax","MYAREA",0)
+	Global("JO_TRAVELER_Tiax","GLOBAL",1)
+	Global("JO_TRAVELER_Tiax","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Tiax","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Tiax","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Xan")
+	Global("JO_JOIN_Xan","MYAREA",0)
+	Global("JO_TRAVELER_Xan","GLOBAL",1)
+	Global("JO_TRAVELER_Xan","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Xan","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Xan","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Xzar")
+	Global("JO_JOIN_Xzar","MYAREA",0)
+	Global("JO_TRAVELER_Xzar","GLOBAL",1)
+	Global("JO_TRAVELER_Xzar","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Xzar","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Xzar","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Yeslick")
+	Global("JO_JOIN_Yeslick","MYAREA",0)
+	Global("JO_TRAVELER_Yeslick","GLOBAL",1)
+	Global("JO_TRAVELER_Yeslick","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Yeslick","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Yeslick","MYAREA",1)
+		Continue()
+END
+
+IF
+	InMyArea("Baeloth")
+	Global("JO_JOIN_Baeloth","MYAREA",0)
+	Global("JO_TRAVELER_Baeloth","GLOBAL",1)
+	Global("JO_TRAVELER_Baeloth","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Baeloth",ChangeAIScript("BDBAELOT",OVERRIDE))
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		SetGlobal("JO_JOIN_Baeloth","MYAREA",1)
+		SetGlobal("JO_TRAVELER_Baeloth","MYAREA",1)
+		Continue()
+END
