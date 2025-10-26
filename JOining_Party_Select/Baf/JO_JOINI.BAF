@@ -5,8 +5,9 @@ AddXPObject(AddXPObject(O:Object*,I:XP*) )
 */
 
 ///////////////////////////////////////////////////////////////////////////////
-/*
+
 IF
+	Global("JO_NEVER_CUTSCENE","LOCALS",1)
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
 		IsActive(Myself)
@@ -16,6 +17,7 @@ THEN
 END
 
 IF
+	Global("JO_NEVER_CUTSCENE","LOCALS",1)
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		!IsActive(Myself)
@@ -23,7 +25,7 @@ THEN
 	RESPONSE #100
 		Activate(Myself)
 END
-*/
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Broken links

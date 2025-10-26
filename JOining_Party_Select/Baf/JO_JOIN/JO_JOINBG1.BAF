@@ -20,6 +20,24 @@ THEN
 		Continue()
 END
 
+IF
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(2)
+		Global("JO_Myself_LeaveParty","LOCALS",1)
+		Global("JO_%Death_var%_LeaveParty","GLOBAL",1)
+	OR(2)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
+THEN
+	RESPONSE #100
+		SetDialog("%BG1_LEAVE%")
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		Continue()
+END
+
  // SoD
 
 IF
@@ -31,6 +49,22 @@ THEN
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("%SoD_BCS%",OVERRIDE)
+		Continue()
+END
+
+IF
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(2)
+		Global("JO_Myself_LeaveParty","LOCALS",1)
+		Global("JO_%Death_var%_LeaveParty","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetDialog("%SoD_LEAVE%")
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		Continue()
 END
 

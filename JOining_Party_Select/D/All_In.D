@@ -9,6 +9,9 @@ APPEND ~%joining_dlg%~
 //	IF ~~ THEN REPLY ~We need to adjust our strategy.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
 	IF ~~ THEN REPLY ~We need to adjust our position.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
 	IF ~~ THEN REPLY ~Remain a fellow traveler but don't join the group anymore.~ DO ~SetGlobal("JO_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes
+	IF ~Global("JO_NEVER_CUTSCENE","LOCALS",0)~ THEN REPLY ~I don't want to see you in my dream anymore !~ DO ~SetGlobal("JO_NEVER_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes
+	IF ~Global("JO_NEVER_CUTSCENE","LOCALS",1)~ THEN REPLY ~I did dream about you !~ DO ~SetGlobal("JO_NEVER_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes
 	END
 IF ~~ THEN BEGIN JO_JOINYes
 	SAY ~Done !~
@@ -100,3 +103,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 END
 END
+
+////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
