@@ -1331,12 +1331,16 @@ END
 
 // Ishlilka ///////////////////////////
 
+/*OUTER_SPRINT "Death_var" "#Ishy"*/
+
 OUTER_SPRINT "BG1_JOINED" "IshyD"
 OUTER_SPRINT "BG1_BCS" "ishyscrp"
 OUTER_SPRINT "SoD_JOINED" "bdishy"
 OUTER_SPRINT "SoD_BCS" "ishyscrp"
+/*
 OUTER_SPRINT "BG1_LEAVE" "ishyP"
 OUTER_SPRINT "SoD_LEAVE" "ishyP"
+*/
 
 ACTION_FOR_EACH bcs IN
 

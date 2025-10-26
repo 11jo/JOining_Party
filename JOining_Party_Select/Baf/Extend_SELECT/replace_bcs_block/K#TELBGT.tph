@@ -29,6 +29,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",LeaveParty())
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",1)
 		ActionOverride("%Death_var%",DestroySelf())
 		Continue()
 END
