@@ -490,19 +490,11 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~<CHARNAME> ! For the gods sake...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,~I don't want to go...~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~At last...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I saw it coming... I guess.~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -530,14 +522,6 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~I can't fall... Not now !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,#4888)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
@@ -550,27 +534,7 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,#4887)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,~<CHARNAME> ! I curse you !!!~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~You're next...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Keep going, I will catch up...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I can't fall... Not now !~)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -582,27 +546,8 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I don't want to go...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
 	DisplayStringHead(Myself,~I saw it coming... I guess.~)
 	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I can't fall... Not now !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,#4887)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~I will return to finish you off.~)
@@ -1167,10 +1112,10 @@ IF
 THEN
 	RESPONSE #40
 		SetGlobalTimer("JO_JOIN_SILENCED","LOCALS",ONE_TURN) // 1mn
-		DisplayString(Myself,~ wave at you.~)
+		DisplayString(Myself,~<GABBER> wave at you.~)
 	RESPONSE #30
 		SetGlobalTimer("JO_JOIN_SILENCED","LOCALS",ONE_TURN)
-		DisplayString(Myself,~ open they lips but not sound comes out...~)
+		DisplayString(Myself,~<GABBER> open they lips but not sound comes out...~)
 	RESPONSE #30
 		SetGlobalTimer("JO_JOIN_SILENCED","LOCALS",ONE_TURN)
 		DisplayStringHead(Player1,~<GABBER> is too quiet, something is wrong !~)

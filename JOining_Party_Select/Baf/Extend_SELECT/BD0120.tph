@@ -239,6 +239,9 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Branwen_All_In.baf~ BEGIN
 
+ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+			OUTER_SPRINT "BRANWEN_BCS" "BRANWEN_"
+END
 
 <<<<<<<< .../JOining_bd0120.baf
 
@@ -344,7 +347,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Faldorn_All_In.baf~ BEGIN
 
+ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "FALDORN_BCS" "FALDORN_"
+END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -371,7 +377,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Garrick_All_In.baf~ BEGIN
 
+ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "GARRICK_BCS" "GARRICK_"
+END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -580,7 +589,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Skie_All_In.baf~ BEGIN
 
+ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "SKIE_BCS" "SKIE_"
+END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF

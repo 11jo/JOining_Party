@@ -1,0 +1,40 @@
+	ACTION_IF FILE_EXISTS_IN_GAME ~K#TELBGT.BCS~ BEGIN
+
+<<<<<<<<K#TELBGT_rep.baf
+IF
+	InPartyAllowDead(Player6)
+	!Name("None",Player6)
+THEN
+	RESPONSE #100
+		ActionOverride(Player6,LeaveParty())
+		ActionOverride(Player6,DestroySelf())
+		Continue()
+END
+>>>>>>>>
+
+<<<<<<<<K#TELBGT_add.baf
+IF
+	InPartyAllowDead(Player6)
+	!Name("None",Player6)
+THEN
+	RESPONSE #100
+		ActionOverride(Player6,LeaveParty())
+		ActionOverride(Player6,DestroySelf())
+		Continue()
+END
+
+IF
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("JO_%Death_var%_AllowDead","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",LeaveParty())
+		ActionOverride("%Death_var%",DestroySelf())
+		Continue()
+END
+
+>>>>>>>>
+COPY_EXISTING ~K#TELBGT.bcs~ ~override~
+  REPLACE_BCS_BLOCK EVALUATE_BUFFER ~K#TELBGT_rep.baf~ ~K#TELBGT_add.baf~
+
+	END
