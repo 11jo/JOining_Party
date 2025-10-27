@@ -122,7 +122,7 @@ IF
 	!Range(Player1Fill,70)
 THEN
 	RESPONSE #100
-		MoveGlobalObjectOffScreen(Myself,Player1Fill) // JumpToObject(PlayerX) // MoveGlobalObject(Myself,PlayerX)
+		MoveGlobalObject(Myself,Player1Fill) // JumpToObject(PlayerX) // MoveGlobalObject(Myself,PlayerX)
 END
 
 // Short range
@@ -154,7 +154,7 @@ IF
 	!Range(Player1,70)
 THEN
 	RESPONSE #100
-		MoveGlobalObjectOffScreen(Myself,Player1)
+		MoveGlobalObject(Myself,Player1)
 END
 
 // Short range
@@ -186,7 +186,7 @@ IF
 	!Range(Player2,70)
 THEN
 	RESPONSE #100
-		MoveGlobalObjectOffScreen(Myself,Player2)
+		MoveGlobalObject(Myself,Player2)
 END
 
 // Short range
@@ -218,7 +218,7 @@ IF
 	!Range(Player3,70)
 THEN
 	RESPONSE #100
-		MoveGlobalObjectOffScreen(Myself,Player3)
+		MoveGlobalObject(Myself,Player3)
 END
 
 // Short range
@@ -250,7 +250,7 @@ IF
 	!Range(Player4,70)
 THEN
 	RESPONSE #100
-		MoveGlobalObjectOffScreen(Myself,Player4)
+		MoveGlobalObject(Myself,Player4)
 END
 
 // Short range
@@ -282,7 +282,7 @@ IF
 	!Range(Player5,70)
 THEN
 	RESPONSE #100
-		MoveGlobalObjectOffScreen(Myself,Player5)
+		MoveGlobalObject(Myself,Player5)
 END
 
 // Short range
@@ -314,7 +314,7 @@ IF
 	!Range(Player6,70)
 THEN
 	RESPONSE #100
-		MoveGlobalObjectOffScreen(Myself,Player6)
+		MoveGlobalObject(Myself,Player6)
 END
 
 // Short range

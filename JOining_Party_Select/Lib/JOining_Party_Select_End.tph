@@ -180,11 +180,13 @@ BEGIN
 
 COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
 
-//
+//////////////////////////////////////////////////////////////////////////////////////
 
 // Avoid additionnal warnings for missing ressources 
 // Edge cases
-	
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 	ACTION_IF FILE_EXISTS_IN_GAME ~ar1901.bcs~ THEN BEGIN
 		COPY_EXISTING ~ar1901.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -200,7 +202,9 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 		END
 			BUT_ONLY
 	END
-	
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 	ACTION_IF FILE_EXISTS_IN_GAME ~ohhretrn.bcs~ THEN BEGIN
 		COPY_EXISTING_REGEXP ~ohhretrn.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -216,6 +220,8 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 			END
 				BUT_ONLY
 	END
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN BDBALDUR BDELEV02 BDEXITBF BDNORES2 HELLPOOL BEGIN
 	
@@ -235,6 +241,53 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 				BUT_ONLY
 		END
 	END // ACTION_FOR_EACH // CreateVisualEffectObject
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN CUTBELT CUTLIIA CUTTETHT ICELAND XG0278 XG0403 XG04N3 XG0511 XG1020 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// DRYAD_TELEPORT situation ///////////// SPECIAL DRYAD_TELEPORT delete familiar
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ForceSpell("%Death_var%",DRYAD_TELEPORT))~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell("%Death_var%",DRYAD_TELEPORT))~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+				SPRINT textToReplace ~^[%TAB% ]*ForceSpell("%Death_var%",DRYAD_TELEPORT)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+				SPRINT textToReplace ~^[%TAB% ]*ReallyForceSpell("%Death_var%",DRYAD_TELEPORT)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // spfleshp
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN BALDUR BALDUR25 BDBALDUR BEGIN
 	
@@ -256,6 +309,8 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 		END
 	END // ACTION_FOR_EACH // CreateVisualEffectObject
 
+//////////////////////////////////////////////////////////////////////////////////////
+
 	ACTION_FOR_EACH bcs IN OHHFAKOK OHHBARHX RERAK02 RERAK03 RERAK04 RERAK05 RERAK06 SCTSAR2 BEGIN
 	
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
@@ -274,6 +329,8 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 				BUT_ONLY
 		END
 	END // ACTION_FOR_EACH // CreateVisualEffectObject
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN OHHCUT09 OHHCUT10 OHHCUT11 BEGIN
 	
@@ -294,6 +351,8 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 		END
 	END // ACTION_FOR_EACH // spfleshp
 
+//////////////////////////////////////////////////////////////////////////////////////
+
 	ACTION_FOR_EACH bcs IN K#TELBGT AR0602 IWSHCUT1 IDSHCUT1 BDCUT62 BD0103 BEGIN
 	
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
@@ -312,6 +371,8 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 			BUT_ONLY
 		END
 	END // ACTION_FOR_EACH // TakeCreatureItems
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN BDCUT61A BDCUT62 BDCUT65 K#TELBGT BEGIN
 	

@@ -3,7 +3,7 @@ IF
 THEN
 	RESPONSE #100
 		CutSceneId("%Death_var%")
-		ActionOverride("SHANDAL2",ForceSpell("%Death_var%",DRYAD_TELEPORT))
+		CreateVisualEffectObject("spdimndr","%Death_var%")
 		SmallWait(78)
 		CreateVisualEffectObject("spdimndr","%Death_var%")
 END
