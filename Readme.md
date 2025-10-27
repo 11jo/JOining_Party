@@ -80,6 +80,8 @@ Starting a new game, Charname receive a special ability.
     - Follow (Close or at sight) the party member who initiate the talk.
 	- Make the familiar joining the party as regular party member.
 	- Make the familiar joining the party just an instant, to deal with statistic, inventory or level, then automatically returning to familiar state.
+	- Choose if you want the familier to be deactivate for Cutscenes.
+	- Make the familiar completly leave the party, will automatically be added an instant to the group then removed, in order to set leaving dialog.
 
 **Familiar will "switch"** in party some time to time to allow them **to be considered as party member** continually.
   - If a party slot remain empty.
@@ -90,6 +92,8 @@ Starting a new game, Charname receive a special ability.
 **Before** a switch they will move to Charname or a party member and say "Hey", before joining the group.
 When returning temporarly in party, statistic, inventory or level are available. (Use Pause to take your time if actions on it are needed.)
 **After** the switch is completed they will say "Yeah", after leaving the group.
+
+Familiar can't die, under 3PV they will fall for TWO_TURNS, player can also use healing spell on them. 
 
 
 
@@ -173,6 +177,16 @@ GLOBAL :
 
 ---
 
+- Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+   - Set if the NPC is a familiar, used to deal with LeaveParty()
+
+---
+
+- Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+   - If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog
+
+---
+
 LOCALS :
 
 ---
@@ -186,6 +200,11 @@ LOCALS :
 - Global("JO_Myself_InParty","LOCALS",0)
 - Global("JO_Myself_Valid","LOCALS",0)
    - Same as the GLOBAL %Death_var% above but for Myself.
+
+---
+
+- Global("JO_Myself_LeaveParty","LOCALS",0)
+   - If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog
 
 ---
 
@@ -276,6 +295,15 @@ LOCALS :
 - Global("JO_JOIN_XPGT_X","LOCALS",0)
    - Will hopefully add the relevant XP to familiar to be on the same level as party members.
 
+---
+
+- Global("JO_NEVER_JOIN","LOCALS",0)
+   - Prevent the familiar to switch, WARNING will not be available for most interactions.
+
+---
+
+- Global("JO_NEVER_CUTSCENE","LOCALS",0)
+   - Active or deactive familiar presence in cutscene.
 ---
 
 

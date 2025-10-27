@@ -5,12 +5,14 @@ VERSION ~alpha.0.0.6~
 ALWAYS
 
 	ACTION_IF GAME_IS ~bgt~ BEGIN
+// BGT isn't implemented and it will probably too difficult to do....
 
 		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
 		PRINT ~Game is BGT
 		~
 
 	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+// EET core without EET_END
 
 		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
 		PRINT ~Game is EET 
@@ -19,6 +21,7 @@ ALWAYS
 		OUTER_SPRINT "CAMPAIGN" "5"
 
 		OUTER_SPRINT "Don_t_replace_anything_ODD" "EET_ODD"
+// Deal with override scripts for EET in bgee when EET_END is NOT intalled
 
 	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
 
@@ -29,6 +32,7 @@ ALWAYS
 		OUTER_SPRINT "CAMPAIGN" "1"
 
 	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+// BG2EE or EET when EET_END is installed
 
 			OUTER_SPRINT "AJANTIS_JOINED" "AJANTJ"
 			OUTER_SPRINT "ALORA_JOINED" "ALORAJ"
@@ -93,6 +97,7 @@ ALWAYS
 				~
 
 		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+// Only after EET_END
 
 			OUTER_SPRINT "CAMPAIGN" "5"
 
@@ -101,10 +106,14 @@ ALWAYS
 			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
 
 			OUTER_SPRINT "Don_t_replace_anything_END" "EET_END"
+// Deal with override scripts for EET in bgee when EET_END is intalled
 
 		END
 
 	END
+
+///////////////////////////////////////////////////////////////////////////////
+// ToB Joining_Dialog are merged for EET
 
 		ACTION_IF (GAME_IS ~eet~) BEGIN
 
@@ -154,6 +163,9 @@ ALWAYS
 
 		END
 
+///////////////////////////////////////////////////////////////////////////////
+// Prep for REPLACE_TEXTUALLY for NPC to familier selection
+
 	ACTION_IF (NOT FILE_EXISTS ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~) BEGIN
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
@@ -184,7 +196,9 @@ ALWAYS
 
 	END
 
-END
+///////////////////////////////////////////////////////////////////////////////
+
+END // ALWAYS
 
 LANGUAGE ~English~
          ~english~
