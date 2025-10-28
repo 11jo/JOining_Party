@@ -567,13 +567,15 @@ IF
 	Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #10
+	SetInterrupt(FALSE)
 	SetGlobalTimer("JO_JOIN_TIMER_DEAD","LOCALS",TWO_TURNS)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	SmallWait(1)
 	ChangeEnemyAlly(Myself,NEUTRAL)
 	SetSequence(SEQ_DIE)
 	Wait(2)
 	ReallyForceSpellRES("JOIN648",Myself)
+	SetGlobalTimer("JO_JOIN_TIMER_DEAD","LOCALS",TWO_TURNS)
+	SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -589,13 +591,14 @@ IF
 		HPGT(Myself,4)
 THEN
 	RESPONSE #10
-	ChangeEnemyAlly(Myself,FAMILIAR)
-	SmallWait(1)
-	ReallyForceSpellRES("JOIR648",Myself)
-	Wait(1)
-	SetSequence(SEQ_EMERGE)
-	SetGlobalTimer("JO_JOIN_JOIN","LOCALS",THREE_ROUNDS)
+	SetInterrupt(FALSE)
+	SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",3)
+	ChangeEnemyAlly(Myself,FAMILIAR)
+	ReallyForceSpellRES("JOIR648",Myself)
+	Wait(2)
+	SetSequence(SEQ_EMERGE)
+	SetInterrupt(TRUE)
 END
 
 IF

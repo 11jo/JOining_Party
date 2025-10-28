@@ -31,6 +31,7 @@ END
  
 // !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
 		!Global("JO_%Death_var%_InParty","GLOBAL",0)
 		!Global("JO_Myself_InParty","LOCALS",0)
@@ -58,14 +59,14 @@ END
  
 // !Is(!If)ValidForPartyDialog(ue)
 IF
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
 		!Global("JO_%Death_var%_Valid","GLOBAL",0)
 		!Global("JO_Myself_Valid","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
-	OR(4)
+	OR(3)
 		!Allegiance(Myself,FAMILIAR)
 		StateCheck(Myself,CD_STATE_NOTVALID)
-		!Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
 		!IsActive(Myself)
 THEN
 	RESPONSE #100
@@ -75,7 +76,7 @@ END
  
 // Is(If)ValidForPartyDialog(ue)
 IF
-	Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
 		Global("JO_%Death_var%_Valid","GLOBAL",0)
 		Global("JO_Myself_Valid","LOCALS",0)
@@ -116,12 +117,15 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
 		LeaveParty()
 END
 
 IF
 	!AreaCheck("BD0120")
-	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	!Allegiance(Myself,FAMILIAR)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
 	!Global("JO_JOIN","LOCALS",1)
@@ -174,40 +178,10 @@ END
 IF
 	!Allegiance(Myself,FAMILIAR)
 	HasItem("JOMINHP1",Myself)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
 		DestroyItem("JOMINHP1")
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Related to Jo_JOINI.baf set statut when Dead but not really
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_DEADLY_DEAD","LOCALS",0)
-	OR(2)
-		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-		Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_DEADLY_DEAD","LOCALS",1)
-		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
-		SetGlobal("JO_Myself_Valid","LOCALS",0)
-END
-
-// Related to Jo_JOINI.baf set statut when No more Dead 
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_DEADLY_DEAD","LOCALS",1)
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_DEADLY_DEAD","LOCALS",0)
-		SetGlobal("JO_%Death_var%_Valid","GLOBAL",1)
-		SetGlobal("JO_Myself_Valid","LOCALS",1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
