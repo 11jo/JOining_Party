@@ -591,7 +591,7 @@ IF
 THEN
 	RESPONSE #10
 	SetInterrupt(FALSE)
-	SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND)
+	SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",3)
 	ChangeEnemyAlly(Myself,FAMILIAR)
 	ReallyForceSpellRES("JOIR648",Myself)
