@@ -61,11 +61,10 @@
 | JO_NOJOIN | G | Familiars can no longer switch | 0: False<br>Other: True |
 | JO_JOIN_CAMPAIGN | G | Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>5: EET<br>Other: not initialized
 | JO_Join_InParty_Myself | G | Special Charname at character creation, to be sure DPLAYER3.BCS is set | 0: False<br>Other: True |
-| JO_TRAVELER_%Death_var% | G/M | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
+| JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
 | JO_%Death_var%_LeaveParty | G | If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
 | JO_Myself_LeaveParty | L | If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
 | JO_JOIN_JOIN | L | Timer for switching Familiar to NPCs regulary | n/a |
-| JO_JOIN_DEADLY_DEAD | L | Used along "IsValid" when familiar are dead but not really | 0: False<br>Other: True |
 | JO_JOIN_SLEEPING_DEAD | L | Familiar sleeping state | 1: Familiar health is below 5HP<br>2: Familiar health is below 5HP and after spell JOIN648 is applied<br>3: Familiar health is above 4HP and after spell JOIR648 is applied<br>Other: Normal state |
 | JO_JOIN_TALK | L | For first time becoming a familiar | 0: False<br>Other: True |
 | JO_JOINI | L | Set when familiar switch in party, and enable block to return to familiar state | 0: False<br>Other: True |
@@ -78,6 +77,7 @@
 | JO_NEVER_CUTSCENE | L | Active or deactive familiar presence in cutscene | 0: False<br>Other: True |
 | JO_JOIN_XPGT_X | L | Will hopefully add the relevant XP to familiar to be on the same level as party members | 0: False<br>Other: True |
 | JO_NEVER_JOIN | L | Prevent the familiar to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
+| JO_JOIN_BD0120 | L | Specific to Korlaz donjon, used to keep familiar along. | 0: False<br>Other: True |
 | JO_JOIN_SLEEPING_DEADLY | L | Not implemented yet | 
 | JO_JOIN_ACTION | L | Not implemented yet | 
 
