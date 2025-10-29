@@ -72,7 +72,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
-		Continue()
 END
  
 // Is(If)ValidForPartyDialog(ue)
@@ -87,5 +86,4 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
-		Continue()
 END
