@@ -25,7 +25,7 @@ END
 
 IF
 	Allegiance("%Death_var%",FAMILIAR)
-	!Global("JO_%Death_var%_AllowDead","GLOBAL",0)
+	!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",LeaveParty())
