@@ -3,29 +3,23 @@
  
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
-	OR(2)
-		!Global("JO_%Death_var%_AllowDead","GLOBAL",0)
-		!Global("JO_Myself_AllowDead","LOCALS",0)
+	!Global("JO_Myself_AllowDead","LOCALS",0)
 	!InPartyAllowDead(Myself)
 	!Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_AllowDead","GLOBAL",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 END
  
 // InPartyAllowDead("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
 IF
-	OR(2)
-		Global("JO_%Death_var%_AllowDead","GLOBAL",0)
-		Global("JO_Myself_AllowDead","LOCALS",0)
+	Global("JO_Myself_AllowDead","LOCALS",0)
 	OR(2)
 		InPartyAllowDead(Myself)
 		Allegiance(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_AllowDead","GLOBAL",1)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
 END
  
