@@ -7,1690 +7,349 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 
-// Progression 1
-IF // 2500       // 2
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,2)
-	LevelPartyGT(1)
-	Global("JO_JOIN_XPGT_2","LOCALS",0)
+IF
+    XPLT(Myself, 10000000)
+    XPGT(Player1, 11000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_2","LOCALS",1)
-		AddXPObject(Myself,2500)
+    RESPONSE #100
+        AddXPObject(Myself, 1000000)
 END
 
-IF // 5000       // 3
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,3)
-	LevelPartyGT(2)
-	Global("JO_JOIN_XPGT_3","LOCALS",0)
+IF
+    XPLT(Myself, 10000000)
+    XPGT(Player1, 11000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_3","LOCALS",1)
-		AddXPObject(Myself,2500)
+    RESPONSE #100
+        AddXPObject(Myself, 1000000)
 END
 
-IF // 10000      // 4
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,4)
-	LevelPartyGT(3)
-	Global("JO_JOIN_XPGT_4","LOCALS",0)
+IF
+    XPLT(Myself, 9000000)
+    XPGT(Player1, 10000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_4","LOCALS",1)
-		AddXPObject(Myself,5000)
+    RESPONSE #100
+        AddXPObject(Myself, 1000000)
 END
 
-IF // 20000      // 5
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,5)
-	LevelPartyGT(4)
-	Global("JO_JOIN_XPGT_5","LOCALS",0)
+IF
+    XPLT(Myself, 8000000)
+    XPGT(Player1, 9000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_5","LOCALS",1)
-		AddXPObject(Myself,10000)
+    RESPONSE #100
+        AddXPObject(Myself, 1000000)
 END
 
-IF // 40000      // 6
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,6)
-	LevelPartyGT(5)
-	Global("JO_JOIN_XPGT_6","LOCALS",0)
+IF
+    XPLT(Myself, 7750000)
+    XPGT(Player1, 8000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_6","LOCALS",1)
-		AddXPObject(Myself,20000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 60000      // 7
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,7)
-	LevelPartyGT(6)
-	Global("JO_JOIN_XPGT_7","LOCALS",0)
+IF
+    XPLT(Myself, 7500000)
+    XPGT(Player1, 7750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_7","LOCALS",1)
-		AddXPObject(Myself,20000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 90000      // 8
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,8)
-	LevelPartyGT(7)
-	Global("JO_JOIN_XPGT_8","LOCALS",0)
+IF
+    XPLT(Myself, 7250000)
+    XPGT(Player1, 7500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_8","LOCALS",1)
-		AddXPObject(Myself,30000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 135000      // 9
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,9)
-	LevelPartyGT(8)
-	Global("JO_JOIN_XPGT_9","LOCALS",0)
+IF
+    XPLT(Myself, 7000000)
+    XPGT(Player1, 7250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_9","LOCALS",1)
-		AddXPObject(Myself,45000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 250000     // 10
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,10)
-	LevelPartyGT(9)
-	Global("JO_JOIN_XPGT_10","LOCALS",0)
+IF
+    XPLT(Myself, 6750000)
+    XPGT(Player1, 7000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_10","LOCALS",1)
-		AddXPObject(Myself,115000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 375000     // 11
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,11)
-	LevelPartyGT(10)
-	Global("JO_JOIN_XPGT_11","LOCALS",0)
+IF
+    XPLT(Myself, 6500000)
+    XPGT(Player1, 6750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_11","LOCALS",1)
-		AddXPObject(Myself,125000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 750000     // 12
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,12)
-	LevelPartyGT(11)
-	Global("JO_JOIN_XPGT_12","LOCALS",0)
+IF
+    XPLT(Myself, 6250000)
+    XPGT(Player1, 6500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_12","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 1125000    // 13
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,13)
-	LevelPartyGT(12)
-	Global("JO_JOIN_XPGT_13","LOCALS",0)
+IF
+    XPLT(Myself, 6000000)
+    XPGT(Player1, 6250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_13","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 1500000    // 14
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,14)
-	LevelPartyGT(13)
-	Global("JO_JOIN_XPGT_14","LOCALS",0)
+IF
+    XPLT(Myself, 5750000)
+    XPGT(Player1, 6000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_14","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 1875000    // 15
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,15)
-	LevelPartyGT(14)
-	Global("JO_JOIN_XPGT_15","LOCALS",0)
+IF
+    XPLT(Myself, 5500000)
+    XPGT(Player1, 5750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_15","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 2250000    // 16
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,16)
-	LevelPartyGT(15)
-	Global("JO_JOIN_XPGT_16","LOCALS",0)
+IF
+    XPLT(Myself, 5250000)
+    XPGT(Player1, 5500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_16","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 2625000    // 17
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,17)
-	LevelPartyGT(16)
-	Global("JO_JOIN_XPGT_17","LOCALS",0)
+IF
+    XPLT(Myself, 5000000)
+    XPGT(Player1, 5250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_17","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 3000000    // 18
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,18)
-	LevelPartyGT(17)
-	Global("JO_JOIN_XPGT_18","LOCALS",0)
+IF
+    XPLT(Myself, 4750000)
+    XPGT(Player1, 5000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_18","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 3375000    // 19
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,19)
-	LevelPartyGT(18)
-	Global("JO_JOIN_XPGT_19","LOCALS",0)
+IF
+    XPLT(Myself, 4500000)
+    XPGT(Player1, 4750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_19","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 3750000    // 20
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,20)
-	LevelPartyGT(19)
-	Global("JO_JOIN_XPGT_20","LOCALS",0)
+IF
+    XPLT(Myself, 4250000)
+    XPGT(Player1, 4500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_20","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 4125000    // 21
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,21)
-	LevelPartyGT(20)
-	Global("JO_JOIN_XPGT_21","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_21","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 4500000    // 22
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,22)
-	LevelPartyGT(21)
-	Global("JO_JOIN_XPGT_22","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_22","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 4875000    // 23
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,23)
-	LevelPartyGT(22)
-	Global("JO_JOIN_XPGT_23","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_23","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 5250000    // 24
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,24)
-	LevelPartyGT(23)
-	Global("JO_JOIN_XPGT_24","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_24","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 5625000    // 25
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,25)
-	LevelPartyGT(24)
-	Global("JO_JOIN_XPGT_25","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_25","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 6000000    // 26
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,26)
-	LevelPartyGT(25)
-	Global("JO_JOIN_XPGT_26","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_26","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 6375000    // 27
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,27)
-	LevelPartyGT(26)
-	Global("JO_JOIN_XPGT_27","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_27","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 6750000    // 28
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,28)
-	LevelPartyGT(27)
-	Global("JO_JOIN_XPGT_28","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_28","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 7125000    // 29
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,29)
-	LevelPartyGT(28)
-	Global("JO_JOIN_XPGT_29","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_29","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 7500000    // 30
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,30)
-	LevelPartyGT(29)
-	Global("JO_JOIN_XPGT_30","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_30","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 7875000    // 31
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,31)
-	LevelPartyGT(30)
-	Global("JO_JOIN_XPGT_31","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_31","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 8250000    // 32
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,32)
-	LevelPartyGT(31)
-	Global("JO_JOIN_XPGT_32","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_32","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 8625000    // 33
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,33)
-	LevelPartyGT(32)
-	Global("JO_JOIN_XPGT_33","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_33","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 9000000    // 34
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,34)
-	LevelPartyGT(33)
-	Global("JO_JOIN_XPGT_34","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_34","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 9375000    // 35
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,35)
-	LevelPartyGT(34)
-	Global("JO_JOIN_XPGT_35","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_35","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 9750000    // 36
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,36)
-	LevelPartyGT(35)
-	Global("JO_JOIN_XPGT_36","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_36","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 10125000   // 37
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,37)
-	LevelPartyGT(36)
-	Global("JO_JOIN_XPGT_37","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_37","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 10500000   // 38
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,38)
-	LevelPartyGT(37)
-	Global("JO_JOIN_XPGT_38","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_38","LOCALS",1)
-		AddXPObject(Myself,375000)
-END
-                 
-IF // 10875000   // 38
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,39)
-	LevelPartyGT(38)
-	Global("JO_JOIN_XPGT_39","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_39","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 11250000   // 40
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,40)
-	LevelPartyGT(39)
-	Global("JO_JOIN_XPGT_40","LOCALS",0)
+IF
+    XPLT(Myself, 4000000)
+    XPGT(Player1, 4250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_40","LOCALS",1)
-		AddXPObject(Myself,375000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 13000000   // 41
-	OR(5)
-		Class(Myself,MAGE)
-		Class(Myself,DRUID)
-		Class(Myself,MAGE_THIEF)
-		Class(Myself,SORCERER)
-		Class(Myself,SHAMAN)
-	LevelLT(Myself,41)
-	LevelPartyGT(40)
-	Global("JO_JOIN_XPGT_41","LOCALS",0)
+IF
+    XPLT(Myself, 3750000)
+    XPGT(Player1, 4000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_41","LOCALS",1)
-		AddXPObject(Myself,1750000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-///////////////////////////////////////////////////////////////////////////////
-
-// Progression 2
-IF // 1250         // 2 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,2)
-	LevelPartyGT(1)
-	Global("JO_JOIN_XPGT_2","LOCALS",0)
+IF
+    XPLT(Myself, 3500000)
+    XPGT(Player1, 3750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_2","LOCALS",1)
-		AddXPObject(Myself,1250)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 2500         // 3 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,3)
-	LevelPartyGT(2)
-	Global("JO_JOIN_XPGT_3","LOCALS",0)
+IF
+    XPLT(Myself, 3250000)
+    XPGT(Player1, 3500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_3","LOCALS",1)
-		AddXPObject(Myself,2500)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 5000         // 4 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,4)
-	LevelPartyGT(3)
-	Global("JO_JOIN_XPGT_4","LOCALS",0)
+IF
+    XPLT(Myself, 3000000)
+    XPGT(Player1, 3250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_4","LOCALS",1)
-		AddXPObject(Myself,5000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 10000        // 5 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,5)
-	LevelPartyGT(4)
-	Global("JO_JOIN_XPGT_5","LOCALS",0)
+IF
+    XPLT(Myself, 2750000)
+    XPGT(Player1, 3000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_5","LOCALS",1)
-		AddXPObject(Myself,10000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 20000        // 6 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,6)
-	LevelPartyGT(5)
-	Global("JO_JOIN_XPGT_6","LOCALS",0)
+IF
+    XPLT(Myself, 2500000)
+    XPGT(Player1, 2750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_6","LOCALS",1)
-		AddXPObject(Myself,20000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 40000        // 7 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,7)
-	LevelPartyGT(6)
-	Global("JO_JOIN_XPGT_7","LOCALS",0)
+IF
+    XPLT(Myself, 2250000)
+    XPGT(Player1, 2500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_7","LOCALS",1)
-		AddXPObject(Myself,30000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 70000        // 8 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,8)
-	LevelPartyGT(7)
-	Global("JO_JOIN_XPGT_8","LOCALS",0)
+IF
+    XPLT(Myself, 2000000)
+    XPGT(Player1, 2250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_8","LOCALS",1)
-		AddXPObject(Myself,40000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 110000       // 9 
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,9)
-	LevelPartyGT(8)
-	Global("JO_JOIN_XPGT_9","LOCALS",0)
+IF
+    XPLT(Myself, 1750000)
+    XPGT(Player1, 2000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_9","LOCALS",1)
-		AddXPObject(Myself,50000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 160000       // 10
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,10)
-	LevelPartyGT(9)
-	Global("JO_JOIN_XPGT_10","LOCALS",0)
+IF
+    XPLT(Myself, 1500000)
+    XPGT(Player1, 1750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_10","LOCALS",1)
-		AddXPObject(Myself,60000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 220000       // 11
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,11)
-	LevelPartyGT(10)
-	Global("JO_JOIN_XPGT_11","LOCALS",0)
+IF
+    XPLT(Myself, 1250000)
+    XPGT(Player1, 1500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_11","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 440000       // 12
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,12)
-	LevelPartyGT(11)
-	Global("JO_JOIN_XPGT_12","LOCALS",0)
+IF
+    XPLT(Myself, 1000000)
+    XPGT(Player1, 1250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_12","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 660000       // 13
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,13)
-	LevelPartyGT(12)
-	Global("JO_JOIN_XPGT_13","LOCALS",0)
+IF
+    XPLT(Myself, 750000)
+    XPGT(Player1, 1000000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_13","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 880000       // 14
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,14)
-	LevelPartyGT(13)
-	Global("JO_JOIN_XPGT_14","LOCALS",0)
+IF
+    XPLT(Myself, 500000)
+    XPGT(Player1, 750000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_14","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 1100000      // 15
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,15)
-	LevelPartyGT(14)
-	Global("JO_JOIN_XPGT_15","LOCALS",0)
+IF
+    XPLT(Myself, 250000)
+    XPGT(Player1, 500000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_15","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 250000)
 END
 
-IF // 1320000      // 16
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,16)
-	LevelPartyGT(15)
-	Global("JO_JOIN_XPGT_16","LOCALS",0)
+IF
+    XPLT(Myself, 125000)
+    XPGT(Player1, 250000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_16","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 125000)
 END
 
-IF // 1540000      // 17
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,17)
-	LevelPartyGT(16)
-	Global("JO_JOIN_XPGT_17","LOCALS",0)
+IF
+    XPLT(Myself, 64000)
+    XPGT(Player1, 125000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_17","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 64000)
 END
 
-IF // 1760000      // 18
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,18)
-	LevelPartyGT(17)
-	Global("JO_JOIN_XPGT_18","LOCALS",0)
+IF
+    XPLT(Myself, 32000)
+    XPGT(Player1, 64000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_18","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 32000)
 END
 
-IF // 1980000      // 19
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,19)
-	LevelPartyGT(18)
-	Global("JO_JOIN_XPGT_19","LOCALS",0)
+IF
+    XPLT(Myself, 16000)
+    XPGT(Player1, 32000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_19","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 16000)
 END
 
-IF // 2200000      // 20
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,20)
-	LevelPartyGT(19)
-	Global("JO_JOIN_XPGT_20","LOCALS",0)
+IF
+    XPLT(Myself, 8000)
+    XPGT(Player1, 16000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_20","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 8000)
 END
 
-IF // 2420000      // 21
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,21)
-	LevelPartyGT(20)
-	Global("JO_JOIN_XPGT_21","LOCALS",0)
+IF
+    XPLT(Myself, 4000)
+    XPGT(Player1, 8000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_21","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 4000)
 END
 
-IF // 2640000      // 22
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,22)
-	LevelPartyGT(21)
-	Global("JO_JOIN_XPGT_22","LOCALS",0)
+IF
+    XPLT(Myself, 2000)
+    XPGT(Player1, 4000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_22","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 2000)
 END
 
-IF // 2860000      // 23
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,23)
-	LevelPartyGT(22)
-	Global("JO_JOIN_XPGT_23","LOCALS",0)
+IF
+    XPLT(Myself, 1500)
+    XPGT(Player1, 2000)
 THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_23","LOCALS",1)
-		AddXPObject(Myself,220000)
+    RESPONSE #100
+        AddXPObject(Myself, 500)
 END
-
-IF // 3080000      // 24
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,24)
-	LevelPartyGT(23)
-	Global("JO_JOIN_XPGT_24","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_24","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 3300000      // 25
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,25)
-	LevelPartyGT(24)
-	Global("JO_JOIN_XPGT_25","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_25","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 3520000      // 26
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,26)
-	LevelPartyGT(25)
-	Global("JO_JOIN_XPGT_26","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_26","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 3740000      // 27
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,27)
-	LevelPartyGT(26)
-	Global("JO_JOIN_XPGT_27","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_27","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 3960000      // 28
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,28)
-	LevelPartyGT(27)
-	Global("JO_JOIN_XPGT_28","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_28","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 4180000      // 29
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,29)
-	LevelPartyGT(28)
-	Global("JO_JOIN_XPGT_29","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_29","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 4400000      // 30
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,30)
-	LevelPartyGT(29)
-	Global("JO_JOIN_XPGT_30","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_30","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 4620000      // 31
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,31)
-	LevelPartyGT(30)
-	Global("JO_JOIN_XPGT_31","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_31","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 4840000      // 32
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,32)
-	LevelPartyGT(31)
-	Global("JO_JOIN_XPGT_32","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_32","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 5060000      // 33
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,33)
-	LevelPartyGT(32)
-	Global("JO_JOIN_XPGT_33","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_33","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 5280000      // 34
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,34)
-	LevelPartyGT(33)
-	Global("JO_JOIN_XPGT_34","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_34","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 5500000      // 35
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,35)
-	LevelPartyGT(34)
-	Global("JO_JOIN_XPGT_35","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_35","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 5720000      // 36
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,36)
-	LevelPartyGT(35)
-	Global("JO_JOIN_XPGT_36","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_36","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 5940000      // 37
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,37)
-	LevelPartyGT(36)
-	Global("JO_JOIN_XPGT_37","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_37","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 6160000      // 38
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,38)
-	LevelPartyGT(37)
-	Global("JO_JOIN_XPGT_38","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_38","LOCALS",1)
-		AddXPObject(Myself,220000)
-END
-
-IF // 6380000      // 39
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,39)
-	LevelPartyGT(38)
-	Global("JO_JOIN_XPGT_39","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_39","LOCALS",1)
-		AddXPObject(Myself,1620000)
-END
-
-IF // 8000000      // 40
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,40)
-	LevelPartyGT(39)
-	Global("JO_JOIN_XPGT_40","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_40","LOCALS",1)
-		AddXPObject(Myself,1620000)
-END
-
-IF // 9000000      // 41
-	OR(15)
-		Class(Myself,FIGHTER)
-		Class(Myself,CLERIC)
-		Class(Myself,THIEF)
-		Class(Myself,BARD_ALL)
-		Class(Myself,PALADIN_ALL)
-		Class(Myself,FIGHTER_MAGE)
-		Class(Myself,FIGHTER_THIEF)
-		Class(Myself,FIGHTER_MAGE_THIEF)
-		Class(Myself,RANGER)
-		Class(Myself,CLERIC_MAGE)
-		Class(Myself,CLERIC_THIEF)
-		Class(Myself,FIGHTER_DRUID)
-		Class(Myself,FIGHTER_MAGE_CLERIC)
-		Class(Myself,CLERIC_RANGER)
-		Class(Myself,MONK)
-	LevelLT(Myself,41)
-	LevelPartyGT(40)
-	Global("JO_JOIN_XPGT_41","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_XPGT_41","LOCALS",1)
-		AddXPObject(Myself,1000000)
-END
-
 
 
 ///////////////////////////////////////////////////////////////////////////////
