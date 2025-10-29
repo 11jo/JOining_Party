@@ -26,6 +26,138 @@ THEN
 		Activate(Myself)
 END
 
+
+///////////////////////////////////////////////////////////////////////////////
+// Go to Reintegrate NPC into party periodically
+
+IF // reactive JOMINHP1 after load
+	OnCreation()
+	Allegiance(Myself,FAMILIAR)
+	HasItem("JOMINHP1",Myself)
+THEN
+	RESPONSE #100
+		EquipItemEx("JOMINHP1",0)
+		Continue()
+END
+
+IF // security check
+	OnCreation()
+	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JOIN","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+END
+
+IF
+	OR(2)
+		OnCreation()
+		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_NEVER_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
+	NumInPartyLT(6)
+	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
+THEN
+	RESPONSE #0
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		MoveToObject(Player1Fill)
+		SetInterrupt(TRUE)
+	RESPONSE #1
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		MoveToObject(Player1)
+		SetInterrupt(TRUE)
+	RESPONSE #2
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		MoveToObject(Player2)
+		SetInterrupt(TRUE)
+	RESPONSE #3
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		MoveToObject(Player3)
+		SetInterrupt(TRUE)
+	RESPONSE #4
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		MoveToObject(Player4)
+		SetInterrupt(TRUE)
+	RESPONSE #5
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		MoveToObject(Player5)
+		SetInterrupt(TRUE)
+	RESPONSE #6
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		MoveToObject(Player6)
+		SetInterrupt(TRUE)
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Reintegrate NPC into party periodically (Every NINE_ROUNDS depending of other NPCs and Triggers above) 
+
+// Could be changed to more or less rounds for players convenience
+
+IF
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_IS_JOINING","LOCALS",1)
+	!Global("JO_JOIN_CUTSCENE","GLOBAL",1)
+	!Global("JO_NEVER_JOIN","LOCALS",1)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",1)
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // ScriptAction (All_in_Baf)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SmallWait(1)
+		DisplayStringHead(Myself,~Hey.~)
+		JoinParty() // Go to All_In_Baf Switch between familiar and party
+		SetInterrupt(TRUE)
+END
+
+// Maybe something could be done with :
+
+/*
+0x0004 Joins(O:Object*)
+Returns true if the specified object has joined the party in the last script round. This trigger is only sent to player characters. 
+
+0x0005 Leaves(O:Object*)
+Returns true if the specified object has left the party in the last script round. This trigger is only sent to player characters. 
+*/
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Broken links
@@ -332,128 +464,6 @@ THEN
 	RESPONSE #100
 		MoveToObject(Player6)
 END
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Go to Reintegrate NPC into party periodically
-
-IF // security check
-	OnCreation()
-	Global("JO_JOIN_IS_JOINING","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_MINUTE)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-END
-
-IF
-	OR(2)
-		OnCreation()
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
-	ActionListEmpty()
-	!ActuallyInCombat()
-	Allegiance(Myself,FAMILIAR)
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1)
-	!Global("JO_NEVER_JOIN","LOCALS",1)
-	Global("JO_NOJOIN","GLOBAL",0)
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
-	NumInPartyLT(6)
-	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
-THEN
-	RESPONSE #0
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		SmallWait(1)
-		MoveToObject(Player1Fill)
-		SetInterrupt(TRUE)
-	RESPONSE #1
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		SmallWait(1)
-		MoveToObject(Player1)
-		SetInterrupt(TRUE)
-	RESPONSE #2
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		SmallWait(1)
-		MoveToObject(Player2)
-		SetInterrupt(TRUE)
-	RESPONSE #3
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		SmallWait(1)
-		MoveToObject(Player3)
-		SetInterrupt(TRUE)
-	RESPONSE #4
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		SmallWait(1)
-		MoveToObject(Player4)
-		SetInterrupt(TRUE)
-	RESPONSE #5
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		SmallWait(1)
-		MoveToObject(Player5)
-		SetInterrupt(TRUE)
-	RESPONSE #6
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		SmallWait(1)
-		MoveToObject(Player6)
-		SetInterrupt(TRUE)
-END
-
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Reintegrate NPC into party periodically (Every NINE_ROUNDS depending of other NPCs and Triggers above) 
-
-// Could be changed to more or less rounds for players convenience
-
-IF
-	ActionListEmpty()
-	!ActuallyInCombat()
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_IS_JOINING","LOCALS",1)
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1)
-	!Global("JO_NEVER_JOIN","LOCALS",1)
-	NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOINI","LOCALS",1)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // ScriptAction (All_in_Baf)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SmallWait(1)
-		DisplayStringHead(Myself,~Hey.~)
-		JoinParty() // Go to All_In_Baf Switch between familiar and party
-		SetInterrupt(TRUE)
-END
-
-// Maybe something could be done with :
-
-/*
-0x0004 Joins(O:Object*)
-Returns true if the specified object has joined the party in the last script round. This trigger is only sent to player characters. 
-
-0x0005 Leaves(O:Object*)
-Returns true if the specified object has left the party in the last script round. This trigger is only sent to player characters. 
-*/
 
 
 ///////////////////////////////////////////////////////////////////////////////
