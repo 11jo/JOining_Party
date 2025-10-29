@@ -1,0 +1,59 @@
+/*
+IF
+	Allegiance(Myself,FAMILIAR)
+THEN
+	RESPONSE #100
+	ChangeAIScript("JO_FLYI",GENERAL)
+END
+*/
+
+IF
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!InParty(Myself)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		JoinParty()
+		Continue()
+END
+
+IF
+	OR(3)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+	InParty(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		ChangeAIScript("",GENERAL)
+		LeaveParty()
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -524,7 +524,7 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,#4888)
+	VerbalConstant(Myself,DYING)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
@@ -585,9 +585,11 @@ END
 
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	OR(2)
+	OR(3)
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
+		!ActuallyInCombat()
+		
 THEN
 	RESPONSE #10
 	SetInterrupt(FALSE)
