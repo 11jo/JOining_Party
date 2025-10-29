@@ -48,9 +48,7 @@ END
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0) // Temporary solution until DPLAYER2 is sorted out...
-	OR(2)
-		!Global("JO_%Death_var%_Valid","GLOBAL",0)
-		!Global("JO_Myself_Valid","LOCALS",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
 	OR(3)
 		!Allegiance(Myself,FAMILIAR)
@@ -58,16 +56,13 @@ IF
 		!IsActive(Myself)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_Valid","GLOBAL",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 END
  
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(2)
-		Global("JO_%Death_var%_Valid","GLOBAL",0)
-		Global("JO_Myself_Valid","LOCALS",0)
+	Global("JO_Myself_Valid","LOCALS",0)
 	OR(2)
 		IsValidForPartyDialogue(Myself)
 		!StateCheck(Myself,CD_STATE_NOTVALID)
@@ -76,7 +71,6 @@ IF
 		InParty(Myself)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_%Death_var%_Valid","GLOBAL",1)
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
 END
 
