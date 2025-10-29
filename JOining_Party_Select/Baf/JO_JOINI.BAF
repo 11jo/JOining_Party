@@ -7,20 +7,20 @@ AddXPObject(AddXPObject(O:Object*,I:XP*) )
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Global("JO_NEVER_CUTSCENE","LOCALS",1)
+	!Global("JO_NEVER_CUTSCENE","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
-		IsActive(Myself)
+	!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	IsActive(Myself)
 THEN
 	RESPONSE #100
 		Deactivate(Myself)
 END
 
 IF
-	Global("JO_NEVER_CUTSCENE","LOCALS",1)
+	!Global("JO_NEVER_CUTSCENE","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-		!IsActive(Myself)
+	!IsActive(Myself)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -129,9 +129,9 @@ IF
 	ActionListEmpty()
 	!ActuallyInCombat()
 	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_IS_JOINING","LOCALS",1)
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1)
-	!Global("JO_NEVER_JOIN","LOCALS",1)
+	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_NEVER_JOIN","LOCALS",0)
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
@@ -495,7 +495,8 @@ THEN
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
-	DisplayStringHead(Myself,#4887)
+	VerbalConstant(Myself,DYING)
+	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~I can't fall... Not now !~)
@@ -531,10 +532,6 @@ THEN
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
 	DisplayStringHead(Myself,~Aaarghhh...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	RESPONSE #10
-	DisplayStringHead(Myself,#4888)
 	SmallWait(1)
 	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
 	RESPONSE #10
