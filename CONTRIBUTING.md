@@ -53,7 +53,6 @@
 | Name | Area | Description | Values |
 | --- | --- | --- | --- |
 | JO_Myself_AllowDead | L | Replace regular `InPartyAllowDead(Myself)` | 0: False<br>Other: True |
-| JO_%Death_var%_InParty | G | Replace regular `InParty(%Death_var%)` | 0: False<br>Other: True |
 | JO_Myself_InParty | G | Replace regular `InParty(Myself)` | 0: False<br>Other: True |
 | JO_%Death_var%_Valid | G | Replace regular `IsValidForPartyDialog(%Death_var%)` | 0: False<br>Other: True |
 | JO_Myself_Valid | L | Replace regular `IsValidForPartyDialog(Myself)` | 0: False<br>Other: True |
