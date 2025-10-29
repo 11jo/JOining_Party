@@ -1,12 +1,11 @@
+// Extends DPLAYER3.bcs
 
 IF
-	Global("JO_Join_InParty_Myself","LOCALS",0)
+	Global("JO_JOIN_PLAYER_INIT","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_Join_InParty_Myself","LOCALS",1)
-		SetGlobal("JO_Myself_InParty","LOCALS",1)
-		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
-		SetGlobal("JO_Myself_Valid","LOCALS",1)
+		AddSpecialAbility("jo_join")
+		SetGlobal("JO_JOIN_PLAYER_INIT","LOCALS",1)
 		Continue()
 END
 
@@ -24,6 +23,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
+		Continue()
 END
  
 // InPartyAllowDead("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
@@ -35,6 +35,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
+		Continue()
 END
  
 // !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
@@ -45,6 +46,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		Continue()
 END
  
 // InParty("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
@@ -56,6 +58,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",1)
+		Continue()
 END
  
 // !Is(!If)ValidForPartyDialog(ue)
@@ -69,6 +72,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		Continue()
 END
  
 // Is(If)ValidForPartyDialog(ue)
@@ -83,46 +87,5 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	Global("JO_Join_ability","LOCALS",0)
-THEN
-	RESPONSE #100
-		ActionOverride(Player1,AddSpecialAbility("jo_join"))
-		SetGlobal("JO_Join_ability","LOCALS",1)
 		Continue()
 END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Special security
-IF
-	Global("JO_JOIN","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	HasItem("JOMINHP1",Player1)
-THEN
-	RESPONSE #100
-		DestroyItem("JOMINHP1")
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
