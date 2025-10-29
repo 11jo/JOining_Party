@@ -1,23 +1,10 @@
+// Extends BALDUR.bcs and BALDUR25.bcs
 
 IF
-	Global("JO_Join_InParty_Myself","GLOBAL",0)
+	Global("JO_JOIN_PLAYER1_INIT","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_Join_InParty_Myself","GLOBAL",1)
+		SetGlobal("JO_JOIN_PLAYER1_INIT","GLOBAL",1)
 		ActionOverride(Player1,ChangeAIScript("DPLAYER3",DEFAULT))
 		Continue()
 END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-/*
-IF
-	CutSceneBroken()
-	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-END
-*/
