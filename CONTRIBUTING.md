@@ -77,7 +77,6 @@
 | JO_JOIN_FEELING | L | Not quite tested yet, DisplayString to notify familiar health percentage statut | 1: 50 ≤ health < 69<br>2: 30 ≤ health < 49<br>3: 15 ≤ health < 29<br>4: 5 ≤ health < 14<br>Other: nothing|
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
 | JO_NEVER_CUTSCENE | L | Active or deactive familiar presence in cutscene | 0: False<br>Other: True |
-| JO_JOIN_XPGT_X | L | Will hopefully add the relevant XP to familiar to be on the same level as party members | 0: False<br>Other: True |
 | JO_NEVER_JOIN | L | Prevent the familiar to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
 | JO_JOIN_BD0120 | L | Specific to Korlaz donjon, used to keep familiar along. | 0: False<br>Other: True |
 | JO_JOIN_SLEEPING_DEADLY | L | Not implemented yet | 
