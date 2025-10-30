@@ -177,6 +177,7 @@ IF
 	Global("JO_JOINI","LOCALS",0)
 THEN
 	RESPONSE #100
+		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
 END
 
