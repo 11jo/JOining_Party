@@ -1,0 +1,10 @@
+
+IF
+	InMyArea("%Death_var%")
+	Allegiance("%Death_var%",FAMILIAR)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",1)
+		ActionOverride("%Death_var%",ChangeAIScript("JO_FLYI",GENERAL))
+		Continue()
+END

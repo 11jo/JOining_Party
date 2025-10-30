@@ -31,9 +31,10 @@ END
 // Go to Reintegrate NPC into party periodically
 
 IF // reactive JOMINHP1 after load
-	OnCreation()
 	Allegiance(Myself,FAMILIAR)
 	HasItem("JOMINHP1",Myself)
+	!HasItemEquiped("JOMINHP1",Myself)
+//	!HasItemEquipedReal("JOMINHP1",Myself)
 THEN
 	RESPONSE #100
 		EquipItemEx("JOMINHP1",0)

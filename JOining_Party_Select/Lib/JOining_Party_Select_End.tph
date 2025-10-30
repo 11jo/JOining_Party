@@ -407,9 +407,14 @@ OUTER_SPRINT ~252034~ ~52034~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDBALDUR.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
 
+/*
 		ACTION_IF GAME_IS ~eet~ BEGIN
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
 		END
+*/
+
+// EXTEND_TOP ~BD0103.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BD0103.baf~ EVALUATE_BUFFER
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
 
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER

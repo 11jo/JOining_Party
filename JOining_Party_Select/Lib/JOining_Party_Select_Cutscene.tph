@@ -89,8 +89,7 @@
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		Wait(4)~
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // LeaveParty() found in %SOURCE_FILESPEC%
 				~
@@ -132,8 +131,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		Wait(4)~
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // LeaveParty() found in %SOURCE_FILESPEC%
 				~

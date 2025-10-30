@@ -207,15 +207,57 @@ LANGUAGE ~English~
 /////////////////////////// Continuous NPCs ///////////////////////////
 
 
-BEGIN ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
+BEGIN ~Include Imoen~
 DESIGNATED 10
-LABEL ~JOining_Party_Select-Continuous~
+SUBCOMPONENT ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
+LABEL ~JOining_Party_Select-Continuous_Imoen~
 REQUIRE_PREDICATE (GAME_IS ~tob bgt bgee bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET~
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Imoen~ ~~
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Edwin~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Jaheira~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Minsc~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Viconia~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Dorn~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Neera~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Rasaad~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+
+BEGIN ~Exlude Imoen~
+DESIGNATED 11
+SUBCOMPONENT ~Continuous original NPCs (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)~
+LABEL ~JOining_Party_Select-Continuous_Not_Imoen~
+REQUIRE_PREDICATE (GAME_IS ~tob bgt bgee bg2ee eet~) ~Necessite BG2-ToB / BG2EE / BGT / EET~
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Edwin~ ~~

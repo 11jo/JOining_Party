@@ -87,3 +87,21 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
 END
+
+// Special security
+IF
+	Global("JO_JOIN","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+END
+
+IF
+	HasItem("JOMINHP1",Player1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself, ~FIXME. Voilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !~)
+		DestroyItem("JOMINHP1")
+END
