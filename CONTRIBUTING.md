@@ -63,7 +63,7 @@
 | JO_%Death_var%_LeaveParty | G | If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
 | JO_Myself_LeaveParty | L | If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
 | JO_JOIN_JOIN | L | Timer for switching Familiar to NPCs regulary | n/a |
-| JO_JOIN_SLEEPING_DEAD | L | Familiar sleeping state | 1: Familiar health is below 5HP<br>2: Familiar health is below 5HP and after spell JOIN648 is applied<br>3: Familiar health is above 4HP and after spell JOIR648 is applied<br>Other: Normal state |
+| JO_JOIN_SLEEPING_DEAD | L | If familiar is sleeping dead | 0: False<br>Other: True |
 | JO_JOIN_TALK | L | For first time becoming a familiar | 0: False<br>Other: True |
 | JO_JOINI | L | Set when familiar switch in party, and enable block to return to familiar state | 0: False<br>Other: True |
 | JO_JOIN_LINK_PLAYER_ID | L | Used to link a familiar to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|

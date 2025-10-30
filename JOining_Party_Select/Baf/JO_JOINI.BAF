@@ -471,114 +471,97 @@ END
 // Dead but not really  (// Related to AllInBaf set statut when Dead but not really )
 
 IF
-	!GlobalGT("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,2)
 THEN
 	RESPONSE #10
-	DisplayStringHead(Myself,~Carry on without me...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Carry on without me...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Les carottes sont cuites...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Les carottes sont cuites...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~You're next...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~You're next...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Keep going, I will catch up...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Keep going, I will catch up...~)
+		Continue()
 	RESPONSE #10
-	VerbalConstant(Myself,DYING)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		VerbalConstant(Myself,DYING)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~I can't fall... Not now !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~I can't fall... Not now !~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~I don't want to go...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~I don't want to go...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~At last...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~At last...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Huh... I can see the darkness !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Huh... I can see the darkness !~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Go on without me, my fellow traveler~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Go on without me, my fellow traveler~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Not like this... Not like this !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Not like this... Not like this !~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Ooooh ! I can see the light !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Ooooh ! I can see the light !~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~<CHARNAME> ! For the gods sake...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~<CHARNAME> ! For the gods sake...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Aaarghhh...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Aaarghhh...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~The pointy ears had it right, we're all doomed.~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~The pointy ears had it right, we're all doomed.~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~My wounds are too grave. I am dead...~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~My wounds are too grave. I am dead...~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~<CHARNAME> ! I curse you !!!~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~<CHARNAME> ! I curse you !!!~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~A fitting death !~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~A fitting death !~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~We're all doomed! Run while you're still able.~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~We're all doomed! Run while you're still able.~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~I saw it coming... I guess.~)
-	SmallWait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~I saw it coming... I guess.~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~I will return to finish you off.~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~I will return to finish you off.~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~Don't you dare leaving me here to rot !~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~Don't you dare leaving me here to rot !~)
+		Continue()
 	RESPONSE #10
-	DisplayStringHead(Myself,~I know your true nature, <CHARNAME>. You're gonna kill all of us...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		DisplayStringHead(Myself,~I know your true nature, <CHARNAME>. You're gonna kill all of us...~)
+		Continue()
 END
 
+// Warning: conditions must be identical to the previous block
 IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
+	HPLT(Myself,2)
 THEN
-	RESPONSE #10
-	SetInterrupt(FALSE)
-	SetGlobalTimer("JO_JOIN_TIMER_DEAD","LOCALS",ONE_TURN)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
-	ChangeEnemyAlly(Myself,NEUTRAL)
-	SetSequence(SEQ_DIE)
-	Wait(2)
-	ReallyForceSpellRES("JOIN648",Myself)
-	SetInterrupt(TRUE)
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SmallWait(1)
+		SetGlobalTimer("JO_JOIN_TIMER_DEAD","LOCALS",ONE_TURN)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetSequence(SEQ_DIE)
+		Wait(2)
+		ReallyForceSpellRES("JOIN648",Myself)
+		SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -588,66 +571,61 @@ END
 // No more Dead  (// Related to AllInBaf set statut when No more Dead )
 
 IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",2)
+	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	OR(2)
+		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
+		HPGT(Myself,4)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		ReallyForceSpellRES("JOIR648",Myself)
+		Wait(2)
+		SetSequence(SEQ_EMERGE)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+// Warning: conditions must be identical to the previous block
+IF
+	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
 THEN
 	RESPONSE #10
-	SetInterrupt(FALSE)
-	SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",3)
-	ChangeEnemyAlly(Myself,FAMILIAR)
-	ReallyForceSpellRES("JOIR648",Myself)
-	Wait(2)
-	SetSequence(SEQ_EMERGE)
-	SetInterrupt(TRUE)
+		DisplayStringHead(Myself,~Still alive !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Dead ? No more !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~The sun shines, and I am amazed to see another day.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Perhaps I'll survive longer than I had originally thought.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~You didn't abandon me !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~It was a... Nice experiment...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Well, I guess we have to go on...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~I may have overreacted.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Of "curse"... I didn't mean it.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Well, that escalated quickly...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 END
 
-IF
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",3)
-THEN
-	RESPONSE #10
-	DisplayStringHead(Myself,~Still alive !~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Dead ? No more !~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~The sun shines, and I am amazed to see another day.~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Perhaps I'll survive longer than I had originally thought.~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~You didn't abandon me !~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~It was a... Nice experiment...~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Well, I guess we have to go on...~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I may have overreacted.~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Of "curse"... I didn't mean it.~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Well, that escalated quickly...~)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-END
 /*
 IF
 	Allegiance(Myself,FAMILIAR)
