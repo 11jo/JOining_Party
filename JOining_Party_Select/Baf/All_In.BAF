@@ -174,6 +174,7 @@ IF
 	HasItem("JOMINHP1",Myself)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
 THEN
 	RESPONSE #100
 		DestroyItem("JOMINHP1")

@@ -21,19 +21,17 @@ THEN
 	RESPONSE #100
 		ActionOverride(Player6,SetGlobal("K#PartySoD","LOCALS",1))
 		SetGlobal("K#PartySoD","BD0103",1)
-		Continue()
 END
 
 IF
-	Allegiance("%Death_var%",FAMILIAR)
 	Global("K#PartySoD","BD0103",0)
-	!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
+	Allegiance("%Death_var%",FAMILIAR)
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
 	!Name("None","%Death_var%")
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",SetGlobal("K#PartySoD","LOCALS",1))
 		SetGlobal("K#PartySoD","BD0103",1)
-		Continue()
 END
 
 >>>>>>>>
