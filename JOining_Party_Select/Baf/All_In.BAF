@@ -1,4 +1,13 @@
 
+IF
+	InParty(Myself)
+	!Global("JO_JOIN_IS_FAMILIAR","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_FAMILIAR","LOCALS",0)
+END
+
 // Base
  
 // !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
@@ -202,6 +211,7 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		FaceObject(Player1)
+		SetGlobal("JO_JOIN_IS_FAMILIAR","LOCALS",1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
@@ -248,6 +258,7 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		SmallWait(1)
+		SetGlobal("JO_JOIN_IS_FAMILIAR","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",FOUR_HOURS) // 20mn
