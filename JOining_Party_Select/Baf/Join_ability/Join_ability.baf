@@ -103,5 +103,6 @@ IF
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself, ~FIXME. Voilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !~)
+		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
 END
