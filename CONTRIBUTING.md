@@ -77,7 +77,6 @@
 | JO_JOIN_IS_HIDDEN_BY_CUTSCENE | L | Familiar is currently Deactivate by a cutscene | 0: False<br>Other: True |
 | JO_NEVER_JOIN | L | Prevent the familiar to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
 | JO_JOIN_BD0120 | L | Specific to Korlaz donjon, used to keep familiar along. | 0: False<br>Other: True |
-| JO_JOIN_SLEEPING_DEADLY | L | Not implemented yet | 
 | JO_JOIN_ACTION | L | Not implemented yet | 
 
 

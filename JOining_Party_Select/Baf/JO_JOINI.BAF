@@ -626,56 +626,7 @@ THEN
 		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 END
 
-/*
-IF
-	Allegiance(Myself,FAMILIAR)
-	HPGT(Myself,4)
-	Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",1)
-THEN
-	RESPONSE #10
-	DisplayStringHead(Myself,~Still alive !~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-//	SetSequence(SEQ_AWAKE)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Still alive !~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Still alive !~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Still alive !~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~You didn't abandon me !~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~It was a... Nice experiment...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Well, I guess we have to go on...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~I may have overreacted.~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Of curse... I didn't mean it.~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-	RESPONSE #10
-	DisplayStringHead(Myself,~Well, that escalated quickly...~)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-END
 
-IF
-	Global("JO_JOIN_SLEEPING_DEADLY","LOCALS",2)
-THEN
-	RESPONSE #10
-	ReallyForceSpellRES("JOIR648",Myself)
-	Wait(2)
-	SetSequence(SEQ_EMERGE)
-	Wait(1)
-	SetGlobal("JO_JOIN_SLEEPING_DEADLY","LOCALS",0)
-END
-*/
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
