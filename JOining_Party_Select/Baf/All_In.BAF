@@ -7,6 +7,8 @@ IF
 	!InPartyAllowDead(Myself)
 	!Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -25,6 +27,8 @@ END
  
 // !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
 IF
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	!Global("JO_Myself_InParty","LOCALS",0)
 	!InParty(Myself)
@@ -108,12 +112,20 @@ END
 IF
 	!AreaCheck("BD0120")
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	!Allegiance(Myself,FAMILIAR)
+	OR(2)
+		!Allegiance(Myself,FAMILIAR)
+		InParty(Myself)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
-	!Global("JO_JOIN","LOCALS",1)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
 END
 
 IF
@@ -161,6 +173,8 @@ IF
 	!Allegiance(Myself,FAMILIAR)
 	HasItem("JOMINHP1",Myself)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
 THEN
 	RESPONSE #100
 		DestroyItem("JOMINHP1")
@@ -190,10 +204,11 @@ THEN
 		FaceObject(Player1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
+		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN)
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
-		MakeGlobal()
+//		MakeGlobal()
 		SetInterrupt(TRUE)
 END
 
@@ -241,7 +256,7 @@ THEN
 //		ChangeAIScript("",CLASS)
 //		ChangeAIScript("",GENERAL)
 		ChangeAIScript("JO_JOINI",GENERAL)
-		MakeGlobal()
+//		MakeGlobal()
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
 		Continue()
