@@ -72,7 +72,6 @@
 | JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
 | JO_JOIN_CLEAR | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: Script needs to be updated<br>3: Script is up to date<br>Other: nothing|
 | JO_JOIN_IS_JOINING | L | The familiar will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
-| JO_JOIN_FEELING | L | Not quite tested yet, DisplayString to notify familiar health percentage statut | 1: 50 ≤ health < 69<br>2: 30 ≤ health < 49<br>3: 15 ≤ health < 29<br>4: 5 ≤ health < 14<br>Other: nothing|
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
 | JO_JOIN_HIDE_DURING_CUTSCENE | L | Active or deactive familiar presence in cutscene | 0: False<br>Other: True |
 | JO_JOIN_IS_HIDDEN_BY_CUTSCENE | L | Familiar is currently Deactivate by a cutscene | 0: False<br>Other: True |
