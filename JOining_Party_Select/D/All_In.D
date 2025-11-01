@@ -4,7 +4,7 @@ APPEND ~%joining_dlg%~
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN 1
 	SAY ~Hey ! Who could have foreseen that you would lead such a legion ?~
 	IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
-	IF ~~ THEN REPLY ~Join the group properly, please.~ DO ~SetGlobal("JO_NEVER_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN","LOCALS",0) SmallWait(2) JoinParty()~ EXIT //  SmallWait(2) DestroyItem("JO_JOIN")
+	IF ~~ THEN REPLY ~Join the group properly, please.~ DO ~SetGlobal("JO_NEVER_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0) SmallWait(2) JoinParty()~ EXIT //  SmallWait(2) DestroyItem("JO_JOIN")
 	IF ~~ THEN REPLY ~Join the group, just for a minute.~ DO ~SetGlobal("JO_NEVER_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ EXIT 
 //	IF ~~ THEN REPLY ~We need to adjust our strategy.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
 	IF ~~ THEN REPLY ~We need to adjust our position.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
