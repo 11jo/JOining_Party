@@ -111,7 +111,6 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		LeaveParty()
-		Continue()
 END
 
 IF
@@ -132,8 +131,6 @@ THEN
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOINI","LOCALS",0)
 END
 
 IF
