@@ -1,11 +1,28 @@
 
+// Cas d'un recrutement non standard (ctrl+Q par exemple)
 IF
-	InParty(Myself)
-	!Global("JO_JOIN_IS_FAMILIAR","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
+	InParty(Myself)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_FAMILIAR","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+END
+
+// Cas où le script serait quand même actif mais que le personnage ne répond à aucun cas répertorié :
+// ni dans le groupe, ni familier, ni au sol, ni charmé
+// ChangeEnemyAlly par exemple
+IF
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!StateCheck(Myself,STATE_CHARMED)
+	!Allegiance(Myself,FAMILIAR)
+	!InParty(Myself)
+	OR(2)
+		!Allegiance(Myself,NEUTRAL)
+		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 END
 
 // Base
@@ -211,7 +228,7 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		FaceObject(Player1)
-		SetGlobal("JO_JOIN_IS_FAMILIAR","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
@@ -258,7 +275,7 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		SmallWait(1)
-		SetGlobal("JO_JOIN_IS_FAMILIAR","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",FOUR_HOURS) // 20mn
