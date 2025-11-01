@@ -177,6 +177,7 @@ ACTION_FOR_EACH Death_var IN
 
 BEGIN
 
+//////////////////////////////////////////////////////////////////////////////////////
 
 COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
 
@@ -396,7 +397,72 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+
+END // ACTION_FOR_EACH MAIN
+
+
 ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
+
+ACTION_FOR_EACH Death_var IN // ACTION_FOR_EACH BGSoD
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Original Imoen ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~  // Imoen
+// Original Edwin ~Edwin~                            // Edwin
+// Original Jaheira ~Jaheira~ // ~ttjaheir~             // Jaheira
+// Original Minsc ~Minsc~ // ~ttminsc~                  // Minsc
+// Original Viconia ~Viconia~                        // Viconia
+// Original Dorn ~Dorn~                              // Dorn
+// Original Neera ~Neera~                            // Neera
+// Original Rasaad ~Rasaad~                          // Rasaad
+
+/////////////////////////// bg1 ///////////////////////////
+
+// Original Ajantis ~Ajantis~                          // Ajantis
+// Original Alora ~Alora~                              // Alora
+// Original Branwen ~Branwen~ // ~ttbran~              // Branwen
+// Original Coran ~Coran~                              // Coran
+// Original Dynaheir ~Dynaheir~                        // Dynaheir
+
+// Original Eldoth ~Eldoth~                            // Eldoth
+// Original Faldorn ~Faldorn~                          // Faldorn
+// Original Garrick ~Garrick~                          // Garrick
+
+// Original Kagain ~Kagain~                            // Kagain
+// Original Khalid ~Khalid~                            // Khalid
+// Original Kivan ~Kivan~                              // Kivan
+
+// Original Montaron ~Montaron~                        // Montaron
+// Original Quayle ~Quayle~                            // Quayle
+// Original Safana ~Safana~                            // Safana
+// Original Sharteel ~Sharteel~ // ~Shar-teel~         // Sharteel
+// Original Skie ~Skie~                                // Skie
+// Original Tiax ~Tiax~                                // Tiax
+
+// Original Xan ~Xan~ // ttxan~                        // Xan
+// Original Xzar ~Xzar~                                // Xzar
+// Original Yeslick ~Yeslick~                          // Yeslick
+
+// Original Baeloth ~Baeloth~                          // Baeloth
+
+
+/////////////////////////// SoD ///////////////////////////
+
+
+// Original Voghiln ~Voghiln~                         // Voghiln
+// Original Corwin ~Corwin~                           // Corwin
+// Original Mkhiin ~Mkhiin~                           // Mkhiin
+// Original Glint ~Glint~                             // Glint
+
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+
+// Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+BEGIN // ACTION_FOR_EACH BGSoD
 
 	ACTION_IF (GAME_IS ~eet~) BEGIN
 OUTER_SPRINT ~252034~ ~252034~
@@ -411,9 +477,8 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
 		ACTION_IF GAME_IS ~eet~ BEGIN
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
 		END
-
-
 // EXTEND_TOP ~BD0103.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BD0103.baf~ EVALUATE_BUFFER
+
 
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
 
@@ -447,7 +512,74 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 
 	END
 
+END // ACTION_FOR_EACH BGSoD
+
+
 	ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
+
+ACTION_FOR_EACH Death_var IN // ACTION_FOR_EACH BG2
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Original Imoen ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~  // Imoen
+// Original Edwin ~Edwin~                            // Edwin
+// Original Jaheira ~Jaheira~ // ~ttjaheir~             // Jaheira
+// Original Minsc ~Minsc~ // ~ttminsc~                  // Minsc
+// Original Viconia ~Viconia~                        // Viconia
+// Original Dorn ~Dorn~                              // Dorn
+// Original Neera ~Neera~                            // Neera
+// Original Rasaad ~Rasaad~                          // Rasaad
+
+/////////////////////////// bg2 ///////////////////////////
+
+// Original Aerie ~Aerie~                               // Aerie
+// Original Anomen ~Anomen~                             // Anomen
+// Original Cernd ~Cernd~                               // Cernd
+// Original Haerdalis ~Haerdalis~                       // Haerdalis
+// Original Hexxat ~Hexxat~                             // Hexxat
+// Original Jan ~Jan~                                   // Jan
+// Original Keldorn ~Keldorn~                           // Keldorn
+// Original Korgan ~Korgan~                             // Korgan
+// Original Mazzy ~Mazzy~                               // Mazzy
+// Original Nalia ~Nalia~                               // Nalia
+// Original Sarevok ~Sarevok~                           // Sarevok
+// Original Valygar ~Valygar~                           // Valygar
+// Original Wilson ~Wilson~                             // Wilson
+// Original Yoshimo ~Yoshimo~                           // Yoshimo
+
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+// Alora BG2
+// Mod Alora BG2 ~CMALORA~
+
+// Yeslick BG2
+// Mod Yeslick BG2 ~LK#YESLK~
+
+// The Undying
+// Mod Undying ~cmninaf~ ~callisto~
+
+// Summon Bhaalspawn
+// Mod Sandra ~BHAALSPW~
+
+// NikitaRedux
+// Mod Nikita ~cmnikita~
+
+// VampireTales
+// Mod Miriam ~cmgmiriam~
+
+// Kim
+// Mod Kim ~Kim~
+
+// Severian
+// Mod Severian ~#Severian~
+
+// Frennedan
+// Mod Frennedan ~Frennedan~
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+BEGIN // ACTION_FOR_EACH BG2
 
 EXTEND_BOTTOM ~OHHBARHX.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHBARHX.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~OHHFAKOK.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHHFAKOK.baf~ EVALUATE_BUFFER
@@ -497,12 +629,13 @@ EXTEND_TOP ~JORAK00.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/JORAK01.baf~ EV
 
 
 
-END // ACTION_FOR_EACH MAIN
+END // ACTION_FOR_EACH BG2
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// SoD transition
+// SoD transition 
 
+// BD0120 is Korlaz Donjon
 ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
 
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/BD0120.tph~
