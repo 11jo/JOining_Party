@@ -472,6 +472,7 @@ END
 
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,2)
 THEN
@@ -549,6 +550,7 @@ END
 // Warning: conditions must be identical to the previous block
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
 	HPLT(Myself,2)
 THEN
@@ -572,10 +574,13 @@ END
 
 IF
 	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	!ActuallyInCombat()
 	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(3)
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -591,10 +596,13 @@ END
 // Warning: conditions must be identical to the previous block
 IF
 	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	!ActuallyInCombat()
 	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(3)
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #10
 		DisplayStringHead(Myself,~Still alive !~)
