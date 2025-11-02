@@ -1,13 +1,16 @@
 
 <<<<<<<<bd0103_rep.baf
 IF
-	Global("K#PartySoD","BD0103",0)
-	InPartyAllowDead(Player6)
-	!Name("None",Player6)
+	OR(2)
+		InMyArea("kivan")
+		!TriggerOverride("Kivan",Global("JO_Myself_AllowDead","LOCALS",0))
+	GlobalLT("BD_PLOT","GLOBAL",51)
 THEN
 	RESPONSE #100
-		ActionOverride(Player6,SetGlobal("K#PartySoD","LOCALS",1))
-		SetGlobal("K#PartySoD","BD0103",1)
+		ActionOverride("kivan",LeaveParty())
+		SetGlobal("JO_Kivan_LeaveParty","GLOBAL",1)
+		SmallWait(1)
+		ActionOverride("kivan",DestroySelf())
 		Continue()
 END
 >>>>>>>>
@@ -15,23 +18,34 @@ END
 <<<<<<<<bd0103_add.baf
 IF
 	Global("K#PartySoD","BD0103",0)
-	InPartyAllowDead(Player6)
-	!Name("None",Player6)
-THEN
-	RESPONSE #100
-		ActionOverride(Player6,SetGlobal("K#PartySoD","LOCALS",1))
-		SetGlobal("K#PartySoD","BD0103",1)
-END
-
-IF
-	Global("K#PartySoD","BD0103",0)
 	Allegiance("%Death_var%",FAMILIAR)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
-	!Name("None","%Death_var%")
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",SetGlobal("K#PartySoD","LOCALS",1))
 		SetGlobal("K#PartySoD","BD0103",1)
+		SmallWait(1)
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_InParty","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",0))
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SmallWait(1)
+		ActionOverride("%Death_var%",DestroySelf())
+		Continue()
+END
+
+IF
+	OR(2)
+		InMyArea("kivan")
+		!TriggerOverride("Kivan",Global("JO_Myself_AllowDead","LOCALS",0))
+	GlobalLT("BD_PLOT","GLOBAL",51)
+THEN
+	RESPONSE #100
+		ActionOverride("kivan",LeaveParty())
+		SetGlobal("JO_Kivan_LeaveParty","GLOBAL",1)
+		SmallWait(1)
+		ActionOverride("kivan",DestroySelf())
+		Continue()
 END
 
 >>>>>>>>

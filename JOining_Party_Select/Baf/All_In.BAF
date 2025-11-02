@@ -116,20 +116,21 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 	OR(2)
-		Global("JO_Myself_LeaveParty","LOCALS",1)
-		Global("JO_%Death_var%_LeaveParty","GLOBAL",1)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
 	!InParty(Myself)
 THEN
 	RESPONSE #100
 		JoinParty()
+		Continue()
 END
 
 IF
 	OR(2)
-		Global("JO_Myself_LeaveParty","LOCALS",1)
-		Global("JO_%Death_var%_LeaveParty","GLOBAL",1)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
 	InParty(Myself)
 THEN
 	RESPONSE #100
@@ -139,6 +140,9 @@ THEN
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOINI","LOCALS",0)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		LeaveParty()
 END
 
@@ -148,7 +152,10 @@ IF
 	OR(2)
 		!Allegiance(Myself,FAMILIAR)
 		InParty(Myself)
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(3)
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 THEN
@@ -157,8 +164,6 @@ THEN
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOINI","LOCALS",0)
 END
 
 IF
@@ -168,35 +173,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 END
-
-/*
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
-	OR(2)
-		Global("KickedOut","LOCALS",0)
-		Global("IdKickedOut","LOCALS",0) 
-THEN
-	RESPONSE #100
-		SetGlobal("KickedOut","LOCALS",1)
-		SetGlobal("IdKickedOut","LOCALS",1) 
-END
-
-IF
-	!AreaCheck("BD0120")
-	!Allegiance(Myself,FAMILIAR)
-	!InParty(Myself)
-	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-	OR(2)
-		Global("KickedOut","LOCALS",1)
-		Global("IdKickedOut","LOCALS",1) 
-THEN
-	RESPONSE #100
-		SetGlobal("KickedOut","LOCALS",0)
-		SetGlobal("IdKickedOut","LOCALS",0) 
-END
-*/
 
 ///////////////////////////////////////////////////////////////////////////////
 
