@@ -1,6 +1,6 @@
 // Borrowed from d2-randomkits mod
 
-COPY - ~%MOD_FOLDER%/Joining.ini~ ~weidu_external/JOining_Party_Select/%MOD_FOLDER%/Setting~
+COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party_Select/Setting/JOining_Traveler.ini~
 // Continuous original NPCs
   COUNT_REGEXP_INSTANCES  ~Imoen.*=.*[^0-9]1[^0-9]*$~                  Imoen_as_traveler
   COUNT_REGEXP_INSTANCES  ~Edwin.*=.*[^0-9]1[^0-9]*$~                  Edwin_as_traveler
@@ -68,4 +68,4 @@ COPY - ~%MOD_FOLDER%/Joining.ini~ ~weidu_external/JOining_Party_Select/%MOD_FOLD
   COUNT_REGEXP_INSTANCES  ~Miriam_Vampire_Tales.*=.*[^0-9]1[^0-9]*$~                       Miriam_Vampire_Tales_as_traveler
   COUNT_REGEXP_INSTANCES  ~Severian_de_Demerya.*=.*[^0-9]1[^0-9]*$~                        Severian_de_Demerya_as_traveler
   COUNT_REGEXP_INSTANCES  ~The_Undying.*=.*[^0-9]1[^0-9]*$~                                The_Undying_as_traveler
-  
+
