@@ -7,13 +7,13 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~Jaheira.*=.*[^0-9]1[^0-9]*$~                Jaheira_as_traveler
   COUNT_REGEXP_INSTANCES  ~Minsc.*=.*[^0-9]1[^0-9]*$~                  Minsc_as_traveler
   COUNT_REGEXP_INSTANCES  ~Viconia.*=.*[^0-9]1[^0-9]*$~                Viconia_as_traveler
-  COUNT_REGEXP_INSTANCES  ~Dorn.*=.*[^0-9]1[^0-9]*$~                   Dorn_as_traveler
+  COUNT_REGEXP_INSTANCES  ~Dorn_Special.*=.*[^0-9]1[^0-9]*$~           Dorn_as_traveler // WARNING use "_Special" (see JOining_Traveler.ini)
   COUNT_REGEXP_INSTANCES  ~Neera.*=.*[^0-9]1[^0-9]*$~                  Neera_as_traveler
   COUNT_REGEXP_INSTANCES  ~Rasaad.*=.*[^0-9]1[^0-9]*$~                 Rasaad_as_traveler
   
 // Original bg1 NPCs
   COUNT_REGEXP_INSTANCES  ~Ajantis.*=.*[^0-9]1[^0-9]*$~                Ajantis_as_traveler
-  COUNT_REGEXP_INSTANCES  ~Alora.*=.*[^0-9]1[^0-9]*$~                  Alora_as_traveler
+  COUNT_REGEXP_INSTANCES  ~Alora_Special.*=.*[^0-9]1[^0-9]*$~          Alora_as_traveler // WARNING use "_Special" (see JOining_Traveler.ini)
   COUNT_REGEXP_INSTANCES  ~Branwen.*=.*[^0-9]1[^0-9]*$~                Branwen_as_traveler
   COUNT_REGEXP_INSTANCES  ~Coran.*=.*[^0-9]1[^0-9]*$~                  Coran_as_traveler
   COUNT_REGEXP_INSTANCES  ~Dynaheir.*=.*[^0-9]1[^0-9]*$~               Dynaheir_as_traveler
@@ -31,7 +31,7 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~Tiax.*=.*[^0-9]1[^0-9]*$~                   Tiax_as_traveler
   COUNT_REGEXP_INSTANCES  ~Xan.*=.*[^0-9]1[^0-9]*$~                    Xan_as_traveler
   COUNT_REGEXP_INSTANCES  ~Xzar.*=.*[^0-9]1[^0-9]*$~                   Xzar_as_traveler
-  COUNT_REGEXP_INSTANCES  ~Yeslick.*=.*[^0-9]1[^0-9]*$~                Yeslick_as_traveler
+  COUNT_REGEXP_INSTANCES  ~Yeslick_Special.*=.*[^0-9]1[^0-9]*$~        Yeslick_as_traveler // WARNING use "_Special" (see JOining_Traveler.ini)
   COUNT_REGEXP_INSTANCES  ~Baeloth.*=.*[^0-9]1[^0-9]*$~                Baeloth_as_traveler
   
 // Original SoD NPCs
