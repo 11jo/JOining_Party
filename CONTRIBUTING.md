@@ -18,6 +18,18 @@
 
 - [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core.tph)  
    - Implement scripts and dialogs for each selected NPCs.
+   
+- [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)  
+
+   - Select desired Travelers, set to 1 to install or 0 to not install.
+
+- [JOining_Traveler.tpa](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Traveler.tpa)  
+
+   - Read JOining_Traveler.ini to set player NPCs to Traveler selection
+
+- [Always_as_traveler.tpa](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/Always_as_traveler.tpa)  
+
+   - Enable selected travelers installation.
 
 - [All_In.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/All_In.BAF)  
    - Added to each selected NPCs to deal with Npc to Familiar switch and statut.
