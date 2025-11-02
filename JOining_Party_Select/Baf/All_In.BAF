@@ -22,7 +22,14 @@ IF
 		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
+		// reset block
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		// end reset block
 END
 
 // Base
