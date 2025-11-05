@@ -1,0 +1,247 @@
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+
+// Alora BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMALORAJ"
+OUTER_SPRINT "BG2_BCS" "cmalora"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMALORAJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMALO25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "cmalo25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Alora BG2 ~cmalora~ ~cmalo25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMALORA_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Yeslick BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "LK#YESJ"
+OUTER_SPRINT "BG2_BCS" "LK#YESL"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "LK#YESJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "LK#YE25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "LK#YES25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Yeslick BG2 ~LK#YESL~ ~LK#YES25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/LK#YESLK_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// The Undying ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMNINAFJ"
+OUTER_SPRINT "BG2_BCS" "CMNINAF"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNINAFJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNINA25"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "CMNINA25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Undying ~CMNINAF~ ~CMNINA25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmninaf_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// The Undying ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMCALLIJ"
+OUTER_SPRINT "BG2_BCS" "CALLISTO"
+OUTER_SPRINT "TOB_JOINED" "CMCALLIJ"
+OUTER_SPRINT "TOB_BCS" "CALLISTO"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Undying ~CALLISTO~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/callisto_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Summon Bhaalspawn ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "bhalspwj"
+OUTER_SPRINT "BG2_BCS" "BHAALSPW"
+OUTER_SPRINT "TOB_JOINED" "bhalspwj"
+OUTER_SPRINT "TOB_BCS" "BHAALSPW"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Sandra ~BHAALSPW~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/BHAALSPW_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Nikita Redux ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMNIKITJ"
+OUTER_SPRINT "BG2_BCS" "cmnikita"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNIKITJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNIK25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "CMNIK25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Nikita ~cmnikita~ ~CMNIK25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Vampire Tales ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMGMIRIj"
+OUTER_SPRINT "BG2_BCS" "CMGMIRI"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMGMIRIj"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMGMI25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "CMGMI25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Miriam ~CMGMIRI~ ~CMGMI25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmgmiriam_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Kim ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "KimJ"
+OUTER_SPRINT "BG2_BCS" "Kim"
+OUTER_SPRINT "TOB_JOINED" "KimJ"
+OUTER_SPRINT "TOB_BCS" "Kim"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kim ~Kim~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kim_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Severian ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "#SeverJ"
+OUTER_SPRINT "BG2_BCS" "#Sever"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "#SeverJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "#Sev25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "#SevD25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Severian ~#Sever~ ~#SevD25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Severian_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Frennedan ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" ""
+OUTER_SPRINT "BG2_BCS" ""
+OUTER_SPRINT "TOB_JOINED" ""
+OUTER_SPRINT "TOB_BCS" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Frennedan ~fren~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Frennedan_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
