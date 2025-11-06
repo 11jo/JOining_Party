@@ -242,6 +242,14 @@ BEGIN
 				PATCH_PRINT ~... // %Death_var% : InParty found in %SOURCE_FILESPEC%
 				~
 			END
+			SPRINT textToReplace ~  InParty("%Death_var%")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : InParty found in %SOURCE_FILESPEC%
+				~
+			END
 // !Is(!If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",0)
 			SPRINT textToReplace ~!I[s|f]ValidForPartyDialog\(ue\)?("%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches

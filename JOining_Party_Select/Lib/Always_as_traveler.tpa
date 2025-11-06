@@ -464,7 +464,7 @@ END
 	END
 
 
-	ACTION_IF (MOD_IS_INSTALLED ~DRIZZTSAGA.TP2~ ~0~) THEN BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 
 ACTION_IF Jarlaxle_Saga_as_traveler = 1 THEN BEGIN
 
@@ -480,7 +480,7 @@ ACTION_IF Artemis_Enteri_Saga_as_traveler = 1 THEN BEGIN
 
 END
 
-ACTION_IF Catti-Brie_Saga_Saga_as_traveler = 1 THEN BEGIN
+ACTION_IF Catti-Brie_Saga_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Catti-Brie_Saga~ ~~
