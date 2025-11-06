@@ -1,6 +1,6 @@
 /////////////////////////// Mods BG1 ///////////////////////////
 
-// Ishlilka ///////////////////////////
+/////////////////////////// Ishlilka ///////////////////////////
 
 /*OUTER_SPRINT "Death_var" "#Ishy"*/
 
@@ -27,5 +27,539 @@ BEGIN
 
 	END
 END
+
+/////////////////////////// ChaosKnight ///////////////////////////
+
+OUTER_SPRINT "BG1_JOINED" "ZYJCOBJ"
+OUTER_SPRINT "BG1_BCS" "ZYJCOB"
+OUTER_SPRINT "SoD_JOINED" "ZYJCOBJ"
+OUTER_SPRINT "SoD_BCS" "ZYJCOB"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Jacob ~ZYJCOB~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ZYJCOB_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Askaria-Quest ///////////////////////////
+
+OUTER_SPRINT "BG1_JOINED" "ZYASKAJ"
+OUTER_SPRINT "BG1_BCS" "ZYASKA"
+OUTER_SPRINT "SoD_JOINED" "ZYASKAJ"
+OUTER_SPRINT "SoD_BCS" "ZYASKA"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Askaria ~ZYASKA~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ZYASKA_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Isra BG1 ///////////////////////////
+
+OUTER_SPRINT "BG1_JOINED" "RH#ISRAJ"
+OUTER_SPRINT "BG1_BCS" "RH#ISRA"
+OUTER_SPRINT "SoD_JOINED" "RH#ISRAJ"
+OUTER_SPRINT "SoD_BCS" "RH#ISRA"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Isra_BG1 ~RH#ISRA~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/rh#isra_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Finch ///////////////////////////
+
+OUTER_SPRINT "BG1_JOINED" "SUFINCHJ"
+OUTER_SPRINT "BG1_BCS" "SUFINCH"
+OUTER_SPRINT "SoD_JOINED" "SUFINCHJ"
+OUTER_SPRINT "SoD_BCS" "SUFINCH"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Finch ~SUFINCH~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/SUFINCH_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Drizzt Saga ///////////////////////////
+ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
+		COPY_EXISTING ~F_JARLAX.CRE~ ~override/F_JARLAX.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~F_JARLAX~ (8)
+		WRITE_ASCII SCRIPT_CLASS ~~ (8)
+	END
+
+OUTER_SPRINT "BG1_JOINED" "F_JARLAJ"
+OUTER_SPRINT "BG1_BCS" "F_JARLAX"
+OUTER_SPRINT "SoD_JOINED" "F_JARLAJ"
+OUTER_SPRINT "SoD_BCS" "F_JARLAX"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Jarlaxle_Saga ~F_JARLAX~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_JARLAXE_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~F_ARTEMI.cre~ BEGIN
+		COPY_EXISTING ~F_ARTEMI.CRE~ ~override/F_ARTEMI.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~F_ASSASI~ (8)
+		WRITE_ASCII SCRIPT_CLASS ~~ (8)
+	END
+
+OUTER_SPRINT "BG1_JOINED" "F_ARTEMJ"
+OUTER_SPRINT "BG1_BCS" "F_ASSASI"
+OUTER_SPRINT "SoD_JOINED" "F_ARTEMJ"
+OUTER_SPRINT "SoD_BCS" "F_ASSASI"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Artemis_Enteri_Saga ~F_ASSASI~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_ARTEMIS_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "F_CATTIJ"
+OUTER_SPRINT "BG1_BCS" "F_CATTIB"
+OUTER_SPRINT "SoD_JOINED" "F_CATTIJ"
+OUTER_SPRINT "SoD_BCS" "F_CATTIB"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Catti-Brie_Saga ~F_CATTIB~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_CATTIBR_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+
+OUTER_SPRINT "BG1_JOINED" "F_BRUENJ"
+OUTER_SPRINT "BG1_BCS" "F_BRUENO"
+OUTER_SPRINT "SoD_JOINED" "F_BRUENJ"
+OUTER_SPRINT "SoD_BCS" "F_BRUENO"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Bruenor_Saga ~F_BRUENO~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_BRUENOR_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+
+OUTER_SPRINT "BG1_JOINED" "F_REGISJ"
+OUTER_SPRINT "BG1_BCS" "F_REGIS2"
+OUTER_SPRINT "SoD_JOINED" "F_REGISJ"
+OUTER_SPRINT "SoD_BCS" "F_REGIS2"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Regis_Saga ~F_REGIS2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_REGIS_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+
+OUTER_SPRINT "BG1_JOINED" "F_DRIZTJ"
+OUTER_SPRINT "BG1_BCS" "F_DRIZZT"
+OUTER_SPRINT "SoD_JOINED" "F_DRIZTJ"
+OUTER_SPRINT "SoD_BCS" "F_DRIZZT"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Drizzt_Saga ~F_DRIZZT~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_DRIZZT_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+
+OUTER_SPRINT "BG1_JOINED" "F_WULFGJ"
+OUTER_SPRINT "BG1_BCS" "F_WULFGA"
+OUTER_SPRINT "SoD_JOINED" "F_WULFGJ"
+OUTER_SPRINT "SoD_BCS" "F_WULFGA"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Wulfgar_Saga ~F_WULFGA~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_WULFGAR_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Dark Horizons ///////////////////////////
+
+OUTER_SPRINT "BG1_JOINED" "CMTNIKJ"
+OUTER_SPRINT "BG1_BCS" "cmtnikit"
+OUTER_SPRINT "SoD_JOINED" "CMTNIKJ"
+OUTER_SPRINT "SoD_BCS" "cmtnikit"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Nikita_BG1 ~cmtnikit~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "CMTTHORJ"
+OUTER_SPRINT "BG1_BCS" "cmtthor"
+OUTER_SPRINT "SoD_JOINED" "CMTTHORJ"
+OUTER_SPRINT "SoD_BCS" "cmtthor"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Thorin ~cmtthor~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMTTHOR_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+
+OUTER_SPRINT "BG1_JOINED" "CMTMORWJ"
+OUTER_SPRINT "BG1_BCS" "cmtmorw"
+OUTER_SPRINT "SoD_JOINED" "CMTMORWJ"
+OUTER_SPRINT "SoD_BCS" "cmtmorw"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Morwen ~cmtmorw~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMTMORW_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// DSotSC ///////////////////////////
+
+OUTER_SPRINT "BG1_JOINED" "BARDOJ"
+OUTER_SPRINT "BG1_BCS" "DSBARDO"
+OUTER_SPRINT "SoD_JOINED" "BARDOJ"
+OUTER_SPRINT "SoD_BCS" "DSBARDO"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Bardo ~DSBARDO~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/DSBARDO_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "BUBJ"
+OUTER_SPRINT "BG1_BCS" "DSBUB"
+OUTER_SPRINT "SoD_JOINED" "BUBJ"
+OUTER_SPRINT "SoD_BCS" "DSBUB"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Bub_Snikt ~DSBUB~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/DSBUB_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "CONCHOJ"
+OUTER_SPRINT "BG1_BCS" "dsconcho"
+OUTER_SPRINT "SoD_JOINED" "CONCHOJ"
+OUTER_SPRINT "SoD_BCS" "dsconcho"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Conchobhair ~dsconcho~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Conchobhair_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "CUCHOINJ"
+OUTER_SPRINT "BG1_BCS" "dscucho"
+OUTER_SPRINT "SoD_JOINED" "CUCHOINJ"
+OUTER_SPRINT "SoD_BCS" "dscucho"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod CúChoinneach ~dscucho~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CuChoinneach_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "FERTHJ"
+OUTER_SPRINT "BG1_BCS" "dsferth"
+OUTER_SPRINT "SoD_JOINED" "FERTHJ"
+OUTER_SPRINT "SoD_BCS" "dsferth"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Ferthgil_Trollslayer ~dsferth~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ferthgil_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "JETLAJ"
+OUTER_SPRINT "BG1_BCS" "dsjetla"
+OUTER_SPRINT "SoD_JOINED" "JETLAJ"
+OUTER_SPRINT "SoD_BCS" "dsjetla"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Jet'laya ~dsjetla~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/JETLAYA_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "KEIRIJ"
+OUTER_SPRINT "BG1_BCS" "dskeiri"
+OUTER_SPRINT "SoD_JOINED" "KEIRIJ"
+OUTER_SPRINT "SoD_BCS" "dskeiri"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Keiria_Silverstring ~dskeiri~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/KEIRIA_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "SKEEZJ"
+OUTER_SPRINT "BG1_BCS" "dsskeez"
+OUTER_SPRINT "SoD_JOINED" "SKEEZJ"
+OUTER_SPRINT "SoD_BCS" "dsskeez"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Skeezer_Lumpkin_VI ~dsskeez~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/SKEEZER_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "THORFJ"
+OUTER_SPRINT "BG1_BCS" "dsthorf"
+OUTER_SPRINT "SoD_JOINED" "THORFJ"
+OUTER_SPRINT "SoD_BCS" "dsthorf"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Thorfinn_Hauskluniff ~dsthorf~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Thorfinn_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// NTotSC ///////////////////////////
+
+ACTION_IF FILE_EXISTS_IN_GAME ~ntwill2.cre~ BEGIN
+		COPY_EXISTING ~ntwill2.CRE~ ~override/ntwill2.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~ntwill~ (8)
+		WRITE_ASCII SCRIPT_DEFAULT ~INITDLG~ (8)
+	END
+ACTION_IF FILE_EXISTS_IN_GAME ~ntwill4.cre~ BEGIN
+		COPY_EXISTING ~ntwill4.CRE~ ~override/ntwill4.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~ntwill~ (8)
+		WRITE_ASCII SCRIPT_DEFAULT ~INITDLG~ (8)
+	END
+ACTION_IF FILE_EXISTS_IN_GAME ~ntwill6.cre~ BEGIN
+		COPY_EXISTING ~ntwill6.CRE~ ~override/ntwill6.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~ntwill~ (8)
+		WRITE_ASCII SCRIPT_DEFAULT ~INITDLG~ (8)
+	END
+
+COMPILE ~JOining_Party_Select/Baf/EMPTY.baf~ ~override/ntwill.bcs~
+
+OUTER_SPRINT "BG1_JOINED" "WILLJ"
+OUTER_SPRINT "BG1_BCS" "ntwill"
+OUTER_SPRINT "SoD_JOINED" "WILLJ"
+OUTER_SPRINT "SoD_BCS" "ntwill"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Will_Scarlet ~ntwill~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/WILL_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+
+
+
 
 
