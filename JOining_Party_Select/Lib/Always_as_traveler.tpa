@@ -155,7 +155,7 @@ ACTION_IF Khalid_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Khalid~ ~~
 
-	COPY_EXISTING ~BDMUMMY.dlg~ ~override~
+	COPY_EXISTING_REGEXP ~BDMUMMY.dlg~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 // khaild
 			SPRINT textToReplace ~\(^[%TAB% ]*!IfValidForPartyDialog("khaild")\)~
