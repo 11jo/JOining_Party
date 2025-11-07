@@ -536,7 +536,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ntwill6.cre~ BEGIN
 		WRITE_ASCII SCRIPT_DEFAULT ~INITDLG~ (8)
 	END
 
-COMPILE ~JOining_Party_Select/Baf/EMPTY.baf~ ~override/ntwill.bcs~
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/ntwill.bcs~
 
 OUTER_SPRINT "BG1_JOINED" "WILLJ"
 OUTER_SPRINT "BG1_BCS" "ntwill"

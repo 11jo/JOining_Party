@@ -93,6 +93,14 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
+			SPRINT textToReplace ~  InParty(Myself)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_Myself_InParty","LOCALS",0)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // space %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
 		SPRINT textToReplace ~^[%TAB% ]*!I[s|f]ValidForPartyDialog\(ue\)?(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN
