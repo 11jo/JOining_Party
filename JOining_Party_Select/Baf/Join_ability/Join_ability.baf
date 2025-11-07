@@ -15,46 +15,51 @@ END
 
 // Base
  
-// !InPartyAllowDead("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
+// !InPartyAllowDead()
 IF
 	!Global("JO_Myself_AllowDead","LOCALS",0)
 	!InPartyAllowDead(Myself)
-	!Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		Continue()
 END
  
-// InPartyAllowDead("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
+// InPartyAllowDead()
 IF
 	Global("JO_Myself_AllowDead","LOCALS",0)
 	OR(2)
 		InPartyAllowDead(Myself)
-		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
 		Continue()
 END
  
-// !InParty("%Death_var%") / !Allegiance("%Death_var%",FAMILIAR)
+// !InParty()
 IF
 	!Global("JO_Myself_InParty","LOCALS",0)
 	!InParty(Myself)
-	!Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		Continue()
 END
  
-// InParty("%Death_var%") / Allegiance("%Death_var%",FAMILIAR)
+// InParty()
 IF
 	Global("JO_Myself_InParty","LOCALS",0)
 	OR(2)
 		InParty(Myself)
-		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	OR(2)
+		InParty(Myself)
+		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",1)
@@ -65,8 +70,9 @@ END
 IF
 	!Global("JO_Myself_Valid","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
-	OR(3)
-		!Allegiance(Myself,FAMILIAR)
+	OR(4)
+		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 		!IsActive(Myself)
 THEN
@@ -77,12 +83,14 @@ END
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_Myself_Valid","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	IsActive(Myself)
 	OR(2)
 		IsValidForPartyDialogue(Myself)
 		!StateCheck(Myself,CD_STATE_NOTVALID)
 	OR(2)
-		Allegiance(Myself,FAMILIAR)
 		InParty(Myself)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
