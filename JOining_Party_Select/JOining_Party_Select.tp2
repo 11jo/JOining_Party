@@ -210,17 +210,23 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet bgt~ ~Necessite BGEE / BG2EE / BGT / E
 COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
 	DECOMPILE_BCS_TO_BAF
 
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
+// DLG
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+	DECOMPILE_DLG_TO_D
+
+
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+
+
+
+// BCS
 
 COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
 	COMPILE_BAF_TO_BCS
 
 // DLG
-
-COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
-	DECOMPILE_DLG_TO_D
-	
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
 
 COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
 	COMPILE_D_TO_DLG
