@@ -176,11 +176,11 @@ ALWAYS
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 
@@ -232,7 +232,6 @@ COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
 	COMPILE_D_TO_DLG
 
 
-
 BEGIN ~All-In~
 DESIGNATED 1
 LABEL ~JOining_Party-In~
@@ -243,3 +242,10 @@ INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Cutscene.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
+
+
+BEGIN ~Next Traveler~
+DESIGNATED 3
+LABEL ~JOining_Party-Next_Traveler~
+INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler_cpmvars.tpa~
+INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler.tpa~
