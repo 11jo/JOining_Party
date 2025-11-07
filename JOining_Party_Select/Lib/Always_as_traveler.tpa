@@ -994,4 +994,15 @@ END
 	END
 
 
+// ajantisbg2
+
+	ACTION_IF (MOD_IS_INSTALLED ~ajantisbg2.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Ajantis_BG2_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Ajantis_BG2~ ~~
+
+END
+
 // Next_Traveler BG2

@@ -5,7 +5,7 @@
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/JOining_Party_Select.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
@@ -15,7 +15,7 @@ END
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/JOining_Party_Select.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
@@ -29,7 +29,7 @@ END
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~JOining_Party_Select/JOining_Party_Select_Joined.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~
     PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~)
@@ -50,7 +50,7 @@ END
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~JOining_Party_Select/JOining_Party_Select_Joined.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~
     PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~)
@@ -75,7 +75,7 @@ END
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/JOining_Party_Select_End.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
@@ -85,7 +85,7 @@ END
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/JOining_Party_Select_End.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
@@ -99,7 +99,7 @@ END
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~JOining_Party_Select/JOining_Party_Select_Core.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~
     PATCH_IF NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~
@@ -120,7 +120,7 @@ END
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~JOining_Party_Select/JOining_Party_Select_Core.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~
     PATCH_IF NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~
@@ -144,7 +144,7 @@ END
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~
     PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
@@ -207,7 +207,7 @@ END
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~
     PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
@@ -278,7 +278,7 @@ END
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Always_as_traveler.tpa~
+		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
 
@@ -299,7 +299,7 @@ END
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Always_as_traveler.tpa~
+		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
 	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_NAME%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
@@ -321,7 +321,7 @@ END
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Traveler.tpa~	~JOining_Party_Select/JOining_Traveler.tpa~
+		COPY ~JOining_Party_Select/Lib/JOining_Traveler.tpa~	~JOining_Party_Select/Lib/JOining_Traveler.tpa~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
   COUNT_REGEXP_INSTANCES  ~^%NEW_TRAVELER_NAME%[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              %NEW_TRAVELER_NAME%_as_traveler
@@ -347,7 +347,7 @@ END
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
+		COPY ~JOining_Party_Select/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
 			REPLACE_TEXTUALLY ~# Next_Traveler BG1~ ~~~~~# %NEW_TRAVELER_MOD_NAME%
 
 %NEW_TRAVELER_NAME%                       = 1
@@ -358,7 +358,7 @@ END
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
-		COPY ~JOining_Party_Select/Lib/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
+		COPY ~JOining_Party_Select/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
 			REPLACE_TEXTUALLY ~# Next_Traveler BG2~ ~~~~~# %NEW_TRAVELER_MOD_NAME%
 
 %NEW_TRAVELER_NAME%                       = 1

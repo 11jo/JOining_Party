@@ -928,4 +928,30 @@ BEGIN
 	END
 END
 
+// ajantisbg2
+
+OUTER_SPRINT "BG2_JOINED" "C#AjanJ"
+OUTER_SPRINT "BG2_BCS" "C#Ajan"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "C#AjanJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "C#Aja25J"
+END
+OUTER_SPRINT "TOB_BCS" "C#Ajan25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Ajantis_BG2 ~C#Ajan~ ~C#Ajan25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/C#Ajantis_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END~
+
 // Next_Traveler BG2
