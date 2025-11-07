@@ -65,7 +65,7 @@
 | Name | Area | Description | Values |
 | --- | --- | --- | --- |
 | JO_Myself_AllowDead | L | Replace regular `InPartyAllowDead(Myself)` | 0: False<br>Other: True |
-| JO_Myself_InParty | G | Replace regular `InParty(Myself)` | 0: False<br>Other: True |
+| JO_Myself_InParty | L | Replace regular `InParty(Myself)` | 0: False<br>Other: True |
 | JO_Myself_Valid | L | Replace regular `IsValidForPartyDialog(Myself)` | 0: False<br>Other: True |
 | JO_NOJOIN | G | Familiars can no longer switch | 0: False<br>Other: True |
 | JO_JOIN_CAMPAIGN | G | Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>5: EET<br>Other: not initialized
