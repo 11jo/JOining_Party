@@ -158,18 +158,18 @@ ACTION_IF Khalid_as_traveler = 1 THEN BEGIN
 	COPY_EXISTING_REGEXP ~BDMUMMY.dlg~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 // khaild
-			SPRINT textToReplace ~\(^[%TAB% ]*!IfValidForPartyDialog("khaild")\)~
+			SPRINT textToReplace ~  !I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!IfValidForPartyDialog("Khalid")~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!IsValidForPartyDialog("Khalid")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(^[%TAB% ]*IfValidForPartyDialog("khaild")\)~
+			SPRINT textToReplace ~  I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~IfValidForPartyDialog("Khalid")~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~IsValidForPartyDialog("Khalid")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
 				~
