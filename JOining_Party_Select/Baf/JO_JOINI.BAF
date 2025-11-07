@@ -780,3 +780,243 @@ THEN
 		VerbalConstant(Myself,TIRED)
 		Continue()
 END
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+// Use Potions
+
+IF
+	ActionListEmpty()
+	Global("BDAI_DISABLE_ITEMS","LOCALS",0)
+	!GlobalTimerNotExpired("BD_Cast","LOCALS")
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	CheckStatLT(Myself,100,RESISTPOISON)
+	OR(2)
+		StateCheck(Myself,STATE_POISONED)
+		CheckSpellState(Myself,DISEASED)
+	HasItemEquiped("POTN17",Myself)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+		UseItem("POTN17",Myself)
+END
+
+IF
+	ActionListEmpty()
+	Global("BDAI_DISABLE_ITEMS","LOCALS",0)
+	!GlobalTimerNotExpired("BD_Cast","LOCALS")
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	CheckStatLT(Myself,100,RESISTPOISON)
+	StateCheck(Myself,STATE_POISONED)
+	HasItemEquiped("POTN20",Myself)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+		UseItem("POTN20",Myself)
+END
+
+IF
+	ActionListEmpty()
+	ActuallyInCombat()
+	Global("BDAI_DISABLE_ITEMS","LOCALS",0)
+	!GlobalTimerNotExpired("BD_Cast","LOCALS")
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	HPPercentLT(Myself,60)
+	OR(2)
+		CheckStatGT(Myself,99,MAXHITPOINTS)
+		HPPercentLT(Myself,40)
+	HasItemEquiped("POTN55",Myself)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+		UseItem("POTN55",Myself)
+END
+
+IF
+	ActionListEmpty()
+	ActuallyInCombat()
+	Global("BDAI_DISABLE_ITEMS","LOCALS",0)
+	!GlobalTimerNotExpired("BD_Cast","LOCALS")
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	HPPercentLT(Myself,60)
+	OR(2)
+		CheckStatGT(Myself,67,MAXHITPOINTS)
+		HPPercentLT(Myself,40)
+	HasItemEquiped("POTN52",Myself)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+		UseItem("POTN52",Myself)
+END
+
+IF
+	ActionListEmpty()
+	ActuallyInCombat()
+	Global("BDAI_DISABLE_ITEMS","LOCALS",0)
+	!GlobalTimerNotExpired("BD_Cast","LOCALS")
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	HPPercentLT(Myself,60)
+	OR(2)
+		CheckStatGT(Myself,22,MAXHITPOINTS)
+		HPPercentLT(Myself,40)
+	HasItemEquiped("POTN08",Myself)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+		UseItem("POTN08",Myself)
+END
+
+//
+
+// Basic switch
+
+IF
+	ActionListEmpty()
+	IsWeaponRanged(Myself)
+	OR(3)
+		Global("BDAI_ATTACK_MODE","LOCALS",1) // melee
+		!Global("BDAI_DISABLE_ATTACK","LOCALS",0) // no attack
+		PersonalSpaceDistance(NearestEnemyOf(Myself),4)
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+END
+
+IF
+	ActionListEmpty()
+	Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
+	!IsWeaponRanged(Myself)
+	CanEquipRanged()
+	!PersonalSpaceDistance(NearestEnemyOf(Myself),4)
+THEN
+	RESPONSE #100
+		EquipRanged()
+END
+
+IF
+	ActionListEmpty()
+	Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
+	Global("BDAI_DISABLE_ATTACK","LOCALS",0) // can attack
+	!CanEquipRanged()
+	Delay(30)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,~I cannot use my ranged weapon.~)
+END
+
+//
+
+// Modales
+
+IF
+	Global("BDAI_SKILL_MODE","LOCALS",1) // find traps
+	ActionListEmpty()
+	ModalState(NONE)
+	!ButtonDisabled(SCREEN_INVENTORY)
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	OR(2)
+		CheckStatGT(Myself,0,TRAPS)
+		CheckStatGT(Myself,0,DETECTILLUSIONS)
+	!See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		FindTraps()
+END
+
+IF
+	Global("BDAI_SKILL_MODE","LOCALS",2) // hide
+	ActionListEmpty()
+	ModalState(NONE)
+	!ButtonDisabled(BUTTON_STEALTH)
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	CheckStat(Myself,0,SANCTUARY)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	OR(2)
+		CheckStatGT(Myself,0,HIDEINSHADOWS)
+		CheckStatGT(Myself,0,STEALTH)
+	OR(2)
+		!See(NearestEnemyOf(Myself))
+		Kit(Myself,SHADOWDANCER)
+THEN
+	RESPONSE #100
+		Hide()
+END
+
+IF
+	Global("BDAI_SKILL_MODE","LOCALS",3) // danse
+	ActionListEmpty()
+	ModalState(NONE)
+	Class(Myself,SHAMAN)
+	!ButtonDisabled(BUTTON_BATTLESONG)
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+THEN
+	RESPONSE #100
+		BattleSong()
+END
+
+IF
+	Global("BDAI_SKILL_MODE","LOCALS",3) // song
+	ActionListEmpty()
+	ModalState(NONE)
+	Class(Myself,BARD)
+	!ButtonDisabled(BUTTON_BATTLESONG)
+	!StateCheck(Myself,STATE_DISABLED_CASTING)
+	CheckStat(Myself,0,CASTERHOLD)
+	Allegiance(Myself,GOODCUTOFF)
+THEN
+	RESPONSE #100
+		BattleSong()
+END
+
+IF
+	Global("BDAI_SKILL_MODE","LOCALS",4) // repulse undead
+	ActionListEmpty()
+	ModalState(NONE)
+	!ButtonDisabled(BUTTON_TURNUNDEAD)
+	!StateCheck(Myself,STATE_DISABLED)
+	CheckStat(Myself,0,CASTERHOLD)
+	!CheckStat(Myself,0,TURNUNDEADLEVEL)
+	See(NearestEnemyOfType([0.UNDEAD]))
+THEN
+	RESPONSE #100
+		Turn()
+END
+
+//
+
+// 
+
+IF
+	ActionListEmpty()
+	ActuallyInCombat()
+	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // can move
+	HPPercentLT(Myself,20)
+	See(LastAttackerOf(Myself))
+	Range(LastSeenBy(Myself),8)
+THEN
+	RESPONSE #100
+		RunAwayFromNoLeaveArea(LastSeenBy(Myself),45)
+END
+
+// Basic attack
+
+IF
+	ActionListEmpty()
+	Global("BDAI_DISABLE_ATTACK","LOCALS",0)
+	See(NearestEnemyOf(Myself))
+	OR(2)
+		!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // can move
+		InWeaponRange(LastSeenBy(Myself))
+THEN
+	RESPONSE #100
+		AttackOneRound(LastSeenBy(Myself))
+END
