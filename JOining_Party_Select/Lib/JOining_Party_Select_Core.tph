@@ -122,6 +122,8 @@ ACTION_FOR_EACH joining_dlg IN
 // NTotSC
 // Mod Will_Scarlet ~WILLJ~
 
+// Next_Traveler BG1
+
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2
@@ -202,6 +204,11 @@ ACTION_FOR_EACH joining_dlg IN
 // Mod Bolivar_Soubar ~BOLIVARJ~
 // Mod Tomas_Tomalson_Soubar ~TOMASTOJ~
 
+// ajantisbg2
+// Mod Ajantis_BG2 ~C#AjanJ~ ~C#Aja25J~
+
+// Next_Traveler BG2
+
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%joining_dlg%.dlg~ BEGIN
@@ -210,33 +217,6 @@ BEGIN
 
 	END
 END
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-//                                    BCS                                           //
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-
-/////////////////////////// Original Npcs ///////////////////////////
-
-
-		INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph~
-
-
-/////////////////////////// Mods BG1 ///////////////////////////
-
-
-		INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~
-
-
-/////////////////////////// Mods BG2 ///////////////////////////
-
-
-		INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~
-
 
 //////////////////////////////////////////////////////////////////////////////////////
 

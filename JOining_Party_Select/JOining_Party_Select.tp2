@@ -168,19 +168,17 @@ ALWAYS
 
 // Prep for REPLACE_TEXTUALLY for NPC to travelers selection
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 
@@ -210,21 +208,26 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet bgt~ ~Necessite BGEE / BG2EE / BGT / E
 COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
 	DECOMPILE_BCS_TO_BAF
 
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
+// DLG
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+	DECOMPILE_DLG_TO_D
+
+
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+
+
+
+// BCS
 
 COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
 	COMPILE_BAF_TO_BCS
 
 // DLG
 
-COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
-	DECOMPILE_DLG_TO_D
-	
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_DLG.tph~
-
 COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
 	COMPILE_D_TO_DLG
-
 
 
 BEGIN ~All-In~
@@ -236,4 +239,17 @@ INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
 INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Cutscene.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
+
+/*
+
+BEGIN ~Next Traveler~
+DESIGNATED 3
+LABEL ~JOining_Party-Next_Traveler~
+INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler_cpmvars.tpa~
+INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler.tpa~
+
+*/

@@ -1,0 +1,372 @@
+// Note : comment out or delete unused field for your traveler before install.
+
+
+/////////////////////////// JOining_Party_Select.tph ///////////////////////////
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG2~~~~~
+
+END
+
+
+/////////////////////////// JOining_Party_Select_Joined.tph ///////////////////////////
+
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~)
+
+// Next_Traveler BG1~~~~~
+
+	END
+
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~)
+
+// Next_Traveler BG1~~~~~
+
+	END
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~)
+
+// Next_Traveler BG2~~~~~
+
+	END
+
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~)
+
+// Next_Traveler BG2~~~~~
+
+	END
+
+END
+
+
+/////////////////////////// JOining_Party_Select_End.tph ///////////////////////////
+
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG2~~~~~
+
+END
+
+
+/////////////////////////// JOining_Party_Select_Core.tph ///////////////////////////
+
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~
+    PATCH_IF NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~
+
+// Next_Traveler BG1~~~~~
+
+	END
+
+    PATCH_IF NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~ ~%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%~
+
+// Next_Traveler BG1~~~~~
+
+	END
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~
+    PATCH_IF NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~
+
+// Next_Traveler BG2~~~~~
+
+	END
+
+    PATCH_IF NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~ ~%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%~
+
+// Next_Traveler BG2~~~~~
+
+	END
+
+END
+
+
+/////////////////////////// JOining_Party_Select_Core_Mod_BG1.tph ///////////////////////////
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+OUTER_SPRINT "BG1_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%"
+OUTER_SPRINT "BG1_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%"
+OUTER_SPRINT "SoD_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%"
+OUTER_SPRINT "SoD_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%NEW_TRAVELER_DeathVar%_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Next_Traveler BG1~~~~~
+
+	END
+
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+OUTER_SPRINT "BG1_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%"
+OUTER_SPRINT "BG1_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%"
+OUTER_SPRINT "SoD_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%"
+OUTER_SPRINT "SoD_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%~ ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%NEW_TRAVELER_DeathVar%_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Next_Traveler BG1~~~~~
+
+	END
+
+END
+
+
+/////////////////////////// JOining_Party_Select_Core_Mod_BG2.tph ///////////////////////////
+
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+OUTER_SPRINT "BG2_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
+OUTER_SPRINT "BG2_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
+END
+OUTER_SPRINT "TOB_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%NEW_TRAVELER_DeathVar%_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Next_Traveler BG2~~~~~
+
+	END
+
+    PATCH_IF NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+OUTER_SPRINT "BG2_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
+OUTER_SPRINT "BG2_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%"
+END
+OUTER_SPRINT "TOB_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%~ ~%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%NEW_TRAVELER_DeathVar%_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Next_Traveler BG2~~~~~
+
+	END
+
+END
+
+
+/////////////////////////// Always_as_traveler.tpa ///////////////////////////
+
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_NAME%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
+
+ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
+
+END
+
+	END
+
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_NAME%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
+
+ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
+
+END
+
+	END
+
+// Next_Traveler BG2~~~~~
+
+END
+
+
+/////////////////////////// JOining_Traveler.tpa ///////////////////////////
+
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Traveler.tpa~	~JOining_Party_Select/Lib/JOining_Traveler.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+  COUNT_REGEXP_INSTANCES  ~^%NEW_TRAVELER_NAME%[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              %NEW_TRAVELER_NAME%_as_traveler
+
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Traveler.tpa~	~JOining_Party_Select/JOining_Traveler.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+
+  COUNT_REGEXP_INSTANCES  ~^%NEW_TRAVELER_NAME%[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              %NEW_TRAVELER_NAME%_as_traveler
+
+// Next_Traveler BG2~~~~~
+
+END
+
+
+/////////////////////////// JOining_Traveler.ini ///////////////////////////
+
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
+			REPLACE_TEXTUALLY ~# Next_Traveler BG1~ ~~~~~# %NEW_TRAVELER_MOD_NAME%
+
+%NEW_TRAVELER_NAME%                       = 1
+
+# Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
+			REPLACE_TEXTUALLY ~# Next_Traveler BG2~ ~~~~~# %NEW_TRAVELER_MOD_NAME%
+
+%NEW_TRAVELER_NAME%                       = 1
+
+# Next_Traveler BG2~~~~~
+
+END
+
+
