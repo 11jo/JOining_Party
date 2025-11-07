@@ -166,7 +166,7 @@ BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
 
 	END
-END~
+END
 
 // Next_Traveler BG1~~~~~
 
@@ -193,7 +193,7 @@ BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
 
 	END
-END~
+END
 
 // Next_Traveler BG1~~~~~
 
@@ -233,7 +233,7 @@ BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
 
 	END
-END~
+END
 
 // Next_Traveler BG2~~~~~
 
@@ -264,7 +264,7 @@ BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
 
 	END
-END~
+END
 
 // Next_Traveler BG2~~~~~
 
@@ -310,6 +310,8 @@ ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
 
 END
+
+	END
 
 // Next_Traveler BG2~~~~~
 
