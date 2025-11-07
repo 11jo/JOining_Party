@@ -66,6 +66,434 @@ HasItemEquipedReal(\1,Player1)~
 	END // ACTION_FOR_EACH // CreateVisualEffectObject
 
 
+
+ACTION_FOR_EACH Death_var IN
+
+// Original Imoen ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~  // Imoen
+// Original Edwin ~Edwin~                            // Edwin
+// Original Jaheira ~Jaheira~ // ~ttjaheir~             // Jaheira
+// Original Minsc ~Minsc~ // ~ttminsc~                  // Minsc
+// Original Viconia ~Viconia~                        // Viconia
+// Original Dorn ~Dorn~                              // Dorn
+// Original Neera ~Neera~                            // Neera
+// Original Rasaad ~Rasaad~                          // Rasaad
+
+/////////////////////////// bg1 ///////////////////////////
+
+// Original Ajantis ~Ajantis~                          // Ajantis
+// Original Alora ~Alora~                              // Alora
+// Original Branwen ~Branwen~ // ~ttbran~              // Branwen
+// Original Coran ~Coran~                              // Coran
+// Original Dynaheir ~Dynaheir~                        // Dynaheir
+
+// Original Eldoth ~Eldoth~                            // Eldoth
+// Original Faldorn ~Faldorn~                          // Faldorn
+// Original Garrick ~Garrick~                          // Garrick
+
+// Original Kagain ~Kagain~                            // Kagain
+// Original Khalid ~Khalid~                            // Khalid
+// Original Kivan ~Kivan~                              // Kivan
+
+// Original Montaron ~Montaron~                        // Montaron
+// Original Quayle ~Quayle~                            // Quayle
+// Original Safana ~Safana~                            // Safana
+// Original Sharteel ~Sharteel~ // ~Shar-teel~         // Sharteel
+// Original Skie ~Skie~                                // Skie
+// Original Tiax ~Tiax~                                // Tiax
+
+// Original Xan ~Xan~ // ttxan~                        // Xan
+// Original Xzar ~Xzar~                                // Xzar
+// Original Yeslick ~Yeslick~                          // Yeslick
+
+// Original Baeloth ~Baeloth~                          // Baeloth
+
+
+/////////////////////////// SoD ///////////////////////////
+
+
+// Original Voghiln ~Voghiln~                         // Voghiln
+// Original Corwin ~Corwin~                           // Corwin
+// Original Mkhiin ~Mkhiin~                           // Mkhiin
+// Original Glint ~Glint~                             // Glint
+
+
+/////////////////////////// bg2 ///////////////////////////
+
+
+// Original Aerie ~Aerie~                               // Aerie
+// Original Anomen ~Anomen~                             // Anomen
+// Original Cernd ~Cernd~                               // Cernd
+// Original Haerdalis ~Haerdalis~                       // Haerdalis
+// Original Hexxat ~Hexxat~                             // Hexxat
+// Original Jan ~Jan~                                   // Jan
+// Original Keldorn ~Keldorn~                           // Keldorn
+// Original Korgan ~Korgan~                             // Korgan
+// Original Mazzy ~Mazzy~                               // Mazzy
+// Original Nalia ~Nalia~                               // Nalia
+// Original Sarevok ~Sarevok~                           // Sarevok
+// Original Valygar ~Valygar~                           // Valygar
+// Original Wilson ~Wilson~                             // Wilson
+// Original Yoshimo ~Yoshimo~                           // Yoshimo
+
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+
+// Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
+
+// ChaosKnight-kit
+// Mod Jacob ~ZYJCOB~
+
+// Askaria-Quest
+// Mod Askaria ~ZYASKA~
+
+// Isra BG1
+// Mod Isra_BG1 ~rh#isra~
+
+// Finch
+// Mod Finch ~SUFINCH~
+
+// Drizzt Saga
+// Mod Jarlaxle_Saga ~F_JARLAXE~
+// Mod Artemis_Enteri_Saga ~F_ARTEMIS~
+// Mod Catti-Brie_Saga ~F_CATTIBR~
+// Mod Bruenor_Saga ~F_BRUENOR~
+// Mod Regis_Saga ~F_REGIS~
+// Mod Drizzt_Saga ~F_DRIZZT~
+// Mod Wulfgar_Saga ~F_WULFGAR~
+
+// Dark Horizons
+// Mod Nikita_BG1 ~cmnikita~
+// Mod Thorin ~CMTTHOR~
+// Mod Morwen ~CMTMORW~
+
+// DSotSC
+// Mod Bardo ~DSBARDO~
+// Mod Bub_Snikt ~DSBUB~
+// Mod Conchobhair ~Conchobhair~
+// Mod CuChoinneach ~CuChoinneach~
+// Mod Ferthgil_Trollslayer ~Ferthgil~
+// Mod Jet'laya ~JETLAYA~
+// Mod Keiria_Silverstring ~KEIRIA~
+// Mod Skeezer_Lumpkin_VI ~SKEEZER~
+// Mod Thorfinn_Hauskluniff ~Thorfinn~
+
+// NTotSC
+// Mod Will_Scarlet ~WILL~
+
+// Next_Traveler BG1
+
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+// Alora BG2
+// Mod Alora BG2 ~CMALORA~
+
+// Yeslick BG2
+// Mod Yeslick BG2 ~LK#YESLK~
+
+// The Undying
+// Mod Undying ~cmninaf~ ~callisto~
+
+// Summon Bhaalspawn
+// Mod Sandra ~BHAALSPW~
+
+// NikitaRedux
+// Mod NikitaRedux ~cmnikita~
+
+// VampireTales
+// Mod Miriam ~cmgmiriam~
+
+// Kim
+// Mod Kim ~Kim~
+
+// Severian
+// Mod Severian ~#Severian~
+
+// Frennedan
+// Mod Frennedan ~Frennedan~
+
+// Branwen BG2
+// Mod Branwen_BG2 ~O#Bran~
+// Tiax BG2
+// Mod Tiax_BG2 ~O#Tiax~
+// Xan BG2
+// Mod Xan_BG2 ~O#XAN~
+// Coran BG2
+// Mod Coran_BG2 ~O#Coran~
+
+// Auren Aseph
+// Mod Auren ~K#AUREN~
+
+// Isra BG2
+// Mod Isra_BG2 ~rh#Isra2~
+
+// Nephele
+// Mod Nephele_Samios ~Nephele~
+
+// Sheena
+// Mod Sheena ~K#SHEENA~
+
+// Kiara / Zaiya
+// Mod Kiara ~Kiara~
+// Mod Zaiya ~Zaiya~
+
+// The Beaurin Legacy
+// Mod Minyae ~QI#MI~
+// Mod Elaryn ~QI#ELA~
+
+// Tyris Flare
+// Mod Tyris ~g#Tyris~
+
+// Region of Terror
+// Mod Wulfgar_Terror ~Wulfg2~
+// Mod Regis_Terror ~Reg2~
+// Mod Drizzt_Terror ~Driz2~
+// Mod Bruenor_Terror ~Brue2~
+// Mod Catti-Brie_Terror ~Catt2~
+// Mod Artemis_Entreri_Terror ~Enter2~
+// Mod Jarlaxle_Terror ~Jarlax2~
+// Mod Tapio_Perkiomaki_Terror ~Tapio~
+// Mod Randall_Terror ~Randall~
+// Mod Alissa_Terror ~ALISSA1~
+// Mod Mordragon_Terror ~Mordrg~
+
+//Shadow over Soubar
+// Mod Selence_Hillstar_Soubar ~SELENCE~
+// Mod Charlotte_Soubar ~CHARLOTT~
+// Mod Bolivar_Soubar ~BOLIVAR~
+// Mod Tomas_Tomalson_Soubar ~TOMASTM~
+
+// ajantisbg2
+// Mod Ajantis_BG2 ~C#Ajantis~
+
+// Next_Traveler BG2
+
+BEGIN
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Avoid additionnal warnings for missing ressources 
+// Edge cases
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~ar1901.bcs~ THEN BEGIN
+		COPY_EXISTING ~ar1901.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// FakeEffectExpiryCheck() situation
+			SPRINT textToReplace ~^[%TAB% ]*FakeEffectExpiryCheck(Player2,\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~ar1901.bcs~)*/ BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 FakeEffectExpiryCheck("%Death_var%",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %Death_var% : FakeEffectExpiryCheck() found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+			BUT_ONLY
+	END
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~ohhretrn.bcs~ THEN BEGIN
+		COPY_EXISTING_REGEXP ~ohhretrn.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// CreateVisualEffectObject situation ///////////// SPECIAL SPSISPMA do not exist
+				SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject("SPSISPMA","%Death_var%")~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~ohhretrn.bcs~)*/ BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Delete SPSISPMA in %SOURCE_FILESPEC%
+					~
+				END
+			END
+				BUT_ONLY
+	END
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN BDBALDUR BDELEV02 BDEXITBF BDNORES2 HELLPOOL BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~^[%TAB% ]*!IsOverMe(Player2)
+^[%TAB% ]*!IsOverMe(Player3)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 !IsOverMe("%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : !IsOverMe found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+				BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // CreateVisualEffectObject
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN CUTBELT CUTLIIA CUTTETHT ICELAND XG0278 XG0403 XG04N3 XG0511 XG1020 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// DRYAD_TELEPORT situation ///////////// SPECIAL DRYAD_TELEPORT delete familiar
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ForceSpell("%Death_var%",DRYAD_TELEPORT))~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell("%Death_var%",DRYAD_TELEPORT))~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+				SPRINT textToReplace ~^[%TAB% ]*ForceSpell("%Death_var%",DRYAD_TELEPORT)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+				SPRINT textToReplace ~^[%TAB% ]*ReallyForceSpell("%Death_var%",DRYAD_TELEPORT)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
+					~
+				END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // spfleshp
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN BALDUR BALDUR25 BDBALDUR BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// HabibAppearance situation
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player2,DropItem(\([^)]*\),\[-1\.-1\]))
+	^[%TAB% ]*ActionOverride(Player3,DropItem("\([^)]*\)",\[-1\.-1\]))~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride("%Death_var%",DropItem(\1,[-1.-1]))~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : HabibAppearance found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+				BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // CreateVisualEffectObject
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN OHHFAKOK OHHBARHX RERAK02 RERAK03 RERAK04 RERAK05 RERAK06 SCTSAR2 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// CreateVisualEffectObject situation
+				SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),"%Death_var%")~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
+					~
+				END
+			END
+				BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // CreateVisualEffectObject
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN OHHCUT09 OHHCUT10 OHHCUT11 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// CreateVisualEffectObject situation ///////////// SPECIAL spfleshp do not exist
+				SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject("spfleshp","%Death_var%")~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT09.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT10.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT11.bcs~)*/ BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : Delete SPSISPMA in %SOURCE_FILESPEC%
+					~
+				END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // spfleshp
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN K#TELBGT AR0602 IWSHCUT1 IDSHCUT1 BDCUT62 BD0103 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// TakeCreatureItems situation
+				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),TakeCreatureItems(Player4,\([^)]*\)))~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 ActionOverride(\1,TakeCreatureItems("%Death_var%",\2))~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : TakeCreatureItems found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // TakeCreatureItems
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_FOR_EACH bcs IN BDCUT61A BDCUT62 BDCUT65 K#TELBGT BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// DisableAI situation
+				SPRINT textToReplace ~^[%TAB% ]*DisableAI(Player3,\([^)]*\)
+^[%TAB% ]*DisableAI(Player4,\1)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 DisableAI("%Death_var%",\1)~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %Death_var% : DisableAI found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH // DisableAI
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+END
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
 ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
 
 ACTION_FOR_EACH Death_var IN // ACTION_FOR_EACH BGSoD
@@ -221,6 +649,9 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 
 END // ACTION_FOR_EACH BGSoD
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
 
@@ -395,6 +826,9 @@ EXTEND_TOP ~JORAK00.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/JORAK01.baf~ EV
 END // ACTION_FOR_EACH BG2
 
 //////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 // SoD transition 
 
