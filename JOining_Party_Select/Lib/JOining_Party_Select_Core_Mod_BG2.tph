@@ -1,0 +1,929 @@
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+
+/////////////////////////// Alora BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMALORAJ"
+OUTER_SPRINT "BG2_BCS" "cmalora"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMALORAJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMALO25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "cmalo25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Alora BG2 ~cmalora~ ~cmalo25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMALORA_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Yeslick BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "LK#YESJ"
+OUTER_SPRINT "BG2_BCS" "LK#YESL"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "LK#YESJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "LK#YE25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "LK#YES25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Yeslick BG2 ~LK#YESL~ ~LK#YES25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/LK#YESLK_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// The Undying ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMNINAFJ"
+OUTER_SPRINT "BG2_BCS" "CMNINAF"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNINAFJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNINA25"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "CMNINA25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Undying ~CMNINAF~ ~CMNINA25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmninaf_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// The Undying ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMCALLIJ"
+OUTER_SPRINT "BG2_BCS" "CALLISTO"
+OUTER_SPRINT "TOB_JOINED" "CMCALLIJ"
+OUTER_SPRINT "TOB_BCS" "CALLISTO"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Undying ~CALLISTO~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/callisto_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Summon Bhaalspawn ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "bhalspwj"
+OUTER_SPRINT "BG2_BCS" "BHAALSPW"
+OUTER_SPRINT "TOB_JOINED" "bhalspwj"
+OUTER_SPRINT "TOB_BCS" "BHAALSPW"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Sandra ~BHAALSPW~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/BHAALSPW_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Nikita Redux ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMNIKITJ"
+OUTER_SPRINT "BG2_BCS" "cmnikita"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNIKITJ"   // Probably the same as bg2
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMNIK25J"   // Probably the same as bg2
+END
+OUTER_SPRINT "TOB_BCS" "CMNIK25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod NikitaRedux ~cmnikita~ ~CMNIK25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Vampire Tales ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "CMGMIRIj"
+OUTER_SPRINT "BG2_BCS" "CMGMIRI"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMGMIRIj"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "CMGMI25J"
+END
+OUTER_SPRINT "TOB_BCS" "CMGMI25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Miriam ~CMGMIRI~ ~CMGMI25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmgmiriam_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Kim ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "KimJ"
+OUTER_SPRINT "BG2_BCS" "Kim"
+OUTER_SPRINT "TOB_JOINED" "KimJ"
+OUTER_SPRINT "TOB_BCS" "Kim"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kim ~Kim~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kim_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Severian ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "#SeverJ"
+OUTER_SPRINT "BG2_BCS" "#Sever"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "#SeverJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "#Sev25J"
+END
+OUTER_SPRINT "TOB_BCS" "#SevD25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Severian ~#Sever~ ~#SevD25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Severian_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Frennedan ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" ""
+OUTER_SPRINT "BG2_BCS" ""
+OUTER_SPRINT "TOB_JOINED" ""
+OUTER_SPRINT "TOB_BCS" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Frennedan ~fren~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Frennedan_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Branwen BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "O#BranJ"
+OUTER_SPRINT "BG2_BCS" "O#BranS"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#BranJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#BrA25J"
+END
+OUTER_SPRINT "TOB_BCS" "O#Bra25S"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Branwen_BG2 ~O#BranS~ ~O#Bra25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/O#Bran_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Tiax BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "O#TiaxJ"
+OUTER_SPRINT "BG2_BCS" "O#TiaxS"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#TiaxJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#Tia25J"
+END
+OUTER_SPRINT "TOB_BCS" "O#Tia25S"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Tiax_BG2 ~O#TiaxS~ ~O#Tia25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/O#Tiax_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Xan BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "O#XANJ"
+OUTER_SPRINT "BG2_BCS" "O#XanS"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#XANJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#XAN25J"
+END
+OUTER_SPRINT "TOB_BCS" "O#Xan25S"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Xan_BG2 ~O#XanS~ ~O#Xan25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/O#XAN_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Coran BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "O#CoranJ"
+OUTER_SPRINT "BG2_BCS" "O#CORANS"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#CoranJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "O#Cor25J"
+END
+OUTER_SPRINT "TOB_BCS" "O#COR25S"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Xan_BG2 ~O#CORANS~ ~O#COR25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/O#Coran_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Auren Aseph ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "K#AurenJ"
+OUTER_SPRINT "BG2_BCS" "K#Auren"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "K#AurenJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "K#Aur25J"
+END
+OUTER_SPRINT "TOB_BCS" "K#Aure25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Auren ~K#Auren~ ~K#Aure25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/K#AUREN_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Isra BG2 ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "rh#isrj"
+OUTER_SPRINT "BG2_BCS" "rh#isr"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "rh#isrj"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "rh#is25j"
+END
+OUTER_SPRINT "TOB_BCS" "rh#is25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Isra_BG2 ~rh#isr~ ~rh#is25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/rh#Isra2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Nephele ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "LK#NEPJ"
+OUTER_SPRINT "BG2_BCS" "lk#neph"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "LK#NEPJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "LK#NE25J"
+END
+OUTER_SPRINT "TOB_BCS" "lk#ne25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Nephele_Samios ~lk#neph~ ~lk#ne25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Nephele_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Sheena ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "SHEENAJ"
+OUTER_SPRINT "BG2_BCS" "K#Sheena"
+OUTER_SPRINT "TOB_JOINED" "SHEENAJ"
+OUTER_SPRINT "TOB_BCS" "K#Sheena"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Sheena ~K#Sheena~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/K#SHEENA_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Kiara / Zaiya ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "KIARAJ"
+OUTER_SPRINT "BG2_BCS" "kiara"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "KIARAJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "KIAR25J"
+END
+OUTER_SPRINT "TOB_BCS" "kiar25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kiara ~kiara~ ~kiar25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kiara_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "ZAIYAJ"
+OUTER_SPRINT "BG2_BCS" "Zaiya"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "ZAIYAJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "ZAI25J"
+END
+OUTER_SPRINT "TOB_BCS" "zai25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Zaiya ~Zaiya~ ~zai25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Zaiya_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// The Beaurin Legacy ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "QI#MIJ"
+OUTER_SPRINT "BG2_BCS" "QI#MIS"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "QI#MIJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "QI#M25J"
+END
+OUTER_SPRINT "TOB_BCS" "QI#M25S"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Minyae ~QI#MIS~ ~QI#M25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/QI#MI_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "QI#ELAJ"
+OUTER_SPRINT "BG2_BCS" "QI#ElaS"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "QI#ELAJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "QI#E25J"
+END
+OUTER_SPRINT "TOB_BCS" "QI#E25S"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Elaryn ~QI#ElaS~ ~QI#E25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/QI#ELA_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Tyris Flare ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "g#tyrisj"
+OUTER_SPRINT "BG2_BCS" "g#tyris"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "g#tyrisj"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "g#trs25j"
+END
+OUTER_SPRINT "TOB_BCS" "g#tyrs25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Tyris ~g#tyris~ ~g#tyrs25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/g#Tyris_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Region of Terror ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "Wulfg2J"
+OUTER_SPRINT "BG2_BCS" "WULFG2"
+OUTER_SPRINT "TOB_JOINED" "Wulfg2J"
+OUTER_SPRINT "TOB_BCS" "WULFG2"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Wulfgar_Terror ~WULFG2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Wulfg2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "Reg2J"
+OUTER_SPRINT "BG2_BCS" "REG2"
+OUTER_SPRINT "TOB_JOINED" "Reg2J"
+OUTER_SPRINT "TOB_BCS" "REG2"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Regis_Terror ~REG2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Reg2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "Driz2J"
+OUTER_SPRINT "BG2_BCS" "DRIZ21"
+OUTER_SPRINT "TOB_JOINED" "Driz2J"
+OUTER_SPRINT "TOB_BCS" "DRIZ21"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Drizzt_Terror ~DRIZ21~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Driz2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "Brue2J"
+OUTER_SPRINT "BG2_BCS" "Brue2"
+OUTER_SPRINT "TOB_JOINED" "Brue2J"
+OUTER_SPRINT "TOB_BCS" "Brue2"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Bruenor_Terror ~Brue2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Brue2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "Catt2J"
+OUTER_SPRINT "BG2_BCS" "Catt2"
+OUTER_SPRINT "TOB_JOINED" "Catt2J"
+OUTER_SPRINT "TOB_BCS" "Catt2"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Catti-Brie_Terror ~Catt2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Catt2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "Enter2J"
+OUTER_SPRINT "BG2_BCS" "ENTER2"
+OUTER_SPRINT "TOB_JOINED" "Enter2J"
+OUTER_SPRINT "TOB_BCS" "ENTER2"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Artemis_Entreri_Terror ~ENTER2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Enter2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~Jarlax2.cre~ BEGIN
+		COPY_EXISTING ~Jarlax2.CRE~ ~override/Jarlax2.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~Jarlax2~ (8)
+	END
+
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Jarlax2.bcs~
+
+OUTER_SPRINT "BG2_JOINED" "Jarlax2J"
+OUTER_SPRINT "BG2_BCS" "Jarlax2"
+OUTER_SPRINT "TOB_JOINED" "Jarlax2J"
+OUTER_SPRINT "TOB_BCS" "Jarlax2"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Jarlaxle_Terror ~Jarlax2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Jarlax2_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~Tapio.cre~ BEGIN
+		COPY_EXISTING ~Tapio.CRE~ ~override/Tapio.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~Tapio~ (8)
+	END
+
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Tapio.bcs~
+
+OUTER_SPRINT "BG2_JOINED" "TapioJ"
+OUTER_SPRINT "BG2_BCS" "Tapio"
+OUTER_SPRINT "TOB_JOINED" "TapioJ"
+OUTER_SPRINT "TOB_BCS" "Tapio"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Tapio_Perkiomaki_Terror ~Tapio~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Tapio_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "RandallJ"
+OUTER_SPRINT "BG2_BCS" "RANDALL"
+OUTER_SPRINT "TOB_JOINED" "RandallJ"
+OUTER_SPRINT "TOB_BCS" "RANDALL"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Randall_Terror ~RANDALL~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Randall_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "Alissa1J"
+OUTER_SPRINT "BG2_BCS" "ALISSA1"
+OUTER_SPRINT "TOB_JOINED" "Alissa1J"
+OUTER_SPRINT "TOB_BCS" "ALISSA1"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Alissa_Terror ~ALISSA1~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ALISSA1_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~Mordrg1.cre~ BEGIN
+		COPY_EXISTING ~Mordrg1.CRE~ ~override/Mordrg1.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~Mordrg~ (8)
+	END
+ACTION_IF FILE_EXISTS_IN_GAME ~Mordrg2.cre~ BEGIN
+		COPY_EXISTING ~Mordrg2.CRE~ ~override/Mordrg2.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~Mordrg~ (8)
+	END
+ACTION_IF FILE_EXISTS_IN_GAME ~Mordrg3.cre~ BEGIN
+		COPY_EXISTING ~Mordrg3.CRE~ ~override/Mordrg3.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~Mordrg~ (8)
+	END
+ACTION_IF FILE_EXISTS_IN_GAME ~Mordrg4.cre~ BEGIN
+		COPY_EXISTING ~Mordrg4.CRE~ ~override/Mordrg4.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~Mordrg~ (8)
+	END
+
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Mordrg.bcs~
+
+OUTER_SPRINT "BG2_JOINED" "MordrgJ"
+OUTER_SPRINT "BG2_BCS" "Mordrg"
+OUTER_SPRINT "TOB_JOINED" "MordrgJ"
+OUTER_SPRINT "TOB_BCS" "Mordrg"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Mordragon_Terror ~Mordrg~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Mordrg_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+/////////////////////////// Shadow over Soubar ///////////////////////////
+
+OUTER_SPRINT "BG2_JOINED" "SELENCEJ"
+OUTER_SPRINT "BG2_BCS" "SELENCE"
+OUTER_SPRINT "TOB_JOINED" "SELENCEJ"
+OUTER_SPRINT "TOB_BCS" "SELENCE"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Selence_Hillstar_Soubar ~SELENCE~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/SELENCE_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "CHARLOTJ"
+OUTER_SPRINT "BG2_BCS" "CHARLOT0"
+OUTER_SPRINT "TOB_JOINED" "CHARLOTJ"
+OUTER_SPRINT "TOB_BCS" "CHARLOT0"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Charlotte_Soubar ~CHARLOT0~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CHARLOTT_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVR09.cre~ BEGIN
+		COPY_EXISTING ~BOLIVR09.CRE~ ~override/BOLIVR09.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~BOLIVAR1~ (8)
+	END
+ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVR15.cre~ BEGIN
+		COPY_EXISTING ~BOLIVR15.CRE~ ~override/BOLIVR15.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~BOLIVAR1~ (8)
+	END
+ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVR09.cre~ BEGIN
+		COPY_EXISTING ~BOLIVR20.CRE~ ~override/BOLIVR20.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~BOLIVAR1~ (8)
+	END
+
+COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/BOLIVAR1.bcs~
+
+OUTER_SPRINT "BG2_JOINED" "BOLIVARJ"
+OUTER_SPRINT "BG2_BCS" "BOLIVAR1"
+OUTER_SPRINT "TOB_JOINED" "BOLIVARJ"
+OUTER_SPRINT "TOB_BCS" "BOLIVAR1"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Bolivar_Soubar ~BOLIVAR1~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/BOLIVAR_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "TOMASTOJ"
+OUTER_SPRINT "BG2_BCS" "TOMASTOM"
+OUTER_SPRINT "TOB_JOINED" "TOMASTOJ"
+OUTER_SPRINT "TOB_BCS" "TOMASTOM"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Tomas_Tomalson_Soubar ~TOMASTOM~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+	
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/TOMASTM_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+	END
+END

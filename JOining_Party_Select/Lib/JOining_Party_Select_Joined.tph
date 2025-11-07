@@ -94,6 +94,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 //////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////// bg1 ///////////////////////////
+
 // Ajantis
 // Original Ajantis AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%AJANTIS_BCS%~)
 
@@ -166,6 +167,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDBAELOT~)
 
 /////////////////////////// SoD ///////////////////////////
+
 // Voghiln
 // Original Voghiln AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDVOGHIL~)
 
@@ -227,6 +229,46 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Ishlilka (#Ishy)
 // Mod Ishlilka AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ishyscrp~)
 
+// ChaosKnight-kit
+// Mod Jacob AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ZYJCOB~)
+
+// Askaria-Quest
+// Mod Askaria AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ZYASKA~)
+
+// Isra BG1
+// Mod Isra_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RH#ISRA~)
+
+// Finch
+// Mod Finch AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SUFINCH~)
+
+// Drizzt Saga
+// Mod Jarlaxle_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_JARLAX~)
+// Mod Artemis_Enteri_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_ASSASI~)
+// Mod Catti-Brie_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_CATTIB~)
+// Mod Bruenor_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_BRUENO~)
+// Mod Regis_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_REGIS2~)
+// Mod Drizzt_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_DRIZZT~)
+// Mod Wulfgar_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_WULFGA~)
+
+// Dark Horizons
+// Mod Nikita_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtnikit~)
+// Mod Thorin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtthor~)
+// Mod Morwen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtmorw~)
+
+// DSotSC
+// Mod Bardo AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DSBARDO~)
+// Mod Bub_Snikt AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DSBUB~)
+// Mod Conchobhair AND NOT (~%override_script%~ STRING_EQUAL_CASE ~dsconcho~)
+// Mod CuChoinneach AND NOT (~%override_script%~ STRING_EQUAL_CASE ~dscucho~)
+// Mod Ferthgil_Trollslayer AND NOT (~%override_script%~ STRING_EQUAL_CASE ~dsferth~)
+// Mod Jet'laya AND NOT (~%override_script%~ STRING_EQUAL_CASE ~dsjetla~)
+// Mod Keiria_Silverstring AND NOT (~%override_script%~ STRING_EQUAL_CASE ~dskeiri~)
+// Mod Skeezer_Lumpkin_VI AND NOT (~%override_script%~ STRING_EQUAL_CASE ~dsskeez~)
+// Mod Thorfinn_Hauskluniff AND NOT (~%override_script%~ STRING_EQUAL_CASE ~dsthorf~)
+
+// NTotSC
+// Mod Will_Scarlet AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ntwill~)
+
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2 (CMALORA)
@@ -245,7 +287,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Mod Sandra AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BHAALSPW~)
 
 // Nikita Redux (cmnikita)
-// Mod Nikita AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmnikita~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNIK25~)
+// Mod NikitaRedux AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmnikita~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNIK25~)
 
 // Vampire Tales (cmgmiriam)
 // Mod Miriam AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMIRI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMI25~)
@@ -258,6 +300,77 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Frennedan (fren)
 // Mod Frennedan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~fren~)
+
+// Branwen BG2
+// Mod Branwen_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#BranS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Bra25S~)
+
+// Tiax BG2
+// Mod Tiax_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#TiaxS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Tia25S~)
+
+// Xan BG2
+// Mod Xan_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#XanS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Xan25S~)
+
+// Coran BG2
+// Mod Coran_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#CORANS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#COR25S~)
+
+// Auren
+// Mod Auren AND NOT (~%override_script%~ STRING_EQUAL_CASE ~K#Auren~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~K#Aure25~)
+
+// Isra BG2
+// Mod Isra_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#isr~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#is25~)
+
+// Nephele
+// Mod Nephele_Samios AND NOT (~%override_script%~ STRING_EQUAL_CASE ~lk#neph~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~lk#ne25~)
+
+// Sheena
+// Mod Kiara AND NOT (~%override_script%~ STRING_EQUAL_CASE ~K#Sheena~)
+
+// Kiara / Zaiya
+// Mod Kiara AND NOT (~%override_script%~ STRING_EQUAL_CASE ~kiara~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~kiar25~)
+
+// Mod Zaiya AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Zaiya~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~zai25~)
+
+
+// The Beaurin Legacy
+// Mod Minyae AND NOT (~%override_script%~ STRING_EQUAL_CASE ~QI#MIS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~QI#M25S~)
+
+// Mod Elaryn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~QI#ElaS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~QI#E25S~)
+
+
+// Tyris Flare
+// Mod Finch AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMIRI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMI25~)
+
+
+// Finch
+// Mod Tyris AND NOT (~%override_script%~ STRING_EQUAL_CASE ~g#tyris~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~g#tyrs25~)
+
+
+// Region of Terror
+// Mod Wulfgar_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~WULFG2~)
+// Mod Regis_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~REG2~)
+// Mod Drizzt_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~DRIZ21~)
+// Mod Bruenor_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Brue2~)
+// Mod Catti-Brie_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Catt2~)
+// Mod Artemis_Entreri_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ENTER2~)
+// Mod Jarlaxle_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Jarlax2~)
+// Mod Tapio_Perkiomaki_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Tapio~)
+// Mod Randall_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RANDALL~)
+// Mod Alissa_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ALISSA1~)
+// Mod Mordragon_Terror AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Mordrg~)
+
+
+
+
+// Shadow over Soubar
+// Mod Selence_Hillstar_Soubar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SELENCE~)
+// Mod Charlotte_Soubar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CHARLOT0~)
+// Mod Bolivar_Soubar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BOLIVAR1~)
+// Mod Tomas_Tomalson_Soubar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TOMASTOM~)
+
+
+
+
+
 
 	BEGIN 
       SPRINT $npc_scripts (~%override_script%~)~1~

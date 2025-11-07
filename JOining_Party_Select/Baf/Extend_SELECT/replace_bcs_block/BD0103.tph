@@ -1,21 +1,49 @@
 
 <<<<<<<<bd0103_rep.baf
 IF
-	OR(2)
-		InMyArea("kivan")
-		!TriggerOverride("Kivan",Global("JO_Myself_AllowDead","LOCALS",0))
 	GlobalLT("BD_PLOT","GLOBAL",51)
+	Global("SOD_fromimport","global",1)
+	Global("BD_HAS_BAELOTHS_ROBE","GLOBAL",0)
+	OR(4)
+		NumItemsPartyGT("clck17",1)
+		NumItemsGT("clck17","PlayerChest00",1)
+		NumItemsGT("clck17","Imoen_equipment",1)
+		PartyHasItem("clck17")
+	OR(4)
+		NumItemsPartyGT("clck17",1)
+		NumItemsGT("clck17","PlayerChest00",1)
+		Contains("clck17","PlayerChest00")
+		Contains("clck17","Imoen_equipment")
+	!BeenInParty("baeloth")
+	Dead("baeloth")
 THEN
 	RESPONSE #100
-		ActionOverride("kivan",LeaveParty())
-		SetGlobal("JO_Kivan_LeaveParty","GLOBAL",1)
-		SmallWait(1)
-		ActionOverride("kivan",DestroySelf())
-		Continue()
+		SetGlobal("BD_HAS_BAELOTHS_ROBE","GLOBAL",1)
 END
 >>>>>>>>
 
 <<<<<<<<bd0103_add.baf
+IF
+	GlobalLT("BD_PLOT","GLOBAL",51)
+	Global("SOD_fromimport","global",1)
+	Global("BD_HAS_BAELOTHS_ROBE","GLOBAL",0)
+	OR(4)
+		NumItemsPartyGT("clck17",1)
+		NumItemsGT("clck17","PlayerChest00",1)
+		NumItemsGT("clck17","Imoen_equipment",1)
+		PartyHasItem("clck17")
+	OR(4)
+		NumItemsPartyGT("clck17",1)
+		NumItemsGT("clck17","PlayerChest00",1)
+		Contains("clck17","PlayerChest00")
+		Contains("clck17","Imoen_equipment")
+	!BeenInParty("baeloth")
+	Dead("baeloth")
+THEN
+	RESPONSE #100
+		SetGlobal("BD_HAS_BAELOTHS_ROBE","GLOBAL",1)
+END
+
 IF
 	Global("K#PartySoD","BD0103",0)
 	Allegiance("%Death_var%",FAMILIAR)
@@ -31,20 +59,6 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroySelf())
-		Continue()
-END
-
-IF
-	OR(2)
-		InMyArea("kivan")
-		!TriggerOverride("Kivan",Global("JO_Myself_AllowDead","LOCALS",0))
-	GlobalLT("BD_PLOT","GLOBAL",51)
-THEN
-	RESPONSE #100
-		ActionOverride("kivan",LeaveParty())
-		SetGlobal("JO_Kivan_LeaveParty","GLOBAL",1)
-		SmallWait(1)
-		ActionOverride("kivan",DestroySelf())
 		Continue()
 END
 

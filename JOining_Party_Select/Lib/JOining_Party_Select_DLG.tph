@@ -74,6 +74,46 @@ ACTION_FOR_EACH Death_var IN
 
 // Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
 
+// ChaosKnight-kit
+// Mod Jacob ~ZYJCOB~
+
+// Askaria-Quest
+// Mod Askaria ~ZYASKA~
+
+// Isra BG1
+// Mod Isra_BG1 ~rh#isra~
+
+// Finch
+// Mod Finch ~SUFINCH~
+
+// Drizzt Saga
+// Mod Jarlaxle_Saga ~F_JARLAXE~
+// Mod Artemis_Enteri_Saga ~F_ARTEMIS~
+// Mod Catti-Brie_Saga ~F_CATTIBR~
+// Mod Bruenor_Saga ~F_BRUENOR~
+// Mod Regis_Saga ~F_REGIS~
+// Mod Drizzt_Saga ~F_DRIZZT~
+// Mod Wulfgar_Saga ~F_WULFGAR~
+
+// Dark Horizons
+// Mod Nikita_BG1 ~cmnikita~
+// Mod Thorin ~CMTTHOR~
+// Mod Morwen ~CMTMORW~
+
+// DSotSC
+// Mod Bardo ~DSBARDO~
+// Mod Bub_Snikt ~DSBUB~
+// Mod Conchobhair ~Conchobhair~
+// Mod CuChoinneach ~CuChoinneach~
+// Mod Ferthgil_Trollslayer ~Ferthgil~
+// Mod Jet'laya ~JETLAYA~
+// Mod Keiria_Silverstring ~KEIRIA~
+// Mod Skeezer_Lumpkin_VI ~SKEEZER~
+// Mod Thorfinn_Hauskluniff ~Thorfinn~
+
+// NTotSC
+// Mod Will_Scarlet ~WILL~
+
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
@@ -90,7 +130,7 @@ ACTION_FOR_EACH Death_var IN
 // Mod Sandra ~BHAALSPW~
 
 // NikitaRedux
-// Mod Nikita ~cmnikita~
+// Mod NikitaRedux ~cmnikita~
 
 // VampireTales
 // Mod Miriam ~cmgmiriam~
@@ -103,6 +143,57 @@ ACTION_FOR_EACH Death_var IN
 
 // Frennedan
 // Mod Frennedan ~Frennedan~
+
+// Branwen BG2
+// Mod Branwen_BG2 ~O#Bran~
+// Tiax BG2
+// Mod Tiax_BG2 ~O#Tiax~
+// Xan BG2
+// Mod Xan_BG2 ~O#XAN~
+// Coran BG2
+// Mod Coran_BG2 ~O#Coran~
+
+// Auren Aseph
+// Mod Auren ~K#AUREN~
+
+// Isra BG2
+// Mod Isra_BG2 ~rh#Isra2~
+
+// Nephele
+// Mod Nephele_Samios ~Nephele~
+
+// Sheena
+// Mod Sheena ~K#SHEENA~
+
+// Kiara / Zaiya
+// Mod Kiara ~Kiara~
+// Mod Zaiya ~Zaiya~
+
+// The Beaurin Legacy
+// Mod Minyae ~QI#MI~
+// Mod Elaryn ~QI#ELA~
+
+// Tyris Flare
+// Mod Tyris ~g#Tyris~
+
+// Region of Terror
+// Mod Wulfgar_Terror ~Wulfg2~
+// Mod Regis_Terror ~Reg2~
+// Mod Drizzt_Terror ~Driz2~
+// Mod Bruenor_Terror ~Brue2~
+// Mod Catti-Brie_Terror ~Catt2~
+// Mod Artemis_Entreri_Terror ~Enter2~
+// Mod Jarlaxle_Terror ~Jarlax2~
+// Mod Tapio_Perkiomaki_Terror ~Tapio~
+// Mod Randall_Terror ~Randall~
+// Mod Alissa_Terror ~ALISSA1~
+// Mod Mordragon_Terror ~Mordrg~
+
+//Shadow over Soubar
+// Mod Selence_Hillstar_Soubar ~SELENCE~
+// Mod Charlotte_Soubar ~CHARLOTT~
+// Mod Bolivar_Soubar ~BOLIVAR~
+// Mod Tomas_Tomalson_Soubar ~TOMASTM~
 
 BEGIN
 
@@ -151,6 +242,14 @@ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : InParty found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~  InParty("%Death_var%")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // space %Death_var% : InParty found in %SOURCE_FILESPEC%
 				~
 			END
 // !Is(!If)ValidForPartyDialog(ue) /////////////// Global("JO_%Death_var%_Valid","GLOBAL",0)
