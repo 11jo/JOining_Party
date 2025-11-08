@@ -53,11 +53,12 @@ IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0) // Temporary solution until DPLAYER2 is sorted out...
 	!Global("JO_Myself_Valid","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
-	OR(4)
+	OR(5)
 		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 		StateCheck(Myself,CD_STATE_NOTVALID)
 		!IsActive(Myself)
+		!CheckStat(Myself,0,CASTERHOLD)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
@@ -68,6 +69,7 @@ IF
 	Global("JO_Myself_Valid","LOCALS",0)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	IsActive(Myself)
+	CheckStat(Myself,0,CASTERHOLD)
 	OR(2)
 		IsValidForPartyDialogue(Myself)
 		!StateCheck(Myself,CD_STATE_NOTVALID)
