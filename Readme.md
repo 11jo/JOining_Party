@@ -48,14 +48,7 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 
 Componant :  
 
-- Choose wich NPC will be allowed to become Familiar. (This don't prevent to have them in party as regular member if wanted.)  
-
-  1. Continuous original NPC (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera, Rasaad)  
-  2. BG1 original NPC (Ajantis, Alora, Branwen, Coran, Dynaheir, Eldoth, Faldorn, Garrick, Kagain, Khalid, Kivan, Montaron, Quayle, Safana, Sharteel, Skie, Tiax, Xan, Xzar,  Yeslick, Baeloth)  
-  3. SoD original NPC (Voghiln, Corwin, Mkhiin, Glint)  
-  4. BG2EE original NPC (Anomen, Aerie, Cernd, Haerdalis, Hexxat, Jan, Keldorn, Korgan, Mazzy, Nalia, Sarevok, Valygar, Wilson, Yoshimo)  
-  5. Mods BG1 NPC ([Ishlilka](https://github.com/The-Gate-Project/Ishlilka_The-Wizard-Slayer))  
-  6. Mod BG2 NPC ([Alora BG2](https://github.com/The-Gate-Project/Alora-NPC-for-BG2), [Yeslick BG2](https://github.com/Spellhold-Studios/Yeslick-NPC), [Sandra](https://github.com/11jo/Summon_Bhaalspawn), [Nikita](https://github.com/The-Gate-Project/NikitaRedux), [Kim](https://github.com/11jo/Kim_NPC), [Miriam](https://github.com/The-Gate-Project/VampireTales), [Severian](https://github.com/The-Gate-Project/Severian-de-Demerya), ~[The Undying](https://github.com/11jo/The-Undying)~)  
+- First select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
 
 - **Mandatory** Install componant All-Out, 
   - Replace any InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead... by Familiar reference to make them count as party member and allow quests and interjections to process.  

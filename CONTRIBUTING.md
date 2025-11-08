@@ -1,20 +1,35 @@
 
 ## Files Description
+   
+- [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select.tph)  
+   - DeathVars selection for JOining_Party_Select_BCS.tph, JOining_Party_Select_DLG.tph and All_In.baf
 
-- [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph)  
+- [JOining_Party_Select_BCS.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph)  
    - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable in BCS.
    
-- [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph)  
+- [JOining_Party_Select_DLG.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph)  
    - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable in DLG.
 
 - [JOining_Party_Select_Myself.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph)  
    - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each existing Myself in DLG and BCS.
+
+- [JOining_Party_Select_Cutscene.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Cutscene.tph)  
+   - Search and replace Cutscenes related actions to avoid unintended behavior and allow traveler deactivation.
 
 - [JOining_Party_Select_Joined.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph)  
    - Implement a little script to other (not selected) NPCs.
 
 - [JOining_Party_Select_End.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
    - Workarounds / Corrections for scripts, dialogue and else.
+
+- [JOining_Party_Select_Core_Original.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph)  
+   - Implement scripts and dialogs for each selected original NPCs.
+
+- [JOining_Party_Select_Core_Mod_BG1.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph)  
+   - Implement scripts and dialogs for each selected mod bg1 NPCs.
+
+- [JOining_Party_Select_Core_Mod_BG2.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph)  
+   - Implement scripts and dialogs for each selected mod bg2 NPCs.
 
 - [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core.tph)  
    - Implement scripts and dialogs for each selected NPCs.
