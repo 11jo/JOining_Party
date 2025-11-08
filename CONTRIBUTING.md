@@ -2,7 +2,7 @@
 ## Files Description
    
 - [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select.tph)  
-   - DeathVars selection for JOining_Party_Select_BCS.tph, JOining_Party_Select_DLG.tph and All_In.baf
+   - DeathVars selection for JOining_Party_Select_BCS.tph and JOining_Party_Select_DLG.tph
 
 - [JOining_Party_Select_BCS.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph)  
    - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable in BCS.
@@ -17,22 +17,23 @@
    - Search and replace Cutscenes related actions to avoid unintended behavior and allow traveler deactivation.
 
 - [JOining_Party_Select_Joined.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph)  
-   - Implement a little script to other (not selected) NPCs.
+   - Implement a little script to other (not selected) NPCs. (All_NPC_JOIN.baf)
 
 - [JOining_Party_Select_End.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
-   - Workarounds / Corrections for scripts, dialogue and else.
+   - Special Cases and Workarounds / Corrections for scripts, dialogues and else. Create All_In.baf for each selected NPCs.
 
 - [JOining_Party_Select_Core_Original.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph)  
-   - Implement scripts and dialogs for each selected original NPCs.
+   - Implement scripts and dialogs for each selected original NPCs. (All_TRAVELER_JOIN, All_In.baf, JO_JOIN)
 
 - [JOining_Party_Select_Core_Mod_BG1.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph)  
-   - Implement scripts and dialogs for each selected mod bg1 NPCs.
+   - Implement scripts and dialogs for each selected mod bg1 NPCs. (All_TRAVELER_JOIN, All_In.baf, JO_JOIN)
 
 - [JOining_Party_Select_Core_Mod_BG2.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph)  
-   - Implement scripts and dialogs for each selected mod bg2 NPCs.
+   - Implement scripts and dialogs for each selected mod bg2 NPCs. (All_TRAVELER_JOIN, All_In.baf, JO_JOINI, JO_JOIN)
 
 - [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core.tph)  
-   - Implement scripts and dialogs for each selected NPCs.
+   - Implement scripts and dialogs, (JO_JOINI, JO_JOINX). Extend startings areas scripts, baldur's.bcs and dplayer3.bcs
+   - Add items, effects and spells.
    
 - [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)  
 
