@@ -1007,4 +1007,17 @@ END
 
 	END
 
+// Kivan and Deheriana
+
+	ACTION_IF (MOD_IS_INSTALLED ~Kivan and Deheriana.TP2~ ~100~) THEN BEGIN
+
+ACTION_IF Kivan_BG2_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kivan_BG2~ ~~
+
+END
+
+	END
+
 // Next_Traveler BG2
