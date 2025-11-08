@@ -12,7 +12,7 @@
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+		GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("AERIEJ")
@@ -25,7 +25,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%AERIE25J%")
@@ -53,7 +53,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Aerie.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+		GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("ANOMENJ")
@@ -66,7 +66,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%ANOME25J%")
@@ -92,7 +92,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Anomen.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("CERNDJ")
@@ -105,7 +105,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%CERND25J%")
@@ -135,7 +135,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Cernd.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("HAERDAJ")
@@ -148,7 +148,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%HAERD25J%")
@@ -178,7 +178,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Haerdalis.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("HEXXATJ")
@@ -191,7 +191,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%HEXXA25J%")
@@ -221,7 +221,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Hexxat.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("JANJ")
@@ -234,7 +234,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%JAN25J%")
@@ -264,7 +264,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jan.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("KELDORJ")
@@ -277,7 +277,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%KELDO25J%")
@@ -307,7 +307,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Keldorn.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("KORGANJ")
@@ -320,7 +320,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%KORGA25J%")
@@ -350,7 +350,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Korgan.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("MAZZYJ")
@@ -363,7 +363,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%MAZZY25J%")
@@ -393,7 +393,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Mazzy.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("NALIAJ")
@@ -406,7 +406,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%NALIA25J%")
@@ -465,7 +465,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Sarevok.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	GlobalLT("JO_JOIN_CAMPAIGN","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetDialog("VALYGARJ")
@@ -478,7 +478,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
+	GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",3)
 THEN
 	RESPONSE #100
 		SetDialog("%VALYG25J%")

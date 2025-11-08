@@ -761,7 +761,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~Jarlax2.cre~ BEGIN
 		WRITE_ASCII SCRIPT_OVERRIDE ~Jarlax2~ (8)
 	END
 
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Jarlax2.bcs~
+COPY ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Jarlax2.bcs~
 
 OUTER_SPRINT "BG2_JOINED" "Jarlax2J"
 OUTER_SPRINT "BG2_BCS" "Jarlax2"
@@ -790,7 +790,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~Tapio.cre~ BEGIN
 		WRITE_ASCII SCRIPT_OVERRIDE ~Tapio~ (8)
 	END
 
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Tapio.bcs~
+COPY ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Tapio.bcs~
 
 OUTER_SPRINT "BG2_JOINED" "TapioJ"
 OUTER_SPRINT "BG2_BCS" "Tapio"
@@ -875,7 +875,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~Mordrg4.cre~ BEGIN
 		WRITE_ASCII SCRIPT_OVERRIDE ~Mordrg~ (8)
 	END
 
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Mordrg.bcs~
+COPY ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/Mordrg.bcs~
 
 OUTER_SPRINT "BG2_JOINED" "MordrgJ"
 OUTER_SPRINT "BG2_BCS" "Mordrg"
@@ -958,7 +958,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVR09.cre~ BEGIN
 		WRITE_ASCII SCRIPT_OVERRIDE ~BOLIVAR1~ (8)
 	END
 
-COMPILE ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/BOLIVAR1.bcs~
+COPY ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/BOLIVAR1.bcs~
 
 OUTER_SPRINT "BG2_JOINED" "BOLIVARJ"
 OUTER_SPRINT "BG2_BCS" "BOLIVAR1"

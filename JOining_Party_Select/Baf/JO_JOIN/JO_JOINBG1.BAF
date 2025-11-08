@@ -20,6 +20,7 @@ THEN
 		Continue()
 END
 
+/*
 IF
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
 	OR(2)
@@ -37,6 +38,7 @@ THEN
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		Continue()
 END
+*/
 
  // SoD
 
@@ -52,6 +54,7 @@ THEN
 		Continue()
 END
 
+/*
 IF
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
 	OR(2)
@@ -67,6 +70,7 @@ THEN
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		Continue()
 END
+*/
 
 ////////////////////////////////////////////////////
 
