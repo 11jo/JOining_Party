@@ -4,6 +4,46 @@
 
 <<<<<<<< .../JOining_Imoen.baf
 
+
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN // BG1
+		OUTER_SPRINT "RESPONSE #1" ~~~~~RESPONSE #1
+				SetDialog("IMOEN2")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOEN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #1" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN // BG2 / ToB
+		OUTER_SPRINT "RESPONSE #3" ~~~~~RESPONSE #3
+				SetDialog("IMOEN2J")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOEN2",OVERRIDE)
+				Continue()
+			RESPONSE #4
+				SetDialog("%IMOEN25J%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOE25",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #3" ""
+END
+ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
+		OUTER_SPRINT "RESPONSE #5" ~~~~~RESPONSE #5
+				SetDialog("IMOEN2J")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOEN_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #5" ""
+END
+
+<<<<<<<< .../JOining_Imoen.baf
+
 IF
 	Global("JO_JOIN","LOCALS",2)
 	OR(2)
@@ -23,36 +63,10 @@ IF
 	!AreaCheck("AR0603")
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
-	RESPONSE #1
-		SetDialog("IMOEN2")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("IMOEN",OVERRIDE)
-		Continue()
-//	RESPONSE #2
-//		SetDialog("%SoD_JOINED%")
-//		SmallWait(1)
-//		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("%SoD_BCS%",OVERRIDE)
-		Continue()
-	RESPONSE #3
-		SetDialog("IMOEN2J")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("IMOEN2",OVERRIDE)
-		Continue()
-	RESPONSE #4
-		SetDialog("%IMOEN25J%")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("IMOE25",OVERRIDE)
-		Continue()
-	RESPONSE #5
-		SetDialog("IMOEN2J")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("IMOEN_",OVERRIDE)
-		Continue()
+%RESPONSE #1%
+%RESPONSE #2%
+%RESPONSE #3%
+%RESPONSE #5%
 END
 
 >>>>>>>>
@@ -68,42 +82,64 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Imoen.baf~ EVALUATE_BUFFER
 
 	ACTION_IF JOining_Edwin = 1 THEN BEGIN
 
+
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN // BG1
+		OUTER_SPRINT "RESPONSE #1" ~~~~~RESPONSE #1
+				SetDialog("EDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("EDWIN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #1" ""
+END
+ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN // SoD
+		OUTER_SPRINT "RESPONSE #2" ~~~~~RESPONSE #2
+				SetDialog("BDEDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDEDWIN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #2" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN // BG2 / ToB
+		OUTER_SPRINT "RESPONSE #3" ~~~~~RESPONSE #3
+				SetDialog("EDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("EDWIN",OVERRIDE)
+				Continue()
+			RESPONSE #4
+				SetDialog("%EDWIN25J%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("edwi25",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #3" ""
+END
+ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
+		OUTER_SPRINT "RESPONSE #5" ~~~~~RESPONSE #5
+				SetDialog("EDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("EDWIN_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #5" ""
+END
+
 <<<<<<<< .../JOining_Edwin.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
-	RESPONSE #1
-		SetDialog("EDWINJ")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("EDWIN",OVERRIDE)
-		Continue()
-	RESPONSE #2
-		SetDialog("BDEDWINJ")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("BDEDWIN",OVERRIDE)
-		Continue()
-	RESPONSE #3
-		SetDialog("EDWINJ")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("EDWIN",OVERRIDE)
-		Continue()
-	RESPONSE #4
-		SetDialog("%EDWIN25J%")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("edwi25",OVERRIDE)
-		Continue()
-	RESPONSE #5
-		SetDialog("EDWINJ")
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript(EDWIN_",OVERRIDE)
-		Continue()
+%RESPONSE #1%
+%RESPONSE #2%
+%RESPONSE #3%
+%RESPONSE #5%
 END
 
 >>>>>>>>

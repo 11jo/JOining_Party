@@ -44,7 +44,9 @@ There is no real limitation as for the number of familiar players can have along
 
 Compatibility : BGEE, SOD, BG2EE and EET.  
 
-- Install JOining Party **AFTER** mods that add any dialog or script options related to NPC.  
+- Install JOining Party **AFTER** mods that add any dialog or script options related to NPC.
+- [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is completly incompatible with this mod if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
+
 
 Componant :  
 

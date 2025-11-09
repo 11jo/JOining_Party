@@ -1,30 +1,20 @@
 /////////////////////////// Mods BG2 ///////////////////////////
 
+
 ////////////////////////////////////////////////////
 
-
- // BG2
- 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
-	RESPONSE #100
+	RESPONSE #3 // BG2EE
 		SetDialog("%BG2_JOINED%")
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("%BG2_BCS%",OVERRIDE)
 		Continue()
-END
-
- // ToB BG2
- 
-IF
-	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",4)
-THEN
-	RESPONSE #100
-		SetDialog("%TOB_JOINED%")   // Probably the same as bg2
+	RESPONSE #4  // ToB 
+		SetDialog("%TOB_JOINED%")
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 //		ChangeAIScript("%TOB_BCS%",OVERRIDE)
@@ -32,35 +22,3 @@ THEN
 END
 
 ////////////////////////////////////////////////////
-
-
-// Yeah Start ( Switch between familiar and party)
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOIN_CLEAR","LOCALS",1)
-THEN
-	RESPONSE #100
-		DisplayStringHead(Myself,~Yeah.~)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		Continue() // Go to Yeah End
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Yeah End (End Switch between familiar and party)
-
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-THEN
-	RESPONSE #100
-		ChangeAIScript("JO_JOINX",RACE)// Go to JO_JOINX (ScriptAction / XP)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",3)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
