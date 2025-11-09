@@ -155,6 +155,8 @@ ACTION_IF Khalid_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Khalid~ ~~
 
+				ACTION_IF FILE_EXISTS_IN_GAME ~BDMUMMY.dlg~ BEGIN
+	
 	COPY_EXISTING_REGEXP ~BDMUMMY.dlg~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 // khaild
@@ -177,6 +179,7 @@ ACTION_IF Khalid_as_traveler = 1 THEN BEGIN
 		END
 	BUT_ONLY
 
+				END
 END
 
 ACTION_IF Kivan_as_traveler = 1 THEN BEGIN
