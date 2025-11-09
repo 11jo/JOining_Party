@@ -1,10 +1,11 @@
+// For non-traveler NPCs
+
 // Base
 
 // !InPartyAllowDead()
 IF
 	!Global("JO_Myself_AllowDead","LOCALS",0)
 	!InPartyAllowDead(Myself)
-	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -13,9 +14,7 @@ END
 // InPartyAllowDead()
 IF
 	Global("JO_Myself_AllowDead","LOCALS",0)
-	OR(2)
-		InPartyAllowDead(Myself)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	InPartyAllowDead(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
@@ -25,9 +24,6 @@ END
 IF
 	!Global("JO_Myself_InParty","LOCALS",0)
 	!InParty(Myself)
-	OR(2)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
@@ -36,12 +32,7 @@ END
 // InParty()
 IF
 	Global("JO_Myself_InParty","LOCALS",0)
-	OR(2)
-		InParty(Myself)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	OR(2)
-		InParty(Myself)
-		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	InParty(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",1)
@@ -51,11 +42,6 @@ END
 IF
 	!Global("JO_Myself_Valid","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
-	OR(4)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-		StateCheck(Myself,CD_STATE_NOTVALID)
-		!IsActive(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
@@ -64,14 +50,7 @@ END
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_Myself_Valid","LOCALS",0)
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	IsActive(Myself)
-	OR(2)
-		IsValidForPartyDialogue(Myself)
-		!StateCheck(Myself,CD_STATE_NOTVALID)
-	OR(2)
-		InParty(Myself)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	IsValidForPartyDialogue(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
