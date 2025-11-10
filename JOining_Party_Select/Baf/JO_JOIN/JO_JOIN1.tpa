@@ -2,9 +2,6 @@
 
 	ACTION_IF JOining_Imoen = 1 THEN BEGIN
 
-<<<<<<<< .../JOining_Imoen.baf
-
-
 ACTION_IF (GAME_IS ~bgee eet~) BEGIN // BG1
 		OUTER_SPRINT "RESPONSE #1" ~~~~~RESPONSE #1
 				SetDialog("IMOEN2")
@@ -64,7 +61,6 @@ IF
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
 %RESPONSE #1%
-%RESPONSE #2%
 %RESPONSE #3%
 %RESPONSE #5%
 END

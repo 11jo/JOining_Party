@@ -304,6 +304,8 @@ ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
+			PRINT ~    %NEW_TRAVELER_NAME% as traveler
+			~
 
 END
 
@@ -324,6 +326,8 @@ ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
+			PRINT ~    %NEW_TRAVELER_NAME% as traveler
+			~
 
 END
 
