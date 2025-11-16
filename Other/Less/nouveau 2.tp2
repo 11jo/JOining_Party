@@ -1,0 +1,93 @@
+OUTER_SPRINT "slashzero" "\0"
+OUTER_SPRINT "slashun" "\1"
+OUTER_SPRINT "slashdeux" "\2"
+
+// ApplySpell situation // 1.2.3.REPLACEApplySpell
+
+ActionOverride("%Death_var%",ApplySpell(Myself,\1))                      // 1REPLACEApplySpell
+ActionOverride("%Death_var%",ApplySpell("%Death_var%",\1))               // 2REPLACEApplySpell
+ApplySpell("%Death_var%",\1)                                             // 3REPLACEApplySpell
+
+// CreateVisualEffectObject situation // 1.2.3.REPLACECreateVisualEffectObject
+
+CreateVisualEffectObject(\1,"%Death_var%")
+ActionOverride("%Death_var%",CreateVisualEffectObject(\1,"%Death_var%"))
+ActionOverride("%Death_var%",CreateVisualEffectObject(\1,Myself))
+
+// SetSequence situation // REPLACESetSequence
+
+ActionOverride("%Death_var%",SetSequence(\1))
+
+// ReallyForceSpell situation // 1.2.3.REPLACEReallyForceSpell
+
+ActionOverride("%Death_var%",ReallyForceSpell("%Death_var%",\1))
+ActionOverride("%Death_var%",ReallyForceSpell(Myself,\1))
+ActionOverride(\1,ReallyForceSpell("%Death_var%",\2))
+
+// ForceSpell situation // 1.2.3.REPLACEForceSpell
+
+ActionOverride("%Death_var%",ForceSpell("%Death_var%",\1))
+ActionOverride("%Death_var%",ForceSpell(Myself,\1))
+ActionOverride(\1,ForceSpell("%Death_var%",\2))
+
+// MakeUnselectable situation // REPLACEMakeUnselectable
+
+ActionOverride("%Death_var%",MakeUnselectable(\1))
+
+// PlayDead situation // REPLACEPlayDead
+
+ActionOverride("%Death_var%",PlayDead\1(\2))
+
+// Face situation // REPLACEFace
+
+ActionOverride("%Death_var%",Face\1(\2))
+
+// Rest situation // REPLACERest
+
+ActionOverride("%Death_var%",Rest())
+
+// ClearActions situation // 1.2.REPLACEClearActions
+
+ClearActions("%Death_var%")
+ActionOverride("%Death_var%",ClearActions())
+
+// Kill situation // REPLACEKill
+
+Kill("%Death_var%")
+
+// ApplySpellRES situation // 1.2.3.4.REPLACEApplySpellRES
+
+ApplySpellRES(\1,"%Death_var%")
+ActionOverride("%Death_var%",ApplySpellRES(\1,Myself))
+ActionOverride("%Death_var%",ApplySpellRES(\1,"%Death_var%"))
+ActionOverride(\1,ApplySpellRES(\2,"%Death_var%"))
+
+// ReallyForceSpellRES situation // 1.2.3.4.REPLACEReallyForceSpellRES
+
+ReallyForceSpellRES(\1,"%Death_var%")
+ActionOverride("%Death_var%",ReallyForceSpellRES(\1,"%Death_var%"))
+ActionOverride("%Death_var%",ReallyForceSpellRES(\1,Myself))
+ActionOverride(\1,ReallyForceSpellRES(\2,"%Death_var%"))
+
+// SetGlobal situation // REPLACESetGlobal
+
+ActionOverride("%Death_var%",SetGlobal(\1))
+ActionOverride(\1,SetGlobal(\2))
+
+// LeaveParty situation // REPLACELeaveParty
+
+SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",1)
+
+////////////////// BCS ONLY //////////////////
+
+// !CheckStatGT situation // REPLACECheckStatGT
+
+!CheckStatGT("%Death_var%",0,\1)
+
+// FollowObjectFormation situation // REPLACEFollowObjectFormation
+
+ActionOverride("%Death_var%",FollowObjectFormation(\1))
+
+// CreateCreatureObjectCopy situation // REPLACECreateCreatureObjectCopy
+
+CreateCreatureObjectCopy(\1,"%Death_var%",0,0,0)
