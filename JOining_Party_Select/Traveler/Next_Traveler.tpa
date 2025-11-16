@@ -7,7 +7,6 @@ ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
-// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 // Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
 // Next_Traveler BG1~~~~~
@@ -18,7 +17,6 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
-// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 // Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
 // Next_Traveler BG2~~~~~

@@ -2153,4 +2153,27 @@ END
 
 	END
 
+// Kivan and Deheriana
+
+	ACTION_IF (MOD_IS_INSTALLED ~setup-kivan.TP2~ ~100~) THEN BEGIN
+
+ACTION_IF Kivan_BG2_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kivan_BG2~ ~~
+			PRINT ~    Kivan_BG2 as traveler
+			~
+
+END ELSE ACTION_IF  Kivan_BG2_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kivan_BG2~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Kivan_BG2~ ~~
+			PRINT ~    Kivan_BG2 as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG2
