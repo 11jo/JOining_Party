@@ -16,6 +16,16 @@ ACTION_IF Imoen_as_traveler = 1 THEN BEGIN
 			PRINT ~    Imoen as traveler
 			~
 
+END ELSE ACTION_IF Imoen_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Imoen~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Imoen~ ~~
+			PRINT ~    Imoen Real as traveler
+			~
+
 END
 
 ACTION_IF Edwin_as_traveler = 1 THEN BEGIN
@@ -25,6 +35,16 @@ ACTION_IF Edwin_as_traveler = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
 			PRINT ~    Edwin as traveler
+			~
+
+END ELSE ACTION_IF Edwin_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Edwin~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Edwin~ ~~
+			PRINT ~    Edwin Real as traveler
 			~
 
 END
@@ -38,6 +58,16 @@ ACTION_IF Jaheira_as_traveler = 1 THEN BEGIN
 			PRINT ~    Jaheira as traveler
 			~
 
+END ELSE ACTION_IF Jaheira_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Jaheira~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Jaheira~ ~~
+			PRINT ~    Jaheira Real as traveler
+			~
+
 END
 
 ACTION_IF Minsc_as_traveler = 1 THEN BEGIN
@@ -47,6 +77,16 @@ ACTION_IF Minsc_as_traveler = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
 			PRINT ~    Minsc as traveler
+			~
+
+END ELSE ACTION_IF Minsc_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Minsc~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Minsc~ ~~
+			PRINT ~    Minsc Real as traveler
 			~
 
 END
@@ -60,6 +100,16 @@ ACTION_IF Viconia_as_traveler = 1 THEN BEGIN
 			PRINT ~    Viconia as traveler
 			~
 
+END ELSE ACTION_IF Viconia_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Viconia~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Viconia~ ~~
+			PRINT ~    Viconia Real as traveler
+			~
+
 END
 
 ACTION_IF Dorn_as_traveler = 1 THEN BEGIN
@@ -69,6 +119,16 @@ ACTION_IF Dorn_as_traveler = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
 			PRINT ~    Dorn as traveler
+			~
+
+END ELSE ACTION_IF Dorn_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Dorn~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Dorn~ ~~
+			PRINT ~    Dorn Real as traveler
 			~
 
 END
@@ -82,6 +142,16 @@ ACTION_IF Neera_as_traveler = 1 THEN BEGIN
 			PRINT ~    Neera as traveler
 			~
 
+END ELSE ACTION_IF Neera_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Neera~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Neera~ ~~
+			PRINT ~    Neera Real as traveler
+			~
+
 END
 
 ACTION_IF Rasaad_as_traveler = 1 THEN BEGIN
@@ -91,6 +161,16 @@ ACTION_IF Rasaad_as_traveler = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
 			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
 			PRINT ~    Rasaad as traveler
+			~
+
+END ELSE ACTION_IF Rasaad_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Rasaad~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
+			REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Rasaad~ ~~
+			PRINT ~    Rasaad Real as traveler
 			~
 
 END
@@ -110,6 +190,14 @@ ACTION_IF Ajantis_as_traveler = 1 THEN BEGIN
 			PRINT ~    Ajantis as traveler
 			~
 
+END ELSE ACTION_IF Ajantis_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Ajantis~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Ajantis~ ~~
+			PRINT ~    Ajantis Real as traveler
+			~
+
 END
 
 ACTION_IF Alora_as_traveler = 1 THEN BEGIN
@@ -117,6 +205,14 @@ ACTION_IF Alora_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Alora~ ~~
 			PRINT ~    Alora as traveler
+			~
+
+END ELSE ACTION_IF Alora_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Alora~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Alora~ ~~
+			PRINT ~    Alora Real as traveler
 			~
 
 END
@@ -128,6 +224,14 @@ ACTION_IF Branwen_as_traveler = 1 THEN BEGIN
 			PRINT ~    Branwen as traveler
 			~
 
+END ELSE ACTION_IF Branwen_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Branwen~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Branwen~ ~~
+			PRINT ~    Branwen Real as traveler
+			~
+
 END
 
 ACTION_IF Coran_as_traveler = 1 THEN BEGIN
@@ -135,6 +239,14 @@ ACTION_IF Coran_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Coran~ ~~
 			PRINT ~    Coran as traveler
+			~
+
+END ELSE ACTION_IF Coran_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Coran~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Coran~ ~~
+			PRINT ~    Coran Real as traveler
 			~
 
 END
@@ -146,6 +258,14 @@ ACTION_IF Dynaheir_as_traveler = 1 THEN BEGIN
 			PRINT ~    Dynaheir as traveler
 			~
 
+END ELSE ACTION_IF Dynaheir_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Dynaheir~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Dynaheir~ ~~
+			PRINT ~    Dynaheir Real as traveler
+			~
+
 END
 
 ACTION_IF Eldoth_as_traveler = 1 THEN BEGIN
@@ -153,6 +273,14 @@ ACTION_IF Eldoth_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Eldoth~ ~~
 			PRINT ~    Eldoth as traveler
+			~
+
+END ELSE ACTION_IF Eldoth_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Eldoth~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Eldoth~ ~~
+			PRINT ~    Eldoth Real as traveler
 			~
 
 END
@@ -164,6 +292,14 @@ ACTION_IF Faldorn_as_traveler = 1 THEN BEGIN
 			PRINT ~    Faldorn as traveler
 			~
 
+END ELSE ACTION_IF Faldorn_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Faldorn~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Faldorn~ ~~
+			PRINT ~    Faldorn Real as traveler
+			~
+
 END
 
 ACTION_IF Garrick_as_traveler = 1 THEN BEGIN
@@ -173,6 +309,14 @@ ACTION_IF Garrick_as_traveler = 1 THEN BEGIN
 			PRINT ~    Garrick as traveler
 			~
 
+END ELSE ACTION_IF Garrick_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Garrick~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Garrick~ ~~
+			PRINT ~    Garrick Real as traveler
+			~
+
 END
 
 ACTION_IF Kagain_as_traveler = 1 THEN BEGIN
@@ -180,6 +324,14 @@ ACTION_IF Kagain_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Kagain~ ~~
 			PRINT ~    Kagain as traveler
+			~
+
+END ELSE ACTION_IF Kagain_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Kagain~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Kagain~ ~~
+			PRINT ~    Kagain Real as traveler
 			~
 
 END
@@ -216,6 +368,41 @@ ACTION_IF Khalid_as_traveler = 1 THEN BEGIN
 	BUT_ONLY
 
 				END
+
+END ELSE ACTION_IF Khalid_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Khalid~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Khalid~ ~~
+			PRINT ~    Khalid Real as traveler
+			~
+
+				ACTION_IF FILE_EXISTS_IN_GAME ~BDMUMMY.dlg~ BEGIN
+	
+	COPY_EXISTING_REGEXP ~BDMUMMY.dlg~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+// khaild
+			SPRINT textToReplace ~  !I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!IsValidForPartyDialog("Khalid")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~  I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~IsValidForPartyDialog("Khalid")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+	BUT_ONLY
+
+				END
+
 END
 
 ACTION_IF Kivan_as_traveler = 1 THEN BEGIN
@@ -223,6 +410,14 @@ ACTION_IF Kivan_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Kivan~ ~~
 			PRINT ~    Kivan as traveler
+			~
+
+END ELSE ACTION_IF Kivan_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Kivan~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Kivan~ ~~
+			PRINT ~    Kivan Real as traveler
 			~
 
 END
@@ -234,6 +429,14 @@ ACTION_IF Montaron_as_traveler = 1 THEN BEGIN
 			PRINT ~    Montaron as traveler
 			~
 
+END ELSE ACTION_IF Montaron_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Montaron~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Montaron~ ~~
+			PRINT ~    Montaron Real as traveler
+			~
+
 END
 
 ACTION_IF Quayle_as_traveler = 1 THEN BEGIN
@@ -241,6 +444,14 @@ ACTION_IF Quayle_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Quayle~ ~~
 			PRINT ~    Quayle as traveler
+			~
+
+END ELSE ACTION_IF Quayle_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Quayle~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Quayle~ ~~
+			PRINT ~    Quayle Real as traveler
 			~
 
 END
@@ -252,6 +463,14 @@ ACTION_IF Safana_as_traveler = 1 THEN BEGIN
 			PRINT ~    Safana as traveler
 			~
 
+END ELSE ACTION_IF Safana_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Safana~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Safana~ ~~
+			PRINT ~    Safana Real as traveler
+			~
+
 END
 
 ACTION_IF Sharteel_as_traveler = 1 THEN BEGIN
@@ -259,6 +478,14 @@ ACTION_IF Sharteel_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
 			PRINT ~    Sharteel as traveler
+			~
+
+END ELSE ACTION_IF Sharteel_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Sharteel~ ~~
+			PRINT ~    Sharteel Real as traveler
 			~
 
 END
@@ -270,6 +497,14 @@ ACTION_IF Skie_as_traveler = 1 THEN BEGIN
 			PRINT ~    Skie as traveler
 			~
 
+END ELSE ACTION_IF Skie_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Skie~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Skie~ ~~
+			PRINT ~    Skie Real as traveler
+			~
+
 END
 
 ACTION_IF Tiax_as_traveler = 1 THEN BEGIN
@@ -277,6 +512,14 @@ ACTION_IF Tiax_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Tiax~ ~~
 			PRINT ~    Tiax as traveler
+			~
+
+END ELSE ACTION_IF Tiax_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Tiax~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Tiax~ ~~
+			PRINT ~    Tiax Real as traveler
 			~
 
 END
@@ -288,6 +531,14 @@ ACTION_IF Xan_as_traveler = 1 THEN BEGIN
 			PRINT ~    Xan as traveler
 			~
 
+END ELSE ACTION_IF Xan_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Xan~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Xan~ ~~
+			PRINT ~    Xan Real as traveler
+			~
+
 END
 
 ACTION_IF Xzar_as_traveler = 1 THEN BEGIN
@@ -295,6 +546,14 @@ ACTION_IF Xzar_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Xzar~ ~~
 			PRINT ~    Xzar as traveler
+			~
+
+END ELSE ACTION_IF Xzar_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Xzar~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Xzar~ ~~
+			PRINT ~    Xzar Real as traveler
 			~
 
 END
@@ -306,6 +565,14 @@ ACTION_IF Yeslick_as_traveler = 1 THEN BEGIN
 			PRINT ~    Yeslick as traveler
 			~
 
+END ELSE ACTION_IF Yeslick_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Yeslick~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Yeslick~ ~~
+			PRINT ~    Yeslick Real as traveler
+			~
+
 END
 
 ACTION_IF Baeloth_as_traveler = 1 THEN BEGIN
@@ -313,6 +580,14 @@ ACTION_IF Baeloth_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Baeloth~ ~~
 			PRINT ~    Baeloth as traveler
+			~
+
+END ELSE ACTION_IF Baeloth_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Baeloth~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Baeloth~ ~~
+			PRINT ~    Baeloth Real as traveler
 			~
 
 END
@@ -332,6 +607,14 @@ ACTION_IF Voghiln_as_traveler = 1 THEN BEGIN
 			PRINT ~    Voghiln as traveler
 			~
 
+END ELSE ACTION_IF Voghiln_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Voghiln~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Voghiln~ ~~
+			PRINT ~    Voghiln Real as traveler
+			~
+
 END
 
 ACTION_IF Corwin_as_traveler = 1 THEN BEGIN
@@ -339,6 +622,14 @@ ACTION_IF Corwin_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Corwin~ ~~
 			PRINT ~    Corwin as traveler
+			~
+
+END ELSE ACTION_IF Corwin_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Corwin~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Corwin~ ~~
+			PRINT ~    Corwin Real as traveler
 			~
 
 END
@@ -350,6 +641,14 @@ ACTION_IF Mkhiin_as_traveler = 1 THEN BEGIN
 			PRINT ~    Mkhiin as traveler
 			~
 
+END ELSE ACTION_IF Mkhiin_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Mkhiin~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Mkhiin~ ~~
+			PRINT ~    Mkhiin Real as traveler
+			~
+
 END
 
 ACTION_IF Glint_as_traveler = 1 THEN BEGIN
@@ -357,6 +656,14 @@ ACTION_IF Glint_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Glint~ ~~
 			PRINT ~    Glint as traveler
+			~
+
+END ELSE ACTION_IF Glint_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Glint~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Glint~ ~~
+			PRINT ~    Glint Real as traveler
 			~
 
 END
@@ -372,8 +679,16 @@ END
 ACTION_IF Anomen_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Original Aerie~ ~~
-			PRINT ~    Aerie as traveler
+			REPLACE_TEXTUALLY ~// Original Anomen~ ~~
+			PRINT ~    Anomen as traveler
+			~
+
+END ELSE ACTION_IF Anomen_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Anomen~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Anomen~ ~~
+			PRINT ~    Anomen Real as traveler
 			~
 
 END
@@ -381,8 +696,16 @@ END
 ACTION_IF Aerie_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Original Anomen~ ~~
-			PRINT ~    Anomen as traveler
+			REPLACE_TEXTUALLY ~// Original Aerie~ ~~
+			PRINT ~    Aerie as traveler
+			~
+
+END ELSE ACTION_IF Aerie_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Aerie~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Aerie~ ~~
+			PRINT ~    Aerie Real as traveler
 			~
 
 END
@@ -394,6 +717,14 @@ ACTION_IF Cernd_as_traveler = 1 THEN BEGIN
 			PRINT ~    Cernd as traveler
 			~
 
+END ELSE ACTION_IF Cernd_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Cernd~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Cernd~ ~~
+			PRINT ~    Cernd Real as traveler
+			~
+
 END
 
 ACTION_IF Haerdalis_as_traveler = 1 THEN BEGIN
@@ -401,6 +732,14 @@ ACTION_IF Haerdalis_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Haerdalis~ ~~
 			PRINT ~    Haerdalis as traveler
+			~
+
+END ELSE ACTION_IF Haerdalis_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Haerdalis~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Haerdalis~ ~~
+			PRINT ~    Haerdalis Real as traveler
 			~
 
 END
@@ -412,6 +751,14 @@ ACTION_IF Hexxat_as_traveler = 1 THEN BEGIN
 			PRINT ~    Hexxat as traveler
 			~
 
+END ELSE ACTION_IF Hexxat_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Hexxat~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Hexxat~ ~~
+			PRINT ~    Hexxat Real as traveler
+			~
+
 END
 
 ACTION_IF Jan_as_traveler = 1 THEN BEGIN
@@ -419,6 +766,14 @@ ACTION_IF Jan_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Jan~ ~~
 			PRINT ~    Jan as traveler
+			~
+
+END ELSE ACTION_IF Jan_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Jan~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Jan~ ~~
+			PRINT ~    Jan Real as traveler
 			~
 
 END
@@ -430,6 +785,14 @@ ACTION_IF Keldorn_as_traveler = 1 THEN BEGIN
 			PRINT ~    Keldorn as traveler
 			~
 
+END ELSE ACTION_IF Keldorn_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Keldorn~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Keldorn~ ~~
+			PRINT ~    Keldorn Real as traveler
+			~
+
 END
 
 ACTION_IF Korgan_as_traveler = 1 THEN BEGIN
@@ -437,6 +800,14 @@ ACTION_IF Korgan_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Korgan~ ~~
 			PRINT ~    Korgan as traveler
+			~
+
+END ELSE ACTION_IF Korgan_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Korgan~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Korgan~ ~~
+			PRINT ~    Korgan Real as traveler
 			~
 
 END
@@ -448,6 +819,14 @@ ACTION_IF Mazzy_as_traveler = 1 THEN BEGIN
 			PRINT ~    Mazzy as traveler
 			~
 
+END ELSE ACTION_IF Mazzy_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Mazzy~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Mazzy~ ~~
+			PRINT ~    Mazzy Real as traveler
+			~
+
 END
 
 ACTION_IF Nalia_as_traveler = 1 THEN BEGIN
@@ -455,6 +834,14 @@ ACTION_IF Nalia_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Nalia~ ~~
 			PRINT ~    Nalia as traveler
+			~
+
+END ELSE ACTION_IF Nalia_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Nalia~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Nalia~ ~~
+			PRINT ~    Nalia Real as traveler
 			~
 
 END
@@ -466,6 +853,14 @@ ACTION_IF Sarevok_as_traveler = 1 THEN BEGIN
 			PRINT ~    Sarevok as traveler
 			~
 
+END ELSE ACTION_IF Sarevok_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Sarevok~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Sarevok~ ~~
+			PRINT ~    Sarevok Real as traveler
+			~
+
 END
 
 ACTION_IF Valygar_as_traveler = 1 THEN BEGIN
@@ -473,6 +868,14 @@ ACTION_IF Valygar_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Valygar~ ~~
 			PRINT ~    Valygar as traveler
+			~
+
+END ELSE ACTION_IF Valygar_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Valygar~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Valygar~ ~~
+			PRINT ~    Valygar Real as traveler
 			~
 
 END
@@ -484,6 +887,14 @@ ACTION_IF Wilson_as_traveler = 1 THEN BEGIN
 			PRINT ~    Wilson as traveler
 			~
 
+END ELSE ACTION_IF Wilson_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Wilson~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Wilson~ ~~
+			PRINT ~    Wilson Real as traveler
+			~
+
 END
 
 ACTION_IF Yoshimo_as_traveler = 1 THEN BEGIN
@@ -491,6 +902,14 @@ ACTION_IF Yoshimo_as_traveler = 1 THEN BEGIN
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Original Yoshimo~ ~~
 			PRINT ~    Yoshimo as traveler
+			~
+
+END ELSE ACTION_IF Yoshimo_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Original Yoshimo~ ~~
+			REPLACE_TEXTUALLY ~// Original Real Yoshimo~ ~~
+			PRINT ~    Yoshimo Real as traveler
 			~
 
 END
