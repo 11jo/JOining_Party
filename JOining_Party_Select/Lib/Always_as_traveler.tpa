@@ -2174,6 +2174,23 @@ END ELSE ACTION_IF  Kivan_BG2_as_Real_traveler = 1 THEN BEGIN
 
 END
 
+ACTION_IF Deheriana_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Deheriana~ ~~
+			PRINT ~    Deheriana as traveler
+			~
+
+END ELSE ACTION_IF  Deheriana_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Deheriana~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Deheriana~ ~~
+			PRINT ~    Deheriana as real traveler
+			~
+
+END
+
 	END
 
 // Next_Traveler BG2

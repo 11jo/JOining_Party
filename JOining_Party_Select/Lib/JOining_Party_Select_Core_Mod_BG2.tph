@@ -1080,7 +1080,7 @@ BEGIN
 	END
 END
 
-// ajantisbg2
+// Ajantis_BG2
 
 OUTER_SPRINT "BG2_JOINED" "C#AjanJ"
 OUTER_SPRINT "BG2_BCS" "C#Ajan"
@@ -1132,6 +1132,34 @@ BEGIN
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/P#KIVAN_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "P#DEHJ"
+OUTER_SPRINT "BG2_BCS" "P#DEH01"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "P#DEHJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "P#DE25J"
+END
+OUTER_SPRINT "TOB_BCS" "P#DE25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Deheriana ~P#DEH01~ ~P#DE25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/P#DEHER_All_In.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
 
