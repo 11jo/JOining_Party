@@ -1542,7 +1542,7 @@ ACTION_IF Severian_de_Demerya_as_traveler = 1 THEN BEGIN
 			PRINT ~    Severian as traveler
 			~
 
-END ELSE ACTION_IF Severian_as_Real_traveler = 1 THEN BEGIN
+END ELSE ACTION_IF Severian_de_Demerya_as_Real_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Severian~ ~~

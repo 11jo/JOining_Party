@@ -393,3 +393,34 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~P#KI25.bcs~ AND NOT Kivan_BG2_as_traveler = 1 AND NOT Kivan_BG2_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~P#KI25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~P#KI25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~P#DE25.bcs~ AND NOT Deheriana_as_traveler = 1 AND NOT Deheriana_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~P#DE25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~P#DE25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~#SevD25.bcs~ AND NOT Severian_de_Demerya_as_traveler = 1 AND NOT Severian_de_Demerya_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~#SevD25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~#SevD25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~kiar25.bcs~ AND NOT Kiara_as_traveler = 1 AND NOT Kiara_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~kiar25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~kiar25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~zai25.bcs~ AND NOT Zaiya_as_traveler = 1 AND NOT Zaiya_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~zai25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~zai25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
