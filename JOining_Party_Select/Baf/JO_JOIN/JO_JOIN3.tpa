@@ -14,7 +14,6 @@
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDVOGHIJ")
@@ -40,7 +39,6 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Voghiln.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDCORWIJ")
@@ -66,7 +64,6 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Corwin.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDMKHIIJ")
@@ -92,7 +89,6 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Mkhiin.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetDialog("BDGLINTJ")

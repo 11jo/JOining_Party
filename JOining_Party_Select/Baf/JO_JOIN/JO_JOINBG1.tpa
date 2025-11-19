@@ -1,0 +1,142 @@
+/*
+*/
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN // BG1
+		OUTER_SPRINT "RESPONSE #1" ~~~~~RESPONSE #1
+				SetDialog("%BG1_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%BG1_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #1" ""
+END
+ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN // SoD
+		OUTER_SPRINT "RESPONSE #2" ~~~~~RESPONSE #2
+				SetDialog("%SoD_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%SoD_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #2" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN // BG2 / ToB
+		OUTER_SPRINT "RESPONSE #3" ~~~~~RESPONSE #3
+				SetDialog("%BG1_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%BG1_BCS%",OVERRIDE)
+				Continue()
+			RESPONSE #4
+				SetDialog("%BG1_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%BG1_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #3" ""
+END
+ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
+		OUTER_SPRINT "RESPONSE #5" ~~~~~RESPONSE #5
+				SetDialog("%BG1_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%BG1_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #5" ""
+END
+
+<<<<<<<< .../JOining_mod_bg1.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+%RESPONSE #1%
+%RESPONSE #2%
+%RESPONSE #3%
+%RESPONSE #5%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_mod_bg1.baf~ EVALUATE_BUFFER
+
+////////////////////////////////////////////////////
+
+/*
+// BG1
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	OR(2)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
+THEN
+	RESPONSE #100
+		SetDialog("%BG1_JOINED%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("%BG1_BCS%",OVERRIDE)
+		Continue()
+END
+
+/*
+IF
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(2)
+		Global("JO_Myself_LeaveParty","LOCALS",1)
+		Global("JO_%Death_var%_LeaveParty","GLOBAL",1)
+	OR(2)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",1)
+		Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
+THEN
+	RESPONSE #100
+		SetDialog("%BG1_LEAVE%")
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		Continue()
+END
+*/
+
+ // SoD
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetDialog("%SoD_JOINED%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("%SoD_BCS%",OVERRIDE)
+		Continue()
+END
+
+/*
+IF
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(2)
+		Global("JO_Myself_LeaveParty","LOCALS",1)
+		Global("JO_%Death_var%_LeaveParty","GLOBAL",1)
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetDialog("%SoD_LEAVE%")
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		Continue()
+END
+*/
+
+////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+*/

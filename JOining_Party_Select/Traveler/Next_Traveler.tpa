@@ -165,7 +165,9 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%NEW_TRAVELER_DeathVar%_All_In.baf~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
@@ -194,7 +196,9 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%NEW_TRAVELER_DeathVar%_All_In.baf~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.BAF~ EVALUATE_BUFFER
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 	END
 END
@@ -238,6 +242,8 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
@@ -271,6 +277,8 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
 
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
 	END
 END
 
@@ -290,12 +298,14 @@ ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
 
-	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_NAME%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
+	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_TP2%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
 
 ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
+			PRINT ~    %NEW_TRAVELER_NAME% as traveler
+			~
 
 END
 
@@ -310,12 +320,14 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
-	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_NAME%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
+	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_TP2%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
 
 ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
+			PRINT ~    %NEW_TRAVELER_NAME% as traveler
+			~
 
 END
 
