@@ -22,23 +22,23 @@
 
 // Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1
 
-	OUTER_SET Traveler_BG2 = 0
+	OUTER_SET Traveler_BG2 = 1
 
 
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Kivan and Deheriana"
 
 
 // Use NPC name
 // (If another NPC already have a similar name use name_BG2 or name_BG1 or name_whatever. ex : Alora_BG2 or Drizzt_Terror)
 
-	OUTER_SPRINT "NEW_TRAVELER_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Kivan_BG2"
 
 
 // Use the DeathVar/Script Name of the NPC
 
-	OUTER_SPRINT "NEW_TRAVELER_DeathVar" ""
+	OUTER_SPRINT "NEW_TRAVELER_DeathVar" "P#KIVAN"
 
 
 // Override_script for BG1.
@@ -53,12 +53,12 @@
 
 // Override_script for BG2.
 
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" "P#KIV01"
 
 
 // Override_script for ToB if any.
 
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" "P#KI25"
 
 
 // Joining_dialog for BG1.
@@ -73,22 +73,22 @@
 
 // Joining_dialog for BG2.
 
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" "P#KIVJ"
 
 
 // Joining_dialog for ToB if any.
 
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" "P#KI25J"
 
 
 // Use mod.tp2 name (ex : ajantisbg2 or setup-kivan)
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "setup-kivan"
 
 
 // Use the DESIGNATED number of the main componant mentionned in .tp2
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "100"
 
 
 /////////////////////////////////////////////////////////////////////

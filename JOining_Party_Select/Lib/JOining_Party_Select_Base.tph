@@ -1,0 +1,140 @@
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                                    BCS                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
+// !InPartyAllowDead("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_AllowDead","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InPartyAllowDead found in %SOURCE_FILESPEC%
+				~
+			END
+// InPartyAllowDead("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_AllowDead","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : InPartyAllowDead found in %SOURCE_FILESPEC%
+				~
+			END
+// !InParty("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
+				~
+			END
+// InParty("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*InParty("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : InParty found in %SOURCE_FILESPEC%
+				~
+			END
+// !Is(!If)ValidForPartyDialog(ue)
+			SPRINT textToReplace ~!I[s|f]ValidForPartyDialog\(ue\)?("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_Valid","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !(...)ValidForParty(...) found in %SOURCE_FILESPEC%
+				~
+			END
+// Is(If)ValidForPartyDialog(ue)
+			SPRINT textToReplace ~I[s|f]ValidForPartyDialog\(ue\)?("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_Valid","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
+				~
+			END
+BUT_ONLY
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                                    DLG                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_DLG~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+// !InPartyAllowDead("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_AllowDead","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InPartyAllowDead found in %SOURCE_FILESPEC%
+				~
+			END
+// InPartyAllowDead("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_AllowDead","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : InPartyAllowDead found in %SOURCE_FILESPEC%
+				~
+			END
+// !InParty("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
+				~
+			END
+// InParty("%Death_var%")
+			SPRINT textToReplace ~\(^[%TAB% ]*InParty("\([^)]*\)")\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : InParty found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~  InParty("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\1",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // space DeathVar : InParty found in %SOURCE_FILESPEC%
+				~
+			END
+// !Is(!If)ValidForPartyDialog(ue)
+			SPRINT textToReplace ~!I[s|f]ValidForPartyDialog\(ue\)?("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_Valid","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !(...)ValidForParty(...) found in %SOURCE_FILESPEC%
+				~
+			END
+// Is(If)ValidForPartyDialog(ue)
+			SPRINT textToReplace ~I[s|f]ValidForPartyDialog\(ue\)?("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_Valid","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
+				~
+			END
+BUT_ONLY

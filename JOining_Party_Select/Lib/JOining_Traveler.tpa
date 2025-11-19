@@ -1,4 +1,4 @@
-// Borrowed from d2-randomkits mod
+ // Borrowed from d2-randomkits mod
 
 // WARNING !
 // WARNING use     ~^"NPC_NAME"[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~     when NPC name are too similar, (if not the last on the list while prevail), see Dorn / Faldorn / Keldorn, Alora / Alora_BG2, Yeslick / Yeslick_BG2.
@@ -6,6 +6,7 @@
 
 COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party_Select/Setting/JOining_Traveler.ini~
 // Continuous original NPCs
+// 1
   COUNT_REGEXP_INSTANCES  ~^Imoen[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                  Imoen_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Edwin[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                  Edwin_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Jaheira[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Jaheira_as_traveler
@@ -14,8 +15,18 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Dorn[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                   Dorn_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Neera[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                  Neera_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Rasaad[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                 Rasaad_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Imoen[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Imoen_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Edwin[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Edwin_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Jaheira[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Jaheira_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Minsc[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Minsc_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Viconia[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Viconia_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Dorn[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                   Dorn_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Neera[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Neera_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Rasaad[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Rasaad_as_Real_traveler
   
 // Original bg1 NPCs
+// 1
   COUNT_REGEXP_INSTANCES  ~^Ajantis[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Ajantis_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Alora[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                  Alora_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Branwen[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Branwen_as_traveler
@@ -37,14 +48,43 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Xzar[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                   Xzar_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Yeslick[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Yeslick_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Baeloth[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Baeloth_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Ajantis[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Ajantis_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Alora[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Alora_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Branwen[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Branwen_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Coran[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Coran_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Dynaheir[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~               Dynaheir_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Eldoth[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Eldoth_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Faldorn[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Faldorn_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Garrick[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Garrick_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Kagain[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Kagain_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Khalid[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Khalid_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Kivan[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Kivan_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Montaron[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~               Montaron_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Quayle[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Quayle_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Safana[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Safana_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Sharteel[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~               Sharteel_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Skie[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                   Skie_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Tiax[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                   Tiax_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Xan[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                    Xan_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Xzar[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                   Xzar_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Yeslick[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Yeslick_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Baeloth[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Baeloth_as_Real_traveler
   
 // Original SoD NPCs
+// 1
   COUNT_REGEXP_INSTANCES  ~^Voghiln[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Voghiln_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Corwin[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                 Corwin_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Mkhiin[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                 Mkhiin_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Glint[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                  Glint_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Voghiln[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Voghiln_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Corwin[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Corwin_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Mkhiin[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Mkhiin_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Glint[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Glint_as_Real_traveler
   
 // Original bg2 NPCs
+// 1
   COUNT_REGEXP_INSTANCES  ~^Anomen[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                 Anomen_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Aerie[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                  Aerie_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Cernd[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                  Cernd_as_traveler
@@ -59,28 +99,49 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Valygar[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Valygar_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Wilson[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                 Wilson_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Yoshimo[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Yoshimo_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Anomen[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Anomen_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Aerie[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Aerie_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Cernd[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Cernd_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Haerdalis[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~              Haerdalis_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Hexxat[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Hexxat_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Jan[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                    Jan_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Keldorn[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Keldorn_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Korgan[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Korgan_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Mazzy[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Mazzy_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Nalia[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                  Nalia_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Sarevok[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Sarevok_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Valygar[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Valygar_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Wilson[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                 Wilson_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Yoshimo[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Yoshimo_as_Real_traveler
   
 ////////////////////////////////////////////// Mods BG1
 
-//
 
+// 1
   COUNT_REGEXP_INSTANCES  ~^Ishlilka_the_Wizard_Slayer[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                Ishlilka_the_Wizard_Slayer_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Ishlilka_the_Wizard_Slayer[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                Ishlilka_the_Wizard_Slayer_as_Real_traveler
 
-//
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Jacob[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                     Jacob_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Askaria[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                   Askaria_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Jacob[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                     Jacob_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Askaria[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                   Askaria_as_Real_traveler
 
-//
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Isra_BG1[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                  Isra_BG1_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Isra_BG1[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                  Isra_BG1_as_Real_traveler
 
-//
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Finch[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                     Finch_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Finch[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                     Finch_as_Real_traveler
 
 // Drizzt Saga
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Jarlaxle_Saga[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                             Jarlaxle_Saga_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Artemis_Enteri_Saga[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                       Artemis_Enteri_Saga_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Catti-Brie_Saga[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                           Catti-Brie_Saga_as_traveler
@@ -88,15 +149,27 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Regis_Saga[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                Regis_Saga_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Drizzt_Saga[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                               Drizzt_Saga_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Wulfgar_Saga[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Wulfgar_Saga_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Jarlaxle_Saga[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                             Jarlaxle_Saga_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Artemis_Enteri_Saga[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                       Artemis_Enteri_Saga_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Catti-Brie_Saga[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                           Catti-Brie_Saga_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Bruenor_Saga[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Bruenor_Saga_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Regis_Saga[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                Regis_Saga_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Drizzt_Saga[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                               Drizzt_Saga_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Wulfgar_Saga[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Wulfgar_Saga_as_Real_traveler
 
 // Dark Horizons
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Nikita_BG1[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                Nikita_BG1_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Thorin[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                    Thorin_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Morwen[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                    Morwen_as_traveler
-
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Nikita_BG1[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                Nikita_BG1_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Thorin[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                    Thorin_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Morwen[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                    Morwen_as_Real_traveler
+  
 // DSotSC
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Bardo[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                     Bardo_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Bub_Snikt[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                 Bub_Snikt_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Conchobhair[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                               Conchobhair_as_traveler
@@ -106,63 +179,136 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Keiria_Silverstring[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                       Keiria_Silverstring_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Skeezer_Lumpkin_VI[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                        Skeezer_Lumpkin_VI_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Thorfinn_Hauskluniff[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                      Thorfinn_Hauskluniff_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Bardo[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                     Bardo_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Bub_Snikt[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                 Bub_Snikt_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Conchobhair[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                               Conchobhair_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^CuChoinneach[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              CuChoinneach_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Ferthgil_Trollslayer[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                      Ferthgil_Trollslayer_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Jet'laya[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                  Jet_laya_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Keiria_Silverstring[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                       Keiria_Silverstring_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Skeezer_Lumpkin_VI[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                        Skeezer_Lumpkin_VI_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Thorfinn_Hauskluniff[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                      Thorfinn_Hauskluniff_as_Real_traveler
   
 // NTotSC
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Will_Scarlet[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Will_Scarlet_as_traveler
+  COUNT_REGEXP_INSTANCES  ~^Will_Scarlet[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Will_Scarlet_as_Real_traveler
+// 2
 
 // Next_Traveler BG1
 
 ////////////////////////////////////////////// Mods BG2
 
+// 1
   COUNT_REGEXP_INSTANCES  ~^Alora_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                  Alora_BG2_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Alora_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                  Alora_BG2_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Yeslick_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                Yeslick_BG2_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Yeslick_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                Yeslick_BG2_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Sandra_Summon_Bhaalspawn[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                   Sandra_Summon_Bhaalspawn_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Sandra_Summon_Bhaalspawn[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                   Sandra_Summon_Bhaalspawn_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Nikita_Redux[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                               Nikita_Redux_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Nikita_Redux[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                               Nikita_Redux_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Kim_The_Pirate[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                             Kim_The_Pirate_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Kim_The_Pirate[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                             Kim_The_Pirate_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Miriam_Vampire_Tales[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                       Miriam_Vampire_Tales_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Miriam_Vampire_Tales[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                       Miriam_Vampire_Tales_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Severian_de_Demerya[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                        Severian_de_Demerya_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Severian_de_Demerya[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                        Severian_de_Demerya_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^The_Undying[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                The_Undying_as_traveler
-  
-//
+// 2
+  COUNT_REGEXP_INSTANCES  ~^The_Undying[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                The_Undying_as_Real_traveler
 
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Branwen_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                Branwen_BG2_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Branwen_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                Branwen_BG2_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Tiax_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                   Tiax_BG2_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Tiax_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                   Tiax_BG2_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Xan_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                    Xan_BG2_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Xan_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                    Xan_BG2_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Coran_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                  Coran_BG2_as_traveler
-  
-//
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Coran_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                  Coran_BG2_as_Real_traveler
 
+// 1
   COUNT_REGEXP_INSTANCES  ~^Auren[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                      Auren_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Auren[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                      Auren_as_Real_traveler
 
-//
-  
+// 1
   COUNT_REGEXP_INSTANCES  ~^Isra_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                   Isra_BG2_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Isra_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                   Isra_BG2_as_Real_traveler
 
-//
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Nephele_Samios[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                             Nephele_Samios_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Nephele_Samios[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                             Nephele_Samios_as_Real_traveler
 
-//
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Sheena[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                     Sheena_as_traveler
-                     
-//
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Sheena[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                     Sheena_as_Real_traveler
 
+// 1
   COUNT_REGEXP_INSTANCES  ~^Kiara[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                      Kiara_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Kiara[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                      Kiara_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Zaiya[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                      Zaiya_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Zaiya[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                      Zaiya_as_Real_traveler
 
-//
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Minyae[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                     Minyae_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Minyae[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                     Minyae_as_Real_traveler
+
+// 1
   COUNT_REGEXP_INSTANCES  ~^Elaryn[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                     Elaryn_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Elaryn[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                     Elaryn_as_Real_traveler
 
-//
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Tyris[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                      Tyris_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Tyris[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                      Tyris_as_Real_traveler
+
 
 // Region of Terror
-
+// 1
   COUNT_REGEXP_INSTANCES  ~^Wulfgar_Terror[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                             Wulfgar_Terror_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Regis_Terror[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                               Regis_Terror_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Drizzt_Terror[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Drizzt_Terror_as_traveler
@@ -174,16 +320,45 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Randall_Terror[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                             Randall_Terror_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Alissa_Terror[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Alissa_Terror_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Mordragon_Terror[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                           Mordragon_Terror_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Wulfgar_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                             Wulfgar_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Regis_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                               Regis_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Drizzt_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Drizzt_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Bruenor_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                             Bruenor_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Catti-Brie_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                          Catti-Brie_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Artemis_Entreri_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                     Artemis_Entreri_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Jarlaxle_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                            Jarlaxle_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Tapio_Perkiomaki_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                    Tapio_Perkiomaki_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Randall_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                             Randall_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Alissa_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Alissa_Terror_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Mordragon_Terror[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                           Mordragon_Terror_as_Real_traveler
 
-// Shadow over Souubar
-
+// Shadow over Soubar
+// 1
   COUNT_REGEXP_INSTANCES  ~^Selence_Hillstar_Soubar[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                   Selence_Hillstar_Soubar_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Charlotte_Soubar[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                          Charlotte_Soubar_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Bolivar_Soubar[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                            Bolivar_Soubar_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Tomas_Tomalson_Soubar[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                     Tomas_Tomalson_Soubar_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Selence_Hillstar_Soubar[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                   Selence_Hillstar_Soubar_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Charlotte_Soubar[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                          Charlotte_Soubar_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Bolivar_Soubar[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                            Bolivar_Soubar_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Tomas_Tomalson_Soubar[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                     Tomas_Tomalson_Soubar_as_Real_traveler
   
-// ajantisbg2
+// Ajantis_BG2
 
+// 1
   COUNT_REGEXP_INSTANCES  ~^Ajantis_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Ajantis_BG2_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Ajantis_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Ajantis_BG2_as_Real_traveler
+
+// Kivan and Deheriana
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Kivan_BG2[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Kivan_BG2_as_traveler
+  COUNT_REGEXP_INSTANCES  ~^Deheriana[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Deheriana_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Kivan_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Kivan_BG2_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Deheriana[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Deheriana_as_Real_traveler
 
 // Next_Traveler BG2

@@ -1,0 +1,18 @@
+
+
+	  COPY_EXISTING_REGEXP ~JO_JOINI.BCS~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_JOIN","LOCALS",\([^)]*\))
+^[%TAB% ]*SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~%\1%~ STRING_EQUAL_CASE ~ONE_ROUND~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_JOIN","LOCALS",%Switch_Timer%)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE BEGIN
+				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
+			END
+	END
+
