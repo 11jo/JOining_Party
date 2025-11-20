@@ -70,7 +70,9 @@ END
 // Go to Reintegrate NPC into party periodically
 
 IF // reactive JOMINHP1 after load
-	OnCreation()
+	OR(2)
+		OnCreation()
+		Global("JO_JOINI","LOCALS",1) // Maybe dumb, butin in case we don't destroy JOMINHP1 in the futur
 	Allegiance(Myself,FAMILIAR)
 	HasItem("JOMINHP1",Myself)
 THEN
