@@ -253,15 +253,37 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 	SAY NAME2 ~Engagement~
 	SAY DESC @101
 	SAY UNIDENTIFIED_DESC @101
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=318
+		END
 		LPF ADD_SPELL_EFFECT
 		INT_VAR
 			opcode=139
 			target = 1
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
 		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
+			opcode=267
+			target = 9
+			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
+		END
 
 COPY ~JOining_Party_Select/Spl/JOIN647.SPL~ ~override~
 COPY ~JOining_Party_Select/Eff/jo_vali0.eff~ ~override~
+
+// JOJOINNE
+ 
+ COPY ~JOining_Party_Select/Cre/JOJOINNE.CRE~ ~override~
+	SAY NAME1 ~<CHARNAME>~
+	SAY NAME2 ~<CHARNAME>~
+WRITE_ASCII SCRIPT_OVERRIDE ~JOJOINNE~ (8)
+WRITE_ASCII DEATHVAR ~JOJOINNE~ (32)
+WRITE_ASCII DIALOG ~JOJOINNE~ (8)
+
+		COMPILE ~JOining_Party_Select/Baf/JOJOINNE.baf~ EVALUATE_BUFFER
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 

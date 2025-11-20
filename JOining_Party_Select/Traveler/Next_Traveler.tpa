@@ -23,6 +23,28 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
 END
 
+/////////////////////////// JOining_Party_Select_Fix.tph ///////////////////////////
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG2~~~~~
+
+END
+
 
 /////////////////////////// JOining_Party_Select_Joined.tph ///////////////////////////
 

@@ -1,25 +1,67 @@
 ///////////////////////////////////////////////////////////////////////////////
 
+// Related to JOJOINNE.D groupe changes
+//// No need to change JO_JOIN_CUTSCENE variable, next switch or next dialog or next cutscene will simply do it.
+IF
+	Global("JO_JOIN_CUTSCENE","GLOBAL",2)
+	Allegiance(Myself,FAMILIAR)
+	!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
+END
+
+IF
+	Global("JO_JOIN_CUTSCENE","GLOBAL",3)
+	Allegiance(Myself,FAMILIAR)
+	!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+END
+
+// Related to JOJOINNE.D groupe changes
+//// No need to change JO_NEVER_JOIN variable // Reset when loading a save.
+IF
+	Global("JO_NEVER_JOIN","GLOBAL",1)
+	Allegiance(Myself,FAMILIAR)
+	!Global("JO_NEVER_JOIN","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NEVER_JOIN","LOCALS",1)
+END
+
+IF
+	Global("JO_NEVER_JOIN","GLOBAL",0)
+	Allegiance(Myself,FAMILIAR)
+	!Global("JO_NEVER_JOIN","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////////
+
 IF
 	!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
 	IsActive(Myself)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",1) // Necessary ?
 		Deactivate(Myself)
 END
 
 IF
-	!Global("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+	!Global("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)// Necessary ?
 	Allegiance(Myself,FAMILIAR)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	!IsActive(Myself)
 THEN
 	RESPONSE #100
 		Activate(Myself)
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)// Necessary ?
 		Continue()
 END
 
@@ -34,6 +76,8 @@ IF // reactive JOMINHP1 after load
 THEN
 	RESPONSE #100
 		EquipItemEx("JOMINHP1",0)
+		SetGlobal("JO_NEVER_JOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
 		Continue()
 END
 

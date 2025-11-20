@@ -170,6 +170,8 @@ ALWAYS
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~
+
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
@@ -217,7 +219,7 @@ INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Base.tph~
 
 INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
 
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~ // Real traveler only
 ///////
 
 
@@ -228,6 +230,8 @@ COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
 
 COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
 	COMPILE_D_TO_DLG
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~ // Real traveler only
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -269,7 +273,8 @@ INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler.tpa~
 
 BEGIN ~ONE HOUR (5 mn)~
 DESIGNATED 20
-SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)~
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
 LABEL ~JOining_Party-Switch_Timer-ONE_HOUR~
 REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
   NO_LOG_RECORD

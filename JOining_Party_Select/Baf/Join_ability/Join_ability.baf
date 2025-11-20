@@ -78,6 +78,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		Continue()
 END
  
 // Is(If)ValidForPartyDialog(ue)
@@ -94,6 +95,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
+		Continue()
 END
 
 // Special security
@@ -101,9 +103,11 @@ IF
 	Global("JO_JOIN","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
+//		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
+		Continue()
 END
 
 IF

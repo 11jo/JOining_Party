@@ -12,10 +12,12 @@ APPEND ~%joining_dlg%~
 	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~I don't want to see you in my dream anymore !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~I did dream about you !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~I prefer to adress everyone...~ DO ~SetGlobal("JO_JOIN","LOCALS",0) CreateCreatureObject("JOJOINNE",Myself,0,0,0) SmallWait(1) ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT
 	END
+
 IF ~~ THEN BEGIN JO_JOINYes
 	SAY ~Done !~
-	IF ~~ THEN EXIT
+	IF ~~ THEN DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
 END
 
 /*
