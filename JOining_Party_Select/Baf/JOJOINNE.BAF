@@ -2,6 +2,7 @@ IF
 	NumberOfTimesTalkedTo(0)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
 		StartDialogueNoSet(Player1)
 END
 

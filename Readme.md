@@ -51,18 +51,14 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 Componant :  
 
 - First select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
+  - 0 the NPC is not expended to become a traveler.
+  - 1 Npc will be expended to be traveler (Familiar fully considered as party member.)
+  - 2 Npc will be expended to be a real traveler (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.) (Warning Option 2, will expend installation time significalyto use only with few traveler.)
 
-- **Mandatory** Install componant All-Out, 
+- Install componant All-Out, 
   - Replace any InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead... by Familiar reference to make them count as party member and allow quests and interjections to process.  
   - Add new lines to scripts and dialog to make Familiars follow party movement and state.
-  
-  1.  All-Out 
-
-- **Mandatory** Install componant All-In,
   - Install / Expand scripts, dialogs, items, spells... used to make the familiar situation work.
-  
-  1.  All-In 
-
 
 ---
 
@@ -117,4 +113,6 @@ Afterwards, you may delete the following files:
 
 - Alpha.0.0.1
 
-- Alpha.0.0.2
+- Alpha.0.0.6
+
+- Alpha.0.0.8

@@ -62,6 +62,25 @@
 				PATCH_PRINT ~... // DeathVar : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
 			END
+// LeaveParty situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",LeaveParty())~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		TriggerOverride("\1",SetGlobal("JO_Myself_LeaveParty","LOCALS",1))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Death_var : LeaveParty() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*LeaveParty()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // LeaveParty() found in %SOURCE_FILESPEC%
+				~
+			END
 BUT_ONLY
 
 
@@ -135,6 +154,25 @@ BUT_ONLY
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_Valid","LOCALS",0))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
+				~
+			END
+// LeaveParty situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",LeaveParty())~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		TriggerOverride("\1",SetGlobal("JO_Myself_LeaveParty","LOCALS",1))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Death_var : LeaveParty() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*LeaveParty()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // LeaveParty() found in %SOURCE_FILESPEC%
 				~
 			END
 BUT_ONLY
