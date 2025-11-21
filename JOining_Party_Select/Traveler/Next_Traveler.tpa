@@ -1,6 +1,25 @@
 // Note : comment out or delete unused field for your traveler before install.
 
 
+/////////////////////////// Not_so_Always.tpa ///////////////////////////
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/Not_so_Always.tpa~	~JOining_Party_Select/Lib/Not_so_Always.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~			OUTER_SPRINT "%NEW_TRAVELER_DeathVar%_name"                 "%NEW_TRAVELER_NAME%"
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/Not_so_Always.tpa~	~JOining_Party_Select/Lib/Not_so_Always.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~			OUTER_SPRINT "%NEW_TRAVELER_DeathVar%_name"                 "%NEW_TRAVELER_NAME%"
+// Next_Traveler BG2~~~~~
+
+END
+
+
 /////////////////////////// JOining_Party_Select.tph ///////////////////////////
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN

@@ -67,7 +67,7 @@
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		TriggerOverride("\1",SetGlobal("JO_Myself_LeaveParty","LOCALS",1))~
+		ActionOverride("\1",SetGlobal("JO_Myself_LeaveParty","LOCALS",1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Death_var : LeaveParty() found in %SOURCE_FILESPEC%
 				~
@@ -161,7 +161,7 @@ BUT_ONLY
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		TriggerOverride("\1",SetGlobal("JO_Myself_LeaveParty","LOCALS",1))~
+		ActionOverride("\1",SetGlobal("JO_Myself_LeaveParty","LOCALS",1))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Death_var : LeaveParty() found in %SOURCE_FILESPEC%
 				~
