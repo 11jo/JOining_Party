@@ -3,194 +3,17 @@ AUTHOR ~~
 VERSION ~alpha.0.0.8~
 
 ALWAYS
+/*
+	DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
+	COPY ~JOining_Party_Select/Languages/french~				~weidu_external/JOining_Party_Select/Languages/autotra/%LANGUAGE%~
+	COPY ~JOining_Party_Select/Languages/%LANGUAGE%~				~weidu_external/JOining_Party_Select/Languages/autotra/%LANGUAGE%~
+	END
 
-	ACTION_IF GAME_IS ~bgt~ BEGIN
-// BGT isn't implemented and it will probably too difficult to do....
-
-		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
-		PRINT ~Game is BGT
-		~
-
-	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
-
-		INCLUDE ~JOining_Party_Select/Lib/g3_bgee_cpmvars.tpa~
-		PRINT ~Game is BGEE
-		~
-
-		OUTER_SPRINT "CAMPAIGN" "1"
-
-	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
-// EET core without EET_END
-
-		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
-		PRINT ~Game is EET 
-		~
-
-		OUTER_SPRINT "CAMPAIGN" "5"
-
-// Deal with override scripts for EET in bgee when EET_END is intalled
-		OUTER_SPRINT "Don_t_replace_anything_ODD" "EET_ODD"
-
-	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
-// BG2EE or EET when EET_END is installed
-
-			OUTER_SPRINT "AJANTIS_JOINED" "AJANTJ"
-			OUTER_SPRINT "ALORA_JOINED" "ALORAJ"
-			OUTER_SPRINT "BRANWEN_JOINED" "BRANWJ"
-			OUTER_SPRINT "CORAN_JOINED" "CORANJ"
-			OUTER_SPRINT "DYNAHEIR_JOINED" "DYNAHJ"
-			OUTER_SPRINT "EDWIN_JOINED" "EDWINJ"
-			OUTER_SPRINT "ELDOTH_JOINED" "ELDOTJ"
-			OUTER_SPRINT "FALDORN_JOINED" "FALDOJ"
-			OUTER_SPRINT "GARRICK_JOINED" "GARRIJ"
-			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
-			OUTER_SPRINT "JAHEIRA_JOINED" "JAHEIRAJ"
-			OUTER_SPRINT "KAGAIN_JOINED" "KAGAIJ"
-			OUTER_SPRINT "KHALID_JOINED" "KHALIJ"
-			OUTER_SPRINT "KIVAN_JOINED" "KIVANJ"
-			OUTER_SPRINT "MINSC_JOINED" "MINSCJ"
-			OUTER_SPRINT "MONTARON_JOINED" "MONTAJ"
-			OUTER_SPRINT "QUAYLE_JOINED" "QUAYLJ"
-			OUTER_SPRINT "SAFANA_JOINED" "SAFANJ"
-			OUTER_SPRINT "SHARTEEL_JOINED" "SHARTJ"
-			OUTER_SPRINT "SKIE_JOINED" "SKIEJ"
-			OUTER_SPRINT "TIAX_JOINED" "TIAXJ"
-			OUTER_SPRINT "VICONIA_JOINED" "VICONIJ"
-			OUTER_SPRINT "XAN_JOINED" "XANJ"
-			OUTER_SPRINT "XZAR_JOINED" "XZARJ"
-			OUTER_SPRINT "YESLICK_JOINED" "YESLIJ"
-			OUTER_SPRINT "DORN_JOINED" "DORNJ"
-			OUTER_SPRINT "NEERA_JOINED" "NEERAJ"
-			OUTER_SPRINT "RASAAD_JOINED" "RASAADJ"
-			// BCS
-			OUTER_SPRINT "AJANTIS_BCS" "AJANTIS"
-			OUTER_SPRINT "ALORA_BCS" "ALORA"
-			OUTER_SPRINT "BRANWEN_BCS" "BRANWEN"
-			OUTER_SPRINT "CORAN_BCS" "CORAN"
-			OUTER_SPRINT "DYNAHEIR_BCS" "DYNAHEIR"
-			OUTER_SPRINT "EDWIN_BCS" "EDWIN"
-			OUTER_SPRINT "ELDOTH_BCS" "ELDOTH"
-			OUTER_SPRINT "FALDORN_BCS" "FALDORN"
-			OUTER_SPRINT "GARRICK_BCS" "GARRICK"
-			OUTER_SPRINT "JAHEIRA_BCS" "JAHEIRA"
-			OUTER_SPRINT "KAGAIN_BCS" "KAGAIN"
-			OUTER_SPRINT "KHALID_BCS" "KHALID"
-			OUTER_SPRINT "KIVAN_BCS" "KIVAN"
-			OUTER_SPRINT "MINSC_BCS" "MINSC"
-			OUTER_SPRINT "MONTARON_BCS" "MONTARON"
-			OUTER_SPRINT "QUAYLE_BCS" "QUAYLE"
-			OUTER_SPRINT "SAFANA_BCS" "SAFANA"
-			OUTER_SPRINT "SHARTEEL_BCS" "SHARTEEL"
-			OUTER_SPRINT "SKIE_BCS" "SKIE"
-			OUTER_SPRINT "TIAX_BCS" "TIAX"
-			OUTER_SPRINT "VICONIA_BCS" "VICONIA"
-			OUTER_SPRINT "XAN_BCS" "XAN"
-			OUTER_SPRINT "XZAR_BCS" "XZAR"
-			OUTER_SPRINT "YESLICK_BCS" "YESLICK"
-			OUTER_SPRINT "DORN_BCS" "DORN"
-			OUTER_SPRINT "NEERA_BCS" "NEERA"
-			OUTER_SPRINT "RASAAD_BCS" "RASAAD"
-			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2"
-			OUTER_SPRINT "IMOEN_DV" "imoen2"
-			OUTER_SPRINT "IMOEN_BCS" "IMOEN2"
-				PRINT ~Game is BG2EE or EET_END is installed
-				~
-
-// Only after EET_END
-		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
-
-			OUTER_SPRINT "CAMPAIGN" "5"
-
-			OUTER_SPRINT "Candlekeep_BCS" "BG2600"
-
-			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
-
-// Deal with override scripts for EET in bgee when EET_END is intalled
-			OUTER_SPRINT "Don_t_replace_anything_END" "EET_END"
-
-		END // MOD_IS_INSTALLED ~EET_END.TP2~
-
-	END // GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~
-
-///////////////////////////////////////////////////////////////////////////////
-
-// ToB Joining_Dialog are merged for EET
-
-		ACTION_IF (GAME_IS ~eet~) BEGIN
-
-		OUTER_SPRINT "IMOEN25J" "IMOEN2J"
-		OUTER_SPRINT "EDWIN25J" "EDWINJ"
-		OUTER_SPRINT "JAHEI25J" "JAHEIRAJ"
-		OUTER_SPRINT "MINSC25J" "MINSCJ"
-		OUTER_SPRINT "VICON25J" "VICONIJ"
-		OUTER_SPRINT "DORN25J"  "DORNJ"
-		OUTER_SPRINT "NEERA25J" "NEERAJ"
-		OUTER_SPRINT "RASAA25J" "RASAADJ"
-		
-		OUTER_SPRINT "AERIE25J" "AERIEJ"
-		OUTER_SPRINT "ANOME25J" "ANOMENJ"
-		OUTER_SPRINT "CERND25J" "CERNDJ"
-		OUTER_SPRINT "HAERD25J" "HAERDAJ"
-		OUTER_SPRINT "HEXXA25J" "HEXXATJ"
-		OUTER_SPRINT "JAN25J"   "JANJ"
-		OUTER_SPRINT "KELDO25J" "KELDORJ"
-		OUTER_SPRINT "KORGA25J" "KORGANJ"
-		OUTER_SPRINT "MAZZY25J" "MAZZYJ"
-		OUTER_SPRINT "NALIA25J" "NALIAJ"
-		OUTER_SPRINT "VALYG25J" "VALYGARJ"
-
-		END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
-
-		OUTER_SPRINT "IMOEN25J" "IMOEN25J"
-		OUTER_SPRINT "EDWIN25J" "EDWIN25J"
-		OUTER_SPRINT "JAHEI25J" "JAHEI25J"
-		OUTER_SPRINT "MINSC25J" "MINSC25J"
-		OUTER_SPRINT "VICON25J" "VICON25J"
-		OUTER_SPRINT "DORN25J"  "DORN25J"
-		OUTER_SPRINT "NEERA25J" "NEERA25J"
-		OUTER_SPRINT "RASAA25J" "RASAA25J"
-		
-		OUTER_SPRINT "AERIE25J" "AERIE25J"
-		OUTER_SPRINT "ANOME25J" "ANOME25J"
-		OUTER_SPRINT "CERND25J" "CERND25J"
-		OUTER_SPRINT "HAERD25J" "HAERD25J"
-		OUTER_SPRINT "HEXXA25J" "HEXXA25J"
-		OUTER_SPRINT "JAN25J"   "JAN25J"
-		OUTER_SPRINT "KELDO25J" "KELDO25J"
-		OUTER_SPRINT "KORGA25J" "KORGA25J"
-		OUTER_SPRINT "MAZZY25J" "MAZZY25J"
-		OUTER_SPRINT "NALIA25J" "NALIA25J"
-		OUTER_SPRINT "VALYG25J" "VALYG25J"
-
-		END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Prep for REPLACE_TEXTUALLY for NPC to travelers selection
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
-
-// Load travelers selection
-
-		INCLUDE ~JOining_Party_Select/Lib/Always_as_traveler.tpa~
-
-///////////////////////////////////////////////////////////////////////////////
-
+	LAF autotra_workaround END
+*/
 END // ALWAYS
+
+// AUTO_TRA ~weidu_external/JOining_Party_Select/Languages/autotra/%LANGUAGE%~
 
 
 LANGUAGE ~English~
@@ -204,6 +27,10 @@ BEGIN ~All-Out~
 DESIGNATED 0
 LABEL ~JOining_Party-Out~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet bgt~ ~Necessite BGEE / BG2EE / BGT / EET~
+
+///////////////////////////////////////////////////////////////////////////////
+
+		INCLUDE ~JOining_Party_Select/Lib/Not_so_Always.tpa~
 
 ///////////////////////////////////////////////////////////////////////////////
 
