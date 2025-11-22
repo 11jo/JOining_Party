@@ -1,0 +1,94 @@
+
+
+// Note : 
+
+// - Complete the empty field with relevant NPC ressources.
+// - leave blank if none available.
+// - Select 1 or 0 depending of NPC being for BG1 or BG2.
+
+// - Uncomment the third component in JOining_Party_Select.tp2.
+// - Install component "Next Traveler" only.
+// - Comment the third component in JOining_Party_Select.tp2.
+
+// Rename Next_Traveler_cpmvars.tpa with your NPC name.
+
+// To contribute on Github, please try to propose one commit with modified files to easier review.
+
+
+// Choose = 1 if NPC is for BG1 and 0 if NPC is for BG2
+
+	OUTER_SET Traveler_BG1 = 1
+
+
+// Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1
+
+	OUTER_SET Traveler_BG2 = 0
+
+
+// Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Glam's npc pack"
+
+
+// Use NPC name
+// (If another NPC already have a similar name use name_BG2 or name_BG1 or name_whatever. ex : Alora_BG2 or Drizzt_Terror)
+
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Flara"
+
+
+// Use the DeathVar/Script Name of the NPC
+
+	OUTER_SPRINT "NEW_TRAVELER_DeathVar" "GV#FLAR"
+
+
+// Override_script for BG1.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" "GV#FLAR"
+
+
+// Override_script for SoD if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" ""
+
+
+// Override_script for BG2.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" ""
+
+
+// Override_script for ToB if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" ""
+
+
+// Joining_dialog for BG1.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" "GV#FLARJ"
+	
+
+// Joining_dialog for SoD if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" ""
+
+
+// Joining_dialog for BG2.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" ""
+
+
+// Joining_dialog for ToB if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" ""
+
+
+// Use mod.tp2 name (ex : ajantisbg2 or setup-kivan)
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "SETUP-GLAMNPCPACK"
+
+
+// Use the DESIGNATED number of the main componant mentionned in .tp2
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "0"
+
+
+/////////////////////////////////////////////////////////////////////

@@ -40,6 +40,7 @@ IF
 		!Global("JO_Myself_LeaveParty","LOCALS",0)
 		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
 	!InParty(Myself)
+	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		JoinParty()
@@ -53,6 +54,9 @@ IF
 	InParty(Myself)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
+		MakeGlobal()
+		LeaveParty()
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
@@ -63,7 +67,7 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
-		LeaveParty()
+		SetInterrupt(TRUE)
 END
 
 IF
@@ -139,7 +143,7 @@ THEN
 		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN)
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
-//		MakeGlobal()
+		MakeGlobal()
 		SetInterrupt(TRUE)
 END
 
@@ -187,7 +191,7 @@ THEN
 //		ChangeAIScript("",CLASS)
 //		ChangeAIScript("",GENERAL)
 		ChangeAIScript("JO_JOINI",GENERAL)
-//		MakeGlobal()
+		MakeGlobal()
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
 		Continue()
