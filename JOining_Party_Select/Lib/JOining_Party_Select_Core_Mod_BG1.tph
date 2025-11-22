@@ -662,6 +662,211 @@ BEGIN
 	END
 END
 
+// Valerie
+
+OUTER_SPRINT "BG1_JOINED" "T2VALJ"
+OUTER_SPRINT "BG1_BCS" "T2VAL"
+OUTER_SPRINT "SoD_JOINED" "T2VALJ"
+OUTER_SPRINT "SoD_BCS" "T2VAL"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Valerie ~T2VAL~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/T2VAL_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Indira
+
+OUTER_SPRINT "BG1_JOINED" "J#IndiJ"
+OUTER_SPRINT "BG1_BCS" "J#Indi"
+OUTER_SPRINT "SoD_JOINED" "J#IndiJ"
+OUTER_SPRINT "SoD_BCS" "J#Indi"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Indira ~J#Indi~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/J#Indi_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Bristlelick
+
+OUTER_SPRINT "BG1_JOINED" "L#BRISTJ"
+OUTER_SPRINT "BG1_BCS" "L#BRIST"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "L#BRISTJ"
+END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "L#2BRISJ"
+END
+OUTER_SPRINT "SoD_BCS" "L#2BRIST"
+OUTER_SPRINT "SoD_JOINED" "IshyD"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Bristlelick ~L#BRIST~ ~L#2BRIST~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#BRIST_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Glam's npc pack
+
+OUTER_SPRINT "BG1_JOINED" "GV#DAVEJ"
+OUTER_SPRINT "BG1_BCS" "GV#DAVE"
+OUTER_SPRINT "SoD_JOINED" "GV#DAVEJ"
+OUTER_SPRINT "SoD_BCS" "GV#DAVE"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Dave ~GV#DAVE~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#DAVE_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "GV#FLARJ"
+OUTER_SPRINT "BG1_BCS" "GV#FLAR"
+OUTER_SPRINT "SoD_JOINED" "GV#FLARJ"
+OUTER_SPRINT "SoD_BCS" "GV#FLAR"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Flara ~GV#FLAR~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#FLAR_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "GV#LITTJ"
+OUTER_SPRINT "BG1_BCS" "GV#LITT"
+OUTER_SPRINT "SoD_JOINED" "GV#LITTJ"
+OUTER_SPRINT "SoD_BCS" "GV#LITT"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Littlun ~GV#LITT~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#LITT_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "GV#MOIDJ"
+OUTER_SPRINT "BG1_BCS" "GV#MOID"
+OUTER_SPRINT "SoD_JOINED" "GV#MOIDJ"
+OUTER_SPRINT "SoD_BCS" "GV#MOID"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Moidre ~GV#MOID~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#MOID_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "GV#VYNDJ"
+OUTER_SPRINT "BG1_BCS" "GV#VYND"
+OUTER_SPRINT "SoD_JOINED" "GV#VYNDJ"
+OUTER_SPRINT "SoD_BCS" "GV#VYND"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Vynd ~GV#VYND~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#VYND_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
 // Next_Traveler BG1
 
 

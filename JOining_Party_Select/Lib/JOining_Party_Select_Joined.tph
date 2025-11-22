@@ -269,6 +269,22 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // NTotSC
 // Mod Will_Scarlet AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ntwill~)
 
+// Valerie
+// Mod Valerie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~T2VAL~)
+
+// Indira
+// Mod Indira AND NOT (~%override_script%~ STRING_EQUAL_CASE ~J#Indi~)
+
+// Bristlelick
+// Mod Bristlelick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#BRIST~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2BRIST~)
+
+// Glam's npc pack
+// Mod Dave AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GV#DAVE~)
+// Mod Flara AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GV#FLAR~)
+// Mod Littlun AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GV#LITT~)
+// Mod Moidre AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GV#MOID~)
+// Mod Vynd AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GV#VYND~)
+
 // Next_Traveler BG1
 
 /////////////////////////// Mods BG2 ///////////////////////////
@@ -373,6 +389,20 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Mod Kivan_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P#KIV01~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P#KI25~)
 // Mod Deheriana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P#DEH01~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P#DE25~)
 
+// Yvette
+// Mod Yvette AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YxYve~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YxYv25~)
+
+// The Luxley Family
+// Mod Sebastian AND NOT (~%override_script%~ STRING_EQUAL_CASE ~fhlseb~)
+// Mod Andrei AND NOT (~%override_script%~ STRING_EQUAL_CASE ~FHLAND~)
+
+//  Beyond the Law
+// Mod Kiyone AND NOT (~%override_script%~ STRING_EQUAL_CASE ~z#kiyone~)
+// Mod Kova AND NOT (~%override_script%~ STRING_EQUAL_CASE ~z#kova~)
+
+// Petsy
+// Mod Petsy AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L3PETSY~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L3Pet25~)
+
 // Next_Traveler BG2
 
 
@@ -421,6 +451,12 @@ END
   ACTION_IF (FILE_EXISTS_IN_GAME ~zai25.bcs~ AND NOT Zaiya_as_traveler = 1 AND NOT Zaiya_as_Real_traveler = 1) BEGIN
     EXTEND_TOP ~zai25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
 	PRINT ~zai25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~YxYv25.bcs~ AND NOT Yvette_as_traveler = 1 AND NOT Yvette_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~YxYv25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~
+	PRINT ~YxYv25.BCS extended with All_NPC_JOIN.baf
 	~
   END
 
