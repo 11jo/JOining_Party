@@ -82,6 +82,14 @@ COPY ~weidu_external/JOining_Party_Select/JOining_Party_DLG~ ~weidu_external/JOi
 			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 			~
 		END
+		SPRINT textToReplace ~  !InParty(Myself)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Global("JO_Myself_InParty","LOCALS",0)~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+			PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+			~
+		END
 		SPRINT textToReplace ~^[%TAB% ]*InParty(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 		PATCH_IF (num_matches > 0) BEGIN

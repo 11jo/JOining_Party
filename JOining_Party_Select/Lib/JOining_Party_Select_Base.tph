@@ -121,6 +121,14 @@ BUT_ONLY
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
 			END
+			SPRINT textToReplace ~  !InParty("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // space DeathVar : !InParty found in %SOURCE_FILESPEC%
+				~
+			END
 // InParty("%Death_var%")
 			SPRINT textToReplace ~\(^[%TAB% ]*InParty("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches

@@ -62,3 +62,13 @@ EXTEND_BOTTOM JOJOINNE 6
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player5))~ EXIT
 END
+
+EXTEND_BOTTOM JOJOINNE 7
+  IF ~OR(2)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))~ THEN REPLY ~...%%Death_var%_name% !~
+			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
+				SmallWait(1) 
+				ActionOverride("%Death_var%",StartDialogueNoSet(Player6))~ EXIT
+END

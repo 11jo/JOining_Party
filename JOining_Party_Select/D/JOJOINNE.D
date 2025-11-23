@@ -17,6 +17,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",1))~ THEN REPLY ~<PLAYER3> want to discuss with...~ GOTO 3
 	IF ~TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",1))~ THEN REPLY ~<PLAYER4> want to discuss with...~ GOTO 4
 	IF ~TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",1))~ THEN REPLY ~<PLAYER5> want to discuss with...~ GOTO 5
+	IF ~TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",1))~ THEN REPLY ~<PLAYER6> want to discuss with...~ GOTO 6
 END
 
 IF ~~ THEN BEGIN 1

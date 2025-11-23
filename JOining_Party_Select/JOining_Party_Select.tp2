@@ -77,6 +77,13 @@ INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 
 ///////////////////////////////////////////////////////////////////////////////
 
+DELETE ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
+DELETE ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 /*
 // Special componant only use for adding new NPC to the mod.
 // Will expend mod files with data added to Next_Traveler_cpmvars.tpa
@@ -154,7 +161,7 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 			
-BEGIN ~TEN HOURS (50 mn)~
+BEGIN ~TEN HOURS (50 mn / 10 hours in game)~
 DESIGNATED 25
 SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
 Can be reinstalled at any time, if another timer is more suitable.~
@@ -215,7 +222,7 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 
-BEGIN ~TWENTY_HOURS (100 mn)~
+BEGIN ~TWENTY HOURS (100 mn / 20 hours in game)~
 DESIGNATED 30
 SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
 Can be reinstalled at any time, if another timer is more suitable.~
@@ -228,7 +235,7 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 
-BEGIN ~ONE_DAY (120 mn)~
+BEGIN ~ONE DAY (2 hours)~
 DESIGNATED 31
 SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
 Can be reinstalled at any time, if another timer is more suitable.~
@@ -241,8 +248,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 
-BEGIN ~TWO_DAYS (240 mn)~
-DESIGNATED 25
+BEGIN ~TWO DAYS (4 hours / 48 hours in game)~
+DESIGNATED 32
 SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
 Can be reinstalled at any time, if another timer is more suitable.~
 LABEL ~JOining_Party-Switch_Timer-TWO_DAYS~
@@ -250,6 +257,110 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
   NO_LOG_RECORD
 
 			OUTER_SPRINT "Switch_Timer" "TWO_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~THREE DAYS (6 hours)~
+DESIGNATED 33
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-THREE_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "THREE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~FOUR DAYS (8 hours)~
+DESIGNATED 34
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-FOUR_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "FOUR_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~FIVE DAYS (10 hours)~
+DESIGNATED 35
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-FIVE_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "FIVE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~SIX DAYS (12 hours)~
+DESIGNATED 36
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-SIX_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "SIX_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~SEVEN DAYS (14 hours)~
+DESIGNATED 37
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-SEVEN_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "SEVEN_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~EIGHT DAYS (16 hours)~
+DESIGNATED 38
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-EIGHT_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "EIGHT_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~NINE DAYS (18 hours)~
+DESIGNATED 39
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-NINE_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "NINE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~TEN DAYS (20 hours / 1 week in game)~
+DESIGNATED 40
+SUBCOMPONENT ~Traveler Switch Timer (Default is FOUR_HOURS / 20mn)
+Can be reinstalled at any time, if another timer is more suitable.~
+LABEL ~JOining_Party-Switch_Timer-TEN_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SPRINT "Switch_Timer" "TEN_DAYS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
