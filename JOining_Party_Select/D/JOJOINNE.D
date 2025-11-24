@@ -89,3 +89,17 @@ IF ~~ THEN BEGIN 5
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player5))~ EXIT*/
 END
 
+IF ~~ THEN BEGIN 6
+	SAY ~Then...~
+	IF ~~ THEN REPLY ~Wait <PLAYER6> we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~On second thought, let's start over.~ GOTO 0
+/*
+	IF ~OR(2)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))~ THEN REPLY ~...%Death_var% !~
+			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
+				SmallWait(1) 
+				ActionOverride("%Death_var%",StartDialogueNoSet(Player6))~ EXIT*/
+END
+
