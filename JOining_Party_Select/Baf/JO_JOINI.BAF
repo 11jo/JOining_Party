@@ -22,37 +22,45 @@ IF
 	Switch("JO_JOIN_Move_Around","GLOBAL")
 THEN
 	RESPONSE #1
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
 		Continue()
 	RESPONSE #2
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
 		Continue()
 	RESPONSE #3
-		SetGlobal("JO_NEVER_JOIN","LOCALS",1)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_NEVER_JOIN","LOCALS",1)
 		Continue()
 	RESPONSE #4
-		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		Continue()
 	RESPONSE #5
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		Continue()
 	RESPONSE #6
-		DisplayStringHead(Myself,~Youhou !~)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		DisplayStringHead(Myself,~Youhou !~)
 		Continue()
 	RESPONSE #7
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		Continue()
 	RESPONSE #8
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)
 		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
-		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("BDAI_DISABLE_ATTACK","LOCALS",0)
+		SetGlobal("BDAI_ATTACK_MODE","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_ITEMS","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_OFFENSIVE","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_DEFENSIVE","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_SPECIAL","LOCALS",0)
+		SetGlobal("BDAI_SKILL_MODE","LOCALS",0)
 		Continue()
 /*	RESPONSE #9
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -96,7 +104,6 @@ THEN
 	RESPONSE #100
 		EquipItemEx("JOMINHP1",0)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0) // Reset at loading
-		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
 		Continue()
 END
