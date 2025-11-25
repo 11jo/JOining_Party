@@ -1,6 +1,25 @@
 // Note : comment out or delete unused field for your traveler before install.
 
 
+/////////////////////////// Not_so_Always.tpa ///////////////////////////
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/Not_so_Always.tpa~	~JOining_Party_Select/Lib/Not_so_Always.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~			OUTER_SPRINT "%NEW_TRAVELER_DeathVar%_name"                 "%NEW_TRAVELER_NAME%"
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/Not_so_Always.tpa~	~JOining_Party_Select/Lib/Not_so_Always.tpa~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~			OUTER_SPRINT "%NEW_TRAVELER_DeathVar%_name"                 "%NEW_TRAVELER_NAME%"
+// Next_Traveler BG2~~~~~
+
+END
+
+
 /////////////////////////// JOining_Party_Select.tph ///////////////////////////
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
@@ -16,6 +35,28 @@ END
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG2~~~~~
+
+END
+
+/////////////////////////// JOining_Party_Select_Fix.tph ///////////////////////////
+
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~
+			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
+
+// Next_Traveler BG1~~~~~
+
+END
+
+ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~
 			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
@@ -181,8 +222,13 @@ END
 
 OUTER_SPRINT "BG1_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%"
 OUTER_SPRINT "BG1_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1%"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%"
+END ELSE BEGIN
 OUTER_SPRINT "SoD_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%"
+END
 OUTER_SPRINT "SoD_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD%"
+OUTER_SPRINT "SoD_JOINED" "IshyD"
 
 ACTION_FOR_EACH bcs IN
 
@@ -221,11 +267,7 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
 OUTER_SPRINT "BG2_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
 OUTER_SPRINT "BG2_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%"
-ACTION_IF (GAME_IS ~eet~) BEGIN
 OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
-END ELSE BEGIN
-OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
-END
 OUTER_SPRINT "TOB_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%"
 
 ACTION_FOR_EACH bcs IN

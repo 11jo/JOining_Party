@@ -1168,4 +1168,164 @@ BEGIN
 	END
 END
 
+// Yvette
+
+OUTER_SPRINT "BG2_JOINED" "YxYveJ"
+OUTER_SPRINT "BG2_BCS" "YxYve"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "YxYveJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "YXYV25J"
+END
+OUTER_SPRINT "TOB_BCS" "YxYv25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Yvette ~YxYve~ ~YxYv25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/YxYve_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// The Luxley Family
+
+OUTER_SPRINT "BG2_JOINED" "fhlsebJ"
+OUTER_SPRINT "BG2_BCS" "fhlseb"
+OUTER_SPRINT "TOB_JOINED" "fhlsebJ"
+OUTER_SPRINT "TOB_BCS" "fhlseb"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Sebastian ~fhlseb~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/fhlseb_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "FHLANDJ"
+OUTER_SPRINT "BG2_BCS" "FHLAND"
+OUTER_SPRINT "TOB_JOINED" "FHLANDJ"
+OUTER_SPRINT "TOB_BCS" "FHLAND"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Andrei ~FHLAND~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/FHLAND_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+//  Beyond the Law
+
+OUTER_SPRINT "BG2_JOINED" "z#kiyoJ"
+OUTER_SPRINT "BG2_BCS" "z#kiyone"
+OUTER_SPRINT "TOB_JOINED" "z#kiyoJ"
+OUTER_SPRINT "TOB_BCS" "z#kiyone"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kiyone ~z#kiyone~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kiyone_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+OUTER_SPRINT "BG2_JOINED" "Z#kovaJ"
+OUTER_SPRINT "BG2_BCS" "z#kova"
+OUTER_SPRINT "TOB_JOINED" "Z#kovaJ"
+OUTER_SPRINT "TOB_BCS" "z#kova"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kova ~z#kova~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kova_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
+// Petsy
+
+OUTER_SPRINT "BG2_JOINED" "L3PetsyJ"
+OUTER_SPRINT "BG2_BCS" "L3PETSY"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "TOB_JOINED" "L3PetsyJ"
+END ELSE BEGIN
+OUTER_SPRINT "TOB_JOINED" "L3Pet25"
+END
+OUTER_SPRINT "TOB_BCS" "L3Pet25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Petsy ~L3PETSY~ ~L3Pet25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L3PETSY_All_In.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG2.BAF~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+	END
+END
+
 // Next_Traveler BG2

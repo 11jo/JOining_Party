@@ -1390,6 +1390,170 @@ END
 	END
 
 
+// Valerie
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~VALERIE.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Valerie_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Valerie~ ~~
+			PRINT ~    Valerie as traveler
+			~
+
+END ELSE ACTION_IF  Valerie_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Valerie~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Valerie~ ~~
+			PRINT ~    Valerie as real traveler
+			~
+
+END
+
+	END
+
+// Indira
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~INDINPC.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Indira_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Indira~ ~~
+			PRINT ~    Indira as traveler
+			~
+
+END ELSE ACTION_IF  Indira_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Indira~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Indira~ ~~
+			PRINT ~    Indira as real traveler
+			~
+
+END
+
+	END
+
+// Bristlelick
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~BRISTLELICK.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Bristlelick_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Bristlelick~ ~~
+			PRINT ~    Bristlelick as traveler
+			~
+
+END ELSE ACTION_IF  Bristlelick_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Bristlelick~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Bristlelick~ ~~
+			PRINT ~    Bristlelick as real traveler
+			~
+
+END
+
+	END
+
+// Glam's npc pack
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~SETUP-GLAMNPCPACK.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Dave_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dave~ ~~
+			PRINT ~    Dave as traveler
+			~
+
+END ELSE ACTION_IF  Dave_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dave~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Dave~ ~~
+			PRINT ~    Dave as real traveler
+			~
+
+END
+
+ACTION_IF Flara_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Flara~ ~~
+			PRINT ~    Flara as traveler
+			~
+
+END ELSE ACTION_IF  Flara_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Flara~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Flara~ ~~
+			PRINT ~    Flara as real traveler
+			~
+
+END
+
+ACTION_IF Littlun_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Littlun~ ~~
+			PRINT ~    Littlun as traveler
+			~
+
+END ELSE ACTION_IF  Littlun_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Littlun~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Littlun~ ~~
+			PRINT ~    Littlun as real traveler
+			~
+
+END
+
+ACTION_IF Moidre_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Moidre~ ~~
+			PRINT ~    Moidre as traveler
+			~
+
+END ELSE ACTION_IF  Moidre_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Moidre~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Moidre~ ~~
+			PRINT ~    Moidre as real traveler
+			~
+
+END
+
+ACTION_IF Vynd_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Vynd~ ~~
+			PRINT ~    Vynd as traveler
+			~
+
+END ELSE ACTION_IF  Vynd_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Vynd~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Vynd~ ~~
+			PRINT ~    Vynd as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG1
 
 
@@ -2187,6 +2351,132 @@ END ELSE ACTION_IF  Deheriana_as_Real_traveler = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod Deheriana~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Deheriana~ ~~
 			PRINT ~    Deheriana as real traveler
+			~
+
+END
+
+	END
+
+// Yvette
+
+	ACTION_IF (MOD_IS_INSTALLED ~SETUP-YVETTE.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Yvette_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Yvette~ ~~
+			PRINT ~    Yvette as traveler
+			~
+
+END ELSE ACTION_IF  Yvette_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Yvette~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Yvette~ ~~
+			PRINT ~    Yvette as real traveler
+			~
+
+END
+
+	END
+
+// The Luxley Family
+
+	ACTION_IF (MOD_IS_INSTALLED ~LUXLEYSOA.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Sebastian_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sebastian~ ~~
+			PRINT ~    Sebastian as traveler
+			~
+
+END ELSE ACTION_IF  Sebastian_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sebastian~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Sebastian~ ~~
+			PRINT ~    Sebastian as real traveler
+			~
+
+END
+
+ACTION_IF Andrei_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Andrei~ ~~
+			PRINT ~    Andrei as traveler
+			~
+
+END ELSE ACTION_IF  Andrei_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Andrei~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Andrei~ ~~
+			PRINT ~    Andrei as real traveler
+			~
+
+END
+
+	END
+
+//  Beyond the Law
+
+	ACTION_IF (MOD_IS_INSTALLED ~BTL.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Kiyone_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kiyone~ ~~
+			PRINT ~    Kiyone as traveler
+			~
+
+END ELSE ACTION_IF  Kiyone_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kiyone~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Kiyone~ ~~
+			PRINT ~    Kiyone as real traveler
+			~
+
+END
+
+ACTION_IF Kova_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kova~ ~~
+			PRINT ~    Kova as traveler
+			~
+
+END ELSE ACTION_IF  Kova_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kova~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Kova~ ~~
+			PRINT ~    Kova as real traveler
+			~
+
+END
+
+	END
+
+// Petsy
+
+	ACTION_IF (MOD_IS_INSTALLED ~PETSY.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Petsy_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Petsy~ ~~
+			PRINT ~    Petsy as traveler
+			~
+
+END ELSE ACTION_IF  Petsy_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Petsy~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Petsy~ ~~
+			PRINT ~    Petsy as real traveler
 			~
 
 END

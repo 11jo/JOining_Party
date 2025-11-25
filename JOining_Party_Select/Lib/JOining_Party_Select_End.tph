@@ -2,6 +2,15 @@
 // Special 
 ///////////////////////////////////////////////////////////////////////////////
 
+// JOJOINNE.d added before being extended
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/JOJOINNE.D~
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
 	ACTION_FOR_EACH bcs IN AR0041 AR0042 AR0043 AR0044 AR0045 AR0046 BEGIN
@@ -101,117 +110,131 @@ HasItemEquipedReal(\1,Player1)~
 
 ACTION_FOR_EACH Death_var IN
 
-// Original Imoen ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~  // Imoen
-// Original Edwin ~Edwin~                            // Edwin
-// Original Jaheira ~Jaheira~ // ~ttjaheir~             // Jaheira
-// Original Minsc ~Minsc~ // ~ttminsc~                  // Minsc
-// Original Viconia ~Viconia~                        // Viconia
-// Original Dorn ~Dorn~                              // Dorn
-// Original Neera ~Neera~                            // Neera
-// Original Rasaad ~Rasaad~                          // Rasaad
+// Original Imoen           ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~     // Imoen
+// Original Edwin           ~Edwin~                               // Edwin
+// Original Jaheira         ~Jaheira~    // ~ttjaheir~            // Jaheira
+// Original Minsc           ~Minsc~      // ~ttminsc~             // Minsc
+// Original Viconia         ~Viconia~                             // Viconia
+// Original Dorn            ~Dorn~                                // Dorn
+// Original Neera           ~Neera~                               // Neera
+// Original Rasaad          ~Rasaad~                              // Rasaad
 
 /////////////////////////// bg1 ///////////////////////////
 
-// Original Ajantis ~Ajantis~                          // Ajantis
-// Original Alora ~Alora~                              // Alora
-// Original Branwen ~Branwen~ // ~ttbran~              // Branwen
-// Original Coran ~Coran~                              // Coran
-// Original Dynaheir ~Dynaheir~                        // Dynaheir
+// Original Ajantis         ~Ajantis~                             // Ajantis
+// Original Alora           ~Alora~                               // Alora
+// Original Branwen         ~Branwen~    // ~ttbran~              // Branwen
+// Original Coran           ~Coran~                               // Coran
+// Original Dynaheir        ~Dynaheir~                            // Dynaheir
 
-// Original Eldoth ~Eldoth~                            // Eldoth
-// Original Faldorn ~Faldorn~                          // Faldorn
-// Original Garrick ~Garrick~                          // Garrick
+// Original Eldoth          ~Eldoth~                              // Eldoth
+// Original Faldorn         ~Faldorn~                             // Faldorn
+// Original Garrick         ~Garrick~                             // Garrick
 
-// Original Kagain ~Kagain~                            // Kagain
-// Original Khalid ~Khalid~                            // Khalid
-// Original Kivan ~Kivan~                              // Kivan
+// Original Kagain          ~Kagain~                              // Kagain
+// Original Khalid          ~Khalid~                              // Khalid
+// Original Kivan           ~Kivan~                               // Kivan
 
-// Original Montaron ~Montaron~                        // Montaron
-// Original Quayle ~Quayle~                            // Quayle
-// Original Safana ~Safana~                            // Safana
-// Original Sharteel ~Sharteel~ // ~Shar-teel~         // Sharteel
-// Original Skie ~Skie~                                // Skie
-// Original Tiax ~Tiax~                                // Tiax
+// Original Montaron        ~Montaron~                            // Montaron
+// Original Quayle          ~Quayle~                              // Quayle
+// Original Safana          ~Safana~                              // Safana
+// Original Sharteel        ~Sharteel~    // ~Shar-teel~          // Sharteel
+// Original Skie            ~Skie~                                // Skie
+// Original Tiax            ~Tiax~                                // Tiax
 
-// Original Xan ~Xan~ // ttxan~                        // Xan
-// Original Xzar ~Xzar~                                // Xzar
-// Original Yeslick ~Yeslick~                          // Yeslick
+// Original Xan             ~Xan~         // ttxan~               // Xan
+// Original Xzar            ~Xzar~                                // Xzar
+// Original Yeslick         ~Yeslick~                             // Yeslick
 
-// Original Baeloth ~Baeloth~                          // Baeloth
+// Original Baeloth         ~Baeloth~                             // Baeloth
 
 
 /////////////////////////// SoD ///////////////////////////
 
-
-// Original Voghiln ~Voghiln~                         // Voghiln
-// Original Corwin ~Corwin~                           // Corwin
-// Original Mkhiin ~Mkhiin~                           // Mkhiin
-// Original Glint ~Glint~                             // Glint
+// Original Voghiln         ~Voghiln~                             // Voghiln
+// Original Corwin          ~Corwin~                              // Corwin
+// Original Mkhiin          ~Mkhiin~                              // Mkhiin
+// Original Glint           ~Glint~                               // Glint
 
 
 /////////////////////////// bg2 ///////////////////////////
 
-
-// Original Aerie ~Aerie~                               // Aerie
-// Original Anomen ~Anomen~                             // Anomen
-// Original Cernd ~Cernd~                               // Cernd
-// Original Haerdalis ~Haerdalis~                       // Haerdalis
-// Original Hexxat ~Hexxat~                             // Hexxat
-// Original Jan ~Jan~                                   // Jan
-// Original Keldorn ~Keldorn~                           // Keldorn
-// Original Korgan ~Korgan~                             // Korgan
-// Original Mazzy ~Mazzy~                               // Mazzy
-// Original Nalia ~Nalia~                               // Nalia
-// Original Sarevok ~Sarevok~                           // Sarevok
-// Original Valygar ~Valygar~                           // Valygar
-// Original Wilson ~Wilson~                             // Wilson
-// Original Yoshimo ~Yoshimo~                           // Yoshimo
+// Original Aerie           ~Aerie~                               // Aerie
+// Original Anomen          ~Anomen~                              // Anomen
+// Original Cernd           ~Cernd~                               // Cernd
+// Original Haerdalis       ~Haerdalis~                           // Haerdalis
+// Original Hexxat          ~Hexxat~                              // Hexxat
+// Original Jan             ~Jan~                                 // Jan
+// Original Keldorn         ~Keldorn~                             // Keldorn
+// Original Korgan          ~Korgan~                              // Korgan
+// Original Mazzy           ~Mazzy~                               // Mazzy
+// Original Nalia           ~Nalia~                               // Nalia
+// Original Sarevok         ~Sarevok~                             // Sarevok
+// Original Valygar         ~Valygar~                             // Valygar
+// Original Wilson          ~Wilson~                              // Wilson
+// Original Yoshimo         ~Yoshimo~                             // Yoshimo
 
 
 /////////////////////////// Mods BG1 ///////////////////////////
 
-
-// Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
+// Ishlilka_The-Wizard-Slayer
+// Mod Ishlilka             ~#Ishy~                               // Ishlilka
 
 // ChaosKnight-kit
-// Mod Jacob ~ZYJCOB~
+// Mod Jacob                ~ZYJCOB~                              // Jacob
 
 // Askaria-Quest
-// Mod Askaria ~ZYASKA~
+// Mod Askaria              ~ZYASKA~                              // Askaria
 
 // Isra BG1
-// Mod Isra_BG1 ~rh#isra~
+// Mod Isra_BG1             ~rh#isra~                             // Isra
 
 // Finch
-// Mod Finch ~SUFINCH~
+// Mod Finch                ~SUFINCH~                             // Finch
 
 // Drizzt Saga
-// Mod Jarlaxle_Saga ~F_JARLAXE~
-// Mod Artemis_Enteri_Saga ~F_ARTEMIS~
-// Mod Catti-Brie_Saga ~F_CATTIBR~
-// Mod Bruenor_Saga ~F_BRUENOR~
-// Mod Regis_Saga ~F_REGIS~
-// Mod Drizzt_Saga ~F_DRIZZT~
-// Mod Wulfgar_Saga ~F_WULFGAR~
+// Mod Jarlaxle_Saga        ~F_JARLAXE~                           // Jarlaxle
+// Mod Artemis_Enteri_Saga  ~F_ARTEMIS~                           // Artemis Enteri
+// Mod Catti-Brie_Saga      ~F_CATTIBR~                           // Catti-Brie
+// Mod Bruenor_Saga         ~F_BRUENOR~                           // Bruenor
+// Mod Regis_Saga           ~F_REGIS~                             // Regis
+// Mod Drizzt_Saga          ~F_DRIZZT~                            // Drizzt
+// Mod Wulfgar_Saga         ~F_WULFGAR~                           // Wulfgar
 
 // Dark Horizons
-// Mod Nikita_BG1 ~cmnikita~
-// Mod Thorin ~CMTTHOR~
-// Mod Morwen ~CMTMORW~
+// Mod Nikita_BG1           ~cmnikita~                            // Nikita
+// Mod Thorin               ~CMTTHOR~                             // Thorin
+// Mod Morwen                ~CMTMORW~                            // Morwen 
 
 // DSotSC
-// Mod Bardo ~DSBARDO~
-// Mod Bub_Snikt ~DSBUB~
-// Mod Conchobhair ~Conchobhair~
-// Mod CuChoinneach ~CuChoinneach~
-// Mod Ferthgil_Trollslayer ~Ferthgil~
-// Mod Jet'laya ~JETLAYA~
-// Mod Keiria_Silverstring ~KEIRIA~
-// Mod Skeezer_Lumpkin_VI ~SKEEZER~
-// Mod Thorfinn_Hauskluniff ~Thorfinn~
+// Mod Bardo                ~DSBARDO~                              // Bardo
+// Mod Bub_Snikt            ~DSBUB~                                // Bub Snikt
+// Mod Conchobhair          ~Conchobhair~                          // Conchobhair
+// Mod CuChoinneach         ~CuChoinneach~                         // CuChoinneach
+// Mod Ferthgil_Trollslayer ~Ferthgil~                             // Ferthgil Trollslayer
+// Mod Jet'laya             ~JETLAYA~                              // Jet'laya
+// Mod Keiria_Silverstring  ~KEIRIA~                               // Keiria Silverstring
+// Mod Skeezer_Lumpkin_VI   ~SKEEZER~                              // Skeezer Lumpkin VI
+// Mod Thorfinn_Hauskluniff ~Thorfinn~                             // Thorfinn Hauskluniff
 
 // NTotSC
-// Mod Will_Scarlet ~WILL~
+// Mod Will_Scarlet         ~WILL~                                 // Will Scarlet
+
+// Valerie
+// Mod Valerie ~T2VAL~
+
+// Indira
+// Mod Indira ~J#Indi~
+
+// Bristlelick
+// Mod Bristlelick ~L#BRIST~
+
+// Glam's npc pack
+// Mod Dave ~GV#DAVE~
+// Mod Flara ~GV#FLAR~
+// Mod Littlun ~GV#LITT~
+// Mod Moidre ~GV#MOID~
+// Mod Vynd ~GV#VYND~
 
 // Next_Traveler BG1
 
@@ -219,89 +242,104 @@ ACTION_FOR_EACH Death_var IN
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2
-// Mod Alora BG2 ~CMALORA~
+// Mod Alora BG2            ~CMALORA~                              // Alora
 
 // Yeslick BG2
-// Mod Yeslick BG2 ~LK#YESLK~
+// Mod Yeslick BG2          ~LK#YESLK~                             // Yeslick
 
 // The Undying
-// Mod Undying ~cmninaf~ ~callisto~
+// Mod Undying              ~cmninaf~                              // Ninafer
+// Mod Undying              ~callisto~                             // Callisto
 
 // Summon Bhaalspawn
-// Mod Sandra ~BHAALSPW~
+// Mod Sandra               ~BHAALSPW~                             // Sandra
 
 // NikitaRedux
-// Mod NikitaRedux ~cmnikita~
+// Mod NikitaRedux          ~cmnikita~                             // Nikita
 
 // VampireTales
-// Mod Miriam ~cmgmiriam~
+// Mod Miriam               ~cmgmiriam~                            // Miriam
 
 // Kim
-// Mod Kim ~Kim~
+// Mod Kim                  ~Kim~                                  // Kim
 
 // Severian
-// Mod Severian ~#Severian~
+// Mod Severian             ~#Severian~                            // Severian
 
 // Frennedan
-// Mod Frennedan ~Frennedan~
+// Mod Frennedan            ~Frennedan~                            // Frennedan
 
 // Branwen BG2
-// Mod Branwen_BG2 ~O#Bran~
+// Mod Branwen_BG2          ~O#Bran~                               // Branwen
 // Tiax BG2
-// Mod Tiax_BG2 ~O#Tiax~
+// Mod Tiax_BG2             ~O#Tiax~                               // Tiax
 // Xan BG2
-// Mod Xan_BG2 ~O#XAN~
+// Mod Xan_BG2              ~O#XAN~                                // Xan
 // Coran BG2
-// Mod Coran_BG2 ~O#Coran~
+// Mod Coran_BG2            ~O#Coran~                              // Coran
 
 // Auren Aseph
-// Mod Auren ~K#AUREN~
+// Mod Auren                ~K#AUREN~                              // Auren
 
 // Isra BG2
-// Mod Isra_BG2 ~rh#Isra2~
+// Mod Isra_BG2             ~rh#Isra2~                             // Isra
 
 // Nephele
-// Mod Nephele_Samios ~Nephele~
+// Mod Nephele_Samios       ~Nephele~                              // Nephele
 
 // Sheena
-// Mod Sheena ~K#SHEENA~
+// Mod Sheena               ~K#SHEENA~                             // Sheena
 
 // Kiara / Zaiya
-// Mod Kiara ~Kiara~
-// Mod Zaiya ~Zaiya~
+// Mod Kiara                ~Kiara~                                // Kiara
+// Mod Zaiya                ~Zaiya~                                // Zaiya
 
 // The Beaurin Legacy
-// Mod Minyae ~QI#MI~
-// Mod Elaryn ~QI#ELA~
+// Mod Minyae               ~QI#MI~                                // Minyae
+// Mod Elaryn               ~QI#ELA~                               // Elaryn
 
 // Tyris Flare
-// Mod Tyris ~g#Tyris~
+// Mod Tyris                ~g#Tyris~                              // Tyris
 
 // Region of Terror
-// Mod Wulfgar_Terror ~Wulfg2~
-// Mod Regis_Terror ~Reg2~
-// Mod Drizzt_Terror ~Driz2~
-// Mod Bruenor_Terror ~Brue2~
-// Mod Catti-Brie_Terror ~Catt2~
-// Mod Artemis_Entreri_Terror ~Enter2~
-// Mod Jarlaxle_Terror ~Jarlax2~
-// Mod Tapio_Perkiomaki_Terror ~Tapio~
-// Mod Randall_Terror ~Randall~
-// Mod Alissa_Terror ~ALISSA1~
-// Mod Mordragon_Terror ~Mordrg~
+// Mod Wulfgar_Terror            ~Wulfg2~                              // Wulfgar
+// Mod Regis_Terror              ~Reg2~                                // Regis
+// Mod Drizzt_Terror             ~Driz2~                               // Drizz
+// Mod Bruenor_Terror            ~Brue2~                               // Bruenor
+// Mod Catti-Brie_Terror         ~Catt2~                               // Catti-Brie
+// Mod Artemis_Entreri_Terror    ~Enter2~                              // Artemis
+// Mod Jarlaxle_Terror           ~Jarlax2~                             // Jarlaxle
+// Mod Tapio_Perkiomaki_Terror   ~Tapio~                               // Tapio
+// Mod Randall_Terror            ~Randall~                             // Randall
+// Mod Alissa_Terror             ~ALISSA1~                             // Alissa
+// Mod Mordragon_Terror          ~Mordrg~                              // Mordragon
 
 //Shadow over Soubar
-// Mod Selence_Hillstar_Soubar ~SELENCE~
-// Mod Charlotte_Soubar ~CHARLOTT~
-// Mod Bolivar_Soubar ~BOLIVAR~
-// Mod Tomas_Tomalson_Soubar ~TOMASTM~
+// Mod Selence_Hillstar_Soubar   ~SELENCE~                             // Selence
+// Mod Charlotte_Soubar          ~CHARLOTT~                            // Charlotte
+// Mod Bolivar_Soubar            ~BOLIVAR~                             // Bolivar
+// Mod Tomas_Tomalson_Soubar     ~TOMASTM~                             // Tomas
 
 // ajantisbg2
-// Mod Ajantis_BG2 ~C#Ajantis~
+// Mod Ajantis_BG2          ~C#Ajantis~                            // Ajantis
 
 // Kivan and Deheriana
-// Mod Kivan_BG2 ~P#KIVAN~
-// Mod Deheriana ~P#DEHER~
+// Mod Kivan_BG2            ~P#KIVAN~                              // Kivan
+// Mod Deheriana            ~P#DEHER~                              // Deheriana
+
+// Yvette
+// Mod Yvette ~YxYve~
+
+// The Luxley Family
+// Mod Sebastian ~fhlseb~
+// Mod Andrei ~FHLAND~
+
+//  Beyond the Law
+// Mod Kiyone ~Kiyone~
+// Mod Kova ~Kova~
+
+// Petsy
+// Mod Petsy ~L3PETSY~
 
 // Next_Traveler BG2
 
@@ -316,7 +354,19 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// Avoid additionnal warnings for missing ressources 
+// JOJOINNE.d Extended by each traveler
+//////////////////////////////////////////////////////////////////////////////////////
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~JOJOINNE.dlg~ BEGIN
+
+		COMPILE EVALUATE_BUFFER  ~JOining_Party_Select/D/Extend_JOJOINNE.D~
+
+	END
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 // Edge cases
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -335,24 +385,6 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 			END
 		END
 			BUT_ONLY
-	END
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-	ACTION_IF FILE_EXISTS_IN_GAME ~ohhretrn.bcs~ THEN BEGIN
-		COPY_EXISTING_REGEXP ~ohhretrn.bcs~ ~override~
-			DECOMPILE_AND_PATCH BEGIN
-	// CreateVisualEffectObject situation ///////////// SPECIAL SPSISPMA do not exist
-				SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject("SPSISPMA","%Death_var%")~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~ohhretrn.bcs~)*/ BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : Delete SPSISPMA in %SOURCE_FILESPEC%
-					~
-				END
-			END
-				BUT_ONLY
 	END
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -378,51 +410,6 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-	ACTION_FOR_EACH bcs IN CUTBELT CUTLIIA CUTTETHT ICELAND XG0278 XG0403 XG04N3 XG0511 XG1020 BEGIN
-	
-		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
-		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
-			DECOMPILE_AND_PATCH BEGIN
-	// DRYAD_TELEPORT situation ///////////// SPECIAL DRYAD_TELEPORT delete familiar
-				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ForceSpell("%Death_var%",DRYAD_TELEPORT))~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
-					~
-				END
-				SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell("%Death_var%",DRYAD_TELEPORT))~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
-					~
-				END
-				SPRINT textToReplace ~^[%TAB% ]*ForceSpell("%Death_var%",DRYAD_TELEPORT)~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
-					~
-				END
-				SPRINT textToReplace ~^[%TAB% ]*ReallyForceSpell("%Death_var%",DRYAD_TELEPORT)~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateVisualEffectObject("spdimndr","%Death_var%")~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : Change DRYAD_TELEPORT in %SOURCE_FILESPEC%
-					~
-				END
-			END
-			BUT_ONLY
-		END
-	END // ACTION_FOR_EACH // spfleshp
-
-//////////////////////////////////////////////////////////////////////////////////////
-
 	ACTION_FOR_EACH bcs IN BALDUR BALDUR25 BDBALDUR BEGIN
 	
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
@@ -442,48 +429,6 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 				BUT_ONLY
 		END
 	END // ACTION_FOR_EACH // CreateVisualEffectObject
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-	ACTION_FOR_EACH bcs IN OHHFAKOK OHHBARHX RERAK02 RERAK03 RERAK04 RERAK05 RERAK06 SCTSAR2 BEGIN
-	
-		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
-		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
-			DECOMPILE_AND_PATCH BEGIN
-	// CreateVisualEffectObject situation
-				SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),"%Death_var%")~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : CreateVisualEffectObject found in %SOURCE_FILESPEC% FOR %Death_var%
-					~
-				END
-			END
-				BUT_ONLY
-		END
-	END // ACTION_FOR_EACH // CreateVisualEffectObject
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-	ACTION_FOR_EACH bcs IN OHHCUT09 OHHCUT10 OHHCUT11 BEGIN
-	
-		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
-		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
-			DECOMPILE_AND_PATCH BEGIN
-	// CreateVisualEffectObject situation ///////////// SPECIAL spfleshp do not exist
-				SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject("spfleshp","%Death_var%")~
-				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT09.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT10.bcs~) OR (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHCUT11.bcs~)*/ BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
-					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-					PATCH_PRINT ~... // %Death_var% : Delete SPSISPMA in %SOURCE_FILESPEC%
-					~
-				END
-			END
-			BUT_ONLY
-		END
-	END // ACTION_FOR_EACH // spfleshp
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -543,98 +488,115 @@ ACTION_FOR_EACH Death_var IN // ACTION_FOR_EACH BGSoD
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// Original Imoen ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~  // Imoen
-// Original Edwin ~Edwin~                            // Edwin
-// Original Jaheira ~Jaheira~ // ~ttjaheir~             // Jaheira
-// Original Minsc ~Minsc~ // ~ttminsc~                  // Minsc
-// Original Viconia ~Viconia~                        // Viconia
-// Original Dorn ~Dorn~                              // Dorn
-// Original Neera ~Neera~                            // Neera
-// Original Rasaad ~Rasaad~                          // Rasaad
+// Original Imoen           ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~     // Imoen
+// Original Edwin           ~Edwin~                               // Edwin
+// Original Jaheira         ~Jaheira~    // ~ttjaheir~            // Jaheira
+// Original Minsc           ~Minsc~      // ~ttminsc~             // Minsc
+// Original Viconia         ~Viconia~                             // Viconia
+// Original Dorn            ~Dorn~                                // Dorn
+// Original Neera           ~Neera~                               // Neera
+// Original Rasaad          ~Rasaad~                              // Rasaad
 
 /////////////////////////// bg1 ///////////////////////////
 
-// Original Ajantis ~Ajantis~                          // Ajantis
-// Original Alora ~Alora~                              // Alora
-// Original Branwen ~Branwen~ // ~ttbran~              // Branwen
-// Original Coran ~Coran~                              // Coran
-// Original Dynaheir ~Dynaheir~                        // Dynaheir
+// Original Ajantis         ~Ajantis~                             // Ajantis
+// Original Alora           ~Alora~                               // Alora
+// Original Branwen         ~Branwen~    // ~ttbran~              // Branwen
+// Original Coran           ~Coran~                               // Coran
+// Original Dynaheir        ~Dynaheir~                            // Dynaheir
 
-// Original Eldoth ~Eldoth~                            // Eldoth
-// Original Faldorn ~Faldorn~                          // Faldorn
-// Original Garrick ~Garrick~                          // Garrick
+// Original Eldoth          ~Eldoth~                              // Eldoth
+// Original Faldorn         ~Faldorn~                             // Faldorn
+// Original Garrick         ~Garrick~                             // Garrick
 
-// Original Kagain ~Kagain~                            // Kagain
-// Original Khalid ~Khalid~                            // Khalid
-// Original Kivan ~Kivan~                              // Kivan
+// Original Kagain          ~Kagain~                              // Kagain
+// Original Khalid          ~Khalid~                              // Khalid
+// Original Kivan           ~Kivan~                               // Kivan
 
-// Original Montaron ~Montaron~                        // Montaron
-// Original Quayle ~Quayle~                            // Quayle
-// Original Safana ~Safana~                            // Safana
-// Original Sharteel ~Sharteel~ // ~Shar-teel~         // Sharteel
-// Original Skie ~Skie~                                // Skie
-// Original Tiax ~Tiax~                                // Tiax
+// Original Montaron        ~Montaron~                            // Montaron
+// Original Quayle          ~Quayle~                              // Quayle
+// Original Safana          ~Safana~                              // Safana
+// Original Sharteel        ~Sharteel~    // ~Shar-teel~          // Sharteel
+// Original Skie            ~Skie~                                // Skie
+// Original Tiax            ~Tiax~                                // Tiax
 
-// Original Xan ~Xan~ // ttxan~                        // Xan
-// Original Xzar ~Xzar~                                // Xzar
-// Original Yeslick ~Yeslick~                          // Yeslick
+// Original Xan             ~Xan~         // ttxan~               // Xan
+// Original Xzar            ~Xzar~                                // Xzar
+// Original Yeslick         ~Yeslick~                             // Yeslick
 
-// Original Baeloth ~Baeloth~                          // Baeloth
+// Original Baeloth         ~Baeloth~                             // Baeloth
 
 
 /////////////////////////// SoD ///////////////////////////
 
-
-// Original Voghiln ~Voghiln~                         // Voghiln
-// Original Corwin ~Corwin~                           // Corwin
-// Original Mkhiin ~Mkhiin~                           // Mkhiin
-// Original Glint ~Glint~                             // Glint
+// Original Voghiln         ~Voghiln~                             // Voghiln
+// Original Corwin          ~Corwin~                              // Corwin
+// Original Mkhiin          ~Mkhiin~                              // Mkhiin
+// Original Glint           ~Glint~                               // Glint
 
 
 /////////////////////////// Mods BG1 ///////////////////////////
 
-
-// Mod Ishlilka ~#Ishy~                                                // Ishlilka_The-Wizard-Slayer
+// Ishlilka_The-Wizard-Slayer
+// Mod Ishlilka             ~#Ishy~                               // Ishlilka
 
 // ChaosKnight-kit
-// Mod Jacob ~ZYJCOB~
+// Mod Jacob                ~ZYJCOB~                              // Jacob
 
 // Askaria-Quest
-// Mod Askaria ~ZYASKA~
+// Mod Askaria              ~ZYASKA~                              // Askaria
 
 // Isra BG1
-// Mod Isra_BG1 ~rh#isra~
+// Mod Isra_BG1             ~rh#isra~                             // Isra
 
 // Finch
-// Mod Finch ~SUFINCH~
+// Mod Finch                ~SUFINCH~                             // Finch
 
 // Drizzt Saga
-// Mod Jarlaxle_Saga ~F_JARLAXE~
-// Mod Artemis_Enteri_Saga ~F_ARTEMIS~
-// Mod Catti-Brie_Saga ~F_CATTIBR~
-// Mod Bruenor_Saga ~F_BRUENOR~
-// Mod Regis_Saga ~F_REGIS~
-// Mod Drizzt_Saga ~F_DRIZZT~
-// Mod Wulfgar_Saga ~F_WULFGAR~
+// Mod Jarlaxle_Saga        ~F_JARLAXE~                           // Jarlaxle
+// Mod Artemis_Enteri_Saga  ~F_ARTEMIS~                           // Artemis Enteri
+// Mod Catti-Brie_Saga      ~F_CATTIBR~                           // Catti-Brie
+// Mod Bruenor_Saga         ~F_BRUENOR~                           // Bruenor
+// Mod Regis_Saga           ~F_REGIS~                             // Regis
+// Mod Drizzt_Saga          ~F_DRIZZT~                            // Drizzt
+// Mod Wulfgar_Saga         ~F_WULFGAR~                           // Wulfgar
 
 // Dark Horizons
-// Mod Nikita_BG1 ~cmnikita~
-// Mod Thorin ~CMTTHOR~
-// Mod Morwen ~CMTMORW~
+// Mod Nikita_BG1           ~cmnikita~                            // Nikita
+// Mod Thorin               ~CMTTHOR~                             // Thorin
+// Mod Morwen                ~CMTMORW~                            // Morwen 
 
 // DSotSC
-// Mod Bardo ~DSBARDO~
-// Mod Bub_Snikt ~DSBUB~
-// Mod Conchobhair ~Conchobhair~
-// Mod CuChoinneach ~CuChoinneach~
-// Mod Ferthgil_Trollslayer ~Ferthgil~
-// Mod Jet'laya ~JETLAYA~
-// Mod Keiria_Silverstring ~KEIRIA~
-// Mod Skeezer_Lumpkin_VI ~SKEEZER~
-// Mod Thorfinn_Hauskluniff ~Thorfinn~
+// Mod Bardo                ~DSBARDO~                              // Bardo
+// Mod Bub_Snikt            ~DSBUB~                                // Bub Snikt
+// Mod Conchobhair          ~Conchobhair~                          // Conchobhair
+// Mod CuChoinneach         ~CuChoinneach~                         // CuChoinneach
+// Mod Ferthgil_Trollslayer ~Ferthgil~                             // Ferthgil Trollslayer
+// Mod Jet'laya             ~JETLAYA~                              // Jet'laya
+// Mod Keiria_Silverstring  ~KEIRIA~                               // Keiria Silverstring
+// Mod Skeezer_Lumpkin_VI   ~SKEEZER~                              // Skeezer Lumpkin VI
+// Mod Thorfinn_Hauskluniff ~Thorfinn~                             // Thorfinn Hauskluniff
 
 // NTotSC
-// Mod Will_Scarlet ~WILL~
+// Mod Will_Scarlet         ~WILL~                                 // Will Scarlet
+
+// Valerie
+// Mod Valerie ~T2VAL~
+
+// Indira
+// Mod Indira ~J#Indi~
+
+// Bristlelick
+// Mod Bristlelick ~L#BRIST~
+
+// Glam's npc pack
+// Mod Dave ~GV#DAVE~
+// Mod Flara ~GV#FLAR~
+// Mod Littlun ~GV#LITT~
+// Mod Moidre ~GV#MOID~
+
+// Glam's npc pack
+// Mod Vynd ~GV#VYND~
 
 // Next_Traveler BG1
 
@@ -663,6 +625,7 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ICELAND.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ICELAND1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND1.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~GARRCUT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/GARRCUT.baf~ EVALUATE_BUFFER
 
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi1~
 
@@ -702,119 +665,135 @@ ACTION_FOR_EACH Death_var IN // ACTION_FOR_EACH BG2
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// Original Imoen ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~  // Imoen
-// Original Edwin ~Edwin~                            // Edwin
-// Original Jaheira ~Jaheira~ // ~ttjaheir~             // Jaheira
-// Original Minsc ~Minsc~ // ~ttminsc~                  // Minsc
-// Original Viconia ~Viconia~                        // Viconia
-// Original Dorn ~Dorn~                              // Dorn
-// Original Neera ~Neera~                            // Neera
-// Original Rasaad ~Rasaad~                          // Rasaad
+// Original Imoen           ~%IMOEN_DV%~ // ~ttimoen~ ~Imoen~     // Imoen
+// Original Edwin           ~Edwin~                               // Edwin
+// Original Jaheira         ~Jaheira~    // ~ttjaheir~            // Jaheira
+// Original Minsc           ~Minsc~      // ~ttminsc~             // Minsc
+// Original Viconia         ~Viconia~                             // Viconia
+// Original Dorn            ~Dorn~                                // Dorn
+// Original Neera           ~Neera~                               // Neera
+// Original Rasaad          ~Rasaad~                              // Rasaad
+
 
 /////////////////////////// bg2 ///////////////////////////
 
-// Original Aerie ~Aerie~                               // Aerie
-// Original Anomen ~Anomen~                             // Anomen
-// Original Cernd ~Cernd~                               // Cernd
-// Original Haerdalis ~Haerdalis~                       // Haerdalis
-// Original Hexxat ~Hexxat~                             // Hexxat
-// Original Jan ~Jan~                                   // Jan
-// Original Keldorn ~Keldorn~                           // Keldorn
-// Original Korgan ~Korgan~                             // Korgan
-// Original Mazzy ~Mazzy~                               // Mazzy
-// Original Nalia ~Nalia~                               // Nalia
-// Original Sarevok ~Sarevok~                           // Sarevok
-// Original Valygar ~Valygar~                           // Valygar
-// Original Wilson ~Wilson~                             // Wilson
-// Original Yoshimo ~Yoshimo~                           // Yoshimo
+// Original Aerie           ~Aerie~                               // Aerie
+// Original Anomen          ~Anomen~                              // Anomen
+// Original Cernd           ~Cernd~                               // Cernd
+// Original Haerdalis       ~Haerdalis~                           // Haerdalis
+// Original Hexxat          ~Hexxat~                              // Hexxat
+// Original Jan             ~Jan~                                 // Jan
+// Original Keldorn         ~Keldorn~                             // Keldorn
+// Original Korgan          ~Korgan~                              // Korgan
+// Original Mazzy           ~Mazzy~                               // Mazzy
+// Original Nalia           ~Nalia~                               // Nalia
+// Original Sarevok         ~Sarevok~                             // Sarevok
+// Original Valygar         ~Valygar~                             // Valygar
+// Original Wilson          ~Wilson~                              // Wilson
+// Original Yoshimo         ~Yoshimo~                             // Yoshimo
 
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2
-// Mod Alora BG2 ~CMALORA~
+// Mod Alora BG2            ~CMALORA~                              // Alora
 
 // Yeslick BG2
-// Mod Yeslick BG2 ~LK#YESLK~
+// Mod Yeslick BG2          ~LK#YESLK~                             // Yeslick
 
 // The Undying
-// Mod Undying ~cmninaf~ ~callisto~
+// Mod Undying              ~cmninaf~                              // Ninafer
+// Mod Undying              ~callisto~                             // Callisto
 
 // Summon Bhaalspawn
-// Mod Sandra ~BHAALSPW~
+// Mod Sandra               ~BHAALSPW~                             // Sandra
 
 // NikitaRedux
-// Mod NikitaRedux ~cmnikita~
+// Mod NikitaRedux          ~cmnikita~                             // Nikita
 
 // VampireTales
-// Mod Miriam ~cmgmiriam~
+// Mod Miriam               ~cmgmiriam~                            // Miriam
 
 // Kim
-// Mod Kim ~Kim~
+// Mod Kim                  ~Kim~                                  // Kim
 
 // Severian
-// Mod Severian ~#Severian~
+// Mod Severian             ~#Severian~                            // Severian
 
 // Frennedan
-// Mod Frennedan ~Frennedan~
+// Mod Frennedan            ~Frennedan~                            // Frennedan
 
 // Branwen BG2
-// Mod Branwen_BG2 ~O#Bran~
+// Mod Branwen_BG2          ~O#Bran~                               // Branwen
 // Tiax BG2
-// Mod Tiax_BG2 ~O#Tiax~
+// Mod Tiax_BG2             ~O#Tiax~                               // Tiax
 // Xan BG2
-// Mod Xan_BG2 ~O#XAN~
+// Mod Xan_BG2              ~O#XAN~                                // Xan
 // Coran BG2
-// Mod Coran_BG2 ~O#Coran~
+// Mod Coran_BG2            ~O#Coran~                              // Coran
 
 // Auren Aseph
-// Mod Auren ~K#AUREN~
+// Mod Auren                ~K#AUREN~                              // Auren
 
 // Isra BG2
-// Mod Isra_BG2 ~rh#Isra2~
+// Mod Isra_BG2             ~rh#Isra2~                             // Isra
 
 // Nephele
-// Mod Nephele_Samios ~Nephele~
+// Mod Nephele_Samios       ~Nephele~                              // Nephele
 
 // Sheena
-// Mod Sheena ~K#SHEENA~
+// Mod Sheena               ~K#SHEENA~                             // Sheena
 
 // Kiara / Zaiya
-// Mod Kiara ~Kiara~
-// Mod Zaiya ~Zaiya~
+// Mod Kiara                ~Kiara~                                // Kiara
+// Mod Zaiya                ~Zaiya~                                // Zaiya
 
 // The Beaurin Legacy
-// Mod Minyae ~QI#MI~
-// Mod Elaryn ~QI#ELA~
+// Mod Minyae               ~QI#MI~                                // Minyae
+// Mod Elaryn               ~QI#ELA~                               // Elaryn
 
 // Tyris Flare
-// Mod Tyris ~g#Tyris~
+// Mod Tyris                ~g#Tyris~                              // Tyris
 
 // Region of Terror
-// Mod Wulfgar_Terror ~Wulfg2~
-// Mod Regis_Terror ~Reg2~
-// Mod Drizzt_Terror ~Driz2~
-// Mod Bruenor_Terror ~Brue2~
-// Mod Catti-Brie_Terror ~Catt2~
-// Mod Artemis_Entreri_Terror ~Enter2~
-// Mod Jarlaxle_Terror ~Jarlax2~
-// Mod Tapio_Perkiomaki_Terror ~Tapio~
-// Mod Randall_Terror ~Randall~
-// Mod Alissa_Terror ~ALISSA1~
-// Mod Mordragon_Terror ~Mordrg~
+// Mod Wulfgar_Terror            ~Wulfg2~                              // Wulfgar
+// Mod Regis_Terror              ~Reg2~                                // Regis
+// Mod Drizzt_Terror             ~Driz2~                               // Drizz
+// Mod Bruenor_Terror            ~Brue2~                               // Bruenor
+// Mod Catti-Brie_Terror         ~Catt2~                               // Catti-Brie
+// Mod Artemis_Entreri_Terror    ~Enter2~                              // Artemis
+// Mod Jarlaxle_Terror           ~Jarlax2~                             // Jarlaxle
+// Mod Tapio_Perkiomaki_Terror   ~Tapio~                               // Tapio
+// Mod Randall_Terror            ~Randall~                             // Randall
+// Mod Alissa_Terror             ~ALISSA1~                             // Alissa
+// Mod Mordragon_Terror          ~Mordrg~                              // Mordragon
 
 //Shadow over Soubar
-// Mod Selence_Hillstar_Soubar ~SELENCE~
-// Mod Charlotte_Soubar ~CHARLOTT~
-// Mod Bolivar_Soubar ~BOLIVAR~
-// Mod Tomas_Tomalson_Soubar ~TOMASTM~
+// Mod Selence_Hillstar_Soubar   ~SELENCE~                             // Selence
+// Mod Charlotte_Soubar          ~CHARLOTT~                            // Charlotte
+// Mod Bolivar_Soubar            ~BOLIVAR~                             // Bolivar
+// Mod Tomas_Tomalson_Soubar     ~TOMASTM~                             // Tomas
 
 // ajantisbg2
-// Mod Ajantis_BG2 ~C#Ajantis~
+// Mod Ajantis_BG2          ~C#Ajantis~                            // Ajantis
 
 // Kivan and Deheriana
-// Mod Kivan_BG2 ~P#KIVAN~
-// Mod Deheriana ~P#DEHER~
+// Mod Kivan_BG2            ~P#KIVAN~                              // Kivan
+// Mod Deheriana            ~P#DEHER~                              // Deheriana
+
+// Yvette
+// Mod Yvette ~YxYve~
+
+// The Luxley Family
+// Mod Sebastian ~fhlseb~
+// Mod Andrei ~FHLAND~
+
+//  Beyond the Law
+// Mod Kiyone ~Kiyone~
+// Mod Kova ~Kova~
+
+// Petsy
+// Mod Petsy ~L3PETSY~
 
 // Next_Traveler BG2
 

@@ -1,0 +1,39 @@
+IF
+	NumberOfTimesTalkedTo(0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+
+IF
+	NumberOfTimesTalkedTo(0)
+	!Global("JO_JOIN_Move_Around","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
+		Wait(2)
+		StartDialogueNoSet(Player1)
+END
+
+IF
+	OR(2)
+		!NumberOfTimesTalkedTo(0)
+		!See(Player1)
+	!Global("JO_JOIN_Move_Around","GLOBAL",0)
+THEN
+	RESPONSE #100
+		Wait(5)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
+		DestroySelf()
+END
+
+IF
+	OR(2)
+		!NumberOfTimesTalkedTo(0)
+		!See(Player1)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END

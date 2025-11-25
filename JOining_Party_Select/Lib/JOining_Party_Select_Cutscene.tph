@@ -7,8 +7,8 @@
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
-	StartCutSceneMode()
-	Wait(2)~
+	Wait(2)
+	StartCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
 				~
@@ -85,15 +85,6 @@
 				PATCH_PRINT ~... // Dialog() found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*LeaveParty()~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // LeaveParty() found in %SOURCE_FILESPEC%
-				~
-			END
 		END
 			BUT_ONLY
 
@@ -112,8 +103,8 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
-	StartCutSceneMode()
-	Wait(2)~
+	Wait(2)
+	StartCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
 				~
@@ -125,15 +116,6 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 	EndCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~^[%TAB% ]*LeaveParty()~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // LeaveParty() found in %SOURCE_FILESPEC%
 				~
 			END
 		END

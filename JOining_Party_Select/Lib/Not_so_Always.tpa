@@ -1,0 +1,334 @@
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF GAME_IS ~bgt~ BEGIN
+// BGT isn't implemented and it will probably too difficult to do....
+
+		INCLUDE ~JOining_Party_Select/Lib/g3_bgt_cpmvars.tpa~
+		PRINT ~Game is BGT
+		~
+
+	END ELSE ACTION_IF GAME_IS ~bgee~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Lib/g3_bgee_cpmvars.tpa~
+		PRINT ~Game is BGEE
+		~
+
+		OUTER_SPRINT "CAMPAIGN" "1"
+
+	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+// EET core without EET_END
+
+		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
+		PRINT ~Game is EET 
+		~
+
+		OUTER_SPRINT "CAMPAIGN" "5"
+
+// Deal with override scripts for EET in bgee when EET_END is intalled
+		OUTER_SPRINT "Don_t_replace_anything_ODD" "EET_ODD"
+
+	END ELSE ACTION_IF (GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+// BG2EE or EET when EET_END is installed
+
+			OUTER_SPRINT "AJANTIS_JOINED" "AJANTJ"
+			OUTER_SPRINT "ALORA_JOINED" "ALORAJ"
+			OUTER_SPRINT "BRANWEN_JOINED" "BRANWJ"
+			OUTER_SPRINT "CORAN_JOINED" "CORANJ"
+			OUTER_SPRINT "DYNAHEIR_JOINED" "DYNAHJ"
+			OUTER_SPRINT "EDWIN_JOINED" "EDWINJ"
+			OUTER_SPRINT "ELDOTH_JOINED" "ELDOTJ"
+			OUTER_SPRINT "FALDORN_JOINED" "FALDOJ"
+			OUTER_SPRINT "GARRICK_JOINED" "GARRIJ"
+			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
+			OUTER_SPRINT "JAHEIRA_JOINED" "JAHEIRAJ"
+			OUTER_SPRINT "KAGAIN_JOINED" "KAGAIJ"
+			OUTER_SPRINT "KHALID_JOINED" "KHALIJ"
+			OUTER_SPRINT "KIVAN_JOINED" "KIVANJ"
+			OUTER_SPRINT "MINSC_JOINED" "MINSCJ"
+			OUTER_SPRINT "MONTARON_JOINED" "MONTAJ"
+			OUTER_SPRINT "QUAYLE_JOINED" "QUAYLJ"
+			OUTER_SPRINT "SAFANA_JOINED" "SAFANJ"
+			OUTER_SPRINT "SHARTEEL_JOINED" "SHARTJ"
+			OUTER_SPRINT "SKIE_JOINED" "SKIEJ"
+			OUTER_SPRINT "TIAX_JOINED" "TIAXJ"
+			OUTER_SPRINT "VICONIA_JOINED" "VICONIJ"
+			OUTER_SPRINT "XAN_JOINED" "XANJ"
+			OUTER_SPRINT "XZAR_JOINED" "XZARJ"
+			OUTER_SPRINT "YESLICK_JOINED" "YESLIJ"
+			OUTER_SPRINT "DORN_JOINED" "DORNJ"
+			OUTER_SPRINT "NEERA_JOINED" "NEERAJ"
+			OUTER_SPRINT "RASAAD_JOINED" "RASAADJ"
+			// BCS
+			OUTER_SPRINT "AJANTIS_BCS" "AJANTIS"
+			OUTER_SPRINT "ALORA_BCS" "ALORA"
+			OUTER_SPRINT "BRANWEN_BCS" "BRANWEN"
+			OUTER_SPRINT "CORAN_BCS" "CORAN"
+			OUTER_SPRINT "DYNAHEIR_BCS" "DYNAHEIR"
+			OUTER_SPRINT "EDWIN_BCS" "EDWIN"
+			OUTER_SPRINT "ELDOTH_BCS" "ELDOTH"
+			OUTER_SPRINT "FALDORN_BCS" "FALDORN"
+			OUTER_SPRINT "GARRICK_BCS" "GARRICK"
+			OUTER_SPRINT "JAHEIRA_BCS" "JAHEIRA"
+			OUTER_SPRINT "KAGAIN_BCS" "KAGAIN"
+			OUTER_SPRINT "KHALID_BCS" "KHALID"
+			OUTER_SPRINT "KIVAN_BCS" "KIVAN"
+			OUTER_SPRINT "MINSC_BCS" "MINSC"
+			OUTER_SPRINT "MONTARON_BCS" "MONTARON"
+			OUTER_SPRINT "QUAYLE_BCS" "QUAYLE"
+			OUTER_SPRINT "SAFANA_BCS" "SAFANA"
+			OUTER_SPRINT "SHARTEEL_BCS" "SHARTEEL"
+			OUTER_SPRINT "SKIE_BCS" "SKIE"
+			OUTER_SPRINT "TIAX_BCS" "TIAX"
+			OUTER_SPRINT "VICONIA_BCS" "VICONIA"
+			OUTER_SPRINT "XAN_BCS" "XAN"
+			OUTER_SPRINT "XZAR_BCS" "XZAR"
+			OUTER_SPRINT "YESLICK_BCS" "YESLICK"
+			OUTER_SPRINT "DORN_BCS" "DORN"
+			OUTER_SPRINT "NEERA_BCS" "NEERA"
+			OUTER_SPRINT "RASAAD_BCS" "RASAAD"
+			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2"
+			OUTER_SPRINT "IMOEN_DV" "imoen2"
+			OUTER_SPRINT "IMOEN_BCS" "IMOEN2"
+				PRINT ~Game is BG2EE or EET_END is installed
+				~
+
+// Only after EET_END
+		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
+
+			OUTER_SPRINT "CAMPAIGN" "5"
+
+			OUTER_SPRINT "Candlekeep_BCS" "BG2600"
+
+			OUTER_SPRINT "IMOEN_JOINED" "IMOEN2J"
+
+// Deal with override scripts for EET in bgee when EET_END is intalled
+			OUTER_SPRINT "Don_t_replace_anything_END" "EET_END"
+
+		END // MOD_IS_INSTALLED ~EET_END.TP2~
+
+	END // GAME_IS ~bg2ee~ OR MOD_IS_INSTALLED ~EET_END.TP2~
+
+///////////////////////////////////////////////////////////////////////////////
+
+// ToB Joining_Dialog are merged for EET
+
+		ACTION_IF (GAME_IS ~eet~) BEGIN
+
+		OUTER_SPRINT "IMOEN25J" "IMOEN2J"
+		OUTER_SPRINT "EDWIN25J" "EDWINJ"
+		OUTER_SPRINT "JAHEI25J" "JAHEIRAJ"
+		OUTER_SPRINT "MINSC25J" "MINSCJ"
+		OUTER_SPRINT "VICON25J" "VICONIJ"
+		OUTER_SPRINT "DORN25J"  "DORNJ"
+		OUTER_SPRINT "NEERA25J" "NEERAJ"
+		OUTER_SPRINT "RASAA25J" "RASAADJ"
+		
+		OUTER_SPRINT "AERIE25J" "AERIEJ"
+		OUTER_SPRINT "ANOME25J" "ANOMENJ"
+		OUTER_SPRINT "CERND25J" "CERNDJ"
+		OUTER_SPRINT "HAERD25J" "HAERDAJ"
+		OUTER_SPRINT "HEXXA25J" "HEXXATJ"
+		OUTER_SPRINT "JAN25J"   "JANJ"
+		OUTER_SPRINT "KELDO25J" "KELDORJ"
+		OUTER_SPRINT "KORGA25J" "KORGANJ"
+		OUTER_SPRINT "MAZZY25J" "MAZZYJ"
+		OUTER_SPRINT "NALIA25J" "NALIAJ"
+		OUTER_SPRINT "VALYG25J" "VALYGARJ"
+
+		END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
+
+		OUTER_SPRINT "IMOEN25J" "IMOEN25J"
+		OUTER_SPRINT "EDWIN25J" "EDWIN25J"
+		OUTER_SPRINT "JAHEI25J" "JAHEI25J"
+		OUTER_SPRINT "MINSC25J" "MINSC25J"
+		OUTER_SPRINT "VICON25J" "VICON25J"
+		OUTER_SPRINT "DORN25J"  "DORN25J"
+		OUTER_SPRINT "NEERA25J" "NEERA25J"
+		OUTER_SPRINT "RASAA25J" "RASAA25J"
+		
+		OUTER_SPRINT "AERIE25J" "AERIE25J"
+		OUTER_SPRINT "ANOME25J" "ANOME25J"
+		OUTER_SPRINT "CERND25J" "CERND25J"
+		OUTER_SPRINT "HAERD25J" "HAERD25J"
+		OUTER_SPRINT "HEXXA25J" "HEXXA25J"
+		OUTER_SPRINT "JAN25J"   "JAN25J"
+		OUTER_SPRINT "KELDO25J" "KELDO25J"
+		OUTER_SPRINT "KORGA25J" "KORGA25J"
+		OUTER_SPRINT "MAZZY25J" "MAZZY25J"
+		OUTER_SPRINT "NALIA25J" "NALIA25J"
+		OUTER_SPRINT "VALYG25J" "VALYG25J"
+
+		END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Prep for REPLACE_TEXTUALLY for NPC to travelers selection
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
+
+// Load travelers selection
+
+		INCLUDE ~JOining_Party_Select/Lib/Always_as_traveler.tpa~
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+			OUTER_SPRINT "%IMOEN_DV%_name"            "Imoen"
+			OUTER_SPRINT "Edwin_name"                 "Edwin"
+			OUTER_SPRINT "Jaheira_name"               "Jaheira"
+			OUTER_SPRINT "Minsc_name"                 "Minsc"
+			OUTER_SPRINT "Viconia_name"               "Viconia"
+			OUTER_SPRINT "Dorn_name"                  "Dorn"
+			OUTER_SPRINT "Neera_name"                 "Neera"
+			OUTER_SPRINT "Rasaad_name"                "Rasaad"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "Ajantis_name"                             "Ajantis"
+			OUTER_SPRINT "Alora_name"                               "Alora"
+			OUTER_SPRINT "Branwen_name"                             "Branwen"
+			OUTER_SPRINT "Coran_name"                               "Coran"
+			OUTER_SPRINT "Dynaheir_name"                            "Dynaheir"
+			OUTER_SPRINT "Eldoth_name"                              "Eldoth"
+			OUTER_SPRINT "Faldorn_name"                             "Faldorn"
+			OUTER_SPRINT "Garrick_name"                             "Garrick"
+			OUTER_SPRINT "Kagain_name"                              "Kagain"
+			OUTER_SPRINT "Khalid_name"                              "Khalid"
+			OUTER_SPRINT "Kivan_name"                               "Kivan"
+			OUTER_SPRINT "Montaron_name"                            "Montaron"
+			OUTER_SPRINT "Quayle_name"                              "Quayle"
+			OUTER_SPRINT "Safana_name"                              "Safana"
+			OUTER_SPRINT "Sharteel_name"                            "Sharteel"
+			OUTER_SPRINT "Skie_name"                                "Skie"
+			OUTER_SPRINT "Tiax_name"                                "Tiax"
+			OUTER_SPRINT "Xan_name"                                 "Xan"
+			OUTER_SPRINT "Xzar_name"                                "Xzar"
+			OUTER_SPRINT "Yeslick_name"                             "Yeslick"
+			OUTER_SPRINT "Baeloth_name"                             "Baeloth"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "Voghiln_name"                             "Voghiln"
+			OUTER_SPRINT "Corwin_name"                              "Corwin"
+			OUTER_SPRINT "Mkhiin_name"                              "Mkhiin"
+			OUTER_SPRINT "Glint_name"                               "Glint"
+///////////////////////////////////////////////////////////////"////////////////////
+			OUTER_SPRINT "Aerie_name"                               "Aerie"
+			OUTER_SPRINT "Anomen_name"                              "Anomen"
+			OUTER_SPRINT "Cernd_name"                               "Cernd"
+			OUTER_SPRINT "Haerdalis_name"                           "Haerdalis"
+			OUTER_SPRINT "Hexxat_name"                              "Hexxat"
+			OUTER_SPRINT "Jan_name"                                 "Jan"
+			OUTER_SPRINT "Keldorn_name"                             "Keldorn"
+			OUTER_SPRINT "Korgan_name"                              "Korgan"
+			OUTER_SPRINT "Mazzy_name"                               "Mazzy"
+			OUTER_SPRINT "Nalia_name"                               "Nalia"
+			OUTER_SPRINT "Sarevok_name"                             "Sarevok"
+			OUTER_SPRINT "Valygar_name"                             "Valygar"
+			OUTER_SPRINT "Wilson_name"                              "Wilson"
+			OUTER_SPRINT "Yoshimo_name"                             "Yoshimo"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "#Ishy_name"                   "Ishlilka"
+			OUTER_SPRINT "ZYJCOB_name"                  "Jacob"
+			OUTER_SPRINT "ZYASKA_name"                  "Askaria"
+			OUTER_SPRINT "rh#isra_name"                 "Isra"
+			OUTER_SPRINT "SUFINCH_name"                 "Finch"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "F_JARLAXE_name"               "Jarlaxle"
+			OUTER_SPRINT "F_ARTEMIS_name"               "Artemis"
+			OUTER_SPRINT "F_CATTIBR_name"               "Catti-Brie"
+			OUTER_SPRINT "F_BRUENOR_name"               "Bruenor"
+			OUTER_SPRINT "F_REGIS_name"                 "Regis"
+			OUTER_SPRINT "F_DRIZZT_name"                "Drizzt"
+			OUTER_SPRINT "F_WULFGAR_name"               "Wulfgar"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "cmnikita_name"                "Nikita"
+			OUTER_SPRINT "CMTTHOR_name"                 "Thorin"
+			OUTER_SPRINT "CMTMORW_name"                 "Morwen"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "DSBARDO_name"                 "Bardo"
+			OUTER_SPRINT "DSBUB_name"                   "Bub"
+			OUTER_SPRINT "Conchobhair_name"             "Conchobhair"
+			OUTER_SPRINT "CuChoinneach_name"            "CuChoinneach"
+			OUTER_SPRINT "Ferthgil_name"                "Ferthgil"
+			OUTER_SPRINT "JETLAYA_name"                 "Jet'laya"
+			OUTER_SPRINT "KEIRIA_name"                  "Keiria"
+			OUTER_SPRINT "SKEEZER_name"                 "Skeezer"
+			OUTER_SPRINT "Thorfinn_name"                "Thorfinn Hauskluniff"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "WILL_name"                    "Will"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "T2VAL_name"                   "Valerie"
+			OUTER_SPRINT "J#Indi_name"                  "Indira"
+			OUTER_SPRINT "L#BRIST_name"                 "Bristlelick"
+			OUTER_SPRINT "GV#DAVE_name"                 "Dave"
+			OUTER_SPRINT "GV#FLAR_name"                 "Flara"
+			OUTER_SPRINT "GV#LITT_name"                 "Littlun"
+			OUTER_SPRINT "GV#MOID_name"                 "Moidre"
+			OUTER_SPRINT "GV#VYND_name"                 "Vynd"
+// Next_Traveler BG1
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "CMALORA_name"                 "Alora"
+			OUTER_SPRINT "LK#YESLK_name"                "Yeslick"
+			OUTER_SPRINT "cmninaf_name"                 "Ninafer"
+			OUTER_SPRINT "callisto_name"                "Callisto"
+			OUTER_SPRINT "BHAALSPW_name"                "Sandra"
+			OUTER_SPRINT "cmnikita_name"                "Nikita"
+			OUTER_SPRINT "cmgmiriam_name"               "Miriam"
+			OUTER_SPRINT "Kim_name"                     "Kim"
+			OUTER_SPRINT "#Severian_name"               "Severian"
+			OUTER_SPRINT "Frennedan_name"               "Frennedan"
+			OUTER_SPRINT "O#Bran_name"                  "Branwen"
+			OUTER_SPRINT "O#Tiax_name"                  "Tiax"
+			OUTER_SPRINT "O#Xan_name"                   "Xan"
+			OUTER_SPRINT "O#Coran_name"                 "Coran"
+			OUTER_SPRINT "K#AUREN_name"                 "Auren"
+			OUTER_SPRINT "rh#Isra2_name"                "Isra"
+			OUTER_SPRINT "Nephele_name"                 "Nephele"
+			OUTER_SPRINT "K#SHEENA_name"                "Sheena"
+			OUTER_SPRINT "Kiara_name"                   "Kiara"
+			OUTER_SPRINT "Zaiya_name"                   "Zaiya"
+			OUTER_SPRINT "QI#MI_name"                   "Minyae"
+			OUTER_SPRINT "QI#ELA_name"                  "Elaryn"
+			OUTER_SPRINT "g#Tyris_name"                 "Tyris"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "Wulfg2_name"                  "Wulfgar"
+			OUTER_SPRINT "Reg2_name"                    "Regis"
+			OUTER_SPRINT "Driz2_name"                   "Drizz"
+			OUTER_SPRINT "Brue2_name"                   "Bruenor"
+			OUTER_SPRINT "Catt2_name"                   "Catti-Brie"
+			OUTER_SPRINT "Enter2_name"                  "Artemis"
+			OUTER_SPRINT "Jarlax2_name"                 "Jarlaxle"
+			OUTER_SPRINT "Tapio_name"                   "Tapio"
+			OUTER_SPRINT "Randall_name"                 "Randall"
+			OUTER_SPRINT "ALISSA1_name"                 "Alissa"
+			OUTER_SPRINT "Mordrg_name"                  "Mordragon"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "SELENCE_name"                 "Selence"
+			OUTER_SPRINT "CHARLOTT_name"                "Charlotte"
+			OUTER_SPRINT "BOLIVAR_name"                 "Bolivar"
+			OUTER_SPRINT "TOMASTM_name"                 "Tomas"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "C#Ajantis_name"               "Ajantis"
+			OUTER_SPRINT "P#KIVAN_name"                 "Kivan"
+			OUTER_SPRINT "P#DEHER_name"                 "Deheriana"
+			OUTER_SPRINT "YxYve_name"                   "Yvette"
+			OUTER_SPRINT "fhlseb_name"                  "Sebastian"
+			OUTER_SPRINT "FHLAND_name"                  "Andrei"
+			OUTER_SPRINT "Kiyone_name"                  "Kiyone"
+			OUTER_SPRINT "Kova_name"                    "Kova"
+			OUTER_SPRINT "L3PETSY_name"                 "Petsy"
+// Next_Traveler BG2
+//////////////////////////////////////////////////////////////////////////////////////

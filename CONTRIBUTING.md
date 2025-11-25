@@ -3,12 +3,18 @@
    
 - [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select.tph)  
    - DeathVars selection for JOining_Party_Select_BCS.tph and JOining_Party_Select_DLG.tph
+   - Real Traveler only
+   
+- [JOining_Party_Select_Base.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Base.tph)  
+   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for all NPCs death variable in game (DLG and BCS).
 
 - [JOining_Party_Select_BCS.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph)  
-   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable in BCS.
+   - Extend party ACTIONS to real traveler for each selected NPCs death variable in BCS.
+   - Real Traveler only
    
-- [JOining_Party_Select_DLG.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph)  
-   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each selected NPCs death variable in DLG.
+- [JOining_Party_Select_DLG.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph) 
+   - Extend party actions to real traveler for each selected NPCs death variable in DLG.
+   - Real Traveler only
 
 - [JOining_Party_Select_Myself.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph)  
    - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for each existing Myself in DLG and BCS.
@@ -16,11 +22,18 @@
 - [JOining_Party_Select_Cutscene.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Cutscene.tph)  
    - Search and replace Cutscenes related actions to avoid unintended behavior and allow traveler deactivation.
 
-- [JOining_Party_Select_Joined.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph)  
+- [JOining_Party_Select_Joined.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph) 
    - Implement a little script to other (not selected) NPCs. (All_NPC_JOIN.baf)
+   - Check for ToB NPC without xxx25.cre to expend xxx25.bcs anyway.
+
+- [JOining_Party_Select_Fix.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph)  
+   - Special Cases and Workarounds / Corrections for scripts, dialogues and else.
+   - Real Traveler only (associated to JOining_Party_Select_BCS and JOining_Party_Select_DLG)
 
 - [JOining_Party_Select_End.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_End.tph)  
-   - Special Cases and Workarounds / Corrections for scripts, dialogues and else. Create All_In.baf for each selected NPCs.
+   - Special Cases and Workarounds / Corrections for scripts, dialogues and else. 
+   - Create All_In.baf for each selected NPCs.
+   - Create and expend Charname gestion dialog for each selected NPCs.
 
 - [JOining_Party_Select_Core_Original.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph)  
    - Implement scripts and dialogs for each selected original NPCs. (All_TRAVELER_JOIN, All_In.baf, JO_JOIN)
@@ -36,16 +49,16 @@
    - Add items, effects and spells.
    
 - [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)  
-
    - Select desired Travelers, set to 1 to install or 0 to not install.
 
 - [JOining_Traveler.tpa](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Traveler.tpa)  
-
    - Read JOining_Traveler.ini to set player NPCs to Traveler selection
 
 - [Always_as_traveler.tpa](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/Always_as_traveler.tpa)  
-
    - Enable selected travelers installation.
+
+- [Switch_Timer.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/Switch_Timer.tph)  
+   - Install relevant choice for second componant (Delay between two switch in party).
 
 - [All_In.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/All_In.BAF)  
    - Added to each selected NPCs to deal with Npc to Familiar switch and statut.
@@ -105,6 +118,8 @@
 | JO_JOIN_IS_HIDDEN_BY_CUTSCENE | L | Familiar is currently Deactivate by a cutscene | 0: False<br>Other: True |
 | JO_NEVER_JOIN | L | Prevent the familiar to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
 | JO_JOIN_BD0120 | L | Specific to Korlaz donjon, used to keep familiar along. | 0: False<br>Other: True |
+| JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 
+| JO_JOIN_Move_Done | L | Related to JO_JOIN_Move_Around used to make the script apply only once until next command |
 
 
 

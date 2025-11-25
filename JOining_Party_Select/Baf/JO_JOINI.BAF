@@ -1,9 +1,78 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",1)
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
+		Continue()
+END
+
+// Related to JOJOINNE.D groupe changes
+//// No need to change JO_JOIN_CUTSCENE variable, next switch or next dialog or next cutscene will simply do it.
+//// No need to change JO_NEVER_JOIN variable // Reset when loading a save.
+IF
+	!Global("JO_JOIN_Move_Around","GLOBAL",0)
+	!Global("JO_JOIN_Move_Done","LOCALS",1)
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	Switch("JO_JOIN_Move_Around","GLOBAL")
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
+		Continue()
+	RESPONSE #2
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		Continue()
+	RESPONSE #3
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_NEVER_JOIN","LOCALS",1)
+		Continue()
+	RESPONSE #4
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+		Continue()
+	RESPONSE #5
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		Continue()
+	RESPONSE #6
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		DisplayStringHead(Myself,~Youhou !~)
+		Continue()
+	RESPONSE #7
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		Continue()
+	RESPONSE #8
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)
+		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_ATTACK","LOCALS",0)
+		SetGlobal("BDAI_ATTACK_MODE","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_ITEMS","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_OFFENSIVE","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_DEFENSIVE","LOCALS",0)
+		SetGlobal("BDAI_DISABLE_SPECIAL","LOCALS",0)
+		SetGlobal("BDAI_SKILL_MODE","LOCALS",0)
+		Continue()
+/*	RESPONSE #9
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		Continue()*/
+END
+
+///////////////////////////////////////////////////////////////////////////////////
+
+IF
 	!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
 	IsActive(Myself)
 THEN
 	RESPONSE #100
@@ -34,6 +103,8 @@ IF // reactive JOMINHP1 after load
 THEN
 	RESPONSE #100
 		EquipItemEx("JOMINHP1",0)
+		SetGlobal("JO_NEVER_JOIN","LOCALS",0) // Reset at loading
+		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
 		Continue()
 END
 
@@ -42,7 +113,7 @@ IF // security check
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_JOIN","LOCALS",0) // What ???
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 END
