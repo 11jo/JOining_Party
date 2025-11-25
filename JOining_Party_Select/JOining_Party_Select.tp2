@@ -31,6 +31,10 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet bgt~ ~Necessite BGEE / BG2EE / BGT / E
 
 ///////////////////////////////////////////////////////////////////////////////
 
+	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
+
+	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
+
 		INCLUDE ~JOining_Party_Select/Lib/Not_so_Always.tpa~
 
 ///////////////////////////////////////////////////////////////////////////////
