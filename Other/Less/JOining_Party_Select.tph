@@ -262,8 +262,6 @@ BEGIN
 // SetGlobal situation
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~1REPLACESetGlobal ActionOverride("%Death_var%",SetGlobal(%slashun%))~
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~2REPLACESetGlobal ActionOverride(%slashun%,SetGlobal(%slashdeux%))~
-// LeaveParty situation
-			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACELeaveParty~ ~REPLACELeaveParty SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",1)~
 ////////////////// BCS ONLY //////////////////
 // !CheckStatGT situation
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECheckStatGT~ ~REPLACECheckStatGT !CheckStatGT("%Death_var%",0,%slashun%)~
@@ -325,8 +323,6 @@ BEGIN
 // SetGlobal situation
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~1REPLACESetGlobal ActionOverride("%Death_var%",SetGlobal(%slashun%))~
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~2REPLACESetGlobal ActionOverride(%slashun%,SetGlobal(%slashdeux%))~
-// LeaveParty situation
-			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACELeaveParty~ ~REPLACELeaveParty SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",1)~
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -376,8 +372,6 @@ END
 																// SetGlobal situation
 																			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~~
 																			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~~
-																// LeaveParty situation
-																			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACELeaveParty~ ~~
 																////////////////// BCS ONLY //////////////////
 																// !CheckStatGT situation
 																			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECheckStatGT~ ~~
@@ -430,8 +424,6 @@ END
 																// SetGlobal situation
 																			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~~
 																			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~~
-																// LeaveParty situation
-																			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACELeaveParty~ ~~
 
 		INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_BCS.tph~
 

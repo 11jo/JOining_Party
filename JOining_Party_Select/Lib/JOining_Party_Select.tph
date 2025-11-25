@@ -1,4 +1,10 @@
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	COPY ~JOining_Party_Select/lib/JOining_Party_Select_Base_BCS.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_BCS.tph~
+	COPY ~JOining_Party_Select/lib/JOining_Party_Select_Base_DLG.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ACTION_FOR_EACH Death_var IN
 
@@ -237,8 +243,281 @@ ACTION_FOR_EACH Death_var IN
 
 BEGIN
 
-		INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_BCS.tph~
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_DLG.tph~
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_BCS.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_BCS.tph~
+// ApplySpell situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEApplySpell~ ~1REPLACEApplySpell
+ActionOverride("%Death_var%",ApplySpell(Myself,%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEApplySpell~ ~2REPLACEApplySpell
+ActionOverride("%Death_var%",ApplySpell("%Death_var%",%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEApplySpell~ ~3REPLACEApplySpell
+ApplySpell("%Death_var%",%slashun%)~
+// CreateVisualEffectObject situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACECreateVisualEffectObject~ ~1REPLACECreateVisualEffectObject
+CreateVisualEffectObject(%slashun%,"%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACECreateVisualEffectObject~ ~2REPLACECreateVisualEffectObject
+ActionOverride("%Death_var%",CreateVisualEffectObject(%slashun%,"%Death_var%"))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACECreateVisualEffectObject~ ~3REPLACECreateVisualEffectObject
+ActionOverride("%Death_var%",CreateVisualEffectObject(%slashun%,Myself))~
+// SetSequence situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACESetSequence~ ~REPLACESetSequence
+ActionOverride("%Death_var%",SetSequence(%slashun%))~
+// ReallyForceSpell situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEReallyForceSpell~ ~1REPLACEReallyForceSpell
+ActionOverride("%Death_var%",ReallyForceSpell("%Death_var%",%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEReallyForceSpell~ ~2REPLACEReallyForceSpell
+ActionOverride("%Death_var%",ReallyForceSpell(Myself,%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEReallyForceSpell~ ~3REPLACEReallyForceSpell
+ActionOverride(%slashun%,ReallyForceSpell("%Death_var%",%slashdeux%))~
+// ForceSpell situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEForceSpell~ ~1REPLACEForceSpell
+ActionOverride("%Death_var%",ForceSpell("%Death_var%",%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEForceSpell~ ~2REPLACEForceSpell
+ActionOverride("%Death_var%",ForceSpell(Myself,%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEForceSpell~ ~3REPLACEForceSpell
+ActionOverride(%slashun%,ForceSpell("%Death_var%",%slashdeux%))~
+// MakeUnselectable situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEMakeUnselectable~ ~REPLACEMakeUnselectable
+ActionOverride("%Death_var%",MakeUnselectable(%slashun%))~
+// PlayDead situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEPlayDead~ ~REPLACEPlayDead
+ActionOverride("%Death_var%",PlayDead%slashun%(%slashdeux%))~
+// Face situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEFace~ ~REPLACEFace
+ActionOverride("%Death_var%",Face%slashun%(%slashdeux%))~
+// Rest situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACERest~ ~REPLACERest
+ActionOverride("%Death_var%",Rest())~
+// ClearActions situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEClearActions~ ~1REPLACEClearActions
+ClearActions("%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEClearActions~ ~2REPLACEClearActions
+ActionOverride("%Death_var%",ClearActions())~
+// Kill situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEKill~ ~REPLACEKill Kill("%Death_var%")~
+// ApplySpellRES situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACE_ApplySpell_RES~ ~1REPLACE_ApplySpell_RES
+ApplySpellRES(%slashun%,"%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACE_ApplySpell_RES~ ~2REPLACE_ApplySpell_RES
+ActionOverride("%Death_var%",ApplySpellRES(%slashun%,Myself))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACE_ApplySpell_RES~ ~3REPLACE_ApplySpell_RES
+ActionOverride("%Death_var%",ApplySpellRES(%slashun%,"%Death_var%"))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACE_ApplySpell_RES~ ~4REPLACE_ApplySpell_RES
+ActionOverride(%slashun%,ApplySpellRES(%slashdeux%,"%Death_var%"))~
+// ReallyForceSpellRES situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACER_ReallyForceSpell_RES~ ~1REPLACER_ReallyForceSpell_RES
+ReallyForceSpellRES(%slashun%,"%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACER_ReallyForceSpell_RES~ ~2REPLACER_ReallyForceSpell_RES
+ActionOverride("%Death_var%",ReallyForceSpellRES(%slashun%,"%Death_var%"))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACER_ReallyForceSpell_RES~ ~3REPLACER_ReallyForceSpell_RES
+ActionOverride("%Death_var%",ReallyForceSpellRES(%slashun%,Myself))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACER_ReallyForceSpell_RES~ ~4REPLACER_ReallyForceSpell_RES
+ActionOverride(%slashun%,ReallyForceSpellRES(%slashdeux%,"%Death_var%"))~
+// SetGlobal situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~1REPLACESetGlobal
+ActionOverride("%Death_var%",SetGlobal(%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~2REPLACESetGlobal
+ActionOverride(%slashun%,SetGlobal(%slashdeux%))~
+////////////////// BCS ONLY //////////////////
+// !CheckStatGT situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECheckStatGT~ ~REPLACECheckStatGT
+!CheckStatGT("%Death_var%",0,%slashun%)~
+// FollowObjectFormation situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEFollowObjectFormation~ ~REPLACEFollowObjectFormation
+ActionOverride("%Death_var%",FollowObjectFormation(%slashun%))~
+// CreateCreatureObjectCopy situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECreateCreatureObjectCopy~ ~REPLACECreateCreatureObjectCopy
+CreateCreatureObjectCopy(%slashun%,"%Death_var%",0,0,0)~
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~
+// ApplySpell situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEApplySpell~ ~1REPLACEApplySpell
+ActionOverride("%Death_var%",ApplySpell(Myself,%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEApplySpell~ ~2REPLACEApplySpell
+ActionOverride("%Death_var%",ApplySpell("%Death_var%",%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEApplySpell~ ~3REPLACEApplySpell
+ApplySpell("%Death_var%",%slashun%)~
+// CreateVisualEffectObject situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACECreateVisualEffectObject~ ~1REPLACECreateVisualEffectObject
+CreateVisualEffectObject(%slashun%,"%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACECreateVisualEffectObject~ ~2REPLACECreateVisualEffectObject
+ActionOverride("%Death_var%",CreateVisualEffectObject(%slashun%,"%Death_var%"))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACECreateVisualEffectObject~ ~3REPLACECreateVisualEffectObject
+ActionOverride("%Death_var%",CreateVisualEffectObject(%slashun%,Myself))~
+// SetSequence situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACESetSequence~ ~REPLACESetSequence
+ActionOverride("%Death_var%",SetSequence(%slashun%))~
+// ReallyForceSpell situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEReallyForceSpell~ ~1REPLACEReallyForceSpell
+ActionOverride("%Death_var%",ReallyForceSpell("%Death_var%",%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEReallyForceSpell~ ~2REPLACEReallyForceSpell
+ActionOverride("%Death_var%",ReallyForceSpell(Myself,%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEReallyForceSpell~ ~3REPLACEReallyForceSpell
+ActionOverride(%slashun%,ReallyForceSpell("%Death_var%",%slashdeux%))~
+// ForceSpell situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEForceSpell~ ~1REPLACEForceSpell
+ActionOverride("%Death_var%",ForceSpell("%Death_var%",%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEForceSpell~ ~2REPLACEForceSpell
+ActionOverride("%Death_var%",ForceSpell(Myself,%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEForceSpell~ ~3REPLACEForceSpell
+ActionOverride(%slashun%,ForceSpell("%Death_var%",%slashdeux%))~
+// MakeUnselectable situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEMakeUnselectable~ ~REPLACEMakeUnselectable
+ActionOverride("%Death_var%",MakeUnselectable(%slashun%))~
+// PlayDead situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEPlayDead~ ~REPLACEPlayDead
+ActionOverride("%Death_var%",PlayDead%slashun%(%slashdeux%))~
+// Face situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEFace~ ~REPLACEFace
+ActionOverride("%Death_var%",Face%slashun%(%slashdeux%))~
+// Rest situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACERest~ ~REPLACERest
+ActionOverride("%Death_var%",Rest())~
+// ClearActions situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEClearActions~ ~1REPLACEClearActions
+ClearActions("%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEClearActions~ ~2REPLACEClearActions
+ActionOverride("%Death_var%",ClearActions())~
+// Kill situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEKill~ ~REPLACEKill Kill("%Death_var%")~
+// ApplySpellRES situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACE_ApplySpell_RES~ ~1REPLACE_ApplySpell_RES
+ApplySpellRES(%slashun%,"%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACE_ApplySpell_RES~ ~2REPLACE_ApplySpell_RES
+ActionOverride("%Death_var%",ApplySpellRES(%slashun%,Myself))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACE_ApplySpell_RES~ ~3REPLACE_ApplySpell_RES
+ActionOverride("%Death_var%",ApplySpellRES(%slashun%,"%Death_var%"))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACE_ApplySpell_RES~ ~4REPLACE_ApplySpell_RES
+ActionOverride(%slashun%,ApplySpellRES(%slashdeux%,"%Death_var%"))~
+// ReallyForceSpellRES situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACER_ReallyForceSpell_RES~ ~1REPLACER_ReallyForceSpell_RES
+ReallyForceSpellRES(%slashun%,"%Death_var%")~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACER_ReallyForceSpell_RES~ ~2REPLACER_ReallyForceSpell_RES
+ActionOverride("%Death_var%",ReallyForceSpellRES(%slashun%,"%Death_var%"))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACER_ReallyForceSpell_RES~ ~3REPLACER_ReallyForceSpell_RES
+ActionOverride("%Death_var%",ReallyForceSpellRES(%slashun%,Myself))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACER_ReallyForceSpell_RES~ ~4REPLACER_ReallyForceSpell_RES
+ActionOverride(%slashun%,ReallyForceSpellRES(%slashdeux%,"%Death_var%"))~
+// SetGlobal situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~1REPLACESetGlobal
+ActionOverride("%Death_var%",SetGlobal(%slashun%))~
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~2REPLACESetGlobal
+ActionOverride(%slashun%,SetGlobal(%slashdeux%))~
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 END
+
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_BCS.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_BCS.tph~
+									// ApplySpell situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEApplySpell~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEApplySpell~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEApplySpell~ ~~
+									// CreateVisualEffectObject situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACECreateVisualEffectObject~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACECreateVisualEffectObject~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACECreateVisualEffectObject~ ~~
+									// SetSequence situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACESetSequence~ ~~
+									// ReallyForceSpell situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEReallyForceSpell~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEReallyForceSpell~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEReallyForceSpell~ ~~
+									// ForceSpell situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEForceSpell~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEForceSpell~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEForceSpell~ ~~
+									// MakeUnselectable situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEMakeUnselectable~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEPlayDead~ ~~
+									// Face situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEFace~ ~~
+									// Rest situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACERest~ ~~
+									// ClearActions situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEClearActions~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEClearActions~ ~~
+									// Kill situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEKill~ ~~
+									// ApplySpellRES situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACE_ApplySpell_RES~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACE_ApplySpell_RES~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACE_ApplySpell_RES~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACE_ApplySpell_RES~ ~~
+									// ReallyForceSpellRES situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACER_ReallyForceSpell_RES~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACER_ReallyForceSpell_RES~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACER_ReallyForceSpell_RES~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACER_ReallyForceSpell_RES~ ~~
+									// SetGlobal situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~~
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~~
+									////////////////// BCS ONLY //////////////////
+									// !CheckStatGT situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECheckStatGT~ ~~
+									// FollowObjectFormation situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEFollowObjectFormation~ ~~
+									// CreateCreatureObjectCopy situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECreateCreatureObjectCopy~ ~~
+
+	COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~
+				// ApplySpell situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEApplySpell~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEApplySpell~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEApplySpell~ ~~
+				// CreateVisualEffectObject situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACECreateVisualEffectObject~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACECreateVisualEffectObject~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACECreateVisualEffectObject~ ~~
+				// SetSequence situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACESetSequence~ ~~
+				// ReallyForceSpell situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEReallyForceSpell~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEReallyForceSpell~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEReallyForceSpell~ ~~
+				// ForceSpell situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEForceSpell~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEForceSpell~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACEForceSpell~ ~~
+				// MakeUnselectable situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEMakeUnselectable~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEPlayDead~ ~~
+				// Face situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEFace~ ~~
+				// Rest situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACERest~ ~~
+				// ClearActions situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACEClearActions~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACEClearActions~ ~~
+				// Kill situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEKill~ ~~
+				// ApplySpellRES situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACE_ApplySpell_RES~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACE_ApplySpell_RES~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACE_ApplySpell_RES~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACE_ApplySpell_RES~ ~~
+				// ReallyForceSpellRES situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACER_ReallyForceSpell_RES~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACER_ReallyForceSpell_RES~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~3REPLACER_ReallyForceSpell_RES~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~4REPLACER_ReallyForceSpell_RES~ ~~
+				// SetGlobal situation
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~~
+							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~~
+
+		INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_BCS.tph~
+
+		INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~

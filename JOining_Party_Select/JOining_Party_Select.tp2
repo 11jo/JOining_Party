@@ -22,48 +22,25 @@ LANGUAGE ~English~
          ~JOining_Party_Select/Languages/english/setup.tra~
 
 
+
 ///////////////////////////////////////////////////////////////////////////////
 
-BEGIN ~All-Out~
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+BEGIN ~JOining Party~
 DESIGNATED 0
 LABEL ~JOining_Party-Out~
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet bgt~ ~Necessite BGEE / BG2EE / BGT / EET~
 
 ///////////////////////////////////////////////////////////////////////////////
 
-	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
-
-	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
-
 		INCLUDE ~JOining_Party_Select/Lib/Not_so_Always.tpa~
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// DECOMPILE BCS
-COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
-	DECOMPILE_BCS_TO_BAF
-
-// DECOMPILE DLG
-COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
-	DECOMPILE_DLG_TO_D
-
-
-///////
-INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Base.tph~
-
-INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Myself.tph~
-
-INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~ // Real traveler only
-///////
-
-
-// COMPILE BCS
-COPY ~weidu_external/JOining_Party_Select/JOining_Party_BCS~ ~override~
-	COMPILE_BAF_TO_BCS
-// COMPILE DLG
-
-COPY  ~weidu_external/JOining_Party_Select/JOining_Party_DLG~  ~override~
-	COMPILE_D_TO_DLG
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -71,7 +48,6 @@ INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~ // Re
 
 ///////////////////////////////////////////////////////////////////////////////
 
-INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Select_Cutscene.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
@@ -79,14 +55,13 @@ INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.t
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 
-///////////////////////////////////////////////////////////////////////////////
 
-DELETE ~weidu_external/JOining_Party_Select/JOining_Party_BCS~
-DELETE ~weidu_external/JOining_Party_Select/JOining_Party_DLG~
 
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
+
 
 /*
 // Special componant only use for adding new NPC to the mod.
@@ -99,10 +74,12 @@ INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler_cpmvars.tpa~
 INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler.tpa~
 */
 
-///////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 
 BEGIN ~ONE HOUR (5 mn)~
