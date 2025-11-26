@@ -1,0 +1,43 @@
+<<<<<<<<LOVEME5A_rep.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		JumpToPoint([2231.591])
+END
+>>>>>>>>
+
+<<<<<<<<LOVEME5A_add.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		JumpToPoint([2231.591])
+END
+
+IF
+	OR(3)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			Allegiance("%Death_var%",FAMILIAR)
+	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+THEN
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2185.640])
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2216.691])
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2349.595])
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2231.591])
+END
+
+>>>>>>>>
+COPY_EXISTING ~LOVEME5A.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~LOVEME5A_rep.baf~ ~LOVEME5A_add.baf~ EVALUATE_BUFFER

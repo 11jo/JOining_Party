@@ -619,8 +619,21 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
 		END
 // EXTEND_TOP ~BD0103.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BD0103.baf~ EVALUATE_BUFFER
 
+// IwD1
+	ACTION_IF FILE_EXISTS_IN_GAME ~WTKERJMP.bcs~ BEGIN
+EXTEND_BOTTOM ~WTKERJMP.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/WTKERJMP.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~LWSTPASD.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LWSTPASD.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~LWPRVFOL.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LWPRVFOL.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~LWPRVFCE.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LWPRVFCE.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~LWFCEALP.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LWFCEALP.baf~ EVALUATE_BUFFER
+	END
+// DSotSC
+	ACTION_IF FILE_EXISTS_IN_GAME ~MEGACUT.bcs~ BEGIN
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/MEGACUT.tph~
+	END
 
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/PRISMCUT.tph~
 
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ICELAND.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND.baf~ EVALUATE_BUFFER
@@ -807,6 +820,22 @@ EXTEND_BOTTOM ~ohhspike.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohhspike.ba
 EXTEND_BOTTOM ~ohdwater.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohdwater.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~OHBGREST.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBGREST.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~OHRDLG01.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHRDLG01.baf~ EVALUATE_BUFFER
+
+// Unfinished Business / Bouh rapt
+	ACTION_IF FILE_EXISTS_IN_GAME ~WWRLGV.bcs~ BEGIN
+EXTEND_BOTTOM ~WWRLGV.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/WWRLGV.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~WWGOVT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/WWRLGV.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/WWCUT.tph~
+	END
+// Imoen Romance
+	ACTION_IF FILE_EXISTS_IN_GAME ~MRGOREX3.bcs~ BEGIN
+EXTEND_BOTTOM ~MRGOREX3.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/MRGOREX3.baf~ EVALUATE_BUFFER
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/MRGOREN2.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/LOVEME5A.tph~
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/LOVEME3I.tph~
+EXTEND_BOTTOM ~LOVEME2.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LOVEME2.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~LOVEME1A.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LOVEME1A.baf~ EVALUATE_BUFFER
+	END
 
 		ACTION_IF GAME_IS ~eet~ BEGIN
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/AR4000.tph~

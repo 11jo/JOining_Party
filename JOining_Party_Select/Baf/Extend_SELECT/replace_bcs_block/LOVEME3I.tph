@@ -1,0 +1,55 @@
+<<<<<<<<LOVEME3I_rep.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		JumpToPoint([2231.591])
+		ApplySpellRES("SPISLP1",Player6)
+END
+>>>>>>>>
+
+<<<<<<<<LOVEME3I_add.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		JumpToPoint([2231.591])
+		ApplySpellRES("SPISLP1",Player6)
+END
+
+IF
+	OR(3)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			Allegiance("%Death_var%",FAMILIAR)
+	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+THEN
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2185.640])
+		ApplySpellRES("SPISLP1","%Death_var%")
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2216.691])
+		ApplySpellRES("SPISLP1","%Death_var%")
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2349.595])
+		ApplySpellRES("SPISLP1","%Death_var%")
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		JumpToPoint([2231.591])
+		ApplySpellRES("SPISLP1","%Death_var%")
+END
+
+>>>>>>>>
+COPY_EXISTING ~LOVEME3I.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~LOVEME3I_rep.baf~ ~LOVEME3I_add.baf~ EVALUATE_BUFFER
+COPY_EXISTING ~LOVEME3h.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~LOVEME3I_rep.baf~ ~LOVEME3I_add.baf~ EVALUATE_BUFFER
+COPY_EXISTING ~LOVEME3g.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~LOVEME3I_rep.baf~ ~LOVEME3I_add.baf~ EVALUATE_BUFFER
+COPY_EXISTING ~LOVEME3f.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~LOVEME3I_rep.baf~ ~LOVEME3I_add.baf~ EVALUATE_BUFFER
