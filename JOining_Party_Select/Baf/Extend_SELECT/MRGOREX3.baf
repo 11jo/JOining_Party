@@ -1,0 +1,21 @@
+IF
+	OR(3)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			Allegiance("%Death_var%",FAMILIAR)
+	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+	Delay(1)
+THEN
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		PlayDead(25)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		PlayDead(40)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		PlayDead(30)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		PlayDead(20)
+END

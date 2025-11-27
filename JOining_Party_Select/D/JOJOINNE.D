@@ -10,8 +10,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~~ THEN REPLY ~You are free to switch in party when you feel like.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",4)~ EXIT
 	IF ~~ THEN REPLY ~To all travelers ! Get lost !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",5)~ EXIT
 	IF ~~ THEN REPLY ~Everybody say, Youhou !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",6)~ EXIT
-	IF ~~ THEN REPLY ~Let's switch, one by one, quietly and in order.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT
-	IF ~~ THEN REPLY ~Hum... None of you seem to switch anymore ?~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT
+	IF ~~ THEN REPLY ~Let's switch, one by one, quietly and in order.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT
 	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT
 	IF ~~ THEN REPLY ~I want to talk with...~ GOTO 1
 	IF ~TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",1))~ THEN REPLY ~<PLAYER2> want to discuss with...~ GOTO 2

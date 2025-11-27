@@ -1,0 +1,34 @@
+<<<<<<<<MEGACUT_rep.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		MoveToObjectFollow("DSMEGAN")  // Megan
+END
+>>>>>>>>
+
+<<<<<<<<MEGACUT_add.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		MoveToObjectFollow("DSMEGAN")
+END
+
+IF
+	OR(3)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			Allegiance("%Death_var%",FAMILIAR)
+	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		MoveToObjectFollow("DSMEGAN")
+END
+
+>>>>>>>>
+COPY_EXISTING ~MEGACUT.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~MEGACUT_rep.baf~ ~MEGACUT_add.baf~ EVALUATE_BUFFER

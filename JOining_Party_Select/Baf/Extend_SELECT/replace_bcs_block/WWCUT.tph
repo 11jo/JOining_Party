@@ -1,0 +1,52 @@
+<<<<<<<<ar4000_rep.baf
+IF
+	InParty(Player6)
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(2)
+		MoveToPoint([531.453])
+END
+>>>>>>>>
+
+<<<<<<<<ar4000_add.baf
+IF
+	InParty(Player6)
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(2)
+		MoveToPoint([531.453])
+END
+
+IF
+	OR(3)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			Allegiance("%Death_var%",FAMILIAR)
+	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+THEN
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		Wait(4)
+		MoveToPoint([531.453])
+		MoveToObject(Player1)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		Wait(3)
+		MoveToPoint([531.453])
+		MoveToObject(Player2)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		Wait(4)
+		MoveToPoint([531.453])
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		Wait(4)
+		MoveToPoint([531.453])
+		MoveToObject(Player3)
+END
+
+>>>>>>>>
+COPY_EXISTING ~ar4000.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~ar4000_rep.baf~ ~ar4000_add.baf~ EVALUATE_BUFFER
