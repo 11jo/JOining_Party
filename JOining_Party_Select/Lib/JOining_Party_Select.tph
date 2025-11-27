@@ -333,6 +333,9 @@ ActionOverride("%Death_var%",FollowObjectFormation(%slashun%))~
 // CreateCreatureObjectCopy situation
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECreateCreatureObjectCopy~ ~REPLACECreateCreatureObjectCopy
 CreateCreatureObjectCopy(%slashun%,"%Death_var%",0,0,0)~
+// DRYAD_TELEPORT to spdimndr
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEDRYAD~ ~REPLACEDRYAD
+CreateVisualEffectObject("spdimndr","%Death_var%")~
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -124,7 +124,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			PATCH_PRINT ~... // ValidForParty found in %SOURCE_FILESPEC%
 			~
 		END
-// LeaveParty situation
+// LeaveParty situation // BD0103.BCS 
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",LeaveParty())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) BEGIN
@@ -181,7 +181,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player3)
 ^[%TAB% ]*CreateVisualEffectObject(\([^)]*\),Player4)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~SPSISPMA~) AND NOT (~\1~ STRING_EQUAL_CASE ~spfleshp~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHFAKOK.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~OHHBARHX.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK02.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK03.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK04.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK05.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~RERAK06.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~SCTSAR2.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
 				1REPLACECreateVisualEffectObject~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
@@ -243,13 +243,20 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ReallyForceSpell(Player3,\([^)]*\)))
 ^[%TAB% ]*ActionOverride(\1,ReallyForceSpell(Player4,\2))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~\2~ STRING_EQUAL_CASE ~DRYAD_TELEPORT~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
 				3REPLACEReallyForceSpell~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Death_var : ReallyForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
+			/*PATCH_IF (num_matches > 0) AND (~\2~ STRING_EQUAL_CASE ~DRYAD_TELEPORT~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+				REPLACEDRYAD~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Death_var : ForceSpell found in %SOURCE_FILESPEC%
+				~
+			END*/
 // ForceSpell situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player3,ForceSpell(Player3,\([^)]*\)))
 ^[%TAB% ]*ActionOverride(Player4,ForceSpell(Player4,\([^)]*\)))~
@@ -274,13 +281,20 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),ForceSpell(Player3,\([^)]*\)))
 ^[%TAB% ]*ActionOverride(\1,ForceSpell(Player4,\2))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~\2~ STRING_EQUAL_CASE ~DRYAD_TELEPORT~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
 				3REPLACEForceSpell~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Death_var : ForceSpell found in %SOURCE_FILESPEC%
 				~
 			END
+			/*PATCH_IF (num_matches > 0) AND (~\2~ STRING_EQUAL_CASE ~DRYAD_TELEPORT~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+				REPLACEDRYAD~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Death_var : ForceSpell found in %SOURCE_FILESPEC%
+				~
+			END*/
 // MakeUnselectable situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player3,MakeUnselectable(\([^)]*\)))
 ^[%TAB% ]*ActionOverride(Player4,MakeUnselectable(\([^)]*\)))~

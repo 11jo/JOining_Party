@@ -1,0 +1,55 @@
+<<<<<<<<MRGOREN2_rep.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		MoveToPoint([1561.1541])
+		Face(NNW)
+END
+>>>>>>>>
+
+<<<<<<<<MRGOREN2_add.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		MoveToPoint([1561.1541])
+		Face(NNW)
+END
+
+IF
+	OR(3)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			Allegiance("%Death_var%",FAMILIAR)
+	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+THEN
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		MoveToPoint([1561.1541])
+		MoveToObject(Player2)
+		Face(NNW)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		MoveToPoint([1614.1539])
+		MoveToObject(Player4)
+		Face(NNW)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		MoveToPoint([1650.1533])
+		Face(NNW)
+	RESPONSE #25
+		CutSceneId("%Death_var%")
+		MoveToPoint([1674.1497])
+		MoveToObject(Player3)
+		Face(NNW)
+END
+
+>>>>>>>>
+COPY_EXISTING ~MRGOREN2.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~MRGOREN2_rep.baf~ ~MRGOREN2_add.baf~ EVALUATE_BUFFER
+  
+COPY_EXISTING ~MRGOREN1.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~MRGOREN2_rep.baf~ ~MRGOREN2_add.baf~ EVALUATE_BUFFER
