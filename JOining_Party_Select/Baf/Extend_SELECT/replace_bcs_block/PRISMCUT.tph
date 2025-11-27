@@ -1,3 +1,5 @@
+ACTION_IF (MOD_IS_INSTALLED ~THEMED_TWEAKS.TP2~ ~20~) BEGIN
+
 <<<<<<<<PRISMCUT_rep.baf
 IF
 	True()
@@ -39,5 +41,56 @@ THEN
 END
 
 >>>>>>>>
+
+END ELSE BEGIN
+
+<<<<<<<<PRISMCUT_rep.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(1)
+		JumpToPoint([460.2764])
+		Face(W)
+		Wait(6)
+		MoveToPoint([596.2766])
+		FaceObject("Greywolf")
+END
+>>>>>>>>
+
+<<<<<<<<PRISMCUT_add.baf
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(1)
+		JumpToPoint([460.2764])
+		Face(W)
+		Wait(6)
+		MoveToPoint([596.2766])
+		FaceObject("Greywolf")
+END
+
+IF
+	OR(3)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			Allegiance("%Death_var%",FAMILIAR)
+	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+THEN
+	RESPONSE #100
+		CutSceneId("%Death_var%")
+		Wait(1)
+		Face(W)
+		Wait(6)
+		FaceObject("Greywolf")
+END
+
+>>>>>>>>
+
+END
+
 COPY_EXISTING ~PRISMCUT.bcs~ ~override~
   REPLACE_BCS_BLOCK ~PRISMCUT_rep.baf~ ~PRISMCUT_add.baf~ EVALUATE_BUFFER

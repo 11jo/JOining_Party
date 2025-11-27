@@ -62,7 +62,7 @@
 				PATCH_PRINT ~... // DeathVar : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
 			END
-// LeaveParty situation
+// LeaveParty situation // BD0103.BCS
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",LeaveParty())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) BEGIN
