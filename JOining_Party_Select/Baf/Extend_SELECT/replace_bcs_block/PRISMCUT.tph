@@ -33,11 +33,10 @@ IF
 	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
 THEN
 	RESPONSE #100
-		CutSceneId("%Death_var%")
 		Wait(1)
-		Face(W)
+		ActionOverride("%Death_var%",Face(W))
 		Wait(6)
-		FaceObject("Greywolf")
+		ActionOverride("%Death_var%",FaceObject("Greywolf"))
 END
 
 >>>>>>>>
@@ -81,11 +80,10 @@ IF
 	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
 THEN
 	RESPONSE #100
-		CutSceneId("%Death_var%")
 		Wait(1)
-		Face(W)
+		ActionOverride("%Death_var%",Face(W))
 		Wait(6)
-		FaceObject("Greywolf")
+		ActionOverride("%Death_var%",FaceObject("Greywolf"))
 END
 
 >>>>>>>>

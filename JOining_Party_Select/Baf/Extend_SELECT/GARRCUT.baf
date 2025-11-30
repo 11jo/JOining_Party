@@ -7,19 +7,15 @@ IF
 	Delay(1)
 THEN
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([3226.2396])
-		MoveToObject(Player1)
+		ActionOverride("%Death_var%",MoveToPoint([3226.2396]))
+		ActionOverride("%Death_var%",MoveToObject(Player1))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([2941.2452])
-		MoveToObject("Garrick")
+		ActionOverride("%Death_var%",MoveToPoint([2941.2452]))
+		ActionOverride("%Death_var%",MoveToObject("Garrick"))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([3452.2321])
-		MoveToObject("Silke")
+		ActionOverride("%Death_var%",MoveToPoint([3452.2321]))
+		ActionOverride("%Death_var%",MoveToObject("Silke"))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([2941.2440])
-		MoveToObject("Garrick")
+		ActionOverride("%Death_var%",MoveToPoint([2941.2440]))
+		ActionOverride("%Death_var%",MoveToObject("Garrick"))
 END

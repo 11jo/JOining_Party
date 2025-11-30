@@ -27,20 +27,16 @@ IF
 	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
 THEN
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2185.640])
+		ActionOverride("%Death_var%",JumpToPoint([2185.640]))
 		ApplySpellRES("SPISLP1","%Death_var%")
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2216.691])
+		ActionOverride("%Death_var%",JumpToPoint([2216.691]))
 		ApplySpellRES("SPISLP1","%Death_var%")
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2349.595])
+		ActionOverride("%Death_var%",JumpToPoint([2349.595]))
 		ApplySpellRES("SPISLP1","%Death_var%")
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2231.591])
+		ActionOverride("%Death_var%",JumpToPoint([2231.591]))
 		ApplySpellRES("SPISLP1","%Death_var%")
 END
 

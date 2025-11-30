@@ -7,7 +7,5 @@ IF
 	Delay(1)
 THEN
 	RESPONSE #100
-		CutSceneId("%Death_var%")
-		Wait(2)
-		FaceObject("KERISH")
+		ActionOverride("%Death_var%",FaceObject("KERISH"))
 END

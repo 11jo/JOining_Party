@@ -6,7 +6,6 @@ IF
 	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
 THEN
 	RESPONSE #100
-		CutSceneId("%Death_var%")
 		WaitRandom(2,3)
-		MoveToObject("Purvis")
+		ActionOverride("%Death_var%",MoveToObject("Purvis"))
 END

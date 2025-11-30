@@ -25,8 +25,7 @@ IF
 	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
 THEN
 	RESPONSE #100
-		CutSceneId("%Death_var%")
-		MoveToObjectFollow("DSMEGAN")
+		ActionOverride("%Death_var%",MoveToObjectFollow("DSMEGAN"))
 END
 
 >>>>>>>>

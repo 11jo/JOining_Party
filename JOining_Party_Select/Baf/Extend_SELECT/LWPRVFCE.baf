@@ -6,6 +6,5 @@ IF
 	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
 THEN
 	RESPONSE #100
-		CutSceneId("%Death_var%")
-		FaceObject("PURVIS")
+		ActionOverride("%Death_var%",FaceObject("PURVIS"))
 END

@@ -619,6 +619,10 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
 		END
 // EXTEND_TOP ~BD0103.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BD0103.baf~ EVALUATE_BUFFER
 
+/*
+
+///////////Don't work
+
 // IwD1
 	ACTION_IF FILE_EXISTS_IN_GAME ~WTKERJMP.bcs~ BEGIN
 EXTEND_BOTTOM ~WTKERJMP.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/WTKERJMP.baf~ EVALUATE_BUFFER
@@ -632,13 +636,15 @@ EXTEND_BOTTOM ~LWFCEALP.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LWFCEALP.ba
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/MEGACUT.tph~
 	END
 
-INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/PRISMCUT.tph~
+EXTEND_BOTTOM ~GARRCUT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/GARRCUT.baf~ EVALUATE_BUFFER
+*/
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD6100.tph~
 
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ICELAND.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ICELAND1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND1.baf~ EVALUATE_BUFFER
-EXTEND_BOTTOM ~GARRCUT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/GARRCUT.baf~ EVALUATE_BUFFER
 
 OUTER_SPRINT ~bdmenhi~ ~bdmenhi1~
 
@@ -821,6 +827,10 @@ EXTEND_BOTTOM ~ohdwater.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ohdwater.ba
 EXTEND_BOTTOM ~OHBGREST.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHBGREST.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~OHRDLG01.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/OHRDLG01.baf~ EVALUATE_BUFFER
 
+/*
+
+///////////Don't work
+
 // Unfinished Business / Bouh rapt
 	ACTION_IF FILE_EXISTS_IN_GAME ~WWRLGV.bcs~ BEGIN
 EXTEND_BOTTOM ~WWRLGV.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/WWRLGV.baf~ EVALUATE_BUFFER
@@ -836,6 +846,8 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/LOVEME3I.tph~
 EXTEND_BOTTOM ~LOVEME2.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LOVEME2.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~LOVEME1A.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LOVEME1A.baf~ EVALUATE_BUFFER
 	END
+
+*/
 
 		ACTION_IF GAME_IS ~eet~ BEGIN
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/AR4000.tph~

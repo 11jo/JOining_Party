@@ -27,24 +27,20 @@ IF
 	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
 THEN
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([1561.1541])
-		MoveToObject(Player2)
-		Face(NNW)
+		ActionOverride("%Death_var%",MoveToPoint([1561.1541]))
+		ActionOverride("%Death_var%",MoveToObject(Player2))
+		ActionOverride("%Death_var%",Face(NNW))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([1614.1539])
-		MoveToObject(Player4)
-		Face(NNW)
+		ActionOverride("%Death_var%",MoveToPoint([1614.1539]))
+		ActionOverride("%Death_var%",MoveToObject(Player4))
+		ActionOverride("%Death_var%",Face(NNW))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([1650.1533])
-		Face(NNW)
+		ActionOverride("%Death_var%",MoveToPoint([1650.1533]))
+		ActionOverride("%Death_var%",Face(NNW))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		MoveToPoint([1674.1497])
-		MoveToObject(Player3)
-		Face(NNW)
+		ActionOverride("%Death_var%",MoveToPoint([1674.1497]))
+		ActionOverride("%Death_var%",MoveToObject(Player3))
+		ActionOverride("%Death_var%",Face(NNW))
 END
 
 >>>>>>>>

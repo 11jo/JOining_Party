@@ -7,15 +7,11 @@ IF
 	Delay(1)
 THEN
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		PlayDead(25)
+		ActionOverride("%Death_var%",PlayDead(25))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		PlayDead(40)
+		ActionOverride("%Death_var%",PlayDead(40))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		PlayDead(30)
+		ActionOverride("%Death_var%",PlayDead(30))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		PlayDead(20)
+		ActionOverride("%Death_var%",PlayDead(20))
 END

@@ -2,6 +2,5 @@ IF
 	Allegiance("%Death_var%",FAMILIAR)
 THEN
 	RESPONSE #100
-		CutSceneId("%Death_var%")
-		PlayDead(40)
+		ActionOverride("%Death_var%",PlayDead(40))
 END

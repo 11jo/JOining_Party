@@ -7,23 +7,19 @@ IF
 	Delay(1)
 THEN
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2165.659])
+		ActionOverride("%Death_var%",JumpToPoint([2165.659]))
 		Wait(1)
-		FaceObject("Imoen2")
+		ActionOverride("%Death_var%",FaceObject("Imoen2"))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2121.584])
+		ActionOverride("%Death_var%",JumpToPoint([2121.584]))
 		Wait(1)
-		FaceObject("Imoen2")
+		ActionOverride("%Death_var%",FaceObject("Imoen2"))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2186.523])
+		ActionOverride("%Death_var%",JumpToPoint([2186.523]))
 		Wait(1)
-		FaceObject("Imoen2")
+		ActionOverride("%Death_var%",FaceObject("Imoen2"))
 	RESPONSE #25
-		CutSceneId("%Death_var%")
-		JumpToPoint([2283.539])
+		ActionOverride("%Death_var%",JumpToPoint([2283.539]))
 		Wait(1)
-		FaceObject("Imoen2")
+		ActionOverride("%Death_var%",FaceObject("Imoen2"))
 END
