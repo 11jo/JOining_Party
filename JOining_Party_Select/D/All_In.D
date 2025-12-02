@@ -28,27 +28,39 @@ APPEND ~%joining_dlg%~
 	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~I don't want to see you in my dream anymore !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~I did dream about you !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
 	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_NOBANTER","LOCALS",0)~ THEN REPLY ~Don't switch with regular party members, be only a traveler.~ DO ~
+	IF ~Global("JO_JOIN_NOBANTER","LOCALS",0)~ THEN REPLY ~I am exhausted by your conversation, please stop interrupting the group.~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NOBANTER","LOCALS",1)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_READY_BANTER","LOCALS",0)~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_NOBANTER","LOCALS",1)~ THEN REPLY ~You can switch with regular party members.~ DO ~
+		SetGlobal("JO_JOIN_NOBANTER","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_NOBANTER","LOCALS",1)~ THEN REPLY ~On second thought, I miss your discussions... Please continue.~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NOBANTER","LOCALS",0)
+		SetGlobal("JO_JOIN_NOBANTER","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_NOSWITCH","LOCALS",0)~ THEN REPLY ~Don't switch with regular party members, be only a traveler.~ DO ~
+		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_READY_BANTER","LOCALS",1)~ GOTO JO_JOINYes //
+		SetGlobal("JO_JOIN_NOSWITCH","LOCALS",1)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_NOSWITCH","LOCALS",1)~ THEN REPLY ~You can switch with regular party members.~ DO ~
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NOSWITCH","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~~ THEN REPLY ~Join the group properly, please, and don't switch your place with travelers.~ DO ~
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NOBANTER","LOCALS",1)
+		SetGlobal("JO_JOIN_NOSWITCH","LOCALS",1)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_READY_BANTER","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SmallWait(1)
+		EquipItemEx("JOMINHP1",1) 
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
 		SmallWait(2)
 		JoinParty()~ GOTO JO_JOINYes //
 	IF ~~ THEN REPLY ~I prefer to adress everyone...~ DO ~
@@ -56,6 +68,13 @@ APPEND ~%joining_dlg%~
 		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
 		SmallWait(1)
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT //
+	IF ~~ THEN REPLY ~Something feel wrong, we can settle this now.~ DO ~
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_NOBANTER","LOCALS",0)
+		SetGlobal("JO_JOIN_NOSWITCH","LOCALS",0)~ EXIT //
 	END
 
 IF ~~ THEN BEGIN JO_JOINYes

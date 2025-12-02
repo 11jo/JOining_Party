@@ -17,15 +17,15 @@ IF
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
 	RESPONSE #1
-		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",TWO_HOURS)
+		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
 		StartDialogOverride("%BG1_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
 	RESPONSE #2
-		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",TWO_HOURS)
+		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
 		StartDialogOverride("%SoD_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
 	RESPONSE #5
-		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",TWO_HOURS)
+		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
 		StartDialogOverride("%EET_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
 END
