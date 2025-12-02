@@ -1,0 +1,28 @@
+/////////////////////////// Mods BG2 ///////////////////////////
+
+
+////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #3 // BG2EE
+		SetDialog("%BG2_BANTER%")
+		Wait(1)
+		SetDialog("%BG2_JOINED%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("%BG2_BCS%",OVERRIDE)
+		Continue()
+	RESPONSE #4  // ToB 
+		SetDialog("%TOB_BANTER%")
+		Wait(1)
+		SetDialog("%TOB_JOINED%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("%TOB_BCS%",OVERRIDE)
+		Continue()
+END
+
+////////////////////////////////////////////////////

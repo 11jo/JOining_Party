@@ -1,0 +1,102 @@
+// JO_JOINI
+
+IF
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Allegiance(Myself,FAMILIAR)
+	!Global("JO_Myself_Valid","LOCALS",0)
+	!Global("JO_JOIN_Interact","LOCALS",0)
+THEN
+	RESPONSE #100
+		ChangeAIScript("JO_BAERI",RACE)
+		SetGlobal("JO_JOIN_Interact","LOCALS",0)
+END
+
+
+
+// JO_BEdwi
+// JO_BKaga
+// JO_BVogh
+// JO_BAERI
+
+
+
+// JO_JOINT
+
+IF
+	!TriggerOverride("Jaheira",Global("JO_JOIN_Interact","LOCALS",0))
+	Global("JO_JOIN_Interact_%Death_var%","LOCALS",1)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogNoSet("BJAHEI","%Death_var%")
+		Continue()
+	RESPONSE #2
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogOverride("BDJAHEIB","%Death_var%")
+		Continue()
+	RESPONSE #3
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogOverride("BJAHEIR","%Death_var%")
+		Continue()
+	RESPONSE #4
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogOverride("BJAHEI25","%Death_var%")
+		Continue()
+	RESPONSE #5
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogOverride("BJAHEI","%Death_var%")
+		Continue()
+END
+
+// BGEE
+
+IF
+	!TriggerOverride("Ajantis",Global("JO_JOIN_Interact","LOCALS",0))
+	Global("JO_JOIN_Interact_%Death_var%","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogNoSet("BAJANT","%Death_var%")
+		Continue()
+END
+
+
+// SoD
+
+IF
+	!TriggerOverride("Voghiln",Global("JO_JOIN_Interact","LOCALS",0))
+	Global("JO_JOIN_Interact_%Death_var%","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogNoSet("BDVOGHIB","%Death_var%")
+		Continue()
+END
+
+// BG2EE
+
+IF
+	!TriggerOverride("Aerie",Global("JO_JOIN_Interact","LOCALS",0))
+	Global("JO_JOIN_Interact_%Death_var%","LOCALS",1)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #3
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogOverride("BAERIE","%Death_var%")
+		Continue()
+	RESPONSE #4
+		SetGlobal("JO_JOIN_Interact_%Death_var%","LOCALS",0)
+		ChangeAIScript("",RACE)
+		StartDialogOverride("BAERIE25","%Death_var%")
+		Continue()
+END

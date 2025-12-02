@@ -1,0 +1,534 @@
+////////////////////////////////////////////////////
+
+	ACTION_IF JOining_Imoen = 1 THEN BEGIN
+
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN // BG1
+		OUTER_SPRINT "RESPONSE #1" ~~~~~RESPONSE #1
+				SetDialog("BIMOEN")
+				Wait(1)
+				SetDialog("IMOEN2")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOEN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #1" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN // BG2 / ToB
+		OUTER_SPRINT "RESPONSE #3" ~~~~~RESPONSE #3
+				SetDialog("BIMOEN2")
+				Wait(1)
+				SetDialog("IMOEN2J")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOEN2",OVERRIDE)
+				Continue()
+			RESPONSE #4
+				SetDialog("BIMOEN25")
+				Wait(1)
+				SetDialog("%IMOEN25J%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOE25",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #3" ""
+END
+ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
+		OUTER_SPRINT "RESPONSE #5" ~~~~~RESPONSE #5
+				SetDialog("BIMOEN")
+				Wait(1)
+				SetDialog("IMOEN2J")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("IMOEN_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE #5" ""
+END
+
+<<<<<<<< .../JOining_Imoen.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	OR(2)
+		AreaCheck("AR0602")
+		AreaCheck("AR0603")
+THEN
+	RESPONSE #100
+		SetDialog("BIMOEN2")
+		Wait(1)
+		SetDialog("IMOENJ") 
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("IMOEN",OVERRIDE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	!AreaCheck("AR0602")
+	!AreaCheck("AR0603")
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+%RESPONSE #1%
+%RESPONSE #3%
+%RESPONSE #5%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Imoen.baf~ EVALUATE_BUFFER
+
+	END // JOining_Imoen = 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF JOining_Edwin = 1 THEN BEGIN
+
+
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN // BG1
+		OUTER_SPRINT "RESPONSE_BG1" ~~~~~RESPONSE #1
+				SetDialog("BEDWIN")
+				Wait(1)
+				SetDialog("EDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("EDWIN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_BG1" ""
+END
+ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN // SoD
+		OUTER_SPRINT "RESPONSE_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDEDWINB")
+				Wait(1)
+				SetDialog("BDEDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDEDWIN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_SoD" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN // BG2 / ToB
+		OUTER_SPRINT "RESPONSE_BG2" ~~~~~RESPONSE #3
+				SetDialog("BEDWIN")
+				Wait(1)
+				SetDialog("EDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("EDWIN",OVERRIDE)
+				Continue()
+			RESPONSE #4
+				SetDialog("BEDWIN25")
+				Wait(1)
+				SetDialog("%EDWIN25J%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("edwi25",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_BG2" ""
+END
+ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
+		OUTER_SPRINT "RESPONSE_EET" ~~~~~RESPONSE #5
+				SetDialog("BEDWIN_")
+				Wait(1)
+				SetDialog("EDWINJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("EDWIN_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_EET" ""
+END
+
+<<<<<<<< .../JOining_Edwin.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+%RESPONSE_BG1%
+%RESPONSE_SoD%
+%RESPONSE_BG2%
+%RESPONSE_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Edwin.baf~ EVALUATE_BUFFER
+
+	END // JOining_Edwin = 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF JOining_Jaheira = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Jaheira.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetDialog("BJAHEI")
+		Wait(1)
+		SetDialog("JAHEIJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("JAHEIRA",OVERRIDE)
+		Continue()
+	RESPONSE #2
+		SetDialog("BDJAHEIB")
+		Wait(1)
+		SetDialog("BDJAHEIJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDJAHEIR",OVERRIDE)
+		Continue()
+	RESPONSE #3
+		SetDialog("BJAHEIR")
+		Wait(1)
+		SetDialog("JAHEIRAJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("JAHEIRA",OVERRIDE)
+		Continue()
+	RESPONSE #4
+		SetDialog("BJAHEI25")
+		Wait(1)
+		SetDialog("%JAHEI25J%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("jahe25",OVERRIDE)
+		Continue()
+	RESPONSE #5
+		SetDialog("BJAHEI")
+		Wait(1)
+		SetDialog("JAHEIRAJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript(JAHEIRA_",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jaheira.baf~ EVALUATE_BUFFER
+
+	END // JOining_Jaheira = 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF JOining_Minsc = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Minsc.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetDialog("BMINSC")
+		Wait(1)
+		SetDialog("MINSCJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("MINSC",OVERRIDE)
+		Continue()
+	RESPONSE #2
+		SetDialog("BDMINSCB")
+		Wait(1)
+		SetDialog("BDMINSCJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDMINSC",OVERRIDE)
+		Continue()
+	RESPONSE #3
+		SetDialog("BMINSC")
+		Wait(1)
+		SetDialog("MINSCJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("MINSC",OVERRIDE)
+		Continue()
+	RESPONSE #4
+		SetDialog("BMINSC25")
+		Wait(1)
+		SetDialog("BMINSC25")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("mins25",OVERRIDE)
+		Continue()
+	RESPONSE #5
+		SetDialog("BMINSC_")
+		Wait(1)
+		SetDialog("MINSCJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript(MINSC_",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Minsc.baf~ EVALUATE_BUFFER
+
+	END // JOining_Minsc = 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF JOining_Viconia = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Viconia.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetDialog("BVICON")
+		Wait(1)
+		SetDialog("VICONJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("VICONIA",OVERRIDE)
+		Continue()
+	RESPONSE #2
+		SetDialog("BDVICONB")
+		Wait(1)
+		SetDialog("BDVICONJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDVICONI",OVERRIDE)
+		Continue()
+	RESPONSE #3
+		SetDialog("BVICONI")
+		Wait(1)
+		SetDialog("VICONIJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("VICONIA",OVERRIDE)
+		Continue()
+	RESPONSE #4
+		SetDialog("BVICON25")
+		Wait(1)
+		SetDialog("%VICON25J%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("vico25",OVERRIDE)
+		Continue()
+	RESPONSE #5
+		SetDialog("BVICON")
+		Wait(1)
+		SetDialog("VICONIJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript(VICONIA_",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Viconia.baf~ EVALUATE_BUFFER
+
+	END // JOining_Viconia = 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF JOining_Dorn = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Dorn.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetDialog("BDORN")
+		Wait(1)
+		SetDialog("DORNJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("DORN",OVERRIDE)
+		Continue()
+	RESPONSE #2
+		SetDialog("BDDORNB")
+		Wait(1)
+		SetDialog("BDDORNJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDDORN",OVERRIDE)
+		Continue()
+	RESPONSE #3
+		SetDialog("BDORN")
+		Wait(1)
+		SetDialog("DORNJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("DORN",OVERRIDE)
+		Continue()
+	RESPONSE #4
+		SetDialog("BDORN25")
+		Wait(1)
+		SetDialog("%DORN25J%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("DORN25",OVERRIDE)
+		Continue()
+	RESPONSE #5
+		SetDialog("BDORN_")
+		Wait(1)
+		SetDialog("DORNJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript(DORN_",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dorn.baf~ EVALUATE_BUFFER
+
+	END // JOining_Dorn = 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF JOining_Neera = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Neera.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetDialog("BNEERA")
+		Wait(1)
+		SetDialog("NEERAJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("NEERA",OVERRIDE)
+		Continue()
+	RESPONSE #2
+		SetDialog("BDNEERAB")
+		Wait(1)
+		SetDialog("BDNEERAJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDNEERA",OVERRIDE)
+		Continue()
+	RESPONSE #3
+		SetDialog("BNEERA")
+		Wait(1)
+		SetDialog("NEERAJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("NEERA",OVERRIDE)
+		Continue()
+	RESPONSE #4
+		SetDialog("BNEERA25")
+		Wait(1)
+		SetDialog("%NEERA25J%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("NEER25",OVERRIDE)
+		Continue()
+	RESPONSE #5
+		SetDialog("BNEERA_")
+		Wait(1)
+		SetDialog("NEERAJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript(NEERA_",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Neera.baf~ EVALUATE_BUFFER
+
+	END // JOining_Neera = 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF JOining_Rasaad = 1 THEN BEGIN
+
+<<<<<<<< .../JOining_Rasaad.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetDialog("BRASAAD")
+		Wait(1)
+		SetDialog("RASAADJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("RASAAD",OVERRIDE)
+		Continue()
+	RESPONSE #2
+		SetDialog("BDRASAAB")
+		Wait(1)
+		SetDialog("BDRASAAJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("BDRASAAD",OVERRIDE)
+		Continue()
+	RESPONSE #3
+		SetDialog("BRASAAD")
+		Wait(1)
+		SetDialog("RASAADJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("RASAAD",OVERRIDE)
+		Continue()
+	RESPONSE #4
+		SetDialog("BRASAA25")
+		Wait(1)
+		SetDialog("%RASAA25J%")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("RASA25",OVERRIDE)
+		Continue()
+	RESPONSE #5
+		SetDialog("BRASAAD_")
+		Wait(1)
+		SetDialog("RASAADJ")
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript(RASAAD_",OVERRIDE)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Rasaad.baf~ EVALUATE_BUFFER
+
+	END // JOining_Rasaad = 1
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
