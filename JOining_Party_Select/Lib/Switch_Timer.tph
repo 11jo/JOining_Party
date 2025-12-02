@@ -1,19 +1,246 @@
+ACTION_IF switch_componant_timer = 0 THEN BEGIN
 
-
-	  COPY_EXISTING_REGEXP ~JO_JOINI.BCS~ ~override~
+	COPY_EXISTING_REGEXP ~JO_JOINI.BCS~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~^[%TAB% ]*SetInterrupt(FALSE)
 ^[%TAB% ]*SetGlobalTimer("JO_JOIN_JOIN","LOCALS",\([^)]*\))
 ^[%TAB% ]*SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%\1%~ STRING_EQUAL_CASE ~ONE_ROUND~) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_JOIN","LOCALS",%Switch_Timer%)
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetInterrupt(FALSE)
+		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",%Switch_Timer%)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
 				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
 			END ELSE BEGIN
-				PATCH_WARN ~WARNING: could not find %Death_var% in %SOURCE_FILESPEC%~
+				PATCH_WARN ~WARNING: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),SetGlobalTimer("JO_JOIN_JOIN","LOCALS",\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(\1,SetGlobalTimer("JO_JOIN_JOIN","LOCALS",%Switch_Timer%))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_WARN ~WARNING: could not find GlobalTimer in %SOURCE_FILESPEC%~
 			END
 	END
 
+END ELSE ACTION_IF switch_componant_timer = 1 THEN BEGIN
+
+//JOINABLE NPCS ARRAY MACRO__________________________________________________________
+//
+DEFINE_ACTION_MACRO JOINABLE_NPC_ARRAYS BEGIN
+	//PDIALOG.2DA exists in all games
+	ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~PDIALOG~ => ~~ END
+	//Check PDIALOG.2DA file variants referenced in CAMPAIGN.2DA
+	ACTION_IF FILE_EXISTS_IN_GAME ~CAMPAIGN.2DA~ BEGIN
+		COPY_EXISTING ~CAMPAIGN.2DA~ ~CAMPAIGN.2DA~
+			COUNT_2DA_ROWS 32 "cntrow"
+			FOR (i = 0; i < cntrow; i = i + 1) BEGIN
+				READ_2DA_ENTRY i 11 32 file
+				TO_UPPER file
+				DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~%file%~ => ~~ END
+			END
+		BUT_ONLY
+	END
+	//Generate array with joinable NPC DV
+	ACTION_PHP_EACH JOINABLE_NPC_ARRAY_2da AS file => ~~ BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN
+			COPY_EXISTING ~%file%.2da~ ~override~
+				COUNT_2DA_ROWS 3 "cntrow"
+				FOR (i = 1; i < cntrow; i = i + 1) BEGIN
+					READ_2DA_ENTRY i 0 3 "dv"
+					TO_UPPER dv
+					DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN ~%dv%~ => ~~ END
+				END
+			BUT_ONLY
+		END
+	END
+	//Generate array with joinable NPC cre files
+	COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
+		READ_ASCII DEATHVAR "dv" (32) NULL
+		TO_UPPER dv
+		PATCH_IF VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
+			DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
+		END
+		PATCH_IF NOT VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
+			DEFINE_ASSOCIATIVE_ARRAY NON_JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
+		END
+	BUT_ONLY
+END
+//__________________________________________________________________________________
+
+
+
+LAM JOINABLE_NPC_ARRAYS
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+// 	PRINT ~%cre% => %dv%~ 
+
+  COPY_EXISTING ~%cre%~ ~override~
+    READ_ASCII 0x248 override_script
+    PATCH_IF NOT (~%override_script%~ STRING_EQUAL_CASE ~idiot01~)
+
+
+	BEGIN 
+      SPRINT $npc_scripts (~%override_script%~)~1~
+    END
+  BUT_ONLY
+END
+ACTION_PHP_EACH npc_scripts AS script => ind BEGIN
+  ACTION_IF (FILE_EXISTS_IN_GAME ~%script%.bcs~) BEGIN
+	COPY_EXISTING_REGEXP ~%script%.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+  END
+END
+
+	COPY_EXISTING_REGEXP ~JO_JOINI.BCS~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~P#KI25.bcs~) BEGIN
+	COPY_EXISTING_REGEXP ~P#KI25.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~P#DE25.bcs~) BEGIN
+	COPY_EXISTING_REGEXP ~P#DE25.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~#SevD25.bcs~) BEGIN
+	COPY_EXISTING_REGEXP ~#SevD25.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~kiar25.bcs~) BEGIN
+	COPY_EXISTING_REGEXP ~kiar25.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~zai25.bcs~) BEGIN
+	COPY_EXISTING_REGEXP ~zai25.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~YxYv25.bcs~) BEGIN
+	COPY_EXISTING_REGEXP ~YxYv25.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",%Switch_Timer%)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // GlobalTimer found in %SOURCE_FILESPEC%
+				~
+			END ELSE PATCH_IF (~\1~ STRING_EQUAL_CASE ~%Switch_Timer%~) BEGIN
+				PATCH_PRINT ~Chosen timer : %Switch_Timer% is already set in %SOURCE_FILESPEC%~
+			END ELSE BEGIN
+				PATCH_PRINT ~Banter Switch Timer: could not find GlobalTimer in %SOURCE_FILESPEC%~
+			END
+	END
+  END
+
+END
