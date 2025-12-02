@@ -1,4 +1,96 @@
 
+///////////////////////////////////////////////////////////////////////////////
+// Loading Party members
+// All potential travelers in party will switch with actual traveler
+
+IF
+	OnCreation()
+	InParty(Myself)
+	Global("JO_JOIN_Wannabe","LOCALS",1)
+	Global("JO_Myself_Valid","LOCALS",1)
+// Make sure a traveler is not switching
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",TWO_HOURS)
+		SetGlobal("JO_JOIN_LET_SWITCH","LOCALS",1)
+		SetGlobal("JO_JOIN","LOCALS",1)
+END
+
+IF
+	Delay(5)
+	Global("JO_JOIN_LET_SWITCH","LOCALS",1)
+	NumInPartyLT(6)
+	Global("JO_NOJOIN","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LET_SWITCH","LOCALS",2)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_LET_SWITCH","LOCALS",2)
+	NumInPartyLT(6)
+	Global("JO_NOJOIN","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",2)
+		EquipItemEx("JOMINHP1",1) 
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_LET_SWITCH","LOCALS",0)
+		SmallWait(2)
+		JoinParty()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_Wannabe : NPC can be traveler
+// A party member available to be traveler
+
+// Related to Switching party in JO_JOINI
+// If traveler and party member switch continually with each other
+
+IF
+	Global("JO_JOIN_Wannabe","LOCALS",0)
+	InParty(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
+		SetGlobalTimer("JO_JOIN_BANTER","LOCALS",FOUR_HOURS)
+		Continue()
+END
+
+// If JO_JOIN_READY_BANTER","LOCALS",1 then the NPC is available for switching with a traveler
+// Timer make sure the party member stay long enough in party
+
+IF
+	!GlobalTimerNotExpired("JO_JOIN_BANTER","LOCALS")
+	Global("JO_JOIN_READY_BANTER","LOCALS",0)
+	Global("JO_JOIN_NOBANTER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_READY_BANTER","LOCALS",1)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Cas d'un recrutement non standard (ctrl+Q par exemple)
 IF
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -17,6 +109,7 @@ IF
 	!StateCheck(Myself,STATE_CHARMED)
 	!Allegiance(Myself,FAMILIAR)
 	!InParty(Myself)
+	!Global("JO_JOINI","LOCALS",1) // TODO: Added
 	OR(2)
 		!Allegiance(Myself,NEUTRAL)
 		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -57,6 +150,10 @@ THEN
 		SetInterrupt(FALSE)
 		MakeGlobal()
 		LeaveParty()
+		SmallWait(1) // TODO: Added
+		EquipItemEx("JOMINHP1",1) // TODO: Added
+		SmallWait(1) // TODO: Added
+		DestroyItem("JOMINHP1") // TODO: Added
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
@@ -103,6 +200,8 @@ END
 // Related to Join_ability.baf destroy item before 
 
 IF
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",1) // TODO: Added probably useless
+	!Global("JO_TRAVELER_%Death_var%","GLOBAL",1) // TODO: Added probably useless
 	!Allegiance(Myself,FAMILIAR)
 	HasItem("JOMINHP1",Myself)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -136,11 +235,12 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		FaceObject(Player1)
+		SetGlobalTimer("JO_JOIN_BANTER","LOCALS",FOUR_HOURS) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN)
+//		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN) // TODO: Added Moved in Jo_Joini to allow componant Traveler Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		MakeGlobal()
@@ -176,13 +276,14 @@ THEN
 		LeaveParty()
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SmallWait(1)
-		GiveItemCreate("JOMINHP1",Myself,0,0,0)
-		SmallWait(1)
+//		GiveItemCreate("JOMINHP1",Myself,0,0,0) // TODO: Added // Not needed for a quick switch // See related Reintegrate NPC into party periodically in jo_joini
+//		SmallWait(1) // TODO: Added // Not needed for a quick switch // See related Reintegrate NPC into party periodically in jo_joini
 		EquipItemEx("JOMINHP1",0)
 		SmallWait(1)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		SmallWait(1)
+		SetGlobalTimer("JO_JOIN_BANTER","LOCALS",FOUR_HOURS)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
