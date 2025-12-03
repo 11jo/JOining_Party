@@ -25,11 +25,12 @@ IF
 	Global("JO_JOIN_LOAD_SWITCH","LOCALS",1)
 	NumInPartyLT(6)
 	Global("JO_NOJOIN","GLOBAL",0)
-	OR(4)
+	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
+		!InParty(PartySlot6)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
@@ -47,24 +48,25 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
-	OR(4)
+	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
+		!InParty(PartySlot6)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_LOAD","LOCALS",2)
 		EquipItemEx("JOMINHP1",1) 
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 		SmallWait(2)
+		DisplayStringHead(Myself,~Ha !~)
 		JoinParty()
 END
 
@@ -82,7 +84,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		Continue()
 END
 
@@ -235,6 +237,7 @@ IF
 	Global("JO_JOIN","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -247,7 +250,7 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		FaceObject(Player1)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
@@ -255,6 +258,31 @@ THEN
 //		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN) // TODO: Added Moved in Jo_Joini to allow componant Traveler Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
+		MakeGlobal()
+		SetInterrupt(TRUE)
+END
+
+IF
+	Global("JO_JOIN","LOCALS",1)
+	Allegiance(Myself,PC)
+	!InPartySlot(Myself,0)
+	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		LeaveParty()
+		SmallWait(1)
+		GiveItemCreate("JOMINHP1",Myself,0,0,0)
+		SmallWait(1)
+		EquipItemEx("JOMINHP1",0)
+		SmallWait(1)
+		ChangeEnemyAlly(Myself,FAMILIAR)
+		AddFamiliar()
+		FaceObject(Player1)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		SetGlobal("JO_JOIN_TALK","LOCALS",2) // fellow travelers
+		SetGlobal("JO_JOIN","LOCALS",2)
+		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
 END
@@ -269,6 +297,16 @@ THEN
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+ 
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_TALK","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		DisplayStringHead(Myself,~Ho !~)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -295,7 +333,7 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		SmallWait(1)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
