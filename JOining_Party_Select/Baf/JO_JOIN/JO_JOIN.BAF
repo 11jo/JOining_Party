@@ -8,6 +8,7 @@ IF
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
 	RESPONSE #100
+		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",-1)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
 		DisplayStringHead(Myself,~Yeah.~)
 		Continue() // Go to Yeah End

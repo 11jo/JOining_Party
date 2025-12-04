@@ -114,34 +114,23 @@ IF
 	HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~FIXME. Voilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !~)
+		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !^-~)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
 END
 
-///////////////////////////////////////////////////////////////////////////////
 IF
-	OR(2)
-		!InParty(Player2)
-		TriggerOverride(Player2,Global("JO_JOIN_LOAD_SWITCH","LOCALS",0))
-	OR(2)
-		!InParty(Player3)
-		TriggerOverride(Player3,Global("JO_JOIN_LOAD_SWITCH","LOCALS",0))
-	OR(2)
-		!InParty(Player4)
-		TriggerOverride(Player4,Global("JO_JOIN_LOAD_SWITCH","LOCALS",0))
-	OR(2)
-		!InParty(Player5)
-		TriggerOverride(Player5,Global("JO_JOIN_LOAD_SWITCH","LOCALS",0))
-	OR(2)
-		!InParty(Player6)
-		TriggerOverride(Player6,Global("JO_JOIN_LOAD_SWITCH","LOCALS",0))
-		Global("JO_NOJOIN","GLOBAL",0)
-		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	GlobalLT("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 THEN
 	RESPONSE #100
-//		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_SWITCHING_PARTY est inférieur à 0 !^-~)
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-		Continue()
 END
-///////////////////////////////////////////////////////////////////////////////
+
+IF
+	GlobalLT("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_TRAVELER_PARTY est inférieur à 0 !^-~)
+		SetGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
+END

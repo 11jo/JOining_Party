@@ -8,42 +8,46 @@ IF
 	InParty(Myself)
 	Global("JO_JOIN_Wannabe","LOCALS",1)
 	Global("JO_Myself_Valid","LOCALS",1)
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 // Make sure a traveler is not switching
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Prevent Switching party blocks
-		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY) //
+		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",1)
+//
 		SetGlobal("JO_JOIN","LOCALS",1)
+		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
 END
 
 IF
-	Delay(2)
+	!GlobalGT("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
+	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LOAD_SWITCH","LOCALS",1)
-	NumInPartyLT(6)
 	Global("JO_NOJOIN","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
 		!InParty(PartySlot6)
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",2)
-		Continue()
+		FaceObject(Player1) 
 END
 
 IF
-	Delay(2)
+	!GlobalGT("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
+	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LOAD_SWITCH","LOCALS",2)
-	NumInPartyLT(6)
 	Global("JO_NOJOIN","GLOBAL",0)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -54,20 +58,53 @@ IF
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
 		!InParty(PartySlot6)
+	NumInPartyLT(6)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
+		MoveToObject(Player1)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		EquipItemEx("JOMINHP1",1) 
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 		SmallWait(2)
-		DisplayStringHead(Myself,~Ha !~)
+		DisplayStringHead(Myself,~Traveler ? No more !~)
+		Wait(1)
 		JoinParty()
+		SetInterrupt(TRUE)
+END
+
+IF
+	InParty(Myself)
+	Global("JO_JOIN_LOAD_SWITCH","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",-1)
+		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",0)
+//
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetInterrupt(TRUE)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+// If NumInPartyLT(5) then some travelers can join the group
+
+IF
+	InParty(Myself)
+	!Global("JO_JOIN_Fill_Party","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -279,9 +316,10 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		FaceObject(Player1)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
-		SetGlobal("JO_JOIN_TALK","LOCALS",2) // fellow travelers
-		SetGlobal("JO_JOIN","LOCALS",2)
+		DisplayStringHead(Myself,~Oh no ! more travelers~)
+		RandomWalkTime(4)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
@@ -297,16 +335,6 @@ THEN
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		DisplayStringHead(Myself,~We are now fellow travelers.~)
-END
- 
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_TALK","LOCALS",2)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_TALK","LOCALS",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
-		DisplayStringHead(Myself,~Ho !~)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -324,6 +352,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		LeaveParty()
+		SmallWait(1)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SmallWait(1)
 //		GiveItemCreate("JOMINHP1",Myself,0,0,0) // TODO: Added // Not needed for a quick switch // See related Reintegrate NPC into party periodically in jo_joini

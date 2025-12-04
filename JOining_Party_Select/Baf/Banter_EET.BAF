@@ -1,5 +1,6 @@
 IF
-	Delay(5)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	!GlobalGT("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIME","LOCALS")
 	ActionListEmpty()
