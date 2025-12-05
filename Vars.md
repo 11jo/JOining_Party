@@ -1,0 +1,161 @@
+
+
+// Imoen
+
+BG1_BANTER = BIMOEN
+// SoD_BANTER = 
+BG2_BANTER = BIMOEN2
+TOB_BANTER = BIMOEN25
+EET_BANTER = BIMOEN (Used in BG1 campaign)
+
+BG1_JOINED = IMOEN2
+// SoD_JOINED = 
+BG2_JOINED = IMOEN2J (Generalized for EET campaign by EET_END)
+TOB_JOINED = IMOEN25J
+EET_JOINED = IMOEN2J (IMOEN2_ Used if installed before EET_END)
+
+BG1_BCS = IMOEN
+// SoD_BCS = 
+BG2_BCS = IMOEN2
+TOB_BCS = IMOE25
+EET_BCS = IMOEN_ (Used in BG1 campaign)
+
+// Edwin
+
+BG1_BANTER = BEDWIN
+SoD_BANTER = BDEDWINB (Unused exept for mod added banters)
+BG2_BANTER = BEDWIN
+TOB_BANTER = BEDWIN25
+EET_BANTER = BEDWIN_ (Used in BG1 campaign)
+
+BG1_JOINED = EDWINJ
+SoD_JOINED = BDEDWINJ
+BG2_JOINED = EDWINJ (Generalized for EET campaign by EET_END)
+TOB_JOINED = EDWIN25J
+EET_JOINED = EDWINJ (EDWINJ_ Used if installed before EET_END)
+
+BG1_BCS = EDWIN
+SoD_BCS = BDEDWIN
+BG2_BCS = EDWIN
+TOB_BCS = EDWI25
+EET_BCS = EDWIN_ (Used in BG1 campaign)
+
+// Jaheira
+
+BG1_BANTER = BJAHEI
+SoD_BANTER = BDJAHEIB (Unused exept for mod added banters)
+BG2_BANTER = BJAHEIR
+TOB_BANTER = BJAHEI25
+EET_BANTER = BJAHEI (Used in BG1 campaign)
+
+BG1_JOINED = JAHEIJ
+SoD_JOINED = BDJAHEIJ
+BG2_JOINED = JAHEIRAJ (Generalized for EET campaign by EET_END)
+TOB_JOINED = JAHEI25J
+EET_JOINED = JAHEIRAJ (JAHEIJ Used if installed before EET_END)
+
+BG1_BCS = JAHEIRA
+SoD_BCS = BDJAHEIR
+BG2_BCS = JAHEIRA
+TOB_BCS = jahe25
+EET_BCS = JAHEIRA_ (Used in BG1 campaign)
+
+// Minsc
+
+BG1_BANTER = BMINSC
+SoD_BANTER = BDMINSCB (Unused exept for mod added banters)
+BG2_BANTER = BMINSC
+TOB_BANTER = BMINSC25
+EET_BANTER = BMINSC_ (Used in BG1 campaign)
+
+BG1_JOINED = MINSCJ
+SoD_JOINED = BDMINSCJ
+BG2_JOINED = MINSCJ (Generalized for EET campaign by EET_END)
+TOB_JOINED = MINSC25J
+EET_JOINED = MINSCJ (MINSCJ_ Used if installed before EET_END)
+
+BG1_BCS = MINSC
+SoD_BCS = BDMINSC
+BG2_BCS = MINSC
+TOB_BCS = mins25
+EET_BCS = MINSC_ (Used in BG1 campaign)
+
+// Viconia
+
+BG1_BANTER = BVICON
+SoD_BANTER = BDVICONB (Unused exept for mod added banters)
+BG2_BANTER = BVICONI
+TOB_BANTER = BVICON25
+EET_BANTER = BVICON (Used in BG1 campaign)
+
+BG1_JOINED = VICONJ
+SoD_JOINED = BDVICONJ
+BG2_JOINED = VICONIJ (Generalized for EET campaign by EET_END)
+TOB_JOINED = VICON25J
+EET_JOINED = VICONIJ (VICONJ Used if installed before EET_END)
+
+BG1_BCS = VICONIA
+SoD_BCS = BDVICONI
+BG2_BCS = VICONIA
+TOB_BCS = vico25
+EET_BCS = VICONIA_ (Used in BG1 campaign)
+
+// Dorn
+
+BG1_BANTER = BDORN
+SoD_BANTER = BDDORNB (Unused exept for mod added banters)
+BG2_BANTER = BDORN
+TOB_BANTER = BDORN25
+EET_BANTER = BDORN_ (Used in BG1 campaign)
+
+BG1_JOINED = DORNJ
+SoD_JOINED = BDDORNJ
+BG2_JOINED = DORNJ (Generalized for EET campaign by EET_END)
+TOB_JOINED = DORN25J
+EET_JOINED = DORNJ (DORNJ_ Used if installed before EET_END)
+
+BG1_BCS = DORN
+SoD_BCS = BDDORN
+BG2_BCS = DORN
+TOB_BCS = DORN25
+EET_BCS = DORN_ (Used in BG1 campaign)
+
+// Neera
+
+BG1_BANTER = BNEERA
+SoD_BANTER = BDNEERAB (Unused exept for mod added banters)
+BG2_BANTER = BNEERA
+TOB_BANTER = BNEERA25
+EET_BANTER = BNEERA_ (Used in BG1 campaign)
+
+BG1_JOINED = NEERAJ
+SoD_JOINED = BDNEERAJ
+BG2_JOINED = NEERAJ (Generalized for EET campaign by EET_END)
+TOB_JOINED = NEERA25J
+EET_JOINED = NEERAJ (NEERAJ_ Used if installed before EET_END)
+
+BG1_BCS = NEERA
+SoD_BCS = BDNEERA
+BG2_BCS = NEERA
+TOB_BCS = NEER25
+EET_BCS = NEERA_ (Used in BG1 campaign)
+
+// Rasaad
+
+BG1_BANTER = BRASAAD
+SoD_BANTER = BDRASAAB (Unused exept for mod added banters)
+BG2_BANTER = BRASAAD
+TOB_BANTER = BRASAA25
+EET_BANTER = BRASAAD_ (Used in BG1 campaign)
+
+BG1_JOINED = RASAADJ
+SoD_JOINED = BDRASAAJ
+BG2_JOINED = RASAADJ (Generalized for EET campaign by EET_END)
+TOB_JOINED = RASAA25J
+EET_JOINED = RASAADJ (RASAADJ_ Used if installed before EET_END)
+
+BG1_BCS = RASAAD
+SoD_BCS = BDRASAAD
+BG2_BCS = RASAAD
+TOB_BCS = RASA25
+EET_BCS = RASAAD_ (Used in BG1 campaign)

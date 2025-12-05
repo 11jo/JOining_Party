@@ -1,0 +1,25 @@
+IF
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	!GlobalGT("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIME","LOCALS")
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	!Global("JO_JOIN_LOAD","LOCALS",1)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+	Global("JO_JOIN_NOBANTER","LOCALS",0)
+	Global("JO_Myself_Valid","LOCALS",1)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+	RESPONSE #1
+		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
+		StartDialogOverride("%BG1_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
+		Continue()
+END

@@ -1,0 +1,114 @@
+
+
+// Note : 
+
+// - Complete the empty field with relevant NPC ressources.
+// - leave blank if none available.
+// - Select 1 or 0 depending of NPC being for BG1 or BG2.
+
+// - Uncomment the third component in JOining_Party_Select.tp2.
+// - Install component "Next Traveler" only.
+// - Comment the third component in JOining_Party_Select.tp2.
+
+// Rename Next_Traveler_cpmvars.tpa with your NPC name.
+
+// To contribute on Github, please try to propose one commit with modified files to easier review.
+
+
+// Choose = 1 if NPC is for BG1 and 0 if NPC is for BG2
+
+	OUTER_SET Traveler_BG1 = 0
+
+
+// Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1
+
+	OUTER_SET Traveler_BG2 = 2
+
+
+// Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "The Cost of One Girl's Soul"
+
+
+// Use NPC name
+// (If another NPC already have a similar name use name_BG2 or name_BG1 or name_whatever. ex : Alora_BG2 or Drizzt_Terror)
+
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Skie" //  Eddard
+
+
+// Use the DeathVar/Script Name of the NPC
+
+	OUTER_SPRINT "NEW_TRAVELER_DeathVar" "L#2SDSKIE" //  L#2EDDRD
+
+
+// Override_script for BG1.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" ""
+
+
+// Override_script for SoD if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" ""
+
+
+// Override_script for BG2.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" "L#2SDSK" //  L#2ED
+
+
+// Override_script for ToB if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" "L#2SD25" //  L#2ED25
+
+
+// Joining_dialog for BG1.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" ""
+
+
+// Banter_dialog for BG1.
+
+	OUTER_SPRINT "NEW_TRAVELER_BANTER_DIALOG_NAME_BG1" ""
+	
+
+// Joining_dialog for SoD if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" ""
+
+
+// Banter_dialog for SoD if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_BANTER_DIALOG_NAME_SoD" ""
+
+
+// Joining_dialog for BG2.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" "L#2SDSKJ" //  L#2EDJ
+
+
+// Banter_dialog for BG2.
+
+	OUTER_SPRINT "NEW_TRAVELER_BANTER_DIALOG_NAME_BG2" "l#2sdskB" // L#2EDB
+
+
+// Joining_dialog for ToB if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" "L#2SD25J" // L#2ED25J
+
+
+// Banter_dialog for ToB if any.
+
+	OUTER_SPRINT "NEW_TRAVELER_BANTER_DIALOG_NAME_ToB" "l#2sd25B" // L#2ED25B
+
+
+// Use mod.tp2 name (ex : ajantisbg2 or setup-kivan)
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "SKIECOST"
+
+
+// Use the DESIGNATED number of the main componant mentionned in .tp2
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "1" // 3
+
+
+/////////////////////////////////////////////////////////////////////

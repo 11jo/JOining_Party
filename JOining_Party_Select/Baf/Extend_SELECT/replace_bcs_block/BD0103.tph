@@ -46,16 +46,20 @@ END
 
 IF
 	Global("K#PartySoD","BD0103",0)
-	Allegiance("%Death_var%",FAMILIAR)
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(3)
+		!Global("%Death_var%","GLOBAL",0)
+		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",SetGlobal("K#PartySoD","LOCALS",1))
 		SetGlobal("K#PartySoD","BD0103",1)
+		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,NEUTRAL))
 		SmallWait(1)
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_InParty","LOCALS",0))
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroySelf())
