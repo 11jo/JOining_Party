@@ -66,6 +66,7 @@ END
 //// No need to change JO_JOIN_CUTSCENE variable, next switch or next dialog or next cutscene will simply do it.
 //// No need to change JO_NEVER_JOIN variable // Reset when loading a save.
 IF
+	Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 	!Global("JO_JOIN_Move_Around","GLOBAL",0)
 	!Global("JO_JOIN_Move_Done","LOCALS",1)
 	OR(2)
@@ -169,6 +170,7 @@ END
 // Go to Reintegrate NPC into party periodically
 
 IF // security check
+	Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_LOAD","LOCALS",1) // TODO: Added // JO_JOIN_LOAD allow to secure OnCreation() and next block
@@ -182,6 +184,7 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 	OR(3)
 		Global("JO_JOIN_LOAD","LOCALS",1) // TODO: Added // JO_JOIN_LOAD allow to secure this block and previous block OnCreation()
 		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
@@ -1193,6 +1196,7 @@ END
 // Related to JO_JOIN_Wannabe in All_in
 
 IF
+	Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Used by loading blocks
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)

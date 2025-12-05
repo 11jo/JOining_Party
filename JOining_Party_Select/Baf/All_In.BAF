@@ -319,7 +319,7 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		DisplayStringHead(Myself,~Oh no ! more travelers~)
-		RandomWalkTime(4)
+		RandomWalkTime(1)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
