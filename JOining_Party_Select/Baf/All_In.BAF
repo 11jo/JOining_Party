@@ -36,7 +36,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",2)
-		MoveToOffset([0.-15])
 		FaceObject(Player1) 
 END
 
@@ -81,7 +80,6 @@ THEN
 		SetInterrupt(FALSE)
 		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",-1)
 		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",0)
-//
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
@@ -298,10 +296,25 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+// fellow travelers (End first time from party to familiar)
+ 
+IF
+	Allegiance(Myself,FAMILIAR)
+	Global("JO_JOIN_TALK","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		DisplayStringHead(Myself,~We are now fellow travelers.~)
+END
+
+// At loading JO_JOIN_SWITCHING_PARTY party members make room for travelers
+
 IF
 	Global("JO_JOIN","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
+	!Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -322,18 +335,6 @@ THEN
 		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
-END
-
-// fellow travelers (End first time from party to familiar)
- 
-IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_TALK","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_TALK","LOCALS",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
-		DisplayStringHead(Myself,~We are now fellow travelers.~)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -373,6 +374,6 @@ THEN
 		MakeGlobal()
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
-		MoveToOffset([5.0])
+		MoveToOffset([3.0])
 		Continue()
 END

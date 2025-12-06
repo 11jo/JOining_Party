@@ -206,9 +206,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-5])
-		Wait(2)
-//		SmallWait(1)
+		MoveToOffset([0.-1])
 		FaceObject(Player1Fill) // TODO: Added
 		SetInterrupt(TRUE)
 	RESPONSE #1
@@ -216,9 +214,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-5])
-		Wait(2)
-//		SmallWait(1)
+		MoveToOffset([0.-1])
 		FaceObject(Player1) // TODO: Added
 		SetInterrupt(TRUE)
 	RESPONSE #2
@@ -226,9 +222,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-6])
-		Wait(2)
-//		SmallWait(1)
+		MoveToOffset([0.-2])
 		FaceObject(Player2) // TODO: Added
 		SetInterrupt(TRUE)
 	RESPONSE #3
@@ -236,9 +230,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-7])
-		Wait(2)
-//		SmallWait(1)
+		MoveToOffset([0.-3])
 		FaceObject(Player3) // TODO: Added
 		SetInterrupt(TRUE)
 	RESPONSE #4
@@ -246,9 +238,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-8])
-		Wait(2)
-//		SmallWait(1)
+		MoveToOffset([0.-4])
 		FaceObject(Player4) // TODO: Added
 		SetInterrupt(TRUE)
 	RESPONSE #5
@@ -256,9 +246,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-9])
-		Wait(2)
-//		SmallWait(1)
+		MoveToOffset([0.-5])
 		FaceObject(Player5) // TODO: Added
 		SetInterrupt(TRUE)
 	RESPONSE #6
@@ -266,9 +254,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-10])
-		Wait(2)
-//		SmallWait(1)
+		MoveToOffset([0.-6])
 		FaceObject(Player6) // TODO: Added
 		SetInterrupt(TRUE)
 END
@@ -1210,7 +1196,6 @@ IF
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Used by loading blocks
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//	Global("JO_JOIN_IS_SWITCHING","LOCALS",0)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -1225,10 +1210,9 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_NEVER_JOIN","LOCALS",0)
 	!Global("JO_JOIN_LOAD","LOCALS",1)
-	NumInPartyLT(6)
+	NumInPartyGT(4)
 THEN
 	RESPONSE #0
-//		SetGlobal("JO_JOIN_IS_SWITCHING","LOCALS",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 END
@@ -1243,7 +1227,6 @@ IF
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//	Global("JO_JOIN_IS_SWITCHING","LOCALS",1)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -1281,7 +1264,6 @@ IF
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//	Global("JO_JOIN_IS_SWITCHING","LOCALS",1)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -1319,7 +1301,6 @@ IF
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//	Global("JO_JOIN_IS_SWITCHING","LOCALS",1)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -1357,7 +1338,6 @@ IF
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//	Global("JO_JOIN_IS_SWITCHING","LOCALS",1)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -1395,7 +1375,6 @@ IF
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//	Global("JO_JOIN_IS_SWITCHING","LOCALS",1)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -1429,7 +1408,6 @@ END
 
 IF
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Used by loading blocks
-	NumInPartyLT(6)
 	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
 THEN
 	RESPONSE #2
@@ -1438,7 +1416,6 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-//		SetGlobal("JO_JOIN_IS_SWITCHING","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -1456,7 +1433,6 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-//		SetGlobal("JO_JOIN_IS_SWITCHING","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -1474,7 +1450,6 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-//		SetGlobal("JO_JOIN_IS_SWITCHING","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -1492,7 +1467,6 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-//		SetGlobal("JO_JOIN_IS_SWITCHING","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -1510,7 +1484,6 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-//		SetGlobal("JO_JOIN_IS_SWITCHING","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -1525,7 +1498,7 @@ THEN
 END
 
 ///////////////////////////////////////////////////////////////////////////////
-// If NumInPartyLT(5) then some travelers can join the group
+// If free party slots then some travelers can join the group
 
 IF
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
@@ -1547,7 +1520,6 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_NEVER_JOIN","LOCALS",0)
-	NumInPartyLT(5)
 THEN
 	RESPONSE #25
 		SetInterrupt(FALSE)
