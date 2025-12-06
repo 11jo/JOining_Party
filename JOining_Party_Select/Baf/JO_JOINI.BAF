@@ -9,6 +9,7 @@ IF // reactive JOMINHP1 after load
 		Allegiance(Myself,FAMILIAR)
 		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
 	HasItem("JOMINHP1",Myself)
+	Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
@@ -205,6 +206,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
+		MoveToOffset([0.-5])
 		Wait(2)
 //		SmallWait(1)
 		FaceObject(Player1Fill) // TODO: Added
@@ -214,6 +216,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
+		MoveToOffset([0.-5])
 		Wait(2)
 //		SmallWait(1)
 		FaceObject(Player1) // TODO: Added
@@ -223,6 +226,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
+		MoveToOffset([0.-6])
 		Wait(2)
 //		SmallWait(1)
 		FaceObject(Player2) // TODO: Added
@@ -232,6 +236,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
+		MoveToOffset([0.-7])
 		Wait(2)
 //		SmallWait(1)
 		FaceObject(Player3) // TODO: Added
@@ -241,6 +246,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
+		MoveToOffset([0.-8])
 		Wait(2)
 //		SmallWait(1)
 		FaceObject(Player4) // TODO: Added
@@ -250,6 +256,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
+		MoveToOffset([0.-9])
 		Wait(2)
 //		SmallWait(1)
 		FaceObject(Player5) // TODO: Added
@@ -259,6 +266,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
+		MoveToOffset([0.-10])
 		Wait(2)
 //		SmallWait(1)
 		FaceObject(Player6) // TODO: Added
@@ -273,6 +281,7 @@ END
 // Could be changed to more or less rounds for players convenience
 
 IF
+	Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
 	!Global("JO_JOIN_Fill_Party","LOCALS",1)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -292,6 +301,7 @@ THEN
 //		EquipItemEx("JOMINHP1",1) // TODO: Added // Not needed for a quick switch // See related Switch between familiar and party in All_in
 //		SmallWait(1)
 //		DestroyItem("JOMINHP1")
+		MoveToOffset([0.5])
 		SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
 		JoinParty() // Go to All_In_Baf Switch between familiar and party

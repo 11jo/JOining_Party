@@ -160,3 +160,65 @@
 2: party member reintegration in process
 | JO_JOIN_LOAD | L |Secure travelers switch when loading a save. | 1: Traveler switch at loading in process<br>2: False |
 | JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>1: True<br>
+
+---
+
+### CLUAGLOBAL
+
+CLUAConsole:
+	GetGlobal("JO_JOIN_CAMPAIGN","GLOBAL")
+	GetGlobal("JO_JOIN_Move_Around","GLOBAL")
+	GetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL") // At loading : Party members awaiting to reintegrate the group
+	GetGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL") // At loading : Travelers processing switch.
+	GetGlobal("JO_NOJOIN","GLOBAL") // A traveler is currently switching
+	GetGlobal("JO_JOIN_CUTSCENE","GLOBAL")
+	GetGlobal("JO_JOIN_PLAYER1_INIT","GLOBAL") // Baldur.bcs, security set DPLAYER3.bcs to Charname, only once.
+
+### CLUALOCALS (Cursor on the character to return personnal variables)
+
+CLUAConsole:
+	GetGlobal("JO_Myself_Valid","LOCALS")
+	GetGlobal("JO_Myself_AllowDead","LOCALS")
+	GetGlobal("JO_Myself_InParty","LOCALS")
+
+	GetGlobal("JO_JOIN_IS_TRAVELER","LOCALS") // NPC is a traveler
+	GetGlobal("JO_JOIN_Wannabe","LOCALS") // Party members are available to leave the groupe at loading
+	GetGlobal("JO_NEVER_JOIN","LOCALS") // Temporarly prevent travelers to switch or join the group // Reinitialised at loading and when switching
+	GetGlobal("JO_JOIN_NOBANTER","LOCALS") // Prevent banter // Reactivate by dialg only
+	GetGlobal("JO_JOIN_NOSWITCH","LOCALS") // Prevent JO_JOIN_READY_TO_SWITCH and so Prevent switching place with party members
+
+	GetGlobal("JO_JOIN","LOCALS")
+	GetGlobal("JO_JOIN_IS_JOINING","LOCALS")
+	GetGlobal("JO_JOINI","LOCALS")
+	GetGlobal("JO_JOIN_TALK","LOCALS")
+	GetGlobal("JO_JOIN_CLEAR","LOCALS")
+
+	GetGlobal("JO_JOIN_Move_Done","LOCALS")
+	GetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS")
+	GetGlobal("JO_Myself_LeaveParty","LOCALS")
+	GetGlobal("JO_JOIN_Fill_Party","LOCALS") // Allow traveler to join the group properly if free slots are available
+	GetGlobal("JO_JOIN_IS_Wannabe","LOCALS") // First time InParty JO_JOIN_Wannabe is set to 1 only once
+	GetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS")
+	GetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS")
+
+	GetGlobal("JO_JOIN_LOAD","LOCALS") // Travelers switch quickly in party at loading
+	GetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS") // Party members leave the groupe at loading
+
+	GetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS") // Travelers and Party members are ready and available to switch their place.
+	GetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS") // Travelers and Party members are in proccess of switching place
+
+	GetGlobal("JO_JOIN_JOIN","LOCALS")
+	GetGlobal("JO_JOIN_BANTER_TIME","LOCALS")
+	GetGlobal("JO_JOIN_SWITCH_TIMER","LOCALS")
+
+	GetGlobal("JO_JOIN_PLAYER_INIT","LOCALS")
+	GetGlobal("JO_JOIN_LINK_TYPE","LOCALS")
+	GetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS")
+
+	GetGlobal("BDAI_DISABLE_ATTACK","LOCALS")
+	GetGlobal("BDAI_ATTACK_MODE","LOCALS")
+	GetGlobal("BDAI_DISABLE_ITEMS","LOCALS")
+	GetGlobal("BDAI_DISABLE_OFFENSIVE","LOCALS")
+	GetGlobal("BDAI_DISABLE_DEFENSIVE","LOCALS")
+	GetGlobal("BDAI_DISABLE_SPECIAL","LOCALS")
+	GetGlobal("BDAI_SKILL_MODE","LOCALS")

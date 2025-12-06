@@ -8,9 +8,6 @@ IF
 	InParty(Myself)
 	Global("JO_JOIN_Wannabe","LOCALS",1)
 	Global("JO_Myself_Valid","LOCALS",1)
-//
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-// Make sure a traveler is not switching
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
@@ -18,7 +15,6 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",1)
-//
 		SetGlobal("JO_JOIN","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
 END
@@ -37,10 +33,10 @@ IF
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
 		!InParty(PartySlot6)
-	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",2)
+		MoveToOffset([0.-15])
 		FaceObject(Player1) 
 END
 
@@ -58,11 +54,10 @@ IF
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
 		!InParty(PartySlot6)
-	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MoveToObject(Player1)
+		MoveToOffset([0.-15])
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -118,8 +113,10 @@ END
 IF
 	Global("JO_JOIN_Wannabe","LOCALS",0)
 	InParty(Myself)
+	Global("JO_JOIN_IS_Wannabe","LOCALS",0)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",1)
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		Continue()
@@ -292,6 +289,8 @@ THEN
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
 		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
+		SetGlobal("JO_JOIN_NOSWITCH","LOCALS",0)
 //		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN) // TODO: Added Moved in Jo_Joini to allow componant Traveler Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
@@ -319,7 +318,7 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		DisplayStringHead(Myself,~Oh no ! more travelers~)
-		RandomWalkTime(1)
+		MoveToOffset([0.15])
 		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
@@ -374,5 +373,6 @@ THEN
 		MakeGlobal()
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
+		MoveToOffset([5.0])
 		Continue()
 END
