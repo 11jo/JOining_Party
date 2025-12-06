@@ -168,8 +168,8 @@
 CLUAConsole:
 	GetGlobal("JO_JOIN_CAMPAIGN","GLOBAL")
 	GetGlobal("JO_JOIN_Move_Around","GLOBAL")
-	GetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL") // At loading : Party members awaiting to reintegrate the group
-	GetGlobal("JO_JOIN_TRAVELER_PARTY","GLOBAL") // At loading : Travelers processing switch.
+	GetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL") // At loading : Party members awaiting to reintegrate the group
+	GetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL") // At loading : Travelers processing switch.
 	GetGlobal("JO_NOJOIN","GLOBAL") // A traveler is currently switching
 	GetGlobal("JO_JOIN_CUTSCENE","GLOBAL")
 	GetGlobal("JO_JOIN_PLAYER1_INIT","GLOBAL") // Baldur.bcs, security set DPLAYER3.bcs to Charname, only once.
@@ -183,9 +183,9 @@ CLUAConsole:
 
 	GetGlobal("JO_JOIN_IS_TRAVELER","LOCALS") // NPC is a traveler
 	GetGlobal("JO_JOIN_Wannabe","LOCALS") // Party members are available to leave the groupe at loading
-	GetGlobal("JO_NEVER_JOIN","LOCALS") // Temporarly prevent travelers to switch or join the group // Reinitialised at loading and when switching
-	GetGlobal("JO_JOIN_NOBANTER","LOCALS") // Prevent banter // Reactivate by dialg only
-	GetGlobal("JO_JOIN_NOSWITCH","LOCALS") // Prevent JO_JOIN_READY_TO_SWITCH and so Prevent switching place with party members
+	GetGlobal("JO_JOIN_NEVER_JOIN","LOCALS") // Temporarly prevent travelers to switch or join the group // Reinitialised at loading and when switching
+	GetGlobal("JO_JOIN_NEVER_BANTER","LOCALS") // Prevent banter // Reactivate by dialg only
+	GetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS") // Prevent JO_JOIN_READY_TO_SWITCH and so Prevent switching place with party members
 
 	GetGlobal("JO_JOIN","LOCALS")
 	GetGlobal("JO_JOIN_IS_JOINING","LOCALS")
@@ -201,11 +201,11 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS")
 	GetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS")
 
-	GetGlobal("JO_JOIN_LOAD","LOCALS") // Travelers switch quickly in party at loading
-	GetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS") // Party members leave the groupe at loading
+	GetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS") // Travelers switch quickly in party at loading
+	GetGlobal("JO_JOIN_LOAD_PARTY","LOCALS") // Party members leave the groupe at loading
 
 	GetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS") // Travelers and Party members are ready and available to switch their place.
-	GetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS") // Travelers and Party members are in proccess of switching place
+	GetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS") // Travelers and Party members are in process of switching place
 
 	GetGlobal("JO_JOIN_JOIN","LOCALS")
 	GetGlobal("JO_JOIN_BANTER_TIME","LOCALS")

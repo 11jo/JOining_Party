@@ -13,16 +13,16 @@ IF
 	Global("JO_JOINI","LOCALS",0)
 THEN
 	RESPONSE #100
-		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
-		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",1)
+		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
 		SetGlobal("JO_JOIN","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
 END
 
 IF
-	!GlobalGT("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
-	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LOAD_SWITCH","LOCALS",1)
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -35,14 +35,14 @@ IF
 		!InParty(PartySlot6)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",2)
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",2)
 		FaceObject(Player1) 
 END
 
 IF
-	!GlobalGT("JO_JOIN_TRAVELER_PARTY","GLOBAL",0)
-	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LOAD_SWITCH","LOCALS",2)
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",2)
 	Global("JO_NOJOIN","GLOBAL",0)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -57,7 +57,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		MoveToOffset([0.-15])
-		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		EquipItemEx("JOMINHP1",1) 
@@ -74,12 +74,12 @@ END
 
 IF
 	InParty(Myself)
-	Global("JO_JOIN_LOAD_SWITCH","LOCALS",2)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",-1)
-		SetGlobal("JO_JOIN_LOAD_SWITCH","LOCALS",0)
+		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",-1)
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
@@ -126,7 +126,7 @@ END
 IF
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-	Global("JO_JOIN_NOSWITCH","LOCALS",0)
+	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
@@ -269,7 +269,7 @@ IF
 	Global("JO_JOIN","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -286,9 +286,9 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
-		SetGlobal("JO_JOIN_NOSWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN) // TODO: Added Moved in Jo_Joini to allow componant Traveler Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
@@ -314,8 +314,8 @@ IF
 	Global("JO_JOIN","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
-	!Global("JO_JOIN_LOAD_SWITCH","LOCALS",0)
-	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	!Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
