@@ -49,7 +49,7 @@ IF
 	OR(3)
 		!Global("%Death_var%","GLOBAL",0)
 		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",SetGlobal("K#PartySoD","LOCALS",1))
