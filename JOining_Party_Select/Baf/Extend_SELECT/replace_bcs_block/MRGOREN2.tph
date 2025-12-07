@@ -22,9 +22,9 @@ END
 IF
 	OR(3)
 			Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
-			TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 			Allegiance("%Death_var%",FAMILIAR)
-	TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
 THEN
 	RESPONSE #25
 		ActionOverride("%Death_var%",MoveToPoint([1561.1541]))

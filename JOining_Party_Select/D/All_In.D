@@ -26,7 +26,7 @@ APPEND ~%joining_dlg%~
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //
 	IF ~Global("JO_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^YRemain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~Global("JO_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^YRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~!Global("JO_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^YRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
 	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^BI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^BI did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
 	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
@@ -34,7 +34,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NOBANTER","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_NOBANTER","LOCALS",1)~ THEN REPLY ~^BOn second thought, I miss your discussions... Please continue.^-~ DO ~
+	IF ~!Global("JO_JOIN_NOBANTER","LOCALS",0)~ THEN REPLY ~^BOn second thought, I miss your discussions... Please continue.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NOBANTER","LOCALS",0)~ GOTO JO_JOINYes //

@@ -13,9 +13,9 @@ IF
 	!Global("JO_JOIN_LOAD","LOCALS",1)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN_NOBANTER","LOCALS",0)
-	Global("JO_Myself_Valid","LOCALS",1)
+	!Global("JO_Myself_Valid","LOCALS",0)
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
 	RESPONSE #3

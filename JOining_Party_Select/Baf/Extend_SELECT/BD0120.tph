@@ -10,7 +10,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Edwin","GLOBAL",0)
 		TriggerOverride("Edwin",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Edwin",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Edwin",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Edwin",ChangeAIScript("BDEDWIN",OVERRIDE))
