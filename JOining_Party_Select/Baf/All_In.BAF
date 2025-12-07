@@ -16,7 +16,7 @@ THEN
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
 		SetGlobal("JO_JOIN","LOCALS",1)
-		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_DAY)
 END
 
 IF
@@ -289,7 +289,7 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_TURN) // TODO: Added Moved in Jo_Joini to allow componant Traveler Switch Timer
+//		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN) // TODO: Added Moved in Jo_Joini to allow componant Traveler Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		MakeGlobal()

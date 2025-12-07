@@ -14,7 +14,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		EquipItemEx("JOMINHP1",0)
-		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY) //
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_DAY) //
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
@@ -142,7 +142,7 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_BANTER_TIME","LOCALS",ONE_DAY) //
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_DAY) //
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
@@ -178,7 +178,7 @@ IF // security check
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 THEN
 	RESPONSE #100
-//		SetGlobal("JO_JOIN_JOIN","LOCALS",0) // TODO: // What ???
+//		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0) // TODO: // What ???
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		Continue()
@@ -188,7 +188,7 @@ IF
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
 	OR(3)
 		Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // TODO: Added // JO_JOIN_LOAD allow to secure this block and previous block OnCreation()
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 		!Global("JO_JOIN_Fill_Party","LOCALS",0)
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -279,7 +279,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_DAYS)
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOINI","LOCALS",1)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // ScriptAction (All_in_Baf)
@@ -747,7 +747,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		ReallyForceSpellRES("JOIR648",Myself)
 		Wait(2)
@@ -1248,7 +1248,7 @@ THEN
 		FaceObject(Player2)
 		ActionOverride(Player2,FaceObject(Myself))
 		DisplayStringHead(Player2,~Hé ?~)
-		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_DAYS))
+		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS))
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
@@ -1285,7 +1285,7 @@ THEN
 		FaceObject(Player3)
 		ActionOverride(Player3,FaceObject(Myself))
 		DisplayStringHead(Player3,~Yes ?~)
-		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_DAYS))
+		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS))
 		ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
@@ -1322,7 +1322,7 @@ THEN
 		FaceObject(Player4)
 		ActionOverride(Player4,FaceObject(Myself))
 		DisplayStringHead(Player4,~Don't disturb...~)
-		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_DAYS))
+		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS))
 		ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
@@ -1359,7 +1359,7 @@ THEN
 		FaceObject(Player5)
 		ActionOverride(Player5,FaceObject(Myself))
 		DisplayStringHead(Player5,~What ?~)
-		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_DAYS))
+		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS))
 		ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
@@ -1396,7 +1396,7 @@ THEN
 		FaceObject(Player6)
 		ActionOverride(Player6,FaceObject(Myself))
 		DisplayStringHead(Player6,~Hum ?~)
-		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_JOIN","LOCALS",TWO_DAYS))
+		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWENTY_HOURS))
 		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6)

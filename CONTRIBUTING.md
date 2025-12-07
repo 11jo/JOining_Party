@@ -207,8 +207,8 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS") // Travelers and Party members are ready and available to switch their place.
 	GetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS") // Travelers and Party members are in process of switching place
 
-	GetGlobal("JO_JOIN_JOIN","LOCALS")
-	GetGlobal("JO_JOIN_BANTER_TIME","LOCALS")
+	GetGlobal("JO_JOIN_JOIN_TIMER","LOCALS")
+	GetGlobal("JO_JOIN_BANTER_TIMER","LOCALS")
 	GetGlobal("JO_JOIN_SWITCH_TIMER","LOCALS")
 
 	GetGlobal("JO_JOIN_PLAYER_INIT","LOCALS")
