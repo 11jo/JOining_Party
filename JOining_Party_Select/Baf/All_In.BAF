@@ -6,8 +6,8 @@
 IF
 	OnCreation()
 	InParty(Myself)
-	Global("JO_JOIN_Wannabe","LOCALS",1)
-	Global("JO_Myself_Valid","LOCALS",1)
+	!Global("JO_JOIN_Wannabe","LOCALS",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
@@ -26,7 +26,7 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
@@ -46,7 +46,7 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
@@ -120,7 +120,7 @@ THEN
 		Continue()
 END
 
-// If JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for switching with a traveler
+// If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for switching with a traveler
 // Timer make sure the party member stay long enough in party
 
 IF
@@ -246,8 +246,8 @@ END
 // Related to Join_ability.baf destroy item before 
 
 IF
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",1) // TODO: Added probably useless
-	!Global("JO_TRAVELER_%Death_var%","GLOBAL",1) // TODO: Added probably useless
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0) // TODO: Added probably useless
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",0) // TODO: Added probably useless
 	!Allegiance(Myself,FAMILIAR)
 	HasItem("JOMINHP1",Myself)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)

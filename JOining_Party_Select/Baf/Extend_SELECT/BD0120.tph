@@ -10,7 +10,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Edwin","GLOBAL",0)
 		TriggerOverride("Edwin",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Edwin",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Edwin",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Edwin",ChangeAIScript("BDEDWIN",OVERRIDE))
@@ -37,7 +37,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Jaheira","GLOBAL",0)
 		TriggerOverride("Jaheira",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Jaheira",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Jaheira",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Jaheira",ChangeAIScript("BDJAHEIR",OVERRIDE))
@@ -64,7 +64,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Minsc","GLOBAL",0)
 		TriggerOverride("Minsc",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Minsc",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Minsc",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Minsc",ChangeAIScript("BDMINSC",OVERRIDE))
@@ -91,7 +91,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Viconia","GLOBAL",0)
 		TriggerOverride("Viconia",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Viconia",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Viconia",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Viconia",ChangeAIScript("BDVICONI",OVERRIDE))
@@ -118,7 +118,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Dorn","GLOBAL",0)
 		TriggerOverride("Dorn",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Dorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Dorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Dorn",ChangeAIScript("BDDORN",OVERRIDE))
@@ -145,7 +145,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Neera","GLOBAL",0)
 		TriggerOverride("Neera",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Neera",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Neera",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Neera",ChangeAIScript("BDNEERA",OVERRIDE))
@@ -172,7 +172,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Rasaad","GLOBAL",0)
 		TriggerOverride("Rasaad",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Rasaad",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Rasaad",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Rasaad",ChangeAIScript("BDRASAAD",OVERRIDE))
@@ -201,7 +201,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Ajantis","GLOBAL",0)
 		TriggerOverride("Ajantis",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Ajantis",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Ajantis",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
@@ -228,7 +228,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Alora","GLOBAL",0)
 		TriggerOverride("Alora",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Alora",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Alora",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
@@ -259,7 +259,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Branwen","GLOBAL",0)
 		TriggerOverride("Branwen",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Branwen",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Branwen",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
@@ -286,7 +286,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Coran","GLOBAL",0)
 		TriggerOverride("Coran",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Coran",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Coran",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
@@ -313,7 +313,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Dynaheir","GLOBAL",0)
 		TriggerOverride("Dynaheir",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Dynaheir",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Dynaheir",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Dynaheir",ChangeAIScript("BDDYNAHE",OVERRIDE))
@@ -340,7 +340,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Eldoth","GLOBAL",0)
 		TriggerOverride("Eldoth",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Eldoth",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Eldoth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
@@ -371,7 +371,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Faldorn","GLOBAL",0)
 		TriggerOverride("Faldorn",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Faldorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Faldorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
@@ -402,7 +402,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Garrick","GLOBAL",0)
 		TriggerOverride("Garrick",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Garrick",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Garrick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
@@ -429,7 +429,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Kagain","GLOBAL",0)
 		TriggerOverride("Kagain",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Kagain",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Kagain",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
@@ -456,7 +456,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Khalid","GLOBAL",0)
 		TriggerOverride("Khalid",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Khalid",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Khalid",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Khalid",ChangeAIScript("BDKHALID",OVERRIDE))
@@ -483,7 +483,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Kivan","GLOBAL",0)
 		TriggerOverride("Kivan",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Kivan",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Kivan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
@@ -510,7 +510,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Montaron","GLOBAL",0)
 		TriggerOverride("Montaron",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Montaron",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Montaron",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
@@ -537,7 +537,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Quayle","GLOBAL",0)
 		TriggerOverride("Quayle",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Quayle",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Quayle",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
@@ -564,7 +564,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Safana","GLOBAL",0)
 		TriggerOverride("Safana",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Safana",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Safana",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Safana",ChangeAIScript("BDSAFANA",OVERRIDE))
@@ -591,7 +591,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Sharteel","GLOBAL",0)
 		TriggerOverride("Sharteel",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Sharteel",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Sharteel",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
@@ -622,7 +622,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Skie","GLOBAL",0)
 		TriggerOverride("Skie",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Skie",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Skie",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
@@ -649,7 +649,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Tiax","GLOBAL",0)
 		TriggerOverride("Tiax",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Tiax",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Tiax",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
@@ -676,7 +676,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Xan","GLOBAL",0)
 		TriggerOverride("Xan",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Xan",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Xan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
@@ -703,7 +703,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Xzar","GLOBAL",0)
 		TriggerOverride("Xzar",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Xzar",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Xzar",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
@@ -730,7 +730,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Yeslick","GLOBAL",0)
 		TriggerOverride("Yeslick",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Yeslick",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Yeslick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
@@ -757,7 +757,7 @@ IF
 	OR(3)
 		!Global("JO_TRAVELER_Baeloth","GLOBAL",0)
 		TriggerOverride("Baeloth",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("Baeloth",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!TriggerOverride("Baeloth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride("Baeloth",ChangeAIScript("BDBAELOT",OVERRIDE))

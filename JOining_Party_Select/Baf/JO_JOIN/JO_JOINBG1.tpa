@@ -122,8 +122,8 @@ END
 IF
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
 	OR(2)
-		Global("JO_Myself_LeaveParty","LOCALS",1)
-		Global("JO_%Death_var%_LeaveParty","GLOBAL",1)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
 	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
 THEN
 	RESPONSE #100

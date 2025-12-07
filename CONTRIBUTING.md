@@ -159,7 +159,7 @@
 | JO_JOIN_LOAD_SWITCH | L | Party member variable when temporary removed at loading. | 0: Available<br>1: processing<br>
 2: party member reintegration in process
 | JO_JOIN_LOAD | L |Secure travelers switch when loading a save. | 1: Traveler switch at loading in process<br>2: False |
-| JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>1: True<br>
+| JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>Other: True<br>
 
 ---
 
