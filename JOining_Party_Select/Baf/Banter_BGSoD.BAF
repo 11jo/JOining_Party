@@ -17,13 +17,14 @@ IF
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	RandomNum(4,2)
 THEN
 	RESPONSE #1
-		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_DAY)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		StartDialogOverride("%BG1_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
 	RESPONSE #2
-		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_DAY)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		StartDialogOverride("%SoD_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
 END
