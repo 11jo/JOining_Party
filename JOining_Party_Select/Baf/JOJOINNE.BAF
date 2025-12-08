@@ -17,23 +17,13 @@ THEN
 END
 
 IF
-	OR(2)
+	OR(3)
 		!NumberOfTimesTalkedTo(0)
 		!See(Player1)
+		!InMyArea(Player1)
 	!Global("JO_JOIN_Move_Around","GLOBAL",0)
 THEN
 	RESPONSE #100
-		Wait(5)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
-		DestroySelf()
-END
-
-IF
-	OR(2)
-		!NumberOfTimesTalkedTo(0)
-		!See(Player1)
-	Global("JO_JOIN_Move_Around","GLOBAL",0)
-THEN
-	RESPONSE #100
 		DestroySelf()
 END
