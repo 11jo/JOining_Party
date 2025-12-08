@@ -56,7 +56,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-15])
+		MoveToOffset([0.-5])
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -331,7 +331,7 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		DisplayStringHead(Myself,~Oh no ! more travelers~)
-		MoveToOffset([0.15])
+		MoveToOffset([0.5])
 		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
@@ -347,7 +347,9 @@ IF
 	Global("JO_JOINI","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
-	Delay(6)
+	OR(2)
+		GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+		Delay(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

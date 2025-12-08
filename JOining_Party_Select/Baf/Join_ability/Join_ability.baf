@@ -123,7 +123,7 @@ IF
 	GlobalLT("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_SWITCHING_PARTY est inférieur à 0 !^-~)
+		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_PARTY_SWITCH est inférieur à 0 !^-~)
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 END
 
@@ -131,6 +131,6 @@ IF
 	GlobalLT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_TRAVELER_PARTY est inférieur à 0 !^-~)
+		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_TRAVELER_SWITCH est inférieur à 0 !^-~)
 		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 END

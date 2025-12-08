@@ -18,6 +18,8 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
+		MoveToOffset([0.-1])
+		MoveToOffset([0.1])
 		Continue()
 END
 
@@ -184,6 +186,22 @@ THEN
 		Continue()
 END
 
+IF // Block wait
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+	NumInPartyLT(5)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD_WAIT","LOCALS",1)
+		Continue()
+END
+IF // Block wait
+	Global("JO_JOIN_LOAD_WAIT","LOCALS",0)
+	NumInPartyGT(4)
+THEN
+	RESPONSE #100
+		NoAction()
+END
+
 IF
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
 	OR(3)
@@ -198,64 +216,91 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
+	OR(2)
+		!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		NumInPartyLT(5)
+	OR(2)
+		!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		Global("JO_JOIN_LOAD_WAIT","LOCALS",1)
 	NumInPartyLT(6)
 	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
 THEN
 	RESPONSE #0
+		SetInterrupt(FALSE)
+		MoveToOffset([0.-1])
+		MoveToOffset([-1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		MoveToOffset([0.-1])
 		FaceObject(Player1Fill) // TODO: Added
+		MoveToOffset([1.0])
+		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #1
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetInterrupt(FALSE)
 		MoveToOffset([0.-1])
+		MoveToOffset([-1.0])
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player1) // TODO: Added
+		MoveToOffset([1.0])
+		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #2
+		SetInterrupt(FALSE)
+		MoveToOffset([0.-1])
+		MoveToOffset([-1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		MoveToOffset([0.-2])
 		FaceObject(Player2) // TODO: Added
+		MoveToOffset([1.0])
+		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #3
+		SetInterrupt(FALSE)
+		MoveToOffset([0.-1])
+		MoveToOffset([-1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		MoveToOffset([0.-3])
 		FaceObject(Player3) // TODO: Added
+		MoveToOffset([1.0])
+		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #4
+		SetInterrupt(FALSE)
+		MoveToOffset([0.-1])
+		MoveToOffset([-1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		MoveToOffset([0.-4])
 		FaceObject(Player4) // TODO: Added
+		MoveToOffset([1.0])
+		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #5
+		SetInterrupt(FALSE)
+		MoveToOffset([0.-1])
+		MoveToOffset([-1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		MoveToOffset([0.-5])
 		FaceObject(Player5) // TODO: Added
+		MoveToOffset([1.0])
+		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #6
+		SetInterrupt(FALSE)
+		MoveToOffset([0.-1])
+		MoveToOffset([-1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
-		MoveToOffset([0.-6])
 		FaceObject(Player6) // TODO: Added
+		MoveToOffset([1.0])
+		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 END
 
@@ -275,6 +320,9 @@ IF
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	OR(2)
+		!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		NumInPartyLT(4)
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
@@ -287,7 +335,6 @@ THEN
 //		EquipItemEx("JOMINHP1",1) // TODO: Added // Not needed for a quick switch // See related Switch between familiar and party in All_in
 //		SmallWait(1)
 //		DestroyItem("JOMINHP1")
-		MoveToOffset([0.5])
 		SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
 		JoinParty() // Go to All_In_Baf Switch between familiar and party
@@ -1184,14 +1231,17 @@ THEN
 		AttackOneRound(LastSeenBy(Myself))
 END
 
+
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
 // Switching party !!!
 
 // Related to JO_JOIN_Wannabe in All_in
 
 IF
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
@@ -1409,6 +1459,7 @@ END
 IF
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
 	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
+	NumInPartyLT(6)
 THEN
 	RESPONSE #2
 		SetInterrupt(FALSE)
