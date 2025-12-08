@@ -18,8 +18,6 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
-		MoveToOffset([0.-1])
-		MoveToOffset([0.1])
 		Continue()
 END
 
@@ -139,6 +137,7 @@ THEN
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
@@ -215,7 +214,9 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
@@ -241,7 +242,6 @@ THEN
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player1Fill) // TODO: Added
-		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetInterrupt(FALSE)
@@ -251,7 +251,6 @@ THEN
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player1) // TODO: Added
-		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #2
 		SetInterrupt(FALSE)
@@ -261,7 +260,6 @@ THEN
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player2) // TODO: Added
-		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #3
 		SetInterrupt(FALSE)
@@ -271,7 +269,6 @@ THEN
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player3) // TODO: Added
-		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #4
 		SetInterrupt(FALSE)
@@ -281,7 +278,6 @@ THEN
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player4) // TODO: Added
-		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #5
 		SetInterrupt(FALSE)
@@ -291,7 +287,6 @@ THEN
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player5) // TODO: Added
-		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 	RESPONSE #6
 		SetInterrupt(FALSE)
@@ -301,7 +296,6 @@ THEN
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		FaceObject(Player6) // TODO: Added
-		MoveToOffset([0.1])
 		SetInterrupt(TRUE)
 END
 
@@ -316,7 +310,9 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -1671,23 +1667,35 @@ END
 IF
 	GlobalGT("JO_JOIN_MY_SWITCH","LOCALS",0)
 	Switch("JO_JOIN_MY_SWITCH","LOCALS")
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 THEN
 	RESPONSE #1
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-1)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-1)
+		DisplayStringHead(Myself,~1 !~)
 	RESPONSE #2
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-2)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-2)
+		DisplayStringHead(Myself,~2 !~)
 	RESPONSE #3
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-3)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-3)
+		DisplayStringHead(Myself,~3 !~)
 	RESPONSE #4
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-4)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-4)
+		DisplayStringHead(Myself,~4 !~)
 	RESPONSE #5
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-5)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-5)
+		DisplayStringHead(Myself,~5 !~)
 	RESPONSE #6
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-6)
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-6)
+		DisplayStringHead(Myself,~6 !~)
 END

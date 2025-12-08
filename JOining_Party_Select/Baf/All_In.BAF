@@ -45,7 +45,7 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		DisplayStringHead(Myself,~Oh no ! more travelers~)
-		MoveToOffset([0.5])
+		MoveToOffset([0.3])
 		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
@@ -61,6 +61,7 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
@@ -70,11 +71,9 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",2)
-		FaceObject(Player1) 
+		NoAction()
 END
-
-// JO_JOIN_TRAVELER_SWITCH travelers are done switching, party members reintegrate the group
-
+ 
 IF
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
@@ -83,6 +82,30 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	OR(5)
+		!InParty(PartySlot2)
+		!InParty(PartySlot3)
+		!InParty(PartySlot4)
+		!InParty(PartySlot5)
+		!InParty(PartySlot6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",3)
+		FaceObject(Player1) 
+END
+
+// JO_JOIN_TRAVELER_SWITCH travelers are done switching, party members reintegrate the group
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
+	Global("JO_NOJOIN","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
@@ -92,7 +115,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-5])
+		MoveToOffset([0.-3])
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -112,7 +135,7 @@ END
 
 IF
 	InParty(Myself)
-	Global("JO_JOIN_LOAD_PARTY","LOCALS",2)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -206,6 +229,9 @@ END
 // ni dans le groupe, ni familier, ni au sol, ni charmé
 // ChangeEnemyAlly par exemple
 IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!StateCheck(Myself,STATE_CHARMED)
 	!Allegiance(Myself,FAMILIAR)
@@ -273,6 +299,9 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
 	!AreaCheck("BD0120")
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
@@ -295,7 +324,9 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -307,6 +338,9 @@ END
 // Related to Join_ability.baf destroy item before 
 
 IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
 	Global("JO_JOIN_IS_TRAVELER","LOCALS",0) // TODO: Added probably useless
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",0) // TODO: Added probably useless
 	!Allegiance(Myself,FAMILIAR)
@@ -327,10 +361,12 @@ END
 // First time from party to familiar
 
 IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
 	Global("JO_JOIN","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -409,6 +445,6 @@ THEN
 		MakeGlobal()
 // JO_JOIN.BAF		ChangeAIScript("%JO_JOIN%",OVERRIDE) // Go to relevant %JO_JOIN%.baf
 		SetInterrupt(TRUE)
-		MoveToOffset([3.0])
+		MoveToOffset([-1.0])
 		Continue()
 END

@@ -3,7 +3,9 @@
 // Yeah Start ( Switch between familiar and party)
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOIN_CLEAR","LOCALS",1)
 THEN
@@ -24,7 +26,9 @@ END
 // Yeah End (End Switch between familiar and party)
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN_CLEAR","LOCALS",2)
 THEN
 	RESPONSE #100
