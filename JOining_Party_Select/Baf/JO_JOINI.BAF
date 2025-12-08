@@ -12,6 +12,7 @@ IF // reactive JOMINHP1 after load
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
 THEN
 	RESPONSE #100
+		Face(E)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		EquipItemEx("JOMINHP1",0)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
@@ -189,6 +190,7 @@ END
 
 IF // Block wait for switch at loading
 	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+	Global("JO_JOIN_LOAD_WAIT","LOCALS",0)
 	NumInPartyLT(5)
 THEN
 	RESPONSE #100
@@ -197,6 +199,7 @@ THEN
 END
 
 IF // Block wait for switch at loading
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 	Global("JO_JOIN_LOAD_WAIT","LOCALS",0)
 	NumInPartyGT(4)
 THEN
@@ -205,10 +208,39 @@ THEN
 END
 
 IF
+	Global("JO_JOIN_LOAD_WAIT","LOCALS",1) // Travelers use this block only at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+//
+	NumInPartyLT(5)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Face(N)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		Face(W)
+		SetInterrupt(TRUE)
+END
+
+IF
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // Don't use this block if Traveler at loading
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
 //
-	OR(3)
-		Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // TODO: Added // JO_JOIN_LOAD allow to secure this block and previous block OnCreation()
+	OR(2)
 		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 		!Global("JO_JOIN_Fill_Party","LOCALS",0)
 //
@@ -236,66 +268,52 @@ IF
 THEN
 	RESPONSE #0
 		SetInterrupt(FALSE)
-		MoveToOffset([1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		FaceObject(Player1Fill) // TODO: Added
+		SmallWait(1)
+		MoveToObject(Player1Fill)
 		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetInterrupt(FALSE)
-		MoveToOffset([1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		FaceObject(Player1) // TODO: Added
+		SmallWait(1)
+		MoveToObject(Player1)
 		SetInterrupt(TRUE)
 	RESPONSE #2
 		SetInterrupt(FALSE)
-		MoveToOffset([1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		FaceObject(Player2) // TODO: Added
+		SmallWait(1)
+		MoveToObject(Player2)
 		SetInterrupt(TRUE)
 	RESPONSE #3
 		SetInterrupt(FALSE)
-		MoveToOffset([1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		FaceObject(Player3) // TODO: Added
+		SmallWait(1)
+		MoveToObject(Player3)
 		SetInterrupt(TRUE)
 	RESPONSE #4
 		SetInterrupt(FALSE)
-		MoveToOffset([1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		FaceObject(Player4) // TODO: Added
+		SmallWait(1)
+		MoveToObject(Player4)
 		SetInterrupt(TRUE)
 	RESPONSE #5
 		SetInterrupt(FALSE)
-		MoveToOffset([1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		FaceObject(Player5) // TODO: Added
+		SmallWait(1)
+		MoveToObject(Player5)
 		SetInterrupt(TRUE)
 	RESPONSE #6
 		SetInterrupt(FALSE)
-		MoveToOffset([1.0])
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		FaceObject(Player6) // TODO: Added
+		SmallWait(1)
+		MoveToObject(Player6)
 		SetInterrupt(TRUE)
 END
 
