@@ -2,6 +2,112 @@
 // Special 
 ///////////////////////////////////////////////////////////////////////////////
 
+/*
+COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
+		PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0163~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0262~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0662~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG1057~) BEGIN
+		/*LPF fj_are_structure
+			INT_VAR
+			fj_variable_value = 1
+			STR_VAR
+			fj_structure_type = "variable"
+			fj_name           = "JO_JOIN_AREA"
+		END*/
+INNER_ACTION BEGIN APPEND ~MASTAREA.2da~ ~%SOURCE_RES% value~ UNLESS ~%SOURCE_RES%~ END
+		PATCH_PRINT ~... // %SOURCE_RES% isn't in mastarea.2da
+				~
+END
+	BUT_ONLY
+*/
+
+
+ACTION_IF GAME_IS ~bgee eet~ BEGIN
+
+	COPY_EXISTING ~BG2608.are~ ~override/JO2608.are~
+		WRITE_ASCII 0x94 ~JO2608~ #8
+		WRITE_LONG  0x14 THIS | BIT0 | BIT2 | BIT5 | BIT6
+			FOR ( i = SHORT_AT 0x58 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = actor
+		END
+			END
+			FOR ( i = SHORT_AT 0x5a ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = region
+		END
+			END
+			FOR ( i = SHORT_AT 0x6c ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = entrance
+		END
+			END
+			FOR ( i = SHORT_AT 0x74 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = container
+		END
+			END
+			FOR ( i = SHORT_AT 0x76 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = itm
+		END
+			END
+			FOR ( i = SHORT_AT 0xa4 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = door
+		END
+			END
+
+END ELSE BEGIN
+
+	COPY_EXISTING ~AR0604.are~ ~override/JO2608.are~
+		WRITE_ASCII 0x94 ~JO2608~ #8
+		WRITE_LONG  0x14 THIS | BIT0 | BIT2 | BIT5 | BIT6
+			FOR ( i = SHORT_AT 0x58 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = actor
+		END
+			END
+			FOR ( i = SHORT_AT 0x5a ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = region
+		END
+			END
+			FOR ( i = SHORT_AT 0x6c ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = entrance
+		END
+			END
+			FOR ( i = SHORT_AT 0x74 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = container
+		END
+			END
+			FOR ( i = SHORT_AT 0x76 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = itm
+		END
+			END
+			FOR ( i = SHORT_AT 0xa4 ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = door
+		END
+			END
+
+END
+
+APPEND ~MASTAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
+
 // JOJOINNE.d added before being extended
 //////////////////////////////////////////////////////////////////////////////////////
 

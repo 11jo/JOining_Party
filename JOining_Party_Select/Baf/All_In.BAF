@@ -6,19 +6,30 @@
 // All potential travelers in party will switch with actual traveler
 
 IF
-	OnCreation()
+//	OnCreation()
 	InParty(Myself)
 	!Global("JO_JOIN_Wannabe","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_LOAD_AREA","GLOBAL",1)
+	Global("JO_JOIN_LOAD_AREA","LOCALS",0)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD_AREA","LOCALS",1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
 		SetGlobal("JO_JOIN","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+END
+
+IF
+	Global("JO_JOIN_LOAD_AREA","GLOBAL",0)
+	Global("JO_JOIN_LOAD_AREA","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD_AREA","LOCALS",0)
 END
 
 // At loading JO_JOIN_PARTY_SWITCH party members make room for travelers
@@ -447,4 +458,19 @@ THEN
 		SetInterrupt(TRUE)
 		Face(S)
 		Continue()
+END
+
+IF
+	!Global("JO_JOIN_MY_SWITCH","LOCALS",0)
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-1)
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-1)
 END

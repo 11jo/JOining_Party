@@ -1,5 +1,58 @@
 // Extends DPLAYER3.bcs
 
+// StartCutScene(S:CutScene*)  EndCutSceneMode() 
+IF
+	OnCreation()
+	Global("JO_JOIN_BLOP","GLOBAL",0)
+THEN
+	RESPONSE #100
+		FadeToColor([250.0],0)
+		StorePartyLocations()
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1470.1080],50))
+		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
+		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],50))
+		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],50))
+		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],50))
+		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
+		SetGlobal("JO_JOIN_LOAD_AREA","GLOBAL",1)
+		MoveViewObject(Player1,INSTANT)
+		Wait(4)
+		Continue()
+END
+IF
+	OnCreation()
+	Global("JO_JOIN_BLOP","GLOBAL",1)
+THEN
+	RESPONSE #100
+		StorePartyLocations()
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1470.1080],50))
+		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
+		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],50))
+		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],50))
+		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],50))
+		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
+		SetGlobal("JO_JOIN_LOAD_AREA","GLOBAL",1)
+		MoveViewObject(Player1,INSTANT)
+		Wait(4)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_LOAD_AREA","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD_AREA","GLOBAL",0)
+		RestorePartyLocations()
+		MoveViewObject(Player1,INSTANT)
+		FadeFromColor([30.0],0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
 IF
 	Global("JO_JOIN_PLAYER_INIT","LOCALS",0)
 THEN
@@ -114,7 +167,7 @@ IF
 	HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !^-~)
+		DisplayStringHead(Myself, ~^RVoilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !^-~)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
 END
@@ -123,7 +176,7 @@ IF
 	GlobalLT("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_PARTY_SWITCH est inférieur à 0 !^-~)
+		DisplayStringHead(Myself, ~^RVoilà qui n'est pas normal... JO_JOIN_PARTY_SWITCH est inférieur à 0 !^-~)
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 END
 
@@ -131,6 +184,132 @@ IF
 	GlobalLT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~^RFIXME. Voilà qui n'est pas normal... JO_JOIN_TRAVELER_SWITCH est inférieur à 0 !^-~)
+		DisplayStringHead(Myself, ~^RVoilà qui n'est pas normal... JO_JOIN_TRAVELER_SWITCH est inférieur à 0 !^-~)
 		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 END
+
+IF
+	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		Wait(5)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
+END
+
+IF
+	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
+	Switch("JO_JOIN_LEGION","GLOBAL")
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 0 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #2
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 1 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #3
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 2 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #4
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 3 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #5
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 4 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #6
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 5 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #7
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 6 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #8
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 7 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #9
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 8 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #10
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 9 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #11
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 10 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #1
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 11 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #12
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 12 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #13
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 13 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #14
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 14 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #15
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 15 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #1
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 16 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #16
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 17 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #17
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 18 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #18
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 19 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	RESPONSE #19
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^I count 20 traveler !^-~)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+END
+
