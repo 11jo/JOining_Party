@@ -6,14 +6,16 @@
 // All potential travelers in party will switch with actual traveler
 
 IF
-//	OnCreation()
+	OnCreation()
 	InParty(Myself)
 	!Global("JO_JOIN_Wannabe","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_LOAD_AREA","GLOBAL",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_LOAD_AREA","GLOBAL",1)
 	Global("JO_JOIN_LOAD_AREA","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -423,6 +425,8 @@ END
 // Switch between familiar and party
 
 IF
+	Global("JO_JOIN_AREA","MYAREA",1)
+//
 	Global("JO_JOINI","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)

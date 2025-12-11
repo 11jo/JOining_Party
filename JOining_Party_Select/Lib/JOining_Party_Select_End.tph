@@ -2,18 +2,36 @@
 // Special 
 ///////////////////////////////////////////////////////////////////////////////
 
-/*
+
 COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
-		PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0163~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0262~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0662~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG1057~) BEGIN
-		/*LPF fj_are_structure
+		PATCH_IF (SOURCE_SIZE > 0x11b) AND (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
+		LPF fj_are_structure
 			INT_VAR
 			fj_variable_value = 1
 			STR_VAR
 			fj_structure_type = "variable"
 			fj_name           = "JO_JOIN_AREA"
-		END*/
-INNER_ACTION BEGIN APPEND ~MASTAREA.2da~ ~%SOURCE_RES% value~ UNLESS ~%SOURCE_RES%~ END
+		END
+// INNER_ACTION BEGIN APPEND ~MASTAREA.2da~ ~%SOURCE_RES% value~ UNLESS ~%SOURCE_RES%~ END
+		PATCH_PRINT ~... // %SOURCE_RES% is in mastarea.2da
+		Adding Global("JO_JOIN_AREA","MYAREA",1)
+				~
+END
+	BUT_ONLY
+	
+/*
+COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
+		PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0163~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0262~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0662~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG1057~) BEGIN
+		LPF fj_are_structure
+			INT_VAR
+			fj_variable_value = 1
+			STR_VAR
+			fj_structure_type = "variable"
+			fj_name           = "JO_JOIN_AREA"
+		END
+// INNER_ACTION BEGIN APPEND ~MASTAREA.2da~ ~%SOURCE_RES% value~ UNLESS ~%SOURCE_RES%~ END
 		PATCH_PRINT ~... // %SOURCE_RES% isn't in mastarea.2da
+		Adding Global("JO_JOIN_AREA","MYAREA",1)
 				~
 END
 	BUT_ONLY

@@ -4,9 +4,9 @@
 IF
 	OnCreation()
 	Global("JO_JOIN_BLOP","GLOBAL",0)
+	!Global("JO_JOIN_AREA","MYAREA",1)
 THEN
 	RESPONSE #100
-		FadeToColor([250.0],0)
 		StorePartyLocations()
 		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1470.1080],50))
 		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
@@ -19,11 +19,14 @@ THEN
 		Wait(4)
 		Continue()
 END
+
 IF
 	OnCreation()
 	Global("JO_JOIN_BLOP","GLOBAL",1)
+	!Global("JO_JOIN_AREA","MYAREA",1)
 THEN
 	RESPONSE #100
+		FadeToColor([15.0],0)
 		StorePartyLocations()
 		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1470.1080],50))
 		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
