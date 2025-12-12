@@ -51,7 +51,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
   COPY_EXISTING ~%cre%~ ~override~
     READ_ASCII 0x248 override_script
-    PATCH_IF NOT (~%override_script%~ STRING_EQUAL_CASE ~idiot01~)
+    PATCH_IF NOT (~%override_script%~ STRING_EQUAL_CASE ~idiot01~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NONE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SHOUT~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~INITDLG~)
 // Imoen
 // Original Imoen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%IMOEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOE25~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTIMOEN~)
 // Original Imoen // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN_~)

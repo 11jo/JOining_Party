@@ -1,3 +1,58 @@
+
+///////////////////////////////////////////////////////////////////////////////////
+// Loading travelers
+// All travelers will switch in party
+
+IF // reactive JOMINHP1 after load
+	OnCreation()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	HasItem("JOMINHP1",Myself)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+THEN
+	RESPONSE #100
+		Face(E)
+		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		EquipItemEx("JOMINHP1",0)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
+		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
+		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////////
+
+IF
+	!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
+	IsActive(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",1)
+		Deactivate(Myself)
+END
+
+IF
+	!Global("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	!IsActive(Myself)
+THEN
+	RESPONSE #100
+		Activate(Myself)
+		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
@@ -13,12 +68,12 @@ END
 //// No need to change JO_JOIN_CUTSCENE variable, next switch or next dialog or next cutscene will simply do it.
 //// No need to change JO_NEVER_JOIN variable // Reset when loading a save.
 IF
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
 	!Global("JO_JOIN_Move_Around","GLOBAL",0)
 	!Global("JO_JOIN_Move_Done","LOCALS",1)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
-		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Switch("JO_JOIN_Move_Around","GLOBAL")
 THEN
 	RESPONSE #1
@@ -31,11 +86,11 @@ THEN
 		Continue()
 	RESPONSE #3
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_NEVER_JOIN","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)
 		Continue()
 	RESPONSE #4
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		Continue()
 	RESPONSE #5
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -47,7 +102,7 @@ THEN
 		Continue()
 	RESPONSE #7
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND)
+		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		Continue()
 	RESPONSE #8
@@ -62,123 +117,201 @@ THEN
 		SetGlobal("BDAI_DISABLE_SPECIAL","LOCALS",0)
 		SetGlobal("BDAI_SKILL_MODE","LOCALS",0)
 		Continue()
-/*	RESPONSE #9
+	RESPONSE #9
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		MoveToObject(Player1)
+		Continue()
+	RESPONSE #10
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
+		Continue()
+	RESPONSE #11
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		Continue()
+	RESPONSE #12
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		Continue()
+	RESPONSE #13
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
+		Continue()
+	RESPONSE #14
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+		Continue()
+	RESPONSE #15
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",1)
+		Continue()
+/*	RESPONSE #16
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()*/
 END
 
-///////////////////////////////////////////////////////////////////////////////////
-
-IF
-	!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",1)
-	IsActive(Myself)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",1)
-		Deactivate(Myself)
-END
-
-IF
-	!Global("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	!IsActive(Myself)
-THEN
-	RESPONSE #100
-		Activate(Myself)
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
-		Continue()
-END
-
+///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
 // Go to Reintegrate NPC into party periodically
 
-IF // reactive JOMINHP1 after load
-	OnCreation()
-	Allegiance(Myself,FAMILIAR)
-	HasItem("JOMINHP1",Myself)
-THEN
-	RESPONSE #100
-		EquipItemEx("JOMINHP1",0)
-		SetGlobal("JO_NEVER_JOIN","LOCALS",0) // Reset at loading
-		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
-		Continue()
-END
-
 IF // security check
-	OnCreation()
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // TODO: Added // JO_JOIN_LOAD allow to secure OnCreation() and next block
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_JOIN","LOCALS",0) // What ???
+//		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0) // TODO: // What ???
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF // Block wait for switch at loading
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+	Global("JO_JOIN_LOAD_WAIT","LOCALS",0)
+	NumInPartyLT(5)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD_WAIT","LOCALS",1)
+		Continue()
+END
+
+IF // Block wait for switch at loading
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+	Global("JO_JOIN_LOAD_WAIT","LOCALS",0)
+	NumInPartyGT(4)
+THEN
+	RESPONSE #100
+		NoAction()
 END
 
 IF
-	OR(2)
-		OnCreation()
-		!GlobalTimerNotExpired("JO_JOIN_JOIN","LOCALS")
+	Global("JO_JOIN_LOAD_WAIT","LOCALS",1) // Travelers use this block only at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
 	ActionListEmpty()
 	!ActuallyInCombat()
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_NEVER_JOIN","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+//
+	NumInPartyLT(5)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Face(N)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		Face(W)
+		SetInterrupt(TRUE)
+END
+
+IF
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // Don't use this block if Traveler at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
+//
+	OR(2)
+		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
+		!Global("JO_JOIN_Fill_Party","LOCALS",0)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
+//
+	OR(2)
+		!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		NumInPartyLT(5)
+	OR(2)
+		!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		Global("JO_JOIN_LOAD_WAIT","LOCALS",1)
+//
 	NumInPartyLT(6)
 	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
 THEN
 	RESPONSE #0
+		SetInterrupt(FALSE)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
 		SmallWait(1)
 		MoveToObject(Player1Fill)
 		SetInterrupt(TRUE)
 	RESPONSE #1
+		SetInterrupt(FALSE)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
 		SmallWait(1)
 		MoveToObject(Player1)
 		SetInterrupt(TRUE)
 	RESPONSE #2
+		SetInterrupt(FALSE)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
 		SmallWait(1)
 		MoveToObject(Player2)
 		SetInterrupt(TRUE)
 	RESPONSE #3
+		SetInterrupt(FALSE)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
 		SmallWait(1)
 		MoveToObject(Player3)
 		SetInterrupt(TRUE)
 	RESPONSE #4
+		SetInterrupt(FALSE)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
 		SmallWait(1)
 		MoveToObject(Player4)
 		SetInterrupt(TRUE)
 	RESPONSE #5
+		SetInterrupt(FALSE)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
 		SmallWait(1)
 		MoveToObject(Player5)
 		SetInterrupt(TRUE)
 	RESPONSE #6
+		SetInterrupt(FALSE)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
-		SetInterrupt(FALSE)
 		SmallWait(1)
 		MoveToObject(Player6)
 		SetInterrupt(TRUE)
@@ -187,45 +320,45 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////
-
-// Reintegrate NPC into party periodically (Every NINE_ROUNDS depending of other NPCs and Triggers above) 
-
-// Could be changed to more or less rounds for players convenience
+// Reintegrate NPC into party periodically
 
 IF
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
+	Global("JO_JOIN_Fill_Party","LOCALS",0) // Don't use this block if fill party
+//
 	ActionListEmpty()
 	!ActuallyInCombat()
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_NEVER_JOIN","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+//
+	OR(2)
+		!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		NumInPartyLT(4)
+//
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",FOUR_HOURS) // 20mn
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOINI","LOCALS",1)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // ScriptAction (All_in_Baf)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
+		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",2)
+//		EquipItemEx("JOMINHP1",1) // TODO: Added // Not needed for a quick switch // See related Switch between familiar and party in All_in
+//		SmallWait(1)
+//		DestroyItem("JOMINHP1")
 		SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
 		JoinParty() // Go to All_In_Baf Switch between familiar and party
 		SetInterrupt(TRUE)
 END
 
-// Maybe something could be done with :
-
-/*
-0x0004 Joins(O:Object*)
-Returns true if the specified object has joined the party in the last script round. This trigger is only sent to player characters. 
-
-0x0005 Leaves(O:Object*)
-Returns true if the specified object has left the party in the last script round. This trigger is only sent to player characters. 
-*/
+///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -309,6 +442,7 @@ END
 
 
 ///////////////////////////////////////////////////////////////////////////////
+
 // Move to linked player
 
 // Familiar without link: the linked player is the first player in the party (which may not be Player1)
@@ -316,6 +450,7 @@ END
 // Large range or different area
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added // Prevent linked traveler to avoid a fight to follow a party member
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // no linked
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
@@ -329,6 +464,7 @@ END
 // Short range
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0) // follow with authorised move
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
@@ -348,6 +484,7 @@ END
 // Large range or different area
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -361,6 +498,7 @@ END
 // Short range
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -380,6 +518,7 @@ END
 // Large range or different area
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -393,6 +532,7 @@ END
 // Short range
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -412,6 +552,7 @@ END
 // Large range or different area
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -425,6 +566,7 @@ END
 // Short range
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -444,6 +586,7 @@ END
 // Large range or different area
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -457,6 +600,7 @@ END
 // Short range
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -476,6 +620,7 @@ END
 // Large range or different area
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -489,6 +634,7 @@ END
 // Short range
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -508,6 +654,7 @@ END
 // Large range or different area
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -521,6 +668,7 @@ END
 // Short range
 IF
 	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -539,6 +687,7 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+//////////////// JO_JOIN_SLEEPING_DEAD 
 
 // Dead but not really  (// Related to AllInBaf set statut when Dead but not really )
 
@@ -640,8 +789,6 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////
-
 // No more Dead  (// Related to AllInBaf set statut when No more Dead )
 
 IF
@@ -656,7 +803,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobalTimer("JO_JOIN_JOIN","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		ReallyForceSpellRES("JOIR648",Myself)
 		Wait(2)
@@ -712,6 +859,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
+
 // NOT TODO: les états visuellement identifiables, les états qui ne sont pas compatibles avec les scripts
 // un display reste une information peu explicite dans un combat (trop de log), comment améliorer ça ?
 
@@ -854,6 +1002,7 @@ THEN
 END
 
 ///////////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Use Potions
@@ -1091,4 +1240,480 @@ IF
 THEN
 	RESPONSE #100
 		AttackOneRound(LastSeenBy(Myself))
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+//////////////// JO_JOIN_SWITCH_TIMER // JO_JOIN_SWITCH_WITH_ME // JO_JOIN_READY_TO_SWITCH
+
+// Switching party !!!
+
+// If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for switching with a traveler
+// Timer make sure the party member stay long enough in party
+
+IF
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Used by loading blocks
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Set in All_In.baf
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1) // Set in All_In.baf
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!Global("JO_Myself_Valid","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
+	NumInPartyGT(4)
+THEN
+	RESPONSE #0
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// No free slots in party, then randomly select a member... Wannabe !
+
+IF
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Used by loading blocks
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
+	TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",0))
+//
+	NumInPartyGT(4)
+	RandomNum(5,1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player2)
+		ActionOverride(Player2,FaceObject(Myself))
+		DisplayStringHead(Player2,~Hé ?~)
+		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		SmallWait(2)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // Player2
+		ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Used by loading blocks
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
+	TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",0))
+//
+	NumInPartyGT(4)
+	RandomNum(5,2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player3)
+		ActionOverride(Player3,FaceObject(Myself))
+		DisplayStringHead(Player3,~Yes ?~)
+		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		SmallWait(2)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // Player3
+		ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Used by loading blocks
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
+	TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",0))
+//
+	NumInPartyGT(4)
+	RandomNum(5,3)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player4)
+		ActionOverride(Player4,FaceObject(Myself))
+		DisplayStringHead(Player4,~Don't disturb...~)
+		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		SmallWait(2)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // Player4
+		ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Used by loading blocks
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
+	TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",0))
+//
+	NumInPartyGT(4)
+	RandomNum(5,4)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player5)
+		ActionOverride(Player5,FaceObject(Myself))
+		DisplayStringHead(Player5,~What ?~)
+		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		SmallWait(2)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // Player5
+		ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Used by loading blocks
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+//
+	TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",0))
+//
+	NumInPartyGT(4)
+	RandomNum(5,5)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player6)
+		ActionOverride(Player6,FaceObject(Myself))
+		DisplayStringHead(Player6,~Hum ?~)
+		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // Player6
+		SmallWait(2)
+		ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
+	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
+	NumInPartyLT(6)
+THEN
+	RESPONSE #2 // Player2
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~My turn !~)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SmallWait(2)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		JoinParty()
+		SetInterrupt(TRUE)
+	RESPONSE #3 // Player3
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~My turn !~)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SmallWait(2)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		JoinParty()
+		SetInterrupt(TRUE)
+	RESPONSE #4 // Player4
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~My turn !~)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SmallWait(2)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		JoinParty()
+		SetInterrupt(TRUE)
+	RESPONSE #5 // Player5
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~My turn !~)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SmallWait(2)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		JoinParty()
+		SetInterrupt(TRUE)
+	RESPONSE #6 // Player6
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~My turn !~)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SmallWait(2)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		JoinParty()
+		SetInterrupt(TRUE)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+//////////////// JO_JOIN_Fill_Party
+
+// If free party slots then some travelers can join the group
+// JO_JOIN_Move_Around 15 
+
+IF
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+//
+	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",1)
+//
+//
+	OR(5)
+		!InParty(PartySlot2)
+		!InParty(PartySlot3)
+		!InParty(PartySlot4)
+		!InParty(PartySlot5)
+		!InParty(PartySlot6)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Global("JO_Myself_Valid","LOCALS",1)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+THEN
+	RESPONSE #25
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",2)
+		DisplayStringHead(Myself,~Let me in !~)
+	RESPONSE #25
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",2)
+		DisplayStringHead(Myself,~Incoming !~)
+	RESPONSE #25
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",2)
+		DisplayStringHead(Myself,~There is plenty of room in this group...~)
+	RESPONSE #25
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",2)
+		DisplayStringHead(Myself,~Is it warm in here ?~)
+END
+
+IF
+	Global("JO_JOIN_Fill_Party","LOCALS",2)
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Global("JO_Myself_Valid","LOCALS",1)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SmallWait(1)
+		EquipItemEx("JOMINHP1",1) 
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SmallWait(2)
+		JoinParty()
+		SetInterrupt(TRUE)
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Security if JO_JOIN_TRAVELER_SWITCH don't implement properly
+
+IF
+	GlobalGT("JO_JOIN_MY_SWITCH","LOCALS",0)
+	Switch("JO_JOIN_MY_SWITCH","LOCALS")
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+THEN
+	RESPONSE #1
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-1)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-1)
+		DisplayStringHead(Myself,~1 !~)
+	RESPONSE #2
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-2)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-2)
+		DisplayStringHead(Myself,~2 !~)
+	RESPONSE #3
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-3)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-3)
+		DisplayStringHead(Myself,~3 !~)
+	RESPONSE #4
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-4)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-4)
+		DisplayStringHead(Myself,~4 !~)
+	RESPONSE #5
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-5)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-5)
+		DisplayStringHead(Myself,~5 !~)
+	RESPONSE #6
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-6)
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-6)
+		DisplayStringHead(Myself,~6 !~)
 END
