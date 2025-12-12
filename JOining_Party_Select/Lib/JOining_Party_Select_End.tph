@@ -38,6 +38,7 @@ END
 */
 
 
+/*
 ACTION_IF GAME_IS ~bgee eet~ BEGIN
 
 	COPY_EXISTING ~BG2608.are~ ~override/JO2608.are~
@@ -161,6 +162,9 @@ END ELSE BEGIN
 		END
 
 END
+*/
+
+COPY ~JOining_Party_Select/Are~ ~override~
 
 APPEND ~MASTAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 

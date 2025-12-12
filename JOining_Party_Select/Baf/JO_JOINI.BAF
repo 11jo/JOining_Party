@@ -10,9 +10,10 @@ IF // reactive JOMINHP1 after load
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	HasItem("JOMINHP1",Myself)
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
-	OR(2)
+	OR(3)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		AreaCheck("JO2608")
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
 		Face(E)
@@ -247,9 +248,10 @@ THEN
 END
 
 IF
-	OR(2)
+	OR(3)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		!Global("JO_JOIN_Fill_Party","LOCALS",0)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // Don't use this block if Traveler at loading
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
@@ -338,7 +340,9 @@ END
 // Reintegrate NPC into party periodically
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
 	Global("JO_JOIN_Fill_Party","LOCALS",0) // Don't use this block if fill party
@@ -1278,7 +1282,9 @@ END
 // Timer make sure the party member stay long enough in party
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
@@ -1315,7 +1321,9 @@ END
 // No free slots in party, then randomly select a member... Wannabe !
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
@@ -1361,7 +1369,9 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
@@ -1407,7 +1417,9 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
@@ -1453,7 +1465,9 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
@@ -1499,7 +1513,9 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Used by loading blocks
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
@@ -1545,7 +1561,9 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Used by loading blocks
 	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
