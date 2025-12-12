@@ -42,7 +42,7 @@ ACTION_IF GAME_IS ~bgee eet~ BEGIN
 
 	COPY_EXISTING ~BG2608.are~ ~override/JO2608.are~
 		WRITE_ASCII 0x94 ~JO2608~ #8
-		WRITE_LONG  0x14 THIS | BIT0 | BIT2 | BIT5 | BIT6
+//		WRITE_LONG  0x14 THIS | BIT0 | BIT2 | BIT5 | BIT6
 			FOR ( i = SHORT_AT 0x58 ; i ; --i ) BEGIN
 		LPF fj_are_structure
 			INT_VAR fj_delete_mode = i - 1
@@ -79,12 +79,28 @@ ACTION_IF GAME_IS ~bgee eet~ BEGIN
 			STR_VAR fj_structure_type = door
 		END
 			END
+		LPF fj_are_structure
+			INT_VAR
+			fj_song_day           = 0
+			fj_song_night         = 0
+			fj_song_victory       = 0
+			fj_song_battle        = 0
+			fj_song_defeat        = 0
+			fj_song_day_alt       = 0
+			fj_song_night_alt     = 0
+			fj_song_victory_alt   = 0
+			fj_song_battle_alt    = 0
+			fj_song_defeat_alt    = 0
+			fj_song_defeat        = 0
+			STR_VAR
+			fj_structure_type = "songs"
+		END
 
 END ELSE BEGIN
 
 	COPY_EXISTING ~AR0604.are~ ~override/JO2608.are~
 		WRITE_ASCII 0x94 ~JO2608~ #8
-		WRITE_LONG  0x14 THIS | BIT0 | BIT2 | BIT5 | BIT6
+//		WRITE_LONG  0x14 THIS | BIT0 | BIT2 | BIT5 | BIT6
 			FOR ( i = SHORT_AT 0x58 ; i ; --i ) BEGIN
 		LPF fj_are_structure
 			INT_VAR fj_delete_mode = i - 1
@@ -121,6 +137,28 @@ END ELSE BEGIN
 			STR_VAR fj_structure_type = door
 		END
 			END
+			FOR ( i = SHORT_AT 0xbc ; i ; --i ) BEGIN
+		LPF fj_are_structure
+			INT_VAR fj_delete_mode = i - 1
+			STR_VAR fj_structure_type = "songs"
+		END
+			END
+		LPF fj_are_structuree
+			INT_VAR
+			fj_song_day           = 0
+			fj_song_night         = 0
+			fj_song_victory       = 0
+			fj_song_battle        = 0
+			fj_song_defeat        = 0
+			fj_song_day_alt       = 0
+			fj_song_night_alt     = 0
+			fj_song_victory_alt   = 0
+			fj_song_battle_alt    = 0
+			fj_song_defeat_alt    = 0
+			fj_song_defeat        = 0
+			STR_VAR
+			fj_structure_type = "songs"
+		END
 
 END
 

@@ -315,6 +315,14 @@ WRITE_ASCII DIALOG ~JOJOINNE~ (8)
 
 		COMPILE ~JOining_Party_Select/Baf/JOJOINNE.baf~ EVALUATE_BUFFER
 
+// JO2608
+
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
+
+		COMPILE ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
+
+	END
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 

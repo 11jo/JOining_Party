@@ -12,27 +12,18 @@ IF // reactive JOMINHP1 after load
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_LOAD_AREA","GLOBAL",1)
-	Global("JO_JOIN_LOAD_AREA","LOCALS",0)
+		AreaCheck("JO2608")
 THEN
 	RESPONSE #100
 		Face(E)
-		SetGlobal("JO_JOIN_LOAD_AREA","LOCALS",1)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		EquipItemEx("JOMINHP1",0)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
+		Wait(1)
 		Continue()
-END
-
-IF
-	Global("JO_JOIN_LOAD_AREA","GLOBAL",0)
-	Global("JO_JOIN_LOAD_AREA","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_LOAD_AREA","LOCALS",0)
 END
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -256,7 +247,9 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_AREA","MYAREA",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		!Global("JO_JOIN_Fill_Party","LOCALS",0)
 //
 	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // Don't use this block if Traveler at loading
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
@@ -1706,6 +1699,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
@@ -1757,48 +1751,6 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-
-IF
-	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-	ActionListEmpty()
-	!ActuallyInCombat()
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Range(Player1,4)
-THEN
-	RESPONSE #10
-		MoveToOffset([0.3])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([0.-3])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([3.0])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([-3.0])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([0.-4])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([0.4])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([4.0])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([-4.0])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([5.0])
-		Continue()
-	RESPONSE #10
-		MoveToOffset([0.-5])
-		Continue()
-END
-
 IF
 	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
 	ActionListEmpty()
@@ -1811,5 +1763,4 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LEGION","GLOBAL",1)
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
-		FollowObjectFormation(Player1,4,6)
 END

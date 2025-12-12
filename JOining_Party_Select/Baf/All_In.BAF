@@ -15,23 +15,14 @@ IF
 	Global("JO_JOINI","LOCALS",0)
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_LOAD_AREA","GLOBAL",1)
-	Global("JO_JOIN_LOAD_AREA","LOCALS",0)
+		AreaCheck("JO2608")
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_LOAD_AREA","LOCALS",1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
 		SetGlobal("JO_JOIN","LOCALS",1)
+		Wait(1)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
-END
-
-IF
-	Global("JO_JOIN_LOAD_AREA","GLOBAL",0)
-	Global("JO_JOIN_LOAD_AREA","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_LOAD_AREA","LOCALS",0)
 END
 
 // At loading JO_JOIN_PARTY_SWITCH party members make room for travelers
@@ -74,7 +65,6 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
@@ -95,7 +85,6 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
@@ -118,7 +107,6 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(5)
 		!InParty(PartySlot2)
 		!InParty(PartySlot3)
