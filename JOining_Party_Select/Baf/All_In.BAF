@@ -13,11 +13,16 @@ IF
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
+	OR(3)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		AreaCheck("JO2608")
+		Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
 		SetGlobal("JO_JOIN","LOCALS",1)
+		Wait(1)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 END
 
@@ -409,6 +414,10 @@ END
 // Switch between familiar and party
 
 IF
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
+//
 	Global("JO_JOINI","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
@@ -444,4 +453,19 @@ THEN
 		SetInterrupt(TRUE)
 		Face(S)
 		Continue()
+END
+
+IF
+	!Global("JO_JOIN_MY_SWITCH","LOCALS",0)
+	ActionListEmpty()
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN","LOCALS",2)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-1)
+		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-1)
 END

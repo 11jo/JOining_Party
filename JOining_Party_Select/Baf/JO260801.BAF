@@ -1,0 +1,10 @@
+IF
+	Clicked([ANYONE])
+THEN
+	RESPONSE #100
+		FadeToColor([10.0],0)
+		RestorePartyLocations()
+		MoveViewObject(Player1,INSTANT)
+		FadeFromColor([30.0],0)
+END
+
