@@ -171,7 +171,11 @@ THEN
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
 		Continue()
-/*	RESPONSE #17
+	RESPONSE #17
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)
+		Continue()
+/*	RESPONSE #18
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()*/
 END
@@ -256,9 +260,9 @@ IF
 	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // Don't use this block if Traveler at loading
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
 //
-	OR(3)
+	OR(2)
 		Global("JO_JOIN_FORCE_SWITCH","LOCALS",1)
-		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
+//		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 		!Global("JO_JOIN_Fill_Party","LOCALS",0)
 //
 	ActionListEmpty()
@@ -480,7 +484,7 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	!Range(Player1Fill,70)
+	!Range(Player1Fill,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player1Fill) // JumpToObject(PlayerX) // MoveGlobalObject(Myself,PlayerX)
@@ -503,6 +507,34 @@ THEN
 		MoveToObject(Player1Fill)
 END
 
+// Not to Short range
+IF
+	Delay(5)
+	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
+	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0) // follow with authorised move
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	PersonalSpaceDistance(Player1,5) // PersonalSpaceDistance is more reliable than Range at such a low range
+	OR(2)
+		Global("JO_JOIN_LINK_TYPE","LOCALS",2) // follow close
+		Range(Player1Fill,5)
+THEN
+	RESPONSE #10
+		MoveToOffset([0.5])
+	RESPONSE #10
+		MoveToOffset([5.0])
+	RESPONSE #10
+		MoveToOffset([0.-5])
+	RESPONSE #10
+		MoveToOffset([-5.0])
+	RESPONSE #60
+		NoAction()
+END
+
 
 // Linked to Player1
 
@@ -514,7 +546,7 @@ IF
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!Range(Player1,70)
+	!Range(Player1,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player1)
@@ -548,7 +580,7 @@ IF
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!Range(Player2,70)
+	!Range(Player2,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player2)
@@ -582,7 +614,7 @@ IF
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!Range(Player3,70)
+	!Range(Player3,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player3)
@@ -616,7 +648,7 @@ IF
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!Range(Player4,70)
+	!Range(Player4,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player4)
@@ -650,7 +682,7 @@ IF
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!Range(Player5,70)
+	!Range(Player5,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player5)
@@ -684,7 +716,7 @@ IF
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Allegiance(Myself,FAMILIAR)
-	!Range(Player6,70)
+	!Range(Player6,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player6)
@@ -818,7 +850,7 @@ END
 
 IF
 	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(2)
+	OR(3)
 		!ActuallyInCombat()
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		HPGT(Myself,20)
@@ -829,7 +861,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_ROUND) // Temporaire por les tests ou utile pour les joueurs ?
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_ROUND) // Temporaire pour les tests ou utile pour les joueurs ?
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		ReallyForceSpellRES("JOIR648",Myself)
 		Wait(2)
@@ -841,7 +873,7 @@ END
 // Warning: conditions must be identical to the previous block
 IF
 	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(2)
+	OR(3)
 		!ActuallyInCombat()
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		HPGT(Myself,20)

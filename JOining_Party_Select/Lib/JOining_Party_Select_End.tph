@@ -168,6 +168,12 @@ COPY ~JOining_Party_Select/Are~ ~override~
 
 APPEND ~MASTAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 
+	COPY_EXISTING ~JO2608.are~ ~override~
+		WRITE_ASCII 0x94 ~JO2608~ #8
+		WRITE_LONG  0x14 (THIS BAND BNOT BIT0)
+		WRITE_LONG  0x14 (THIS BAND BNOT BIT2)
+		WRITE_LONG  0x14 (THIS BAND BNOT BIT5)
+
 // JOJOINNE.d added before being extended
 //////////////////////////////////////////////////////////////////////////////////////
 

@@ -8,10 +8,9 @@ IF
 	!Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
 		FadeToColor([10.0],0)
 		StorePartyLocations()
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1470.1080],50))
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1631.1209],50))
 		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
 		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],50))
 		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],50))
@@ -19,6 +18,7 @@ THEN
 		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
 		Wait(4)
 		Continue()
 END
