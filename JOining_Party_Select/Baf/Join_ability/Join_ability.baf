@@ -19,7 +19,7 @@ THEN
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
-		Wait(4)
+		Wait(6)
 		Continue()
 END
 
@@ -47,6 +47,8 @@ THEN
 	RESPONSE #100
 		AddSpecialAbility("jo_join")
 		SetGlobal("JO_JOIN_PLAYER_INIT","LOCALS",1)
+		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		Continue()
 END
 
@@ -301,3 +303,26 @@ THEN
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
 END
 
+IF
+	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
+//
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+	ActionListEmpty()
+	!ActuallyInCombat()
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
+		Continue()
+END
+
+IF
+	OnCreation()
+THEN
+	RESPONSE #100
+		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS)
+		Continue()
+END
