@@ -611,40 +611,32 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Dialog() found in %SOURCE_FILESPEC%
 				~
-			END/*
+			END
 ///////////////////////////////////////////////////////////////////////////////
-// Rest
+// Interact
 ///////////////////////////////////////////////////////////////////////////////
-	// Rest() situation
-			SPRINT textToReplace ~\(^[%TAB% ]*Rest()\)~
+	// Interact() situation
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),Interact(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",1)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(\2,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
+				ActionOverride(\1,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
 	Wait(2)
 	\0~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(^[%TAB% ]*RestParty()\)~
+			SPRINT textToReplace ~^[%TAB% ]*Interact(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",1)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(\1,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
+				SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1)
 	Wait(2)
 	\0~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(^[%TAB% ]*ActionOverride(Player1,Rest())\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",1)
-	Wait(2)
-	\0~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
-				~
-			END*/
 		END
 BUT_ONLY

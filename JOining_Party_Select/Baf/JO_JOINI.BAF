@@ -16,6 +16,7 @@ IF // reactive JOMINHP1 after load
 		Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		Face(E)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		EquipItemEx("JOMINHP1",0)
@@ -24,6 +25,7 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
 		Wait(1)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -192,6 +194,9 @@ IF // security check
 		OnCreation()
 		Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1) // TODO: Added // JO_JOIN_LOAD allow to secure OnCreation() and next block
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 //		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0) // TODO: // What ???
@@ -492,12 +497,14 @@ END
 
 // Short range
 IF
-	ActionListEmpty()
-	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0) // follow with authorised move
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
-	Allegiance(Myself,FAMILIAR)
+	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!PersonalSpaceDistance(Player1Fill,5) // PersonalSpaceDistance is more reliable than Range at such a low range
 	OR(2)
 		Global("JO_JOIN_LINK_TYPE","LOCALS",2) // follow close
@@ -510,11 +517,11 @@ END
 // Not to Short range
 IF
 	Delay(5)
-	ActionListEmpty()
-	!ActuallyInCombat() // TODO: Added
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0) // follow with authorised move
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
+	ActionListEmpty()
+	!ActuallyInCombat() // TODO: Added
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -751,7 +758,9 @@ END
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	HPLT(Myself,2)
 THEN
 	RESPONSE #10
@@ -829,7 +838,9 @@ END
 IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Allegiance(Myself,FAMILIAR)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	HPLT(Myself,2)
 THEN
 	RESPONSE #100
@@ -854,7 +865,8 @@ IF
 		!ActuallyInCombat()
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		HPGT(Myself,20)
-	OR(3)
+	OR(4)
+		!ActuallyInCombat()
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -877,7 +889,8 @@ IF
 		!ActuallyInCombat()
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		HPGT(Myself,20)
-	OR(3)
+	OR(4)
+		!ActuallyInCombat()
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -1802,7 +1815,8 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
+	Delay(5)
+	!Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
 	ActionListEmpty()
 	!ActuallyInCombat()
 	OR(2)
@@ -1811,6 +1825,8 @@ IF
 	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		IncrementGlobal("JO_JOIN_LEGION","GLOBAL",1)
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
+		SetInterrupt(TRUE)
 END

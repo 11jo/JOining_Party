@@ -1,21 +1,25 @@
+
 IF
-	Global("JO_JOIN_DREAM_REST","GLOBAL",0)
-	Global("JO_JOIN_DREAM_DONE","LOCALS",0)
+	OR(3)
+		!Global("JO_JOIN_DREAM_REST","GLOBAL",0)
+		!Global("JO_JOIN_DREAM_DONE","LOCALS",0)
+		!Global("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("",RACE)
-		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
 		Continue()
 END
 
 IF
-	OR(3)
-		Global("JO_JOIN_DREAM_REST","GLOBAL",1)
-		PartyRested()
-		HotKey(S)
+	Global("JO_JOIN_DREAM_REST","GLOBAL",0)
+	Global("JO_JOIN_DREAM_DONE","LOCALS",0)
+	HotKey(S)
 //
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
@@ -36,14 +40,14 @@ IF
 	RandomNum(4,2)
 THEN
 	RESPONSE #3
-		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",2)
+		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",1)
 		ChangeAIScript("%BG2_DREAM%",RACE)
-		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
 	RESPONSE #4
-		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",2)
+		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",1)
 		ChangeAIScript("%TOB_DREAM%",RACE)
-		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
 END
 
@@ -52,7 +56,10 @@ IF
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 //	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
-	Global("JO_JOIN_BANTER_TIMER","GLOBAL",1)
+	OR(3)
+		Global("JO_JOIN_BANTER_TIMER","GLOBAL",1)
+		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)
+		HotKey(B)
 	ActionListEmpty()
 	!ActuallyInCombat()
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
@@ -67,7 +74,10 @@ IF
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
-	RandomNum(4,2)
+	OR(2)
+		RandomNum(4,2)
+		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)
+	!AreaCheck("JO2608")
 THEN
 	RESPONSE #3
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)

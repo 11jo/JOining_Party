@@ -8,6 +8,7 @@ IF
 	!Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		FadeToColor([10.0],0)
 		StorePartyLocations()
 		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1631.1209],50))
@@ -20,6 +21,7 @@ THEN
 		FadeFromColor([30.0],0)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
 		Wait(6)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -30,11 +32,13 @@ IF
 	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 		FadeToColor([10.0],0)
 		RestorePartyLocations()
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
+		SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -305,6 +309,7 @@ END
 
 IF
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
+	!AreaCheck("JO2608")
 //
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
@@ -314,15 +319,7 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",TWELVE_HOURS)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
-		Continue()
-END
-
-IF
-	OnCreation()
-THEN
-	RESPONSE #100
-		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS)
 		Continue()
 END

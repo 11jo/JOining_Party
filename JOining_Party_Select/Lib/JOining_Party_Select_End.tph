@@ -173,6 +173,7 @@ APPEND ~MASTAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT0)
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT2)
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT5)
+		WRITE_LONG  0x48 THIS | BIT7
 
 // JOJOINNE.d added before being extended
 //////////////////////////////////////////////////////////////////////////////////////
