@@ -4,6 +4,7 @@
 // All travelers will switch in party
 
 IF // reactive JOMINHP1 after load
+	Delay(3)
 	OnCreation()
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -17,6 +18,7 @@ IF // reactive JOMINHP1 after load
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		MoveToOffset([2.1])
 		Face(E)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		EquipItemEx("JOMINHP1",0)

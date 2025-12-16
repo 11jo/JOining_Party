@@ -6,6 +6,7 @@
 // All potential travelers in party will switch with actual traveler
 
 IF
+	Delay(3)
 	OnCreation()
 	InParty(Myself)
 	!Global("JO_JOIN_Wannabe","LOCALS",0)
@@ -19,11 +20,14 @@ IF
 		Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
+		MoveToOffset([0.1])
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
 		SetGlobal("JO_JOIN","LOCALS",1)
 		Wait(1)
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		SetInterrupt(TRUE)
 END
 
 // At loading JO_JOIN_PARTY_SWITCH party members make room for travelers
@@ -269,10 +273,12 @@ IF
 	RandomNum(5,1)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))
 		ActionOverride(Player2,SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",3))
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		Wait(2)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -287,10 +293,12 @@ IF
 	RandomNum(5,2)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))
 		ActionOverride(Player3,SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",3))
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		Wait(2)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -305,10 +313,12 @@ IF
 	RandomNum(5,3)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))
 		ActionOverride(Player4,SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",3))
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		Wait(2)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -323,10 +333,12 @@ IF
 	RandomNum(5,4)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))
 		ActionOverride(Player5,SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",3))
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		Wait(2)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -341,10 +353,12 @@ IF
 	RandomNum(5,5)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))
 		ActionOverride(Player6,SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",3))
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		Wait(2)
+		SetInterrupt(TRUE)
 		Continue()
 END
 

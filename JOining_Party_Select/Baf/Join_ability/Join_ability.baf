@@ -8,10 +8,9 @@ IF
 	!Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
 		FadeToColor([10.0],0)
 		StorePartyLocations()
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1631.1209],50))
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],50))
 		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
 		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],50))
 		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],50))
@@ -20,25 +19,22 @@ THEN
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
-		Wait(6)
-		SetInterrupt(TRUE)
 		Continue()
 END
 
 IF
+	Delay(4)
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 	AreaCheck("JO2608")
 	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 		FadeToColor([10.0],0)
 		RestorePartyLocations()
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
-		SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -194,6 +190,7 @@ THEN
 END
 
 IF
+	Delay(5)
 	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
 	ActionListEmpty()
 	!ActuallyInCombat()
