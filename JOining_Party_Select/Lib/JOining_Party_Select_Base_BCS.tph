@@ -621,7 +621,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(\2,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
 				ActionOverride(\1,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
-	Wait(2)
+	Wait(1)
 	\0~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
@@ -632,7 +632,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(\1,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
 				SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1)
-	Wait(2)
+	Wait(1)
 	\0~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%

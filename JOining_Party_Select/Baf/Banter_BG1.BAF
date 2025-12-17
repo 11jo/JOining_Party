@@ -17,6 +17,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_DREAM_REST","GLOBAL",0)
 	Global("JO_JOIN_DREAM_DONE","LOCALS",0)
 	HotKey(S)
@@ -46,6 +47,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)

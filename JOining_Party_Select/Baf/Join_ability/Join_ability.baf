@@ -305,6 +305,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
 //

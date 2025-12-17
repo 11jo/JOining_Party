@@ -6,7 +6,6 @@
 // All potential travelers in party will switch with actual traveler
 
 IF
-	Delay(3)
 	OnCreation()
 	InParty(Myself)
 	!Global("JO_JOIN_Wannabe","LOCALS",0)
@@ -21,11 +20,12 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MoveToOffset([0.1])
+		Wait(1)
+		MoveToOffset([1.2])
+		Wait(1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
 		SetGlobal("JO_JOIN","LOCALS",1)
-		Wait(1)
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		SetInterrupt(TRUE)
 END
@@ -257,6 +257,20 @@ THEN
 		SetGlobal("JO_JOINI","LOCALS",0)
 		// end reset block
 END
+
+// Related to Switching Party in JO_JOINI
+// Reset JO_NOJOIN after switching place
+IF
+	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	InParty(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+END
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -547,6 +561,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
+		SetGlobal("JO_JOIN_FORCE_SWITCH","LOCALS",0)
 // Add switch familiar related  script
 //		ChangeAIScript("",RACE)
 //		ChangeAIScript("",CLASS)
