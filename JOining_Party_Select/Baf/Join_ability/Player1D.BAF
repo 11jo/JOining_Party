@@ -5,13 +5,22 @@ IF
 	!ActuallyInCombat()
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
-//	!GlobalTimerNotExpired("JO_JOIN_SWEET_DREAM","LOCALS")
 	Global("JO_JOIN_DREAM_REST","GLOBAL",0)
 //	RandomNum(2,1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",1)
-//		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
+END
+
+IF
+	Global("JO_JOIN_DREAM_REST","GLOBAL",0)
+	Global("JO_JOIN_DREAM_DONE","LOCALS",1)
+//	RandomNum(2,1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		RestParty()
 END
 */

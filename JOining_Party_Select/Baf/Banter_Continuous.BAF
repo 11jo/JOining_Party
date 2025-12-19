@@ -62,6 +62,16 @@ IF
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 	RandomNum(4,2)
 THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		ChangeAIScript("%BG1_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		Continue()
+	RESPONSE #2
+		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		ChangeAIScript("%SoD_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		Continue()
 	RESPONSE #3
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
 		ChangeAIScript("%BG2_DREAM%",RACE)
@@ -71,6 +81,11 @@ THEN
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",1)
 		ChangeAIScript("%TOB_DREAM%",RACE)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		Continue()
+	RESPONSE #5
+		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		ChangeAIScript("%EET_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
 END
 
@@ -118,6 +133,16 @@ IF
 		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)
 	!AreaCheck("JO2608")
 THEN
+	RESPONSE #1
+//		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
+		StartDialogOverride("%BG1_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
+		Continue()
+	RESPONSE #2
+//		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
+		StartDialogOverride("%SoD_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
+		Continue()
 	RESPONSE #3
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
@@ -128,5 +153,9 @@ THEN
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
 		StartDialogOverride("%TOB_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
+	RESPONSE #5
+//		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
+		StartDialogOverride("%EET_BANTER%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
+		Continue()
 END
-

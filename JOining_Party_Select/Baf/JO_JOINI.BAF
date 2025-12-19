@@ -1,7 +1,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
+
 // Loading travelers
-// All travelers will switch in party
+
+///////////////////////////////////////////////////////////////////////////////
+//////////////// JO_JOIN_TRAVELER_SWITCH / JO_JOIN_LOAD_TRAVELER
+
+// 1 // All travelers will switch in party
 
 IF // reactive JOMINHP1 after load
 	OnCreation()
@@ -14,6 +19,7 @@ IF // reactive JOMINHP1 after load
 		Global("JO_JOIN_AREA","MYAREA",1)
 		AreaCheck("JO2608")
 		Global("JO_JOIN_BLOP","GLOBAL",1)
+	!See([ENEMY])
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -30,7 +36,22 @@ THEN
 		Continue()
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 ///////////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_CUTSCENE
+
+///////////////////////////////////////////////////////////////////////////////////
+// Active or deactive travelers in cutscene.
 
 IF
 	!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
@@ -59,7 +80,19 @@ THEN
 		Continue()
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 ///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_Move_Around related to JOJOINNE.d
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -183,7 +216,19 @@ THEN
 		Continue()*/
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 ///////////////////////////////////////////////////////////////////////////////
+
+// Security
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -206,7 +251,23 @@ THEN
 		Continue()
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 ///////////////////////////////////////////////////////////////////////////////
+
+// Loading travelers part 2
+
+///////////////////////////////////////////////////////////////////////////////
+
+// 2 // Blocks standby, prevent traveler to switch in party at once but one by one
 
 IF // Block wait for switch at loading
 	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
@@ -227,13 +288,17 @@ THEN
 		NoAction()
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
+// 3 // at loading traveler is ready to switch  // jump to block Reintegrate NPC into party periodically below
+
 IF
 	Global("JO_JOIN_LOAD_WAIT","LOCALS",1) // Travelers use this block only at loading
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
 	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 //
-	ActionListEmpty()
-	!ActuallyInCombat()
+//	ActionListEmpty()
+//	!ActuallyInCombat()
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -257,6 +322,22 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Regular switch not at loading
+
+///////////////////////////////////////////////////////////////////////////////
+
 IF
 	!OnCreation()
 	OR(3)
@@ -274,6 +355,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -338,10 +420,23 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // Reintegrate NPC into party periodically
+
+///////////////////////////////////////////////////////////////////////////////
+// Used by // Regular switch not at loading
+// Used by // Loading travelers block 3
 
 IF
 	OR(2)
@@ -353,6 +448,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -385,7 +481,19 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 ///////////////////////////////////////////////////////////////////////////////
+
+// Security
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -467,10 +575,21 @@ THEN
 		SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // Move to linked player
+
+///////////////////////////////////////////////////////////////////////////////
 
 // Familiar without link: the linked player is the first player in the party (which may not be Player1)
 
@@ -481,6 +600,7 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added // Prevent linked traveler to avoid a fight to follow a party member
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -509,6 +629,8 @@ THEN
 		MoveToObject(Player1Fill)
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Not to Short range
 IF
 	Delay(5)
@@ -517,6 +639,7 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -537,6 +660,8 @@ THEN
 		NoAction()
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
 
 // Linked to Player1
 
@@ -544,6 +669,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -558,6 +684,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -571,6 +698,7 @@ THEN
 		MoveToObject(Player1)
 END
 
+///////////////////////////////////////////////////////////////////////////////
 
 // Linked to Player2
 
@@ -578,6 +706,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -592,6 +721,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -605,6 +735,7 @@ THEN
 		MoveToObject(Player2)
 END
 
+///////////////////////////////////////////////////////////////////////////////
 
 // Linked to Player3
 
@@ -612,6 +743,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -626,6 +758,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -639,6 +772,7 @@ THEN
 		MoveToObject(Player3)
 END
 
+///////////////////////////////////////////////////////////////////////////////
 
 // Linked to Player4
 
@@ -646,6 +780,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -660,6 +795,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -673,6 +809,7 @@ THEN
 		MoveToObject(Player4)
 END
 
+///////////////////////////////////////////////////////////////////////////////
 
 // Linked to Player5
 
@@ -680,6 +817,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -694,6 +832,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -714,6 +853,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -728,6 +868,7 @@ END
 IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
+	!See([ENEMY])
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -741,12 +882,21 @@ THEN
 		MoveToObject(Player6)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////
+// JO_JOIN_SLEEPING_DEAD 
 
-//////////////// JO_JOIN_SLEEPING_DEAD 
+///////////////////////////////////////////////////////////////////////////////
 
 // Dead but not really  (// Related to AllInBaf set statut when Dead but not really )
 
@@ -922,8 +1072,19 @@ THEN
 		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
+
+// Travelers State
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1068,7 +1229,19 @@ THEN
 		Continue()
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 ///////////////////////////////////////////////////////////////////////////////
+
+// Simulate BDFAI Scripts
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1160,7 +1333,7 @@ THEN
 		UseItem("POTN08",Myself)
 END
 
-//
+///////////////////////////////////////////////////////////////////////////////
 
 // Basic switch
 
@@ -1198,7 +1371,7 @@ THEN
 		DisplayString(Myself,~I cannot use my ranged weapon.~)
 END
 
-//
+///////////////////////////////////////////////////////////////////////////////
 
 // Modales
 
@@ -1279,9 +1452,9 @@ THEN
 		Turn()
 END
 
-//
+///////////////////////////////////////////////////////////////////////////////
 
-// 
+///////////////////////////////////////////////////////////////////////////////
 
 IF
 	ActionListEmpty()
@@ -1294,6 +1467,10 @@ THEN
 	RESPONSE #100
 		RunAwayFromNoLeaveArea(LastSeenBy(Myself),45)
 END
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 
 // Basic attack
 
@@ -1309,14 +1486,21 @@ THEN
 		AttackOneRound(LastSeenBy(Myself))
 END
 
-
-///////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
 //////////////// JO_JOIN_SWITCH_TIMER // JO_JOIN_SWITCH_WITH_ME // JO_JOIN_READY_TO_SWITCH
 
-// Switching party !!!
+// 1 // Switching party !!!
 
 // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for switching with a traveler
 // Timer make sure the party member stay long enough in party
@@ -1336,6 +1520,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	!Global("JO_Myself_Valid","LOCALS",0)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -1359,6 +1544,7 @@ IF // Block wait for Switching party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
 	NumInPartyLT(6)
+	NumInPartyGT(4)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
@@ -1369,6 +1555,7 @@ IF // Block wait for Switching party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",0)
 	NumInPartyLT(6)
+	NumInPartyGT(4)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",1)
@@ -1377,7 +1564,7 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// No free slots in party, then randomly select a member... Wannabe !
+// 2 // No free slots in party, then randomly select a member... Wannabe !
 
 IF
 	!OnCreation()
@@ -1395,6 +1582,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1445,6 +1633,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1495,6 +1684,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1545,6 +1735,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1595,6 +1786,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1628,6 +1820,10 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
+// 3 // Travelers take place in party
+
 IF
 	!OnCreation()
 	OR(2)
@@ -1640,6 +1836,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1733,11 +1930,21 @@ THEN
 		Continue()
 END
 
-///////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
-//////////////// JO_JOIN_Fill_Party
+// JO_JOIN_Fill_Party
+
+///////////////////////////////////////////////////////////////////////////////
 
 // If free party slots then some travelers can join the group
 // JO_JOIN_Move_Around 15 
@@ -1758,6 +1965,7 @@ IF
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	Global("JO_Myself_Valid","LOCALS",1)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -1786,6 +1994,7 @@ IF
 	Global("JO_JOIN_Fill_Party","LOCALS",2)
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	Global("JO_Myself_Valid","LOCALS",1)
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -1808,18 +2017,27 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-
-///////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // Security if JO_JOIN_TRAVELER_SWITCH don't implement properly
 
+///////////////////////////////////////////////////////////////////////////////
+
 IF
 	GlobalGT("JO_JOIN_MY_SWITCH","LOCALS",0)
 	Switch("JO_JOIN_MY_SWITCH","LOCALS")
-	ActionListEmpty()
-	!ActuallyInCombat()
+//	ActionListEmpty()
+//	!ActuallyInCombat()
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1841,15 +2059,28 @@ THEN
 		DisplayStringHead(Myself,~3 !~)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// JO_JOIN_COUNT_TRAVELER
+
 ///////////////////////////////////////////////////////////////////////////////
+
+// Related to join_ability.baf
+
+// Isn't very reliable...
 
 IF
 	!Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-	ActionListEmpty()
-	!ActuallyInCombat()
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -1861,3 +2092,18 @@ THEN
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
 		SetInterrupt(TRUE)
 END
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+

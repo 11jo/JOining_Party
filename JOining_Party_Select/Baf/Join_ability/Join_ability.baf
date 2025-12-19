@@ -1,10 +1,17 @@
 // Extends DPLAYER3.bcs
 
+///////////////////////////////////////////////////////////////////////////////
+
+// If area isn't a master area, then go to the Switching room.
+
+///////////////////////////////////////////////////////////////////////////////
+
 // StartCutScene(S:CutScene*)  EndCutSceneMode() 
 IF
 	OnCreation()
-	!Global("JO_JOIN_AREA","MYAREA",1)
-	!AreaCheck("JO2608")
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",1)
+		See([ENEMY])
 	!Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
@@ -37,7 +44,19 @@ THEN
 		FadeFromColor([30.0],0)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 ///////////////////////////////////////////////////////////////////////////////
+
+// Initialize
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +70,16 @@ THEN
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		Continue()
 END
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -141,6 +170,22 @@ THEN
 		Continue()
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Security
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Special security / JOJOINNE
 IF
 	Global("JO_JOIN","LOCALS",1)
@@ -178,10 +223,29 @@ THEN
 		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_COUNT_TRAVELER
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Isn't very reliable...
+
 IF
 	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -190,10 +254,8 @@ THEN
 END
 
 IF
-	Delay(5)
+	Delay(8)
 	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
-	ActionListEmpty()
-	!ActuallyInCombat()
 	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
 	Switch("JO_JOIN_LEGION","GLOBAL")
 THEN
@@ -304,6 +366,25 @@ THEN
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Reset JO_JOIN_BANTER_TIMER centralised
+
+///////////////////////////////////////////////////////////////////////////////
+
+// See the "JO_JOIN_BANTER_TIMER" commented out
+// Was set individually for each travelers, to see what is the best way...
+
 IF
 	!OnCreation()
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
@@ -313,6 +394,7 @@ IF
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	ActionListEmpty()
 	!ActuallyInCombat()
+	!See([ENEMY])
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
@@ -321,3 +403,5 @@ THEN
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
 		Continue()
 END
+
+///////////////////////////////////////////////////////////////////////////////

@@ -51,8 +51,7 @@ OUTER_SPRINT "TOB_BANTER" "BIMOEN25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
@@ -104,8 +103,7 @@ OUTER_SPRINT "TOB_BANTER" "BEDWIN25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
@@ -158,8 +156,7 @@ OUTER_SPRINT "TOB_BANTER" "BJAHEI25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
@@ -211,8 +208,7 @@ OUTER_SPRINT "TOB_BANTER" "BMINSC25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
@@ -265,8 +261,7 @@ OUTER_SPRINT "TOB_BANTER" "BVICON25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
@@ -319,8 +314,7 @@ OUTER_SPRINT "TOB_BANTER" "BDORN25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
@@ -373,8 +367,7 @@ OUTER_SPRINT "TOB_BANTER" "BNEERA25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
@@ -427,8 +420,7 @@ OUTER_SPRINT "TOB_BANTER" "BRASAA25"
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Continuous.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
