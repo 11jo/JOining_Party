@@ -1,0 +1,26 @@
+IF
+	Clicked([ANYONE])
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+THEN
+	RESPONSE #100
+		FadeToColor([45.0],0)
+		Wait(3)
+		RestorePartyLocations()
+		MoveViewObject(Player1,INSTANT)
+		FadeFromColor([30.0],0)
+		Wait(2)
+		CreateVisualEffectObject("JOBG402",Player1)
+END
+
+IF
+	Clicked([ANYONE])
+	OR(2)
+		!Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+		!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~The party ain't over !~)
+END
+
+

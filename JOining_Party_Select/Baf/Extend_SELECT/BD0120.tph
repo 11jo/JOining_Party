@@ -1,5 +1,35 @@
 // 1
 
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%All_In.baf~ BEGIN
+
+<<<<<<<< .../JOining_bd0120.baf
+
+IF
+	InMyArea("%IMOEN_DV%")
+	Global("JO_JOIN_bd0120_%IMOEN_DV%","MYAREA",0)
+	OR(3)
+		!Global("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
+		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,FAMILIAR))
+		!TriggerOverride("%IMOEN_DV%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetGlobal("BD_Imoen_Items","GLOBAL",1)
+		ActionOverride("Imoen_import_eq",TakeCreatureItems("IMOEN2",ALL))
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_InParty","LOCALS",0))
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_Valid","LOCALS",0))
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		SmallWait(1)
+		ActionOverride("%IMOEN_DV%",LeaveParty())
+		ActionOverride("%IMOEN_DV%",DestroySelf())
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+
+	END
+
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
 
 <<<<<<<< .../JOining_bd0120.baf

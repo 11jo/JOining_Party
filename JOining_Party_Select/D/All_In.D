@@ -23,6 +23,12 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ EXIT  //
+	IF ~!IsGabber(Player1)~ THEN REPLY ~^BSwitch with me.^-~ DO ~
+		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
+		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",1)~ EXIT  //
 // Manage travelers
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //
