@@ -25,6 +25,8 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		Wait(1)
 		MoveToOffset([1.2])
 		Wait(1)
@@ -176,7 +178,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 // If free party slots then some travelers can join the group
-// Lauched by JOJOINNE.d, JO_JOIN_Move_Around 15 
+// Launched by JOJOINNE.d, JO_JOIN_Move_Around 15 
 
 
 IF

@@ -405,3 +405,40 @@ THEN
 END
 
 ///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
+	OR(7)
+// BG1 End
+		AreaCheck("%NBaldursGate_DucalPalace_L1%")
+		AreaCheck("%Undercity_TempleofBhaal%")
+// Korlaz Donjon
+		AreaCheck("BD0120")
+		AreaCheck("BD0130")
+// SoD End
+		AreaCheck("BD6000")
+		AreaCheck("BD6100")
+		AreaCheck("BD6200")
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)
+		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
+END
+
+IF
+	Global("JO_JOIN_NEVER_BANTER","LOCALS",1)
+// BG1 End
+	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	!AreaCheck("%Undercity_TempleofBhaal%")
+// Korlaz Donjon
+	!AreaCheck("BD0120")
+	!AreaCheck("BD0130")
+// SoD End
+	!AreaCheck("BD6000")
+	!AreaCheck("BD6100")
+	!AreaCheck("BD6200")
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)
+		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+END

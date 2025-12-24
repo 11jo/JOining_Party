@@ -23,6 +23,8 @@ IF // reactive JOMINHP1 after load
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		Wait(1)
 		MoveToOffset([2.1])
 		Face(E)
@@ -1506,6 +1508,7 @@ END
 // Timer make sure the party member stay long enough in party
 
 IF
+	!OnCreation()
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1840,6 +1843,7 @@ IF
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 //
 	NumInPartyLT(6)
 THEN

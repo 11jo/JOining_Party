@@ -4,6 +4,8 @@ IF
 		!Global("JO_JOIN_DREAM_REST","GLOBAL",0)
 		!Global("JO_JOIN_DREAM_DONE","LOCALS",0)
 		!Global("JO_JOIN_BANTER_INTERACT","LOCALS",0)
+	ActionListEmpty()
+	!ActuallyInCombat()
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
