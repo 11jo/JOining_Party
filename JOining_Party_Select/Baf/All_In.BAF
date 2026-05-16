@@ -715,19 +715,6 @@ THEN
 		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
 END
 
-// And the other way around // Variable should return to 1 quick if another traveler is present
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-	OR(2)
-		InParty(Myself)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-END
-
 ///////////////////////////////////////////////////////////////////////////////
 
 // Cas où le script serait quand même actif mais que le personnage ne répond à aucun cas répertorié :
