@@ -69,6 +69,45 @@ IF ~True()~ THEN BEGIN 0
 		ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1))
 		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+/*
+// NEW
+// JO_JOIN_DELAY_SWITCH_TIMER see all_in.baf
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for one more day.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",1))
+		SmallWait(1)
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for two more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
+		SmallWait(1)
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for three more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
+		SmallWait(1)
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for four more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",4))
+		SmallWait(1)
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for five more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",5))
+		SmallWait(1)
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for six more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",6))
+		SmallWait(1)
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for seven more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",7))
+		SmallWait(1)
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+*/
 // leave the group at loading
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, at beginning don't make room for travelers.^-~ DO ~

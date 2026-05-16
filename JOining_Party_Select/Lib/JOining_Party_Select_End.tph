@@ -21,24 +21,59 @@
 			BUT_ONLY
 	END
 
+// Related to "JO_JOIN_TRAVELER_NumInParty" in all_In.baf
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~BD0120.bcs~ THEN BEGIN
+		COPY_EXISTING ~BD0120.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+	// BD0120 situation
+			SPRINT textToReplace ~^[%TAB% ]*NumInParty(\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... //  NumInParty found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+			BUT_ONLY
+	END
+
 //////////////////////////////////////////////////////////////////////////////////////
 
 COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
-		PATCH_IF (SOURCE_SIZE > 0x11b) AND (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
-		LPF fj_are_structure
-			INT_VAR
-			fj_variable_value = 1
-			STR_VAR
-			fj_structure_type = "variable"
-			fj_name           = "JO_JOIN_AREA"
-		END
+		READ_ASCII 0x94 "are_bcs"
+			PATCH_IF (~%are_bcs%~ STR_CMP ~~) AND (NOT ~%are_bcs%~ STR_EQ ~NONE~) BEGIN
+				WRITE_ASCIIE 0x94 ~%SOURCE_RES%~ #8
+						PATCH_PRINT ~%SOURCE_FILE% - Area script not assigned~
+			END
+			PATCH_IF (!FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
+				PATCH_PRINT ~%SOURCE_RES% - Missing area script~
+					INNER_ACTION BEGIN
+				COPY ~JOining_Party_Select/Baf/blank.bcs~ ~override/%are_bcs%.BCS~
+					END
+			END
+			PATCH_IF (SOURCE_SIZE > 0x11b) AND (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
+				LPF fj_are_structure
+					INT_VAR
+					fj_variable_value = 1
+					STR_VAR
+					fj_structure_type = "variable"
+					fj_name           = "JO_JOIN_AREA"
+				END
+			END
 // INNER_ACTION BEGIN APPEND ~MASTAREA.2da~ ~%SOURCE_RES% value~ UNLESS ~%SOURCE_RES%~ END
-		PATCH_PRINT ~... // %SOURCE_RES% is in mastarea.2da
-		Adding Global("JO_JOIN_AREA","MYAREA",1)
-				~
-END
-	BUT_ONLY
-	
+				PATCH_PRINT ~... // %SOURCE_RES% is in mastarea.2da
+				Adding Global("JO_JOIN_AREA","MYAREA",1)
+						~
+			PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
+		READ_ASCII 0x094 are_bcs
+					INNER_ACTION BEGIN
+				EXTEND_TOP ~are_bcs.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~ 
+					END
+			END
+BUT_ONLY
+
 /*
 COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 		PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0163~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0262~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0662~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG1057~) BEGIN
