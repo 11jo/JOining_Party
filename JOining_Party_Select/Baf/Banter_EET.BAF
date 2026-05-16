@@ -11,7 +11,6 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
-		ChangeAIScript("",RACE)
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
@@ -66,17 +65,17 @@ IF
 THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
-		ChangeAIScript("%BG1_DREAM%",RACE)
+		StartDialogOverride("%BG1_DREAM%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
 	RESPONSE #2
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
-		ChangeAIScript("%SoD_DREAM%",RACE)
+		StartDialogOverride("%SoD_DREAM%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
 	RESPONSE #5
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
-		ChangeAIScript("%EET_DREAM%",RACE)
+		StartDialogOverride("%EET_DREAM%",[GOODCUTOFF]) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
 END
