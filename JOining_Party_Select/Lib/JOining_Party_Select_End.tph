@@ -42,15 +42,14 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
-		READ_ASCII 0x94 "are_bcs"
-			PATCH_IF (~%are_bcs%~ STR_CMP ~~) AND (NOT ~%are_bcs%~ STR_EQ ~NONE~) BEGIN
+			PATCH_IF (~%SOURCE_RES%~ STR_CMP ~~) AND (NOT ~%SOURCE_RES%~ STR_EQ ~NONE~) BEGIN
 				WRITE_ASCIIE 0x94 ~%SOURCE_RES%~ #8
 						PATCH_PRINT ~%SOURCE_FILE% - Area script not assigned~
 			END
 			PATCH_IF (!FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
 				PATCH_PRINT ~%SOURCE_RES% - Missing area script~
 					INNER_ACTION BEGIN
-				COPY ~JOining_Party_Select/Baf/blank.bcs~ ~override/%are_bcs%.BCS~
+				COPY ~JOining_Party_Select/Baf/blank.bcs~ ~override/%SOURCE_RES%.BCS~
 					END
 			END
 			PATCH_IF (SOURCE_SIZE > 0x11b) AND (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
@@ -67,9 +66,8 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 				Adding Global("JO_JOIN_AREA","MYAREA",1)
 						~
 			PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
-		READ_ASCII 0x094 are_bcs
 					INNER_ACTION BEGIN
-				EXTEND_TOP ~are_bcs.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~ 
+				EXTEND_TOP ~SOURCE_RES.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~ 
 					END
 			END
 BUT_ONLY
