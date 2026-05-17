@@ -9,21 +9,29 @@
 // 1 // All potential travelers in party will switch with actual traveler
 
 IF
-//	OR(2)
-//		Global("JO_JOIN_AREA","MYAREA",1)
-//		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
 	OnCreation()
-	Allegiance(Myself,PC)
+	OR(2)
+		InParty(Myself)
+		Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
-	!See([ENEMY])
+//
+//	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not needed ?
+//	Global("JO_JOIN","LOCALS",0) // Not needed ?
+//	Global("JO_JOINI","LOCALS",0) // Not needed ?
 //
 	!Global("JO_JOIN_Wannabe","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
+//
+	OR(3)
+		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
+		AreaCheck("JO2608") // Switching Room
+		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
+//
+//	!See([ENEMY]) // Better switch anyway ?
 THEN
 	RESPONSE #100
-		ClearActions(Myself) // NEW2
 		SetInterrupt(FALSE)
+		ClearActions(Myself) // TODO / Test
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_Myself_InParty","LOCALS",0) // Prevent character to initiate banter or else
 		SetGlobal("JO_Myself_Valid","LOCALS",0) // Prevent character to initiate banter or else
@@ -32,15 +40,16 @@ THEN
 		Wait(1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
-//		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		SetInterrupt(TRUE)
-		Continue() // NEW2
+		Continue() // TODO / Test
 END
 
 // 2 // At loading JO_JOIN_PARTY_SWITCH party members make room for travelers
 
 IF
-	Allegiance(Myself,PC)
+	OR(2)
+		InParty(Myself)
+		Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
 //
 	!Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
@@ -69,10 +78,12 @@ END
 // 3 // Blocks standby, at loading prevent party member to reinteger the party too soon
  
 IF
-	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+//	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Nope ?
+//
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_LOAD_PARTY","LOCALS",1)
 	Global("JO_NOJOIN","GLOBAL",0)
+//
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",1)
 //
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -84,6 +95,8 @@ IF
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
 		!InParty(PartySlot6)
+//
+	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",2)
@@ -93,8 +106,9 @@ END
 IF
 	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_LOAD_PARTY","LOCALS",2)
 	Global("JO_NOJOIN","GLOBAL",0)
+//
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",2)
 //
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -106,6 +120,8 @@ IF
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
 		!InParty(PartySlot6)
+//
+	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",3)
@@ -117,8 +133,9 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
 	Global("JO_NOJOIN","GLOBAL",0)
+//
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
 //
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -130,6 +147,8 @@ IF
 		!InParty(PartySlot4)
 		!InParty(PartySlot5)
 		!InParty(PartySlot6)
+//
+	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -146,14 +165,17 @@ THEN
 		DisplayStringHead(Myself,~Traveler ? No more !~)
 		JoinPartyOverride()
 		SetInterrupt(TRUE)
-		Continue() // NEW2
+		Continue() // TODO / Test
 END
 
 // 5 // Block Secure variables
 
 IF
-	Allegiance(Myself,PC)
+	OR(2)
+		InParty(Myself)
+		Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
+//
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
 THEN
 	RESPONSE #100
@@ -166,6 +188,296 @@ THEN
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0) // Prep for switching party
 		SetCutSceneLite(FALSE) // Give player control back
 		SetInterrupt(TRUE)
+END
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+//////////////// JO_JOIN_Fill_Party
+
+///////////////////////////////////////////////////////////////////////////////
+
+// If free party slots then some travelers can join the group
+// Launched by JOJOINNE.d, JO_JOIN_Move_Around 15 
+
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	InParty(Myself)
+	!Global("JO_JOIN_Fill_Party","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetInterrupt(TRUE)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+//////////////// JO_JOIN_Wannabe : NPC can be traveler
+
+///////////////////////////////////////////////////////////////////////////////
+// A party member available to be traveler
+
+// Related to JO_JOIN_PARTY_SWITCH / JO_JOIN_LOAD_PARTY
+
+IF
+	Global("JO_JOIN_Wannabe","LOCALS",0)
+	InParty(Myself)
+	Global("JO_JOIN_IS_Wannabe","LOCALS",0) // Only once
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",1)
+		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_SWITCH_TIMER // JO_JOIN_SWITCH_WITH_ME // JO_JOIN_READY_TO_SWITCH
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Related to Switching party !!!
+
+/*
+// NEW
+// TODO : add in dialog to let players decide if the party member should stay in party for while
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	!GlobalTimerNotExpired("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+	Switch("JO_JOIN_DELAY_SWITCH","LOCALS")
+THEN
+	RESPONSE #1
+		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",ONE_DAY)
+		Continue()
+	RESPONSE #2
+		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",TWO_DAYS)
+		Continue()
+	RESPONSE #3
+		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",THREE_DAYS)
+		Continue()
+	RESPONSE #4
+		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",FOUR_DAYS)
+		Continue()
+	RESPONSE #5
+		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",FIVE_DAYS)
+		Continue()
+	RESPONSE #6
+		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",SIX_DAYS)
+		Continue()
+	RESPONSE #7
+		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",SEVEN_DAYS)
+		Continue()
+END
+
+// TODO : add  (!GlobalTimerNotExpired("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS")) in next IF block
+
+// TODO : add  (SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",ONE_ROUND) in next REPONSE block (to be sur it reset)
+// TODO : Also add  (SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",ONE_ROUND) when a party member become traveler (to be sur it reset)
+*/
+
+// If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for switching with a traveler
+// Timer make sure the party member stay long enough in party
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// After Switching Party with a party member
+// Reset JO_NOJOIN after switching place, and other related variables
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	InParty(Myself)
+THEN
+	RESPONSE #25
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+	RESPONSE #25
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_DAYS)
+	RESPONSE #25
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
+	RESPONSE #25
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",EIGHTEEN_HOURS)
+END
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Security
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Cas d'un recrutement non standard (ctrl+Q par exemple)
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	InParty(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
+
+// Have a variable that say "at least one traveler is here"
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Cas où le script serait quand même actif mais que le personnage ne répond à aucun cas répertorié :
+// ni dans le groupe, ni familier, ni au sol, ni charmé
+// ChangeEnemyAlly par exemple
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!StateCheck(Myself,STATE_CHARMED)
+	!Allegiance(Myself,FAMILIAR)
+	!InParty(Myself)
+	!Global("JO_JOINI","LOCALS",1) // TODO: Added
+	OR(2)
+		!Allegiance(Myself,NEUTRAL)
+		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+THEN
+	RESPONSE #100
+		// reset block
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		// end reset block
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!AreaCheck("BD0120")
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	OR(2)
+		!Allegiance(Myself,FAMILIAR)
+		InParty(Myself)
+	OR(3)
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Related to Join_ability.baf destroy item before 
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",0) // TODO: Added probably useless
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0) // TODO: Added probably useless
+	!Allegiance(Myself,FAMILIAR)
+	HasItem("JOMINHP1",Myself)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+THEN
+	RESPONSE #100
+		EquipItemEx("JOMINHP1",1)
+		DestroyItem("JOMINHP1")
 END
 
 //
@@ -463,12 +775,9 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
 //	OR(2)
-//		Global("JO_JOIN_AREA","MYAREA",1)
-//		Global("JO_JOIN_BLOP","GLOBAL",1)
+//		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
+//		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
 //
 	Global("JO_JOINI","LOCALS",1)
 	Allegiance(Myself,PC)
@@ -525,298 +834,6 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-//////////////// JO_JOIN_Fill_Party
-
-///////////////////////////////////////////////////////////////////////////////
-
-// If free party slots then some travelers can join the group
-// Launched by JOJOINNE.d, JO_JOIN_Move_Around 15 
-
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	InParty(Myself)
-	!Global("JO_JOIN_Fill_Party","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
-		SetInterrupt(TRUE)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-//////////////// JO_JOIN_Wannabe : NPC can be traveler
-
-///////////////////////////////////////////////////////////////////////////////
-// A party member available to be traveler
-
-// Related to JO_JOIN_PARTY_SWITCH / JO_JOIN_LOAD_PARTY
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	Global("JO_JOIN_Wannabe","LOCALS",0)
-	InParty(Myself)
-	Global("JO_JOIN_IS_Wannabe","LOCALS",0) // Only once
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",1)
-		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// JO_JOIN_SWITCH_TIMER // JO_JOIN_SWITCH_WITH_ME // JO_JOIN_READY_TO_SWITCH
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Related to Switching party !!!
-
-/*
-// NEW
-// TODO : add in dialog to let players decide if the party member should stay in party for while
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	!GlobalTimerNotExpired("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-	Switch("JO_JOIN_DELAY_SWITCH","LOCALS")
-THEN
-	RESPONSE #1
-		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",ONE_DAY)
-		Continue()
-	RESPONSE #2
-		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",TWO_DAYS)
-		Continue()
-	RESPONSE #3
-		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",THREE_DAYS)
-		Continue()
-	RESPONSE #4
-		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",FOUR_DAYS)
-		Continue()
-	RESPONSE #5
-		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",FIVE_DAYS)
-		Continue()
-	RESPONSE #6
-		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",SIX_DAYS)
-		Continue()
-	RESPONSE #7
-		SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",SEVEN_DAYS)
-		Continue()
-END
-
-// TODO : add  (!GlobalTimerNotExpired("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS")) in next IF block
-
-// TODO : add  (SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",ONE_ROUND) in next REPONSE block (to be sur it reset)
-// TODO : Also add  (SetGlobalTimer("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS",ONE_ROUND) when a party member become traveler (to be sur it reset)
-*/
-
-// If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for switching with a traveler
-// Timer make sure the party member stay long enough in party
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-		Continue()
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// After Switching Party with a party member
-// Reset JO_NOJOIN after switching place, and other related variables
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	InParty(Myself)
-THEN
-	RESPONSE #25
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-	RESPONSE #25
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_DAYS)
-	RESPONSE #25
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
-	RESPONSE #25
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",EIGHTEEN_HOURS)
-END
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Security
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Cas d'un recrutement non standard (ctrl+Q par exemple)
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	InParty(Myself)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
-
-// Have a variable that say "at least one traveler is here"
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Cas où le script serait quand même actif mais que le personnage ne répond à aucun cas répertorié :
-// ni dans le groupe, ni familier, ni au sol, ni charmé
-// ChangeEnemyAlly par exemple
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	!StateCheck(Myself,STATE_CHARMED)
-	!Allegiance(Myself,FAMILIAR)
-	!InParty(Myself)
-	!Global("JO_JOINI","LOCALS",1) // TODO: Added
-	OR(2)
-		!Allegiance(Myself,NEUTRAL)
-		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-THEN
-	RESPONSE #100
-		// reset block
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOINI","LOCALS",0)
-		// end reset block
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!AreaCheck("BD0120")
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(2)
-		!Allegiance(Myself,FAMILIAR)
-		InParty(Myself)
-	OR(3)
-		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Related to Join_ability.baf destroy item before 
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",0) // TODO: Added probably useless
-	Global("JO_JOIN_IS_TRAVELER","LOCALS",0) // TODO: Added probably useless
-	!Allegiance(Myself,FAMILIAR)
-	HasItem("JOMINHP1",Myself)
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-THEN
-	RESPONSE #100
-		EquipItemEx("JOMINHP1",1)
-		DestroyItem("JOMINHP1")
-END
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-///////////////////////////////////////////////////////////////////////////////
-
 // Loading travelers END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -826,9 +843,6 @@ END
 IF
 	!Global("JO_JOIN_MY_SWITCH","LOCALS",0)
 //
-//	ActionListEmpty()
-//	!ActuallyInCombat()
-//	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
