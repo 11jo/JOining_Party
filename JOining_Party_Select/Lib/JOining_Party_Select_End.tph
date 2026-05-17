@@ -42,16 +42,16 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
-			PATCH_IF (~%SOURCE_RES%~ STR_CMP ~~) AND (NOT ~%SOURCE_RES%~ STR_EQ ~NONE~) BEGIN
-				WRITE_ASCIIE 0x94 ~%SOURCE_RES%~ #8
-						PATCH_PRINT ~%SOURCE_FILE% - Area script not assigned~
-			END
-			PATCH_IF (!FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
-				PATCH_PRINT ~%SOURCE_RES% - Missing area script~
-					INNER_ACTION BEGIN
-				COPY ~JOining_Party_Select/Baf/blank.bcs~ ~override/%SOURCE_RES%.BCS~
-					END
-			END
+//			PATCH_IF (~%SOURCE_RES%~ STR_CMP ~~) AND (NOT ~%SOURCE_RES%~ STR_EQ ~NONE~) BEGIN
+//				WRITE_ASCIIE 0x94 ~%SOURCE_RES%~ #8
+//						PATCH_PRINT ~%SOURCE_FILE% - Area script not assigned~
+//			END
+//			PATCH_IF (!FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
+//				PATCH_PRINT ~%SOURCE_RES% - Missing area script~
+//					INNER_ACTION BEGIN
+//				COPY ~JOining_Party_Select/Baf/blank.bcs~ ~override/%SOURCE_RES%.BCS~
+//					END
+//			END
 			PATCH_IF (SOURCE_SIZE > 0x11b) AND (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
 				LPF fj_are_structure
 					INT_VAR
@@ -65,11 +65,11 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 				PATCH_PRINT ~... // %SOURCE_RES% is in mastarea.2da
 				Adding Global("JO_JOIN_AREA","MYAREA",1)
 						~
-			PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
-					INNER_ACTION BEGIN
-				EXTEND_TOP ~SOURCE_RES.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~ 
-					END
-			END
+//			PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
+//					INNER_ACTION BEGIN
+//				EXTEND_TOP ~%SOURCE_RES%.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~ 
+//					END
+//			END
 BUT_ONLY
 
 /*
@@ -219,6 +219,10 @@ END
 
 COPY ~JOining_Party_Select/Are~ ~override~
 
+	ACTION_IF !FILE_EXISTS_IN_GAME ~AM0604A.BAM~ THEN BEGIN
+COPY ~JOining_Party_Select/Are/Bam/AM0604A.BAM~ ~override~
+	END
+
 APPEND ~MASTAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 
 	COPY_EXISTING ~JO2608.are~ ~override~
@@ -226,7 +230,11 @@ APPEND ~MASTAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT0)
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT2)
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT5)
-		WRITE_LONG  0x48 THIS | BIT7
+		WRITE_LONG  0x48 THIS | BIT2 | BIT7
+		WRITE_SHORT  0x4e ~100~
+
+	COPY_EXISTING ~JO2608.wed~ ~override~
+		WRITE_ASCII 0x24 ~JO2608~ (8)
 
 // JOJOINNE.d added before being extended
 //////////////////////////////////////////////////////////////////////////////////////

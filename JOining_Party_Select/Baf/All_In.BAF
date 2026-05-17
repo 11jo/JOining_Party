@@ -31,12 +31,12 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ClearActions(Myself) // TODO / Test
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_Myself_InParty","LOCALS",0) // Prevent character to initiate banter or else
 		SetGlobal("JO_Myself_Valid","LOCALS",0) // Prevent character to initiate banter or else
-		SmallWait(1)
 		MoveToOffset([1.2])
+		SmallWait(1)
+		SetGlobal("JO_JOIN","LOCALS",1)
 		Wait(1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
@@ -47,6 +47,7 @@ END
 // 2 // At loading JO_JOIN_PARTY_SWITCH party members make room for travelers
 
 IF
+	Global("JO_JOIN","LOCALS",1)
 	OR(2)
 		InParty(Myself)
 		Allegiance(Myself,PC)
@@ -61,9 +62,9 @@ THEN
 		LeaveParty()
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
-		SmallWait(1)
+//		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)
-		SmallWait(1)
+//		SmallWait(1)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		FaceObject(Player1)

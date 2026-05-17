@@ -8,6 +8,7 @@
 
 // StartCutScene(S:CutScene*)  EndCutSceneMode() 
 
+/*
 IF // TODO : add to every not master area
 	OnCreation()
 	!Global("JO_JOIN_AREA","MYAREA",1)
@@ -16,7 +17,9 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SetMasterArea","GLOBAL",1)
 END
-/*
+*/
+
+
 IF
 	OnCreation()
 	OR(2)
@@ -25,7 +28,8 @@ IF
 	!Global("JO_JOIN_BLOP","GLOBAL",1)
 THEN
 	RESPONSE #100
-		FadeToColor([10.0],0)
+		FadeToColor([20.0],0)
+		Wait(1)
 		StorePartyLocations()
 		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],50))
 		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
@@ -48,12 +52,13 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
-		FadeToColor([10.0],0)
+		FadeToColor([20.0],0)
+		Wait(1)
 		RestorePartyLocations()
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
 END
-*/
+
 //
 //
 //
