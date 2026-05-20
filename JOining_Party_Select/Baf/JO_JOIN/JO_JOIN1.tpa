@@ -25,8 +25,24 @@ ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN // BG2 / ToB
 				SetGlobal("JO_JOIN","LOCALS",0)
 		//		ChangeAIScript("IMOE25",OVERRIDE)
 				Continue()~~~~~
+		OUTER_SPRINT "AreaCheck_BG2Start" ~~~~~IF
+	Global("JO_JOIN","LOCALS",2)
+	OR(2)
+		AreaCheck("AR0602")
+		AreaCheck("AR0603")
+THEN
+	RESPONSE #100
+		SetDialog("IMOENJ") 
+		SetGlobal("JO_JOIN","LOCALS",0)
+//		ChangeAIScript("IMOEN",OVERRIDE)
+		Continue()
+END~~~~~
+		OUTER_SPRINT "AreaCheck_Not_BG2Start" ~~~~~	!AreaCheck("AR0602")
+	!AreaCheck("AR0603")~~~~~
 END ELSE BEGIN
 		OUTER_SPRINT "RESPONSE #3" ""
+		OUTER_SPRINT "AreaCheck_BG2Start" ""
+		OUTER_SPRINT "AreaCheck_Not_BG2Start" ""
 END
 ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
 		OUTER_SPRINT "RESPONSE #5" ~~~~~RESPONSE #5
@@ -41,23 +57,11 @@ END
 
 <<<<<<<< .../JOining_Imoen.baf
 
-IF
-	Global("JO_JOIN","LOCALS",2)
-	OR(2)
-		AreaCheck("AR0602")
-		AreaCheck("AR0603")
-THEN
-	RESPONSE #100
-		SetDialog("IMOENJ") 
-		SetGlobal("JO_JOIN","LOCALS",0)
-//		ChangeAIScript("IMOEN",OVERRIDE)
-		Continue()
-END
+%AreaCheck_BG2Start%
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	!AreaCheck("AR0602")
-	!AreaCheck("AR0603")
+	%AreaCheck_Not_BG2Start%
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
 %RESPONSE #1%
