@@ -315,6 +315,52 @@ WRITE_ASCII DIALOG ~JOJOINNE~ (8)
 
 		COMPILE ~JOining_Party_Select/Baf/JOJOINNE.baf~ EVALUATE_BUFFER
 
+// JO2608
+
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
+
+		COMPILE ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
+
+		COMPILE ~JOining_Party_Select/Baf/JO260801.baf~ EVALUATE_BUFFER
+
+	END
+
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JOBG402.SPL~ BEGIN
+	
+	APPEND ~SPELL.IDS~ ~1011 NOSTALGIA_DOOR~  UNLESS ~1011 NOSTALGIA_DOOR~ // Will use SPPR011.SPL ressouce
+
+  	COPY ~JOining_Party_Select/Spl/SpDoor/JOBG402.SPL~			~override/SPPR011.SPL~ // correspond to  : 1011 NOSTALGIA_DOOR
+  SAY NAME1 ~Dimensional gate~
+  SAY NAME2 ~Dimensional gate~ 
+  SAY UNIDENTIFIED_DESC ~Dimensional gate
+(Alteration)
+
+Level : 4
+Range: 0
+Duration: Instant
+Casting Time : 1
+Area of Effect : The caster
+Saving Throw : None
+
+This spell transports the caster to any place within the visual range of the caster. When the spell is cast, a gate appear in front of the caster, who immediately steps through it. Upon passing through the gate, the caster finds <PRO_HIMHER>self at <PRO_HISHER> chosen destination.~
+  SAY DESC ~Dimensional gate
+(Alteration)
+
+Level : 4
+Range: 0
+Duration: Instant
+Casting Time : 1
+Area of Effect : The caster
+Saving Throw : None
+
+This spell transports the caster to any place within the visual range of the caster. When the spell is cast, a gate appear in front of the caster, who immediately steps through it. Upon passing through the gate, the caster finds <PRO_HIMHER>self at <PRO_HISHER> chosen destination.~
+
+// Stolen from Nostalgia pack
+
+	COPY ~JOining_Party_Select/Spl/DiDoor~							~override~
+
+	END
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -336,11 +382,13 @@ WRITE_ASCII DIALOG ~JOJOINNE~ (8)
 
 // DPLAYER3.bcs additions
 
-EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability.baf~ 
+EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability.baf~ EVALUATE_BUFFER
 
-EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ 
+EXTEND_BOTTOM ~PLAYER1D.bcs~ ~JOining_Party_Select/Baf/Join_ability/Player1D.baf~
 
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ 
+EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~
+
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~
 
 
 // Starting areas additions

@@ -572,5 +572,29 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
 				~
 			END
+///////////////////////////////////////////////////////////////////////////////
+// Interact
+///////////////////////////////////////////////////////////////////////////////
+	// Interact() situation
+			SPRINT textToReplace ~^[%TAB% ]*InteractingWith(\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+				TriggerOverride(\1,Global("JO_JOIN_BANTER_INTERACT","LOCALS",1))
+	\0~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~  InteractingWith(\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(2)
+				TriggerOverride(\1,Global("JO_JOIN_BANTER_INTERACT","LOCALS",1))
+	\0~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
+				~
+			END
 		END
 BUT_ONLY
