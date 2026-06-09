@@ -290,6 +290,9 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Mod Moidre AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GV#MOID~)
 // Mod Vynd AND NOT (~%override_script%~ STRING_EQUAL_CASE ~GV#VYND~)
 
+// Kale BG1
+// Mod Kale_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X3Kale~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X32Kale~)
+
 // Next_Traveler BG1
 
 /////////////////////////// Mods BG2 ///////////////////////////
@@ -407,6 +410,9 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Petsy
 // Mod Petsy AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L3PETSY~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L3Pet25~)
+
+// Kale BG2
+// Mod Kale_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X3Kal~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X3Kal25~)
 
 // Next_Traveler BG2
 

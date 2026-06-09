@@ -1554,6 +1554,30 @@ END
 
 	END
 
+// Kale BG1
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~Kale.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Kale_BG1_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kale_BG1~ ~~
+			PRINT ~    Kale_BG1 as traveler
+			~
+
+END ELSE ACTION_IF Kale_BG1_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kale_BG1~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Kale_BG1~ ~~
+			PRINT ~    Kale_BG1 as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG1
 
 
@@ -2477,6 +2501,30 @@ END ELSE ACTION_IF  Petsy_as_Real_traveler = 1 THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod Petsy~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Petsy~ ~~
 			PRINT ~    Petsy as real traveler
+			~
+
+END
+
+	END
+
+// Kale BG2
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~SETUP-SKITIANPCS.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Kale_BG2_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kale_BG2~ ~~
+			PRINT ~    Kale_BG2 as traveler
+			~
+
+END ELSE ACTION_IF Kale_BG2_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kale_BG2~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Kale_BG2~ ~~
+			PRINT ~    Kale_BG2 as real traveler
 			~
 
 END

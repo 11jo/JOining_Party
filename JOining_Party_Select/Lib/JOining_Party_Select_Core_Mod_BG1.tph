@@ -1247,6 +1247,49 @@ BEGIN
 	END
 END
 
+// Kale BG1
+
+OUTER_SPRINT "BG1_JOINED" "X3KaleJ"
+OUTER_SPRINT "BG1_BCS" "X3Kale"
+ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "X3KaleJ"
+END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "X32KaleJ"
+END
+OUTER_SPRINT "SoD_BCS" "X32Kale"
+OUTER_SPRINT "BG1_BANTER" "X3KaleB"
+OUTER_SPRINT "SoD_BANTER" "X3KaleB"
+OUTER_SPRINT "BG1_DREAM" "X3KaleD"
+OUTER_SPRINT "SoD_DREAM" "X32KaleD"
+OUTER_SPRINT "EET_DREAM" "X3KaleD"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kale_BG1 ~X3Kale~ ~X32Kale~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/X3Kale_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+	END
+END
+
 // Next_Traveler BG1
 
 
