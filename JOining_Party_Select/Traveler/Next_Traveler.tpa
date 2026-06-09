@@ -1,46 +1,28 @@
 // Note : comment out or delete unused field for your traveler before install.
 
+ACTION_IF Traveler_BG1 = 1 THEN BEGIN
+	OUTER_SPRINT "Next_Traveler Traveler_Game" "Next_Traveler BG1"
+END ELSE ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+	OUTER_SPRINT "Next_Traveler Traveler_Game" "Next_Traveler BG2"
+END ELSE ACTION_IF Traveler_Continuous = 1 THEN BEGIN
+	OUTER_SPRINT "Next_Traveler Traveler_Game" "Next_Traveler Continuous"
+END
+
 
 /////////////////////////// Not_so_Always.tpa ///////////////////////////
 
-ACTION_IF Traveler_BG1 = 1 THEN BEGIN
-
 		COPY ~JOining_Party_Select/Lib/Not_so_Always.tpa~	~JOining_Party_Select/Lib/Not_so_Always.tpa~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~			OUTER_SPRINT "%NEW_TRAVELER_DeathVar%_name"                 "%NEW_TRAVELER_NAME%"
-// Next_Traveler BG1~~~~~
-
-END
-
-ACTION_IF Traveler_BG2 = 1 THEN BEGIN
-
-		COPY ~JOining_Party_Select/Lib/Not_so_Always.tpa~	~JOining_Party_Select/Lib/Not_so_Always.tpa~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~			OUTER_SPRINT "%NEW_TRAVELER_DeathVar%_name"                 "%NEW_TRAVELER_NAME%"
-// Next_Traveler BG2~~~~~
-
-END
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~			OUTER_SPRINT "%NEW_TRAVELER_DeathVar%_name"                 "%NEW_TRAVELER_NAME%"
+// %Next_Traveler Traveler_Game%~~~~~
 
 
 /////////////////////////// JOining_Party_Select.tph ///////////////////////////
 
-ACTION_IF Traveler_BG1 = 1 THEN BEGIN
-
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
-// Next_Traveler BG1~~~~~
-
-END
-
-ACTION_IF Traveler_BG2 = 1 THEN BEGIN
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~JOining_Party_Select/Lib/JOining_Party_Select.tph~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
-// Mod Real %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
-
-// Next_Traveler BG2~~~~~
-
-END
+// %Next_Traveler Traveler_Game%~~~~~
 
 /////////////////////////// JOining_Party_Select_Fix.tph ///////////////////////////
 
@@ -63,6 +45,8 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 // Next_Traveler BG2~~~~~
 
 END
+
+// TODO ACTION_IF Traveler_Continuous = 1 THEN BEGIN
 
 
 /////////////////////////// JOining_Party_Select_Joined.tph ///////////////////////////
@@ -110,30 +94,17 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 
 END
 
+// TODO ACTION_IF Traveler_Continuous = 1 THEN BEGIN
+
 
 /////////////////////////// JOining_Party_Select_End.tph ///////////////////////////
 
 
-ACTION_IF Traveler_BG1 = 1 THEN BEGIN
-
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
 
-// Next_Traveler BG1~~~~~
-
-END
-
-ACTION_IF Traveler_BG2 = 1 THEN BEGIN
-
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
-// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%~
-
-// Next_Traveler BG2~~~~~
-
-END
-
+// %Next_Traveler Traveler_Game%~~~~~
 
 /////////////////////////// JOining_Party_Select_Core.tph ///////////////////////////
 
@@ -179,6 +150,8 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 	END
 
 END
+
+// TODO ACTION_IF Traveler_Continuous = 1 THEN BEGIN
 
 
 /////////////////////////// JOining_Party_Select_Core_Mod_BG1.tph ///////////////////////////
@@ -371,11 +344,8 @@ END
 
 /////////////////////////// Always_as_traveler.tpa ///////////////////////////
 
-
-ACTION_IF Traveler_BG1 = 1 THEN BEGIN
-
 		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
 
 	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_TP2%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
@@ -399,96 +369,27 @@ END
 
 	END
 
-// Next_Traveler BG1~~~~~
-
-END
-
-ACTION_IF Traveler_BG2 = 1 THEN BEGIN
-
-		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
-
-	ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_TP2%.TP2~ ~%NEW_TRAVELER_MOD_COMPONANT%~) THEN BEGIN
-
-ACTION_IF %NEW_TRAVELER_NAME%_as_traveler = 1 THEN BEGIN
-
-		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
-			PRINT ~    %NEW_TRAVELER_NAME% as traveler
-			~
-
-END ELSE ACTION_IF %NEW_TRAVELER_NAME%_as_Real_traveler = 1 THEN BEGIN
-
-		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Mod %NEW_TRAVELER_NAME%~ ~~
-			REPLACE_TEXTUALLY ~// Mod Real %NEW_TRAVELER_NAME%~ ~~
-			PRINT ~    %NEW_TRAVELER_NAME% as real traveler
-			~
-
-END
-
-	END
-
-// Next_Traveler BG2~~~~~
-
-END
+// %Next_Traveler Traveler_Game%~~~~~
 
 
 /////////////////////////// JOining_Traveler.tpa ///////////////////////////
 
-
-ACTION_IF Traveler_BG1 = 1 THEN BEGIN
-
 		COPY ~JOining_Party_Select/Lib/JOining_Traveler.tpa~	~JOining_Party_Select/Lib/JOining_Traveler.tpa~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG1~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
 // 1
   COUNT_REGEXP_INSTANCES  ~^%NEW_TRAVELER_NAME%[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              %NEW_TRAVELER_NAME%_as_traveler
 // 2
   COUNT_REGEXP_INSTANCES  ~^%NEW_TRAVELER_NAME%[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              %NEW_TRAVELER_NAME%_as_Real_traveler
 
-// Next_Traveler BG1~~~~~
-
-END
-
-ACTION_IF Traveler_BG2 = 1 THEN BEGIN
-
-		COPY ~JOining_Party_Select/Lib/JOining_Traveler.tpa~	~JOining_Party_Select/Lib/JOining_Traveler.tpa~
-			REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
-
-// 1
-  COUNT_REGEXP_INSTANCES  ~^%NEW_TRAVELER_NAME%[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              %NEW_TRAVELER_NAME%_as_traveler
-// 2
-  COUNT_REGEXP_INSTANCES  ~^%NEW_TRAVELER_NAME%[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              %NEW_TRAVELER_NAME%_as_Real_traveler
-
-// Next_Traveler BG2~~~~~
-
-END
+// %Next_Traveler Traveler_Game%~~~~~
 
 
 /////////////////////////// JOining_Traveler.ini ///////////////////////////
 
-
-ACTION_IF Traveler_BG1 = 1 THEN BEGIN
-
 		COPY ~JOining_Party_Select/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
-			REPLACE_TEXTUALLY ~# Next_Traveler BG1~ ~~~~~# %NEW_TRAVELER_MOD_NAME%
+			REPLACE_TEXTUALLY ~# %Next_Traveler Traveler_Game%~ ~~~~~# %NEW_TRAVELER_MOD_NAME%
 
 %NEW_TRAVELER_NAME%                       = 1
 
-# Next_Traveler BG1~~~~~
-
-END
-
-ACTION_IF Traveler_BG2 = 1 THEN BEGIN
-
-		COPY ~JOining_Party_Select/JOining_Traveler.ini~	~JOining_Party_Select/JOining_Traveler.ini~
-			REPLACE_TEXTUALLY ~# Next_Traveler BG2~ ~~~~~# %NEW_TRAVELER_MOD_NAME%
-
-%NEW_TRAVELER_NAME%                       = 1
-
-# Next_Traveler BG2~~~~~
-
-END
-
-
+# %Next_Traveler Traveler_Game%~~~~~
