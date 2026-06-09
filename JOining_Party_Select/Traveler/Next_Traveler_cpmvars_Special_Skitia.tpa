@@ -17,23 +17,28 @@
 
 // Choose = 1 if NPC is for BG1 and 0 if NPC is for BG2
 
-	OUTER_SET Traveler_BG1 = 1
+	OUTER_SET Traveler_BG1 = 0
 
 
 // Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1
 
-	OUTER_SET Traveler_BG2 = 1
+	OUTER_SET Traveler_BG2 = 0
+
+
+// Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1
+
+	OUTER_SET Traveler_Continuous = 1
 
 
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Kale BG1"
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Kale_Skitia"
 
 
 // Use NPC name
 // (If another NPC already have a similar name use name_BG2 or name_BG1 or name_whatever. ex : Alora_BG2 or Drizzt_Terror)
 
-	OUTER_SPRINT "NEW_TRAVELER_NAME" "Kale_BG1"
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Kale"
 
 
 // Use the DeathVar/Script Name of the NPC // Info in PDIALOG.2DA
@@ -121,12 +126,16 @@
 
 // Use mod.tp2 name (ex : ajantisbg2 or setup-kivan)
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "Kale"
+	OUTER_SPRINT "NEW_TRAVELER_MOD_BG1_TP2" "Kale"
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_BG2_TP2" "SETUP-SKITIANPCS"
 
 
 // Use the DESIGNATED number of the main componant mentionned in .tp2
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "0"
+	OUTER_SPRINT "NEW_TRAVELER_MOD_BG1_COMPONANT" "0"
+
+	OUTER_SPRINT "NEW_TRAVELER_MOD_BG2_COMPONANT" "0"
 
 
 /////////////////////////////////////////////////////////////////////
