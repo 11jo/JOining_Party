@@ -148,7 +148,7 @@
 | JO_NEVER_JOIN | L | Prevent the traveler to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
 | JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
 | JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
-| JO_JOIN_Move_Done | L | Related to JO_JOIN_Move_Around used to make the script apply only once until next command | 0: False<br>Other: True<br>
+| JO_JOIN_Move_Done | L | Related to `JO_JOIN_Move_Around` used to make the script apply only once until next command | 0: False<br>Other: True
 | JO_JOIN_SWITCHING_PARTY | G | Prevent Switching party between traveler and party member when loading a save. | 0: True<br>Other: False |
 | JO_JOIN_SWITCH_TIMER | L | Timer for Switching party between traveler and party member. | n/a |
 | JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Switch between traveler and party member in process<br>3: Ready to random switch<br>4: Random switch between traveler and party member in process
@@ -161,6 +161,8 @@
 | JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | 0: False<br>Other: True
 | JO_JOIN_LOAD_TRAVELER | L | Travelers switch quickly in party at loading | 0: False<br>1: True<br>2: ??
 | JO_JOIN_LOAD_PARTY | L | Party members leave the groupe at loading | 0: False<br>1: wait step1<br>2: wait step2<br>3: in progress
+| JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
+| JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 
 ---
 
