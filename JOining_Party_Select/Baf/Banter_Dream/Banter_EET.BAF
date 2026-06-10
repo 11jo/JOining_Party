@@ -62,7 +62,7 @@ IF
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
-	RandomNum(4,2)
+//	RandomNum(4,2)
 THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
@@ -120,9 +120,9 @@ IF
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
-	OR(2)
-		RandomNum(4,2)
-		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)
+//	OR(2)
+//		RandomNum(4,2)
+//		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)
 	!AreaCheck("JO2608")
 THEN
 	RESPONSE #1
