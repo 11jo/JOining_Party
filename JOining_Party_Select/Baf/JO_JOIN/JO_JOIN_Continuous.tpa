@@ -1,0 +1,56 @@
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN // BG1
+		OUTER_SPRINT "RESPONSE_BG1" ~~~~~RESPONSE #1
+				SetDialog("%BG1_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_BG1" ""
+END
+ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN // SoD
+		OUTER_SPRINT "RESPONSE_SoD" ~~~~~RESPONSE #2
+				SetDialog("%SoD_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_SoD" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN // BG2 / ToB
+		OUTER_SPRINT "RESPONSE_BG2" ~~~~~RESPONSE #3
+				SetDialog("%BG2_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+				Continue()
+			RESPONSE #4
+				SetDialog("%TOB_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_BG2" ""
+END
+ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
+		OUTER_SPRINT "RESPONSE_EET" ~~~~~RESPONSE #5
+				SetDialog("%BG1_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_EET" ""
+END
+
+<<<<<<<< .../JOining_NPC.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+THEN
+%RESPONSE_BG1%
+%RESPONSE_SoD%
+%RESPONSE_BG2%
+%RESPONSE_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_NPC.baf~ EVALUATE_BUFFER

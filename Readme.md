@@ -23,12 +23,12 @@
 **Installation could last between 10 to 30+ minutes depending of the number of NPCs chosen and the number of mods installed**
 
 - Use the Charname **special ability** to convert NPC to Familiar / traveler.
-- Keep **one free party slot** to allow NPC switch regulary or not and **let them switch places with party members**.
-- You can **quickly acces** (5 seconds) to stats and inventory when they switch in party.
+- Party members and travelers will switch regulary to make sure nothing is lost.
+- You can use the **special ability** on an traveler or **on Charname** to launch a dialog to manage the travelers.
 - You can **completly reinteger** any traveler in party, use again the same special ability on the chosen NPC and talk to the NPC, they will have **several dialog options**.
 
-- When loading a save the **NPCs have to switch** once before being reliably available for script and dialog. All party members available and willing to be traveler will temporarly leave the group to allow travelers to switch once then will reinteger the group quickly.
-- When loading a save, traveler will switch one by one, it's an *important state that need to happen to make them reliably available for script and dialog*.
+- When loading a save the **NPCs have to switch** once before being reliably available for script and dialog. 
+- When loading a save, All party members available and willing to be traveler will temporarly leave the group to allow travelers to switch once then will reinteger the group quickly, it's an *very important state that need to happen to make them reliably available for script and dialog*.
 
 
 ## Overwiew :  
@@ -36,7 +36,7 @@
 
 This mod aims to provide a way to extend the limit of 6 characters in party by using the familiar status, while preserving quests, interjections, and banters in order to enjoy the NPCs / travelers as party member.
 
-There is no real limitation as for the number of familiars / travelers that players can have along side them.
+There is no real limitation as for the number of familiars / travelers that players can have along side them. However, to prevent the scripts from being overwhelmed, it’s advisable not to have five or six travelers.
 
 
 ## Instruction :  
@@ -50,7 +50,7 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 - **First** select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
   - 0 the NPC is not expanded to become a traveler.
   - 1 Npc will be expended to be traveler (Familiar fully considered as party member.)
-  - 2 Npc will be expended to be a real traveler (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.) (Warning Option 2, will expend installation time significaly, to use only with few traveler.)
+  - 2 Npc will be expended to be a real traveler (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.) (Warning Option 2, Experimental and will expend installation time significaly, to use only with few traveler.)
 
 
 ##### Componants :  

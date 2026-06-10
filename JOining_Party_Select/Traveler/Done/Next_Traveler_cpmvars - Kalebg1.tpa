@@ -17,7 +17,7 @@
 
 // Choose = 1 if NPC is for BG1 and 0 if NPC is for BG2
 
-	OUTER_SET Traveler_BG1 = 0
+	OUTER_SET Traveler_BG1 = 1
 
 
 // Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1
@@ -30,31 +30,32 @@ Do not use
 */
 	OUTER_SET Traveler_Continuous = 0
 
+
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Kale BG1"
 
 
 // Use NPC name
 // (If another NPC already have a similar name use name_BG2 or name_BG1 or name_whatever. ex : Alora_BG2 or Drizzt_Terror)
 
-	OUTER_SPRINT "NEW_TRAVELER_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Kale_BG1"
 
 
-// Use the DeathVar/Script Name of the NPC  // Info in PDIALOG.2DA
+// Use the DeathVar/Script Name of the NPC // Info in PDIALOG.2DA
 
-	OUTER_SPRINT "NEW_TRAVELER_DeathVar" ""
+	OUTER_SPRINT "NEW_TRAVELER_DeathVar" "X3Kale"
 
 ////////  OVERRIDE_SCRIPT
 
 // Override_script for BG1.
 
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" "X3Kale"
 
 
 // Override_script for SoD if any.
 
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" "X32Kale"
 
 
 // Override_script for BG2.
@@ -62,20 +63,20 @@ Do not use
 	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" ""
 
 
-// Override_script for ToB if any. // Info in PDIALOG.2DA (Look only on BG2 not EET)
+// Override_script for ToB if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" ""
-			// Check if override ToB script is associated to a cre, if not JOining_Party_Select_Joined.tph and Switch_Timer.tph need an addition
+			// Check if override ToB script is associated to a cre, if not JOining_Party_Select_Joined need an addition
 
 ////////  JOINING_DIALOG
 
 // Joining_dialog for BG1. // Info in PDIALOG.2DA (Look only on BGSoD not EET)
 
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" "X3KaleJ"
 
-// Joining_dialog for SoD if any.  // Info in BDDIALOG.2DA (Look only on BGSoD not EET)
+// Joining_dialog for SoD if any. // Info in BDDIALOG.2DA (Look only on BGSoD not EET)
 
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" "X32KaleJ"
 
 // Joining_dialog for BG2. // Info in PDIALOG.2DA (Look only on BG2 not EET)
 
@@ -89,11 +90,11 @@ Do not use
 
 // Dream_banter for BG1. // Info in PDIALOG.2DA (Look only on BGSoD not EET)
 
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG1" "X3KaleD"
 
-// Dream_banter for SoD if any.  // Info in BDDIALOG.2DA (Look only on BGSoD not EET)
+// Dream_banter for SoD if any. // Info in BDDIALOG.2DA (Look only on BGSoD not EET)
 
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_SoD" "X32KaleD"
 
 // Dream_banter for BG2. // Info in PDIALOG.2DA (Look only on BG2 not EET)
 
@@ -108,7 +109,7 @@ Do not use
 
 // Regular_banter for BG1. // Info in INTERDIA.2DA (Look only on BGSoD not EET)
 
-	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG1" "X3KaleB"
 
 // Regular_banter for SoD if any. // Info in BDBANTER.2DA (Look only on BGSoD not EET)
 
@@ -126,12 +127,12 @@ Do not use
 
 // Use mod.tp2 name (ex : ajantisbg2 or setup-kivan)
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "Kale"
 
 
 // Use the DESIGNATED number of the main componant mentionned in .tp2
 
-	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "0"
 
 
 /////////////////////////////////////////////////////////////////////

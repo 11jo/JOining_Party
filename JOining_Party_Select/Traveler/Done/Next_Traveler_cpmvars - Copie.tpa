@@ -24,11 +24,6 @@
 
 	OUTER_SET Traveler_BG2 = 0
 
-/*
-// In Progress...
-Do not use
-*/
-	OUTER_SET Traveler_Continuous = 0
 
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
 
@@ -41,7 +36,7 @@ Do not use
 	OUTER_SPRINT "NEW_TRAVELER_NAME" ""
 
 
-// Use the DeathVar/Script Name of the NPC  // Info in PDIALOG.2DA
+// Use the DeathVar/Script Name of the NPC
 
 	OUTER_SPRINT "NEW_TRAVELER_DeathVar" ""
 
@@ -62,63 +57,63 @@ Do not use
 	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" ""
 
 
-// Override_script for ToB if any. // Info in PDIALOG.2DA (Look only on BG2 not EET)
+// Override_script for ToB if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" ""
-			// Check if override ToB script is associated to a cre, if not JOining_Party_Select_Joined.tph and Switch_Timer.tph need an addition
+			// Check if override ToB script is associated to a cre, if not JOining_Party_Select_Joined need an addition
 
 ////////  JOINING_DIALOG
 
-// Joining_dialog for BG1. // Info in PDIALOG.2DA (Look only on BGSoD not EET)
+// Joining_dialog for BG1.
 
 	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" ""
 
-// Joining_dialog for SoD if any.  // Info in BDDIALOG.2DA (Look only on BGSoD not EET)
+// Joining_dialog for SoD if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" ""
 
-// Joining_dialog for BG2. // Info in PDIALOG.2DA (Look only on BG2 not EET)
+// Joining_dialog for BG2.
 
 	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" ""
 
-// Joining_dialog for ToB if any. // Info in PDIALOG.2DA (Look only on BG2 not EET)
+// Joining_dialog for ToB if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" ""
 
 ////////  DREAM_BANTER
 
-// Dream_banter for BG1. // Info in PDIALOG.2DA (Look only on BGSoD not EET)
+// Dream_banter for BG1.
 
 	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG1" ""
 
-// Dream_banter for SoD if any.  // Info in BDDIALOG.2DA (Look only on BGSoD not EET)
+// Dream_banter for SoD if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_SoD" ""
 
-// Dream_banter for BG2. // Info in PDIALOG.2DA (Look only on BG2 not EET)
+// Dream_banter for BG2.
 
 	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG2" ""
 
-// Dream_banter for ToB if any. // Info in PDIALOG.2DA (Look only on BG2 not EET)
+// Dream_banter for ToB if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_TOB" ""
 
 
 ////////  REGULAR_BANTER
 
-// Regular_banter for BG1. // Info in INTERDIA.2DA (Look only on BGSoD not EET)
+// Regular_banter for BG1.
 
 	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG1" ""
 
-// Regular_banter for SoD if any. // Info in BDBANTER.2DA (Look only on BGSoD not EET)
+// Regular_banter for SoD if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_SoD" ""
 
-// Regular_banter for BG2. // Info in INTERDIA.2DA (Look only on BG2 not EET)
+// Regular_banter for BG2.
 
 	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG2" ""
 
-// Regular_banter for ToB if any. // Info in INTERDIA.2DA (Look only on BG2 not EET)
+// Regular_banter for ToB if any.
 
 	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_TOB" ""
 
