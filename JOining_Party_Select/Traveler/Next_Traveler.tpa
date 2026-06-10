@@ -190,11 +190,11 @@ BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
 
 	END
@@ -239,11 +239,11 @@ BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
 
 	END
@@ -290,7 +290,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG2.baf~ EVALUATE_BUFFER
 						END
 
 	END
@@ -334,7 +334,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_BG2.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG2.baf~ EVALUATE_BUFFER
 
 	END
 END
