@@ -1,7 +1,7 @@
 
 IF
 	PartyRested()
-	OR(3)
+	OR(2)
 		!Global("JO_JOIN_DREAM_REST","GLOBAL",1)
 		!Global("JO_JOIN_DREAM_DONE","LOCALS",0)
 THEN
@@ -53,7 +53,7 @@ IF
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 //	RandomNum(4,2)
 THEN
 	RESPONSE #1
@@ -76,11 +76,11 @@ THEN
 		ChangeAIScript("%TOB_DREAM%",RACE)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
-	RESPONSE #5
+/*	RESPONSE #5
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
 		ChangeAIScript("%EET_DREAM%",RACE)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
-		Continue()
+		Continue()*/
 END
 
 //
@@ -121,7 +121,7 @@ IF
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 //	OR(2)
 //		RandomNum(4,2)
 //		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)
@@ -151,10 +151,10 @@ THEN
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		StartDialogOverride("%TOB_BANTER%",Myself) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
-	RESPONSE #5
+/*	RESPONSE #5
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		StartDialogOverride("%EET_BANTER%",Myself) // [ALLY] [FAMILIAR] [PC] [ANYONE]
-		Continue()
+		Continue()*/
 END

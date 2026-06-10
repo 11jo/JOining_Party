@@ -4,11 +4,11 @@ IF
 		!Global("JO_JOIN_DREAM_REST","GLOBAL",0)
 		!Global("JO_JOIN_DREAM_DONE","LOCALS",0)
 		!Global("JO_JOIN_BANTER_INTERACT","LOCALS",0)
-	ActionListEmpty()
-	!ActuallyInCombat()
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//	ActionListEmpty()
+//	!ActuallyInCombat()
+//	OR(2)
+//		Allegiance(Myself,FAMILIAR)
+//		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		ChangeAIScript("",RACE)
@@ -61,7 +61,7 @@ IF
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 //	RandomNum(4,2)
 THEN
 	RESPONSE #1
@@ -74,11 +74,11 @@ THEN
 		ChangeAIScript("%SoD_DREAM%",RACE)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
-	RESPONSE #5
+/*	RESPONSE #5
 		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
 		ChangeAIScript("%EET_DREAM%",RACE)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
-		Continue()
+		Continue()*/
 END
 
 //
@@ -119,7 +119,7 @@ IF
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 //	OR(2)
 //		RandomNum(4,2)
 //		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)
@@ -128,16 +128,18 @@ THEN
 	RESPONSE #1
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
+		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		StartDialogOverride("%BG1_BANTER%",Myself) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
 	RESPONSE #2
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
+		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		StartDialogOverride("%SoD_BANTER%",Myself) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
-	RESPONSE #5
+/*	RESPONSE #5
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
 		StartDialogOverride("%EET_BANTER%",Myself) // [ALLY] [FAMILIAR] [PC] [ANYONE]
-		Continue()
+		Continue()*/
 END

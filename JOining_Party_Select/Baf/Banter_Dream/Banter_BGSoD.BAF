@@ -1,7 +1,7 @@
 
 IF
 	PartyRested()
-	OR(3)
+	OR(2)
 		!Global("JO_JOIN_DREAM_REST","GLOBAL",1)
 		!Global("JO_JOIN_DREAM_DONE","LOCALS",0)
 THEN
@@ -53,7 +53,7 @@ IF
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 //	RandomNum(4,2)
 THEN
 	RESPONSE #1
@@ -106,7 +106,7 @@ IF
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 //	OR(2)
 //		RandomNum(4,2)
 //		Global("JO_JOIN_BANTER_INTERACT","LOCALS",1)

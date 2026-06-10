@@ -1,7 +1,7 @@
 
 IF
 	PartyRested()
-	OR(3)
+	OR(2)
 		!Global("JO_JOIN_DREAM_REST","GLOBAL",1)
 		!Global("JO_JOIN_DREAM_DONE","LOCALS",0)
 THEN
