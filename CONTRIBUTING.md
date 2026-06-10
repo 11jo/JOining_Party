@@ -130,42 +130,44 @@
 | JO_JOIN_PLAYER1_INIT | G | Special Charname at character creation, to be sure DPLAYER3.BCS is set | 0: False<br>Other: True |
 | JO_JOIN_PLAYER_INIT | L | Special exportable character at creation | 0: False<br>Other: True |
 | JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
-| JO_%Death_var%_LeaveParty | G | If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
-| JO_Myself_LeaveParty | L | If set Familar will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
-| JO_JOIN_JOIN | L | Timer for switching Familiar to NPCs regulary | n/a |
-| JO_JOIN_SLEEPING_DEAD | L | If familiar is sleeping dead | 0: False<br>Other: True |
-| JO_JOIN_TALK | L | For first time becoming a familiar | 0: False<br>Other: True |
-| JO_JOINI | L | Set when familiar switch in party, and enable block to return to familiar state | 0: False<br>Other: True |
-| JO_JOIN_LINK_PLAYER_ID | L | Used to link a familiar to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|
-| JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | 1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
-| JO_JOIN | L | Transform to familiar | 1: process of becoming familiar is actived<br>2: process is over<br>Other: normal status |
+| JO_%Death_var%_LeaveParty | G | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
+| JO_Myself_LeaveParty | L | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
+| JO_JOIN_JOIN | L | Timer for switching traveler to NPCs regulary | n/a |
+| JO_JOIN_SLEEPING_DEAD | L | If traveler is sleeping dead | 0: False<br>Other: True |
+| JO_JOIN_TALK | L | For first time becoming a traveler | 0: False<br>Other: True |
+| JO_JOINI | L | Set when traveler switch in party, and enable block to return to traveler state | 0: False<br>Other: True |
+| JO_JOIN_LINK_PLAYER_ID | L | Used to link a traveler to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|
+| JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
+| JO_JOIN | L | Transform to traveler | 1: process of becoming traveler is actived<br>2: process is over<br>Other: normal status |
 | JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
 | JO_JOIN_CLEAR | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: Script needs to be updated<br>3: Script is up to date<br>Other: nothing|
-| JO_JOIN_IS_JOINING | L | The familiar will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
+| JO_JOIN_IS_JOINING | L | The traveler will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
-| JO_JOIN_HIDE_DURING_CUTSCENE | L | Active or deactive familiar presence in cutscene | 0: False<br>Other: True |
-| JO_JOIN_IS_HIDDEN_BY_CUTSCENE | L | Familiar is currently Deactivate by a cutscene | 0: False<br>Other: True |
-| JO_NEVER_JOIN | L | Prevent the familiar to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
-| JO_JOIN_BD0120 | L | Specific to Korlaz donjon, used to keep familiar along. | 0: False<br>Other: True |
-| JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | n/a |
-| JO_JOIN_Move_Done | L | Related to JO_JOIN_Move_Around used to make the script apply only once until next command | 0: False<br>1: True<br>
+| JO_JOIN_HIDE_DURING_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
+| JO_JOIN_IS_HIDDEN_BY_CUTSCENE | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
+| JO_NEVER_JOIN | L | Prevent the traveler to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
+| JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
+| JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
+| JO_JOIN_Move_Done | L | Related to JO_JOIN_Move_Around used to make the script apply only once until next command | 0: False<br>Other: True<br>
 | JO_JOIN_SWITCHING_PARTY | G | Prevent Switching party between traveler and party member when loading a save. | 0: True<br>Other: False |
 | JO_JOIN_SWITCH_TIMER | L | Timer for Switching party between traveler and party member. | n/a |
-| JO_JOIN_READY_TO_SWITCH | L | Set to 1 when a party member or a traveler is available to switch. | 0: False<br>1: True<br>
-2: Switch between traveler and party member in process
-| JO_JOIN_SWITCH_WITH_ME | L | Used to choose with Player2 or Player3 or Player4 or Player5 or Player6. | 0: Available<br>2: Player2 chosen<br><br>3: Player3 chosen<br>4: Player4 chosen<br>5: Player5 chosen<br>6: Player6 chosen
-2: Switch between traveler and party member in process |
+| JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Switch between traveler and party member in process<br>3: Ready to random switch<br>4: Random switch between traveler and party member in process
+| JO_JOIN_SWITCH_WITH_ME | L | Used to choose with Player2 or Player3 or Player4 or Player5 or Player6. | 0: Available<br>2: Player2 chosen<br>3: Player3 chosen<br>4: Player4 chosen<br>5: Player5 chosen<br>6: Player6 chosen
 | JO_JOIN_BANTER_TIME | L | Timer for fire banters when traveler. | n/a |
-| JO_JOIN_LOAD_SWITCH | L | Party member variable when temporary removed at loading. | 0: Available<br>1: processing<br>
-2: party member reintegration in process
-| JO_JOIN_LOAD | L |Secure travelers switch when loading a save. | 1: Traveler switch at loading in process<br>2: False |
-| JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>Other: True<br>
+| JO_JOIN_LOAD_SWITCH | L | Party member variable when temporary removed at loading. | 0: Available<br>1: processing<br>2: party member reintegration in process
+| JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>Other: True
+| JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
+| JO_JOIN_NEVER_SWITCH | L | Prevent traveler switch with party member. | 0: False<br>Other: True
+| JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | 0: False<br>Other: True
+| JO_JOIN_LOAD_TRAVELER | L | Travelers switch quickly in party at loading | 0: False<br>1: True<br>2: ??
+| JO_JOIN_LOAD_PARTY | L | Party members leave the groupe at loading | 0: False<br>1: wait step1<br>2: wait step2<br>3: in progress
 
 ---
 
 ### CLUAGLOBAL
 
 CLUAConsole:
+
 	GetGlobal("JO_JOIN_CAMPAIGN","GLOBAL")
 	GetGlobal("JO_JOIN_Move_Around","GLOBAL")
 	GetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL") // At loading : Party members awaiting to reintegrate the group
@@ -177,6 +179,7 @@ CLUAConsole:
 ### CLUALOCALS (Cursor on the character to return personnal variables)
 
 CLUAConsole:
+
 	GetGlobal("JO_Myself_Valid","LOCALS")
 	GetGlobal("JO_Myself_AllowDead","LOCALS")
 	GetGlobal("JO_Myself_InParty","LOCALS")
