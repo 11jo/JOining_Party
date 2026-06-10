@@ -357,142 +357,6 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Security
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Cas d'un recrutement non standard (ctrl+Q par exemple)
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	InParty(Myself)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
-
-// Have a variable that say "at least one traveler is here"
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Cas où le script serait quand même actif mais que le personnage ne répond à aucun cas répertorié :
-// ni dans le groupe, ni familier, ni au sol, ni charmé
-// ChangeEnemyAlly par exemple
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	!StateCheck(Myself,STATE_CHARMED)
-	!Allegiance(Myself,FAMILIAR)
-	!InParty(Myself)
-	!Global("JO_JOINI","LOCALS",1) // TODO: Added
-	OR(2)
-		!Allegiance(Myself,NEUTRAL)
-		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-THEN
-	RESPONSE #100
-		// reset block
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOINI","LOCALS",0)
-		// end reset block
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	!AreaCheck("BD0120")
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(2)
-		!Allegiance(Myself,FAMILIAR)
-		InParty(Myself)
-	OR(3)
-		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Related to Join_ability.baf destroy item before 
-
-IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",0) // TODO: Added probably useless
-	Global("JO_JOIN_IS_TRAVELER","LOCALS",0) // TODO: Added probably useless
-	!Allegiance(Myself,FAMILIAR)
-	HasItem("JOMINHP1",Myself)
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-THEN
-	RESPONSE #100
-		EquipItemEx("JOMINHP1",1)
-		DestroyItem("JOMINHP1")
-END
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-///////////////////////////////////////////////////////////////////////////////
-
 // LeaveParty for travelers
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -687,6 +551,142 @@ THEN
 		MakeGlobalOverride() 
 		LeaveParty()
 		SetInterrupt(TRUE)
+END
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Security
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Cas d'un recrutement non standard (ctrl+Q par exemple)
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	InParty(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
+
+// Have a variable that say "at least one traveler is here"
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Cas oÃ¹ le script serait quand mÃªme actif mais que le personnage ne rÃ©pond Ã  aucun cas rÃ©pertoriÃ© :
+// ni dans le groupe, ni familier, ni au sol, ni charmÃ©
+// ChangeEnemyAlly par exemple
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!StateCheck(Myself,STATE_CHARMED)
+	!Allegiance(Myself,FAMILIAR)
+	!InParty(Myself)
+	!Global("JO_JOINI","LOCALS",1) // TODO: Added
+	OR(2)
+		!Allegiance(Myself,NEUTRAL)
+		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+THEN
+	RESPONSE #100
+		// reset block
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		// end reset block
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!AreaCheck("BD0120")
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	OR(2)
+		!Allegiance(Myself,FAMILIAR)
+		InParty(Myself)
+	OR(3)
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Related to Join_ability.baf destroy item before 
+
+IF
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",0) // TODO: Added probably useless
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0) // TODO: Added probably useless
+	!Allegiance(Myself,FAMILIAR)
+	HasItem("JOMINHP1",Myself)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+THEN
+	RESPONSE #100
+		EquipItemEx("JOMINHP1",1)
+		DestroyItem("JOMINHP1")
 END
 
 //
