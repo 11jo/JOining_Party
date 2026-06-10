@@ -9,7 +9,9 @@
 // 1 // All potential travelers in party will switch with actual traveler
 
 IF
-	OnCreation()
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Console Force Load
 	OR(2)
 		InParty(Myself)
 		Allegiance(Myself,PC)
@@ -40,6 +42,7 @@ THEN
 		Wait(1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Console Force Load
 		SetInterrupt(TRUE)
 		Continue() // TODO / Test
 END
@@ -223,6 +226,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 		SetInterrupt(TRUE)
+		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -328,21 +332,25 @@ THEN
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		Continue()
 	RESPONSE #25
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_DAYS)
+		Continue()
 	RESPONSE #25
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
+		Continue()
 	RESPONSE #25
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",EIGHTEEN_HOURS)
+		Continue()
 END
 
 //

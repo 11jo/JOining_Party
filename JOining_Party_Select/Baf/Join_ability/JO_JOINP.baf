@@ -21,7 +21,9 @@ END
 
 
 IF
-	OnCreation()
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Console Force Load
 	OR(2)
 		!Global("JO_JOIN_AREA","MYAREA",1)
 		See([ENEMY])

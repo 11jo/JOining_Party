@@ -9,7 +9,9 @@
 // 1 // All travelers will switch in party
 
 IF // reactive JOMINHP1 after load
-	OnCreation()
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Console Force Load
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -38,6 +40,7 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Console Force Load
 //
 //		More reset at loading ?
 //
