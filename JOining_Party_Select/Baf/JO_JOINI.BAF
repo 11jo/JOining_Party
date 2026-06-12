@@ -20,9 +20,8 @@ IF // reactive JOMINHP1 after load
 //
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Not a party member switching at loading
 //
-	OR(3)
+	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
-		AreaCheck("JO2608") // Switching Room
 		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
 //
 //	!See([ENEMY]) // Better switch anyway ?
@@ -32,7 +31,7 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		SmallWait(1)
-		MoveToOffset([2.1])
+		MoveToOffset([0.1])
 		Face(E)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		EquipItemEx("JOMINHP1",0)
@@ -40,7 +39,6 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
-		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Console Force Load
 //
 //		More reset at loading ?
 //
@@ -199,6 +197,7 @@ THEN
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		Continue()
@@ -214,10 +213,10 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",1)
 		Continue()
-	RESPONSE #16
+	RESPONSE #16 // Unused (replaced in JO_JOINC)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
+//		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0) // Deprecated by JO_JOINC.BAF
+//		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",1) // Deprecated by JO_JOINC.BAF
 		Continue()
 	RESPONSE #17
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -298,6 +297,7 @@ IF // Block wait for switch at loading
 	NumInPartyGT(4)
 THEN
 	RESPONSE #100
+		MoveToOffset([1.0])
 		NoAction()
 END
 
@@ -350,7 +350,7 @@ END
 
 // Regular switch not at loading
  // Launched with dialog 
-  // Was lauched by JO_JOIN_JOIN_TIMER but unused if party switch continually
+  // Also launched by JO_JOIN_JOIN_TIMER but unused if party switch continually
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -368,10 +368,10 @@ IF
 	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0) // Don't use this block if Traveler at loading
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
 //
-	OR(2)
+	OR(3)
 		Global("JO_JOIN_FORCE_SWITCH","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Global("JO_JOIN_Fill_Party","LOCALS",1) // Set by JO_JOIN_Move_Around
-//		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -542,6 +542,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -556,6 +557,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -570,6 +572,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -584,6 +587,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -598,6 +602,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -631,6 +636,7 @@ END
 
 // Large range or different area
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -651,6 +657,7 @@ END
 
 // Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -675,6 +682,7 @@ END
 
 // Not to Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -712,6 +720,7 @@ END
 
 // Large range or different area
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -730,6 +739,7 @@ END
 
 // Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -755,6 +765,7 @@ END
 
 // Large range or different area
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -773,6 +784,7 @@ END
 
 // Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -798,6 +810,7 @@ END
 
 // Large range or different area
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -816,6 +829,7 @@ END
 
 // Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -841,6 +855,7 @@ END
 
 // Large range or different area
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -859,6 +874,7 @@ END
 
 // Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -884,6 +900,7 @@ END
 
 // Large range or different area
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -902,6 +919,7 @@ END
 
 // Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -926,6 +944,7 @@ END
 
 // Large range or different area
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -944,6 +963,7 @@ END
 
 // Short range
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -982,6 +1002,7 @@ END
 // Dead but not really  (// Related to AllInBaf set statut when Dead but not really )
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1065,6 +1086,7 @@ END
 
 // Warning: conditions must be identical to the previous block
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1179,6 +1201,7 @@ END
 // un display reste une information peu explicite dans un combat (trop de log), comment améliorer ça ?
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1201,6 +1224,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1219,6 +1243,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1237,6 +1262,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1258,6 +1284,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1281,6 +1308,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1306,6 +1334,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1324,6 +1353,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1359,6 +1389,7 @@ END
 // Use Potions
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1379,6 +1410,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1397,6 +1429,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1418,6 +1451,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1439,6 +1473,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1464,6 +1499,7 @@ END
 // Basic switch
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1479,6 +1515,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1493,6 +1530,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1511,6 +1549,7 @@ END
 // Modales
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1530,6 +1569,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1553,6 +1593,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1569,6 +1610,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1586,6 +1628,7 @@ THEN
 END
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1607,6 +1650,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1628,6 +1672,7 @@ END
 // Basic attack
 
 IF
+	!OnCreation()
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
@@ -1789,8 +1834,8 @@ IF
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
 //
-	ActionListEmpty()
-//	!ActuallyInCombat()
+//	ActionListEmpty()
+	!ActuallyInCombat()
 	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -2216,6 +2261,27 @@ THEN
 END
 
 IF
+	!Global("JO_JOIN_Fill_Party","LOCALS",0)
+//
+	Global("JO_Myself_Valid","LOCALS",1)
+//
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	NumInPartyGT(5)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~Too slow...~)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
 	OR(2)
 		InParty(Myself)
 		Allegiance(Myself,PC)
@@ -2285,10 +2351,10 @@ END
 //
 //
 //
-
+/*
 ///////////////////////////////////////////////////////////////////////////////
 
-// JO_JOIN_COUNT_TRAVELER
+// JO_JOIN_COUNT_TRAVELER // Deprecated by JO_JOINP.BAF
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -2312,7 +2378,7 @@ THEN
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
 		SetInterrupt(TRUE)
 END
-
+*/
 //
 //
 //

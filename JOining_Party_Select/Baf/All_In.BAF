@@ -12,6 +12,9 @@ IF
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Console Force Load
+//
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+//
 	OR(2)
 		InParty(Myself)
 		Allegiance(Myself,PC)
@@ -24,9 +27,8 @@ IF
 	!Global("JO_JOIN_Wannabe","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 //
-	OR(3)
+	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
-		AreaCheck("JO2608") // Switching Room
 		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
 //
 //	!See([ENEMY]) // Better switch anyway ?
@@ -36,13 +38,13 @@ THEN
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_Myself_InParty","LOCALS",0) // Prevent character to initiate banter or else
 		SetGlobal("JO_Myself_Valid","LOCALS",0) // Prevent character to initiate banter or else
-		MoveToOffset([1.2])
+		SmallWait(1)
+		MoveToOffset([1.0])
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",1)
 		Wait(1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
-		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Console Force Load
 		SetInterrupt(TRUE)
 		Continue() // TODO / Test
 END
@@ -156,7 +158,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-1])
+		MoveToOffset([-1.-1])
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -188,6 +190,7 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 		SetGlobal("JO_Myself_InParty","LOCALS",1) // NEW2
 		SetGlobal("JO_Myself_Valid","LOCALS",1) // NEW2
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Load
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // Prep for switching party
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0) // Prep for switching party
 		SetCutSceneLite(FALSE) // Give player control back

@@ -1,0 +1,239 @@
+/*
+///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_CORRECT_TRAVELER 
+
+///////////////////////////////////////////////////////////////////////////////
+
+//	ADD_JO_JOIN_CORRECT_TRAVELER
+IF
+	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",1)
+THEN
+	RESPONSE #100
+		Continue()
+END
+
+IF
+	!Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CORRECT_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+		ChangeAIScript("",RACE)
+END
+*/
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_COUNT_TRAVELER 
+
+///////////////////////////////////////////////////////////////////////////////
+
+//	ADD_JO_JOIN_COUNT_TRAVELER
+
+IF
+	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
+	Switch("JO_JOIN_LEGION","LOCALS")
+THEN
+	RESPONSE #0
+		DisplayStringHead(Myself, ~^II count 0 traveler !^-~)
+		Continue()
+	RESPONSE #1
+		DisplayStringHead(Myself, ~^II count 1 traveler !^-~)
+		Continue()
+	RESPONSE #2
+		DisplayStringHead(Myself, ~^II count 2 traveler !^-~)
+		Continue()
+	RESPONSE #3
+		DisplayStringHead(Myself, ~^II count 3 traveler !^-~)
+		Continue()
+	RESPONSE #4
+		DisplayStringHead(Myself, ~^II count 4 traveler !^-~)
+		Continue()
+	RESPONSE #5
+		DisplayStringHead(Myself, ~^II count 5 traveler !^-~)
+		Continue()
+	RESPONSE #6
+		DisplayStringHead(Myself, ~^II count 6 traveler !^-~)
+		Continue()
+	RESPONSE #7
+		DisplayStringHead(Myself, ~^II count 7 traveler !^-~)
+		Continue()
+	RESPONSE #8
+		DisplayStringHead(Myself, ~^II count 8 traveler !^-~)
+		Continue()
+	RESPONSE #9
+		DisplayStringHead(Myself, ~^II count 9 traveler !^-~)
+		Continue()
+	RESPONSE #10
+		DisplayStringHead(Myself, ~^II count 10 traveler !^-~)
+		Continue()
+	RESPONSE #11
+		DisplayStringHead(Myself, ~^II count 11 traveler !^-~)
+		Continue()
+	RESPONSE #12
+		DisplayStringHead(Myself, ~^II count 12 traveler !^-~)
+		Continue()
+	RESPONSE #13
+		DisplayStringHead(Myself, ~^II count 13 traveler !^-~)
+		Continue()
+	RESPONSE #14
+		DisplayStringHead(Myself, ~^II count 14 traveler !^-~)
+		Continue()
+	RESPONSE #15
+		DisplayStringHead(Myself, ~^II count 15 traveler !^-~)
+		Continue()
+	RESPONSE #16
+		DisplayStringHead(Myself, ~^II count 16 traveler !^-~)
+		Continue()
+	RESPONSE #17
+		DisplayStringHead(Myself, ~^II count 17 traveler !^-~)
+		Continue()
+	RESPONSE #18
+		DisplayStringHead(Myself, ~^II count 18 traveler !^-~)
+		Continue()
+	RESPONSE #19
+		DisplayStringHead(Myself, ~^II count 19 traveler !^-~)
+		Continue()
+	RESPONSE #20
+		DisplayStringHead(Myself, ~^II count 20 traveler !^-~)
+		Continue()
+END
+
+IF
+	!Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+		ChangeAIScript("",RACE)
+END
+
+/*
+ // Deprecated by the one above
+ 
+ 
+// Isn't very reliable...
+
+IF
+	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!See([ENEMY])
+	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		Wait(5)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
+END
+
+IF
+	Delay(8)
+	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
+	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
+	Switch("JO_JOIN_LEGION","GLOBAL")
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 0 traveler !^-~)
+	RESPONSE #2
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 1 traveler !^-~)
+	RESPONSE #3
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 2 traveler !^-~)
+	RESPONSE #4
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 3 traveler !^-~)
+	RESPONSE #5
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 4 traveler !^-~)
+	RESPONSE #6
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 5 traveler !^-~)
+	RESPONSE #7
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 6 traveler !^-~)
+	RESPONSE #8
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 7 traveler !^-~)
+	RESPONSE #9
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 8 traveler !^-~)
+	RESPONSE #10
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 9 traveler !^-~)
+	RESPONSE #11
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 10 traveler !^-~)
+	RESPONSE #1
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 11 traveler !^-~)
+	RESPONSE #12
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 12 traveler !^-~)
+	RESPONSE #13
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 13 traveler !^-~)
+	RESPONSE #14
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 14 traveler !^-~)
+	RESPONSE #15
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 15 traveler !^-~)
+	RESPONSE #1
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 16 traveler !^-~)
+	RESPONSE #16
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 17 traveler !^-~)
+	RESPONSE #17
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 18 traveler !^-~)
+	RESPONSE #18
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 19 traveler !^-~)
+	RESPONSE #19
+		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
+		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
+		DisplayStringHead(Myself, ~^II count 20 traveler !^-~)
+END
+*/
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
