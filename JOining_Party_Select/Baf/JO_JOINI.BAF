@@ -130,22 +130,27 @@ THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #2
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #3
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #4
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #5
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #6
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -155,6 +160,7 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_FORCE_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #8
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -167,18 +173,22 @@ THEN
 		SetGlobal("BDAI_DISABLE_DEFENSIVE","LOCALS",0)
 		SetGlobal("BDAI_DISABLE_SPECIAL","LOCALS",0)
 		SetGlobal("BDAI_SKILL_MODE","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #9
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		MoveToObject(Player1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #10
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #11
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #12
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -200,27 +210,33 @@ THEN
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #13
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #14
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #15
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #16 // Unused (replaced in JO_JOINC)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 //		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0) // Deprecated by JO_JOINC.BAF
 //		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",1) // Deprecated by JO_JOINC.BAF
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #17
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)
+		DisplayString(Myself,~Done.~)
 		Continue()
 /*	RESPONSE #18
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -375,7 +391,7 @@ IF
 		Global("JO_JOIN_Fill_Party","LOCALS",1) // Set by JO_JOIN_Move_Around
 		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 //
-	ActionListEmpty()
+//	ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])
 //
@@ -1816,10 +1832,8 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // Player2
 		ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
@@ -1868,10 +1882,8 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // Player3
 		ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
@@ -1920,10 +1932,8 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // Player4
 		ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
@@ -1972,10 +1982,8 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // Player5
 		ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
@@ -2023,10 +2031,8 @@ THEN
 		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // Player6
 		ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
