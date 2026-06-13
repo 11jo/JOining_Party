@@ -103,7 +103,7 @@ THEN
 	RESPONSE #100
 		AddSpecialAbility("jo_join")
 		SetGlobal("JO_JOIN_PLAYER_INIT","LOCALS",1)
-		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS)
+		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS) // TODO related to dream talk, unused at the moment
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		Continue()
 END

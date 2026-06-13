@@ -316,6 +316,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+		DisplayString(Myself,~Ready to switch when it's possible.~)
 		Continue()
 END
 
