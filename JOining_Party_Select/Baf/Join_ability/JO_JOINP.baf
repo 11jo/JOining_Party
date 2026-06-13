@@ -72,6 +72,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",0)
+		DisplayStringHead(Player5,~Let's return !~)
 		FadeToColor([20.0],0)
 		Wait(1)
 		RestorePartyLocations()
@@ -318,6 +319,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",TWELVE_HOURS)
+		DisplayString(Myself,~Banter ready.~)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
 		Continue()
 END

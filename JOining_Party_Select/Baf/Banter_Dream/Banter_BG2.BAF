@@ -58,11 +58,13 @@ IF
 THEN
 	RESPONSE #3
 //		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		DisplayString(Myself,~Try to dream talk.~)
 		ChangeAIScript("%BG2_DREAM%",RACE)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
 	RESPONSE #4
 //		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		DisplayString(Myself,~Try to dream talk.~)
 		ChangeAIScript("%TOB_DREAM%",RACE)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
 		Continue()
@@ -114,12 +116,14 @@ IF
 THEN
 	RESPONSE #3
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		DisplayString(Myself,~Try to banter.~)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		StartDialogOverride("%BG2_BANTER%",Myself) // [ALLY] [FAMILIAR] [PC] [ANYONE]
 		Continue()
 	RESPONSE #4
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		DisplayString(Myself,~Try to banter.~)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		StartDialogOverride("%TOB_BANTER%",Myself) // [ALLY] [FAMILIAR] [PC] [ANYONE]
