@@ -299,6 +299,14 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 		END
 		LPF ADD_SPELL_EFFECT
 		INT_VAR
+			opcode=265
+			parameter1= 0
+			parameter2= 0
+		STR_VAR
+			resource= ~JO_JOIN_Move_Around~
+		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
 			opcode=139
 			target = 1
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
