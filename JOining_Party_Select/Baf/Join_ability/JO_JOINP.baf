@@ -7,7 +7,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // StartCutScene(S:CutScene*)  EndCutSceneMode() 
-
+ 
 /*
 IF // TODO : add to every not master area
 	OnCreation()
@@ -19,7 +19,6 @@ THEN
 END
 */
 
-
 IF
 	OR(2)
 		OnCreation()
@@ -28,8 +27,11 @@ IF
 		!Global("JO_JOIN_AREA","MYAREA",1)
 		See([ENEMY])
 	!Global("JO_JOIN_BLOP","GLOBAL",1)
+//
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",1)
 		FadeToColor([20.0],0)
 		Wait(1)
 		StorePartyLocations()
@@ -41,22 +43,42 @@ THEN
 		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
-		Continue()
 END
 
 IF
-	Delay(4)
+	AreaCheck("JO2608")
+	Global("JO_JOIN_SWITCHING_ROOM","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",2)
+		MoveToOffset([1.0])
+		RandomWalk()
+		NoAction()
+END
+
+IF
+	AreaCheck("JO2608")
+	Global("JO_JOIN_SWITCHING_ROOM","GLOBAL",2)
+THEN
+	RESPONSE #100
+		MoveToPoint([1570.1050])
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",3)
+END
+
+IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
+	Global("JO_JOIN_SWITCHING_ROOM","GLOBAL",3)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",0)
+		DisplayStringHead(Myself,~Let's return !~)
 		FadeToColor([20.0],0)
 		Wait(1)
 		RestorePartyLocations()
+		SmallWait(2)
+		MoveToOffset([0.1])
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
 END
@@ -83,7 +105,7 @@ THEN
 	RESPONSE #100
 		AddSpecialAbility("jo_join")
 		SetGlobal("JO_JOIN_PLAYER_INIT","LOCALS",1)
-		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS)
+		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS) // TODO related to dream talk, unused at the moment
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		Continue()
 END
@@ -250,137 +272,18 @@ END
 //
 //
 
-///////////////////////////////////////////////////////////////////////////////
-
-// JO_JOIN_COUNT_TRAVELER
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Isn't very reliable...
-
 IF
-	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
-	ActionListEmpty()
-	!ActuallyInCombat()
-	!See([ENEMY])
-	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	!OnCreation()
+	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+//
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+//
+//	REPLACE_TRAVELER_NumInParty
 THEN
 	RESPONSE #100
-		Wait(5)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
-END
-
-IF
-	Delay(8)
-	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
-	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
-	Switch("JO_JOIN_LEGION","GLOBAL")
-THEN
-	RESPONSE #1
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 0 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #2
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 1 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #3
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 2 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #4
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 3 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #5
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 4 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #6
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 5 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #7
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 6 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #8
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 7 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #9
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 8 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #10
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 9 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #11
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 10 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #1
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 11 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #12
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 12 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #13
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 13 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #14
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 14 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #15
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 15 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #1
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 16 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #16
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 17 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #17
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 18 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #18
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 19 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-	RESPONSE #19
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		DisplayStringHead(Myself, ~^II count 20 traveler !^-~)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+		Continue()
 END
 
 //
@@ -417,6 +320,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",TWELVE_HOURS)
+		DisplayString(Myself,~Banter ready.~)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
 		Continue()
 END
@@ -460,6 +364,15 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 END
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /*
 IF
 	PartyRested()
@@ -468,8 +381,3 @@ THEN
 		SWITCH (to let other being available to dream banter)
 END
 */
-
-
-// CheckStat(Player1,1,SCRIPTINGSTATE1)
-// ChangeStat(O:Object*,I:Stat*Stats,I:Value*,I:Modifier*Statmod)
-// ChangeStat(Player1,SCRIPTINGSTATE1,JO_JOINP,SET)

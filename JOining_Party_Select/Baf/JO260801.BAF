@@ -9,7 +9,7 @@ THEN
 		RestorePartyLocations()
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
-		Wait(2)
+		Wait(1)
 		CreateVisualEffectObject("JOBG402",Player1)
 END
 

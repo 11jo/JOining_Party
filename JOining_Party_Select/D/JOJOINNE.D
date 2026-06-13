@@ -14,7 +14,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI did dream about my dear fellow travelers !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",2)~ EXIT // Accounted for in JO_JOINI
 
 // Banters
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFBF5FI am exhausted by all these conversations, please stop interrupting the group.^-~ DO ~SetGlobal("JO_JOIN_LEGION","GLOBAL",0) SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFBF5FI am exhausted by all these conversations, please stop interrupting the group.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFBF5FOn second thought, I miss our discussions... Let's talk to each others.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT //
 
 // Checks
@@ -225,7 +225,8 @@ IF ~~ THEN BEGIN 1
 	SAY ~Heu...~
 	IF ~~ THEN REPLY ~Nevermind, let's continue~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",16)~ EXIT //
+//	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",16)~ EXIT // Deprecated by the one below see JO_JOINC.BAF
+	IF ~!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~ActionOverride(Player1,ChangeAIScript("JO_JOINC",RACE)) ActionOverride(Player1,SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1))~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-Stay close to me or your partner !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",17)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~To all travelers ! Get lost !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",5)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-Everybody say, Youhou !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",6)~ EXIT //

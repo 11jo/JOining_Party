@@ -12,9 +12,10 @@ IF
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Console Force Load
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
+//
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+//
+	InParty(Myself)
 	!InPartySlot(Myself,0)
 //
 //	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not needed ?
@@ -24,9 +25,8 @@ IF
 	!Global("JO_JOIN_Wannabe","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
 //
-	OR(3)
+	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
-		AreaCheck("JO2608") // Switching Room
 		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
 //
 //	!See([ENEMY]) // Better switch anyway ?
@@ -36,13 +36,13 @@ THEN
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_Myself_InParty","LOCALS",0) // Prevent character to initiate banter or else
 		SetGlobal("JO_Myself_Valid","LOCALS",0) // Prevent character to initiate banter or else
-		MoveToOffset([1.2])
+		SmallWait(1)
+		MoveToOffset([1.0])
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",1)
 		Wait(1)
 		IncrementGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",1)
-		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Console Force Load
 		SetInterrupt(TRUE)
 		Continue() // TODO / Test
 END
@@ -51,12 +51,10 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",1)
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
+	InParty(Myself)
 	!InPartySlot(Myself,0)
 //
-	!Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",1)
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -93,13 +91,7 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
-//
+	!InPartyAllowDead(PartySlot6) // FIXME: duplicate
 	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
@@ -118,13 +110,7 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
-//
+	!InPartyAllowDead(PartySlot6) // FIXME: duplicate
 	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
@@ -135,7 +121,7 @@ END
 // 4 // JO_JOIN_TRAVELER_SWITCH travelers are done switching, party members reintegrate the group
 
 IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
 //
@@ -145,18 +131,12 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
-//
+	!InPartyAllowDead(PartySlot6) // FIXME: duplicate
 	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MoveToOffset([0.-1])
+		MoveToOffset([-1.-1])
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -167,18 +147,14 @@ THEN
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
 		DisplayStringHead(Myself,~Traveler ? No more !~)
-		JoinPartyOverride()
 		SetInterrupt(TRUE)
-		Continue() // TODO / Test
+		JoinPartyOverride()
 END
 
 // 5 // Block Secure variables
 
 IF
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
-	!InPartySlot(Myself,0)
+	InParty(Myself)
 //
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
 THEN
@@ -188,6 +164,7 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 		SetGlobal("JO_Myself_InParty","LOCALS",1) // NEW2
 		SetGlobal("JO_Myself_Valid","LOCALS",1) // NEW2
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Load
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // Prep for switching party
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0) // Prep for switching party
 		SetCutSceneLite(FALSE) // Give player control back
@@ -313,6 +290,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+		DisplayString(Myself,~Ready to switch when it's possible.~)
 		Continue()
 END
 
@@ -532,7 +510,6 @@ THEN
 		SmallWait(1)
 		SetInterrupt(TRUE)
 		JoinPartyOverride()
-		Continue()
 END
 
 // 3 // Then leave party the regular way.
