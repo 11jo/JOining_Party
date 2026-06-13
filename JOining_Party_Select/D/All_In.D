@@ -136,6 +136,26 @@ APPEND ~%joining_dlg%~
 	IF ~!Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_TRAVELER_PARTY.~ DO ~SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_MY_SWITCH","LOCALS",0)~ THEN REPLY ~JO_JOIN_MY_SWITCH.~ DO ~SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)~ EXIT //
 	IF ~~ THEN REPLY ~How do you feel as traveler.~ GOTO JO_JOINStat //
+	IF ~~ THEN REPLY ~Show logs.~ DO ~
+		SetTokenGlobal("JO_JOIN_Move_Done","LOCALS","JO_JOIN_Move_Done")
+		SetTokenGlobal("JO_JOIN","LOCALS","JO_JOIN")
+		SetTokenGlobal("JO_JOIN_NEVER_JOIN","LOCALS","JO_JOIN_NEVER_JOIN")
+		SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING")
+		SetTokenGlobal("JO_NOJOIN","GLOBAL","JO_NOJOIN")
+		SetTokenGlobal("JO_JOIN_CUTSCENE","GLOBAL","JO_JOIN_CUTSCENE")
+		SetTokenGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL","JO_JOIN_PARTY_SWITCH")
+		SetTokenGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL","JO_JOIN_TRAVELER_SWITCH")
+		SetTokenGlobal("JO_JOIN_MY_SWITCH","LOCALS","JO_JOIN_MY_SWITCH")
+		SetTokenGlobal("JO_JOIN_NEVER_BANTER","LOCALS","JO_JOIN_NEVER_BANTER")
+		SetTokenGlobal("JO_JOIN_NEVER_SWITCH","LOCALS","JO_JOIN_NEVER_SWITCH")
+		SetTokenGlobal("JO_JOIN_LOAD_PARTY","LOCALS","JO_JOIN_LOAD_PARTY")
+		SetTokenGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS","JO_JOIN_LOAD_TRAVELER")
+		SetTokenGlobal("JO_JOIN_Fill_Party","LOCALS","JO_JOIN_Fill_Party")
+		SetTokenGlobal("JO_JOIN_IS_Wannabe","LOCALS","JO_JOIN_IS_Wannabe")
+		SetTokenGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS","JO_JOIN_READY_TO_SWITCH")
+		SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME")
+		SetTokenGlobal("JO_JOIN_IS_TRAVELER","LOCALS","JO_JOIN_IS_TRAVELER")
+		DisplayString(Myself,@104) ~ EXIT
 	END
 
 IF ~~ THEN BEGIN JO_JOINYes
@@ -240,9 +260,9 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~!HasItemEquiped("JOMINHP1",Myself)~ THEN REPLY ~The engagement scroll isn't active.~ GOTO JO_JOINStatEnd // 
 //
-	IF ~!Global("JO_Myself_InParty","LOCALS",1)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_Myself_InParty","LOCALS",0)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
 //
-	IF ~!Global("JO_Myself_Valid","LOCALS",1)~ THEN REPLY ~I am not considered like ready to talk.~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~I am not considered like ready to talk.~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(5)
 			!Global("JO_JOIN_CLEAR","LOCALS",0)
@@ -253,8 +273,8 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~OR(3)
 			!Allegiance(Myself,FAMILIAR)
-			!Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",1)~ THEN REPLY ~I am not considered like a traveler.~ GOTO JO_JOINStatEnd
+			Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",0)~ THEN REPLY ~I am not considered like a traveler.~ GOTO JO_JOINStatEnd
 //
 	IF ~!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)~ THEN REPLY ~I am dead...~ GOTO JO_JOINStatEnd
 //
