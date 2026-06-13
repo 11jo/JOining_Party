@@ -15,9 +15,7 @@ IF
 //
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 //
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
+	InParty(Myself)
 	!InPartySlot(Myself,0)
 //
 //	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not needed ?
@@ -53,9 +51,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",1)
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
+	InParty(Myself)
 	!InPartySlot(Myself,0)
 //
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",1)
@@ -159,9 +155,7 @@ END
 // 5 // Block Secure variables
 
 IF
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
+	InParty(Myself)
 //
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
 THEN
