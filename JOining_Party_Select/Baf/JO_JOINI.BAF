@@ -284,7 +284,7 @@ IF // security check
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
-//		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0) // TODO: // What ???
+		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		Continue()
@@ -386,20 +386,11 @@ END
 
 IF
 	!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
-	Global("JO_JOIN_CHECK_TIMER","LOCALS",0)
+	!Global("JO_JOIN_JOIN_TIMER","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_CHECK_TIMER","LOCALS",1)
+		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",1)
 		DisplayString(Myself,~Ready for a quick switch.~)
-		Continue()
-END
-
-IF
-	GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
-	Global("JO_JOIN_CHECK_TIMER","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CHECK_TIMER","LOCALS",0)
 		Continue()
 END
 
@@ -2223,7 +2214,7 @@ IF
 	!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
-//	RandomNum(5,1)
+	RandomNum(5,1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2273,7 +2264,7 @@ IF
 	!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
-//	RandomNum(5,2)
+	RandomNum(5,2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2323,7 +2314,7 @@ IF
 	!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
-//	RandomNum(5,3)
+	RandomNum(5,3)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2373,7 +2364,7 @@ IF
 	!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
-//	RandomNum(5,4)
+	RandomNum(5,4)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2423,7 +2414,7 @@ IF
 	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
-//	RandomNum(5,5)
+	RandomNum(5,5)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

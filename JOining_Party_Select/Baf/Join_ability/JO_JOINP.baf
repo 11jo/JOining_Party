@@ -51,6 +51,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",2)
+		MoveToOffset([1.0])
 		RandomWalk()
 		NoAction()
 END
@@ -72,7 +73,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",0)
-		DisplayStringHead(Player5,~Let's return !~)
+		DisplayStringHead(Myself,~Let's return !~)
 		FadeToColor([20.0],0)
 		Wait(1)
 		RestorePartyLocations()
