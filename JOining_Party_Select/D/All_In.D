@@ -260,9 +260,9 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~!HasItemEquiped("JOMINHP1",Myself)~ THEN REPLY ~The engagement scroll isn't active.~ GOTO JO_JOINStatEnd // 
 //
-	IF ~!Global("JO_Myself_InParty","LOCALS",1)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_Myself_InParty","LOCALS",0)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
 //
-	IF ~!Global("JO_Myself_Valid","LOCALS",1)~ THEN REPLY ~I am not considered like ready to talk.~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~I am not considered like ready to talk.~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(5)
 			!Global("JO_JOIN_CLEAR","LOCALS",0)
@@ -273,8 +273,8 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~OR(3)
 			!Allegiance(Myself,FAMILIAR)
-			!Global("JO_JOIN_IS_TRAVELER","LOCALS",1)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",1)~ THEN REPLY ~I am not considered like a traveler.~ GOTO JO_JOINStatEnd
+			Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+			Global("JO_TRAVELER_%Death_var%","GLOBAL",0)~ THEN REPLY ~I am not considered like a traveler.~ GOTO JO_JOINStatEnd
 //
 	IF ~!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)~ THEN REPLY ~I am dead...~ GOTO JO_JOINStatEnd
 //
