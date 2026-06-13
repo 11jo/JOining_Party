@@ -15,9 +15,7 @@ IF
 //
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 //
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
+	InParty(Myself)
 	!InPartySlot(Myself,0)
 //
 //	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not needed ?
@@ -53,12 +51,10 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",1)
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
+	InParty(Myself)
 	!InPartySlot(Myself,0)
 //
-	!Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",1)
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -95,13 +91,7 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
-//
+	!InPartyAllowDead(PartySlot6) // FIXME: duplicate
 	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
@@ -120,13 +110,7 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
-//
+	!InPartyAllowDead(PartySlot6) // FIXME: duplicate
 	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
@@ -137,7 +121,7 @@ END
 // 4 // JO_JOIN_TRAVELER_SWITCH travelers are done switching, party members reintegrate the group
 
 IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 	!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
 //
@@ -147,13 +131,7 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
-//
+	!InPartyAllowDead(PartySlot6) // FIXME: duplicate
 	NumInPartyLT(6) // TODO / Test
 THEN
 	RESPONSE #100
@@ -177,10 +155,7 @@ END
 // 5 // Block Secure variables
 
 IF
-	OR(2)
-		InParty(Myself)
-		Allegiance(Myself,PC)
-	!InPartySlot(Myself,0)
+	InParty(Myself)
 //
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",3)
 THEN

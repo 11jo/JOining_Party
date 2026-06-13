@@ -2219,7 +2219,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player2)
-		ActionOverride(Player2,FaceObject(Myself))
+		ActionOverride(Player2,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player2,~Hé ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -2269,7 +2269,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player3)
-		ActionOverride(Player3,FaceObject(Myself))
+		ActionOverride(Player3,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player3,~Yes ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -2319,7 +2319,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player4)
-		ActionOverride(Player4,FaceObject(Myself))
+		ActionOverride(Player4,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player4,~Don't disturb...~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -2369,7 +2369,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player5)
-		ActionOverride(Player5,FaceObject(Myself))
+		ActionOverride(Player5,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player5,~What ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -2419,7 +2419,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player6)
-		ActionOverride(Player6,FaceObject(Myself))
+		ActionOverride(Player6,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player6,~Hum ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -2586,12 +2586,7 @@ IF
 	// add Continue() below, it should make this one useless but could allow mor than one traveler to fill party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
+	!InPartyAllowDead(PartySlot6)
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
