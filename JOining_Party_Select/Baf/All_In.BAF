@@ -147,9 +147,8 @@ THEN
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
 		DisplayStringHead(Myself,~Traveler ? No more !~)
-		JoinPartyOverride()
 		SetInterrupt(TRUE)
-		Continue() // TODO / Test
+		JoinPartyOverride()
 END
 
 // 5 // Block Secure variables
@@ -511,7 +510,6 @@ THEN
 		SmallWait(1)
 		SetInterrupt(TRUE)
 		JoinPartyOverride()
-		Continue()
 END
 
 // 3 // Then leave party the regular way.
