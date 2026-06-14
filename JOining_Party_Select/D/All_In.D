@@ -258,7 +258,7 @@ IF ~~ THEN BEGIN JO_JOINStat
 	SAY ~Hum...~
 	IF ~!HasItem("JOMINHP1",Myself)~ THEN REPLY ~I don't have the engagement scroll.~ GOTO JO_JOINStatEnd // Je n'ai pas notre parchemin d'engagement.
 //
-	IF ~!HasItemEquiped("JOMINHP1",Myself)~ THEN REPLY ~The engagement scroll isn't active.~ GOTO JO_JOINStatEnd // 
+	IF ~!HasItemEquiped("JOMINHP1",Myself)~ THEN REPLY ~The engagement scroll isn't active.~ GOTO JO_JOINStatEnd // Not working with slot 0, I think
 //
 	IF ~Global("JO_Myself_InParty","LOCALS",0)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
 //
@@ -266,7 +266,6 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~OR(5)
 			!Global("JO_JOIN_CLEAR","LOCALS",0)
-			!Global("JO_JOIN","LOCALS",0)
 			!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 			!Global("JO_JOINI","LOCALS",0)
 			!Global("JO_JOIN_TALK","LOCALS",0)~ THEN REPLY ~Il semble que la transition ne soit pas terminée.~ GOTO JO_JOINStatEnd
