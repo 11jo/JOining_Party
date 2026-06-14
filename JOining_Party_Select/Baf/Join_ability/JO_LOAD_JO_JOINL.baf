@@ -1,0 +1,21 @@
+// JO_LOAD_JO_JOINL.BAF Loading Switch script for Player1
+	// EXTEND_TOP for JO_JOINL.BAF at installation by JOining_Party_Select_Core.tph
+
+IF
+	NumInParty(6)
+	Global("JO_JOIN_LOAD","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride(Player6,Deactivate(Myself))
+		ActionOverride(Player6,LeaveParty())
+		SetInterrupt(TRUE)
+END
+
+IF
+	Global("JO_JOIN_LOAD","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+END
+

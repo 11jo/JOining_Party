@@ -1,0 +1,75 @@
+// JO_JOINL.BAF Loading Switch script for Player1
+	// Expanded at installation by JOining_Party_Select_End.tph
+		// Commented blocks below will be duplicated for each potential travelers with JO_LOAD_TRAVELER.BAF.
+
+/*
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+	Global("JO_JOIN_LOAD_%Death_var%","LOCALS",0)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LOAD_%Death_var%","LOCALS",1)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOINI","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_CLEAR","LOCALS",1)) // ScriptAction (All_in_Baf)
+		SmallWait(1)
+		DisplayStringHead("%Death_var%",~Hey.~)
+		ActionOverride("%Death_var%",MakeGlobal())
+		SmallWait(1)
+		SetInterrupt(TRUE)
+		ActionOverride("%Death_var%",JoinPartyOverride()) // Go to next block
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_LOAD_%Death_var%","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LOAD_%Death_var%","LOCALS",2)
+		ActionOverride("%Death_var%",MakeGlobalOverride() )
+		ActionOverride("%Death_var%",LeaveParty())
+		SmallWait(1)
+		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",0))
+		SmallWait(1)
+		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,FAMILIAR))
+		ActionOverride("%Death_var%",AddFamiliar())
+		SmallWait(1)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOINI","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",2))
+		ActionOverride("%Death_var%",ChangeAIScript("JO_JOINI",GENERAL))
+		ActionOverride("%Death_var%",MakeGlobal())
+		SetInterrupt(TRUE)
+		ActionOverride("%Death_var%",Face(S))
+//		Continue() // To traveler relevant JO_JOIN... blocks
+END
+*/
+
+IF
+// Main triggers
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	NumInPartyLT(6)
+	Global("JO_JOIN_LOAD","LOCALS",0)
+//	REPLACE_TRAVELER_JO_JOIN_LOAD
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",2)
+END
+
+IF
+// Main triggers
+	Global("JO_JOIN_LOADING","GLOBAL",2)
+// Secondary triggers
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	NumInPartyLT(6)
+	Global("JO_JOIN_LOAD","LOCALS",0)
+THEN
+	RESPONSE #100
+//		SetGlobal("JO_JOIN_LOAD_%Death_var%","LOCALS",2)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
+END

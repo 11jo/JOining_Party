@@ -397,17 +397,28 @@ This spell transports the caster to any place within the visual range of the cas
 
 	END
 
-// DPLAYER3.bcs additions
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Player1 script override additions
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 // EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability.baf~ EVALUATE_BUFFER
 
 // Modified in JOining_Party_Select_End before compiling.
-		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Replace Join_ability.baf
-	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~~
 
-// Modified in JOining_Party_Select_End before compiling.
-		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER
-	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_COUNT_TRAVELER~ ~~
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~
+//	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_JOIN_LOAD~ ~~
+
+EXTEND_TOP ~JO_JOINL.bcs~ ~JOining_Party_Select/Baf/Join_ability/JO_LOAD_TRAVELER.baf~
+
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ // Replace DPLAYER3/Join_ability.baf
+//	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~~
+
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~
+//	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_COUNT_TRAVELER~ ~~
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 // EXTEND_BOTTOM ~PLAYER1D.bcs~ ~JOining_Party_Select/Baf/Join_ability/Player1D.baf~
 
@@ -420,7 +431,7 @@ EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability
 
 ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
 
-		EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
 
 END
 
@@ -441,16 +452,15 @@ END ELSE BEGIN
 OUTER_SPRINT "Banter_MODERN_EET" ""
 END
 */
-		EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
-		EXTEND_BOTTOM ~BD0120.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~BD0120.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 
 END
 
 ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
-	
-	
-		EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
-		EXTEND_BOTTOM ~AR4000.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
+
+	EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR4000.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 
 END 

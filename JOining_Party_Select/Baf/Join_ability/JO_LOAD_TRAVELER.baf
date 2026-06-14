@@ -1,0 +1,61 @@
+// JO_LOAD_TRAVELER.BAF EXTEND_TOP for JO_JOINL.bcs at installation by JOining_Party_Select_End.tph
+
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	OR(2)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+	TriggerOverride("%Death_var%",Global("JO_JOIN_LOAD","LOCALS",0))
+//	Global("JO_JOIN_LOAD_%Death_var%","LOCALS",0)
+	Global("JO_JOIN_LOAD","LOCALS",0)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",1))
+//		SetGlobal("JO_JOIN_LOAD_%Death_var%","LOCALS",1)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOINI","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_CLEAR","LOCALS",1)) // ScriptAction (All_in_Baf)
+		SmallWait(1)
+		DisplayStringHead("%Death_var%",~Hey.~)
+		ActionOverride("%Death_var%",MakeGlobal())
+		SmallWait(1)
+		SetInterrupt(TRUE)
+		ActionOverride("%Death_var%",JoinPartyOverride()) // Go to next block
+END
+
+IF
+	TriggerOverride("%Death_var%",Global("JO_JOIN_LOAD","LOCALS",1))
+//	Global("JO_JOIN_LOAD_%Death_var%","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",2))
+//		SetGlobal("JO_JOIN_LOAD_%Death_var%","LOCALS",2)
+		ActionOverride("%Death_var%",MakeGlobalOverride() )
+		ActionOverride("%Death_var%",LeaveParty())
+		SmallWait(1)
+		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",0))
+		SmallWait(1)
+		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,FAMILIAR))
+		ActionOverride("%Death_var%",AddFamiliar())
+		SmallWait(1)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOINI","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",2))
+		ActionOverride("%Death_var%",ChangeAIScript("JO_JOINI",GENERAL))
+		ActionOverride("%Death_var%",MakeGlobal())
+		SetInterrupt(TRUE)
+		ActionOverride("%Death_var%",Face(S))
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SmallWait(1)
+//		Continue() // To traveler relevant JO_JOIN... blocks
+END
+
+IF
+	NumInParty(6)
+THEN
+	RESPONSE #100
+		NoAction()
+END
