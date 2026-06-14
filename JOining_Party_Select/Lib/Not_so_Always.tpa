@@ -16,6 +16,7 @@
 		~
 
 		OUTER_SPRINT "CAMPAIGN" "1"
+		OUTER_SPRINT "BPTheme" "88"
 
 	END ELSE ACTION_IF (GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 // EET core without EET_END
@@ -115,6 +116,8 @@
 // ToB Joining_Dialog are merged for EET
 
 		ACTION_IF (GAME_IS ~eet~) BEGIN
+
+		OUTER_SPRINT "BPTheme" "106"
 
 		OUTER_SPRINT "IMOEN25J" "IMOEN2J"
 		OUTER_SPRINT "EDWIN25J" "EDWINJ"
@@ -279,7 +282,7 @@
 			OUTER_SPRINT "GV#LITT_name"                 "Littlun"
 			OUTER_SPRINT "GV#MOID_name"                 "Moidre"
 			OUTER_SPRINT "GV#VYND_name"                 "Vynd"
-			OUTER_SPRINT "X3Kale_name"                 "Kale_BG1"
+			OUTER_SPRINT "X3Kale_name"                  "Kale"
 // Next_Traveler BG1
 //////////////////////////////////////////////////////////////////////////////////////
 			OUTER_SPRINT "CMALORA_name"                 "Alora"
@@ -332,7 +335,7 @@
 			OUTER_SPRINT "Kiyone_name"                  "Kiyone"
 			OUTER_SPRINT "Kova_name"                    "Kova"
 			OUTER_SPRINT "L3PETSY_name"                 "Petsy"
-			OUTER_SPRINT "X3Kal_name"                 "Kale_BG2"
+			OUTER_SPRINT "X3Kal_name"                   "Kale"
 // Next_Traveler BG2
 //////////////////////////////////////////////////////////////////////////////////////
 // Next_Traveler Continuous

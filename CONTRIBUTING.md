@@ -163,6 +163,7 @@
 | JO_JOIN_LOAD_PARTY | L | Party members leave the groupe at loading | 0: False<br>1: wait step1<br>2: wait step2<br>3: in progress
 | JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
+| JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
 
 ---
 

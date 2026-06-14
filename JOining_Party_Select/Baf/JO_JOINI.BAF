@@ -12,6 +12,7 @@ IF // reactive JOMINHP1 after load
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Console Force Load
+//
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -20,9 +21,8 @@ IF // reactive JOMINHP1 after load
 //
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Not a party member switching at loading
 //
-	OR(3)
+	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
-		AreaCheck("JO2608") // Switching Room
 		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
 //
 //	!See([ENEMY]) // Better switch anyway ?
@@ -32,15 +32,14 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		SmallWait(1)
-		MoveToOffset([2.1])
+		MoveToOffset([0.1])
 		Face(E)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 		EquipItemEx("JOMINHP1",0)
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
+//		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0) // Reset at loading
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // Reset at loading
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset at loading
-		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Console Force Load
 //
 //		More reset at loading ?
 //
@@ -132,22 +131,27 @@ THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #2
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #3
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #4
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #5
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #6
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -157,6 +161,7 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_FORCE_SWITCH","LOCALS",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #8
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -169,59 +174,81 @@ THEN
 		SetGlobal("BDAI_DISABLE_DEFENSIVE","LOCALS",0)
 		SetGlobal("BDAI_DISABLE_SPECIAL","LOCALS",0)
 		SetGlobal("BDAI_SKILL_MODE","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #9
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		MoveToObject(Player1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #10
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #11
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #12
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+//
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
+//
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+//
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
+//
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+//
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+//
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
 //		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+//
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		EquipItemEx("JOMINHP1",0)
+//
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #13
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #14
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #15
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
-	RESPONSE #16
+	RESPONSE #16 // Unused (replaced in JO_JOINC)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
+//		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0) // Deprecated by JO_JOINC.BAF
+//		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",1) // Deprecated by JO_JOINC.BAF
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #17
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)
+		DisplayString(Myself,~Done.~)
 		Continue()
 /*	RESPONSE #18
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -257,7 +284,7 @@ IF // security check
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
-//		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0) // TODO: // What ???
+		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		Continue()
@@ -298,6 +325,7 @@ IF // Block wait for switch at loading
 	NumInPartyGT(4)
 THEN
 	RESPONSE #100
+		MoveToOffset([1.0])
 		NoAction()
 END
 
@@ -317,7 +345,9 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
+		Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 //
@@ -350,30 +380,37 @@ END
 
 // Regular switch not at loading
  // Launched with dialog 
-  // Was lauched by JO_JOIN_JOIN_TIMER but unused if party switch continually
+  // Also launched by JO_JOIN_JOIN_TIMER but unused if party switch continually
 
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	!OnCreation()
-//
+	!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
+	!Global("JO_JOIN_JOIN_TIMER","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",1)
+		DisplayString(Myself,~Ready for a quick switch.~)
+		Continue()
+END
+
+IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
 //
-	OR(3)
+	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
-		AreaCheck("JO2608") // Switching Room
 		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
 //
 	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0) // Don't use this block if Traveler at loading
 	Global("JO_JOIN_LOAD_PARTY","LOCALS",0) // Don't use this block if party member at loading
 //
-	OR(2)
+	OR(3)
 		Global("JO_JOIN_FORCE_SWITCH","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Global("JO_JOIN_Fill_Party","LOCALS",1) // Set by JO_JOIN_Move_Around
-//		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
+		!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 //
-	ActionListEmpty()
+//	ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])
 //
@@ -392,6 +429,7 @@ IF
 THEN
 	RESPONSE #0
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SmallWait(1)
@@ -399,6 +437,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SmallWait(1)
@@ -406,6 +445,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #2
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SmallWait(1)
@@ -413,6 +453,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #3
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SmallWait(1)
@@ -420,6 +461,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #4
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SmallWait(1)
@@ -427,6 +469,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #5
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SmallWait(1)
@@ -434,6 +477,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #6
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SmallWait(1)
@@ -498,8 +542,8 @@ THEN
 		DisplayStringHead(Myself,~Hey.~)
 		MakeGlobal()
 		SmallWait(1)
-		JoinPartyOverride() // Go to All_In_Baf Switch between familiar and party
 		SetInterrupt(TRUE)
+		JoinPartyOverride() // Go to All_In_Baf Switch between familiar and party
 END
 
 //
@@ -1181,6 +1225,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1203,6 +1263,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1221,6 +1297,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1239,6 +1331,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1260,6 +1368,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1283,6 +1407,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1308,6 +1448,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1326,6 +1482,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1361,6 +1533,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("BDAI_DISABLE_ITEMS","LOCALS",0)
@@ -1381,6 +1569,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("BDAI_DISABLE_ITEMS","LOCALS",0)
@@ -1399,6 +1603,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	ActuallyInCombat()
@@ -1420,6 +1640,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	ActuallyInCombat()
@@ -1441,6 +1677,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	ActuallyInCombat()
@@ -1466,6 +1718,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	IsWeaponRanged(Myself)
@@ -1481,6 +1749,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
@@ -1495,6 +1779,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
@@ -1513,6 +1813,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	Global("BDAI_SKILL_MODE","LOCALS",1) // find traps
 	ActionListEmpty()
@@ -1532,6 +1848,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	Global("BDAI_SKILL_MODE","LOCALS",2) // hide
 	ActionListEmpty()
@@ -1555,6 +1887,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	Global("BDAI_SKILL_MODE","LOCALS",3) // danse
 	ActionListEmpty()
@@ -1571,6 +1919,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	Global("BDAI_SKILL_MODE","LOCALS",3) // song
 	ActionListEmpty()
@@ -1588,6 +1952,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	Global("BDAI_SKILL_MODE","LOCALS",4) // repulse undead
 	ActionListEmpty()
@@ -1609,6 +1989,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	ActuallyInCombat()
@@ -1630,6 +2026,22 @@ END
 IF
 	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_JOIN_LOAD_PARTY","LOCALS",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_CLEAR","LOCALS",0)
+	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
 	Global("BDAI_DISABLE_ATTACK","LOCALS",0)
@@ -1662,7 +2074,6 @@ END
 // Timer make sure the party member stay long enough in party
 
 IF
-	!OnCreation()
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1724,7 +2135,6 @@ END
 // 2 // No free slots in party, then randomly select a member... Wannabe !
 
 IF
-	!OnCreation()
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1760,7 +2170,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player2)
-		ActionOverride(Player2,FaceObject(Myself))
+		ActionOverride(Player2,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player2,~Hé ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -1769,14 +2179,11 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // Player2
 		ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
-	!OnCreation()
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1789,8 +2196,8 @@ IF
 	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
 //
-	ActionListEmpty()
-//	!ActuallyInCombat()
+//	ActionListEmpty()
+	!ActuallyInCombat()
 	!See([ENEMY])
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -1812,7 +2219,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player3)
-		ActionOverride(Player3,FaceObject(Myself))
+		ActionOverride(Player3,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player3,~Yes ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -1821,14 +2228,11 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // Player3
 		ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
-	!OnCreation()
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1864,7 +2268,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player4)
-		ActionOverride(Player4,FaceObject(Myself))
+		ActionOverride(Player4,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player4,~Don't disturb...~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -1873,14 +2277,11 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // Player4
 		ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
-	!OnCreation()
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1916,7 +2317,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player5)
-		ActionOverride(Player5,FaceObject(Myself))
+		ActionOverride(Player5,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player5,~What ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -1925,14 +2326,11 @@ THEN
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // Player5
 		ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 IF
-	!OnCreation()
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1968,7 +2366,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject(Player6)
-		ActionOverride(Player6,FaceObject(Myself))
+		ActionOverride(Player6,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player6,~Hum ?~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
@@ -1976,10 +2374,8 @@ THEN
 		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // Player6
 		ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))
-		Wait(3)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
-		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2019,8 +2415,8 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
-		JoinParty()
 		SetInterrupt(TRUE)
+		JoinParty()
 	RESPONSE #3 // Player3
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~My turn !~)
@@ -2036,8 +2432,8 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
-		JoinParty()
 		SetInterrupt(TRUE)
+		JoinParty()
 	RESPONSE #4 // Player4
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~My turn !~)
@@ -2053,8 +2449,8 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
-		JoinParty()
 		SetInterrupt(TRUE)
+		JoinParty()
 	RESPONSE #5 // Player5
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~My turn !~)
@@ -2070,8 +2466,8 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
-		JoinParty()
 		SetInterrupt(TRUE)
+		JoinParty()
 	RESPONSE #6 // Player6
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~My turn !~)
@@ -2087,8 +2483,8 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
-		JoinParty()
 		SetInterrupt(TRUE)
+		JoinParty()
 END
 
 IF
@@ -2137,12 +2533,7 @@ IF
 	// add Continue() below, it should make this one useless but could allow mor than one traveler to fill party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
-	OR(5)
-		!InParty(PartySlot2)
-		!InParty(PartySlot3)
-		!InParty(PartySlot4)
-		!InParty(PartySlot5)
-		!InParty(PartySlot6)
+	!InPartyAllowDead(PartySlot6)
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
@@ -2210,7 +2601,27 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
+		SetInterrupt(TRUE)
 		JoinParty()
+END
+
+IF
+	!Global("JO_JOIN_Fill_Party","LOCALS",0)
+//
+	Global("JO_Myself_Valid","LOCALS",1)
+//
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	NumInPartyGT(5)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~Too slow...~)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -2285,10 +2696,10 @@ END
 //
 //
 //
-
+/*
 ///////////////////////////////////////////////////////////////////////////////
 
-// JO_JOIN_COUNT_TRAVELER
+// JO_JOIN_COUNT_TRAVELER // Deprecated by JO_JOINP.BAF
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -2312,7 +2723,7 @@ THEN
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
 		SetInterrupt(TRUE)
 END
-
+*/
 //
 //
 //

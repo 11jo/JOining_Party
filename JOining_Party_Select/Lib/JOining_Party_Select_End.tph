@@ -363,6 +363,10 @@ HasItemEquipedReal(\1,Player1)~
 	END // ACTION_FOR_EACH // CreateVisualEffectObject
 
 
+COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINP.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~
+
+COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINC.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~
+
 
 ACTION_FOR_EACH Death_var IN
 
@@ -615,6 +619,33 @@ BEGIN
 //////////////////////////////////////////////////////////////////////////////////////
 
 COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
+
+COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+	\0~
+
+COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~  ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_COUNT_TRAVELER~ ~~~~~IF
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	Global("JO_JOINP_%Death_var%","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOINP_%Death_var%","LOCALS",1)
+		IncrementGlobal("JO_JOIN_LEGION","LOCALS",1)
+		Continue()
+END
+
+IF
+	!Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	!Global("JO_JOINP_%Death_var%","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOINP_%Death_var%","LOCALS",0)
+		IncrementGlobal("JO_JOIN_LEGION","LOCALS",-1)
+		Continue()
+END
+
+	\0~~~~~
 
 //////////////////////////////////////////////////////////////////////////////////////
 

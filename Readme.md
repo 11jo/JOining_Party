@@ -46,11 +46,17 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 
 - Install JOining Party **AFTER** mods that add any dialog or script options related to NPC.
 - [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is completly incompatible with this mod if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
+- Joining_Party use script slots permanently or temporarly : 
+  - SCRIPT_OVERRIDE for Charname (permanent)
+  - SCRIPT_GENERAL for traveler (permanent)
+  - SCRIPT_RACE for Travelers (temporarly and regulary) // Each time a traveler come and go to and from party, only the time to run.
+  - SCRIPT_RACE for Charname (Only if asked by dialog to count traveler) // Mostly unecessary.
 
 - **First** select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
   - 0 the NPC is not expanded to become a traveler.
   - 1 Npc will be expended to be traveler (Familiar fully considered as party member.)
-  - 2 Npc will be expended to be a real traveler (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.) (Warning Option 2, Experimental and will expend installation time significaly, to use only with few traveler.)
+  - 2 Npc will be expended to be a real traveler (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.) (It expand block that concern Player2 to Player6 for traveler to follow so add only few of them)
+  (Warning Option 2, Experimental and will expend installation time significaly, to use only with few traveler.)
 
 
 ##### Componants :  
@@ -62,14 +68,18 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 
 ---
 
-- Traveler Switch Timer when a free party member slot is kept
+- Traveler Switch Timer when a free party member slot is kept or free
   - Allow to change frequency travelers will come in party for a short moment. (Same purpose as the initial at save loading switch )
-  - Redundant with Party Member Switch with Travelers.
+  - Redundant with "Switch between Party Member and Travelers Timer" but still can be usefull.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log
 
-- Banter Switch Timer and Party Member Switch
+- Travelers Banter Timer
   - Allow to change frequency travelers will fire their banters dialog.
+  - Can be reinstalled multiple time at any time, if another timer is more suitable.
+  - Don't appear in weidu.log
+
+- Switch between Party Member and Travelers Timer
   - Allow to change frequency travelers will switch their places with party members if a party member is eligible and willing to be traveler.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log

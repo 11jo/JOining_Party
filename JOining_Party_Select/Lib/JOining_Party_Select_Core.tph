@@ -299,6 +299,14 @@ COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
 		END
 		LPF ADD_SPELL_EFFECT
 		INT_VAR
+			opcode=265
+			parameter1= 0
+			parameter2= 0
+		STR_VAR
+			resource= ~JO_JOIN_Move_Around~
+		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
 			opcode=139
 			target = 1
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
@@ -393,13 +401,19 @@ This spell transports the caster to any place within the visual range of the cas
 
 // EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability.baf~ EVALUATE_BUFFER
 
-		COMPILE ~JOining_Party_Select/Baf/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Replace Join_ability.baf
+// Modified in JOining_Party_Select_End before compiling.
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Replace Join_ability.baf
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~~
+
+// Modified in JOining_Party_Select_End before compiling.
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_COUNT_TRAVELER~ ~~
 
 // EXTEND_BOTTOM ~PLAYER1D.bcs~ ~JOining_Party_Select/Baf/Join_ability/Player1D.baf~
 
-EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~
+EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
 
-EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~
+EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
 
 
 // Starting areas additions
