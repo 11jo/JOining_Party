@@ -232,7 +232,7 @@ COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINP.baf~ ~weidu_external/JOinin
 
 COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINC.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~
 
-		COMPILE ~JOining_Party_Select/Baf/Join_ability/JO_JOINL.baf~
+COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~
 
 
 ACTION_FOR_EACH Death_var IN
@@ -489,7 +489,7 @@ COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_exte
 	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_JOIN_LOAD~ ~OR(3)
 		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("%Death_var%",Global("JO_JOIN_LOAD","LOCALS",0))
+		TriggerOverride("%Death_var%",Global("JO_JOIN_LOAD","LOCALS",3))
 	\0~
 
 COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER

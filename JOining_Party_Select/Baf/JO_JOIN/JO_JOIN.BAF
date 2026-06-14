@@ -12,7 +12,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",3)
 		DisplayStringHead(Myself,~Yeah.~)
 		SetInterrupt(TRUE)
 		Continue() // Go to Yeah End

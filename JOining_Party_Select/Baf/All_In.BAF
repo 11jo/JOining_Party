@@ -15,11 +15,9 @@ END
 IF
 	Global("JO_JOIN_LOAD","LOCALS",3)
 	!Global("JO_JOIN_LOADING","GLOBAL",1)
-	!Global("JO_JOIN_LOADING","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 END
 
 // 2 // At loading JO_JOIN_PARTY_SWITCH party members make room for travelers
