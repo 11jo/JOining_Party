@@ -258,13 +258,16 @@ IF ~~ THEN BEGIN JO_JOINStat
 	SAY ~Hum...~
 	IF ~!HasItem("JOMINHP1",Myself)~ THEN REPLY ~I don't have the engagement scroll.~ GOTO JO_JOINStatEnd // Je n'ai pas notre parchemin d'engagement.
 //
-	IF ~!HasItemEquiped("JOMINHP1",Myself)~ THEN REPLY ~The engagement scroll isn't active.~ GOTO JO_JOINStatEnd // Not working with slot 0, I think
+	IF ~OR(3)
+			CheckStat(Myself,0,MINHITPOINTS)
+			CheckStat(Myself,0,IGNOREDRAINDEATH)
+			CheckStat(Myself,0,IMMUNE_TO_TURN_UNDEAD)~ THEN REPLY ~The engagement scroll isn't active.~ GOTO JO_JOINStatEnd
 //
 	IF ~Global("JO_Myself_InParty","LOCALS",0)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
 //
 	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~I am not considered like ready to talk.~ GOTO JO_JOINStatEnd
 //
-	IF ~OR(5)
+	IF ~OR(4)
 			!Global("JO_JOIN_CLEAR","LOCALS",0)
 			!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 			!Global("JO_JOINI","LOCALS",0)
