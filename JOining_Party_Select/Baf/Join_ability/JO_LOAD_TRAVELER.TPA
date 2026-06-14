@@ -1,6 +1,19 @@
-// JO_LOAD_TRAVELER.BAF EXTEND_TOP for JO_JOINL.bcs at installation by JOining_Party_Select_End.tph
+// JO_LOAD_TRAVELER.TPA EXTEND_TOP for JO_JOINL.bcs at installation by JOining_Party_Select_End.tph
 
-IF
+///////////////////////////////////////////////////////////////////////////////
+// Variables
+	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
+		// JO_JOIN_LOAD (Used by travelers loading steps)
+///////////////////////////////////////////////////////////////////////////////
+
+// Main 3 // After JO_LOAD_JO_JOINL.baf Main 2
+
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ BEGIN
+
+
+// Loading Switch
+COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 	OR(2)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -49,8 +62,7 @@ THEN
 		SetInterrupt(TRUE)
 		ActionOverride("%Death_var%",Face(S))
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
-		SmallWait(1)
-//		Continue() // To traveler relevant JO_JOIN... blocks
+		SmallWait(1) // To traveler relevant JO_JOIN... blocks
 END
 
 IF
@@ -59,3 +71,7 @@ THEN
 	RESPONSE #100
 		NoAction()
 END
+
+	\0~~~~~
+
+	END

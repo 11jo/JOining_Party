@@ -94,7 +94,7 @@ THEN
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
-		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_LOAD.baf
+		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END
 
 ///////////////////////////////////////////////////////////////////////////////
