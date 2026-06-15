@@ -44,7 +44,6 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
-	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 //
 	!ActuallyInCombat()
 	OR(2)
@@ -103,7 +102,6 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
-	!Global("JO_JOIN_LOAD_TRAVELER","LOCALS",1)
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
