@@ -13,22 +13,21 @@
 IF
 // Main triggers
 	InParty(Myself)
+	NumInParty(6)
 	Global("JO_JOIN_LOAD","LOCALS",0) // Not a traveler switching at loading
+	!Global("JO_JOINI","LOCALS",1)
 	!Dead("%Death_var%")
 	OR(2)
 		Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		IsActive(Myself)
 // Secondary triggers
 	Global("JO_JOIN_LOADING","GLOBAL",1)
-	NumInParty(6)
-	Global("JO_JOINI","LOCALS",1)
 THEN
 	RESPONSE #100 
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
 		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		DisplayStringHead(Myself,~Oh no ! More Travelers...~)
 		LeaveParty()
-		SmallWait(1)
 		Deactivate(Myself)
 END
 
@@ -51,11 +50,7 @@ END
 
 IF
 // Main triggers
-	!InParty(Myself)
-//	Global("JO_JOIN_LOAD","LOCALS",0) // Redondant with above
-	OR(2)
-		Global("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		!IsActive(Myself)
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1)
 	Global("JO_JOIN_LOADING","GLOBAL",0)
 // Secondary triggers
 	NumInPartyLT(6)
@@ -64,7 +59,6 @@ THEN
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
 		Activate(Myself)
-		SmallWait(1)
 		DisplayStringHead(Myself,~I'm back !~)
 		JoinParty()
 END
