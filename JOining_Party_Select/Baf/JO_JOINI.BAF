@@ -176,9 +176,9 @@ THEN
 //
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 //
-		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
+//		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+//		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+//		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
 //
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -2419,7 +2419,7 @@ END
 // Security if JO_JOIN_TRAVELER_SWITCH don't implement properly
 
 ///////////////////////////////////////////////////////////////////////////////
-
+/*
 IF
 	GlobalGT("JO_JOIN_MY_SWITCH","LOCALS",0)
 //
@@ -2446,7 +2446,7 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-3)
 		DisplayStringHead(Myself,~3 !~)
 END
-
+*/
 //
 //
 //
