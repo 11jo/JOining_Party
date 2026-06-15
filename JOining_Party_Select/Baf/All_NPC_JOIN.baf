@@ -2,6 +2,13 @@
 
 // Base
 
+IF
+	Global("JO_JOIN_NOTRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_NOTRAVELER","LOCALS",1)
+END
+
 // !InPartyAllowDead()
 IF
 	!Global("JO_Myself_AllowDead","LOCALS",0)

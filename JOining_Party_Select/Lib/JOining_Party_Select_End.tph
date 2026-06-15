@@ -485,14 +485,6 @@ BEGIN
 // All_In.baf for each traveler
 //////////////////////////////////////////////////////////////////////////////////////
 
-// Loading Switch
-COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
-	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_JOIN_LOAD~ ~OR(3)
-		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("%Death_var%",Global("JO_JOIN_LOAD","LOCALS",3))
-	\0~
-
 	INCLUDE ~JOining_Party_Select/Baf/Join_ability/JO_LOAD_TRAVELER.tpa~
 
 // All_In modified and created for each traveler

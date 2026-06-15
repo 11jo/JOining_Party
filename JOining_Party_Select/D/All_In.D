@@ -9,7 +9,6 @@ APPEND ~%joining_dlg%~
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",1) 
@@ -105,7 +104,7 @@ APPEND ~%joining_dlg%~
 		SmallWait(1)
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT //
 // Corrections
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~Something feel wrong, we can settle this now.~ DO ~
+	IF ~~ THEN REPLY ~Something feel wrong, we can settle this now.~ DO ~
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
@@ -118,7 +117,6 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
-		SetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
@@ -136,7 +134,7 @@ APPEND ~%joining_dlg%~
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_TRAVELER_PARTY.~ DO ~SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_MY_SWITCH","LOCALS",0)~ THEN REPLY ~JO_JOIN_MY_SWITCH.~ DO ~SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)~ EXIT //
 	IF ~~ THEN REPLY ~How do you feel as traveler.~ GOTO JO_JOINStat //
-	IF ~~ THEN REPLY ~Show logs.~ DO ~
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~Show logs.~ DO ~
 		SetTokenGlobal("JO_JOIN_Move_Done","LOCALS","JO_JOIN_Move_Done")
 		SetTokenGlobal("JO_JOIN","LOCALS","JO_JOIN")
 		SetTokenGlobal("JO_JOIN_NEVER_JOIN","LOCALS","JO_JOIN_NEVER_JOIN")
@@ -148,8 +146,6 @@ APPEND ~%joining_dlg%~
 		SetTokenGlobal("JO_JOIN_MY_SWITCH","LOCALS","JO_JOIN_MY_SWITCH")
 		SetTokenGlobal("JO_JOIN_NEVER_BANTER","LOCALS","JO_JOIN_NEVER_BANTER")
 		SetTokenGlobal("JO_JOIN_NEVER_SWITCH","LOCALS","JO_JOIN_NEVER_SWITCH")
-		SetTokenGlobal("JO_JOIN_LOAD_PARTY","LOCALS","JO_JOIN_LOAD_PARTY")
-		SetTokenGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS","JO_JOIN_LOAD_TRAVELER")
 		SetTokenGlobal("JO_JOIN_Fill_Party","LOCALS","JO_JOIN_Fill_Party")
 		SetTokenGlobal("JO_JOIN_IS_Wannabe","LOCALS","JO_JOIN_IS_Wannabe")
 		SetTokenGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS","JO_JOIN_READY_TO_SWITCH")
@@ -271,12 +267,9 @@ IF ~~ THEN BEGIN JO_JOINStat
 			!Global("JO_JOIN_CLEAR","LOCALS",0)
 			!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 			!Global("JO_JOINI","LOCALS",0)
-			!Global("JO_JOIN_TALK","LOCALS",0)~ THEN REPLY ~Il semble que la transition ne soit pas terminée.~ GOTO JO_JOINStatEnd
+			!Global("JO_JOIN_TALK","LOCALS",0)~ THEN REPLY ~Il semble que la transition ne soit pas terminÃ©e.~ GOTO JO_JOINStatEnd
 //
-	IF ~OR(3)
-			!Allegiance(Myself,FAMILIAR)
-			Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-			Global("JO_TRAVELER_%Death_var%","GLOBAL",0)~ THEN REPLY ~I am not considered like a traveler.~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_IS_TRAVELER","LOCALS",0)~ THEN REPLY ~I am not considered like a traveler.~ GOTO JO_JOINStatEnd
 //
 	IF ~!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)~ THEN REPLY ~I am dead...~ GOTO JO_JOINStatEnd
 //
@@ -292,7 +285,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINStatEnd
 	SAY ~I hope I am fine.~
-	IF ~~ THEN EXIT
+	IF ~~ THEN DO ~SetGlobal("JO_JOIN","LOCALS",0)~  EXIT
 END
 
 ////////////////////////////////////////////////////
