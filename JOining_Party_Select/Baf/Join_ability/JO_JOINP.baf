@@ -2,6 +2,20 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Dev variable
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_DEV_MODE","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_DEV_MODE","GLOBAL",1)
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Loading Switch
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10,8 +24,9 @@
 		// JO_JOIN_AREA (Check if current area is a master area)
 			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
 				// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
-					// JO_JOIN_PLAYER6 (Check if a least one traveler is present)
+					// JO_JOIN_LOADING_PLAYER (Check if a least one traveler is present)
 						// JO_JOIN_BLOP (Dev test for no master area)
+							// JO_JOIN_SWITCHING_ROOM (In case area is JO2608.are prevent to end loading switch prematurely)
 ///////////////////////////////////////////////////////////////////////////////
 
 // If area ISN'T a master area, then go to the Switching room.
@@ -31,9 +46,11 @@ IF
 	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
 // Secondary triggers
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",1) // We are in the Switching room
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1) // We are in the Switching room
 		FadeToColor([20.0],0)
 		Wait(1)
 		StorePartyLocations()
@@ -47,22 +64,38 @@ THEN
 		SmallWait(1)
 		MoveToOffset([0.1])
 		FadeFromColor([30.0],0)
+		SetInterrupt(TRUE)
 END
 
-// If area ISN'T a master area, this block come after // Main 1 // Loading Switch
+// If area ISN'T a master area, this block come before // Main 1 // Loading Switch
 
 // Secondary 2
 
 IF
-// Main triggers
-	Global("JO_JOIN_LOADING","GLOBAL",2)
 	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","GLOBAL",1) // Set in JO_LOAD.baf
-// Secondary triggers
-	Global("JO_JOIN_PLAYER6","LOCALS",0)
+	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",2)
+		RandomWalk()
+END
+
+// If area ISN'T a master area, this block come after // Main 1 // Loading Switch
+
+// Secondary 3
+
+IF
+// Main triggers
+	Global("JO_JOIN_LOADING","GLOBAL",0)
+	AreaCheck("JO2608")
+	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",3) // Set in JO_LOAD.baf
+// Secondary triggers
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",0) // We are ready to leave the Switching room
+		MoveToPoint([1570.1050])
 		DisplayStringHead(Myself,~Let's return !~)
 		FadeToColor([20.0],0)
 		Wait(1)
@@ -71,6 +104,7 @@ THEN
 		MoveToOffset([0.1])
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
+		SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -85,16 +119,24 @@ IF
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
-	Global("JO_JOIN_AREA","MYAREA",1) // Current area is a master area
-	!See([ENEMY])
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1) // Current area is a master area
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
+	OR(2)
+		!See([ENEMY])
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
 // Secondary triggers
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		DisplayStringHead(Myself,~Travelers !~)
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
+		SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -222,6 +264,7 @@ END
 	// JO_JOIN (For Charname it allow to create an invisible creature that open a PID to manage travelers)
 		// JO_JOIN_CUTSCENE (Deactive travelers for cutscene)
 			// JO_Myself_Valid (Replace IsValidForPartyDialogue())
+				// JO_JOIN_Move_Around (Centralised orders for all travelers at once)
 ///////////////////////////////////////////////////////////////////////////////
 
 // Special Security/JOJOINNE.CRE
@@ -230,6 +273,7 @@ IF
 THEN
 	RESPONSE #100
 //		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0) // Reset JO_JOIN_Move_Around
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset JO_JOIN
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0) // Security reset the cutscene global
 		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
@@ -308,6 +352,7 @@ IF
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 // Secondary triggers
 		// ActionListEmpty()
 	!ActuallyInCombat()
@@ -328,6 +373,7 @@ END
 
 IF
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	OR(7)
 // BG1 End
 		AreaCheck("%NBaldursGate_DucalPalace_L1%")
@@ -359,6 +405,6 @@ IF
 	!AreaCheck("BD6200")
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",14) // Launch JO_JOIN_Move_Around block 13 in JO_JOINI.BAF
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",14) // Launch JO_JOIN_Move_Around block 14 in JO_JOINI.BAF
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 END
