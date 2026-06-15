@@ -17,33 +17,24 @@ IF
 	Global("JO_JOIN_LOAD","LOCALS",0) // Not a traveler switching at loading
 	!Global("JO_JOINI","LOCALS",1)
 	!Dead("%Death_var%")
-	OR(2)
-		Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-		IsActive(Myself)
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+	IsActive(Myself)
 // Secondary triggers
 	Global("JO_JOIN_LOADING","GLOBAL",1)
+	TriggerOverride(Player1,!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0))
 THEN
-	RESPONSE #100 
+	RESPONSE #40
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		DisplayStringHead(Myself,~Oh no ! More Travelers...~)
 		LeaveParty()
 		Deactivate(Myself)
-END
-
-// After Main Loading Switch 3 // Security
-
-IF
-// Main triggers
-	OR(2)
-		Global("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		!IsActive(Myself)
-// Secondary triggers
-	TriggerOverride(Player1,Global("JO_JOIN_LOADING_PLAYER","LOCALS",0))
-THEN
-	RESPONSE #100 
-		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
-		DisplayStringHead(Player1,~Don't forget your party members...~)
+	RESPONSE #20 
+		NoAction
+	RESPONSE #20 
+		NoAction
+	RESPONSE #20 
+		NoAction
 END
 
 // After Main Loading Switch 3 // For party member
@@ -57,7 +48,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
+		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",-1))
 		Activate(Myself)
 		DisplayStringHead(Myself,~I'm back !~)
 		JoinParty()

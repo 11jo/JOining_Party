@@ -1,3 +1,13 @@
+// ActionOverride("AerXXXXie",SetBeenInPartyFlags())
+
+IF
+	OnCreation()
+THEN
+	RESPONSE #100
+		SetBeenInPartyFlags()
+		DisplayStringHead(Myself,~I'm fully loaded !~)
+END
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 // JO_JOIN_CUTSCENE

@@ -61,7 +61,6 @@ THEN
 		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
 		MoveViewObject(Player1,INSTANT)
 		SmallWait(1)
-		MoveToOffset([0.1])
 		FadeFromColor([30.0],0)
 		SetInterrupt(TRUE)
 END
@@ -77,8 +76,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",2)
 		RandomWalk()
-		SmallWait(2)
-		NoAction()
 END
 
 // If area ISN'T a master area, this block come after // Main 1 // Loading Switch
@@ -90,7 +87,7 @@ IF
 	AreaCheck("JO2608")
 	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",3) // Set in JO_JOINL.baf
 // Secondary triggers
-	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
 		MoveToPoint([1570.1050])
@@ -101,7 +98,6 @@ THEN
 		RestorePartyLocations()
 		SmallWait(2)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching room
-		MoveToOffset([0.1])
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
 END

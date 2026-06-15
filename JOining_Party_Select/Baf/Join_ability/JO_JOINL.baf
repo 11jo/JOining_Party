@@ -21,7 +21,6 @@ IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 	NumInPartyLT(6)
 	Global("JO_JOIN_LOAD","LOCALS",0)
-//	REPLACE_TRAVELER_JO_JOIN_LOAD
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~Almost...~)
@@ -39,6 +38,7 @@ IF
 	NumInPartyLT(6)
 	Global("JO_JOIN_LOAD","LOCALS",0)
 	!Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -56,6 +56,7 @@ IF
 // Secondary triggers
 	NumInPartyLT(6)
 	Global("JO_JOIN_LOAD","LOCALS",0)
+	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
