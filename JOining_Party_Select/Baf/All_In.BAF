@@ -5,45 +5,71 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Variables
 	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
-		// JO_JOIN_LOADING_PLAYER (Check if a least one traveler is present)
+		// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
 ///////////////////////////////////////////////////////////////////////////////
+
+// After Main Loading Switch 1
 
 IF
 // Main triggers
 	InParty(Myself)
+	Global("JO_JOIN_LOAD","LOCALS",0) // Not a traveler switching at loading
 	!Dead("%Death_var%")
-	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		IsActive(Myself)
 // Secondary triggers
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 	NumInParty(6)
 	Global("JO_JOINI","LOCALS",1)
 THEN
 	RESPONSE #100 
-		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		DisplayStringHead(Myself,~Oh no ! More Travelers...~)
 		LeaveParty()
 		SmallWait(1)
 		Deactivate(Myself)
-		SetInterrupt(TRUE)
 END
+
+// After Main Loading Switch 3 // Security
 
 IF
 // Main triggers
-	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+	OR(2)
+		Global("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		!IsActive(Myself)
+// Secondary triggers
+	TriggerOverride(Player1,Global("JO_JOIN_LOADING_PLAYER","LOCALS",0))
+THEN
+	RESPONSE #100 
+		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		DisplayStringHead(Player1,~Don't forget your party members...~)
+END
+
+// After Main Loading Switch 3 // For party member
+
+IF
+// Main triggers
+	!InParty(Myself)
+//	Global("JO_JOIN_LOAD","LOCALS",0) // Redondant with above
+	OR(2)
+		Global("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		!IsActive(Myself)
 	Global("JO_JOIN_LOADING","GLOBAL",0)
 // Secondary triggers
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
 		Activate(Myself)
 		SmallWait(1)
 		DisplayStringHead(Myself,~I'm back !~)
-		SetInterrupt(TRUE)
 		JoinParty()
 END
+
+// After Main Loading Switch 3 // For traveler
 
 IF
 	Global("JO_JOIN_LOAD","LOCALS",3)
@@ -717,7 +743,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 // Related to Loading travelers reset global (when JO_JOIN_TRAVELER_SWITCH return to zero then party members can reinteger the group.)
-
+/*
 IF
 	!Global("JO_JOIN_MY_SWITCH","LOCALS",0)
 //
@@ -732,5 +758,5 @@ THEN
 		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-1)
 		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-1)
 END
-
+*/
 ///////////////////////////////////////////////////////////////////////////////

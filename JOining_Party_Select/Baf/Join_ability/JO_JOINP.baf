@@ -24,18 +24,17 @@ END
 		// JO_JOIN_AREA (Check if current area is a master area)
 			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
 				// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
-					// JO_JOIN_LOADING_PLAYER (Check if a least one traveler is present)
+					// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
 						// JO_JOIN_BLOP (Dev test for no master area)
 							// JO_JOIN_SWITCHING_ROOM (In case area is JO2608.are prevent to end loading switch prematurely)
 ///////////////////////////////////////////////////////////////////////////////
 
 // If area ISN'T a master area, then go to the Switching room.
 
-// Secondary 1
+// Secondary Loading Switch 1 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
 // Main triggers
-	Global("JO_JOIN_LOADING","GLOBAL",0)
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
@@ -69,7 +68,7 @@ END
 
 // If area ISN'T a master area, this block come before // Main 1 // Loading Switch
 
-// Secondary 2
+// Secondary Loading Switch 2 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
 	AreaCheck("JO2608")
@@ -78,44 +77,43 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",2)
 		RandomWalk()
+		SmallWait(2)
+		NoAction()
 END
 
 // If area ISN'T a master area, this block come after // Main 1 // Loading Switch
 
-// Secondary 3
+// Secondary Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
 // Main triggers
-	Global("JO_JOIN_LOADING","GLOBAL",0)
 	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",3) // Set in JO_LOAD.baf
+	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",3) // Set in JO_JOINL.baf
 // Secondary triggers
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",0) // We are ready to leave the Switching room
 		MoveToPoint([1570.1050])
-		DisplayStringHead(Myself,~Let's return !~)
+		DisplayStringHead(Myself,~Let's return to venture forth !!~)
+		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		FadeToColor([20.0],0)
 		Wait(1)
 		RestorePartyLocations()
 		SmallWait(2)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching room
 		MoveToOffset([0.1])
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
-		SetInterrupt(TRUE)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // If area IS a master area, then go to the Switching room.
 
-// Main 1 // Loading Switch
+// Main Loading Switch 1
 
 IF
 // Main triggers
-	Global("JO_JOIN_LOADING","GLOBAL",0)
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
@@ -135,8 +133,8 @@ THEN
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		DisplayStringHead(Myself,~Travelers !~)
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
-		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 		SetInterrupt(TRUE)
+		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END
 
 ///////////////////////////////////////////////////////////////////////////////

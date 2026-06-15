@@ -16,9 +16,9 @@ THEN
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
-		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 		DisplayStringHead(Myself,~All party members are dead, hurry to a temple.~)
 		SetInterrupt(TRUE)
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
 
 IF
