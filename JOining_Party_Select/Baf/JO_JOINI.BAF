@@ -88,7 +88,8 @@ IF
 THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
+		Continue()
 END
 
 // Related to JOJOINNE.D groupe changes
