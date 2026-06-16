@@ -11,7 +11,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SmallWait(1)
-		EquipItemEx("JOMINHP1",1) 
+		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
@@ -70,7 +70,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SmallWait(1)
-		EquipItemEx("JOMINHP1",1) 
+		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
@@ -81,7 +81,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SmallWait(1)
-		EquipItemEx("JOMINHP1",1) 
+		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
@@ -92,7 +92,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SmallWait(1)
-		EquipItemEx("JOMINHP1",1) 
+		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
@@ -105,25 +105,58 @@ APPEND ~%joining_dlg%~
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT //
 // Corrections
 	IF ~~ THEN REPLY ~Something feel wrong, we can settle this now.~ DO ~
-		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 //		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
+
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
-		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+
 		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
+		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_REST","LOCALS",0)
+
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
+
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		Activate(Myself)
+
+
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		SetGlobal("JO_Myself_Valid","LOCALS",1)
+		SetGlobal("JO_Myself_InParty","LOCALS",1)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+
 		EquipItemEx("JOMINHP1",0)
 		DisplayString(Myself,@103)
 		ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
@@ -136,23 +169,69 @@ APPEND ~%joining_dlg%~
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_MY_SWITCH","LOCALS",0)~ THEN REPLY ~JO_JOIN_MY_SWITCH.~ DO ~SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)~ EXIT*/
 	IF ~~ THEN REPLY ~How do you feel as traveler.~ GOTO JO_JOINStat //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~Show logs.~ DO ~
-		SetTokenGlobal("JO_JOIN_Move_Done","LOCALS","JO_JOIN_Move_Done")
 		SetTokenGlobal("JO_JOIN","LOCALS","JO_JOIN")
-		SetTokenGlobal("JO_JOIN_NEVER_JOIN","LOCALS","JO_JOIN_NEVER_JOIN")
-		SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING")
+
+
 		SetTokenGlobal("JO_NOJOIN","GLOBAL","JO_NOJOIN")
-		SetTokenGlobal("JO_JOIN_CUTSCENE","GLOBAL","JO_JOIN_CUTSCENE")
-		SetTokenGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL","JO_JOIN_PARTY_SWITCH")
-		SetTokenGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL","JO_JOIN_TRAVELER_SWITCH")
-		SetTokenGlobal("JO_JOIN_MY_SWITCH","LOCALS","JO_JOIN_MY_SWITCH")
+		SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING")
+		SetTokenGlobal("JO_JOINI","LOCALS","JO_JOINI")
+		SetTokenGlobal("JO_JOIN_TALK","LOCALS","JO_JOIN_TALK")
+		SetTokenGlobal("JO_JOIN_CLEAR","LOCALS","JO_JOIN_CLEAR")
+
+
+		SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty")
+//		SetTokenGlobal("","GLOBAL","")
+//		SetTokenGlobal("","GLOBAL","")
+//		SetTokenGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL","JO_JOIN_PARTY_SWITCH")
+//		SetTokenGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL","JO_JOIN_TRAVELER_SWITCH")
+//		SetTokenGlobal("JO_JOIN_MY_SWITCH","LOCALS","JO_JOIN_MY_SWITCH")
+
+
 		SetTokenGlobal("JO_JOIN_NEVER_BANTER","LOCALS","JO_JOIN_NEVER_BANTER")
 		SetTokenGlobal("JO_JOIN_NEVER_SWITCH","LOCALS","JO_JOIN_NEVER_SWITCH")
-		SetTokenGlobal("JO_JOIN_Fill_Party","LOCALS","JO_JOIN_Fill_Party")
+		SetTokenGlobal("JO_JOIN_NEVER_JOIN","LOCALS","JO_JOIN_NEVER_JOIN")
+
+
 		SetTokenGlobal("JO_JOIN_IS_Wannabe","LOCALS","JO_JOIN_IS_Wannabe")
+		SetTokenGlobal("JO_JOIN_JOIN_TIMER","LOCALS","JO_JOIN_JOIN_TIMER")
+		SetTokenGlobal("JO_JOIN_SWITCH_TIMER","LOCALS","JO_JOIN_SWITCH_TIMER")
 		SetTokenGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS","JO_JOIN_READY_TO_SWITCH")
 		SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME")
+		SetTokenGlobal("JO_JOIN_Fill_Party","LOCALS","JO_JOIN_Fill_Party")
+
+
+		SetTokenGlobal("JO_JOIN_CAMPAIGN_BANTER","GLOBAL","JO_JOIN_CAMPAIGN_BANTER")
+		SetTokenGlobal("JO_JOIN_BANTER_TIMER","GLOBAL","JO_JOIN_BANTER_TIMER")
+		SetTokenGlobal("JO_JOIN_BANTER_TIMER","LOCALS","JO_JOIN_BANTER_TIMER")
+		SetTokenGlobal("JO_JOIN_BANTER_INTERACT","LOCALS","JO_JOIN_BANTER_INTERACT")
+		SetTokenGlobal("JO_JOIN_DREAM_DONE","LOCALS","JO_JOIN_DREAM_DONE")
+		SetTokenGlobal("JO_JOIN_DREAM_REST","GLOBAL","JO_JOIN_DREAM_REST")
+
+
+		SetTokenGlobal("JO_JOIN_Move_Around","GLOBAL","JO_JOIN_Move_Around")
+		SetTokenGlobal("JO_JOIN_Move_Done","LOCALS","JO_JOIN_Move_Done")
+
+
+		SetTokenGlobal("JO_JOIN_CUTSCENE","GLOBAL","JO_JOIN_CUTSCENE")
+		SetTokenGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS","JO_JOIN_HIDE_DURING_CUTSCENE")
+		SetTokenGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS","JO_JOIN_IS_HIDDEN_BY_CUTSCENE")
+
+
+		SetTokenGlobal("JO_JOIN_CAMPAIGN","GLOBAL","JO_JOIN_CAMPAIGN")
+		SetTokenGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL","JO_JOIN_TRAVELER_NumInParty")
+
+
+		SetTokenGlobal("JO_JOIN_LOADING","GLOBAL","JO_JOIN_LOADING")
+		SetTokenGlobal("JO_JOIN_LOAD","LOCALS","JO_JOIN_LOAD")
+		SetTokenGlobal("JO_JOIN_LOADING_PLAYER","LOCALS","JO_JOIN_LOADING_PLAYER")
+
+
 		SetTokenGlobal("JO_JOIN_IS_TRAVELER","LOCALS","JO_JOIN_IS_TRAVELER")
-		DisplayString(Myself,@104) ~ EXIT
+		SetTokenGlobal("JO_Myself_Valid","LOCALS","JO_Myself_Valid")
+		SetTokenGlobal("JO_Myself_InParty","LOCALS","JO_Myself_InParty")
+		SetTokenGlobal("JO_Myself_AllowDead","LOCALS","JO_Myself_AllowDead")
+		SetTokenGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS","JO_JOIN_SLEEPING_DEAD")
+		DisplayString(Myself,@104) ~ GOTO JO_JOINStatEnd
 	END
 
 IF ~~ THEN BEGIN JO_JOINYes

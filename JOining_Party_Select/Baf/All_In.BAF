@@ -8,20 +8,23 @@
 		// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
 ///////////////////////////////////////////////////////////////////////////////
 
-// After Main Loading Switch 1
+
+// For Party member After Main Loading Switch 1 //
 
 IF
 // Main triggers
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	Global("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0) // Set to 1 by the first travelers switch
+	!TriggerOverride(Player1,GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)) // Check if another party member already leave
+//
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+	IsActive(Myself) // Same as Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+// Secondary triggers
 	InParty(Myself)
 	NumInParty(6)
 	Global("JO_JOIN_LOAD","LOCALS",0) // Not a traveler switching at loading
-	!Global("JO_JOINI","LOCALS",1)
+	!Global("JO_JOINI","LOCALS",1) // Not a traveler switching at loading
 	!Dead("%Death_var%")
-	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-	IsActive(Myself)
-// Secondary triggers
-	Global("JO_JOIN_LOADING","GLOBAL",1)
-	TriggerOverride(Player1,!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0))
 THEN
 	RESPONSE #40
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
@@ -29,20 +32,21 @@ THEN
 		DisplayStringHead(Myself,~Oh no ! More Travelers...~)
 		LeaveParty()
 		Deactivate(Myself)
+		Continue()
 	RESPONSE #20 
-		NoAction
+		NoAction()
 	RESPONSE #20 
-		NoAction
+		NoAction()
 	RESPONSE #20 
-		NoAction
+		NoAction()
 END
-
-// After Main Loading Switch 3 // For party member
+            
+// For party member After Main Loading Switch 3 //
 
 IF
 // Main triggers
-	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-	Global("JO_JOIN_LOADING","GLOBAL",0)
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
+	!Global("JO_JOIN_LOADING","GLOBAL",1) // Loading switch "almost" finished
 // Secondary triggers
 	NumInPartyLT(6)
 THEN
@@ -52,9 +56,10 @@ THEN
 		Activate(Myself)
 		DisplayStringHead(Myself,~I'm back !~)
 		JoinParty()
+		Continue()
 END
 
-// After Main Loading Switch 3 // For traveler
+// For Traveler After Main Loading Switch 3
 
 IF
 	Global("JO_JOIN_LOAD","LOCALS",3)
@@ -64,6 +69,8 @@ THEN
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 END
 
+
+///////////////////////////////////////////////////////////////////////////////
 //  See LeaveParty for travelers to rethink
 
 IF
@@ -199,7 +206,7 @@ IF
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//		InParty(Myself) // Maybe, maybe not
+	Global("JO_Myself_Valid","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
@@ -572,8 +579,6 @@ IF
 // Main triggers
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",0) // TODO: Added probably useless
-	Global("JO_JOIN_IS_TRAVELER","LOCALS",0) // TODO: Added probably useless
 	!Allegiance(Myself,FAMILIAR)
 	HasItem("JOMINHP1",Myself)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)

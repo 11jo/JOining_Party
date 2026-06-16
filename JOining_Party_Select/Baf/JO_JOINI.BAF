@@ -1,13 +1,4 @@
-// ActionOverride("AerXXXXie",SetBeenInPartyFlags())
-
-IF
-	OnCreation()
-THEN
-	RESPONSE #100
-		SetBeenInPartyFlags()
-		DisplayStringHead(Myself,~I'm fully loaded !~)
-END
-
+// SELECT COMMON AND ELSE VerbalConstant(O:Object*,I:Constant*soundOff)
 ///////////////////////////////////////////////////////////////////////////////////
 
 // JO_JOIN_CUTSCENE
@@ -15,7 +6,8 @@ END
 ///////////////////////////////////////////////////////////////////////////////////
 // Variables
 	// JO_JOIN_HIDE_DURING_CUTSCENE (Set in PID, enable or disable travelers in cutscene)
-		// JO_JOIN_CUTSCENE (General global set ny all game cutscenes)
+		// JO_JOIN_IS_HIDDEN_BY_CUTSCENE (Set in PID, enable or disable travelers in cutscene)
+			// JO_JOIN_CUTSCENE (General global set ny all game cutscenes)
 // Note
 	// Active or deactive travelers in cutscene.
 ///////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +84,6 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",1)
 THEN
 	RESPONSE #1
@@ -101,8 +92,7 @@ THEN
 END
 
 // Related to JOJOINNE.D groupe changes
-//// No need to change JO_JOIN_CUTSCENE variable, next switch or next dialog or next cutscene will simply do it.
-//// No need to change JO_NEVER_JOIN variable // Reset when loading a save.
+
 IF
 // Main triggers
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
@@ -177,34 +167,60 @@ THEN
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #12
-		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-//
 		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
-//
-		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-//
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+
+		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 //		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
-//
+
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
-		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+
 		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
-//		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS) //
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//
+		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
+		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_REST","LOCALS",0)
+
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
+
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		Activate(Myself)
+
+
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		SetGlobal("JO_Myself_Valid","LOCALS",1)
+		SetGlobal("JO_Myself_InParty","LOCALS",1)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+
 		EquipItemEx("JOMINHP1",0)
-//
-		DisplayString(Myself,~Done.~)
+		DisplayString(Myself,@103)
 		Continue()
 	RESPONSE #13
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -264,7 +280,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 // Regular switch not at loading
-	// Launched with dialog 
+	// Launched with dialog
 		// Also launched by JO_JOIN_JOIN_TIMER
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -875,7 +891,7 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// JO_JOIN_SLEEPING_DEAD 
+// JO_JOIN_SLEEPING_DEAD
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1873,7 +1889,7 @@ THEN
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 END
 
-IF // Block wait for Switching party 
+IF // Block wait for Switching party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
 	NumInPartyLT(6)
@@ -1884,7 +1900,7 @@ THEN
 		Continue()
 END
 
-IF // Block wait for Switching party 
+IF // Block wait for Switching party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",0)
 	NumInPartyLT(6)
@@ -2367,7 +2383,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SmallWait(1)
-		EquipItemEx("JOMINHP1",1) 
+		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)

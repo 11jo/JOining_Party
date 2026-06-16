@@ -48,58 +48,24 @@ IF
 	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
+		ClearAllActions()
+		SetCutSceneLite(TRUE)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1) // We are in the Switching room
 		FadeToColor([20.0],0)
 		Wait(1)
 		StorePartyLocations()
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],50))
-		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
-		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],50))
-		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],50))
-		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],50))
-		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
-		MoveViewObject(Player1,INSTANT)
-		SmallWait(1)
 		FadeFromColor([30.0],0)
-		SetInterrupt(TRUE)
-END
-
-// If area ISN'T a master area, this block come before // Main 1 // Loading Switch
-
-// Secondary Loading Switch 2 // Special // SWITCHING_ROOM JO2608.ARE
-
-IF
-	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",2)
-		RandomWalk()
-END
-
-// If area ISN'T a master area, this block come after // Main 1 // Loading Switch
-
-// Secondary Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
-
-IF
-// Main triggers
-	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",3) // Set in JO_JOINL.baf
-// Secondary triggers
-	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-THEN
-	RESPONSE #100
-		MoveToPoint([1570.1050])
-		DisplayStringHead(Myself,~Let's return to venture forth !!~)
-		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
-		FadeToColor([20.0],0)
-		Wait(1)
-		RestorePartyLocations()
-		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching room
-		MoveViewObject(Player1,INSTANT)
-		FadeFromColor([30.0],0)
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],1))
+		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],1))
+		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],1))
+		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],1))
+		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],1))
+		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],1))
+		LeaveAreaLUAPanic("JO2608","",[1570.1050],1)
+		LeaveAreaLUA("JO2608","",[1570.1050],1)
+		MultiPlayerSync()
+		SetCutSceneLite(FALSE)
+		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -110,9 +76,10 @@ END
 
 IF
 // Main triggers
-	OR(2)
+	OR(3)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1) // Current area is a master area
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
@@ -124,13 +91,37 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		ClearAllActions()
+		MoveViewObject(Player1,INSTANT)
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
-		DisplayStringHead(Myself,~Travelers !~)
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
-		SetInterrupt(TRUE)
+		DisplayStringHead(Myself,~Travelers !~)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+// If area ISN'T a master area, this block come after // Main 1 // Loading Switch
+
+// Secondary Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
+
+IF
+// Main triggers
+	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",2) // Set in JO_JOINL.baf
+// Secondary triggers
+	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~Let's return to venture forth !!~)
+		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
+		FadeToColor([20.0],0)
+		Wait(1)
+		RestorePartyLocations()
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching room
+		FadeFromColor([30.0],0)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -165,7 +156,7 @@ END
 		// JO_Myself_InParty (Replace InParty())
 			// JO_Myself_Valid (Replace IsValidForPartyDialogue())
 ///////////////////////////////////////////////////////////////////////////////
- 
+
 // !InPartyAllowDead()
 IF
 	!Global("JO_Myself_AllowDead","LOCALS",0)
@@ -176,7 +167,7 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		Continue()
 END
- 
+
 // InPartyAllowDead()
 IF
 	Global("JO_Myself_AllowDead","LOCALS",0)
@@ -188,7 +179,7 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
 		Continue()
 END
- 
+
 // !InParty()
 IF
 	!Global("JO_Myself_InParty","LOCALS",0)
@@ -201,7 +192,7 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		Continue()
 END
- 
+
 // InParty()
 IF
 	Global("JO_Myself_InParty","LOCALS",0)
@@ -216,7 +207,7 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",1)
 		Continue()
 END
- 
+
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_Myself_Valid","LOCALS",0)
@@ -231,7 +222,7 @@ THEN
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		Continue()
 END
- 
+
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_Myself_Valid","LOCALS",0)
