@@ -1,4 +1,4 @@
-// SELECT COMMON AND ELSE VerbalConstant(O:Object*,I:Constant*soundOff)
+// TODO : SELECT COMMON AND ELSE VerbalConstant(O:Object*,I:Constant*soundOff) related to INTERACT.2da (Not sure anything can be done about it)
 ///////////////////////////////////////////////////////////////////////////////////
 
 // JO_JOIN_CUTSCENE
@@ -41,17 +41,19 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-// JO_JOIN_PRIVACY
+// Privacy / Indepandance
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Variables : :
-	// JO_JOIN_PRIVACY (Deactive travelers if Charname is separate from the party)
+	// JO_JOIN_PRIVACY (Automatically deactive travelers if Charname is in another area of the party)
+		// JO_JOIN_INDEPANDANCE (PID option : Deactive travelers if Charname is separate from the party but in the same area)
 // Note :
-	// Active or deactive travelers when Player1 is alone in the area.
-		// Related to mod like Romantic Encounters
+	// Privacy automatically Active or deactive travelers when Player1 is alone in the area. (Related to mod like Romantic Encounters)
+			// Indepandance ask to a traveler to deactive themselves when Player1 walks away from the party.
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
+	Global("JO_JOIN_NOPRIVACY","GLOBAL",0)
 	Global("JO_JOIN_PRIVACY","LOCALS",0)
 	!InMyArea(Player2)
 	!InMyArea(Player3)
@@ -78,6 +80,33 @@ THEN
 		Activate(Myself)
 END
 
+IF
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",1) // Set in PID
+	!Range(Player2,100)
+	!Range(Player3,100)
+	!Range(Player4,100)
+	!Range(Player5,100)
+	!Range(Player6,100)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",2)
+		Deactivate(Myself)
+END
+
+IF
+	OR(5)
+		Range(Player2,99)
+		Range(Player3,99)
+		Range(Player4,99)
+		Range(Player5,99)
+		Range(Player6,99)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",1)
+		Activate(Myself)
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // JO_JOIN_Move_Around related to JOJOINNE.d
@@ -99,7 +128,7 @@ END
 // Related to JOJOINNE.D groupe changes
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_Move_Around","GLOBAL",0)
 	!Global("JO_JOIN_Move_Done","LOCALS",1)
@@ -180,10 +209,13 @@ THEN
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
 
-		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
+//		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 //		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
+
+		SetGlobal("JO_JOIN_PRIVACY","LOCALS",0)
+		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
@@ -197,6 +229,7 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
@@ -214,10 +247,10 @@ THEN
 
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
-		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
@@ -257,6 +290,12 @@ THEN
 /*	RESPONSE #18
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()*/
+/*	RESPONSE #19
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		Continue()*/
+/*	RESPONSE #20
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		Continue()*/
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -268,7 +307,7 @@ END
 // Related to Reintegrate NPC into party periodically
 
 IF // security check
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading TODO : Yes or no
 	OnCreation()
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
@@ -291,28 +330,48 @@ END
 // Variables : :
 	// JO_JOIN_JOIN_TIMER (Set when a party member become a traveler or when a traveler do a quick switch)
 		// JO_JOIN_FORCE_SWITCH (Set by PID)
+			// JO_JOIN_IS_JOINING (Set when the traveler reintegrate the party for a Quick Switch)
+				// JO_JOINI (Set when a traveler is in party for a Quick Switch)
 // Note :
-	// Regular switch not at loading
+	// Regular switch
 		// Launched with dialog
 			// Also launched by JO_JOIN_JOIN_TIMER
+				// Also used by Loading Party
 ///////////////////////////////////////////////////////////////////////////////
 
 // Main Quick Switch 1
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 	!Global("JO_JOIN_JOIN_TIMER","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",1) // Enable next block
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0) // Temporise Quick Switch
 		DisplayString(Myself,~Ready for a Quick Switch.~)
-		Continue()
 END
 
+// Secondary Quick Switch 1
+
+// Block wait for Quick Switch
+
 IF
-// Main triggers
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_JOIN_TIMER","LOCALS",1) 
+	!Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",1) // Enable next block
+END
+
+// Main Quick Switch 2
+
+IF
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	OR(2)
@@ -341,7 +400,8 @@ IF
 	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
-//
+// 
+	Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
 	NumInPartyLT(6)
 	Switch("JO_JOIN_LINK_PLAYER_ID","LOCALS")
 THEN
@@ -350,6 +410,7 @@ THEN
 		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SmallWait(1)
 		MoveToObject(Player1Fill)
 		SetInterrupt(TRUE)
@@ -358,6 +419,7 @@ THEN
 		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SmallWait(1)
 		MoveToObject(Player1)
 		SetInterrupt(TRUE)
@@ -366,6 +428,7 @@ THEN
 		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SmallWait(1)
 		MoveToObject(Player2)
 		SetInterrupt(TRUE)
@@ -374,6 +437,7 @@ THEN
 		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SmallWait(1)
 		MoveToObject(Player3)
 		SetInterrupt(TRUE)
@@ -382,6 +446,7 @@ THEN
 		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SmallWait(1)
 		MoveToObject(Player4)
 		SetInterrupt(TRUE)
@@ -390,6 +455,7 @@ THEN
 		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SmallWait(1)
 		MoveToObject(Player5)
 		SetInterrupt(TRUE)
@@ -398,18 +464,20 @@ THEN
 		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SmallWait(1)
 		MoveToObject(Player6)
 		SetInterrupt(TRUE)
 END
 
 // Reintegrate NPC into party periodically
-// Used by // Regular switch not at loading
+	// Used by Regular switch 
+				// Also used by Loading Party
 
-// Main Quick Switch 2
+// Main Quick Switch 3
 
 IF
-// Main triggers
+// 
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -480,7 +548,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
@@ -494,7 +562,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
@@ -508,7 +576,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
@@ -522,7 +590,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
@@ -536,7 +604,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
@@ -561,7 +629,7 @@ END
 
 // Large range or different area
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // no linked
@@ -581,7 +649,7 @@ END
 
 // Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
@@ -605,7 +673,7 @@ END
 
 // Not to Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Delay(5)
@@ -641,7 +709,7 @@ END
 
 // Large range or different area
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -659,7 +727,7 @@ END
 
 // Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -684,7 +752,7 @@ END
 
 // Large range or different area
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -702,7 +770,7 @@ END
 
 // Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -727,7 +795,7 @@ END
 
 // Large range or different area
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -745,7 +813,7 @@ END
 
 // Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -770,7 +838,7 @@ END
 
 // Large range or different area
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -788,7 +856,7 @@ END
 
 // Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -813,7 +881,7 @@ END
 
 // Large range or different area
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -831,7 +899,7 @@ END
 
 // Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -855,7 +923,7 @@ END
 
 // Large range or different area
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -873,7 +941,7 @@ END
 
 // Short range
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	ActionListEmpty()
@@ -908,7 +976,7 @@ END
 // Main Sleeping Dead 1
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -993,7 +1061,7 @@ END
 
 // Warning: conditions must be identical to the previous block
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
@@ -1100,7 +1168,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1134,7 +1202,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1164,7 +1232,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1194,7 +1262,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1227,7 +1295,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1262,7 +1330,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1299,7 +1367,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1329,7 +1397,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1369,7 +1437,7 @@ END
 // Use Potions
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1401,7 +1469,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1431,7 +1499,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1464,7 +1532,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1497,7 +1565,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1534,7 +1602,7 @@ END
 // Basic weapon switch
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1561,7 +1629,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1587,7 +1655,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1619,7 +1687,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1650,7 +1718,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1685,7 +1753,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1713,7 +1781,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1742,7 +1810,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1771,7 +1839,7 @@ THEN
 END
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1800,7 +1868,7 @@ END
 // Basic attack
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
 	Global("JO_JOIN_Move_Done","LOCALS",0)
@@ -1844,7 +1912,7 @@ END
 // Main Switching Party 1
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -1911,7 +1979,7 @@ END
 
 // Player6
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -1961,7 +2029,7 @@ END
 
 // Player5
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2012,7 +2080,7 @@ END
 
 // Player4
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2063,7 +2131,7 @@ END
 
 // Player3
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2114,7 +2182,7 @@ END
 
 // Player2
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2168,7 +2236,7 @@ END
 // Main Switching Party 3
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
@@ -2303,7 +2371,7 @@ END
 // Main Fill Party 1
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 //	!Global("JO_JOIN_IS_JOINING","LOCALS",0) // Why ?
@@ -2357,7 +2425,7 @@ END
 // Main Fill Party 2
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_Fill_Party","LOCALS",2)
@@ -2380,6 +2448,7 @@ THEN
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)

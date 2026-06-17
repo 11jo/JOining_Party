@@ -34,7 +34,7 @@ END
 // Secondary Loading Switch 1 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
-// Main triggers
+// 
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
@@ -43,7 +43,7 @@ IF
 		See([ENEMY])
 // Dev
 	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
-// Secondary triggers
+// 
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 THEN
@@ -73,7 +73,7 @@ END
 // Main Loading Switch 1
 
 IF
-// Main triggers
+// 
 	OR(3)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
@@ -84,7 +84,7 @@ IF
 	OR(2)
 		!See([ENEMY])
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-// Secondary triggers
+// 
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100
@@ -107,9 +107,9 @@ END
 // Secondary Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",2) // Set in JO_JOINL.baf
-// Secondary triggers
+// 
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -308,13 +308,17 @@ END
 	// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
 // Special
 	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
+// Note :
+	// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
+		// Disable the Loading Switch if no traveler are her
+			// Related block in JO_JOINP
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-// Secondary triggers
+// 
 //	REPLACE_TRAVELER_NumInParty
 THEN
 	RESPONSE #100
@@ -330,7 +334,7 @@ END
 // Variables :
 	// JO_JOIN_BANTER_TIMER (Timer for starting banter)
 		// JO_JOIN_CUTSCENE (Deactive travelers for cutscene)
-			// JO_NOJOIN (Check if no traveler is  currently switching)
+			// JO_NOJOIN (Check if no traveler is currently switching)
 				// JO_JOIN_NEVER_BANTER (Prevent lauching banters)
 					// JO_JOIN_Move_Around (Centralised orders for all travelers at once)
 // Note :
@@ -338,12 +342,12 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-// Secondary triggers
+// 
 		// ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])

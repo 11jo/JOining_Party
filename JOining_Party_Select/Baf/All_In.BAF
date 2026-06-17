@@ -6,29 +6,30 @@
 // Variables :
 	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
 		// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
+			// JO_JOIN_LOAD (Used by travelers loading steps)
 ///////////////////////////////////////////////////////////////////////////////
 
 
 // For Party member After Main Loading Switch 1 //
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 	Global("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0) // Set to 1 by the first travelers switch
 	!TriggerOverride(Player1,GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)) // Check if another party member already leave
 //
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 	IsActive(Myself) // Same as Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-// Secondary triggers
+// 
 	InParty(Myself)
 	NumInParty(6)
 	Global("JO_JOIN_LOAD","LOCALS",0) // Not a traveler switching at loading
 	!Global("JO_JOINI","LOCALS",1) // Not a traveler switching at loading
 	!Dead("%Death_var%")
 THEN
-	RESPONSE #40
-		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+	RESPONSE #30
 		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
 		DisplayStringHead(Myself,~Oh no ! More Travelers...~)
 		LeaveParty()
 		Deactivate(Myself)
@@ -39,20 +40,22 @@ THEN
 		NoAction()
 	RESPONSE #20 
 		NoAction()
+	RESPONSE #10 
+		NoAction()
 END
             
 // For party member After Main Loading Switch 3 //
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
 	!Global("JO_JOIN_LOADING","GLOBAL",1) // Loading switch "almost" finished
-// Secondary triggers
+// 
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",-1))
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		Activate(Myself)
 		DisplayStringHead(Myself,~I'm back !~)
 		JoinParty()
@@ -71,13 +74,16 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-//////////////// JO_JOIN_Fill_Party 
+// Fill Party
 
+///////////////////////////////////////////////////////////////////////////////
+// Note :
+	// Secure variables from Fill Party in JO_JOINI.BAF
 ///////////////////////////////////////////////////////////////////////////////
 
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	InParty(Myself)
@@ -93,10 +99,14 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-//////////////// JO_JOIN_Wannabe : NPC can be traveler
+// Wannabe : NPC can be traveler
 
 ///////////////////////////////////////////////////////////////////////////////
-// A party member available to be traveler
+// Variables :
+	// JO_JOIN_Wannabe (If set to 1 the NPC is available to be a traveler Can be changed in PID)
+// Note :
+	// A party member available to be traveler
+///////////////////////////////////////////////////////////////////////////////
 
 IF
 	Global("JO_JOIN_Wannabe","LOCALS",0)
@@ -112,8 +122,18 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// JO_JOIN_SWITCH_TIMER // JO_JOIN_SWITCH_WITH_ME // JO_JOIN_READY_TO_SWITCH
+// Switching Party
 
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_SWITCH_TIMER (Timer make sure the NPC stay long enough in party)
+		// JO_JOIN_SWITCH_WITH_ME (If set to 1 then the party member is available for switching with a traveler)
+			// JO_JOIN_READY_TO_SWITCH (After some time in party, a party member can echange place with a traveler)
+				// JO_JOIN_Wannabe (Party member eligible and willing to be traveler)
+// Note :
+	// Related to Switching party in JO_JOINI.baf
+		// Reset globals and set JO_JOIN_SWITCH_TIMER randomly
+			// TODO : Setting JO_JOIN_SWITCH_TIMER randomly collision with component Switching Party Timer at the moment
 ///////////////////////////////////////////////////////////////////////////////
 
 // Related to Switching party !!!
@@ -163,8 +183,10 @@ END
 // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for switching with a traveler
 // Timer make sure the party member stay long enough in party
 
+// Primary Switching Party 1
+
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 //
@@ -181,8 +203,9 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// After Switching Party with a party member
-// Reset JO_NOJOIN after switching place, and other related variables
+// Main Switching Party 4 (Previous are in JO_JOINI.BAF)
+
+// After Switching Party with a party member Reset JO_NOJOINset JO_JOIN_SWITCH_TIMER, and other related variables
 IF
 	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 	InParty(Myself)
@@ -213,20 +236,17 @@ THEN
 		Continue()
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 ///////////////////////////////////////////////////////////////////////////////
 
 // Leave Party
 
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_LEAVE_PARTY (For party member that make place an instant for the traveler if party is full)
+		// JO_Myself_LeaveParty (Set by PID to make a traveler leave regulary)
+// Note :
+	// Make traveler reintegrate the group for leaving regulary as party member.
+	 // JO_JOIN_LEAVE_PARTY is also used by the traveler to avoid several party member to make place.
 ///////////////////////////////////////////////////////////////////////////////
 
 // Secondary Leave Party 1 // Selected party member make room
@@ -263,7 +283,7 @@ END
 
 // Player6
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
@@ -290,7 +310,7 @@ END
 
 // Player5
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
@@ -317,7 +337,7 @@ END
 
 // Player4
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
@@ -344,7 +364,7 @@ END
 
 // Player3
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
@@ -371,7 +391,7 @@ END
 
 // Player2
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
@@ -399,7 +419,7 @@ END
 // Main Leave Party 2 // If / when party isn't full, come in party
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	NumInPartyLT(6)
@@ -433,7 +453,7 @@ END
 // Main Leave Party 3 // Then leave party the regular way.
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	OR(2)
@@ -461,7 +481,7 @@ END
 // Secondary Leave Party 2 // Reintegrate the party member in party
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	OR(2)
@@ -495,7 +515,7 @@ END
 
 // Cas d'un recrutement non standard (ctrl+Q par exemple)
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -512,7 +532,7 @@ END
 // ni dans le groupe, ni familier, ni au sol, ni charmé
 // ChangeEnemyAlly par exemple
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -538,7 +558,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	OR(2)
@@ -552,25 +572,8 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
-
-// Have a variable that say "at least one traveler is here"
 IF
-// Main triggers
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	!AreaCheck("BD0120")
@@ -597,7 +600,7 @@ END
 // Related to Join_ability.baf destroy item before 
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	!Allegiance(Myself,FAMILIAR)
@@ -611,22 +614,56 @@ THEN
 		DestroyItem("JOMINHP1")
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
+///////////////////////////////////////////////////////////////////////////////
 
+// Check if traveler are in party
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+// Special
+	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
+// Note :
+	// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
+		// Disable the Loading Switch if no traveler are her
+			// Related block in JO_JOINP
+///////////////////////////////////////////////////////////////////////////////
+
+// Have a variable that say "at least one traveler is here"
+IF
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
+END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// First time from party to familiar
+// Traveler !
 
 ///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_SWITCH_TIMER (Timer for starting for Switching Party)
+			// JO_NOJOIN (Check if no traveler is currently switching)
+				// JO_JOIN_TALK (Used to display string We are now fellow travelers.)
+					// JO_JOIN_NEVER_JOIN (Prevent Quick Switch and Fill Party)
+						// JO_JOIN_NEVER_SWITCH (Prevent the Switching Party)
+							// JO_JOIN_NEVER_BANTER (Prevent lauching banters)
+								// JO_JOIN (Used to make a party member a traveler)
+									// JO_JOIN_IS_TRAVELER (Set to 1 if the character is a traveler)
+										// JO_JOIN_Wannabe (If set to 1 the NPC is available to be a traveler Can be changed in PID)
+// Note :
+	// First time from party to familiar
+		 // Add script GENERAL JO_JOINI
+			// Display "We are now fellow travelers"
+///////////////////////////////////////////////////////////////////////////////
+
+// Main Traveler 1
 
 IF
 	Global("JO_JOIN","LOCALS",1)
@@ -646,17 +683,18 @@ THEN
 		AddFamiliar()
 		FaceObject(Player1)
 //
-		SetGlobal("JO_JOIN_TALK","LOCALS",1) // fellow travelers
+		SetGlobal("JO_JOIN_TALK","LOCALS",1) // Display "We are now fellow travelers"
 		SetGlobal("JO_JOIN","LOCALS",2)
 //
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 //
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
 //
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN) // TODO: Added Moved in Jo_Joini to allow componant Traveler Switch Timer
+		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+//		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN) // Moved in Jo_Joini to facilitate componant Traveler Quick Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
 		MakeGlobal()
 		SetInterrupt(TRUE)
@@ -664,6 +702,8 @@ THEN
 END
 
 // fellow travelers (End first time from party to familiar)
+
+// Secondary Traveler 1
  
 IF
 	Global("JO_JOIN_TALK","LOCALS",1)
@@ -678,21 +718,22 @@ THEN
 		Continue() // To relevant JO_JOIN... blocks
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Switch between familiar and party
+// Quick Switch
 
 ///////////////////////////////////////////////////////////////////////////////
+// Variables : :
+	// JO_JOIN_JOIN_TIMER (Set when a party member become a traveler or when a traveler do a quick switch)
+		// JO_JOIN_FORCE_SWITCH (Set by PID)
+			// JO_JOINI (Set in JO_JOINI.baf when a traveler is in party for a Quick Switch)
+// Note :
+	// Switch between familiar and party
+		// Also used by Loading Party
+///////////////////////////////////////////////////////////////////////////////
+
+// Main Quick Switch 4 (Previous are in JO_JOINI.baf)
 
 IF
 	Global("JO_JOINI","LOCALS",1)
@@ -736,16 +777,6 @@ THEN
 		Face(S)
 		Continue() // To relevant JO_JOIN... blocks
 END
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 ///////////////////////////////////////////////////////////////////////////////
 

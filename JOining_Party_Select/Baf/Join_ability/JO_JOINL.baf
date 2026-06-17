@@ -17,7 +17,7 @@
 // Main Loading Switch 2
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 	NumInPartyLT(6)
 	Global("JO_JOIN_LOAD","LOCALS",0)
@@ -32,9 +32,9 @@ END
 // Main Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",2)
-// Secondary triggers
+// 
 	Global("JO_JOIN_LOAD","LOCALS",0)
 	!Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
@@ -51,9 +51,9 @@ END
 // Main Loading Switch 3 // Regular
 
 IF
-// Main triggers
+// 
 	Global("JO_JOIN_LOADING","GLOBAL",2)
-// Secondary triggers
+// 
 	Global("JO_JOIN_LOAD","LOCALS",0)
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN

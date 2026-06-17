@@ -151,6 +151,14 @@ Afterwards, you may delete the following files:
     and the contents of the "JOining_Party" subfolder 
 
 
+## Credits / Remerciements :
+---------------------------------
+
+- Rivvers / @RiwsPy
+ 
+- @Darpaek 
+
+
 ## Version History :
 --------------------
 

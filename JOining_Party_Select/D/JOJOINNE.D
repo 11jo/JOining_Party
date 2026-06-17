@@ -17,6 +17,10 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFBF5FI am exhausted by all these conversations, please stop interrupting the group.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFBF5FOn second thought, I miss our discussions... Let's talk to each others.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT //
 
+// Privacy
+	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
+	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
+
 // Checks
 	IF ~OR(2)
 			Global("JO_JOIN_AREA","MYAREA",1)
@@ -246,11 +250,14 @@ IF ~True()~ THEN BEGIN 0
 		SetTokenGlobal("JO_JOIN_CLEAR","LOCALS","JO_JOIN_CLEAR")
 
 
+		SetTokenGlobal("JO_JOIN_PRIVACY","LOCALS","JO_JOIN_PRIVACY")
+		SetTokenGlobal("JO_JOIN_INDEPANDANCE","LOCALS","JO_JOIN_INDEPANDANCE")
+
+
 		SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty")
 		SetTokenGlobal("JO_JOIN_LEAVE_PARTY","LOCALS","JO_JOIN_LEAVE_PARTY")
 
-//		SetTokenGlobal("","GLOBAL","")
-//		SetTokenGlobal("","GLOBAL","")
+
 //		SetTokenGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL","JO_JOIN_PARTY_SWITCH")
 //		SetTokenGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL","JO_JOIN_TRAVELER_SWITCH")
 //		SetTokenGlobal("JO_JOIN_MY_SWITCH","LOCALS","JO_JOIN_MY_SWITCH")
@@ -266,6 +273,7 @@ IF ~True()~ THEN BEGIN 0
 		SetTokenGlobal("JO_JOIN_SWITCH_TIMER","LOCALS","JO_JOIN_SWITCH_TIMER")
 		SetTokenGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS","JO_JOIN_READY_TO_SWITCH")
 		SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME")
+		SetTokenGlobal("JO_JOIN_QUICK_SWITCH","LOCALS","JO_JOIN_QUICK_SWITCH")
 		SetTokenGlobal("JO_JOIN_Fill_Party","LOCALS","JO_JOIN_Fill_Party")
 
 

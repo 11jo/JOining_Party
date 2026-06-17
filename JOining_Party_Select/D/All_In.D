@@ -47,6 +47,11 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)~ GOTO JO_JOINYes //
+
+// Indepandance
+	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",1)~ THEN REPLY ~^0xFFFFDF10Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~!Global("JO_JOIN_INDEPANDANCE","GLOBAL",1)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk away from the group !^-~ DO ~SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",1)~ GOTO JO_JOINYes //
+
 // Switching party between travelers and party members
 	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ THEN REPLY ~^0xFF82E6FFDon't switch with regular party members, be only a traveler.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -118,6 +123,9 @@ APPEND ~%joining_dlg%~
 //		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
 
+		SetGlobal("JO_JOIN_PRIVACY","LOCALS",0)
+		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
+
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 
@@ -130,6 +138,7 @@ APPEND ~%joining_dlg%~
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
@@ -147,10 +156,10 @@ APPEND ~%joining_dlg%~
 
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
-		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
