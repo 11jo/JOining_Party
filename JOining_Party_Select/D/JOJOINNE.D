@@ -22,8 +22,8 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
 
 // Indepandance
-	IF ~~ THEN REPLY ~^0xFFFFDF10All of you can follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ GOTO JO_JOINYes //
-	IF ~~ THEN REPLY ~^0xFFFFDF10I am pretty independant, none of you should follow me when I walk away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ GOTO JO_JOINYes //
+	IF ~~ THEN REPLY ~^0xFFFFDF10All of you can follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
+	IF ~~ THEN REPLY ~^0xFFFFDF10I am pretty independant, none of you should follow me when I walk away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
 
 // Checks
 	IF ~OR(2)

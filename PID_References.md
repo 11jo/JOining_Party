@@ -2,7 +2,7 @@
 --------------------------------------
 
 
-### PID for traveler
+### PID for travelers
 
 To enable the PID, charname need to use his ability on a traveler, then Charname or any party member can talk to the traveler and acces the PID.
 
@@ -11,7 +11,7 @@ To enable the PID, charname need to use his ability on a traveler, then Charname
 - REPLY : _"Oh ! Sorry,everything is fine."_ // **Close the dialog.**
 - REPLY : _"Join the group properly, please."_ // **Completely reintegrate the traveler in the group.**
 - REPLY : _"Join the group, just for a minute."_ // **A Quick Switch that allow to access inventory and else.**
-- REPLY : _"Switch with me."_ // **If a party member (except Charname) use that reply it will change place with the traveler.
+- REPLY : _"Switch with me."_ // **If a party member (except Charname) use that reply it will change place with the traveler.**
 
 - REPLY : _"We need to adjust our strategy."_ // **Acces to others reply options below. EXPERIMENTAL.**
 	- REPLY : _"Change nothing."_ // **Close the dialog.**
@@ -68,6 +68,7 @@ To enable the PID, charname need to use his ability on a traveler, then Charname
 - REPLY : _"JO_JOIN_LOADING."_ // **This variable is set when the Loading Switch process** (Should never appear)
 
 - REPLY : _"How do you feel as traveler."_ // **Ask the traveler to check statut.** (Will be expanded)
+
 	- REPLY : _"I don't have the engagement scroll."_ // **Not good.** (Traveler can die and variables are probably not okay)
 	- REPLY : _"The engagement scroll isn't active."_ // **Not good.** (Special item isn't equiped and variables are probably not okay)
 	- REPLY : _"I am not considered like a party member."_ // **Not good.** (The variable that simulate InParty() isn't set)
@@ -93,6 +94,7 @@ To enable the PID, charname need to use his ability on a traveler, then Charname
 
 To enable the PID, charname need to use his ability onhimself, a dialog will start automatically.
 
+---
 
 - REPLY : _"Sorry, I'm just trying to draw some attention..."_ // **Close the dialog.**
 - REPLY : _"Stop the Quick Switch for a while, please."_ // **Prevent the Quick Switch for all travelers.**
@@ -116,6 +118,7 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 - REPLY : _"Travelers if party members are available you can switch places."_ // **Allow the Switching Party for all travelers.**
 
 - REPLY : _"I like to ..."_ // **Acces to others reply options below.**
+
 	- REPLY : _"Nevermind, let's continue."_ // **Close the dialog.**
 	- REPLY : _"On second thought, let's start over."_ // **Return to previous dialog options.**
 	- REPLY : _"A legion ?"_ // **Count the number of travelers.** (Allow to verify that everyone is considered)
@@ -127,9 +130,11 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 	- REPLY : _"Leave the switching room !"_ // **Transport everyone to the previous position.**
 
 - REPLY : _"PlayerX want to..."_ // **Jump to another party member to manage travelers.**  (All party members are listed in game)
+
 	- REPLY : _"Wait PlayerX, we don't have time for this !"_ // **Close the dialog.**
 	- REPLY : _"On second thought, let's start over."_ // **Return to previous dialog options.**
 	- REPLY : _"...discuss with _"Traveler Name" !"_ **Make the party member jump to a traveler PID.** (All travelers are listed in game)
+
 - REPLY : _"PlayerX become a traveler please..."_ // **Make the party member become a traveler" (Same as using Charname ability on a party member)
 - REPLY : _"PlayerX, you can switch your place with travelers."_ **Enable the Switching Party for the party member**
 - REPLY : _"PlayerX, don't switch your place with travelers."_ **Disable the Switching Party for the party member**
@@ -140,6 +145,7 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 
 - REPLY : _"There's something wrong with travelers, let's settle this now."_ // **Cancel most variables assigned to all travelers.** (Except "We need to adjust...") (**To use only if problems arise**)
 
+// The five options below will probly be masked in the futur
 - REPLY : _"Let's Blop !"_ **Enable  Loading Switch and Switching Party in every area and situation.**
 - REPLY : _"Don't switch if not in a master area or if ennemies are at sight."_ **In these situations the group will be transported in special Candelkeep area for the Loading Switch.** (The Switching Party will wait for better circonstances)
 - REPLY : _"JO_NOJOIN."_ // **This variable is set when a transition between party and traveler is processing.** (Should not appear when no one switch)

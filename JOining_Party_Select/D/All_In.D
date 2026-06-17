@@ -3,7 +3,7 @@ APPEND ~%joining_dlg%~
 	IF WEIGHT #-1
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN 1
 	SAY ~Hey ! Who could have foreseen that you would lead such a legion ?~
-	IF ~~ THEN -~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
+	IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
 	IF ~~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
@@ -22,7 +22,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~!IsGabber(Player1) !TriggerOverride(IsGabber(Myself),Global("JO_JOIN_Wannabe","LOCALS",0))~ THEN REPLY ~^BSwitch with me.^-~ DO ~
+	IF ~!IsGabber(Player1) TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))~ THEN REPLY ~^BSwitch with me.^-~ DO ~
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
