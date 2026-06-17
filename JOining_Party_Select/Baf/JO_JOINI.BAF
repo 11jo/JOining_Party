@@ -287,12 +287,14 @@ THEN
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)
 		DisplayString(Myself,~Done.~)
 		Continue()
-/*	RESPONSE #18
+	RESPONSE #18
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		Continue()*/
-/*	RESPONSE #19
+		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
+		Continue()
+	RESPONSE #19
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		Continue()*/
+		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",1)
+		Continue()
 /*	RESPONSE #20
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()*/

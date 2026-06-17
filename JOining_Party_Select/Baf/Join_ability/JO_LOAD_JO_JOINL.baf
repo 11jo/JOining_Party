@@ -20,6 +20,22 @@ THEN
 		SetInterrupt(TRUE)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
+IF
+	NumInParty(6)
+	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",1))
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
+		DisplayStringHead(Myself,~No party members are willing to make room for an instant, we need to change that !~)
+		SetInterrupt(TRUE)
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
+END
 
 IF
 	Global("JO_JOIN_LOAD","LOCALS",1)

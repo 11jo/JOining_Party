@@ -21,6 +21,10 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
 	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
 
+// Indepandance
+	IF ~~ THEN REPLY ~^0xFFFFDF10All of you can follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ GOTO JO_JOINYes //
+	IF ~~ THEN REPLY ~^0xFFFFDF10I am pretty independant, none of you should follow me when I walk away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ GOTO JO_JOINYes //
+
 // Checks
 	IF ~OR(2)
 			Global("JO_JOIN_AREA","MYAREA",1)
@@ -62,17 +66,20 @@ IF ~True()~ THEN BEGIN 0
 // Player2
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^-<PLAYER2> want to...^-~ GOTO 2 //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^-<PLAYER2> become a traveler please...^-~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
+		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2> become a traveler please...^-~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		!TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, you can switch your place with travelers.^-~ DO ~
+		OR(2)
+			!TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
+			!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
+		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, you can switch your place with travelers.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_Wannabe","LOCALS",1))
 		ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, don't switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",1))
+		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, don't switch your place with travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1))
 		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
@@ -118,115 +125,115 @@ IF ~True()~ THEN BEGIN 0
 // leave the group at loading
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
-		TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, at beginning don't make room for travelers.^-~ DO ~
+		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, at beginning don't make room for travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_Wannabe","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, at beginning make room for travelers.^-~ DO ~
+		!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
+		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, at beginning make room for travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_Wannabe","LOCALS",1))~ EXIT //
 
 
 // Player3
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3> want to...^-~ GOTO 2 //
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3> become a traveler please...^-~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
+		!TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3> become a traveler please...^-~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 		!TriggerOverride(Player3,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, you can switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, you can switch your place with travelers.^-~ DO ~
 		ActionOverride(Player3,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player3,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, don't switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player3,Global("JO_JOIN_NEVER_SWITCH","LOCALS",1))
+		!TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, don't switch your place with travelers.^-~ DO ~
 		ActionOverride(Player3,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1))
 		ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 // leave the group at loading
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
-		TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, at beginning don't make room for travelers.^-~ DO ~
+		!TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, at beginning don't make room for travelers.^-~ DO ~
 		ActionOverride(Player3,SetGlobal("JO_JOIN_Wannabe","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",0))
-		TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, at beginning make room for travelers.^-~ DO ~
+		!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
+		!TriggerOverride(Player3,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFB4B4<PLAYER3>, at beginning make room for travelers.^-~ DO ~
 		ActionOverride(Player3,SetGlobal("JO_JOIN_Wannabe","LOCALS",1))~ EXIT //
 
 
 // Player4
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4> want to...^-~ GOTO 4 //
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4> become a traveler please...^-~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
+		!TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4> become a traveler please...^-~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 		!TriggerOverride(Player4,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, you can switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, you can switch your place with travelers.^-~ DO ~
 		ActionOverride(Player4,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player4,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, don't switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player4,Global("JO_JOIN_NEVER_SWITCH","LOCALS",1))
+		!TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, don't switch your place with travelers.^-~ DO ~
 		ActionOverride(Player4,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1))
 		ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 // leave the group at loading
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))
-		TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, at beginning don't make room for travelers.^-~ DO ~
+		!TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, at beginning don't make room for travelers.^-~ DO ~
 		ActionOverride(Player4,SetGlobal("JO_JOIN_Wannabe","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",0))
-		TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, at beginning make room for travelers.^-~ DO ~
+		!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))
+		!TriggerOverride(Player4,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFBF5F<PLAYER4>, at beginning make room for travelers.^-~ DO ~
 		ActionOverride(Player4,SetGlobal("JO_JOIN_Wannabe","LOCALS",1))~ EXIT //
 
 
 // Player5
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER5> want to...^-~ GOTO 5 //
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER5> become a traveler please...^-~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
+		!TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFF82E6FF<PLAYER5> become a traveler please...^-~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 		!TriggerOverride(Player5,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, you can switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, you can switch your place with travelers.^-~ DO ~
 		ActionOverride(Player5,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player5,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, don't switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player5,Global("JO_JOIN_NEVER_SWITCH","LOCALS",1))
+		!TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, don't switch your place with travelers.^-~ DO ~
 		ActionOverride(Player5,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1))
 		ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 // leave the group at loading
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",1))
-		TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, at beginning don't make room for travelers.^-~ DO ~
+		!TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, at beginning don't make room for travelers.^-~ DO ~
 		ActionOverride(Player5,SetGlobal("JO_JOIN_Wannabe","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",0))
-		TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, at beginning make room for travelers.^-~ DO ~
+		!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",1))
+		!TriggerOverride(Player5,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFF82E6FF<PLAYER5>, at beginning make room for travelers.^-~ DO ~
 		ActionOverride(Player5,SetGlobal("JO_JOIN_Wannabe","LOCALS",1))~ EXIT //
 
 
 // Player6
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER6> want to...^-~ GOTO 6 //
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER6> become a traveler please...^-~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
+		!TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFF00FF<PLAYER6> become a traveler please...^-~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 		!TriggerOverride(Player6,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, you can switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, you can switch your place with travelers.^-~ DO ~
 		ActionOverride(Player6,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player6,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, don't switch your place with travelers.^-~ DO ~
+		!TriggerOverride(Player6,Global("JO_JOIN_NEVER_SWITCH","LOCALS",1))
+		!TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, don't switch your place with travelers.^-~ DO ~
 		ActionOverride(Player6,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1))
 		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 // leave the group at loading
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",1))
-		TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, at beginning don't make room for travelers.^-~ DO ~
+		!TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, at beginning don't make room for travelers.^-~ DO ~
 		ActionOverride(Player6,SetGlobal("JO_JOIN_Wannabe","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",0))
-		TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, at beginning make room for travelers.^-~ DO ~
+		!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",1))
+		!TriggerOverride(Player6,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFF00FF<PLAYER6>, at beginning make room for travelers.^-~ DO ~
 		ActionOverride(Player6,SetGlobal("JO_JOIN_Wannabe","LOCALS",1))~ EXIT //
 
 
@@ -331,7 +338,7 @@ END
 
 IF ~~ THEN BEGIN 1
 	SAY ~Heu...~
-	IF ~~ THEN REPLY ~Nevermind, let's continue~ EXIT
+	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
 //	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",16)~ EXIT // Deprecated by the one below see JO_JOINC.BAF
 	IF ~!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~ActionOverride(Player1,ChangeAIScript("JO_JOINC",RACE)) ActionOverride(Player1,SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1))~ EXIT //
@@ -386,7 +393,7 @@ END
 
 IF ~~ THEN BEGIN 2
 	SAY ~Then...~
-	IF ~~ THEN REPLY ~Wait <PLAYER2> we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~Wait <PLAYER2>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~On second thought, let's start over.~ GOTO 0
 /*
 	IF ~OR(2)
