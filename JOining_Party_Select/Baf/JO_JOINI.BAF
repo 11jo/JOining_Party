@@ -1911,6 +1911,53 @@ END
 		// Used for maximise triggering all interactions
 ///////////////////////////////////////////////////////////////////////////////
 
+// No Wannabe in party
+
+IF
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Set in All_In.baf
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1) // Set in All_In.baf
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+//
+	OR(2)
+		!ActuallyInCombat()
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
+	!Global("JO_Myself_Valid","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+//
+	NumInPartyGT(2)
+	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
+// 	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : See below, but this block could be expanded to take party member not valid in consideration.
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~No party member can want to switch with me ? We need to change that.~)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","LOCALS",0)
+		SetInterrupt(TRUE)
+END
+
 // Main Switching Party 1
 
 IF

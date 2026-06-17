@@ -69,6 +69,8 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 	- (It expand blocks that concern Player2 to Player6 for traveler to follow the group movement in some case, so add only few of them)
 	- (Warning Option 2 is Experimental and will expend installation time significaly, to use only with few traveler.)
 
+You can check [PID options and what they do here](https://github.com/11jo/JOining_Party/blob/main/PID_References.md).
+
 
 ##### Componants :  
 
@@ -103,7 +105,7 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 Starting a new game, Charname receive a special ability the "Engagement.
 
 - **Using the ability**, on a party member selected to be a traveler at installation, will **change it to a familiar / travelers**.
-- Using the ability on a travelers, will **allow to dialog** and modify their behavior.
+- Using the ability on a travelers, will [allow to dialog](https://github.com/11jo/JOining_Party/blob/main/PID_References.md#pid-for-traveler) and modify their behavior.
 	- Any party member can start the PID with a traveler after using Charname ability on it.
 	- Follow (Close or at sight) the party member who initiate the talk.
 	- Make the Travelers joining the party as regular party member.
@@ -111,7 +113,7 @@ Starting a new game, Charname receive a special ability the "Engagement.
 	- Choose if you want the familier to be deactivate for Cutscenes.
 	- Make the Travelers completly leave the party, will automatically be added an instant to the group then removed, in order to set leaving dialog.
 
- - **Using the ability**, on Charname, will open a dialog.
+ - **Using the ability**, on Charname, will [open a dialog](https://github.com/11jo/JOining_Party/blob/main/PID_References.md#pid-for-charname).
 	- Allow to give mostly similar directions as above but to all travelers at once.
     - Allow to switch to only one traveler to dialog.
 	- Allow to select a party member to dialog with one traveler.

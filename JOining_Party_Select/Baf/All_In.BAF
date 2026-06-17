@@ -281,6 +281,39 @@ END
 
 // Main Leave Party 1 // If party is full, randomely pick one member / Wannabe to make room an instant
 
+// No Wannabe in party
+
+IF
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+//
+	NumInPartyGT(5)
+	OR(2)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+//
+	!Global("JO_Myself_Valid","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
+// 	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : See below, but this block could be expanded to take party member not valid in consideration.
+//	RandomNum(5,2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~No party member can make room for me ? We need to change that.~)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","LOCALS",0)
+		SetInterrupt(TRUE)
+END
+
 // Player6
 IF
 // 
@@ -298,7 +331,7 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",0))
-	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
+//	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
@@ -325,7 +358,7 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",0))
-	!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
+//	!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
@@ -352,7 +385,7 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",0))
-	!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
+//	!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
@@ -379,7 +412,7 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",0))
-	!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
+//	!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
@@ -406,7 +439,7 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",0))
-	!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+//	!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,1)
 THEN
 	RESPONSE #100
