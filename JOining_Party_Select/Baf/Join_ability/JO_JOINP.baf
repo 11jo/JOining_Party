@@ -262,13 +262,6 @@ THEN
 		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
 END
 
-IF
-	!Global("JO_JOIN_Move_Around","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
-END
-
 // Prevent edge case when traveler special item finish in Player1 inventory
 IF
 	HasItem("JOMINHP1",Player1)

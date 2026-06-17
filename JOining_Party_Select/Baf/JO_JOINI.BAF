@@ -118,10 +118,12 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
+	Delay(5)
 	Global("JO_JOIN_Move_Done","LOCALS",1)
 THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
 		Continue()
 END
 

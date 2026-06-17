@@ -286,7 +286,6 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
 	NumInPartyGT(5)
 	OR(2)
@@ -331,11 +330,13 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(Player6,Global("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 //	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player6,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 		SetInterrupt(TRUE)
@@ -358,11 +359,13 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(Player5,Global("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 //	!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player5,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 		SetInterrupt(TRUE)
@@ -385,11 +388,13 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(Player4,Global("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 //	!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player4,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 		SetInterrupt(TRUE)
@@ -412,11 +417,13 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(Player3,Global("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 //	!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player3,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 		SetInterrupt(TRUE)
@@ -439,11 +446,13 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(Player2,Global("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 //	!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 		SetInterrupt(TRUE)
@@ -454,6 +463,9 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	OR(2)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
 	NumInPartyLT(6)
 	OR(2)
@@ -466,6 +478,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -528,6 +541,7 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SmallWait(1)
