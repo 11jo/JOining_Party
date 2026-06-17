@@ -119,6 +119,7 @@ APPEND ~%joining_dlg%~
 //		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
