@@ -526,10 +526,49 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // Death_var : CreateCreatureObjectCopy found in %SOURCE_FILESPEC%
 				~
 			END
+// Not usefull at the moment and OR() issues see bderinye.BCS.
+/*// StateCheck situation
+			SPRINT textToReplace ~^[%TAB% ]*StateCheck(Player3,\([^)]*\))
+^[%TAB% ]*StateCheck(Player4,\1)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+				REPLACE_StateCheck~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Death_var : StateCheck found in %SOURCE_FILESPEC%
+				~
+			END*/
+//StateCheck(Player3,STATE_REALLY_DEAD)
+	//StateCheck(Player4,STATE_REALLY_DEAD)
+// Not usefull at the moment and OR() issues See BD0120.BCS
+/*// NearLocation situation
+			SPRINT textToReplace ~^[%TAB% ]*NearLocation(Player3,\([^)]*\))
+^[%TAB% ]*NearLocation(Player4,\1)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+				REPLACE_NearLocation~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Death_var : NearLocation found in %SOURCE_FILESPEC%
+				~
+			END
+		//NearLocation(Player5,491,878,10)
+		//NearLocation(Player6,491,878,10)*/
 ///////////////////////////////////////////////////////////////////////////////
 // CUTSCENES
 ///////////////////////////////////////////////////////////////////////////////
 	// StartCutSceneMode() situation
+// Special : when StartCutSceneEx is placed before StartCutSceneMode we invert them (See BlackHearts mod implementation)
+			SPRINT textToReplace ~^[%TAB% ]*StartCutSceneEx(\([^)]*\)
+			^[%TAB% ]*StartCutSceneMode()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartCutSceneMode()
+	StartCutSceneEx(\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN

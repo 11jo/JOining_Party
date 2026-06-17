@@ -1,7 +1,7 @@
 // JO_LOAD_TRAVELER.TPA EXTEND_TOP for JO_JOINL.bcs at installation by JOining_Party_Select_End.tph
 
 ///////////////////////////////////////////////////////////////////////////////
-// Variables
+// Variables :
 	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
 		// JO_JOIN_LOAD (Used by travelers loading steps)
 ///////////////////////////////////////////////////////////////////////////////
@@ -24,7 +24,6 @@ COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_exte
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Death_var%",MoveToOffset([0.1]))
 		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1))

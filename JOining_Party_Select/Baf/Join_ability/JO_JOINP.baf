@@ -19,7 +19,7 @@ END
 // Loading Switch
 
 ///////////////////////////////////////////////////////////////////////////////
-// Variables
+// Variables :
 	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
 		// JO_JOIN_AREA (Check if current area is a master area)
 			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
@@ -67,8 +67,6 @@ THEN
 		SetCutSceneLite(FALSE)
 		Continue()
 END
-
-///////////////////////////////////////////////////////////////////////////////
 
 // If area IS a master area, then go to the Switching room.
 
@@ -129,7 +127,7 @@ END
 // Initialize
 
 ///////////////////////////////////////////////////////////////////////////////
-// Variables
+// Variables :
 	// JO_JOIN_PLAYER_INIT (At new game beginning add special ability to Charname)
 		// JO_JOIN_SWEET_DREAM (Related to dream talks)
 			// JO_JOIN_BANTER_TIMER (Related to banter talks)
@@ -151,7 +149,7 @@ END
 // Base
 
 ///////////////////////////////////////////////////////////////////////////////
-// Variables
+// Variables :
 	// JO_Myself_AllowDead (Replace InPartyAllowDead())
 		// JO_Myself_InParty (Replace InParty())
 			// JO_Myself_Valid (Replace IsValidForPartyDialogue())
@@ -245,7 +243,7 @@ END
 // Security
 
 ///////////////////////////////////////////////////////////////////////////////
-// Variables
+// Variables :
 	// JO_JOIN (For Charname it allow to create an invisible creature that open a PID to manage travelers)
 		// JO_JOIN_CUTSCENE (Deactive travelers for cutscene)
 			// JO_Myself_Valid (Replace IsValidForPartyDialogue())
@@ -306,7 +304,7 @@ END
 // Check if traveler are in party
 
 ///////////////////////////////////////////////////////////////////////////////
-// Variables
+// Variables :
 	// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
 // Special
 	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
@@ -329,13 +327,13 @@ END
 // JO_JOIN_BANTER_TIMER centralised for all travelers
 
 ///////////////////////////////////////////////////////////////////////////////
-// Variables
+// Variables :
 	// JO_JOIN_BANTER_TIMER (Timer for starting banter)
 		// JO_JOIN_CUTSCENE (Deactive travelers for cutscene)
 			// JO_NOJOIN (Check if no traveler is  currently switching)
 				// JO_JOIN_NEVER_BANTER (Prevent lauching banters)
 					// JO_JOIN_Move_Around (Centralised orders for all travelers at once)
-// Note
+// Note :
 	// See the "JO_JOIN_BANTER_TIMER" commented out in Baf/Banter_Dream (Was set individually for each travelers, to see what is the best way...)
 ///////////////////////////////////////////////////////////////////////////////
 
