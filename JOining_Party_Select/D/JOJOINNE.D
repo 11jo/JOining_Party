@@ -54,7 +54,7 @@ IF ~True()~ THEN BEGIN 0
 		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFThere is room for three travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 
 // Switching party between travelers and party members
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFB4B4ITravelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFB4B4Travelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFTravelers if party members are available you can switch places.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",11)~ EXIT //
 
 
@@ -123,11 +123,11 @@ IF ~True()~ THEN BEGIN 0
 // leave the group at loading
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
-		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, at beginning don't make room for travelers.^-~ DO ~
+		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, at loading don't make room for travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_Wannabe","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
-		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, at beginning make room for travelers.^-~ DO ~
+		!TriggerOverride(Player2,Global("JO_JOIN_NOTRAVELER","LOCALS",1))~ THEN REPLY ~^-<PLAYER2>, at loading make room for travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_Wannabe","LOCALS",1))~ EXIT //
 
 
