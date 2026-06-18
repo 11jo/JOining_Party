@@ -113,7 +113,6 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 - REPLY : _"There is room for one traveler to come in party."_ // **Make a random traveler reintegrate the group completly.** (Can allow more than one if there is several free slots)
 - REPLY : _"There is room for two travelers to come in party."_ // **Make a random traveler reintegrate the group completly.** (Can allow more if there is several free slots)
 - REPLY : _"There is room for three travelers to come in party."_ // **Make a random traveler reintegrate the group completly.** (Can allow more if there is several free slots)
-- REPLY : _"There is room for four travelers to come in party."_ // **Make a random traveler reintegrate the group completly.** (Can allow more if there is several free slots)
 - REPLY : _"Travelers stop switching places with party members."_ // **Prevent the Switching Party for all travelers.**
 - REPLY : _"Travelers if party members are available you can switch places."_ // **Allow the Switching Party for all travelers.**
 
@@ -126,8 +125,8 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 	- REPLY : _"To all travelers ! Get lost !"_ // **Make all travelers become a party member then leave the group.** (If there is no free slot in party, one of the party member will make room for an instant then reinteger the group)
 	- REPLY : _"Everybody say, Youhou !"_ // **Count the number of travelers.** (Allow to verify that everyone is considered)
 	- REPLY : _"Don't be afraid and come closer..."_ // **Make all travelers come near Charname.**
-	- REPLY : _"Go to the switching room !"_ // **Transport everyone to the special Candelkeep area.**
-	- REPLY : _"Leave the switching room !"_ // **Transport everyone to the previous position.**
+	- REPLY : _"Go to the Switching Room !"_ // **Transport everyone to the special Candelkeep area.** (Can be used at anytime.)
+	- REPLY : _"Leave the Switching Room !"_ // **Transport everyone to the previous position.** (Can also return using the Switching Room door way.)
 
 - REPLY : _"PlayerX want to..."_ // **Jump to another party member to manage travelers.**  (All party members are listed in game)
 

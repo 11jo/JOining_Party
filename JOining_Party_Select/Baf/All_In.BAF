@@ -22,7 +22,7 @@ IF
 	IsActive(Myself) // Same as Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 // 
 	InParty(Myself)
-	NumInParty(6)
+	NumInPartyGT(5)
 	Global("JO_JOIN_LOAD","LOCALS",0) // Not a traveler switching at loading
 	!Global("JO_JOINI","LOCALS",1) // Not a traveler switching at loading
 	!Dead("%Death_var%")
@@ -197,7 +197,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-		DisplayString(Myself,~Ready to switch when it's possible.~)
+		DisplayString(Myself,~Ready to Switching Party when it's possible.~)
 		Continue()
 END
 
@@ -211,28 +211,32 @@ IF
 	InParty(Myself)
 THEN
 	RESPONSE #25
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_DAYS)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",EIGHTEEN_HOURS)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		Continue()
 END
 
@@ -279,8 +283,6 @@ THEN
 		Continue()
 END
 
-// Main Leave Party 1 // If party is full, randomely pick one member / Wannabe to make room an instant
-
 // No Wannabe in party
 
 IF
@@ -313,10 +315,15 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+// Main Leave Party 1 // If party is full, randomely pick one member / Wannabe to make room an instant
+
 // Player6
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
 	NumInPartyGT(5)
@@ -336,6 +343,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player6,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
@@ -346,7 +354,10 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
 //
 	NumInPartyGT(5)
 	OR(2)
@@ -365,6 +376,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player5,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
@@ -375,7 +387,10 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
 //
 	NumInPartyGT(5)
 	OR(2)
@@ -394,6 +409,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player4,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
@@ -404,7 +420,10 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
 //
 	NumInPartyGT(5)
 	OR(2)
@@ -423,6 +442,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player3,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
@@ -433,7 +453,10 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+	Global("JO_NOJOIN","GLOBAL",0)
 //
 	NumInPartyGT(5)
 	OR(2)
@@ -452,19 +475,22 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 		SetInterrupt(TRUE)
 END
 
-// Main Leave Party 2 // If / when party isn't full, come in party
-
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LEAVE_WAIT","LOCALS",0)
 	OR(2)
 		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+	OR(2)
+		Global("JO_NOJOIN","GLOBAL",0)
 		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
 	NumInPartyLT(6)
@@ -478,7 +504,83 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
+		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",1)
+		SetInterrupt(TRUE)
+END
+
+IF
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LEAVE_WAIT","LOCALS",1)
+	OR(2)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+	OR(2)
+		Global("JO_NOJOIN","GLOBAL",0)
+		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+//
+	NumInPartyLT(6)
+	OR(2)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",2)
+		SetInterrupt(TRUE)
+END
+
+// Secondary Leave Party 2
+
+IF
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+//
+	NumInPartyGT(5)
+	OR(2)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
+		DisplayStringHead(Myself,~I Leave Party in a moment...~)
+END
+
+// Main Leave Party 2 // If / when party isn't full, come in party
+
+IF
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	OR(2)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+	OR(2)
+		Global("JO_NOJOIN","GLOBAL",0)
+		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+//
+	NumInPartyLT(6)
+	OR(2)
+		!Global("JO_Myself_LeaveParty","LOCALS",0)
+		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -510,7 +612,6 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -529,6 +630,7 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
 //
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
@@ -539,7 +641,6 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
@@ -550,6 +651,7 @@ THEN
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
 		DisplayStringHead(Myself,~I'm back !~)
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetInterrupt(TRUE)
 		JoinParty()
 END

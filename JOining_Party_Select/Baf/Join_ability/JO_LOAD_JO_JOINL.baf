@@ -9,7 +9,7 @@
 // Main 2 // After JO_JOINP.baf Main 1 // Loading Switch
 
 IF
-	NumInParty(6)
+	NumInPartyGT(5)
 	NumInPartyAlive(1) // Security if all party member are dead but still in party
 THEN
 	RESPONSE #100
@@ -21,7 +21,7 @@ THEN
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
 IF
-	NumInParty(6)
+	NumInPartyGT(5)
 	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
 	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
 	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))

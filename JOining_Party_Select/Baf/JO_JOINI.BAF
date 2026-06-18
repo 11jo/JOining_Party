@@ -82,11 +82,11 @@ END
 
 IF
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",1) // Set in PID
-	!Range(Player2,100)
-	!Range(Player3,100)
-	!Range(Player4,100)
-	!Range(Player5,100)
-	!Range(Player6,100)
+	!TriggerOverride(Player1,Range(Player2,100))
+	!TriggerOverride(Player1,Range(Player3,100))
+	!TriggerOverride(Player1,Range(Player4,100))
+	!TriggerOverride(Player1,Range(Player5,100))
+	!TriggerOverride(Player1,Range(Player6,100))
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",2)
@@ -95,11 +95,11 @@ END
 
 IF
 	OR(5)
-		Range(Player2,99)
-		Range(Player3,99)
-		Range(Player4,99)
-		Range(Player5,99)
-		Range(Player6,99)
+		TriggerOverride(Player1,Range(Player2,99))
+		TriggerOverride(Player1,Range(Player3,99))
+		TriggerOverride(Player1,Range(Player4,99))
+		TriggerOverride(Player1,Range(Player5,99))
+		TriggerOverride(Player1,Range(Player6,99))
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",2)
 THEN
 	RESPONSE #100
@@ -221,6 +221,8 @@ THEN
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -229,6 +231,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -348,6 +351,7 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
 	!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS")
 	!Global("JO_JOIN_JOIN_TIMER","LOCALS",1)
 THEN
@@ -359,11 +363,16 @@ END
 
 // Secondary Quick Switch 1
 
-// Block wait for Quick Switch
+// Block wait 1 for Quick Switch
 
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
+// 
 	Global("JO_JOIN_JOIN_TIMER","LOCALS",1) 
 	!Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
 	NumInPartyLT(6)
@@ -372,11 +381,34 @@ THEN
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",1) // Enable next block
 END
 
+// Secondary Quick Switch 1
+
+IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another traveler is already active
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	OR(4)
+		!Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!Global("JO_NOJOIN","GLOBAL",0)
+		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		!Global("JO_JOIN_Fill_Party","LOCALS",0)
+// 
+	Global("JO_JOIN_JOIN_TIMER","LOCALS",1) 
+	Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0) // Enable next block
+		DisplayStringHead(Myself,~I have to wait more before a Quick Switch.~)
+END
+
 // Main Quick Switch 2
 
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+	Global("JO_JOIN_Fill_Party","LOCALS",0)
 //
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
@@ -411,7 +443,7 @@ IF
 THEN
 	RESPONSE #0
 		SetInterrupt(FALSE)
-		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
+		DisplayString(Myself,~Don't worry, I won't disturb the group long.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -420,7 +452,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetInterrupt(FALSE)
-		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
+		DisplayString(Myself,~Don't worry, I won't disturb the group long.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -429,7 +461,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #2
 		SetInterrupt(FALSE)
-		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
+		DisplayString(Myself,~Don't worry, I won't disturb the group long.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -438,7 +470,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #3
 		SetInterrupt(FALSE)
-		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
+		DisplayString(Myself,~Don't worry, I won't disturb the group long.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -447,7 +479,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #4
 		SetInterrupt(FALSE)
-		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
+		DisplayString(Myself,~Don't worry, I won't disturb the group long.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -456,7 +488,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #5
 		SetInterrupt(FALSE)
-		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
+		DisplayString(Myself,~Don't worry, I won't disturb the group long.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -465,7 +497,7 @@ THEN
 		SetInterrupt(TRUE)
 	RESPONSE #6
 		SetInterrupt(FALSE)
-		DisplayString(Myself,~Don't worry, I won't disturb the group.~)
+		DisplayString(Myself,~Don't worry, I won't disturb the group long.~)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -1913,6 +1945,27 @@ END
 		// Used for maximise triggering all interactions
 ///////////////////////////////////////////////////////////////////////////////
 
+// Secondary Switching Party 1
+
+IF // Block wait 4 for Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
+	!TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
+		DisplayStringHead(Myself,~No party member are available to switch with me, I'm ready when it's possible.~)
+		SetInterrupt(TRUE)
+END
+
 // No Wannabe in party
 
 IF
@@ -1954,9 +2007,8 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		DisplayStringHead(Myself,~No party member can want to switch with me ? We need to change that.~)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_%Death_var%_LeaveParty","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		DisplayStringHead(Myself,~No party member want to switch with me ? We need to change that.~)
 		SetInterrupt(TRUE)
 END
 
@@ -1965,6 +2017,8 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -1995,33 +2049,62 @@ IF
 	NumInPartyGT(2)
 THEN
 	RESPONSE #0
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 END
 
 // Secondary Switching Party 1
 
-IF // Block wait 1 for Switching Party
+IF // Block wait 3 for Switching Party // Return to Main Switching Party 1 if another traveler is already active
+	OR(2)
+		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_NOJOIN","GLOBAL",1)
+//
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
-	NumInPartyLT(6)
-	NumInPartyGT(2)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-		Continue()
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
+		DisplayStringHead(Myself,~Another traveler already Switching Party, I'm ready when it's possible.~)
 END
 
 // Secondary Switching Party 1
 
 IF // Block wait 2 for Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
+	OR(5)
+		TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
+		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
+		DisplayStringHead(Myself,~Switching Party !~)
+		SetInterrupt(TRUE)
+END
+
+// Secondary Switching Party 1
+
+IF // Block wait 1 for Switching Party
+//	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+//
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-	NumInPartyLT(6)
 	NumInPartyGT(2)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",1)
-		NoAction()
+		DisplayStringHead(Myself,~Waiting to Switching Party.~)
 END
 
 // Randomly select a member... Wannabe !
@@ -2068,7 +2151,6 @@ THEN
 		FaceObject(Player6)
 		ActionOverride(Player6,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player6,~Hum ?~)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
 		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
@@ -2118,7 +2200,6 @@ THEN
 		FaceObject(Player5)
 		ActionOverride(Player5,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player5,~What ?~)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
 		ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
@@ -2169,7 +2250,6 @@ THEN
 		FaceObject(Player4)
 		ActionOverride(Player4,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player4,~Don't disturb...~)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
 		ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
@@ -2220,7 +2300,6 @@ THEN
 		FaceObject(Player3)
 		ActionOverride(Player3,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player3,~Yes ?~)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
 		ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
@@ -2271,7 +2350,6 @@ THEN
 		FaceObject(Player2)
 		ActionOverride(Player2,FaceObject(Myself)) // FIXME
 		DisplayStringHead(Player2,~Hé ?~)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
 		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
@@ -2404,7 +2482,9 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1) // Ready right away
+		DisplayString(Myself,~Ready to Switching Party when it's possible.~)
 		Continue()
 END
 

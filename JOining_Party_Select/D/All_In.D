@@ -130,6 +130,8 @@ APPEND ~%joining_dlg%~
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -138,6 +140,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -192,6 +195,7 @@ APPEND ~%joining_dlg%~
 
 
 		SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty")
+		SetTokenGlobal("JO_JOIN_LEAVE_WAIT","LOCALS","JO_JOIN_LEAVE_WAIT")
 		SetTokenGlobal("JO_JOIN_LEAVE_PARTY","LOCALS","JO_JOIN_LEAVE_PARTY")
 		SetTokenGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL","JO_JOIN_LEAVING_PARTY")
 
@@ -208,6 +212,7 @@ APPEND ~%joining_dlg%~
 		SetTokenGlobal("JO_JOIN_IS_Wannabe","LOCALS","JO_JOIN_IS_Wannabe")
 		SetTokenGlobal("JO_JOIN_JOIN_TIMER","LOCALS","JO_JOIN_JOIN_TIMER")
 		SetTokenGlobal("JO_JOIN_SWITCH_TIMER","LOCALS","JO_JOIN_SWITCH_TIMER")
+		SetTokenGlobal("JO_JOIN_SWITCHING","GLOBAL","JO_JOIN_SWITCHING")
 		SetTokenGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS","JO_JOIN_READY_TO_SWITCH")
 		SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME")
 		SetTokenGlobal("JO_JOIN_Fill_Party","LOCALS","JO_JOIN_Fill_Party")

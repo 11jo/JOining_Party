@@ -29,7 +29,7 @@ END
 							// JO_JOIN_SWITCHING_ROOM (In case area is JO2608.are prevent to end loading switch prematurely)
 ///////////////////////////////////////////////////////////////////////////////
 
-// If area ISN'T a master area, then go to the Switching room.
+// If area ISN'T a master area, then go to the Switching Room.
 
 // Secondary Loading Switch 1 // Special // SWITCHING_ROOM JO2608.ARE
 
@@ -50,6 +50,7 @@ THEN
 	RESPONSE #100
 		ClearAllActions()
 		SetCutSceneLite(TRUE)
+		CreateVisualEffectObject("JOBG402",Player1)
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1) // We are in the Switching room
 		FadeToColor([20.0],0)
 		Wait(1)
@@ -64,11 +65,13 @@ THEN
 		LeaveAreaLUAPanic("JO2608","",[1570.1050],1)
 		LeaveAreaLUA("JO2608","",[1570.1050],1)
 		MultiPlayerSync()
+		Wait(1)
+		CreateVisualEffectObject("JOBG402",Player1)
 		SetCutSceneLite(FALSE)
 		Continue()
 END
 
-// If area IS a master area, then go to the Switching room.
+// If area IS a master area, then go to the Switching Room.
 
 // Main Loading Switch 1
 
@@ -116,10 +119,13 @@ THEN
 		DisplayStringHead(Myself,~Let's return to venture forth !!~)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		FadeToColor([20.0],0)
+		CreateVisualEffectObject("JOBG402",Player1)
 		Wait(1)
 		RestorePartyLocations()
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching room
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching Room
 		FadeFromColor([30.0],0)
+		Wait(1)
+		CreateVisualEffectObject("JOBG402",Player1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////

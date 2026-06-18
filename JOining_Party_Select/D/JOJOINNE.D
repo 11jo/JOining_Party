@@ -35,25 +35,23 @@ IF ~True()~ THEN BEGIN 0
 
 // Free slots in party
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
-		NumInParty(4)
-		Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-		!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+		NumInParty(5)
+		Global("JO_JOIN_LOADING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFThere is room for one traveler to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
-		NumInParty(3)
-		Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-		!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+		NumInParty(4)
+		Global("JO_JOIN_LOADING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFThere is room for two travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
-		NumInParty(2)
-		Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-		!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+		NumInParty(3)
+		Global("JO_JOIN_LOADING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFThere is room for three travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
-		NumInParty(1)
-		Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-		!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFThere is room for four travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 
 // Switching party between travelers and party members
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFTravelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
@@ -267,6 +265,7 @@ IF ~True()~ THEN BEGIN 0
 
 		SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty")
 		SetTokenGlobal("JO_JOIN_LEAVE_PARTY","LOCALS","JO_JOIN_LEAVE_PARTY")
+		SetTokenGlobal("JO_JOIN_LEAVE_WAIT","LOCALS","JO_JOIN_LEAVE_WAIT")
 		SetTokenGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL","JO_JOIN_LEAVING_PARTY")
 
 
@@ -283,6 +282,7 @@ IF ~True()~ THEN BEGIN 0
 		SetTokenGlobal("JO_JOIN_IS_Wannabe","LOCALS","JO_JOIN_IS_Wannabe")
 		SetTokenGlobal("JO_JOIN_JOIN_TIMER","LOCALS","JO_JOIN_JOIN_TIMER")
 		SetTokenGlobal("JO_JOIN_SWITCH_TIMER","LOCALS","JO_JOIN_SWITCH_TIMER")
+		SetTokenGlobal("JO_JOIN_SWITCHING","GLOBAL","JO_JOIN_SWITCHING")
 		SetTokenGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS","JO_JOIN_READY_TO_SWITCH")
 		SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME")
 		SetTokenGlobal("JO_JOIN_QUICK_SWITCH","LOCALS","JO_JOIN_QUICK_SWITCH")
@@ -351,22 +351,21 @@ IF ~~ THEN BEGIN 1
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~To all travelers ! Get lost !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",5)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-Everybody say, Youhou !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",6)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-Don't be afraid and come closer...^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",9)~ EXIT //
-	IF ~!AreaCheck("JO2608")~ THEN REPLY ~^GGo to the switching room !^-~ DO ~
+	IF ~!AreaCheck("JO2608")~ THEN REPLY ~^GGo to the Switching Room !^-~ DO ~
 		StorePartyLocations()
 		CreateVisualEffectObject("JOBG402",Player1)
-		Wait(2)
 		FadeToColor([15.0],0)
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1631.1209],50))
-		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
-		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],50))
-		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],50))
-		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],50))
-		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1631.1209],1))
+		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],1))
+		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],1))
+		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],1))
+		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],1))
+		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],1))
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
-		Wait(2)
+		Wait(1)
 		CreateVisualEffectObject("JOBG402",Player1)~ EXIT //
-	IF ~AreaCheck("JO2608")~ THEN REPLY ~^GLeave the switching room !^-~ DO ~
+	IF ~AreaCheck("JO2608")~ THEN REPLY ~^GLeave the Switching Room !^-~ DO ~
 		CreateVisualEffectObject("JOBG402",Player1)
 		Wait(2)
 		FadeToColor([15.0],0)
