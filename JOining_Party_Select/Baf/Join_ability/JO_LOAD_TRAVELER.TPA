@@ -26,6 +26,7 @@ THEN
 		SetInterrupt(FALSE)
 //		ActionOverride("Death_var%",MoveToOffset([0.1]))
 		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
+		SmallWait(1)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1))
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",1))

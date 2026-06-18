@@ -30,7 +30,7 @@ IF ~True()~ THEN BEGIN 0
 			Global("JO_JOIN_AREA","MYAREA",1)
 			Global("JO_JOIN_BLOP","GLOBAL",1)
 		NumInPartyLT(6)
-		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
+		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT //
 
 // Free slots in party
@@ -243,7 +243,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~There's something wrong with travelers, let's settle this now.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",12) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~Let's Blop !~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",1) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~Don't switch if not in a master area or if ennemies are at sight.~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",0) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0)~ EXIT //
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING.~ DO ~SetGlobal("JO_JOIN_LOADING","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_CUTSCENE","GLOBAL",0)~ THEN REPLY ~JO_JOIN_CUTSCENE.~ DO ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~ EXIT //
 	/*IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_SWITCHING_PARTY.~ DO ~SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ EXIT*/
@@ -251,8 +251,8 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~Show logs.~ DO ~
 		SetTokenGlobal("JO_JOIN","LOCALS","JO_JOIN")
 
-
 		SetTokenGlobal("JO_NOJOIN","GLOBAL","JO_NOJOIN")
+		SetTokenGlobal("JO_NOJOIN_LOCALS","LOCALS","JO_NOJOIN_LOCALS")
 		SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING")
 		SetTokenGlobal("JO_JOINI","LOCALS","JO_JOINI")
 		SetTokenGlobal("JO_JOIN_TALK","LOCALS","JO_JOIN_TALK")
