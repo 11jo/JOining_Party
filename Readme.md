@@ -144,7 +144,6 @@ Starting a new game, Charname receive a special ability the "Engagement.
 	- The dream talk script will adapt depending of the campaign.
 	- If conditions are meets a banter will dream talk, if not nothing will happen.
 	- When the party try to rest.
-	- Using the HotKey "**S**" manually.
 	- If not in combat or in the process of doing something.
 
   

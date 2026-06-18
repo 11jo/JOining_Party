@@ -242,7 +242,7 @@ THEN
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
 		SetGlobal("JO_JOIN_DREAM_REST","LOCALS",0)
 
-		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1) // If not the script will loop...
 
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
@@ -315,7 +315,7 @@ END
 
 IF // security check
 // 
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading TODO : Yes or no
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading TODO : Yes or no, maybe irrelevant with the new Loading Switch...
 	OnCreation()
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	OR(2)
@@ -433,7 +433,9 @@ IF
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_NOJOIN","GLOBAL",0)
+	OR(2)
+		Global("JO_JOIN_FORCE_SWITCH","LOCALS",1) // Set by JO_JOIN_Move_Around
+		Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
@@ -1943,17 +1945,21 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
 	// JO_JOIN_SWITCH_TIMER (Timer make sure the NPC stay long enough in party)
-		// JO_JOIN_SWITCH_WITH_ME (If set to 1 then the party member is available for switching with a traveler)
-			// JO_JOIN_READY_TO_SWITCH (After some time in party, a party member can echange place with a traveler)
-				// JO_JOIN_Wannabe (Party member eligible and willing to be traveler)
+		// JO_JOIN_SWITCHING (Allow to temporise and reset variables in some case) (Also used to prevent other unrelated blocks to run)
+			// JO_JOIN_SWITCH_WITH_ME (If set to 1 then the party member is available for switching with a traveler)
+				// JO_JOIN_READY_TO_SWITCH (After some time in party, a party member can echange place with a traveler)
+					// JO_JOIN_Wannabe (Party member eligible and willing to be traveler)
+						// JO_JOIN_SWITCH_WAIT (Used in Block Wait to make sure only one traveler is switching)
 // Note :
 	// Make traveler party member for some time regulary.
 		// Used for maximise triggering all interactions
 ///////////////////////////////////////////////////////////////////////////////
 
-// Secondary Switching Party 1
 
-IF // Block wait 4 for Switching Party
+// Block wait 4 // Secondary Switching Party 1  
+
+IF // Special case : Traveler was about to switch but something prevent it
+//
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	OR(3)
@@ -1983,10 +1989,11 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+
 // No Wannabe in party
 
-IF
-// 
+IF // If no party member are available to be traveler the Player need to make some available.
+//
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2029,9 +2036,10 @@ THEN
 		SetInterrupt(TRUE)
 END
 
+
 // Main Switching Party 1
 
-IF
+IF // First check
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_SWITCHING","GLOBAL",0)
@@ -2076,9 +2084,11 @@ THEN
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 END
 
-// Secondary Switching Party 1
 
-IF // Block wait 3 for Switching Party // Return to Main Switching Party 1 if another traveler is already active (probably useless)
+// Block wait 3 // Secondary Switching Party 1
+
+IF // Return to Main Switching Party 1 if another traveler is already active (probably useless)
+//
 	OR(2)
 		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",1)
@@ -2092,9 +2102,11 @@ THEN
 		DisplayString(Myself,~Another traveler already Switching Party, I'm ready when it's possible.~)
 END
 
-// Secondary Switching Party 1
 
-IF // Block wait 2 for Switching Party
+/// Block wait 2 // Secondary Switching Party 1
+
+IF // After block wait 1 if everything is in order, let's switch !
+//
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
@@ -2116,9 +2128,11 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-// Secondary Switching Party 1
 
-IF // Block wait 1 for Switching Party
+/// Block wait 1 // Secondary Switching Party 1
+
+IF // Temporise to avoid that more than one traveler try to switch
+//
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
@@ -2130,12 +2144,10 @@ THEN
 		DisplayString(Myself,~Waiting to Switching Party.~)
 END
 
-// Randomly select a member... Wannabe !
 
-// Main Switching Party 2
+// Main Switching Party 2 // Randomly select a member... Wannabe !
 
-// Player6
-IF
+IF // Player6
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
@@ -2184,8 +2196,7 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-// Player5
-IF
+IF // Player5
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
@@ -2234,8 +2245,7 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-// Player4
-IF
+IF // Player4
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
@@ -2284,8 +2294,7 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-// Player3
-IF
+IF // Player3
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
@@ -2334,8 +2343,7 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-// Player2
-IF
+IF // Player2
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	OR(2)
@@ -2384,11 +2392,10 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-// Travelers take place in party
 
 // Main Switching Party 3
 
-IF
+IF // Travelers take place in party
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
@@ -2406,6 +2413,22 @@ IF
 //
 	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
 THEN
+	RESPONSE #1 // From PID "Switch with me."
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~My turn !~)
+//		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+//		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
+		SmallWait(2)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetInterrupt(TRUE)
+		JoinParty()
 	RESPONSE #2 // Player2
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~My turn !~)
@@ -2488,16 +2511,20 @@ THEN
 		JoinParty()
 END
 
+
 // Secondary Switching Party 3
 
-// Reset variable for traveler
-IF
+IF // Reset variable for traveler
+//
 	Delay(5) // Prevent to be checked before Playerx leave the party
+//
 	GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+//
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
 	NumInPartyGT(5)
 THEN
 	RESPONSE #100
@@ -2524,6 +2551,8 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 //
 //	!Global("JO_JOIN_IS_JOINING","LOCALS",0) // Why ?
 	OR(2)

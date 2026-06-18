@@ -71,7 +71,7 @@ THEN
 		Continue()
 END
 
-// If area IS a master area, then go to the Switching Room.
+// If area IS a master area, then Loading Switch !
 
 // Main Loading Switch 1
 
@@ -94,6 +94,7 @@ THEN
 		SetInterrupt(FALSE)
 		ClearAllActions()
 		MoveViewObject(Player1,INSTANT)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
@@ -355,7 +356,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",TWELVE_HOURS) // Reset timer
-		DisplayString(Myself,~Banter ready.~)
+		DisplayString(Myself,~We have time for a little chat.~)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
 		Continue()
 END

@@ -8,7 +8,7 @@
 
 // Main 2 // After JO_JOINP.baf Main 1 // Loading Switch
 
-IF
+IF // If no party member are alive to be traveler the Player need to resurect them.
 	NumInPartyGT(5)
 	NumInPartyAlive(1) // Security if all party member are dead but still in party
 THEN
@@ -20,7 +20,8 @@ THEN
 		SetInterrupt(TRUE)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
-IF
+
+IF // If no party member are available to be traveler the Player need to make some available.
 	NumInPartyGT(5)
 	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
 	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
@@ -38,6 +39,7 @@ THEN
 END
 
 IF
+	Delay(1)
 	Global("JO_JOIN_LOAD","LOCALS",1)
 	NumInPartyLT(6)
 THEN

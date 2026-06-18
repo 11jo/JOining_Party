@@ -64,7 +64,7 @@ To enable the PID, charname need to use his ability on a traveler, then Charname
 // The four options below will probly be masked in the futur
 - REPLY : _"Something feel wrong, we can settle this now."_ // **Cancel most variables assigned to the traveler.** (Except "We need to adjust...") (**To use only if problems arise**)
 - REPLY : _"JO_NOJOIN."_ // **This variable is set when a transition between party and traveler is processing.** (Should not appear when no one switch)
-- REPLY : _"JO_JOIN."_ // **This variable is set to make the PID available for the traveler** (Should always appear)
+- REPLY : _"I am currently talking with you !."_ // **JO_JOIN variable is set to make the PID available for the traveler** (Should always appear)
 - REPLY : _"JO_JOIN_LOADING."_ // **This variable is set when the Loading Switch process** (Should never appear)
 
 - REPLY : _"How do you feel as traveler."_ // **Ask the traveler to check statut.** (Will be expanded)
@@ -73,13 +73,17 @@ To enable the PID, charname need to use his ability on a traveler, then Charname
 	- REPLY : _"The engagement scroll isn't active."_ // **Not good.** (Special item isn't equiped and variables are probably not okay)
 	- REPLY : _"I am not considered like a party member."_ // **Not good.** (The variable that simulate InParty() isn't set)
 	- REPLY : _"I am not considered like ready to talk."_ // **Not good.** (The variable that simulate InValidForPartyDialog() isn't set)
-	- REPLY : _"Il semble que la transition ne soit pas terminée."_ // **Not good.** (One of several transition variable didn't reset)
+	- REPLY : _"Il semble que la transition ne soit pas terminée."_ // **Not good.** (One of several transition variables didn't reset)
+	- REPLY : _"I am not considered like a traveler."_ // **Not good.** (The variable that check if the NPC is a traveler isn't set.)
 	- REPLY : _"I am dead..."_ // **Not good.** (The variable that check if the traveler have less than 2 HP is set.)
 	- REPLY : _"I am ready for a quick switch."_ // **Good.** (The traveler is ready to make a Quick Switch and will do it when possible.)
+	- REPLY : _"I don't join the group for a Quick Switch."_ // **Player choice.** (The traveler won't come in party for an instant when a slot is free.) (It's not mandatory when the Switching Party is enabled)
+	- REPLY : _"I don't participate to the conversations."_ // **Player choice.** (The traveler won't use banters but is still available vor interjections and else)
+	- REPLY : _"I'm always eager to a little chat."_ // **Good.** (The traveler will banter when possible.)
+	- REPLY : _"I am ready to switch with party members."_ // **Good.** (The traveler will change place with party members.)
+	- REPLY : _"I don't switch with party members."_ // **Player choice.** (The traveler won'tchange place with party members.) (Warning : The Switching Party is here to make sure you don't miss NPC contents. (Ex : Dream Talk))
 	- REPLY : _"No dream for me."_ // **Good.** (The traveler will be deactivated for cutscenes.)
 	- REPLY : _"Always here, even in your dream !" // **Good.** (The traveler will be active for cutscenes.)
-	- REPLY : _"TODO"_
-	- REPLY : _"TODO"_
 	- REPLY : _"TODO"_
 	- REPLY : _"TODO"_
 	- REPLY : _"TODO"_
@@ -110,9 +114,9 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 - REPLY : _"I am pretty independant, none of you should follow me when I walk away from the group !"_ // **Deactive all travelers when Charname is not near other party members.** (Allow Charname to explore alone)
 - REPLY : _"Let's switch, one by one, quietly and in order."_ // **Force the Quick Switch for all travelers.** (Except those who are prevented to do so) (Collision with "Stop the Quick Switch for a while, please.")
 - REPLY : _"Do whatever you want."_ // Same as both _"We need to adjust..."_ // **Close the dialog.**
-- REPLY : _"There is room for one traveler to come in party."_ // **Make a random traveler reintegrate the group completly.** (Can allow more than one if there is several free slots)
-- REPLY : _"There is room for two travelers to come in party."_ // **Make a random traveler reintegrate the group completly.** (Can allow more if there is several free slots)
-- REPLY : _"There is room for three travelers to come in party."_ // **Make a random traveler reintegrate the group completly.** (Can allow more if there is several free slots)
+- REPLY : _"There is room for one traveler to come in party."_ // **Make a random traveler reintegrate the group completly.** (Won't work for travelers that aren't allowed to Quick Switch)
+- REPLY : _"There is room for two travelers to come in party."_ // **Make a random traveler reintegrate the group completly.**  (Won't work for travelers that aren't allowed to Quick Switch)
+- REPLY : _"There is room for three travelers to come in party."_ // **Make a random traveler reintegrate the group completly.** (Won't work for travelers that aren't allowed to Quick Switch)
 - REPLY : _"Travelers stop switching places with party members."_ // **Prevent the Switching Party for all travelers.**
 - REPLY : _"Travelers if party members are available you can switch places."_ // **Allow the Switching Party for all travelers.**
 
