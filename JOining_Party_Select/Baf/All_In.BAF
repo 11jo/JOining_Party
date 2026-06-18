@@ -642,9 +642,7 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
-		MakeGlobal()
 		DisplayStringHead(Myself,~Farewell...~)
-		MakeGlobalOverride()
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // In case there was ne need to a party member to make room
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		LeaveParty()
@@ -657,9 +655,7 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
-		MakeGlobal()
 		DisplayStringHead(Myself,~Farewell...~)
-		MakeGlobalOverride()
 		LeaveParty()
 		SetInterrupt(TRUE)
 		Continue()
@@ -887,7 +883,6 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 //		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN) // Moved in Jo_Joini to facilitate componant Traveler Quick Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
-		MakeGlobal()
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -937,7 +932,6 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MakeGlobalOverride()
 		LeaveParty()
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
@@ -964,7 +958,6 @@ THEN
 //		ChangeAIScript("",CLASS)
 //		ChangeAIScript("",GENERAL)
 		ChangeAIScript("JO_JOINI",GENERAL)
-		MakeGlobal()
 		SetInterrupt(TRUE)
 		Face(S)
 		Continue() // To relevant JO_JOIN... blocks

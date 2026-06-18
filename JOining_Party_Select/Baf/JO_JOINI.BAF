@@ -556,7 +556,6 @@ THEN
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
-		MakeGlobal()
 		SetInterrupt(TRUE)
 		JoinPartyOverride() // Go to All_In_Baf Switch between familiar and party
 END
