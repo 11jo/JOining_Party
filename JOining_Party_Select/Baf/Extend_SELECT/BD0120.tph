@@ -7,9 +7,10 @@
 IF
 	InMyArea("%IMOEN_DV%")
 	Global("JO_JOIN_bd0120_%IMOEN_DV%","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
 		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("%IMOEN_DV%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -37,9 +38,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Edwin")
 	Global("JO_JOIN_bd0120_Edwin","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Edwin","GLOBAL",0)
 		TriggerOverride("Edwin",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Edwin",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Edwin",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -64,9 +66,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Jaheira")
 	Global("JO_JOIN_bd0120_Jaheira","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Jaheira","GLOBAL",0)
 		TriggerOverride("Jaheira",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Jaheira",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Jaheira",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -91,9 +94,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Minsc")
 	Global("JO_JOIN_bd0120_Minsc","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Minsc","GLOBAL",0)
 		TriggerOverride("Minsc",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Minsc",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Minsc",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -118,9 +122,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Viconia")
 	Global("JO_JOIN_bd0120_Viconia","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Viconia","GLOBAL",0)
 		TriggerOverride("Viconia",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Viconia",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Viconia",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -145,9 +150,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Dorn")
 	Global("JO_JOIN_bd0120_Dorn","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Dorn","GLOBAL",0)
 		TriggerOverride("Dorn",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Dorn",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Dorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -172,9 +178,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Neera")
 	Global("JO_JOIN_bd0120_Neera","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Neera","GLOBAL",0)
 		TriggerOverride("Neera",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Neera",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Neera",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -199,9 +206,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Rasaad")
 	Global("JO_JOIN_bd0120_Rasaad","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Rasaad","GLOBAL",0)
 		TriggerOverride("Rasaad",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Rasaad",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Rasaad",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -228,9 +236,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Ajantis")
 	Global("JO_JOIN_bd0120_Ajantis","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Ajantis","GLOBAL",0)
 		TriggerOverride("Ajantis",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Ajantis",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Ajantis",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -255,9 +264,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Alora")
 	Global("JO_JOIN_bd0120_Alora","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Alora","GLOBAL",0)
 		TriggerOverride("Alora",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Alora",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Alora",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -286,9 +296,10 @@ END
 IF
 	InMyArea("Branwen")
 	Global("JO_JOIN_bd0120_Branwen","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Branwen","GLOBAL",0)
 		TriggerOverride("Branwen",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Branwen",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Branwen",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -313,9 +324,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Coran")
 	Global("JO_JOIN_bd0120_Coran","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Coran","GLOBAL",0)
 		TriggerOverride("Coran",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Coran",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Coran",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -340,9 +352,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Dynaheir")
 	Global("JO_JOIN_bd0120_Dynaheir","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Dynaheir","GLOBAL",0)
 		TriggerOverride("Dynaheir",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Dynaheir",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Dynaheir",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -367,9 +380,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Eldoth")
 	Global("JO_JOIN_bd0120_Eldoth","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Eldoth","GLOBAL",0)
 		TriggerOverride("Eldoth",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Eldoth",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Eldoth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -398,9 +412,10 @@ END
 IF
 	InMyArea("Faldorn")
 	Global("JO_JOIN_bd0120_Faldorn","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Faldorn","GLOBAL",0)
 		TriggerOverride("Faldorn",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Faldorn",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Faldorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -429,9 +444,10 @@ END
 IF
 	InMyArea("Garrick")
 	Global("JO_JOIN_bd0120_Garrick","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Garrick","GLOBAL",0)
 		TriggerOverride("Garrick",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Garrick",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Garrick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -456,9 +472,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Kagain")
 	Global("JO_JOIN_bd0120_Kagain","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Kagain","GLOBAL",0)
 		TriggerOverride("Kagain",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Kagain",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Kagain",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -483,9 +500,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Khalid")
 	Global("JO_JOIN_bd0120_Khalid","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Khalid","GLOBAL",0)
 		TriggerOverride("Khalid",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Khalid",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Khalid",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -510,9 +528,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Kivan")
 	Global("JO_JOIN_bd0120_Kivan","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Kivan","GLOBAL",0)
 		TriggerOverride("Kivan",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Kivan",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Kivan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -537,9 +556,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Montaron")
 	Global("JO_JOIN_bd0120_Montaron","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Montaron","GLOBAL",0)
 		TriggerOverride("Montaron",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Montaron",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Montaron",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -564,9 +584,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Quayle")
 	Global("JO_JOIN_bd0120_Quayle","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Quayle","GLOBAL",0)
 		TriggerOverride("Quayle",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Quayle",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Quayle",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -591,9 +612,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Safana")
 	Global("JO_JOIN_bd0120_Safana","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Safana","GLOBAL",0)
 		TriggerOverride("Safana",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Safana",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Safana",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -618,9 +640,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Sharteel")
 	Global("JO_JOIN_bd0120_Sharteel","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Sharteel","GLOBAL",0)
 		TriggerOverride("Sharteel",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Sharteel",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Sharteel",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -649,9 +672,10 @@ END
 IF
 	InMyArea("Skie")
 	Global("JO_JOIN_bd0120_Skie","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Skie","GLOBAL",0)
 		TriggerOverride("Skie",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Skie",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Skie",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -676,9 +700,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Tiax")
 	Global("JO_JOIN_bd0120_Tiax","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Tiax","GLOBAL",0)
 		TriggerOverride("Tiax",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Tiax",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Tiax",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -703,9 +728,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Xan")
 	Global("JO_JOIN_bd0120_Xan","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Xan","GLOBAL",0)
 		TriggerOverride("Xan",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Xan",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Xan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -730,9 +756,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Xzar")
 	Global("JO_JOIN_bd0120_Xzar","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Xzar","GLOBAL",0)
 		TriggerOverride("Xzar",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Xzar",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Xzar",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -757,9 +784,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Yeslick")
 	Global("JO_JOIN_bd0120_Yeslick","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Yeslick","GLOBAL",0)
 		TriggerOverride("Yeslick",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Yeslick",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Yeslick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -784,9 +812,10 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Baeloth")
 	Global("JO_JOIN_bd0120_Baeloth","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Baeloth","GLOBAL",0)
 		TriggerOverride("Baeloth",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Baeloth",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Baeloth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100

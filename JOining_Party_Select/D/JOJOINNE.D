@@ -18,12 +18,19 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFFBF5FOn second thought, I miss our discussions... Let's talk to each others.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT //
 
 // Privacy
-	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
+	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",0)~ EXIT //
 	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
 
-// Indepandance//
-	IF ~~ THEN REPLY ~^0xFFFFB4B4I am pretty independant, none of you should follow me when I walk away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
-	IF ~~ THEN REPLY ~^0xFFFFDF10All of you can follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT 
+// Indepandance
+	IF ~~ THEN REPLY ~^0xFFFFDF10Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
+	IF ~~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
+	IF ~~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",20)~ EXIT //
+	IF ~~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",21)~ EXIT //
+	IF ~~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT //
+
+// ChangeEnemyAlly
+	IF ~~ THEN REPLY ~^0xFFFFB4B4I prefer to have a strong bond with my travelers.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",23)~ EXIT //
+	IF ~~ THEN REPLY ~^0xFFFFDF10It's better for the group if travelers are more independent.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",24)~ EXIT 
 
 // Checks
 	IF ~OR(2)
@@ -32,6 +39,7 @@ IF ~True()~ THEN BEGIN 0
 		NumInPartyLT(6)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's Quick Switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Travelers, stay at this location.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT //
 
 // Free slots in party
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)

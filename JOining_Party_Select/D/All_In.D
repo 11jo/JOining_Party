@@ -24,8 +24,15 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 
 // Indepandance
-	IF ~IsGabber(Player1) Global("JO_JOIN_INDEPANDANCE","LOCALS",1)~ THEN REPLY ~^0xFFFFDF10Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_INDEPANDANCE","GLOBAL",1)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk away from the group !^-~ DO ~SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) GlobalGT("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ THEN REPLY ~^0xFFFFDF10Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",3)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",3)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",5)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",5)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",8)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",8)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",10)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",10)~ GOTO JO_JOINYes //
+
+// Indepandance for traveler // ChangeEnemyAlly
+	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFFFDF10I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",23)~ GOTO JO_JOINYes //
+	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFFFFDF10It's better for the group if you are more independent.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",24)~ GOTO JO_JOINYes //
 
 	IF ~!IsGabber(Player1) TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))~ THEN REPLY ~^BSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
