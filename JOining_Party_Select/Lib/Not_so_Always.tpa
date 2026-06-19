@@ -98,11 +98,11 @@
 // Only after EET_END
 		ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 
-		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
-		PRINT ~Game is EET 
-		~
-
 			OUTER_SPRINT "CAMPAIGN" "5"
+
+			OUTER_SPRINT "NBaldursGate_DucalPalace_L1" "BG0108"
+
+			OUTER_SPRINT "Undercity_TempleofBhaal" "BG0125"
 
 			OUTER_SPRINT "Candlekeep_BCS" "BG2600"
 
