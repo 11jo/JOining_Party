@@ -1,7 +1,8 @@
 IF
 	Clicked([ANYONE])
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+//	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+//	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+	Global("JO_JOIN_LOADING","GLOBAL",0)
 THEN
 	RESPONSE #100
 		FadeToColor([45.0],0)
@@ -15,9 +16,10 @@ END
 
 IF
 	Clicked([ANYONE])
-	OR(2)
-		!Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-		!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+//	OR(2)
+//		!Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+//		!Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+	!Global("JO_JOIN_LOADING","GLOBAL",0)
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~The party ain't over !~)

@@ -1,0 +1,38 @@
+// JO_LOAD_TRAVELER.TPA EXTEND_TOP for JO_JOINL.bcs at installation by JOining_Party_Select_End.tph
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
+		// JO_JOIN_LOAD (Used by travelers loading steps)
+///////////////////////////////////////////////////////////////////////////////
+
+// Main 3 // After JO_LOAD_JO_JOINL.baf Main 2
+
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ BEGIN
+
+
+// Loading Switch
+COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	OR(2)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+	TriggerOverride("%Death_var%",Global("JO_JOIN_LOAD","LOCALS",0))
+	Global("JO_JOIN_LOAD","LOCALS",0)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+//		ActionOverride("Death_var%",MoveToOffset([0.1]))
+		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",1))
+		SetInterrupt(TRUE)
+END
+
+	\0~~~~~
+
+	END

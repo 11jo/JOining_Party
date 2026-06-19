@@ -1,131 +1,167 @@
-// Extends DPLAYER3.bcs
+// Player1 override script
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// If area isn't a master area, then go to the Switching room.
+// Dev variable
 
 ///////////////////////////////////////////////////////////////////////////////
-
-// StartCutScene(S:CutScene*)  EndCutSceneMode() 
- 
-/*
-IF // TODO : add to every not master area
-	OnCreation()
-	!Global("JO_JOIN_AREA","MYAREA",1)
-	Global("JO_JOIN_SetMasterArea","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SetMasterArea","GLOBAL",1)
-END
-*/
 
 IF
-	OR(2)
-		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Console Force Load
-	OR(2)
-		!Global("JO_JOIN_AREA","MYAREA",1)
-		See([ENEMY])
-	!Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	Global("JO_JOIN_DEV_MODE","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",1)
+		SetGlobal("JO_JOIN_DEV_MODE","GLOBAL",1)
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Loading Switch
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
+		// JO_JOIN_AREA (Check if current area is a master area)
+			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
+				// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+					// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
+						// JO_JOIN_BLOP (Dev test for no master area)
+							// JO_JOIN_SWITCHING_ROOM (In case area is JO2608.are prevent to end loading switch prematurely)
+///////////////////////////////////////////////////////////////////////////////
+
+// If area ISN'T a master area, then go to the Switching Room.
+
+// Secondary Loading Switch 1 // Special // SWITCHING_ROOM JO2608.ARE
+
+IF
+// 
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
+		See([ENEMY])
+// Dev
+	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
+// 
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetCutSceneLite(TRUE)
+		CreateVisualEffectObject("JOBG402",Player1)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1) // We are in the Switching room
 		FadeToColor([20.0],0)
 		Wait(1)
 		StorePartyLocations()
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],50))
-		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],50))
-		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],50))
-		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],50))
-		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],50))
-		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],50))
-		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],1))
+		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],1))
+		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],1))
+		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],1))
+		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],1))
+		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],1))
+		LeaveAreaLUAPanic("JO2608","",[1570.1050],1)
+		LeaveAreaLUA("JO2608","",[1570.1050],1)
+		MultiPlayerSync()
+		Wait(1)
+		CreateVisualEffectObject("JOBG402",Player1)
+		SetCutSceneLite(FALSE)
+		Continue()
 END
 
-IF
-	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",2)
-		MoveToOffset([1.0])
-		RandomWalk()
-		NoAction()
-END
+// If area IS a master area, then Loading Switch !
+
+// Main Loading Switch 1
 
 IF
-	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","GLOBAL",2)
+// 
+	OR(3)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1) // Current area is a master area
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
+	OR(2)
+		!See([ENEMY])
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
+// 
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100
-		MoveToPoint([1570.1050])
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",3)
+		SetInterrupt(FALSE)
+		ClearAllActions()
+		MoveViewObject(Player1,INSTANT)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
+		DisplayStringHead(Myself,~Travelers !~)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
+		SetInterrupt(TRUE)
+		Continue()
 END
 
+// If area ISN'T a master area, this block come after // Main 1 // Loading Switch
+
+// Secondary Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
+
 IF
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-	AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","GLOBAL",3)
+// 
+	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",2) // Set in JO_JOINL.baf
+// 
+	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","GLOBAL",0)
-		DisplayStringHead(Myself,~Let's return !~)
+		DisplayStringHead(Myself,~Let's return to venture forth !!~)
+		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		FadeToColor([20.0],0)
+		CreateVisualEffectObject("JOBG402",Player1)
 		Wait(1)
 		RestorePartyLocations()
-		SmallWait(2)
-		MoveToOffset([0.1])
-		MoveViewObject(Player1,INSTANT)
+		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching Room
 		FadeFromColor([30.0],0)
+		Wait(1)
+		CreateVisualEffectObject("JOBG402",Player1)
 END
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // Initialize
 
 ///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_PLAYER_INIT (At new game beginning add special ability to Charname)
+		// JO_JOIN_SWEET_DREAM (Related to dream talks)
+			// JO_JOIN_BANTER_TIMER (Related to banter talks)
+///////////////////////////////////////////////////////////////////////////////
 
 IF
 	Global("JO_JOIN_PLAYER_INIT","LOCALS",0)
 THEN
 	RESPONSE #100
-		AddSpecialAbility("jo_join")
+		AddSpecialAbility("jo_join") // Charname special ability
 		SetGlobal("JO_JOIN_PLAYER_INIT","LOCALS",1)
-		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS) // TODO related to dream talk, unused at the moment
+		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS) // TODO : Unused at the moment
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
 		Continue()
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-///////////////////////////////////////////////////////////////////////////////
-
 ///////////////////////////////////////////////////////////////////////////////
 
 // Base
- 
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_Myself_AllowDead (Replace InPartyAllowDead())
+		// JO_Myself_InParty (Replace InParty())
+			// JO_Myself_Valid (Replace IsValidForPartyDialogue())
+///////////////////////////////////////////////////////////////////////////////
+
 // !InPartyAllowDead()
 IF
 	!Global("JO_Myself_AllowDead","LOCALS",0)
@@ -136,7 +172,7 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		Continue()
 END
- 
+
 // InPartyAllowDead()
 IF
 	Global("JO_Myself_AllowDead","LOCALS",0)
@@ -148,7 +184,7 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
 		Continue()
 END
- 
+
 // !InParty()
 IF
 	!Global("JO_Myself_InParty","LOCALS",0)
@@ -161,7 +197,7 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		Continue()
 END
- 
+
 // InParty()
 IF
 	Global("JO_Myself_InParty","LOCALS",0)
@@ -176,7 +212,7 @@ THEN
 		SetGlobal("JO_Myself_InParty","LOCALS",1)
 		Continue()
 END
- 
+
 // !Is(!If)ValidForPartyDialog(ue)
 IF
 	!Global("JO_Myself_Valid","LOCALS",0)
@@ -191,7 +227,7 @@ THEN
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		Continue()
 END
- 
+
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_Myself_Valid","LOCALS",0)
@@ -209,34 +245,31 @@ THEN
 		Continue()
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 ///////////////////////////////////////////////////////////////////////////////
 
 // Security
 
 ///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN (For Charname it allow to create an invisible creature that open a PID to manage travelers)
+		// JO_JOIN_CUTSCENE (Deactive travelers for cutscene)
+			// JO_Myself_Valid (Replace IsValidForPartyDialogue())
+				// JO_JOIN_Move_Around (Centralised orders for all travelers at once)
+///////////////////////////////////////////////////////////////////////////////
 
-// Special security / JOJOINNE
+// Special Security/JOJOINNE.CRE
 IF
 	Global("JO_JOIN","LOCALS",1)
 THEN
 	RESPONSE #100
 //		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0) // Reset JO_JOIN_Move_Around
+		SetGlobal("JO_JOIN","LOCALS",0) // Reset JO_JOIN
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0) // Security reset the cutscene global
 		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
-		Continue()
 END
 
+// Prevent edge case when traveler special item finish in Player1 inventory
 IF
 	HasItem("JOMINHP1",Player1)
 THEN
@@ -246,6 +279,7 @@ THEN
 		DestroyItem("JOMINHP1")
 END
 
+/*
 IF
 	GlobalLT("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 THEN
@@ -253,7 +287,9 @@ THEN
 		DisplayStringHead(Myself, ~^RVoilà qui n'est pas normal... JO_JOIN_PARTY_SWITCH est inférieur à 0 !^-~)
 		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 END
+*/
 
+/*
 IF
 	GlobalLT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 THEN
@@ -261,74 +297,77 @@ THEN
 		DisplayStringHead(Myself, ~^RVoilà qui n'est pas normal... JO_JOIN_TRAVELER_SWITCH est inférieur à 0 !^-~)
 		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 END
+*/
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
+///////////////////////////////////////////////////////////////////////////////
+
+// Check if traveler are in party
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+// Special
+	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
+// Note :
+	// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
+		// Disable the Loading Switch if no traveler are her
+			// Related block in JO_JOINP
+///////////////////////////////////////////////////////////////////////////////
 
 IF
-	!OnCreation()
-	Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0) // Don't use this block at loading
-//
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-//
+// 
 //	REPLACE_TRAVELER_NumInParty
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // If there is no traveler reste the global
 		Continue()
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 ///////////////////////////////////////////////////////////////////////////////
 
-// Reset JO_JOIN_BANTER_TIMER centralised
+// JO_JOIN_BANTER_TIMER centralised for all travelers
 
 ///////////////////////////////////////////////////////////////////////////////
-
-// See the "JO_JOIN_BANTER_TIMER" commented out
-// Was set individually for each travelers, to see what is the best way...
+// Variables :
+	// JO_JOIN_BANTER_TIMER (Timer for starting banter)
+		// JO_JOIN_CUTSCENE (Deactive travelers for cutscene)
+			// JO_NOJOIN (Check if no traveler is currently switching)
+				// JO_JOIN_NEVER_BANTER (Prevent lauching banters)
+					// JO_JOIN_Move_Around (Centralised orders for all travelers at once)
+// Note :
+	// See the "JO_JOIN_BANTER_TIMER" commented out in Baf/Banter_Dream (Was set individually for each travelers, to see what is the best way...)
+///////////////////////////////////////////////////////////////////////////////
 
 IF
-	!OnCreation()
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
-//
-	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-	ActionListEmpty()
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+// 
+		// ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",TWELVE_HOURS)
-		DisplayString(Myself,~Banter ready.~)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",TWELVE_HOURS) // Reset timer
+		DisplayString(Myself,~We have time for a little chat.~)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
 		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Avoid lauching banters in specific area // TODO : To Double Check
+
 IF
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	OR(7)
 // BG1 End
 		AreaCheck("%NBaldursGate_DucalPalace_L1%")
@@ -342,7 +381,7 @@ IF
 		AreaCheck("BD6200")
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",13) // Launch JO_JOIN_Move_Around block 13 in JO_JOINI.BAF
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
 END
 
@@ -360,24 +399,6 @@ IF
 	!AreaCheck("BD6200")
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",14) // Launch JO_JOIN_Move_Around block 14 in JO_JOINI.BAF
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 END
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/*
-IF
-	PartyRested()
-THEN
-	RESPONSE #100
-		SWITCH (to let other being available to dream banter)
-END
-*/

@@ -1,7 +1,7 @@
 /*
 ///////////////////////////////////////////////////////////////////////////////
 
-// JO_JOIN_CORRECT_TRAVELER 
+// JO_JOIN_CORRECT_TRAVELER
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -22,6 +22,7 @@ THEN
 		ChangeAIScript("",RACE)
 END
 */
+
 //
 //
 //
@@ -34,8 +35,13 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// JO_JOIN_COUNT_TRAVELER 
+// JO_JOIN_COUNT_TRAVELER
 
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_COUNT_TRAVELER (Set by dialog)
+		// JO_JOIN_LEGION (Incremented by each travelers)
+			// ADD_JO_JOIN_COUNT_TRAVELER (Set in JOining_Party_Select_End.tph Expand JO_JOINC for each travelers))
 ///////////////////////////////////////////////////////////////////////////////
 
 //	ADD_JO_JOIN_COUNT_TRAVELER
@@ -63,44 +69,3 @@ THEN
 		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
 		ChangeAIScript("",RACE)
 END
-
-/*
- // Deprecated by the one above
- 
- 
-// Isn't very reliable...
-
-IF
-	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
-	ActionListEmpty()
-	!ActuallyInCombat()
-	!See([ENEMY])
-	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-THEN
-	RESPONSE #100
-		Wait(5)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
-END
-
-IF
-	Delay(8)
-	Global("JO_JOIN_COUNT_TRAVELER","GLOBAL",1)
-	Global("JO_JOIN_COUNT_TRAVELER","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_LEGION","GLOBAL",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","GLOBAL",0)
-		SetTokenGlobal("JO_JOIN_LEGION","LOCALS","JO_TRAVELER_COUNT")
-		DisplayStringHead(Myself, ~^II count <JO_TRAVELER_COUNT> traveler !^-~)
-END
-*/
-//
-//
-//
-//
-//
-//
-//
-//
-//
-

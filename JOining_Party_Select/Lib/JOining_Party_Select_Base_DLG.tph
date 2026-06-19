@@ -553,6 +553,28 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // EndCutSceneMode() SPECIAL found in %SOURCE_FILESPEC%
 				~
 			END
+// Special : when StartCutSceneEx is placed before StartCutSceneMode we invert them (See BlackHearts mod implementation)
+			SPRINT textToReplace ~^[%TAB% ]*StartCutSceneEx(\([^)]*\))
+^[%TAB% ]*StartCutSceneMode()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartCutSceneMode()
+	StartCutSceneEx(\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartCutSceneEx and StartCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
+// Special : DLG can be difficult when we need to replace the first action
+			SPRINT textToReplace ~StartCutSceneEx(\([^)]*\))
+^[%TAB% ]*StartCutSceneMode()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartCutSceneMode()
+	StartCutSceneEx(\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartCutSceneEx first action and StartCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -561,6 +583,17 @@ OUTER_SPRINT "slashdeux" "\2"
 	StartCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
+				~
+			END
+// Special : DLG can be difficult when we need to replace the first action
+			SPRINT textToReplace ~StartCutSceneMode()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
+	Wait(2)
+	StartCutSceneMode()~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartCutSceneMode() first action found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~\(^[%TAB% ]*EndCutSceneMode()\)~

@@ -346,6 +346,12 @@ CreateCreatureObjectCopy(%slashun%,"%Death_var%",0,0,0)~
 // DRYAD_TELEPORT to spdimndr
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEDRYAD~ ~REPLACEDRYAD
 CreateVisualEffectObject("spdimndr","%Death_var%")~
+/*// StateCheck situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACE_StateCheck~ ~REPLACE_StateCheck
+StateCheck("%Death_var%",%slashun%)~
+// NearLocation situation
+			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACE_NearLocation~ ~REPLACE_NearLocation
+NearLocation("%Death_var%",%slashun%)~*/
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -485,6 +491,10 @@ END
 												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACEFollowObjectFormation~ ~~
 									// CreateCreatureObjectCopy situation
 												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACECreateCreatureObjectCopy~ ~~
+/*									// StateCheck situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACE_StateCheck~ ~~
+									// NearLocation situation
+												REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~REPLACE_NearLocation~ ~~*/
 
 	COPY ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~
 				// ApplySpell situation

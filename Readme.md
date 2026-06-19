@@ -23,12 +23,19 @@
 **Installation could last between 10 to 30+ minutes depending of the number of NPCs chosen and the number of mods installed**
 
 - Use the Charname **special ability** to convert NPC to Familiar / traveler.
-- Party members and travelers will switch regulary to make sure nothing is lost.
-- You can use the **special ability** on an traveler or **on Charname** to launch a dialog to manage the travelers.
-- You can **completly reinteger** any traveler in party, use again the same special ability on the chosen NPC and talk to the NPC, they will have **several dialog options**.
+	- You can use the **special ability** on an traveler then talk to the traveler to acces a PID and manage the traveler.
+	- You can use the **special ability** **on Charname** to launch a dialog to manage travelers.
 
-- When loading a save the **NPCs have to switch** once before being reliably available for script and dialog. 
-- When loading a save, All party members available and willing to be traveler will temporarly leave the group to allow travelers to switch once then will reinteger the group quickly, it's an *very important state that need to happen to make them reliably available for script and dialog*.
+- **Loading Switch :**
+	- **When loading a save the Travelers have to switch once before being reliably available for script and dialog.**
+	- When loading a save, one or two party members available and willing to be traveler will temporarly leave the group to allow all travelers to reintegrate the group very quickly, it's an **very important state** that need to happen to make them reliably available for scripts and dialogs*.
+
+- **Switching Party :**
+	- Party members and travelers will switch regulary to make sure no interaction is lost. (Only for party members eligible to be a traveler)
+	- The Switching Party allow traveler to be in the group long enough to fire whatever interaction that could be missed by the JOining_Party scripts. (Ex : NPC Dream Talk when party is resting)
+
+- **Quick Switch :**
+	- If a free slot is available traveler will regulary reintegrate the party for a short instant.
 
 
 ## Overwiew :  
@@ -36,7 +43,7 @@
 
 This mod aims to provide a way to extend the limit of 6 characters in party by using the familiar status, while preserving quests, interjections, and banters in order to enjoy the NPCs / travelers as party member.
 
-There is no real limitation as for the number of familiars / travelers that players can have along side them. However, to prevent the scripts from being overwhelmed, it’s advisable not to have five or six travelers.
+There is no real limitation as for the number of familiars / travelers that players can have along side them. However, to prevent the scripts from being overwhelmed, it’s advisable not to have more than five or six travelers.
 
 
 ## Instruction :  
@@ -52,11 +59,17 @@ Compatibility : BGEE, SOD, BG2EE and EET.
   - SCRIPT_RACE for Travelers (temporarly and regulary) // Each time a traveler come and go to and from party, only the time to run.
   - SCRIPT_RACE for Charname (Only if asked by dialog to count traveler) // Mostly unecessary.
 
-- **First** select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
-  - 0 the NPC is not expanded to become a traveler.
-  - 1 Npc will be expended to be traveler (Familiar fully considered as party member.)
-  - 2 Npc will be expended to be a real traveler (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.) (It expand block that concern Player2 to Player6 for traveler to follow so add only few of them)
-  (Warning Option 2, Experimental and will expend installation time significaly, to use only with few traveler.)
+**Before installing the mod** select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
+- 0 the NPC is not expanded to become a traveler.
+- 1 Npc will be expended to be traveler (Familiar fully considered as party member.)
+	- By default all NPC integrated to the mod will be set to 1. (Except for Continuous original game NPC)
+- 2 Npc will be expended to be a real traveler :
+	- By default all Continuous original game NPC, will be set to 2. (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera and Rasaad)
+	- (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.)
+	- (It expand blocks that concern Player2 to Player6 for traveler to follow the group movement in some case, so add only few of them)
+	- (Warning Option 2 is Experimental and will expend installation time significaly, to use only with few traveler.)
+
+You can check [PID options and what they do here](https://github.com/11jo/JOining_Party/blob/main/PID_References.md).
 
 
 ##### Componants :  
@@ -68,18 +81,19 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 
 ---
 
-- Traveler Switch Timer when a free party member slot is kept or free
-  - Allow to change frequency travelers will come in party for a short moment. (Same purpose as the initial at save loading switch )
-  - Redundant with "Switch between Party Member and Travelers Timer" but still can be usefull.
+- **Quick Switch Timer** when a free party member slot is kept or free
+  - Allow to change frequency travelers will come in party for a short moment. (Same purpose as the initial Loading Switch )
+  - Redundant with the Switching Party but still can be usefull.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log
 
-- Travelers Banter Timer
-  - Allow to change frequency travelers will fire their banters dialog.
+- **Banter Timer**
+  - Allow to change frequency travelers will try to fire banters.
+  - Try to fire banters, will launch the banter related dialog, but it will fire only if the banter dialog conditions are meet.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log
 
-- Switch between Party Member and Travelers Timer
+- **Switching Party Timer**
   - Allow to change frequency travelers will switch their places with party members if a party member is eligible and willing to be traveler.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log
@@ -88,16 +102,18 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 
 #### In game :
 
-Starting a new game, Charname receive a special ability.
- - **Using the ability**, on a party member selected at installation, will **change it to familiar / travelers**.
- - Using the ability on a travelers, will **allow to dialog** and modify their behavior.
-    - Follow (Close or at sight) the party member who initiate the talk.
+Starting a new game, Charname receive a special ability the "Engagement.
+
+- **Using the ability**, on a party member selected to be a traveler at installation, will **change it to a familiar / travelers**.
+- Using the ability on a travelers, will [allow to dialog](https://github.com/11jo/JOining_Party/blob/main/PID_References.md#pid-for-traveler) and modify their behavior.
+	- Any party member can start the PID with a traveler after using Charname ability on it.
+	- Follow (Close or at sight) the party member who initiate the talk.
 	- Make the Travelers joining the party as regular party member.
 	- Make the Travelers joining the party just an instant, to deal with statistic, inventory or level, then automatically returning to familiar state.
 	- Choose if you want the familier to be deactivate for Cutscenes.
 	- Make the Travelers completly leave the party, will automatically be added an instant to the group then removed, in order to set leaving dialog.
-	
- - **Using the ability**, on Charname, will open a dialog.
+
+ - **Using the ability**, on Charname, will [open a dialog](https://github.com/11jo/JOining_Party/blob/main/PID_References.md#pid-for-charname).
 	- Allow to give mostly similar directions as above but to all travelers at once.
     - Allow to switch to only one traveler to dialog.
 	- Allow to select a party member to dialog with one traveler.
@@ -109,27 +125,35 @@ Starting a new game, Charname receive a special ability.
 	- When loading a save (very important !!!).
 	- If not in combat or in the process of doing something.
 
+**Travelers will "always be available"** to **talks, PID, interjects and quests like a party member**.
+	- The Joining dialogs will adapt depending of the campaign.
+	- The Banter dialogs will adapt depending of the campaign.
+	- The Dream talk scripts will adapt depending of the campaign.
+
 **Travelers will "switch their places with party member"** some time to time **if a party member is eligible and willing** to be traveler.
 	- Every custom time.
-	- When loading a save (very important !!!).
 	- If not in combat or in the process of doing something.
 
-**Travelers will "start their banter dialog"** some time to time to allow them **to be considered as party member** continually
+**Travelers will "start their Banter dialog"** some time to time.
 	- The banter dialog will adapt depending of the campaign.
 	- If conditions are meets a banter will fire, if not nothing will happen.
 	- Every custom time.
 	- If not in combat or in the process of doing something.
 
-**Travelers will "always be available"** to **talks, PID, interjects and quests like a party member**.
-	- The joining dialogs will adapt depending of the campaign.
-	- The override scripts will adapt depending of the campaign.
+**Travelers will "start their Dream talk scripts"** some time to time. (**Experimental**)
+	- The dream talk script will adapt depending of the campaign.
+	- If conditions are meets a banter will dream talk, if not nothing will happen.
+	- When the party try to rest.
+	- If not in combat or in the process of doing something.
 
   
 **Before** a switch they will look to Charname or a party member and say "Hey", before joining the group.
 When returning temporarly in party, statistic, inventory or level are available. (Use Pause to take your time if actions on it are needed.)
 **After** the switch is completed they will say "Yeah", after leaving the group.
 
-Familiar can't die, under 3PV they will fall for TWO_TURNS, player can also use healing spell on them. 
+At the moment **several indication texts will appear in dialog box** to inform the player about what is currently processing.
+
+**Travelers can't die**, under 3PV they will fall for TWO_TURNS, player can also use healing spell on them. 
 
 
 
@@ -151,15 +175,40 @@ Afterwards, you may delete the following files:
     and the contents of the "JOining_Party" subfolder 
 
 
+## Credits / Remerciements :
+---------------------------------
+
+- Rivvers / @RiwsPy (Co author)
+ 
+- @Darpaek (Beta testing)
+
+
 ## Version History :
 --------------------
 
-- Alpha.0.0.0
+- Beta v1.3
+	- Big rework for the Loading Switch
+	- Rework Leave Party
+	- Clean up
+	- Add infos in scripts files
+	- Many others things... 
 
-- Alpha.0.0.1
+- Early Beta v1.2
+	- Not released
+	- Many reviews, test, corrections, failures and else
 
-- Alpha.0.0.6
+- Early Beta v1.1
+	- Add Kale npc
+	- Move LeaveParty for travelers blocks before Security blocks
+	- Change Charname script from DPLAYER3 in slot DEFAULT to JO_JOINP in slot OVERRIDE
+	- Add JO_JOIN_FORCE_LOAD (will lauch the loading switch at will)
+	- Attempt to make the SwitchingParty less picky
+	- Rework JO_JOIN_CAMPAIGN to deal with banter and dream talk and correct files assignement for EET
 
-- Alpha.0.0.8
+- Early Beta v1.0.0
+	- This is very much an early beta.
+	- Transition between game could not really work.
+	- Banters works, but dream talks are wonky and experimental.
+	- Quest and interjections should work as intended and without issue.
 
-- Alpha.0.0.9
+- Alpha.0...
