@@ -371,6 +371,10 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~Global("JO_Myself_InParty","LOCALS",0)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
 //
+	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~I am considered like a familiar.~ GOTO JO_JOINStatEnd
+//
+	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~I am considered like an ally.~ GOTO JO_JOINStatEnd
+//
 	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~I am not considered like ready to talk.~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(4)
