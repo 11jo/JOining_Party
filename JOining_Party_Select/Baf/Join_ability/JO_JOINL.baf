@@ -34,10 +34,14 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",2)
-// 
-	Global("JO_JOIN_LOAD","LOCALS",0)
 	!Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
-	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+// 
+	OR(2)
+		Delay(5)
+		Global("JO_JOIN_LOAD","LOCALS",0)
+	OR(2)
+		Delay(5)
+		!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -54,8 +58,12 @@ IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",2)
 // 
-	Global("JO_JOIN_LOAD","LOCALS",0)
-	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+	OR(2)
+		Delay(5)
+		Global("JO_JOIN_LOAD","LOCALS",0)
+	OR(2)
+		Delay(5)
+		!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

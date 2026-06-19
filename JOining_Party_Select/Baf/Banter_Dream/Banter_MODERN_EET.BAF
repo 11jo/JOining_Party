@@ -1,8 +1,7 @@
 
 IF
-	OR(2)
-		PartyRested()
-		!Global("JO_JOIN_DREAM_DONE","LOCALS",0)
+	PartyRested()
+	Global("JO_JOIN_DREAM_DONE","LOCALS",1)
 THEN	
 	RESPONSE #100
 		ChangeAIScript("",RACE)
