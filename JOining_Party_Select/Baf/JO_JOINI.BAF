@@ -527,12 +527,14 @@ THEN
 		DisplayString(Myself,~Done.~)
 	RESPONSE #23
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
 		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		DisplayString(Myself,~Done. I am linked to you !~)
 		Continue()
 	RESPONSE #24
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1)
 		ChangeEnemyAlly(Myself,CONTROLLED)
 		DisplayString(Myself,~Done. I am more independant !~)
@@ -1474,9 +1476,10 @@ IF // ChangeEnemyAlly(Myself,FAMILIAR)
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(2)
+	OR(3)
+		Global("JO_JOIN_CONTROLLED","LOCALS",0)
+		Allegiance(Myself,FAMILIAR)
 		Global("JO_JOIN_FAMILIAR","LOCALS",1)
-		!Global("JO_JOIN_CONTROLLED","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -1487,6 +1490,57 @@ THEN
 		SetSequence(SEQ_EMERGE)
 		SetInterrupt(TRUE)
 		Continue() // Important
+END
+
+// Secondary Sleeping Dead 2 FAMILIAR
+
+// WARNING: conditions must be identical to the previous block
+IF // ChangeEnemyAlly(Myself,FAMILIAR)
+	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	OR(3)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+		HPGT(Myself,20)
+	OR(4)
+		!ActuallyInCombat()
+		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
+		HPGT(Myself,4)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(3)
+		Global("JO_JOIN_CONTROLLED","LOCALS",0)
+		Allegiance(Myself,FAMILIAR)
+		Global("JO_JOIN_FAMILIAR","LOCALS",1)
+THEN
+	RESPONSE #10
+		DisplayStringHead(Myself,~Still alive !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Dead ? No more !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~The sun shines, and I am amazed to see another day.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Perhaps I'll survive longer than I had originally thought.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~You didn't abandon me !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~It was a... Nice experiment...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Well, I guess we have to go on...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~I may have overreacted.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Of "curse"... I didn't mean it.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Well, that escalated quickly...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 END
 
 IF // ChangeEnemyAlly(Myself,CONTROLLED)
@@ -1500,9 +1554,10 @@ IF // ChangeEnemyAlly(Myself,CONTROLLED)
 		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(2)
-		Global("JO_JOIN_FAMILIAR","LOCALS",1)
-		!Global("JO_JOIN_CONTROLLED","LOCALS",1)
+	OR(3)
+		Global("JO_JOIN_CONTROLLED","LOCALS",1)
+		Allegiance(Myself,CONTROLLED)
+		Global("JO_JOIN_FAMILIAR","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -1515,7 +1570,56 @@ THEN
 		Continue() // Important
 END
 
-// Secondary Sleeping Dead 2
+// Secondary Sleeping Dead 2 CONTROLLED
+
+// WARNING: conditions must be identical to the previous block
+IF // ChangeEnemyAlly(Myself,CONTROLLED)
+	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	OR(3)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+		HPGT(Myself,20)
+	OR(4)
+		!ActuallyInCombat()
+		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
+		HPGT(Myself,4)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(3)
+		Global("JO_JOIN_CONTROLLED","LOCALS",1)
+		Allegiance(Myself,CONTROLLED)
+		Global("JO_JOIN_FAMILIAR","LOCALS",0)
+THEN
+	RESPONSE #10
+		DisplayStringHead(Myself,~Still alive !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Dead ? No more !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~The sun shines, and I am amazed to see another day.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Perhaps I'll survive longer than I had originally thought.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~You didn't abandon me !~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~It was a... Nice experiment...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Well, I guess we have to go on...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~I may have overreacted.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Of "curse"... I didn't mean it.~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	RESPONSE #10
+		DisplayStringHead(Myself,~Well, that escalated quickly...~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+END
 
 // WARNING: conditions must be identical to the previous block
 IF

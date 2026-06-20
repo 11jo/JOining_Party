@@ -2,7 +2,7 @@ APPEND ~%joining_dlg%~
 
 	IF WEIGHT #-1
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN 1
-	SAY ~Hey ! Who could have foreseen that you would lead such a legion ?~
+	SAY ~^0xFFffe599Hey ! Who could have foreseen that you would lead such a legion ?^-~
 	IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
 	IF ~~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
@@ -16,7 +16,7 @@ APPEND ~%joining_dlg%~
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
 		JoinParty()~ GOTO JO_JOINYes //
-	IF ~~ THEN REPLY ~^BJoin the group, just for a minute.^-~ DO ~
+	IF ~~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
@@ -24,17 +24,19 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 
 // Indepandance
-	IF ~IsGabber(Player1) GlobalGT("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ THEN REPLY ~^0xFFFFDF10Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",3)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",3)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",5)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",5)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",8)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",8)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",10)~ THEN REPLY ~^0xFFFFDF10I am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",10)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",3)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",5)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",8)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",8)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",10)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",10)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) GlobalGT("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ GOTO JO_JOINYes //
 
 // Indepandance for traveler // ChangeEnemyAlly
-	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFFFDF10I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",23)~ GOTO JO_JOINYes //
-	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFFFFDF10It's better for the group if you are more independent.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",24)~ GOTO JO_JOINYes //
+	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFF6aa84fIt's better for the group if you are more independent.^-~ DO ~SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1) SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
+						ChangeEnemyAlly(Myself,CONTROLLED)~ GOTO JO_JOINYes //
+	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFffe599I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1) SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
+				ChangeEnemyAlly(Myself,FAMILIAR)~ GOTO JO_JOINYes //
 
-	IF ~!IsGabber(Player1) TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))~ THEN REPLY ~^BSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
+	IF ~!IsGabber(Player1) TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
@@ -44,39 +46,39 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1)~ GOTO JO_JOINYes //
 // Manage travelers
-	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
+	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //
 // Cutscenes
-	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFFFFDF10I don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFFFFDF10I did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fI did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
 // Temporary : travelers switch
-	IF ~Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4Remain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~!Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4Remain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bRemain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~!Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
 	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
 // Banters
-	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFFFFBF5FI am exhausted by your conversation, please stop interrupting the group.^-~ DO ~
+	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am exhausted by your conversation, please stop interrupting the group.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~!Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFFFFBF5FOn second thought, I miss your discussions... Please continue.^-~ DO ~
+	IF ~!Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fOn second thought, I miss your discussions... Please continue.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)~ GOTO JO_JOINYes //
 
 // Switching party between travelers and party members
-	IF ~!Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF82E6FFDon't switch with regular party members, be only a traveler.^-~ DO ~
+	IF ~!Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bDon't switch with regular party members, be only a traveler.~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^BYou can switch with regular party members.^-~ DO ~
+	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF6aa84fYou can switch with regular party members.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~~ THEN REPLY ~^0xFF82E6FFJoin the group properly, please, and don't switch your place with travelers.^-~ DO ~
+	IF ~~ THEN REPLY ~^0xFF5b5b5bJoin the group properly, please, and don't switch your place with travelers.^-~ DO ~
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
@@ -91,7 +93,7 @@ APPEND ~%joining_dlg%~
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
 		JoinParty()~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_Wannabe","LOCALS",1)~ THEN REPLY ~Join the group properly, please, and at beginning don't make room for travelers.~ DO ~
+	IF ~Global("JO_JOIN_Wannabe","LOCALS",1)~ THEN REPLY ~^0xFF16537eJoin the group properly, please, and at beginning don't make room for travelers.^-~ DO ~
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -102,7 +104,7 @@ APPEND ~%joining_dlg%~
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
 		JoinParty()~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_Wannabe","LOCALS",0)~ THEN REPLY ~Join the group properly, please, and at beginning make room for travelers.~ DO ~
+	IF ~Global("JO_JOIN_Wannabe","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Join the group properly, please, and at beginning make room for travelers.^-~ DO ~
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -186,7 +188,7 @@ APPEND ~%joining_dlg%~
 		DisplayString(Myself,@103)
 		ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFF00FFI am currently talking to you, so it's fine !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4I am currently talking to you, so it's fine !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING.~ DO ~SetGlobal("JO_JOIN_LOADING","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_CUTSCENE","GLOBAL",0)~ THEN REPLY ~JO_JOIN_CUTSCENE.~ DO ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~ EXIT //
 	/*IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_SWITCHING_PARTY.~ DO ~SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ EXIT //
@@ -269,8 +271,8 @@ IF ~~ THEN BEGIN JO_JOINYes
 END
 
 IF ~~ THEN BEGIN JO_JOINDLG2
-	SAY ~What can I do?~
-	IF ~~ THEN REPLY ~Change nothing.~ DO ~~ GOTO JO_JOINYes
+	SAY ~^0xFF82E6FFWhat can I do?^-~
+	IF ~~ THEN REPLY ~^0xFF6aa84fChange nothing.^-~ DO ~~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("BDAI_DISABLE_ATTACK","LOCALS",0)
 												 SetGlobal("BDAI_ATTACK_MODE","LOCALS",0)
 												 SetGlobal("BDAI_DISABLE_ITEMS","LOCALS",0)
@@ -300,57 +302,57 @@ END
 
 
 IF ~~ THEN BEGIN JO_JOINDLG3
-	SAY ~What do you need ?~
-	IF ~~ THEN REPLY ~Change nothing.~ DO ~~ GOTO JO_JOINYes
+	SAY ~^0xFF82E6FFWhat do you need ?^-~
+	IF ~~ THEN REPLY ~^0xFF6aa84fChange nothing.^-~ DO ~~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)
 													SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)~ GOTO JO_JOINYes
-	IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFFFFB4B4Stay at this location.^-~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player1)~
-		THEN REPLY ~Stay on sight.~
+		THEN REPLY ~^0xFFffe599Stay on sight.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player1)~
-		THEN REPLY ~Stay close.~
+		THEN REPLY ~^0xFF7f6000Stay close.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player2)~
-		THEN REPLY ~Stay on sight.~
+		THEN REPLY ~^0xFFffe599Stay on sight.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player2)~
-		THEN REPLY ~Stay close.~
+		THEN REPLY ~^0xFF7f6000Stay close.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player3)~
-		THEN REPLY ~Stay on sight.~
+		THEN REPLY ~^0xFFffe599Stay on sight.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player3)~
-		THEN REPLY ~Stay close.~
+		THEN REPLY ~^0xFF7f6000Stay close.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player4)~
-		THEN REPLY ~Stay on sight.~
+		THEN REPLY ~^0xFFffe599Stay on sight.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player4)~
-		THEN REPLY ~Stay close.~
+		THEN REPLY ~^0xFF7f6000Stay close.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player5)~
-		THEN REPLY ~Stay on sight.~
+		THEN REPLY ~^0xFFffe599Stay on sight.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player5)~
-		THEN REPLY ~Stay close.~
+		THEN REPLY ~^0xFF7f6000Stay close.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player6)~
-		THEN REPLY ~Stay on sight.~
+		THEN REPLY ~^0xFFffe599Stay on sight.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~IsGabber(Player6)~
-		THEN REPLY ~Stay close.~
+		THEN REPLY ~^0xFF7f6000Stay close.^-~
 			DO ~SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 END
@@ -369,13 +371,13 @@ IF ~~ THEN BEGIN JO_JOINStat
 			CheckStat(Myself,0,IGNOREDRAINDEATH)
 			CheckStat(Myself,0,IMMUNE_TO_TURN_UNDEAD)~ THEN REPLY ~The engagement scroll isn't active.~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_Myself_InParty","LOCALS",0)~ THEN REPLY ~I am not considered like a party member.~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_Myself_InParty","LOCALS",0)~ THEN REPLY ~^-I am not considered like a party member.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~I am considered like a familiar.~ GOTO JO_JOINStatEnd
+	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFF6aa84fI am considered like a familiar.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~I am considered like an ally.~ GOTO JO_JOINStatEnd
+	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFF7f6000I am considered like an ally.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~I am not considered like ready to talk.~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am not considered like ready to talk.^-~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(4)
 			!Global("JO_JOIN_CLEAR","LOCALS",0)
@@ -387,21 +389,21 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)~ THEN REPLY ~I am dead...~ GOTO JO_JOINStatEnd
 //
-	IF ~!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS") !Global("JO_JOIN_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^GI am ready for a Quick Switch.^-~ GOTO JO_JOINStatEnd
+	IF ~!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS") !Global("JO_JOIN_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^0xFF6aa84fI am ready for a Quick Switch.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_JOIN_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^0xFFFF00FFI don't join the group for a Quick Switch.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't join the group for a Quick Switch.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",1)~ THEN REPLY ~^0xFFFF00FFI don't participate to the conversations.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't participate to the conversations.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~!Global("JO_JOIN_NEVER_BANTER","LOCALS",1)~ THEN REPLY ~^GI'm always eager to a little chat.^-~ GOTO JO_JOINStatEnd
+	IF ~!Global("JO_JOIN_NEVER_BANTER","LOCALS",1)~ THEN REPLY ~^0xFF7f6000I'm always eager to a little chat.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") !Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~I am ready to switch with party members.~ GOTO JO_JOINStatEnd
+	IF ~!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") !Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF6aa84fI am ready to switch with party members.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFFFF00FFI don't switch with party members.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't switch with party members.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFFFF00FFNo dream for me.^-~ GOTO JO_JOINStatEnd
+	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bNo dream for me.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~Always here, even in your dream !~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fAlways here, even in your dream !^-~ GOTO JO_JOINStatEnd
 //
 END
 
