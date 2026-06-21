@@ -38,40 +38,6 @@ IF
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
-// 
-	NumInPartyGT(1)
-	OR(5)
-		!InMyArea(Player6)
-		!InMyArea(Player5)
-		!InMyArea(Player4)
-		!InMyArea(Player3)
-		!InMyArea(Player2)
-// 
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
-THEN
-	RESPONSE #100
-		ClearAllActions()
-		SetCutSceneLite(TRUE)
-		CreateVisualEffectObject("JOBG402",Player1)
-		SetGlobal("JO_JOIN_SWITCHING_MOVE","GLOBAL",1)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1) // We are in the Switching room
-		FadeToColor([20.0],0)
-		Wait(1)
-		StorePartyLocations()
-		FadeFromColor([30.0],0)
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],1))
-		MultiPlayerSync()
-		Wait(1)
-		CreateVisualEffectObject("JOBG402",Player1)
-		SetCutSceneLite(FALSE)
-END
-
-IF
-// 
-	OR(2)
-		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
 	OR(2)
 		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
 		See([ENEMY])
@@ -159,20 +125,10 @@ THEN
 		RestorePartyLocations()
 // 
 		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching Room
+		MoveToOffset([1.-1])
 		FadeFromColor([30.0],0)
-		Wait(1)
+		SmallWait(10)
 		CreateVisualEffectObject("JOBG402",Player1)
-END
-
-IF
-// 
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // Set in JO_JOINL.baf
-// 
-	Global("JO_JOIN_SWITCHING_MOVE","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_MOVE","GLOBAL",2)
-		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
