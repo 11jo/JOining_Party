@@ -9,10 +9,134 @@
 			// JO_JOIN_LOAD (Used by travelers loading steps)
 ///////////////////////////////////////////////////////////////////////////////
 
+// Primary Loading Switch
+	//  In order to restore party member location to workaround RestorePartyLocations() that don't restore party member location if if not in the same area as Player1
+
+IF // If party members aren't in the same area as Player1
+	Global("JO_JOIN_SWITCHING_MOVE","GLOBAL",2)
+	!Global("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",1)
+	Switch("JO_JOIN_SWITCHING_MOVE","LOCALS")
+THEN
+	RESPONSE #2
+		MoveGlobalObject(Player2,"JO_JOIN2")
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",1)
+		Continue()
+	RESPONSE #3
+		MoveGlobalObject(Player3,"JO_JOIN3")
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",1)
+		Continue()
+	RESPONSE #4
+		MoveGlobalObject(Player4,"JO_JOIN4")
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",1)
+		Continue()
+	RESPONSE #5
+		MoveGlobalObject(Player5,"JO_JOIN5")
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",1)
+		Continue()
+	RESPONSE #6
+		MoveGlobalObject(Player6,"JO_JOIN6")
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",1)
+		Continue()
+END
+
+IF // Player2 Create JO_JOIN2.CRE, to save is exact location.
+// 
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+// 
+	!InMyArea(Player1)
+	InPartySlot(Myself,1)
+// 
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","GLOBAL",1)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","LOCALS",2)
+		CreateCreatureObject("JO_JOIN2",Myself,0,0,0)
+		Continue()
+END
+
+IF // Player3 Create JO_JOIN3.CRE, to save is exact location.
+// 
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+// 
+	!InMyArea(Player1)
+	InPartySlot(Myself,2)
+// 
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","GLOBAL",1)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","LOCALS",3)
+		CreateCreatureObject("JO_JOIN3",Myself,0,0,0)
+		Continue()
+END
+
+IF // Player4 Create JO_JOIN4.CRE, to save is exact location.
+// 
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+// 
+	!InMyArea(Player1)
+	InPartySlot(Myself,3)
+// 
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","GLOBAL",1)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","LOCALS",4)
+		CreateCreatureObject("JO_JOIN4",Myself,0,0,0)
+		Continue()
+END
+
+IF // Player5 Create JO_JOIN5.CRE, to save is exact location.
+// 
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+// 
+	!InMyArea(Player1)
+	InPartySlot(Myself,4)
+// 
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","GLOBAL",1)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","LOCALS",5)
+		CreateCreatureObject("JO_JOIN5",Myself,0,0,0)
+		Continue()
+END
+
+IF // Player6 Create JO_JOIN6.CRE, to save is exact location.
+// 
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+// 
+	!InMyArea(Player1)
+	InPartySlot(Myself,5)
+// 
+	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","GLOBAL",1)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCHING_MOVE","LOCALS",6)
+		CreateCreatureObject("JO_JOIN6",Myself,0,0,0)
+		Continue()
+END
 
 // For Party member After Main Loading Switch 1 //
 
-IF
+IF // One party member have to make room for traveler Loading Switch if the party is full
 //
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 	Global("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0) // Set to 1 by the first travelers switch
@@ -46,7 +170,7 @@ END
 
 // For party member After Main Loading Switch 3 //
 
-IF
+IF // The party member making room for traveler Loading Switch if the party is full reintegrate the party right after
 //
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
 	!Global("JO_JOIN_LOADING","GLOBAL",1) // Loading switch "almost" finished
