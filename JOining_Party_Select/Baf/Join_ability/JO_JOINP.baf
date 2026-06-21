@@ -155,6 +155,77 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// PartySlot
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_PARTYSLOT (Value is party member place in UI)
+// Note :
+	// Used to know what slot were who even when traveler
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	InParty(PartySlot6)
+	!TriggerOverride(PartySlot6,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	InParty(PartySlot5)
+	!TriggerOverride(PartySlot5,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	InParty(PartySlot4)
+	!TriggerOverride(PartySlot4,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	InParty(PartySlot3)
+	!TriggerOverride(PartySlot3,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	InParty(PartySlot2)
+	!TriggerOverride(PartySlot2,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	InParty(PartySlot1)
+	!TriggerOverride(PartySlot1,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Base
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -319,6 +390,7 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
 // 
 //	REPLACE_TRAVELER_NumInParty
