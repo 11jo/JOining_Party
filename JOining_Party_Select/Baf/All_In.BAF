@@ -28,10 +28,14 @@ IF // One party member have to make room for traveler Loading Switch if the part
 THEN
 	RESPONSE #30
 		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
-		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		DisplayStringHead(Myself,~Oh no ! More Travelers...~)
-		LeaveParty()
-		Deactivate(Myself)
+//		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		ActionOverride(PartySlot6,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+//		DisplayStringHead(Myself,~Oh no ! More Travelers...~)
+		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
+//		LeaveParty()
+		ActionOverride(PartySlot6,LeaveParty())
+//		Deactivate(Myself)
+		ActionOverride(PartySlot6,Deactivate(Myself))
 		Continue()
 	RESPONSE #20
 		NoAction()
