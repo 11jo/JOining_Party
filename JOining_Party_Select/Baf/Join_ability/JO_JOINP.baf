@@ -164,109 +164,30 @@ END
 	// Used to know what slot were who even when traveler
 ///////////////////////////////////////////////////////////////////////////////
 
-// Return to my slot
+// Check Player1 Slot
 
-IF // PartySlot1
-	Delay(1)
-	Global("JO_JOIN_SLOTNUMBER","GLOBAL",2)
-	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",2)
-//
-	NumInPartyLT(2)
+IF
+	TriggerOverride(Player1,InParty(PartySlot1))
+	Global("JO_JOIN_PROTAGONIST","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
-		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",3)
-		Activate(Myself)
-		SmallWait(1)
-		JoinParty()
+		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",1)
+		Continue()
 END
 
-IF // PartySlot2
-	Delay(1)
-	Global("JO_JOIN_SLOTNUMBER","GLOBAL",3)
-	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",3)
-//
-	NumInPartyLT(3)
-	NumInPartyGT(1)
+IF
+	!TriggerOverride(Player1,InParty(PartySlot1))
+	Global("JO_JOIN_PROTAGONIST","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
-		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",4)
-		Activate(Myself)
-		SmallWait(1)
-		JoinParty()
-END
-
-IF // PartySlot3
-	Delay(1)
-	Global("JO_JOIN_SLOTNUMBER","GLOBAL",4)
-	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",4)
-//
-	NumInPartyLT(4)
-	NumInPartyGT(2)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
-		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",5)
-		Activate(Myself)
-		SmallWait(1)
-		JoinParty()
-END
-
-IF // PartySlot4
-	Delay(1)
-	Global("JO_JOIN_SLOTNUMBER","GLOBAL",5)
-	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",5)
-//
-	NumInPartyLT(5)
-	NumInPartyGT(3)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
-		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",6)
-		Activate(Myself)
-		SmallWait(1)
-		JoinParty()
-END
-
-IF // PartySlot5
-	Delay(1)
-	Global("JO_JOIN_SLOTNUMBER","GLOBAL",6)
-	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",6)
-//
-	NumInPartyLT(6)
-	NumInPartyGT(4)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
-		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",0)
-		Activate(Myself)
-		SmallWait(1)
-		JoinParty()
-END
-
-IF // Security
-	!Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_RETURNSLOT_WAIT","LOCALS",1)
-END
-
-IF // Security
-	Delay(20)
-	Global("JO_JOIN_RETURNSLOT_WAIT","LOCALS",1)
-	!Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_RETURNSLOT_WAIT","LOCALS",0)
-		SetGlobal("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",0)
 		Continue()
 END
 
 // Check party Slot
 
 IF
-	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot6)
 	!TriggerOverride(PartySlot6,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
 THEN
@@ -276,7 +197,7 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot5)
 	!TriggerOverride(PartySlot5,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
 THEN
@@ -286,7 +207,7 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot4)
 	!TriggerOverride(PartySlot4,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
 THEN
@@ -296,7 +217,7 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot3)
 	!TriggerOverride(PartySlot3,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
 THEN
@@ -306,7 +227,7 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot2)
 	!TriggerOverride(PartySlot2,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
 THEN
@@ -316,7 +237,7 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot1)
 	!TriggerOverride(PartySlot1,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
 THEN
@@ -491,7 +412,7 @@ END
 IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
 // 
 //	REPLACE_TRAVELER_NumInParty
