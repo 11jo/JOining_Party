@@ -198,6 +198,7 @@ THEN
 	RESPONSE #100
 		Activate(Myself)
 		SetGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+		Continue()
 END
 
 IF // Range 80
@@ -238,6 +239,7 @@ THEN
 	RESPONSE #100
 		Activate(Myself)
 		SetGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+		Continue()
 END
 
 IF // Range 50
@@ -278,6 +280,7 @@ THEN
 	RESPONSE #100
 		Activate(Myself)
 		SetGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+		Continue()
 END
 
 IF // Range 30
@@ -318,6 +321,7 @@ THEN
 	RESPONSE #100
 		Activate(Myself)
 		SetGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -655,6 +659,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0) // Enable next block
 		DisplayString(Myself,~I have to wait more before a Quick Switch.~)
+		Continue()
 END
 
 // Main Quick Switch 2
@@ -3263,7 +3268,7 @@ END
 
 IF // Reset variable for traveler
 //
-	Delay(10) // Prevent to be checked before Playerx leave the party
+	Delay(20) // Prevent to be checked before Playerx leave the party
 //
 	GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)

@@ -56,7 +56,10 @@ IF ~True()~ THEN BEGIN 0
 	IF ~~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
 
 // ChangeEnemyAlly
+/*
 	IF ~~ THEN REPLY ~^0xFFffe599It's better for the group if travelers are more independent.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",24)~ EXIT
+*/
+
 	IF ~~ THEN REPLY ~^0xFF6aa84fI prefer to have a strong bond with my travelers.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",23)~ EXIT //
 
 // Checks

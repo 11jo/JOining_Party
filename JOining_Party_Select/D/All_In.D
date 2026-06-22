@@ -1,7 +1,7 @@
 APPEND ~%joining_dlg%~
 
 	IF WEIGHT #-1
-	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN 1
+	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN LEGION
 	SAY ~^0xFFffe599Hey ! Who could have foreseen that you would lead such a legion ?^-~
 	IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
 	IF ~~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~
@@ -31,11 +31,15 @@ APPEND ~%joining_dlg%~
 	IF ~IsGabber(Player1) GlobalGT("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ GOTO JO_JOINYes //
 
 // Indepandance for traveler // ChangeEnemyAlly
+/*
 	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFF6aa84fIt's better for the group if you are more independent.^-~ DO ~SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1) SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
 						ChangeEnemyAlly(Myself,CONTROLLED)~ GOTO JO_JOINYes //
+*/
+
 	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFffe599I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1) SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
 				ChangeEnemyAlly(Myself,FAMILIAR)~ GOTO JO_JOINYes //
 
+// Swithc with a player
 	IF ~!IsGabber(Player1) TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
@@ -48,7 +52,7 @@ APPEND ~%joining_dlg%~
 // Manage travelers
 	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //
-	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our party.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG4 //
+	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our party.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG4 //
 // Cutscenes
 	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fI did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
@@ -189,7 +193,7 @@ APPEND ~%joining_dlg%~
 		DisplayString(Myself,@103)
 		ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4I am currently talking to you, so it's fine !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4I am currently talking to you, so it's fine !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO LEGION
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING.~ DO ~SetGlobal("JO_JOIN_LOADING","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_CUTSCENE","GLOBAL",0)~ THEN REPLY ~JO_JOIN_CUTSCENE.~ DO ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~ EXIT //
 	/*IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_SWITCHING_PARTY.~ DO ~SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ EXIT //
@@ -273,7 +277,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINDLG2
 	SAY ~^0xFF82E6FFWhat can I do?^-~
-	IF ~~ THEN REPLY ~^0xFF6aa84fChange nothing.^-~ DO ~~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fChange nothing.^-~ DO ~~ GOTO LEGION
 	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("BDAI_DISABLE_ATTACK","LOCALS",0)
 												 SetGlobal("BDAI_ATTACK_MODE","LOCALS",0)
 												 SetGlobal("BDAI_DISABLE_ITEMS","LOCALS",0)
@@ -304,7 +308,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINDLG3
 	SAY ~^0xFF82E6FFWhat do you need ?^-~
-	IF ~~ THEN REPLY ~^0xFF6aa84fChange nothing.^-~ DO ~~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fChange nothing.^-~ DO ~~ GOTO LEGION
 	IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)
 													SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFFFFB4B4Stay at this location.^-~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)~ GOTO JO_JOINYes
@@ -361,6 +365,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINDLG4
 	SAY ~^0xFF82E6FFI am in...^-~
+	IF ~Global("JO_JOIN_PARTYSLOT","LOCALS",0)~ THEN GOTO JO_JOINPARTYSLOT0
 	IF ~Global("JO_JOIN_PARTYSLOT","LOCALS",1)~ THEN GOTO JO_JOINPARTYSLOT1
 	IF ~Global("JO_JOIN_PARTYSLOT","LOCALS",2)~ THEN GOTO JO_JOINPARTYSLOT2
 	IF ~Global("JO_JOIN_PARTYSLOT","LOCALS",3)~ THEN GOTO JO_JOINPARTYSLOT3
@@ -370,9 +375,22 @@ IF ~~ THEN BEGIN JO_JOINDLG4
 END
 
 
+IF ~~ THEN BEGIN JO_JOINPARTYSLOT0
+	SAY ~^0xFF6aa84f...Oh, I don't have any assigned place.^~
+	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO LEGION
+	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the leader place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the second place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the third place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the fourth place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",4)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the fifth place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",5)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the sixth place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6)~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fAny place will do..^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",0)~ GOTO JO_JOINYes
+END
+
+
 IF ~~ THEN BEGIN JO_JOINPARTYSLOT1
 	SAY ~^0xFF6aa84f...First... I was the leader !^~
-	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO LEGION
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the second place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the third place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the fourth place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",4)~ GOTO JO_JOINYes
@@ -384,7 +402,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINPARTYSLOT2
 	SAY ~^0xFF6aa84f...Second place.^-~
-	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO LEGION
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the leader place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the third place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the fourth place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",4)~ GOTO JO_JOINYes
@@ -396,7 +414,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINPARTYSLOT3
 	SAY ~^0xFF6aa84f...Third place.^-~
-	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO LEGION
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the leader place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the second place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the fourth place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",4)~ GOTO JO_JOINYes
@@ -408,7 +426,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINPARTYSLOT4
 	SAY ~^0xFF6aa84f...Fourth place.^-~
-	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO LEGION
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the leader place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the second place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the third place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3)~ GOTO JO_JOINYes
@@ -420,7 +438,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINPARTYSLOT5
 	SAY ~^0xFF6aa84f...Fifth place .^-~
-	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO LEGION
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the leader place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the second place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the third place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3)~ GOTO JO_JOINYes
@@ -432,7 +450,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINPARTYSLOT6
 	SAY ~^0xFF6aa84f...Sixth place.^-~
-	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO JO_JOINYes
+	IF ~~ THEN REPLY ~^0xFF6aa84fAlright, good to know.^-~ GOTO LEGION
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the leader place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the second place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the third place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3)~ GOTO JO_JOINYes
@@ -493,7 +511,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINStatEnd
 	SAY ~I hope I am fine.~
-	IF ~~ THEN DO ~SetGlobal("JO_JOIN","LOCALS",0)~  EXIT
+	IF ~~ THEN DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO LEGION
 END
 
 ////////////////////////////////////////////////////

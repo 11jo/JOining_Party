@@ -164,6 +164,107 @@ END
 	// Used to know what slot were who even when traveler
 ///////////////////////////////////////////////////////////////////////////////
 
+// Return to my slot
+
+IF // PartySlot1
+	Delay(1)
+	Global("JO_JOIN_SLOTNUMBER","GLOBAL",2)
+	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",2)
+//
+	NumInPartyLT(2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
+		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",3)
+		Activate(Myself)
+		SmallWait(1)
+		JoinParty()
+END
+
+IF // PartySlot2
+	Delay(1)
+	Global("JO_JOIN_SLOTNUMBER","GLOBAL",3)
+	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",3)
+//
+	NumInPartyLT(3)
+	NumInPartyGT(1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
+		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",4)
+		Activate(Myself)
+		SmallWait(1)
+		JoinParty()
+END
+
+IF // PartySlot3
+	Delay(1)
+	Global("JO_JOIN_SLOTNUMBER","GLOBAL",4)
+	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",4)
+//
+	NumInPartyLT(4)
+	NumInPartyGT(2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
+		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",5)
+		Activate(Myself)
+		SmallWait(1)
+		JoinParty()
+END
+
+IF // PartySlot4
+	Delay(1)
+	Global("JO_JOIN_SLOTNUMBER","GLOBAL",5)
+	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",5)
+//
+	NumInPartyLT(5)
+	NumInPartyGT(3)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
+		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",6)
+		Activate(Myself)
+		SmallWait(1)
+		JoinParty()
+END
+
+IF // PartySlot5
+	Delay(1)
+	Global("JO_JOIN_SLOTNUMBER","GLOBAL",6)
+	Global("JO_JOIN_RETURN_MYSLOT","LOCALS",6)
+//
+	NumInPartyLT(6)
+	NumInPartyGT(4)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_RETURN_MYSLOT","LOCALS",0)
+		SetGlobal("JO_JOIN_SLOTNUMBER","GLOBAL",0)
+		Activate(Myself)
+		SmallWait(1)
+		JoinParty()
+END
+
+IF // Security
+	!Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_RETURNSLOT_WAIT","LOCALS",1)
+END
+
+IF // Security
+	Delay(20)
+	Global("JO_JOIN_RETURNSLOT_WAIT","LOCALS",1)
+	!Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_RETURNSLOT_WAIT","LOCALS",0)
+		SetGlobal("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+		Continue()
+END
+
+// Check party Slot
+
 IF
 	Global("JO_JOIN_RETURNSLOT","GLOBAL",0)
 	InParty(PartySlot6)
