@@ -39,6 +39,7 @@ APPEND ~%joining_dlg%~
 
 // Switch with a player
 	IF ~!IsGabber(Player1)
+		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))
 		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
@@ -48,6 +49,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",7)~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
+		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))
 		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 		OR(3)
