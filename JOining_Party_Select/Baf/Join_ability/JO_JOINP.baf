@@ -34,6 +34,29 @@ END
 // Secondary Loading Switch 1 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
+//
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+	!TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",1)) // Dead party member
+	Global("JO_JOIN_PARTYSLOT6_DEAD","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_PARTYSLOT6_DEAD","LOCALS",1)
+		Continue()
+END
+
+IF
+//
+	!TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",0)) // Not a dead party member
+	Global("JO_JOIN_PARTYSLOT6_DEAD","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_PARTYSLOT6_DEAD","LOCALS",0)
+		Continue()
+END
+
+IF
 // 
 	OR(2)
 		OnCreation()

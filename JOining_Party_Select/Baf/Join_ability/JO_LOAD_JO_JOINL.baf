@@ -11,7 +11,7 @@
 IF // If no party member are alive to be traveler the Player need to resurect them.
 	NumInPartyGT(5)
 //	NumInPartyAlive(1) // Security if all party member are dead but still in party
-	!TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",1)) // Dead party member
+	Global("JO_JOIN_PARTYSLOT6_DEAD","LOCALS",1) // Dead party member
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
