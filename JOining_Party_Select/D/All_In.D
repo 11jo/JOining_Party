@@ -37,20 +37,37 @@ APPEND ~%joining_dlg%~
 	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFffe599I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1) SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
 				ChangeEnemyAlly(Myself,FAMILIAR)~ GOTO JO_JOINYes //
 
-// Swithc with a player
-	IF ~!IsGabber(Player1) TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
+// Switch with a player
+	IF ~!IsGabber(Player1)
+		TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))
+		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1)~ GOTO JO_JOINYes // TODO : Will not take the same slot as the party member.
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",7)~ GOTO JO_JOINYes
+	IF ~!IsGabber(Player1)
+		TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		OR(3)
+			TriggerOverride(LastTalkedToBy,InParty(PartySlot6))
+			TriggerOverride(LastTalkedToBy,InParty(PartySlot5))
+			TriggerOverride(LastTalkedToBy,InParty(PartySlot4))~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
+		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
+		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",7)~ GOTO JO_JOINYes
 // Manage travelers
 	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //
+
+/*
 	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our party.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG4 //
+*/
+
 // Cutscenes
 	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fI did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
@@ -360,7 +377,7 @@ IF ~~ THEN BEGIN JO_JOINDLG3
 					SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",2)~ GOTO JO_JOINYes
 END
 
-
+/*
 IF ~~ THEN BEGIN JO_JOINDLG4
 	SAY ~^0xFF82E6FFI am in...^-~
 	IF ~Global("JO_JOIN_PARTYSLOT","LOCALS",0)~ THEN GOTO JO_JOINPARTYSLOT0
@@ -456,6 +473,7 @@ IF ~~ THEN BEGIN JO_JOINPARTYSLOT6
 	IF ~~ THEN REPLY ~^0xFF6aa84fYou will take the fifth place next time.^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",5)~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF6aa84fAny place will do..^-~ DO ~SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",0)~ GOTO JO_JOINYes
 END
+*/
 
 ////////////////////////////////////////////////////
 

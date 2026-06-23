@@ -78,7 +78,6 @@ IF
 //
 	!AreaCheck("JO2608")
 	!Global("JO_JOIN_LOADING","GLOBAL",1)
-	NumInPartyGT(1)
 	Global("JO_JOIN_NOPRIVACY","GLOBAL",0)
 	Global("JO_JOIN_PRIVACY","LOCALS",0)
 	NumInPartyGT(1)
@@ -2394,33 +2393,37 @@ IF // Special case : Traveler was about to switch but something prevent it
 //
 	Global("JO_NOJOIN","GLOBAL",0)
 //
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//
 	OR(4)
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+		GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 		Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
 		Global("JO_JOIN_SWITCHING","GLOBAL",1)
 		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
 	OR(3)
 		NumInPartyLT(6)
-		!TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		!TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
 	OR(3)
 		NumInPartyLT(5)
-		!TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		!TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
 	OR(3)
 		NumInPartyLT(4)
-		!TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		!TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-	OR(3)
+	OR(4)
 		NumInPartyLT(3)
-		!TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		!TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-	OR(2)
-		!TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+	OR(4)
+		NumInPartyLT(2)
+		!TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+	OR(3)
+		!TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2439,9 +2442,6 @@ IF // If no party member are available to be traveler the Player need to make so
 //
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -2468,13 +2468,20 @@ IF // If no party member are available to be traveler the Player need to make so
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //
-	NumInPartyGT(2)
-	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
-// 	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : See below, but this block could be expanded to take party member not valid in consideration.
+	NumInPartyGT(1)
+	!TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",1))
+	OR(2)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		!TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",1))
+	OR(2)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		!TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",1))
+	OR(2)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		!TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",1))
+// 	!TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : See below, but this block could be expanded to take party member not valid in consideration.
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2490,11 +2497,8 @@ IF // First check
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//
 	Global("JO_JOIN_SWITCHING","GLOBAL",0) // No other traveler attempt to Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // No one try to Leave Party
+	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1) // No one try to Leave Party
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -2522,13 +2526,19 @@ IF // First check
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //
-	NumInPartyGT(2)
-	OR(5)
-		TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(2)
+		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		NumInPartyGT(3)
+	OR(4)
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+	OR(4)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #0
 		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Avoid multi switch
@@ -2542,9 +2552,6 @@ IF // Return to Main Switching Party 1 if another traveler is already active (pr
 //
 	Global("JO_NOJOIN","GLOBAL",1) // Someone is switching...
 	!Global("JO_NOJOIN_LOCALS","LOCALS",1) // ...it's not me.
-//
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
 //
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
@@ -2562,17 +2569,18 @@ IF // After block wait 1 if everything is in order, let's switch !
 //
 	Global("JO_NOJOIN","GLOBAL",0) // JO_NOJOIN = 0 we continue !
 //
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
-	OR(5)
-		TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(4)
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+	OR(4)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2591,9 +2599,6 @@ IF // Temporise to avoid that more than one traveler try to switch
 //
 	Global("JO_NOJOIN","GLOBAL",0)
 //
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	Global("JO_JOIN_SWITCH_WAIT","LOCALS",0)
 	NumInPartyGT(2)
@@ -2606,12 +2611,9 @@ END
 
 // Main Switching Party 2 // Randomly select a member... Wannabe !
 
-IF // Player6
+IF // PartySlot6
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
 //
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2638,34 +2640,31 @@ IF // Player6
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //
-	TriggerOverride(Player6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
-	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",0))
+	TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
+	!TriggerOverride(PartySlot6,InPartySlot(Myself,0))
 //	RandomNum(5,1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		FaceObject(Player6)
-		ActionOverride(Player6,FaceObject(Myself)) // FIXME
-		DisplayStringHead(Player6,~Hum ?~)
-		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(Player6,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		FaceObject(PartySlot6)
+		ActionOverride(PartySlot6,FaceObject(Myself)) // FIXME
+		DisplayStringHead(PartySlot6,~Hum ?~)
+		ActionOverride(PartySlot6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(PartySlot6,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // Player6
-		ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // PartySlot6
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN","LOCALS",1))
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
-IF // Player5
+IF // PartySlot5
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//		Global("JO_JOIN_ONLY_PLAYER6","GLOBAL",0) // Switch only with Player6 isn't enabled
 //
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2692,34 +2691,31 @@ IF // Player5
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //
-	TriggerOverride(Player5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-	!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
-	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",0))
+	TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(PartySlot5,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
+	!TriggerOverride(PartySlot5,InPartySlot(Myself,0))
 //	RandomNum(5,4)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		FaceObject(Player5)
-		ActionOverride(Player5,FaceObject(Myself)) // FIXME
-		DisplayStringHead(Player5,~What ?~)
-		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(Player5,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		FaceObject(PartySlot5)
+		ActionOverride(PartySlot5,FaceObject(Myself)) // FIXME
+		DisplayStringHead(PartySlot5,~What ?~)
+		ActionOverride(PartySlot5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(PartySlot5,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // Player5
-		ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // PartySlot5
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN","LOCALS",1))
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
-IF // Player4
+IF // PartySlot4
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//		Global("JO_JOIN_ONLY_PLAYER6","GLOBAL",0) // Switch only with Player6 isn't enabled
 //
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2746,34 +2742,33 @@ IF // Player4
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //
-	TriggerOverride(Player4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-	!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",0))
+	TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(PartySlot4,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
+	!TriggerOverride(PartySlot4,InPartySlot(Myself,0))
 //	RandomNum(5,3)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		FaceObject(Player4)
-		ActionOverride(Player4,FaceObject(Myself)) // FIXME
-		DisplayStringHead(Player4,~Don't disturb...~)
-		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(Player4,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		FaceObject(PartySlot4)
+		ActionOverride(PartySlot4,FaceObject(Myself)) // FIXME
+		DisplayStringHead(PartySlot4,~Don't disturb...~)
+		ActionOverride(PartySlot4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(PartySlot4,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // Player4
-		ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // PartySlot4
+		ActionOverride(PartySlot4,SetGlobal("JO_JOIN","LOCALS",1))
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
-IF // Player3
+IF // PartySlot3
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//		Global("JO_JOIN_ONLY_PLAYER6","GLOBAL",0) // Switch only with Player6 isn't enabled
+	!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 //
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2800,34 +2795,33 @@ IF // Player3
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //
-	TriggerOverride(Player3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-	!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
-	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",0))
+	TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(PartySlot3,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
+	!TriggerOverride(PartySlot3,InPartySlot(Myself,0))
 //	RandomNum(5,2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		FaceObject(Player3)
-		ActionOverride(Player3,FaceObject(Myself)) // FIXME
-		DisplayStringHead(Player3,~Yes ?~)
-		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(Player3,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		FaceObject(PartySlot3)
+		ActionOverride(PartySlot3,FaceObject(Myself)) // FIXME
+		DisplayStringHead(PartySlot3,~Yes ?~)
+		ActionOverride(PartySlot3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(PartySlot3,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // Player3
-		ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // PartySlot3
+		ActionOverride(PartySlot3,SetGlobal("JO_JOIN","LOCALS",1))
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
-IF // Player2
+IF // PartySlot2
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//		Global("JO_JOIN_ONLY_PLAYER6","GLOBAL",0) // Switch only with Player6 isn't enabled
+	!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 //
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
@@ -2854,23 +2848,77 @@ IF // Player2
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 //
-	TriggerOverride(Player2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-	!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",0))
+	TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(PartySlot2,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
 //
+	!TriggerOverride(PartySlot2,InPartySlot(Myself,0))
 //	RandomNum(5,1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		FaceObject(Player2)
-		ActionOverride(Player2,FaceObject(Myself)) // FIXME
-		DisplayStringHead(Player2,~Hé ?~)
-		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(Player2,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		FaceObject(PartySlot2)
+		ActionOverride(PartySlot2,FaceObject(Myself)) // FIXME
+		DisplayStringHead(PartySlot2,~Hé ?~)
+		ActionOverride(PartySlot2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(PartySlot2,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // Player2
-		ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // PartySlot2
+		ActionOverride(PartySlot2,SetGlobal("JO_JOIN","LOCALS",1))
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
+		SetInterrupt(TRUE)
+END
+
+IF // PartySlot1
+// 
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+//
+	!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+//
+	OR(2)
+		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_BLOP","GLOBAL",1)
+//
+	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
+	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
+//
+//		ActionListEmpty()
+	OR(2)
+		!ActuallyInCombat()
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+//
+	TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	!TriggerOverride(PartySlot1,Global("JO_Myself_Valid","LOCALS",0))
+	!TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",0))
+//
+	!TriggerOverride(PartySlot1,InPartySlot(Myself,0))
+//	RandomNum(5,1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(PartySlot1)
+		ActionOverride(PartySlot1,FaceObject(Myself)) // FIXME
+		DisplayStringHead(PartySlot1,~Ho !~)
+		ActionOverride(PartySlot1,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
+		ActionOverride(PartySlot1,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		SmallWait(2)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // PartySlot1
+		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
@@ -2881,10 +2929,6 @@ END
 IF // Travelers take place in party
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
-//
 //
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 //
@@ -2900,11 +2944,11 @@ IF // Travelers take place in party
 //
 	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
 THEN
-	RESPONSE #1 // From PID "Switch with me."
+	RESPONSE #1 // PartySlot1
 		SetInterrupt(FALSE)
-		DisplayStringHead(Myself,~My turn !~)
+		DisplayStringHead(Myself,~Who is the leader ?~)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
@@ -2914,11 +2958,11 @@ THEN
 		DestroyItem("JOMINHP1")
 		SetInterrupt(TRUE)
 		JoinParty()
-	RESPONSE #2 // Player2
+	RESPONSE #2 // PartySlot2
 		SetInterrupt(FALSE)
-		DisplayStringHead(Myself,~My turn !~)
+		DisplayStringHead(Myself,~Here I go !~)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
@@ -2928,11 +2972,11 @@ THEN
 		DestroyItem("JOMINHP1")
 		SetInterrupt(TRUE)
 		JoinParty()
-	RESPONSE #3 // Player3
+	RESPONSE #3 // PartySlot3
 		SetInterrupt(FALSE)
-		DisplayStringHead(Myself,~My turn !~)
+		DisplayStringHead(Myself,~Back again !~)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
@@ -2942,11 +2986,11 @@ THEN
 		DestroyItem("JOMINHP1")
 		SetInterrupt(TRUE)
 		JoinParty()
-	RESPONSE #4 // Player4
+	RESPONSE #4 // PartySlot4
 		SetInterrupt(FALSE)
-		DisplayStringHead(Myself,~My turn !~)
+		DisplayStringHead(Myself,~Hello there !~)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
@@ -2956,11 +3000,11 @@ THEN
 		DestroyItem("JOMINHP1")
 		SetInterrupt(TRUE)
 		JoinParty()
-	RESPONSE #5 // Player5
+	RESPONSE #5 // PartySlot5
 		SetInterrupt(FALSE)
-		DisplayStringHead(Myself,~My turn !~)
+		DisplayStringHead(Myself,~It's about time.~)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
@@ -2970,11 +3014,25 @@ THEN
 		DestroyItem("JOMINHP1")
 		SetInterrupt(TRUE)
 		JoinParty()
-	RESPONSE #6 // Player6
+	RESPONSE #6 // PartySlot6
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~My turn !~)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
+		SmallWait(2)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetInterrupt(TRUE)
+		JoinParty()
+	RESPONSE #7 // All_In.d PID Switch with a player
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~Thanks.~)
+		SmallWait(1)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
@@ -2990,10 +3048,7 @@ END
 
 IF // Reset variable for traveler
 //
-	Delay(10) // Prevent to be checked before Playerx leave the party
-//
-//	Global("JO_JOIN_PROTAGONIST","GLOBAL",0) // Player1 isn't the leader
-//	Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0) // Switch only with PartySlot6 isn't enabled
+	Delay(10) // Prevent to be checked before PartySlotx leave the party
 //
 	GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)

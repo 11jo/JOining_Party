@@ -10,17 +10,34 @@
 
 IF // If no party member are alive to be traveler the Player need to resurect them.
 	NumInPartyGT(5)
-	NumInPartyAlive(1) // Security if all party member are dead but still in party
+//	NumInPartyAlive(1) // Security if all party member are dead but still in party
+	!TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",1)) // Dead party member
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
-		DisplayStringHead(Myself,~All party members are dead, hurry to a temple.~)
+//		DisplayStringHead(Myself,~All party members are dead, hurry to a temple.~)
+		DisplayStringHead(Myself,~The sixth party member is dead, hurry to a temple.~)
 		SetInterrupt(TRUE)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
 
+IF // If Charname is PartySlot6.
+	NumInPartyGT(5)
+	TriggerOverride(PartySlot6,InPartySlot(Myself,0)) // Charname is PartySlot6
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
+//		DisplayStringHead(Myself,~All party members are dead, hurry to a temple.~)
+		DisplayStringHead(Myself,~I am the sixth party member, better be in another place.~)
+		SetInterrupt(TRUE)
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
+END
+
+/*
 IF // If no party member are available to be traveler the Player need to make some available.
 	NumInPartyGT(5)
 	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
@@ -37,6 +54,7 @@ THEN
 		SetInterrupt(TRUE)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
+*/
 
 IF
 	Delay(1)

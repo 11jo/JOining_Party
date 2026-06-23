@@ -34,10 +34,9 @@ IF
 		TimeOfDay(DUSK)
 //
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Not at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-//	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-//	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+//
+	!Global("JO_JOIN_SWITCHING","GLOBAL",1)
+	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 //
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -99,10 +98,10 @@ END
 
 IF
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Not at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-//	Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-//	!GlobalGT("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+//
+	!Global("JO_JOIN_SWITCHING","GLOBAL",1)
+	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
+//
 //	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 //
 	OR(3)
