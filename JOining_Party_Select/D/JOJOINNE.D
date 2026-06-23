@@ -361,6 +361,12 @@ IF ~True()~ THEN BEGIN 0
 		SetTokenGlobal("JO_Myself_InParty","LOCALS","JO_Myself_InParty")
 		SetTokenGlobal("JO_Myself_AllowDead","LOCALS","JO_Myself_AllowDead")
 		SetTokenGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS","JO_JOIN_SLEEPING_DEAD")
+
+
+		SetTokenGlobal("JO_JOIN_PROTAGONIST","GLOBAL","JO_JOIN_PROTAGONIST")
+		SetTokenGlobal("JO_JOIN_PARTYSLOT","LOCALS","JO_JOIN_PARTYSLOT")
+		SetTokenGlobal("JO_JOIN_PARTYSLOT6_DEAD","LOCALS","JO_JOIN_SLEEPING_DEAD")
+
 		DisplayString(Myself,@104) ~ EXIT
 END
 

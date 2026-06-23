@@ -4,13 +4,13 @@ APPEND ~%joining_dlg%~
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN LEGIONPlayerX
 		SAY ~^0xFFffe599Who dare speaking to me ?^-~
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player4,Gender(Player4,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
+				!TriggerOverride(Player1,Gender(Player4,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player4,Gender(Player4,MALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
+				!TriggerOverride(Player1,Gender(Player4,MALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
@@ -18,13 +18,13 @@ StartDialogueNoSet(Player1)~ EXIT
 
 			IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF5b5b5bIt's me <PLAYER2>, sorry to interrupt...^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_Player2","LOCALS",1)
+SetGlobal("JO_JOIN_TALK_PLAYER2","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player2)~ EXIT
 
-			IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER3>? my dear.^-~ DO ~
+			IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER3>, my dear.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER6","LOCALS",1)
+SetGlobal("JO_JOIN_TALK_PLAYER3","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player3)~ EXIT
 
@@ -81,7 +81,7 @@ StartDialogueNoSet(Player6)~ EXIT
 
 	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER3","LOCALS",1)~ THEN BEGIN LEGIONPlayer3
 		SAY ~^0xFFffe599Oh my ! It's you <PLAYER3> !^-~
-			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER3","LOCALS",0)~ DO ~SetGlobal("JO_JOIN_TALK_PLAYER6","LOCALS",0)~ GOTO LEGION
+			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER3","LOCALS",0)~ GOTO LEGION
 	END
 
 	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER4F","LOCALS",1)~ THEN BEGIN LEGIONPlayer4F
@@ -91,7 +91,7 @@ StartDialogueNoSet(Player6)~ EXIT
 
 	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER4M","LOCALS",1)~ THEN BEGIN LEGIONPlayer4M
 		SAY ~^0xFFffe599Sorry Master <PLAYER4>.^-~
-				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER4M","LOCALS",0)~ DO ~SetGlobal("JO_JOIN_TALK_PLAYER6","LOCALS",0)~ GOTO LEGION
+				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER4M","LOCALS",0)~ GOTO LEGION
 	END
 
 	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER5","LOCALS",1)~ THEN BEGIN LEGIONPlayer5
@@ -111,8 +111,7 @@ StartDialogueNoSet(Player6)~ EXIT
 	SAY ~...~
 		IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
 		IF ~~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~
-			SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
-			SmallWait(1)
+			SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 			SetGlobal("JO_JOIN","LOCALS",0)
 			SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 			SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
@@ -150,10 +149,18 @@ StartDialogueNoSet(Player6)~ EXIT
 		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",7)~ GOTO JO_JOINYes
+			Wait(1)
+			SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+			SetGlobal("JO_JOIN","LOCALS",0)
+			SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+			SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+			SmallWait(1)
+			EquipItemEx("JOMINHP1",1)
+			SmallWait(1)
+			DestroyItem("JOMINHP1")
+			SmallWait(2)
+			DisplayStringHead(Myself,~Thanks.~)
+			JoinParty()~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",1))
@@ -164,10 +171,19 @@ StartDialogueNoSet(Player6)~ EXIT
 			TriggerOverride(LastTalkedToBy,InParty(PartySlot4))~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 		ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",7)~ GOTO JO_JOINYes
+			Wait(1)
+			SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+			SetGlobal("JO_JOIN","LOCALS",0)
+			SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+			SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+			SmallWait(1)
+			EquipItemEx("JOMINHP1",1)
+			SmallWait(1)
+			DestroyItem("JOMINHP1")
+			SmallWait(2)
+			DisplayStringHead(Myself,~Thanks.~)
+			JoinParty()
+			~ GOTO JO_JOINYes
 // Manage travelers
 	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //
@@ -390,6 +406,14 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetTokenGlobal("JO_Myself_InParty","LOCALS","JO_Myself_InParty")
 		SetTokenGlobal("JO_Myself_AllowDead","LOCALS","JO_Myself_AllowDead")
 		SetTokenGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS","JO_JOIN_SLEEPING_DEAD")
+
+
+		SetTokenGlobal("JO_JOIN_PARTYSLOT","LOCALS","JO_JOIN_PARTYSLOT")
+
+
+		SetTokenGlobal("JO_JOIN_CONTROLLED","LOCALS","JO_JOIN_CONTROLLED")
+		SetTokenGlobal("JO_JOIN_FAMILIAR","LOCALS","JO_JOIN_FAMILIAR")
+
 		DisplayString(Myself,@104) ~ GOTO JO_JOINStatEnd
 	END
 
