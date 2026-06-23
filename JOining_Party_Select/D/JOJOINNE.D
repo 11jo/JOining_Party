@@ -89,6 +89,9 @@ IF ~True()~ THEN BEGIN 0
 // Switching party between travelers and party members
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bTravelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Travelers if party members are available you can switch places.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",11)~ EXIT //
+	IF ~!Global("JO_JOIN_ONLY_SLOT6","GLOBAL",1) 
+		!TriggerOverride(PartySlot6,InPartySlot(Myself,0))~ THEN REPLY ~^0xFF16537eTravelers you can switch places only with the sixth party member !^-~ DO ~SetGlobal("JO_JOIN_ONLY_SLOT6","GLOBAL",1)~ EXIT //
+	IF ~!Global("JO_JOIN_ONLY_SLOT6","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fTravelers you can switch places with every party members !^-~ DO ~SetGlobal("JO_JOIN_ONLY_SLOT6","GLOBAL",0)~ EXIT //
 
 
 	IF ~~ THEN REPLY ~^GI like to ...^-~ GOTO 1 //

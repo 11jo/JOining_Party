@@ -48,7 +48,7 @@ APPEND ~%joining_dlg%~
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1)~ GOTO JO_JOINYes //
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1)~ GOTO JO_JOINYes // TODO : Will not take the same slot as the party member.
 // Manage travelers
 	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //

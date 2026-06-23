@@ -167,16 +167,17 @@ END
 // Check Player1 Slot
 
 IF
-	TriggerOverride(Player1,InParty(PartySlot1))
+	TriggerOverride(PartySlot1,InPartySlot(Myself,0))
 	Global("JO_JOIN_PROTAGONIST","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",1)
 		Continue()
+		
 END
 
 IF
-	!TriggerOverride(Player1,InParty(PartySlot1))
+	!TriggerOverride(PartySlot1,InPartySlot(Myself,0))
 	Global("JO_JOIN_PROTAGONIST","GLOBAL",1)
 THEN
 	RESPONSE #100
@@ -199,50 +200,50 @@ END
 IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot5)
-	!TriggerOverride(PartySlot5,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+	!TriggerOverride(PartySlot5,Global("JO_JOIN_PARTYSLOT","LOCALS",5))
 THEN
 	RESPONSE #100
-		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",5))
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot4)
-	!TriggerOverride(PartySlot4,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+	!TriggerOverride(PartySlot4,Global("JO_JOIN_PARTYSLOT","LOCALS",4))
 THEN
 	RESPONSE #100
-		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",4))
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot3)
-	!TriggerOverride(PartySlot3,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+	!TriggerOverride(PartySlot3,Global("JO_JOIN_PARTYSLOT","LOCALS",3))
 THEN
 	RESPONSE #100
-		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3))
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot2)
-	!TriggerOverride(PartySlot2,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+	!TriggerOverride(PartySlot2,Global("JO_JOIN_PARTYSLOT","LOCALS",2))
 THEN
 	RESPONSE #100
-		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2))
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	InParty(PartySlot1)
-	!TriggerOverride(PartySlot1,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+	!TriggerOverride(PartySlot1,Global("JO_JOIN_PARTYSLOT","LOCALS",1))
 THEN
 	RESPONSE #100
-		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1))
 		Continue()
 END
 
