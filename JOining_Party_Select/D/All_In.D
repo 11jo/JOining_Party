@@ -159,7 +159,7 @@ StartDialogueNoSet(Player6)~ EXIT
 			SmallWait(1)
 			DestroyItem("JOMINHP1")
 			SmallWait(2)
-			DisplayStringHead(Myself,~Thanks.~)
+			DisplayStringHead(Myself,@102)
 			JoinParty()~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
@@ -181,7 +181,7 @@ StartDialogueNoSet(Player6)~ EXIT
 			SmallWait(1)
 			DestroyItem("JOMINHP1")
 			SmallWait(2)
-			DisplayStringHead(Myself,~Thanks.~)
+			DisplayStringHead(Myself,@102)
 			JoinParty()
 			~ GOTO JO_JOINYes
 // Manage travelers

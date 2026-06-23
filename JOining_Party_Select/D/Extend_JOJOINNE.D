@@ -15,9 +15,9 @@
 
 EXTEND_BOTTOM JOJOINNE 2
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^-...discuss with %%Death_var%_name%^- !~
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^-...discuss with %%Death_var%_name%^- !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player1))~ EXIT
@@ -25,22 +25,21 @@ END
 
 EXTEND_BOTTOM JOJOINNE 3
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player2))~ EXIT
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
-		!Global("JO_JOIN_Wannabe","LOCALS",0)
-		!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-				ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
+	!Global("JO_JOIN_Wannabe","LOCALS",0)
+	!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
+			DO ~ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
 				ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-				ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1)))
+				ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",Wait(1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",0))
@@ -57,20 +56,20 @@ END
 
 EXTEND_BOTTOM JOJOINNE 4
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player3))~ EXIT
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
-		!Global("JO_JOIN_Wannabe","LOCALS",0)
-		!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-				ActionOverride(Player3,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
+	!Global("JO_JOIN_Wannabe","LOCALS",0)
+	!Global("JO_JOIN_NOTRAVELER","LOCALS",1)
+		~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
+			DO ~ActionOverride(Player3,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
 				ActionOverride(Player3,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 				ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",Wait(1))
@@ -89,20 +88,19 @@ END
 
 EXTEND_BOTTOM JOJOINNE 5
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player4))~ EXIT
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
-		!Global("JO_JOIN_Wannabe","LOCALS",0)
-		!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-				ActionOverride(Player4,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
+	!Global("JO_JOIN_Wannabe","LOCALS",0)
+	!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
+			DO ~ActionOverride(Player4,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
 				ActionOverride(Player4,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 				ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",Wait(1))
@@ -121,20 +119,19 @@ END
 
 EXTEND_BOTTOM JOJOINNE 6
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player5))~ EXIT
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
-		!Global("JO_JOIN_Wannabe","LOCALS",0)
-		!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-				ActionOverride(Player5,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
+	!Global("JO_JOIN_Wannabe","LOCALS",0)
+	!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
+			DO ~ActionOverride(Player5,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
 				ActionOverride(Player5,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 				ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",Wait(1))
@@ -153,18 +150,19 @@ END
 
 EXTEND_BOTTOM JOJOINNE 7
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000...discuss with %%Death_var%_name%^- !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player6))~ EXIT
   IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-				ActionOverride(Player6,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
+	!Global("JO_JOIN_Wannabe","LOCALS",0)
+	!Global("JO_JOIN_NOTRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
+			DO ~ActionOverride(Player6,SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0))
 				ActionOverride(Player6,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
 				ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",Wait(1))
