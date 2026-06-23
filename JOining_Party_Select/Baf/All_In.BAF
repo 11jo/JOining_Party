@@ -117,6 +117,11 @@ THEN
 		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
 		DisplayString(Myself,~Done.~)
 		Continue()
+	RESPONSE #3
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)
+		DisplayString(Myself,~Done.~)
+		Continue()
 /*	RESPONSE #8
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)
@@ -1368,7 +1373,6 @@ THEN
 		EquipItemEx("JOMINHP1",0)
 		SmallWait(1)
 		ChangeEnemyAlly(Myself,CONTROLLED)
-		AddFamiliar()
 		SmallWait(1)
  // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)

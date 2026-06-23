@@ -19,8 +19,6 @@ APPEND ~%joining_dlg%~
 	IF ~~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
-		SmallWait(1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 
 // Indepandance
