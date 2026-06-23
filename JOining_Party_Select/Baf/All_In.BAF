@@ -69,6 +69,19 @@ THEN
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 END
 
+IF
+//
+	Global("JO_JOIN","LOCALS",1)
+//
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // JO_JOIN_Move_Around related to JOJOINNE.d
