@@ -9,6 +9,7 @@
 // Main 2 // After JO_JOINP.baf Main 1 // Loading Switch
 
 IF
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // check only if the sixth party member is currently in party
 	NumInPartyGT(5)
 	OR(2)
 		StateCheck(PartySlot6,STATE_DEAD)
@@ -24,8 +25,9 @@ THEN
 END
 
 IF // If Charname is PartySlot6.
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // check only if the sixth party member is currently in party
 	NumInPartyGT(5)
-	TriggerOverride(PartySlot6,InPartySlot(Myself,0)) // Charname is PartySlot6
+	InPartySlot(PartySlot6,0) // Charname is PartySlot6
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
