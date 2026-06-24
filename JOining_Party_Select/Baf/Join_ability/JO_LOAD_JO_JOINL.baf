@@ -8,17 +8,17 @@
 
 // Main 2 // After JO_JOINP.baf Main 1 // Loading Switch
 
-IF // If no party member are alive to be traveler the Player need to resurect them.
+IF
 	NumInPartyGT(5)
-//	NumInPartyAlive(1) // Security if all party member are dead but still in party
-	Global("JO_JOIN_PARTYSLOT6_DEAD","LOCALS",1) // Dead party member
+	OR(2)
+		StateCheck(PartySlot6,STATE_DEAD)
+		TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",0)) // prevent ineligible travelers to switch
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
-//		DisplayStringHead(Myself,~All party members are dead, hurry to a temple.~)
-		DisplayStringHead(Myself,~The sixth party member is dead, hurry to a temple.~)
+		DisplayStringHead(Myself,~The sixth party member can't switch with traveler.~)
 		SetInterrupt(TRUE)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
