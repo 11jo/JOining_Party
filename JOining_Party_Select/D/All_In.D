@@ -4,13 +4,13 @@ APPEND ~%joining_dlg%~
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN LEGIONPlayerX
 		SAY ~^0xFFffe599Who dare speaking to me ?^-~
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player1,Gender(Player4,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
+				!TriggerOverride(Player1,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player1,Gender(Player4,MALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
+				!TriggerOverride(Player1,Gender(Myself,MALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
@@ -29,23 +29,23 @@ SmallWait(1)
 StartDialogueNoSet(Player3)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player4,Gender(Player4,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence ! It's <PLAYER4> speaking !^-~ DO ~
+				!TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence ! It's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER4F","LOCALS",1)
+SetGlobal("JO_JOIN_TALK_FPLAYER4","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player4)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player4,Gender(Player4,MALE))~ THEN REPLY ~^0xFF82E6FFSilence it's <PLAYER4> speaking !^-~ DO ~
+				!TriggerOverride(Player4,Gender(Myself,MALE))~ THEN REPLY ~^0xFF82E6FFSilence it's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER4M","LOCALS",1)
+SetGlobal("JO_JOIN_TALK_MPLAYER4","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player4)~ EXIT
 
 			IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 				OR(2)
 					TimeOfDay(DAY)
-					TimeOfDay(MORNING)~ THEN REPLY ~^0xFF6aa84f<PLAYER5>, I found you particulary beautiful today.^-~ DO ~
+					TimeOfDay(MORNING)~ THEN REPLY ~^0xFF6aa84fI <PLAYER5>, found you particulary beautiful today.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER5","LOCALS",1)
 SmallWait(1)
@@ -54,7 +54,7 @@ StartDialogueNoSet(Player5)~ EXIT
 			IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0)) 
 				OR(2)
 					TimeOfDay(NIGHT)
-					TimeOfDay(DUSK)~ THEN REPLY ~^0xFF6aa84f<PLAYER5>, I found you particulary beautiful tonight.^-~ DO ~
+					TimeOfDay(DUSK)~ THEN REPLY ~^0xFF6aa84fI <PLAYER5>, found you particulary beautiful tonight.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER5","LOCALS",1)
 SmallWait(1)
@@ -65,6 +65,8 @@ SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER6","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player6)~ EXIT
+
+			IF ~~ THEN REPLY ~^0xFF7f6000I'm already bored.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
 	END
 
 // Playerx initiate
@@ -84,14 +86,14 @@ StartDialogueNoSet(Player6)~ EXIT
 			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER3","LOCALS",0)~ GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER4F","LOCALS",1)~ THEN BEGIN LEGIONPlayer4F
+	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_FPLAYER4","LOCALS",1)~ THEN BEGIN LEGIONPlayer4F
 		SAY ~^0xFFffe599Sorry Mistress <PLAYER4>.^-~
-				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER4F","LOCALS",0)~ GOTO LEGION
+				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_FPLAYER4","LOCALS",0)~ GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER4M","LOCALS",1)~ THEN BEGIN LEGIONPlayer4M
+	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_MPLAYER4","LOCALS",1)~ THEN BEGIN LEGIONPlayer4M
 		SAY ~^0xFFffe599Sorry Master <PLAYER4>.^-~
-				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER4M","LOCALS",0)~ GOTO LEGION
+				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_MPLAYER4","LOCALS",0)~ GOTO LEGION
 	END
 
 	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER5","LOCALS",1)~ THEN BEGIN LEGIONPlayer5
@@ -647,6 +649,8 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~!Global("JO_JOIN_NEVER_BANTER","LOCALS",1)~ THEN REPLY ~^0xFF7f6000I'm always eager to a little chat.^-~ GOTO JO_JOINStatEnd
 //
+	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't participate to the conversations.^-~ GOTO JO_JOINStatEnd
+//
 	IF ~!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") !Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF6aa84fI am ready to switch with party members.^-~ GOTO JO_JOINStatEnd
 //
 	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't switch with party members.^-~ GOTO JO_JOINStatEnd
@@ -654,6 +658,12 @@ IF ~~ THEN BEGIN JO_JOINStat
 	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bNo dream for me.^-~ GOTO JO_JOINStatEnd
 //
 	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fAlways here, even in your dream !^-~ GOTO JO_JOINStatEnd
+//
+	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",3)~ THEN REPLY ~^0xFF16537eI don't follow when you walk 30 steps away from the group.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",5)~ THEN REPLY ~^0xFF16537eI don't follow when you walk 50 steps away from the group.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",8)~ THEN REPLY ~^0xFF16537eI don't follow when you walk 80 steps away from the group.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",10)~ THEN REPLY ~^0xFF16537eI don't follow when you walk 100 steps away from the group.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",0)~ THEN REPLY ~^0xFF7f6000I follow you or another party member when you walk away from the group.^-~ GOTO JO_JOINStatEnd
 //
 END
 

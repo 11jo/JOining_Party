@@ -408,7 +408,6 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		MoveToObject(Player1)
 		DisplayString(Myself,~Done.~)
-		Continue()
 	RESPONSE #10
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
@@ -483,7 +482,6 @@ THEN
 
 		EquipItemEx("JOMINHP1",0)
 		DisplayString(Myself,@103)
-		Continue()
 	RESPONSE #13
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
@@ -541,14 +539,12 @@ THEN
 		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		DisplayString(Myself,~Done. I am linked to you !~)
-		Continue()
 	RESPONSE #24
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1)
 		ChangeEnemyAlly(Myself,CONTROLLED)
 		DisplayString(Myself,~Done. I am more independant !~)
-		Continue()
 	RESPONSE #25
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)
