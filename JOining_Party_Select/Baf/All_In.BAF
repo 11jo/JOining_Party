@@ -8,6 +8,13 @@
 		// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
 			// JO_JOIN_LOAD (Used by travelers loading steps)
 ///////////////////////////////////////////////////////////////////////////////
+IF
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+END
 
 // For Party member After Main Loading Switch 1 //
 
