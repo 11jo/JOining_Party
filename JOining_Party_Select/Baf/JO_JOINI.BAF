@@ -811,9 +811,9 @@ THEN
 		SetGlobal("JO_JOINI","LOCALS",1)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",1) // ScriptAction All_in_Baf
 		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
+		// SmallWait(1)
 		DestroyItem("JOMINHP1")
-		SmallWait(1)
+		// SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
 		SetInterrupt(TRUE)
 		JoinPartyOverride() // Go to All_In_Baf Switch between familiar and party
