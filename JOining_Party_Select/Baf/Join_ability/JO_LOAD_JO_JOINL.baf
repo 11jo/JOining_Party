@@ -10,6 +10,7 @@
 
 IF
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // check only if the sixth party member is currently in party
+	Global("JO_JOIN_LOADING","GLOBAL",1)
 	NumInPartyGT(5)
 	OR(2)
 		StateCheck(PartySlot6,STATE_DEAD)
@@ -26,6 +27,7 @@ END
 
 IF // If Charname is PartySlot6.
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // check only if the sixth party member is currently in party
+	Global("JO_JOIN_LOADING","GLOBAL",1)
 	NumInPartyGT(5)
 	InPartySlot(PartySlot6,0) // Charname is PartySlot6
 THEN
