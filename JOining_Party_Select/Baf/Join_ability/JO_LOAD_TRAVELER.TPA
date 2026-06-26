@@ -38,24 +38,3 @@ END
 \0~
 
 	END
-
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Baf/Join_ToB.baf~ BEGIN
-
-
-// Loading Switch
-COPY ~weidu_external/JOining_Party_Select/Baf/Join_ToB.baf~ ~weidu_external/JOining_Party_Select/Baf/Join_ToB.baf~ EVALUATE_BUFFER
-	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_Join_ToB~ ~~~~~IF
-	InMyArea("%Death_var%")
-	Global("JO_JOIN_%Death_var%_SET","MYAREA",0)
-THEN
-	RESPONSE #100
-		ActionOverride("%Death_var%",SetBeenInPartyFlags())
-		ActionOverride("%Death_var%",MakeGlobal())
-		ActionOverride("%Death_var%",DisplayStringHead(Myself,~Ho !~))
-		SetGlobal("JO_JOIN_%Death_var%_SET","MYAREA",1)
-		Continue()
-END
-
-	\0~~~~~
-
-	END

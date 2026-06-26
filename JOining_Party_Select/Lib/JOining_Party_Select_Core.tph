@@ -462,7 +462,6 @@ END
 ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
 
 	EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
-	EXTEND_BOTTOM ~AR4500.bcs~ ~weidu_external/JOining_Party_Select/Baf/Join_ToB.baf~ EVALUATE_BUFFER
 	EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 	EXTEND_BOTTOM ~AR4000.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 
