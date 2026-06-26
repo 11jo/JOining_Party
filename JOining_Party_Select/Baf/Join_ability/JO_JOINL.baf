@@ -9,7 +9,6 @@
 			// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
 				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_Select_End.tph Expand the trigger with OR(3) for each travelers))
 					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_Select_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
-						// JO_JOIN_SWITCHING_ROOM (In case area is JO2608.are prevent to end loading switch prematurely)
 ///////////////////////////////////////////////////////////////////////////////
 
 //	REPLACE_TRAVELER_JO_LOAD_TRAVELER
@@ -19,7 +18,6 @@
 IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 	!AreaCheck("JO2608")
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
 	OR(3)
 		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
@@ -29,7 +27,6 @@ THEN
 	RESPONSE #100
 		ClearAllActions()
 		CreateVisualEffectObject("JOBG402",Player1)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1) // We are in the Switching room
 		FadeToColor([20.0],0)
 		Wait(1)
 		StorePartyLocations()
