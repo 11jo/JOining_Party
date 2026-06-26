@@ -45,12 +45,12 @@ END
 IF
 	OR(2)
 		!Global("JO_JOIN_LOAD","LOCALS",0)
-		!Global("JO_TRAVELER_%Death_var%_SET","LOCALS",0)
+		!Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
 	Global("JO_JOIN_LOADING","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
-		SetGlobal("JO_TRAVELER_%Death_var%_SET","LOCALS",0)
+		SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
 END
 
 IF
