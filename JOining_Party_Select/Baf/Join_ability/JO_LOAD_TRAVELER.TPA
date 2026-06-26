@@ -15,9 +15,9 @@
 COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
 	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
-	Global("JO_JOIN_LOAD_%Death_var%","LOCALS",0)
 	Global("JO_JOIN_LOAD","LOCALS",0)
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	Global("JO_TRAVELER_%Death_var%_SET","LOCALS",0)
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
@@ -26,8 +26,34 @@ THEN
 		SmallWait(1)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
-		SetGlobal("JO_JOIN_LOAD_%Death_var%","LOCALS",1)
+		SetGlobal("JO_TRAVELER_%Death_var%_SET","LOCALS",1)
+		DisplayStringHead(Myself,~%%Death_var%_name%...~)
 		SetInterrupt(TRUE)
+END
+
+	\0~~~~~
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_NO_SET~ ~!Global("JO_TRAVELER_%Death_var%","GLOBAL",2)
+\0~
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_IS_SET~ ~SetGlobal("JO_TRAVELER_%Death_var%_SET","LOCALS",0)
+\0~
+
+	END
+
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Baf/Join_ToB.baf~ BEGIN
+
+
+// Loading Switch
+COPY ~weidu_external/JOining_Party_Select/Baf/Join_ToB.baf~ ~weidu_external/JOining_Party_Select/Baf/Join_ToB.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_Join_ToB~ ~~~~~IF
+	InMyArea("%Death_var%")
+	Global("JO_JOIN_%Death_var%_SET","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetBeenInPartyFlags())
+		ActionOverride("%Death_var%",MakeGlobal())
+		ActionOverride("%Death_var%",DisplayStringHead(Myself,~Ho !~))
+		SetGlobal("JO_JOIN_%Death_var%_SET","MYAREA",1)
+		Continue()
 END
 
 	\0~~~~~
