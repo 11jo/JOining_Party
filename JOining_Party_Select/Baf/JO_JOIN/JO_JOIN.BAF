@@ -12,32 +12,11 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
 		DisplayStringHead(Myself,~Yeah.~)
-		SetInterrupt(TRUE)
-		Continue() // Go to Yeah End
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// JO_JOINX
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Yeah End (End Switch between familiar and party)
-
-IF
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-THEN
-	RESPONSE #100
-		ChangeAIScript("JO_JOINX",RACE)// Go to JO_JOINX (ScriptAction / XP)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",3)
+		ChangeAIScript("JO_JOINX",RACE)// Go to JO_JOINX (ScriptAction / XP)
+		SetInterrupt(TRUE)
 END
-
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

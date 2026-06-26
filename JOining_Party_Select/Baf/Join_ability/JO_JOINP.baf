@@ -38,9 +38,10 @@ IF
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
-	OR(2)
+	OR(3)
 		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
-		See([ENEMY])
+		ActuallyInCombat()
+		Detect([ENEMY])
 // Dev
 	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
 // 
@@ -85,8 +86,11 @@ IF
 		Global("JO_JOIN_AREA","MYAREA",1) // Current area is a master area
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
 	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
+		!ActuallyInCombat()
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
+	OR(2)
+		!Detect([ENEMY])
+		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for Detect([ENEMY])
 // 
 	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
