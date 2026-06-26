@@ -426,6 +426,12 @@ EXTEND_TOP ~JO_JOINL.bcs~ ~JOining_Party_Select/Baf/Join_ability/JO_LOAD_JO_JOIN
 
 EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
 
+	ACTION_IF FILE_EXISTS_IN_GAME ~BDBALDUR.bcs~ BEGIN
+
+EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
+
+	END
+
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
 
 
