@@ -122,6 +122,10 @@ IF
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		DisplayStringHead(Myself,~Let's return to venture forth !!~)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		FadeToColor([20.0],0)
 		CreateVisualEffectObject("JOBG402",Player1)
@@ -145,5 +149,5 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		DisplayStringHead(Myself,~let's venture forth !~)
-		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 END
