@@ -26,7 +26,6 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-//	REPLACE_TRAVELER_JO_LOAD_IS_SET
 		DisplayStringHead(Myself,~Almost...~)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",2)
 		SetInterrupt(TRUE)
