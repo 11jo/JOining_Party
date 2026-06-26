@@ -60,6 +60,21 @@ THEN
 END
 */
 
+
+IF // One party member have to make room for traveler Loading Switch if the party is full
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // check only if the sixth party member is currently in party
+	Global("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0) // Set to 1 by the first travelers switch
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	NumInPartyGT(5)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
+		ActionOverride(PartySlot6,LeaveParty())
+		ActionOverride(PartySlot6,Deactivate(Myself))
+END
+
 IF
 	Delay(1)
 	Global("JO_JOIN_LOAD","LOCALS",1)
