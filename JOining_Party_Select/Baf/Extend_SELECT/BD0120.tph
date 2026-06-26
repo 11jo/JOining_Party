@@ -231,6 +231,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 // 2
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%AJANTIS_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDAJANTJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -244,6 +250,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
+		ActionOverride("Ajantis",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Ajantis",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -259,6 +266,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Alora_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%ALORA_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDALORAJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -272,6 +285,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
+		ActionOverride("Alora",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Alora",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -291,6 +305,12 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "BRANWEN_BCS" "BRANWEN_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%BRANWEN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDBRANWJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -304,6 +324,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
+		ActionOverride("Branwen",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Branwen",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -319,6 +340,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Coran_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%CORAN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDCORANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -332,6 +359,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
+		ActionOverride("Coran",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Coran",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -347,6 +375,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Dynaheir_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%DYNAHEIR_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDDYNAHJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -360,6 +394,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Dynaheir",ChangeAIScript("BDDYNAHE",OVERRIDE))
+		ActionOverride("Dynaheir",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Dynaheir",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -375,6 +410,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Eldoth_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%ELDOTH_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDELDOTJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -388,6 +429,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
+		ActionOverride("Eldoth",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Eldoth",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -407,6 +449,12 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "FALDORN_BCS" "FALDORN_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%FALDORN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDFALDOJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -420,6 +468,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
+		ActionOverride("Faldorn",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Faldorn",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -439,6 +488,12 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "GARRICK_BCS" "GARRICK_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%GARRICK_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDGARRIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -452,6 +507,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
+		ActionOverride("Garrick",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Garrick",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -467,6 +523,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Kagain_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%KAGAIN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDKAGAIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -480,6 +542,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
+		ActionOverride("Kagain",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Kagain",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -495,6 +558,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Khalid_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%KHALID_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDKHALIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -508,6 +577,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Khalid",ChangeAIScript("BDKHALID",OVERRIDE))
+		ActionOverride("Khalid",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Khalid",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -523,6 +593,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Kivan_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%KIVAN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDKIVANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -536,6 +612,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
+		ActionOverride("Kivan",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Kivan",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -551,6 +628,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Montaron_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%MONTARON_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDMONTAJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -564,6 +647,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
+		ActionOverride("Montaron",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Montaron",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -579,6 +663,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Quayle_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%QUAYLE_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDQUAYLJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -592,6 +682,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
+		ActionOverride("Quayle",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Quayle",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -607,6 +698,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Safana_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%SAFANA_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDSAFANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -620,6 +717,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Safana",ChangeAIScript("BDSAFANA",OVERRIDE))
+		ActionOverride("Safana",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Safana",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -635,6 +733,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%SHARTEEL_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDSHARTJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -648,6 +752,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
+		ActionOverride("Sharteel",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Sharteel",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -667,6 +772,12 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "SKIE_BCS" "SKIE_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%SKIE_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDSKIEJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -680,6 +791,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
+		ActionOverride("Skie",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Skie",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -695,6 +807,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Tiax_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%TIAX_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDTIAXJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -708,6 +826,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
+		ActionOverride("Tiax",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Tiax",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -723,6 +842,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Xan_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%XAN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDXANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -736,6 +861,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
+		ActionOverride("Xan",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Xan",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -751,6 +877,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Xzar_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%XZAR_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDXZARJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -764,6 +896,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
+		ActionOverride("Xzar",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Xzar",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -779,6 +912,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Yeslick_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%YESLICK_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDYESLIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -792,6 +931,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
+		ActionOverride("Yeslick",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Yeslick",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
@@ -807,6 +947,12 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Baeloth_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "BAELOTHJ"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDBAELOJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -820,6 +966,7 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Baeloth",ChangeAIScript("BDBAELOT",OVERRIDE))
+		ActionOverride("Baeloth",SetDialog("%SoD_JOINED%"))
 		SmallWait(1)
 		ActionOverride("Baeloth",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)

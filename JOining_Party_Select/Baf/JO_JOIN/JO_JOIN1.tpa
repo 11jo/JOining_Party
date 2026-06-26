@@ -62,7 +62,7 @@ END
 IF
 	Global("JO_JOIN","LOCALS",2)
 	%AreaCheck_Not_BG2Start%
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 %RESPONSE #1%
 %RESPONSE #3%
@@ -134,7 +134,7 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 %RESPONSE_BG1%
 %RESPONSE_SoD%
@@ -159,7 +159,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Edwin.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("JAHEIJ")
@@ -210,7 +210,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Jaheira.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("MINSCJ")
@@ -261,7 +261,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Minsc.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("VICONJ")
@@ -312,7 +312,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Viconia.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("DORNJ")
@@ -363,7 +363,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dorn.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("NEERAJ")
@@ -414,7 +414,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Neera.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("RASAADJ")

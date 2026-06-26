@@ -41,6 +41,17 @@ THEN
 		NoAction()
 END
 
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	Global("JO_JOIN_LOAD","LOCALS",0)
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
+END
+
+
 // For party member After Main Loading Switch 3 //
 
 IF // The party member making room for traveler Loading Switch if the party is full reintegrate the party right after
@@ -62,7 +73,7 @@ END
 // For Traveler After Main Loading Switch 3
 
 IF
-	Global("JO_JOIN_LOAD","LOCALS",3)
+	!Global("JO_JOIN_LOAD","LOCALS",0)
 	Global("JO_JOIN_LOADING","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -1330,6 +1341,7 @@ THEN
 		LeaveParty()
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
