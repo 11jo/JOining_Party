@@ -4,13 +4,13 @@ APPEND ~%joining_dlg%~
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN LEGIONPlayerX
 		SAY ~^0xFFffe599Who dare speaking to me ?^-~
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player1,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
+				TriggerOverride(Player1,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player1,Gender(Myself,MALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
+				!TriggerOverride(Player1,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
@@ -29,14 +29,14 @@ SmallWait(1)
 StartDialogueNoSet(Player3)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence ! It's <PLAYER4> speaking !^-~ DO ~
+				TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence ! It's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_FPLAYER4","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player4)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player4,Gender(Myself,MALE))~ THEN REPLY ~^0xFF82E6FFSilence it's <PLAYER4> speaking !^-~ DO ~
+				!TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence it's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_MPLAYER4","LOCALS",1)
 SmallWait(1)
