@@ -536,12 +536,10 @@ THEN
 	RESPONSE #23
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
-		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1)
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		DisplayString(Myself,~Done. I am linked to you !~)
 	RESPONSE #24
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1)
 		ChangeEnemyAlly(Myself,CONTROLLED)
 		DisplayString(Myself,~Done. I am more independant !~)
@@ -816,7 +814,7 @@ THEN
 		// SmallWait(1)
 		DisplayStringHead(Myself,~Hey.~)
 		SetInterrupt(TRUE)
-		JoinPartyOverride() // Go to All_In_Baf Switch between familiar and party
+		JoinParty() // Go to All_In_Baf Switch between familiar and party
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1572,9 +1570,7 @@ IF // Return to CONTOLLED if was CONTOLLED
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Allegiance(Myself,FAMILIAR)
-	OR(2)
-		Global("JO_JOIN_CONTROLLED","LOCALS",1)
-		Global("JO_JOIN_FAMILIAR","LOCALS",0)
+	Global("JO_JOIN_CONTROLLED","LOCALS",1)
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~Still independant !~)

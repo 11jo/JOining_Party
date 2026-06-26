@@ -141,7 +141,7 @@ StartDialogueNoSet(Player6)~ EXIT
 						ChangeEnemyAlly(Myself,CONTROLLED)~ GOTO JO_JOINYes //
 */
 
-	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFffe599I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1) SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
+	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFffe599I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
 				ChangeEnemyAlly(Myself,FAMILIAR)~ GOTO JO_JOINYes //
 
 // Switch with a player
@@ -414,7 +414,6 @@ StartDialogueNoSet(Player6)~ EXIT
 
 
 		SetTokenGlobal("JO_JOIN_CONTROLLED","LOCALS","JO_JOIN_CONTROLLED")
-		SetTokenGlobal("JO_JOIN_FAMILIAR","LOCALS","JO_JOIN_FAMILIAR")
 
 		DisplayString(Myself,@104) ~ GOTO JO_JOINStatEnd
 	END

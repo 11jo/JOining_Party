@@ -224,13 +224,11 @@ THEN
 	RESPONSE #23
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
-		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",1)
 //		ChangeEnemyAlly(Myself,FAMILIAR)
 //		DisplayString(Myself,~Done. I am linked to you !~)
 		Continue()
 	RESPONSE #24
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1)
 //		ChangeEnemyAlly(Myself,CONTROLLED)
 //		DisplayString(Myself,~Done. I am more independant !~)
@@ -935,7 +933,7 @@ THEN
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
 		SetInterrupt(TRUE)
-		JoinPartyOverride()
+		JoinParty()
 END
 
 // Main Leave Party 3
@@ -1196,13 +1194,11 @@ IF // ChangeEnemyAlly(Myself,FAMILIAR)
 	Global("JO_JOIN","LOCALS",1)
 	Allegiance(Myself,PC)
 	!InPartySlot(Myself,0)
-	OR(2)
-		Global("JO_JOIN_FAMILIAR","LOCALS",1)
-		!Global("JO_JOIN_CONTROLLED","LOCALS",1)
+	!Global("JO_JOIN_CONTROLLED","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MakeGlobalOverride()
+		MakeGlobal()
 		LeaveParty()
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
@@ -1239,7 +1235,7 @@ IF // ChangeEnemyAlly(Myself,CONTROLLED)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MakeGlobalOverride()
+		MakeGlobal()
 		LeaveParty()
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
