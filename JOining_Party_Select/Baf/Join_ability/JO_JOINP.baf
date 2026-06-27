@@ -65,7 +65,7 @@ IF
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself,~Loading Switch isn't available here.~)
+		DisplayStringHead(Myself,~Loading Switch is temporarely unavailable here.~)
 END
 
 
@@ -416,9 +416,9 @@ END
 
 IF
 //	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-	OR(6)
+	OR(5)
 // BG1 End
-		AreaCheck("%NBaldursGate_DucalPalace_L1%")
+//		AreaCheck("%NBaldursGate_DucalPalace_L1%")
 		AreaCheck("%Undercity_TempleofBhaal%")
 // Korlaz Donjon
 		AreaCheck("BD0120")
@@ -429,6 +429,9 @@ IF
 		AreaCheck("BD6200")
 //
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+//
+	!Global("JO_JOIN_bd0120","BD0120",1) // Only before araa script is completely finish
+	Dead("Sarevok") // Only after Sarevok death
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
@@ -436,8 +439,10 @@ END
 
 IF
 // BG1 End
-	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
-	!AreaCheck("%Undercity_TempleofBhaal%")
+//	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	OR(2)
+		!AreaCheck("%Undercity_TempleofBhaal%")
+		!Dead("Sarevok")
 // Korlaz Donjon
 //
 	OR(2)
@@ -455,3 +460,25 @@ THEN
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
 END
 
+// SoD bdplayer.bcs set in bdintro.bcs
+IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+	HotKey(B)
+	OR(2)
+		INI("QAMODE",1)
+		Global("BD_QAMODE","global",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		StartDialogOverride("bddebug",Myself)
+END
+
+// EET player1.bcs set in ar0602.bcs
+IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	Global("JO_JOIN_Player1_DLG","ar0602",0)
+THEN
+	RESPONSE #100
+		SetDialog("Player1")
+		SetGlobal("JO_JOIN_Player1_DLG","ar0602",1)
+END

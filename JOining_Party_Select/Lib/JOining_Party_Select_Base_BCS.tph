@@ -46,8 +46,18 @@ OUTER_SPRINT "slashdeux" "\2"
 	// Myself
 		SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-		PATCH_IF (num_matches > 0) BEGIN
+		PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~DPLAYER2.BCS~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_Myself_AllowDead","LOCALS",0)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	// Myself // SoD issue but finally not... for DPLAYER2.bcs : What if InPartyAllowDead() doing was unclear
+		SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead(Myself)\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~DPLAYER2.BCS~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_Myself_AllowDead","LOCALS",0)
+	!Global("JO_Myself_InParty","LOCALS",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~

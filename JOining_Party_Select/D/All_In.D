@@ -211,6 +211,10 @@ StartDialogueNoSet(Player6)~ EXIT
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)~ GOTO JO_JOINYes //
 
+// Free slots in party // Fill party
+	IF ~!Global("JO_JOIN_NEVER_FILL","LOCALS",1)~ THEN REPLY ~^0xFF16537eDon't come in party when Fill Party^-~ DO ~SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",1)~ EXIT //
+	IF ~!Global("JO_JOIN_NEVER_FILL","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Come in party when Fill Party.^-~ DO ~SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)~ EXIT //
+	
 // Switching party between travelers and party members
 	IF ~!Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bDon't switch with regular party members, be only a traveler.~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -340,7 +344,10 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_TRAVELER_PARTY.~ DO ~SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_MY_SWITCH","LOCALS",0)~ THEN REPLY ~JO_JOIN_MY_SWITCH.~ DO ~SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)~ EXIT*/
 	IF ~~ THEN REPLY ~^GHow do you feel as traveler.^-~ GOTO JO_JOINStat //
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~Show logs.~ DO ~
+	IF ~IsGabber(Player1)~ THEN REPLY ~It's nothing, a little fever at worst.~ DO ~ActionOverride(Player1,SetGlobal("JO_JOIN","LOCALS",0))
+	SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
+	ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF660000Show logs.^-~ DO ~
 		SetTokenGlobal("JO_JOIN","LOCALS","JO_JOIN")
 
 
@@ -615,24 +622,7 @@ END
 IF ~~ THEN BEGIN JO_JOINStat
 	SAY ~Hum...~
 	IF ~!HasItem("JOMINHP1",Myself)~ THEN REPLY ~I don't have the engagement scroll.~ GOTO JO_JOINStatEnd // Je n'ai pas notre parchemin d'engagement.
-	IF ~NumItemsGT("JOMINHP1",1)~ THEN REPLY ~I engage myself too much...~ DO ~
-			EquipItemEx("JOMINHP1",1)
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			DestroyItem("JOMINHP1")
-			GiveItemCreate("JOMINHP1",Myself,0,0,0)
-			EquipItemEx("JOMINHP1",0)~ GOTO JO_JOINStatEnd
+	IF ~NumItemsGT("JOMINHP1",Myself,1)~ THEN REPLY ~I engage myself too much...~ GOTO JO_JOINStatEnd
 	
 //	IF ~HasItemSlot("JOMINHP1",xxxxx)~ THEN REPLY ~....~ GOTO JO_JOINStatEnd
 //

@@ -1092,6 +1092,19 @@ ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
 
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/BD0120.tph~
 
+COPY_EXISTING ~%Undercity_TempleofBhaal%.bcs~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*SaveGame(\([^)]*\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+	\0~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Undercity_TempleofBhaal : SaveGame found in %SOURCE_FILESPEC% for JO_JOIN_AREA_TRANSITION
+				~
+			END
+		END
+
 END
 
 // BDINTRO.BCS

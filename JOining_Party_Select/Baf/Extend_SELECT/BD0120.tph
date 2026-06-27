@@ -46,7 +46,9 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Edwin",ChangeAIScript("BDEDWIN",OVERRIDE))
+		ActionOverride("Edwin",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Edwin",DestroyItem("JOMINHP1"))
 		ActionOverride("Edwin",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Edwin",ChangeEnemyAlly("Edwin",FAMILIAR))
@@ -61,6 +63,7 @@ THEN
 		ActionOverride("Edwin",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Edwin",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Edwin","MYAREA",1)
+		DisplayString("Edwin",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -92,7 +95,9 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Jaheira",ChangeAIScript("BDJAHEIR",OVERRIDE))
+		ActionOverride("Jaheira",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Jaheira",DestroyItem("JOMINHP1"))
 		ActionOverride("Jaheira",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Jaheira",ChangeEnemyAlly("Jaheira",FAMILIAR))
@@ -107,6 +112,7 @@ THEN
 		ActionOverride("Jaheira",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Jaheira",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Jaheira","MYAREA",1)
+		DisplayString("Jaheira",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -138,7 +144,9 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Minsc",ChangeAIScript("BDMINSC",OVERRIDE))
+		ActionOverride("Minsc",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Minsc",DestroyItem("JOMINHP1"))
 		ActionOverride("Minsc",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Minsc",ChangeEnemyAlly("Minsc",FAMILIAR))
@@ -153,6 +161,7 @@ THEN
 		ActionOverride("Minsc",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Minsc",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Minsc","MYAREA",1)
+		DisplayString("Minsc",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -184,7 +193,9 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Viconia",ChangeAIScript("BDVICONI",OVERRIDE))
+		ActionOverride("Viconia",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Viconia",DestroyItem("JOMINHP1"))
 		ActionOverride("Viconia",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Viconia",ChangeEnemyAlly("Viconia",FAMILIAR))
@@ -199,6 +210,7 @@ THEN
 		ActionOverride("Viconia",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Viconia",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Viconia","MYAREA",1)
+		DisplayString("Viconia",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -230,7 +242,9 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Dorn",ChangeAIScript("BDDORN",OVERRIDE))
+		ActionOverride("Dorn",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Dorn",DestroyItem("JOMINHP1"))
 		ActionOverride("Dorn",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Dorn",ChangeEnemyAlly("Dorn",FAMILIAR))
@@ -245,6 +259,7 @@ THEN
 		ActionOverride("Dorn",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Dorn",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Dorn","MYAREA",1)
+		DisplayString("Dorn",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -276,7 +291,9 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Neera",ChangeAIScript("BDNEERA",OVERRIDE))
+		ActionOverride("Neera",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Neera",DestroyItem("JOMINHP1"))
 		ActionOverride("Neera",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Neera",ChangeEnemyAlly("Neera",FAMILIAR))
@@ -291,6 +308,7 @@ THEN
 		ActionOverride("Neera",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Neera",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Neera","MYAREA",1)
+		DisplayString("Neera",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -322,7 +340,9 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("Rasaad",ChangeAIScript("BDRASAAD",OVERRIDE))
+		ActionOverride("Rasaad",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Rasaad",DestroyItem("JOMINHP1"))
 		ActionOverride("Rasaad",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Rasaad",ChangeEnemyAlly("Rasaad",FAMILIAR))
@@ -337,6 +357,7 @@ THEN
 		ActionOverride("Rasaad",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Rasaad",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Rasaad","MYAREA",1)
+		DisplayString("Rasaad",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -377,7 +398,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
 		ActionOverride("Ajantis",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Ajantis",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Ajantis",DestroyItem("JOMINHP1"))
 		ActionOverride("Ajantis",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Ajantis",ChangeEnemyAlly("Ajantis",FAMILIAR))
@@ -392,13 +415,17 @@ THEN
 		ActionOverride("Ajantis",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Ajantis",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
+		DisplayString("Ajantis",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Ajantis","MYAREA",0)
+	InMyArea("Ajantis")
+	InParty("Ajantis")
 THEN
 	RESPONSE #100
+		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
 		Continue()
 END
@@ -430,7 +457,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
 		ActionOverride("Alora",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Alora",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Alora",DestroyItem("JOMINHP1"))
 		ActionOverride("Alora",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Alora",ChangeEnemyAlly("Alora",FAMILIAR))
@@ -445,13 +474,17 @@ THEN
 		ActionOverride("Alora",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Alora",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Alora","MYAREA",1)
+		DisplayString("Alora",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Alora","MYAREA",0)
+	InMyArea("Alora")
+	InParty("Alora")
 THEN
 	RESPONSE #100
+		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Alora","MYAREA",1)
 		Continue()
 END
@@ -487,7 +520,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
 		ActionOverride("Branwen",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Branwen",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Branwen",DestroyItem("JOMINHP1"))
 		ActionOverride("Branwen",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Branwen",ChangeEnemyAlly("Branwen",FAMILIAR))
@@ -502,13 +537,17 @@ THEN
 		ActionOverride("Branwen",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Branwen",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
+		DisplayString("Branwen",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Branwen","MYAREA",0)
+	InMyArea("Branwen")
+	InParty("Branwen")
 THEN
 	RESPONSE #100
+		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
 		Continue()
 END
@@ -540,7 +579,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
 		ActionOverride("Coran",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Coran",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Coran",DestroyItem("JOMINHP1"))
 		ActionOverride("Coran",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Coran",ChangeEnemyAlly("Coran",FAMILIAR))
@@ -555,13 +596,17 @@ THEN
 		ActionOverride("Coran",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Coran",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Coran","MYAREA",1)
+		DisplayString("Coran",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Coran","MYAREA",0)
+	InMyArea("Coran")
+	InParty("Coran")
 THEN
 	RESPONSE #100
+		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Coran","MYAREA",1)
 		Continue()
 END
@@ -593,7 +638,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Dynaheir",ChangeAIScript("BDDYNAHE",OVERRIDE))
 		ActionOverride("Dynaheir",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Dynaheir",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Dynaheir",DestroyItem("JOMINHP1"))
 		ActionOverride("Dynaheir",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Dynaheir",ChangeEnemyAlly("Dynaheir",FAMILIAR))
@@ -608,6 +655,7 @@ THEN
 		ActionOverride("Dynaheir",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Dynaheir",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Dynaheir","MYAREA",1)
+		DisplayString("Dynaheir",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -646,7 +694,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
 		ActionOverride("Eldoth",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Eldoth",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Eldoth",DestroyItem("JOMINHP1"))
 		ActionOverride("Eldoth",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Eldoth",ChangeEnemyAlly("Eldoth",FAMILIAR))
@@ -661,13 +711,17 @@ THEN
 		ActionOverride("Eldoth",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Eldoth",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Eldoth","MYAREA",1)
+		DisplayString("Eldoth",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Eldoth","MYAREA",0)
+	InMyArea("Eldoth")
+	InParty("Eldoth")
 THEN
 	RESPONSE #100
+		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Eldoth","MYAREA",1)
 		Continue()
 END
@@ -703,7 +757,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
 		ActionOverride("Faldorn",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Faldorn",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Faldorn",DestroyItem("JOMINHP1"))
 		ActionOverride("Faldorn",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Faldorn",ChangeEnemyAlly("Faldorn",FAMILIAR))
@@ -718,13 +774,17 @@ THEN
 		ActionOverride("Faldorn",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Faldorn",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
+		DisplayString("Faldorn",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Faldorn","MYAREA",0)
+	InMyArea("Faldorn")
+	InParty("Faldorn")
 THEN
 	RESPONSE #100
+		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
 		Continue()
 END
@@ -760,7 +820,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
 		ActionOverride("Garrick",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Garrick",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Garrick",DestroyItem("JOMINHP1"))
 		ActionOverride("Garrick",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Garrick",ChangeEnemyAlly("Garrick",FAMILIAR))
@@ -775,13 +837,17 @@ THEN
 		ActionOverride("Garrick",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Garrick",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
+		DisplayString("Garrick",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Garrick","MYAREA",0)
+	InMyArea("Garrick")
+	InParty("Garrick")
 THEN
 	RESPONSE #100
+		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
 		Continue()
 END
@@ -813,7 +879,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
 		ActionOverride("Kagain",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Kagain",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Kagain",DestroyItem("JOMINHP1"))
 		ActionOverride("Kagain",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Kagain",ChangeEnemyAlly("Kagain",FAMILIAR))
@@ -828,13 +896,17 @@ THEN
 		ActionOverride("Kagain",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Kagain",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Kagain","MYAREA",1)
+		DisplayString("Kagain",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Kagain","MYAREA",0)
+	InMyArea("Kagain")
+	InParty("Kagain")
 THEN
 	RESPONSE #100
+		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Kagain","MYAREA",1)
 		Continue()
 END
@@ -866,7 +938,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Khalid",ChangeAIScript("BDKHALID",OVERRIDE))
 		ActionOverride("Khalid",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Khalid",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Khalid",DestroyItem("JOMINHP1"))
 		ActionOverride("Khalid",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Khalid",ChangeEnemyAlly("Khalid",FAMILIAR))
@@ -881,6 +955,7 @@ THEN
 		ActionOverride("Khalid",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Khalid",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Khalid","MYAREA",1)
+		DisplayString("Khalid",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -919,7 +994,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
 		ActionOverride("Kivan",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Kivan",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Kivan",DestroyItem("JOMINHP1"))
 		ActionOverride("Kivan",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Kivan",ChangeEnemyAlly("Kivan",FAMILIAR))
@@ -934,13 +1011,17 @@ THEN
 		ActionOverride("Kivan",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Kivan",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Kivan","MYAREA",1)
+		DisplayString("Kivan",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Kivan","MYAREA",0)
+	InMyArea("Kivan")
+	InParty("Kivan")
 THEN
 	RESPONSE #100
+		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Kivan","MYAREA",1)
 		Continue()
 END
@@ -972,7 +1053,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
 		ActionOverride("Montaron",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Montaron",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Montaron",DestroyItem("JOMINHP1"))
 		ActionOverride("Montaron",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Montaron",ChangeEnemyAlly("Montaron",FAMILIAR))
@@ -987,13 +1070,17 @@ THEN
 		ActionOverride("Montaron",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Montaron",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Montaron","MYAREA",1)
+		DisplayString("Montaron",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Montaron","MYAREA",0)
+	InMyArea("Montaron")
+	InParty("Montaron")
 THEN
 	RESPONSE #100
+		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Montaron","MYAREA",1)
 		Continue()
 END
@@ -1025,7 +1112,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
 		ActionOverride("Quayle",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Quayle",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Quayle",DestroyItem("JOMINHP1"))
 		ActionOverride("Quayle",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Quayle",ChangeEnemyAlly("Quayle",FAMILIAR))
@@ -1040,13 +1129,17 @@ THEN
 		ActionOverride("Quayle",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Quayle",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Quayle","MYAREA",1)
+		DisplayString("Quayle",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Quayle","MYAREA",0)
+	InMyArea("Quayle")
+	InParty("Quayle")
 THEN
 	RESPONSE #100
+		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Quayle","MYAREA",1)
 		Continue()
 END
@@ -1078,7 +1171,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Safana",ChangeAIScript("BDSAFANA",OVERRIDE))
 		ActionOverride("Safana",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Safana",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Safana",DestroyItem("JOMINHP1"))
 		ActionOverride("Safana",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Safana",ChangeEnemyAlly("Safana",FAMILIAR))
@@ -1093,6 +1188,7 @@ THEN
 		ActionOverride("Safana",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Safana",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Safana","MYAREA",1)
+		DisplayString("Safana",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -1131,7 +1227,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
 		ActionOverride("Sharteel",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Sharteel",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Sharteel",DestroyItem("JOMINHP1"))
 		ActionOverride("Sharteel",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Sharteel",ChangeEnemyAlly("Sharteel",FAMILIAR))
@@ -1146,13 +1244,17 @@ THEN
 		ActionOverride("Sharteel",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Sharteel",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Sharteel","MYAREA",1)
+		DisplayString("Sharteel",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Sharteel","MYAREA",0)
+	InMyArea("Sharteel")
+	InParty("Sharteel")
 THEN
 	RESPONSE #100
+		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Sharteel","MYAREA",1)
 		Continue()
 END
@@ -1188,7 +1290,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
 		ActionOverride("Skie",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Skie",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Skie",DestroyItem("JOMINHP1"))
 		ActionOverride("Skie",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Skie",ChangeEnemyAlly("Skie",FAMILIAR))
@@ -1203,13 +1307,17 @@ THEN
 		ActionOverride("Skie",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Skie",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
+		DisplayString("Skie",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Skie","MYAREA",0)
+	InMyArea("Skie")
+	InParty("Skie")
 THEN
 	RESPONSE #100
+		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
 		Continue()
 END
@@ -1241,7 +1349,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
 		ActionOverride("Tiax",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Tiax",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Tiax",DestroyItem("JOMINHP1"))
 		ActionOverride("Tiax",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Tiax",ChangeEnemyAlly("Tiax",FAMILIAR))
@@ -1256,13 +1366,17 @@ THEN
 		ActionOverride("Tiax",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Tiax",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Tiax","MYAREA",1)
+		DisplayString("Tiax",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Tiax","MYAREA",0)
+	InMyArea("Tiax")
+	InParty("Tiax")
 THEN
 	RESPONSE #100
+		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Tiax","MYAREA",1)
 		Continue()
 END
@@ -1294,7 +1408,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
 		ActionOverride("Xan",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Xan",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Xan",DestroyItem("JOMINHP1"))
 		ActionOverride("Xan",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Xan",ChangeEnemyAlly("Xan",FAMILIAR))
@@ -1309,13 +1425,17 @@ THEN
 		ActionOverride("Xan",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Xan",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Xan","MYAREA",1)
+		DisplayString("Xan",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Xan","MYAREA",0)
+	InMyArea("Xan")
+	InParty("Xan")
 THEN
 	RESPONSE #100
+		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Xan","MYAREA",1)
 		Continue()
 END
@@ -1347,7 +1467,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
 		ActionOverride("Xzar",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Xzar",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Xzar",DestroyItem("JOMINHP1"))
 		ActionOverride("Xzar",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Xzar",ChangeEnemyAlly("Xzar",FAMILIAR))
@@ -1362,13 +1484,17 @@ THEN
 		ActionOverride("Xzar",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Xzar",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Xzar","MYAREA",1)
+		DisplayString("Xzar",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Xzar","MYAREA",0)
+	InMyArea("Xzar")
+	InParty("Xzar")
 THEN
 	RESPONSE #100
+		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Xzar","MYAREA",1)
 		Continue()
 END
@@ -1400,7 +1526,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
 		ActionOverride("Yeslick",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Yeslick",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Yeslick",DestroyItem("JOMINHP1"))
 		ActionOverride("Yeslick",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Yeslick",ChangeEnemyAlly("Yeslick",FAMILIAR))
@@ -1415,13 +1543,17 @@ THEN
 		ActionOverride("Yeslick",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Yeslick",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Yeslick","MYAREA",1)
+		DisplayString("Yeslick",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
 IF
 	Global("JO_JOIN_bd0120_Yeslick","MYAREA",0)
+	InMyArea("Yeslick")
+	InParty("Yeslick")
 THEN
 	RESPONSE #100
+		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Yeslick","MYAREA",1)
 		Continue()
 END
@@ -1453,7 +1585,9 @@ THEN
 	RESPONSE #100
 		ActionOverride("Baeloth",ChangeAIScript("BDBAELOT",OVERRIDE))
 		ActionOverride("Baeloth",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Baeloth",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Baeloth",DestroyItem("JOMINHP1"))
 		ActionOverride("Baeloth",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
 		ActionOverride("Baeloth",ChangeEnemyAlly("Baeloth",FAMILIAR))
@@ -1466,9 +1600,8 @@ THEN
 		SmallWait(1)
 		ActionOverride("Baeloth",EquipItemEx("JOMINHP1",0))
 		ActionOverride("Baeloth",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
-		ActionOverride("Baeloth",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Baeloth","MYAREA",1)
-		SetGlobal("JO_JOIN_bd0120","MYAREA",1) // Special last block
+		DisplayString("Baeloth",~Still a traveler, let's loading switch when possible !~)
 		Continue()
 END
 
@@ -1477,8 +1610,19 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Baeloth","MYAREA",1)
-		SetGlobal("JO_JOIN_bd0120","MYAREA",1) // Special last block
 		Continue()
+END
+
+IF
+	Delay(2)
+	Global("JO_JOIN_bd0120","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+		DisplayStringHead(Player1,~Loading switch should happen soon !~)
+		Wait(4)
+		SetGlobal("JO_JOIN_bd0120","MYAREA",1) // Special last block
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading switch
 END
 
 >>>>>>>>
