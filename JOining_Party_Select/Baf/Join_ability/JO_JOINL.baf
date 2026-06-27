@@ -9,72 +9,149 @@
 			// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
 				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_Select_End.tph Expand the trigger with OR(3) for each travelers))
 					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_Select_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
-						// JO_JOIN_SWITCHING_ROOM (In case area is JO2608.are prevent to end loading switch prematurely)
 ///////////////////////////////////////////////////////////////////////////////
 
 //	REPLACE_TRAVELER_JO_LOAD_TRAVELER
 
-// Main Loading Switch 2
+
+// TP on JO2608 map if current area is not a master area or fight is ongoing
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	!AreaCheck("JO2608")
+	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
+	OR(3)
+		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
+		ActuallyInCombat()
+		Detect([ENEMY])
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetInterrupt(FALSE)
+		CreateVisualEffectObject("JOBG402",Player1)
+		FadeToColor([20.0],0)
+		Wait(1)
+		StorePartyLocations()
+		FadeFromColor([30.0],0)
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],1))
+		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],1))
+		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],1))
+		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],1))
+		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],1))
+		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],1))
+		LeaveAreaLUAPanic("JO2608","",[1570.1050],1)
+		LeaveAreaLUA("JO2608","",[1570.1050],1)
+		MultiPlayerSync()
+		Wait(1)
+		CreateVisualEffectObject("JOBG402",Player1)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+// Active loading switch sequence
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetInterrupt(FALSE)
+		MoveViewObject(Player1,INSTANT)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		DisplayStringHead(Myself,~Travelers !~)
+		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		SetInterrupt(TRUE)
+END
+
+
+// One party member have to make room for traveler Loading Switch if the party is full
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",2)
+	NumInPartyGT(5)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
+		ActionOverride(PartySlot6,LeaveParty())
+		ActionOverride(PartySlot6,Deactivate(Myself))
+END
+
+// Party is not full, just go to step3
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",2)
+	!NumInPartyGT(5)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+END
+
+
+// delay
+IF
+	Delay(1)
+	Global("JO_JOIN_LOADING","GLOBAL",3)
+	!Global("JO_JOIN_LOAD","LOCALS",0)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+END
+
+// Main Loading Switch 3
 
 IF
 // 
 	Global("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
-	Global("JO_JOIN_LOADING","GLOBAL",1)
-	NumInPartyLT(6)
+	Global("JO_JOIN_LOADING","GLOBAL",3)
 	Global("JO_JOIN_LOAD","LOCALS",0)
 //	REPLACE_TRAVELER_JO_LOAD_NO_SET
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~Almost...~)
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",2)
-		SetInterrupt(TRUE)
+		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Main Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
+// Main Loading Switch 4 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
-// 
-	Global("JO_JOIN_LOADING","GLOBAL",2)
-	!Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
-// 
-	OR(2)
-		Delay(5)
-		Global("JO_JOIN_LOAD","LOCALS",0)
-	OR(2)
-		Delay(5)
-		!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+	AreaCheck("JO2608")
+	Global("JO_JOIN_LOADING","GLOBAL",4)
+	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",2) // Related to the Switching_room in JO_JOINP.baf
+		DisplayStringHead(Myself,~Let's return to venture forth !!~)
+		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
+		FadeToColor([20.0],0)
+		CreateVisualEffectObject("JOBG402",Player1)
+		Wait(1)
+		RestorePartyLocations()
+		Face(NE)
+		FadeFromColor([30.0],0)
+		SmallWait(10)
+		CreateVisualEffectObject("JOBG402",Player1)
 		SetInterrupt(TRUE)
-		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
 END
 
-// Main Loading Switch 3 // Regular
+// Main Loading Switch 4
 
 IF
-// 
-	Global("JO_JOIN_LOADING","GLOBAL",2)
-// 
-	OR(2)
-		Delay(5)
-		Global("JO_JOIN_LOAD","LOCALS",0)
-	OR(2)
-		Delay(5)
-		!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+	!AreaCheck("JO2608")
+	Global("JO_JOIN_LOADING","GLOBAL",4)
+	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0) // Set to 1 by the first travelers switch
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		DisplayStringHead(Myself,~let's venture forth !~)
-		SetInterrupt(TRUE)
-		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_LOAD.baf
+		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 END

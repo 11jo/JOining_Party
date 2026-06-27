@@ -164,6 +164,7 @@
 | JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
+| JO_JOIN_LOADING | G | Launch Loading Switch script/CutSceneLite |0: not initialized<br>1: initialisation<br>2: slot6 is leaving<br>3: travelers switching<br>4: slot6 returns and go back to aventure
 
 ---
 

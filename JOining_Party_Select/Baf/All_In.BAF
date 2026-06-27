@@ -12,7 +12,7 @@
 // For Party member After Main Loading Switch 1 //
 
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",1)
+	Global("JO_JOIN_LOADING","GLOBAL",3)
 	Global("JO_JOIN_LOAD","LOCALS",0)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",2)
 THEN
@@ -27,7 +27,7 @@ END
 IF // The party member making room for traveler Loading Switch if the party is full reintegrate the party right after
 //
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
-	!Global("JO_JOIN_LOADING","GLOBAL",1) // Loading switch "almost" finished
+	GlobalGT("JO_JOIN_LOADING","GLOBAL",3) // Loading switch "almost" finished
 //
 	NumInPartyLT(6)
 THEN
@@ -180,7 +180,6 @@ THEN
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 
 //		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)

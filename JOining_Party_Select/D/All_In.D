@@ -321,7 +321,6 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
