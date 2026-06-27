@@ -29,6 +29,8 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
 		SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",1)
 		DisplayStringHead(Myself,~%%Death_var%_name%...~)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",1))
 		SetInterrupt(TRUE)
 END
 
