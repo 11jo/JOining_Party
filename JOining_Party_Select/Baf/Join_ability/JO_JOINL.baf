@@ -134,6 +134,7 @@ THEN
 		CreateVisualEffectObject("JOBG402",Player1)
 		Wait(1)
 		RestorePartyLocations()
+		MoveViewObject(Player1,INSTANT)
 		Face(NE)
 		FadeFromColor([30.0],0)
 		SmallWait(10)
