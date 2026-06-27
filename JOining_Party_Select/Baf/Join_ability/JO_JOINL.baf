@@ -26,6 +26,7 @@ IF
 THEN
 	RESPONSE #100
 		ClearAllActions()
+		SetInterrupt(FALSE)
 		CreateVisualEffectObject("JOBG402",Player1)
 		FadeToColor([20.0],0)
 		Wait(1)
@@ -42,6 +43,7 @@ THEN
 		MultiPlayerSync()
 		Wait(1)
 		CreateVisualEffectObject("JOBG402",Player1)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -50,8 +52,8 @@ IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
 		ClearAllActions()
+		SetInterrupt(FALSE)
 		MoveViewObject(Player1,INSTANT)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
@@ -122,6 +124,7 @@ IF
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
@@ -131,10 +134,11 @@ THEN
 		CreateVisualEffectObject("JOBG402",Player1)
 		Wait(1)
 		RestorePartyLocations()
-		MoveToOffset([1.-1])
+		Face(NE)
 		FadeFromColor([30.0],0)
 		SmallWait(10)
 		CreateVisualEffectObject("JOBG402",Player1)
+		SetInterrupt(TRUE)
 END
 
 // Main Loading Switch 4
