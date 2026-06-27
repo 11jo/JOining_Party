@@ -14,7 +14,7 @@ THEN
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~Yeah.~)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",3)
-		ChangeAIScript("JO_JOINX",RACE)// Go to JO_JOINX (ScriptAction / XP)
+		ChangeAIScript("JO_JOINX",RACE) // Go to JO_JOINX (ScriptAction / XP)
 		SetInterrupt(TRUE)
 END
 

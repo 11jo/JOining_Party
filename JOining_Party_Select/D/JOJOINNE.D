@@ -33,8 +33,11 @@ IF ~True()~ THEN BEGIN 0
 	IF ~OR(2)
 			Global("JO_JOIN_AREA","MYAREA",1)
 			Global("JO_JOIN_BLOP","GLOBAL",1)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 		NumInPartyLT(6)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's Quick Switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
+	IF ~!Global("JO_JOIN_BLOP","GLOBAL",1)
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~Quick Switch isn't available here.^-~ EXIT //
 
 // Cutscenes
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
@@ -72,19 +75,31 @@ IF ~True()~ THEN BEGIN 0
 		Global("JO_JOIN_LOADING","GLOBAL",0)
 		Global("JO_JOIN_SWITCHING","GLOBAL",0)
 		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFF16537eThere is room for one traveler to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
+		Global("JO_NOJOIN","GLOBAL",0)
+		OR(2)
+			Global("JO_JOIN_AREA","MYAREA",1)
+			Global("JO_JOIN_BLOP","GLOBAL",1)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF16537eThere is room for one traveler to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
 		NumInParty(4)
 		Global("JO_JOIN_LOADING","GLOBAL",0)
 		Global("JO_JOIN_SWITCHING","GLOBAL",0)
 		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFF16537eThere is room for two travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
+		Global("JO_NOJOIN","GLOBAL",0)
+		OR(2)
+			Global("JO_JOIN_AREA","MYAREA",1)
+			Global("JO_JOIN_BLOP","GLOBAL",1)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF16537eThere is room for two travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
 		NumInParty(3)
 		Global("JO_JOIN_LOADING","GLOBAL",0)
 		Global("JO_JOIN_SWITCHING","GLOBAL",0)
 		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^0xFF16537eThere is room for three travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
+		Global("JO_NOJOIN","GLOBAL",0)
+		OR(2)
+			Global("JO_JOIN_AREA","MYAREA",1)
+			Global("JO_JOIN_BLOP","GLOBAL",1)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF16537eThere is room for three travelers to come in party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 
 // Switching party between travelers and party members
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bTravelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
@@ -275,7 +290,13 @@ IF ~True()~ THEN BEGIN 0
 
 
 // Corrections
-	IF ~Global("JO_JOIN_LOADING","GLOBAL",0)~ THEN REPLY ~^GLet's try a Loading Switch !^-~ DO ~SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1)~ EXIT //
+	IF ~Global("JO_JOIN_LOADING","GLOBAL",0)
+		OR(2)
+			Global("JO_JOIN_AREA","MYAREA",1)
+			Global("JO_JOIN_BLOP","GLOBAL",1)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^GLet's try a Loading Switch !^-~ DO ~SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1)~ EXIT //
+	IF ~!Global("JO_JOIN_BLOP","GLOBAL",1)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~Loading Switch isn't available here.^-~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~There's something wrong with travelers, let's settle this now.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",12) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Let's Blop !^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",1) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Don't switch if not in a master area or if ennemies are at sight.^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",0) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //

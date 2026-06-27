@@ -34,6 +34,8 @@ END
 // Secondary Loading Switch 1 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) // To move in JO_JOINL
 // 
 	OR(2)
 		OnCreation()
@@ -77,6 +79,8 @@ END
 // Main Loading Switch 1
 
 IF
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) // To move in JO_JOINL
 // 
 	OR(3)
 		OnCreation()
@@ -364,9 +368,9 @@ THEN
 	RESPONSE #100
 //		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0) // Reset JO_JOIN_Move_Around
+		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset JO_JOIN
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0) // Security reset the cutscene global
-		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
 END
 
 // Prevent edge case when traveler special item finish in Player1 inventory
@@ -467,39 +471,43 @@ END
 // Avoid lauching banters in specific area // TODO : To Double Check
 
 IF
-	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-	OR(7)
+//	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	OR(6)
 // BG1 End
 		AreaCheck("%NBaldursGate_DucalPalace_L1%")
 		AreaCheck("%Undercity_TempleofBhaal%")
 // Korlaz Donjon
 		AreaCheck("BD0120")
-		AreaCheck("BD0130")
+//		AreaCheck("BD0130") // Should not be a problem
 // SoD End
 		AreaCheck("BD6000")
 		AreaCheck("BD6100")
 		AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",13) // Launch JO_JOIN_Move_Around block 13 in JO_JOINI.BAF
-		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 END
 
 IF
-	Global("JO_JOIN_NEVER_BANTER","LOCALS",1)
 // BG1 End
 	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
 	!AreaCheck("%Undercity_TempleofBhaal%")
 // Korlaz Donjon
-	!AreaCheck("BD0120")
-	!AreaCheck("BD0130")
+//
+	OR(2)
+		!AreaCheck("BD0120")
+		Global("JO_JOIN_bd0120","BD0120",1)
+//		!AreaCheck("BD0130") // Should not be a problem
 // SoD End
 	!AreaCheck("BD6000")
 	!AreaCheck("BD6100")
 	!AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",14) // Launch JO_JOIN_Move_Around block 14 in JO_JOINI.BAF
-		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
 END
+

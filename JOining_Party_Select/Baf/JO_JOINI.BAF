@@ -638,6 +638,8 @@ END
 
 IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another traveler is already active
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+//
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	OR(4)
@@ -660,6 +662,8 @@ END
 // Main Quick Switch 2
 
 IF
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
@@ -2383,6 +2387,8 @@ END
 
 IF // Special case : Traveler was about to switch but something prevent it
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+//
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	OR(4)
@@ -2486,6 +2492,8 @@ END
 // Main Switching Party 1
 
 IF // First check
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
@@ -3059,6 +3067,8 @@ END
 // Main Fill Party 1
 
 IF
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)

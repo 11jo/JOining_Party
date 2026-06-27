@@ -616,6 +616,26 @@ END
 IF ~~ THEN BEGIN JO_JOINStat
 	SAY ~Hum...~
 	IF ~!HasItem("JOMINHP1",Myself)~ THEN REPLY ~I don't have the engagement scroll.~ GOTO JO_JOINStatEnd // Je n'ai pas notre parchemin d'engagement.
+	IF ~NumItemsGT("JOMINHP1",1)~ THEN REPLY ~I engage myself too much...~ DO ~
+			EquipItemEx("JOMINHP1",1)
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			DestroyItem("JOMINHP1")
+			GiveItemCreate("JOMINHP1",Myself,0,0,0)
+			EquipItemEx("JOMINHP1",0)~ GOTO JO_JOINStatEnd
+	
+//	IF ~HasItemSlot("JOMINHP1",xxxxx)~ THEN REPLY ~....~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(3)
 			CheckStat(Myself,0,MINHITPOINTS)
