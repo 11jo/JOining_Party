@@ -237,7 +237,15 @@ THEN
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)
 		DisplayString(Myself,~Done. I stay put.~)
 		Continue()*/
-/*	RESPONSE #26
+	RESPONSE #26
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		Continue()
+	RESPONSE #27
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",1)
+		Continue()
+/*	RESPONSE #28
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()*/
 END
