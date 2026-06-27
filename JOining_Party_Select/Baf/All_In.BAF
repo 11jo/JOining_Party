@@ -43,10 +43,13 @@ END
 // For Traveler After Main Loading Switch 3
 
 IF
-	!Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
+	OR(2)
+		!Global("JO_JOIN_LOAD","LOCALS",0)
+		!Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
 	!Global("JO_JOIN_LOADING","GLOBAL",3)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
 END
 
@@ -175,6 +178,7 @@ THEN
 
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 
