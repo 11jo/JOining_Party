@@ -28,7 +28,8 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
 		SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",1)
-		DisplayStringHead(Myself,~%%Death_var%_name%...~)
+		SetTokenObject("JO_TRAVELERNAME","%Death_var%")
+		DisplayStringHead(Myself,~<JO_TRAVELERNAME>...~)
 		SetInterrupt(TRUE)
 END
 
