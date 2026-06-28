@@ -14,20 +14,22 @@ IF
 		!TriggerOverride("%IMOEN_DV%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
-		EquipItemEx("JOMINHP1",1)
+		SetInterrupt(FALSE)
+		ActionOverride("%IMOEN_DV%",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
-		DestroyItem("JOMINHP1")
+		ActionOverride("%IMOEN_DV%",DestroyItem("JOMINHP1"))
 		SmallWait(1)
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_InParty","LOCALS",0))
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_Valid","LOCALS",0))
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		SetGlobal("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
+		ActionOverride("%IMOEN_DV%",DestroySelf())
 		Continue()
 END
 
 >>>>>>>>
-EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	END
 
@@ -45,6 +47,7 @@ IF
 		!TriggerOverride("Edwin",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Edwin",ChangeAIScript("BDEDWIN",OVERRIDE))
 		ActionOverride("Edwin",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -64,6 +67,7 @@ THEN
 		ActionOverride("Edwin",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Edwin","MYAREA",1)
 		DisplayString("Edwin",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -94,6 +98,7 @@ IF
 		!TriggerOverride("Jaheira",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Jaheira",ChangeAIScript("BDJAHEIR",OVERRIDE))
 		ActionOverride("Jaheira",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -113,6 +118,7 @@ THEN
 		ActionOverride("Jaheira",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Jaheira","MYAREA",1)
 		DisplayString("Jaheira",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -143,6 +149,7 @@ IF
 		!TriggerOverride("Minsc",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Minsc",ChangeAIScript("BDMINSC",OVERRIDE))
 		ActionOverride("Minsc",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -162,6 +169,7 @@ THEN
 		ActionOverride("Minsc",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Minsc","MYAREA",1)
 		DisplayString("Minsc",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -192,6 +200,7 @@ IF
 		!TriggerOverride("Viconia",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Viconia",ChangeAIScript("BDVICONI",OVERRIDE))
 		ActionOverride("Viconia",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -211,6 +220,7 @@ THEN
 		ActionOverride("Viconia",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Viconia","MYAREA",1)
 		DisplayString("Viconia",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -241,6 +251,7 @@ IF
 		!TriggerOverride("Dorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Dorn",ChangeAIScript("BDDORN",OVERRIDE))
 		ActionOverride("Dorn",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -260,6 +271,7 @@ THEN
 		ActionOverride("Dorn",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Dorn","MYAREA",1)
 		DisplayString("Dorn",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -290,6 +302,7 @@ IF
 		!TriggerOverride("Neera",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Neera",ChangeAIScript("BDNEERA",OVERRIDE))
 		ActionOverride("Neera",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -309,6 +322,7 @@ THEN
 		ActionOverride("Neera",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Neera","MYAREA",1)
 		DisplayString("Neera",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -339,6 +353,7 @@ IF
 		!TriggerOverride("Rasaad",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Rasaad",ChangeAIScript("BDRASAAD",OVERRIDE))
 		ActionOverride("Rasaad",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -358,6 +373,7 @@ THEN
 		ActionOverride("Rasaad",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Rasaad","MYAREA",1)
 		DisplayString("Rasaad",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -396,6 +412,7 @@ IF
 		!TriggerOverride("Ajantis",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
 		ActionOverride("Ajantis",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Ajantis",EquipItemEx("JOMINHP1",1))
@@ -416,6 +433,7 @@ THEN
 		ActionOverride("Ajantis",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
 		DisplayString("Ajantis",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -425,6 +443,7 @@ IF
 	InParty("Ajantis")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
 		Continue()
@@ -455,6 +474,7 @@ IF
 		!TriggerOverride("Alora",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
 		ActionOverride("Alora",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Alora",EquipItemEx("JOMINHP1",1))
@@ -475,6 +495,7 @@ THEN
 		ActionOverride("Alora",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Alora","MYAREA",1)
 		DisplayString("Alora",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -484,6 +505,7 @@ IF
 	InParty("Alora")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Alora","MYAREA",1)
 		Continue()
@@ -518,6 +540,7 @@ IF
 		!TriggerOverride("Branwen",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
 		ActionOverride("Branwen",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Branwen",EquipItemEx("JOMINHP1",1))
@@ -538,6 +561,7 @@ THEN
 		ActionOverride("Branwen",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
 		DisplayString("Branwen",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -547,6 +571,7 @@ IF
 	InParty("Branwen")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
 		Continue()
@@ -577,6 +602,7 @@ IF
 		!TriggerOverride("Coran",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
 		ActionOverride("Coran",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Coran",EquipItemEx("JOMINHP1",1))
@@ -597,6 +623,7 @@ THEN
 		ActionOverride("Coran",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Coran","MYAREA",1)
 		DisplayString("Coran",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -606,6 +633,7 @@ IF
 	InParty("Coran")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Coran","MYAREA",1)
 		Continue()
@@ -636,6 +664,7 @@ IF
 		!TriggerOverride("Dynaheir",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Dynaheir",ChangeAIScript("BDDYNAHE",OVERRIDE))
 		ActionOverride("Dynaheir",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Dynaheir",EquipItemEx("JOMINHP1",1))
@@ -656,6 +685,7 @@ THEN
 		ActionOverride("Dynaheir",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Dynaheir","MYAREA",1)
 		DisplayString("Dynaheir",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -692,6 +722,7 @@ IF
 		!TriggerOverride("Eldoth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
 		ActionOverride("Eldoth",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Eldoth",EquipItemEx("JOMINHP1",1))
@@ -712,6 +743,7 @@ THEN
 		ActionOverride("Eldoth",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Eldoth","MYAREA",1)
 		DisplayString("Eldoth",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -721,6 +753,7 @@ IF
 	InParty("Eldoth")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Eldoth","MYAREA",1)
 		Continue()
@@ -755,6 +788,7 @@ IF
 		!TriggerOverride("Faldorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
 		ActionOverride("Faldorn",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Faldorn",EquipItemEx("JOMINHP1",1))
@@ -775,6 +809,7 @@ THEN
 		ActionOverride("Faldorn",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
 		DisplayString("Faldorn",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -784,6 +819,7 @@ IF
 	InParty("Faldorn")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
 		Continue()
@@ -818,6 +854,7 @@ IF
 		!TriggerOverride("Garrick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
 		ActionOverride("Garrick",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Garrick",EquipItemEx("JOMINHP1",1))
@@ -838,6 +875,7 @@ THEN
 		ActionOverride("Garrick",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
 		DisplayString("Garrick",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -847,6 +885,7 @@ IF
 	InParty("Garrick")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
 		Continue()
@@ -877,6 +916,7 @@ IF
 		!TriggerOverride("Kagain",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
 		ActionOverride("Kagain",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Kagain",EquipItemEx("JOMINHP1",1))
@@ -897,6 +937,7 @@ THEN
 		ActionOverride("Kagain",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Kagain","MYAREA",1)
 		DisplayString("Kagain",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -906,6 +947,7 @@ IF
 	InParty("Kagain")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Kagain","MYAREA",1)
 		Continue()
@@ -936,6 +978,7 @@ IF
 		!TriggerOverride("Khalid",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Khalid",ChangeAIScript("BDKHALID",OVERRIDE))
 		ActionOverride("Khalid",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Khalid",EquipItemEx("JOMINHP1",1))
@@ -956,6 +999,7 @@ THEN
 		ActionOverride("Khalid",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Khalid","MYAREA",1)
 		DisplayString("Khalid",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -992,6 +1036,7 @@ IF
 		!TriggerOverride("Kivan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
 		ActionOverride("Kivan",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Kivan",EquipItemEx("JOMINHP1",1))
@@ -1012,6 +1057,7 @@ THEN
 		ActionOverride("Kivan",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Kivan","MYAREA",1)
 		DisplayString("Kivan",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1021,6 +1067,7 @@ IF
 	InParty("Kivan")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Kivan","MYAREA",1)
 		Continue()
@@ -1051,6 +1098,7 @@ IF
 		!TriggerOverride("Montaron",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
 		ActionOverride("Montaron",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Montaron",EquipItemEx("JOMINHP1",1))
@@ -1071,6 +1119,7 @@ THEN
 		ActionOverride("Montaron",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Montaron","MYAREA",1)
 		DisplayString("Montaron",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1080,6 +1129,7 @@ IF
 	InParty("Montaron")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Montaron","MYAREA",1)
 		Continue()
@@ -1110,6 +1160,7 @@ IF
 		!TriggerOverride("Quayle",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
 		ActionOverride("Quayle",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Quayle",EquipItemEx("JOMINHP1",1))
@@ -1130,6 +1181,7 @@ THEN
 		ActionOverride("Quayle",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Quayle","MYAREA",1)
 		DisplayString("Quayle",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1139,6 +1191,7 @@ IF
 	InParty("Quayle")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Quayle","MYAREA",1)
 		Continue()
@@ -1169,6 +1222,7 @@ IF
 		!TriggerOverride("Safana",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Safana",ChangeAIScript("BDSAFANA",OVERRIDE))
 		ActionOverride("Safana",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Safana",EquipItemEx("JOMINHP1",1))
@@ -1189,6 +1243,7 @@ THEN
 		ActionOverride("Safana",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Safana","MYAREA",1)
 		DisplayString("Safana",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1225,6 +1280,7 @@ IF
 		!TriggerOverride("Sharteel",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
 		ActionOverride("Sharteel",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Sharteel",EquipItemEx("JOMINHP1",1))
@@ -1245,6 +1301,7 @@ THEN
 		ActionOverride("Sharteel",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Sharteel","MYAREA",1)
 		DisplayString("Sharteel",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1254,6 +1311,7 @@ IF
 	InParty("Sharteel")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Sharteel","MYAREA",1)
 		Continue()
@@ -1288,6 +1346,7 @@ IF
 		!TriggerOverride("Skie",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
 		ActionOverride("Skie",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Skie",EquipItemEx("JOMINHP1",1))
@@ -1308,6 +1367,7 @@ THEN
 		ActionOverride("Skie",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
 		DisplayString("Skie",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1317,6 +1377,7 @@ IF
 	InParty("Skie")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
 		Continue()
@@ -1347,6 +1408,7 @@ IF
 		!TriggerOverride("Tiax",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
 		ActionOverride("Tiax",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Tiax",EquipItemEx("JOMINHP1",1))
@@ -1367,6 +1429,7 @@ THEN
 		ActionOverride("Tiax",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Tiax","MYAREA",1)
 		DisplayString("Tiax",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1376,6 +1439,7 @@ IF
 	InParty("Tiax")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Tiax","MYAREA",1)
 		Continue()
@@ -1406,6 +1470,7 @@ IF
 		!TriggerOverride("Xan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
 		ActionOverride("Xan",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Xan",EquipItemEx("JOMINHP1",1))
@@ -1426,6 +1491,7 @@ THEN
 		ActionOverride("Xan",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Xan","MYAREA",1)
 		DisplayString("Xan",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1435,6 +1501,7 @@ IF
 	InParty("Xan")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Xan","MYAREA",1)
 		Continue()
@@ -1465,6 +1532,7 @@ IF
 		!TriggerOverride("Xzar",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
 		ActionOverride("Xzar",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Xzar",EquipItemEx("JOMINHP1",1))
@@ -1485,6 +1553,7 @@ THEN
 		ActionOverride("Xzar",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Xzar","MYAREA",1)
 		DisplayString("Xzar",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1494,6 +1563,7 @@ IF
 	InParty("Xzar")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Xzar","MYAREA",1)
 		Continue()
@@ -1524,6 +1594,7 @@ IF
 		!TriggerOverride("Yeslick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
 		ActionOverride("Yeslick",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Yeslick",EquipItemEx("JOMINHP1",1))
@@ -1544,6 +1615,7 @@ THEN
 		ActionOverride("Yeslick",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Yeslick","MYAREA",1)
 		DisplayString("Yeslick",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1553,6 +1625,7 @@ IF
 	InParty("Yeslick")
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Yeslick","MYAREA",1)
 		Continue()
@@ -1583,6 +1656,7 @@ IF
 		!TriggerOverride("Baeloth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Baeloth",ChangeAIScript("BDBAELOT",OVERRIDE))
 		ActionOverride("Baeloth",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Baeloth",EquipItemEx("JOMINHP1",1))
@@ -1602,6 +1676,7 @@ THEN
 		ActionOverride("Baeloth",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		SetGlobal("JO_JOIN_bd0120_Baeloth","MYAREA",1)
 		DisplayString("Baeloth",~Still a traveler, let's loading switch when possible !~)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1614,13 +1689,12 @@ THEN
 END
 
 IF
-	Delay(2)
+	Delay(3)
 	Global("JO_JOIN_bd0120","MYAREA",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
 		DisplayStringHead(Player1,~Loading switch should happen soon !~)
-		Wait(4)
 		SetGlobal("JO_JOIN_bd0120","MYAREA",1) // Special last block
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading switch
 END

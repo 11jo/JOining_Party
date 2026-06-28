@@ -391,6 +391,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
@@ -414,42 +415,78 @@ END
 
 // Avoid lauching banters in specific area // TODO : To Double Check
 
-IF
-//	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-	OR(5)
 // BG1 End
-//		AreaCheck("%NBaldursGate_DucalPalace_L1%")
-		AreaCheck("%Undercity_TempleofBhaal%")
-// Korlaz Donjon
-		AreaCheck("BD0120")
-//		AreaCheck("BD0130") // Should not be a problem
-// SoD End
-		AreaCheck("BD6000")
-		AreaCheck("BD6100")
-		AreaCheck("BD6200")
+
+IF // Undercity_TempleofBhaal
+//
+//		AreaCheck("%NBaldursGate_DucalPalace_L1%") // Added in BDSODTRN.bcs // Related to EndlessBG1
+	AreaCheck("%Undercity_TempleofBhaal%") // Also Added in Undercity_TempleofBhaal.bcs
+//
+	Dead("Sarevok") // Only after Sarevok death
 //
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-//
-	!Global("JO_JOIN_bd0120","BD0120",1) // Only before araa script is completely finish
-	Dead("Sarevok") // Only after Sarevok death
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 END
 
-IF
-// BG1 End
-//	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
+IF // Undercity_TempleofBhaal
+//
+	!AreaCheck("%NBaldursGate_DucalPalace_L1%") // Related to EndlessBG1
 	OR(2)
 		!AreaCheck("%Undercity_TempleofBhaal%")
 		!Dead("Sarevok")
-// Korlaz Donjon
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+END
+
+// SoD Start
+
+IF // Korlaz Donjon
+//
+	AreaCheck("BD0120")
+	!Global("JO_JOIN_bd0120","BD0120",1) // Only before araa script is completely finish
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+END
+
+IF // Korlaz Donjon
 //
 	OR(2)
 		!AreaCheck("BD0120")
 		Global("JO_JOIN_bd0120","BD0120",1)
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+END
+
+//////////////////////
+
+/* Soon...
+IF // SoD End
+//
+	AreaCheck("BD6000")
+	AreaCheck("BD6100")
+	AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+END
+
+IF // SoD End
+//
 //		!AreaCheck("BD0130") // Should not be a problem
-// SoD End
+//
 	!AreaCheck("BD6000")
 	!AreaCheck("BD6100")
 	!AreaCheck("BD6200")
@@ -459,6 +496,9 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
 END
+*/
+
+///////////////////////////////////////////////////////////////////////////////
 
 // SoD bdplayer.bcs set in bdintro.bcs
 IF

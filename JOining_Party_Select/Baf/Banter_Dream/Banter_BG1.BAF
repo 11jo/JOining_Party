@@ -20,6 +20,8 @@ END
 //
 
 IF
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //	Global("JO_JOIN_DREAM_REST","GLOBAL",1) // Not at the moment related to Player1D.BAF
 	Global("JO_JOIN_DREAM_DONE","LOCALS",0)
 //
@@ -74,6 +76,8 @@ END
 //
 
 IF
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Not at loading
 //
 	!Global("JO_JOIN_SWITCHING","GLOBAL",1)
