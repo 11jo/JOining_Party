@@ -2510,7 +2510,7 @@ IF // First check
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	Global("JO_JOIN_SWITCHING","GLOBAL",0) // No other traveler attempt to Switching Party
-	!Global("JO_JOIN_LEAVE_PARTY","LOCALS",1) // No one try to Leave Party
+	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // No one try to Leave Party
 	OR(2)
 		Global("JO_JOIN_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)

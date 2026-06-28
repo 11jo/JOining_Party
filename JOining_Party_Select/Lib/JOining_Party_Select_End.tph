@@ -27,7 +27,7 @@
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("safana7",[934.1718],NE)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... //  InMyArea found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... //  Safana found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("safana",SetDialog("bdsafana"))
@@ -36,7 +36,7 @@
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("safana",SetDialog("bdsafana"))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... //  InMyArea found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... //  Safana found in %SOURCE_FILESPEC%
 				~
 			END
 		END
@@ -1125,8 +1125,6 @@ COPY_EXISTING ~%Undercity_TempleofBhaal%.bcs~ ~override~
 			END
 		END
 
-END
-
 // MoveToCampaign("SoD") script
 
 COPY_EXISTING ~BDSODTRN.bcs~ ~override~
@@ -1144,4 +1142,4 @@ COPY_EXISTING ~BDSODTRN.bcs~ ~override~
 
 END
 
-// BDINTRO.BCS
+// BDINTRO.BCS see on top of the file
