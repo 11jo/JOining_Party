@@ -1132,8 +1132,8 @@ COPY_EXISTING ~BDSODTRN.bcs~ ~override~
 			SPRINT textToReplace ~^[%TAB% ]*CutSceneId(Player1)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
-	\0~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // BDSODTRN : EndOfBG1 found in %SOURCE_FILESPEC% for JO_JOIN_AREA_TRANSITION
 				~
