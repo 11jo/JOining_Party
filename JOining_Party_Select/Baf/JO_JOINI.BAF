@@ -2929,7 +2929,7 @@ THEN
 		ActionOverride(PartySlot1,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // PartySlot1
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1) // PartySlot1
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)

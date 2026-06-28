@@ -475,7 +475,7 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Sw
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-	Global("JO_Myself_Valid","LOCALS",1)
+	!Global("JO_Myself_Valid","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
