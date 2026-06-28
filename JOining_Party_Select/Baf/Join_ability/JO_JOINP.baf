@@ -40,6 +40,7 @@ IF
 		TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",0)) // prevent ineligible travelers to switch
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		ScreenShake([20.20],5)
 		Wait(1)
 		DisplayStringHead(Myself,~^0xFF16537eThe sixth party member can't switch with traveler.~)
@@ -52,6 +53,7 @@ IF
 	InPartySlot(PartySlot6,0) // Charname is PartySlot6
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		ScreenShake([20.20],5)
 		Wait(1)
 		DisplayStringHead(Myself,~^0xFF16537eI am the sixth party member, better be in another place.~)
@@ -65,6 +67,7 @@ IF
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		DisplayStringHead(Myself,~Loading Switch is temporarely unavailable here.~)
 END
 
@@ -78,6 +81,7 @@ IF // Conditions are OK: loading switch starting
 THEN
 	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END

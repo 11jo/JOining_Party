@@ -58,7 +58,6 @@ THEN
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
-		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		DisplayStringHead(Myself,~Travelers !~)
 		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
 		SetInterrupt(TRUE)
