@@ -129,11 +129,11 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 
 // Indepandance
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",3)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",5)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",8)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",8)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANCE","GLOBAL",10)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",10)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) GlobalGT("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",8)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",10)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) GlobalGT("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes //
 
 // Indepandance for traveler // ChangeEnemyAlly
 /*
@@ -195,8 +195,8 @@ StartDialogueNoSet(Player6)~ EXIT
 */
 
 // Cutscenes
-	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fI did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fI did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
 // Temporary : travelers switch
 	IF ~Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bRemain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
@@ -316,8 +316,8 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
 
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
 		Activate(Myself)
 
 
@@ -396,12 +396,12 @@ StartDialogueNoSet(Player6)~ EXIT
 
 
 		SetTokenGlobal("JO_JOIN_CUTSCENE","GLOBAL","JO_JOIN_CUTSCENE")
-		SetTokenGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS","JO_JOIN_HIDE_DURING_CUTSCENE")
-		SetTokenGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS","JO_JOIN_IS_HIDDEN_BY_CUTSCENE")
+		SetTokenGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS","JO_JOIN_HIDE_CUTSCENE")
+		SetTokenGlobal("JO_JOIN_IS_HIDDEN","LOCALS","JO_JOIN_IS_HIDDEN")
 
 
 		SetTokenGlobal("JO_JOIN_CAMPAIGN","GLOBAL","JO_JOIN_CAMPAIGN")
-		SetTokenGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL","JO_JOIN_TRAVELER_NumInParty")
+		SetTokenGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL","JO_JOIN_TRAVELER_NUM")
 
 
 		SetTokenGlobal("JO_JOIN_LOADING","GLOBAL","JO_JOIN_LOADING")
@@ -663,9 +663,9 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't switch with party members.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bNo dream for me.^-~ GOTO JO_JOINStatEnd
+	IF ~!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bNo dream for me.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fAlways here, even in your dream !^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fAlways here, even in your dream !^-~ GOTO JO_JOINStatEnd
 //
 	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",3)~ THEN REPLY ~^0xFF16537eI don't follow when you walk 30 steps away from the group.^-~ GOTO JO_JOINStatEnd
 	IF ~Global("JO_JOIN_INDEPANDANCE","LOCALS",5)~ THEN REPLY ~^0xFF16537eI don't follow when you walk 50 steps away from the group.^-~ GOTO JO_JOINStatEnd

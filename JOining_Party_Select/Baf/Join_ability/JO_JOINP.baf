@@ -23,7 +23,7 @@ END
 	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
 		// JO_JOIN_AREA (Check if current area is a master area)
 			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
-				// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+				// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 					// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
 						// JO_JOIN_BLOP (Dev test for no master area)
 ///////////////////////////////////////////////////////////////////////////////
@@ -33,7 +33,7 @@ IF
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	NumInPartyGT(5)
 	OR(2)
 		StateCheck(PartySlot6,CD_STATE_NOTVALID)
@@ -61,7 +61,7 @@ IF
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -74,7 +74,7 @@ IF // Conditions are OK: loading switch starting
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
@@ -353,7 +353,7 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+	// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 // Special
 	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
 // Note :
@@ -366,12 +366,12 @@ IF
 // 
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
 // 
 //	REPLACE_TRAVELER_NumInParty
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // If there is no traveler reste the global
+		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // If there is no traveler reste the global
 		Continue()
 END
 
@@ -396,7 +396,7 @@ IF
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 // 
 		// ActionListEmpty()
 	!ActuallyInCombat()

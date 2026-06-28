@@ -143,8 +143,8 @@
 | JO_JOIN_CLEAR | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: Script needs to be updated<br>3: Script is up to date<br>Other: nothing|
 | JO_JOIN_IS_JOINING | L | The traveler will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
-| JO_JOIN_HIDE_DURING_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
-| JO_JOIN_IS_HIDDEN_BY_CUTSCENE | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
+| JO_JOIN_HIDE_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
+| JO_JOIN_IS_HIDDEN | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
 | JO_NEVER_JOIN | L | Prevent the traveler to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
 | JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
 | JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
@@ -205,8 +205,8 @@ CLUAConsole:
 	GetGlobal("JO_Myself_LeaveParty","LOCALS")
 	GetGlobal("JO_JOIN_Fill_Party","LOCALS") // Allow traveler to join the group properly if free slots are available
 	GetGlobal("JO_JOIN_IS_Wannabe","LOCALS") // First time InParty JO_JOIN_Wannabe is set to 1 only once
-	GetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS")
-	GetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS")
+	GetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS")
+	GetGlobal("JO_JOIN_IS_HIDDEN","LOCALS")
 
 	GetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS") // Travelers switch quickly in party at loading
 	GetGlobal("JO_JOIN_LOAD_PARTY","LOCALS") // Party members leave the groupe at loading

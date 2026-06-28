@@ -5,8 +5,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_HIDE_DURING_CUTSCENE (Set in PID, enable or disable travelers in cutscene)
-		// JO_JOIN_IS_HIDDEN_BY_CUTSCENE (Set in PID, enable or disable travelers in cutscene)
+	// JO_JOIN_HIDE_CUTSCENE (Set in PID, enable or disable travelers in cutscene)
+		// JO_JOIN_IS_HIDDEN (Set in PID, enable or disable travelers in cutscene)
 			// JO_JOIN_CUTSCENE (General global set ny all game cutscenes)
 // Note :
 	// Active or deactive travelers in cutscene.
@@ -33,7 +33,7 @@ IF
 	!AreaCheck("JO2608")
 	Global("JO_JOIN_LOADING","GLOBAL",0)
 	OR(2)
-		!Global("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
 		Global("JO_JOIN_FORCE_HIDE","GLOBAL",1)
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
@@ -45,7 +45,7 @@ IF
 	IsActive(Myself)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",1)
 		Deactivate(Myself)
 END
 
@@ -53,7 +53,7 @@ IF
 //
 	!Global("JO_JOIN_FORCE_HIDE","GLOBAL",1)
 //
-	!Global("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+	!Global("JO_JOIN_IS_HIDDEN","LOCALS",0)
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
 		Allegiance(Myself,CONTROLLED)
@@ -63,7 +63,7 @@ IF
 THEN
 	RESPONSE #100
 		Activate(Myself)
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
 		Continue()
 END
 
@@ -133,31 +133,31 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 //
-	Global("JO_JOIN_Move_Independantly","LOCALS",0)
-	Switch("JO_JOIN_NEED_INDEPANDANCE","LOCALS")
+	Global("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+	Switch("JO_JOIN_NEED_INDEPANDANT","LOCALS")
 THEN
 	RESPONSE #0
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",1)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 		DisplayString(Myself,~I am reassured.~)
 		Continue()
 	RESPONSE #3
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",1)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",3)
 		DisplayString(Myself,~I watch you from here.~)
 		Continue()
 	RESPONSE #5
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",1)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",5)
 		DisplayString(Myself,~Don't step away too much.~)
 		Continue()
 	RESPONSE #8
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",1)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",8)
 		DisplayString(Myself,~Don't go too far.~)
 		Continue()
 	RESPONSE #10
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",1)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",10)
 		DisplayString(Myself,~Be careful out there.~)
 		Continue()
@@ -364,12 +364,12 @@ IF
 THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #2
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #3
@@ -468,8 +468,8 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1) // If not the script will loop...
 
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
 		Activate(Myself)
 
 
@@ -514,28 +514,28 @@ THEN
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #18
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()
 	RESPONSE #19
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",3)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #20
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",5)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #21
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",8)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #22
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",10)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #23

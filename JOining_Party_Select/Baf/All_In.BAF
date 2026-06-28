@@ -99,12 +99,12 @@ IF
 THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #2
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #3
@@ -171,9 +171,9 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1) // If not the script will loop...
 
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",1)
-//		SetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)
+//		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
 		Activate(Myself)
 
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
@@ -197,27 +197,27 @@ THEN
 		DisplayString(Myself,~Done.~)
 		Continue()*/
 	RESPONSE #18
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",0)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)
 //		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 	RESPONSE #19
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",3)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 //		DisplayString(Myself,~Done.~)
 	RESPONSE #20
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",5)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 //		DisplayString(Myself,~Done.~)
 	RESPONSE #21
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",8)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 //		DisplayString(Myself,~Done.~)
 	RESPONSE #22
-		SetGlobal("JO_JOIN_Move_Independantly","LOCALS",0)
-		SetGlobal("JO_JOIN_NEED_INDEPANDANCE","LOCALS",10)
+		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 //		DisplayString(Myself,~Done.~)
 	RESPONSE #23
@@ -326,7 +326,7 @@ IF
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 //
 	!GlobalTimerNotExpired("JO_JOIN_DELAY_SWITCH_TIMER","LOCALS")
 //
@@ -470,7 +470,7 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Sw
 //
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 //
 	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
@@ -1172,7 +1172,7 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+	// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 // Special
 	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
 // Note :
@@ -1191,10 +1191,10 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
+	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",1)
+		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////

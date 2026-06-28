@@ -362,15 +362,15 @@ IF ~True()~ THEN BEGIN 0
 
 
 		SetTokenGlobal("JO_JOIN_CUTSCENE","GLOBAL","JO_JOIN_CUTSCENE")
-		SetTokenGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS","JO_JOIN_HIDE_DURING_CUTSCENE")
-		SetTokenGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS","JO_JOIN_IS_HIDDEN_BY_CUTSCENE")
+		SetTokenGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS","JO_JOIN_HIDE_CUTSCENE")
+		SetTokenGlobal("JO_JOIN_IS_HIDDEN","LOCALS","JO_JOIN_IS_HIDDEN")
 
 
 		SetTokenGlobal("JO_JOIN_DEV_MODE","GLOBAL","JO_JOIN_DEV_MODE")
 		SetTokenGlobal("JO_JOIN_BLOP","GLOBAL","JO_JOIN_BLOP")
 		SetTokenGlobal("JO_JOIN_CAMPAIGN","GLOBAL","JO_JOIN_CAMPAIGN")
 		SetTokenGlobal("JO_JOIN_PLAYER1_INIT","GLOBAL","JO_JOIN_PLAYER1_INIT")
-		SetTokenGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL","JO_JOIN_TRAVELER_NumInParty")
+		SetTokenGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL","JO_JOIN_TRAVELER_NUM")
 
 
 		SetTokenGlobal("JO_JOIN_FORCE_LOAD","GLOBAL","JO_JOIN_FORCE_LOAD")
@@ -410,7 +410,7 @@ IF ~~ THEN BEGIN 1
 	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
 //	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",16)~ EXIT // Deprecated by the one below see JO_JOINC.BAF
-	IF ~!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFA legion ?^-~ DO ~ActionOverride(Player1,ChangeAIScript("JO_JOINC",RACE)) ActionOverride(Player1,SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1))~ EXIT //
+	IF ~!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFA legion ?^-~ DO ~ActionOverride(Player1,ChangeAIScript("JO_JOINC",RACE)) ActionOverride(Player1,SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1))~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Stay close to me or your partner !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",17)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~To all travelers ! Get lost !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",5)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFf4ccccEverybody say, Youhou !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",6)~ EXIT //

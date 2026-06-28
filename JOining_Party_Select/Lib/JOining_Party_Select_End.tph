@@ -96,7 +96,7 @@ END
 COPY_EXISTING ~BDINTRO.bcs~ ~override~
   REPLACE_BCS_BLOCK ~BDINTRO_SAFANA_rep.baf~ ~BDINTRO_SAFANA_add.baf~ EVALUATE_BUFFER
 
-// Related to "JO_JOIN_TRAVELER_NumInParty" in all_In.baf
+// Related to "JO_JOIN_TRAVELER_NUM" in all_In.baf
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~BD0120.bcs~ THEN BEGIN
 		COPY_EXISTING ~BD0120.bcs~ ~override~
@@ -105,7 +105,7 @@ COPY_EXISTING ~BDINTRO.bcs~ ~override~
 			SPRINT textToReplace ~^[%TAB% ]*NumInParty(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0 Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... //  NumInParty found in %SOURCE_FILESPEC%
 				~
