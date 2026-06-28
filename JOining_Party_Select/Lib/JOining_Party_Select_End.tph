@@ -20,28 +20,81 @@
 				PATCH_PRINT ~... //  InMyArea found in %SOURCE_FILESPEC%
 				~
 			END
-	// Safana situation // Delete JoinPartyOverride
-			SPRINT textToReplace ~^[%TAB% ]*CreateCreature("safana7",[934.1718],NE)
-^[%TAB% ]*ActionOverride("safana",JoinPartyOverride())~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("safana7",[934.1718],NE)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... //  Safana found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("safana",SetDialog("bdsafana"))
-^[%TAB% ]*ActionOverride("safana",JoinPartyOverride())~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("safana",SetDialog("bdsafana"))~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... //  Safana found in %SOURCE_FILESPEC%
-				~
-			END
 		END
 			BUT_ONLY
 	END
+
+	// Safana situation // Delete JoinPartyOverride
+
+<<<<<<<<BDINTRO_SAFANA_rep.baf
+IF
+	Global("SOD_fromimport","global",1)
+	Global("BD_Imoen_Items","GLOBAL",1)
+	OR(2)
+		Global("bd_party_has_lockpicking","BD0120",0)
+		Global("bd_party_has_traps","BD0120",0)
+	BeenInParty("safana")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		MoveGlobal("BD0120","safana",[934.1718])
+		ApplySpellRES("bdresurr","safana")
+		SmallWait(1)
+		ApplySpellRES("bdrejuve","safana")
+		ActionOverride("safana",ChangeAIScript("bdsafana",OVERRIDE))
+		ActionOverride("safana",SetDialog("bdsafana"))
+		ActionOverride("safana",JoinPartyOverride())
+END
+
+IF
+	Global("SOD_fromimport","global",1)
+	Global("BD_Imoen_Items","GLOBAL",1)
+	OR(2)
+		Global("bd_party_has_lockpicking","BD0120",0)
+		Global("bd_party_has_traps","BD0120",0)
+	!BeenInParty("safana")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		CreateCreature("safana7",[934.1718],NE)
+		ActionOverride("safana",JoinPartyOverride())
+END
+>>>>>>>>
+
+<<<<<<<<BDINTRO_SAFANA_add.baf
+IF
+	Global("SOD_fromimport","global",1)
+	Global("BD_Imoen_Items","GLOBAL",1)
+	OR(2)
+		Global("bd_party_has_lockpicking","BD0120",0)
+		Global("bd_party_has_traps","BD0120",0)
+	BeenInParty("safana")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		MoveGlobal("BD0120","safana",[934.1718])
+		ApplySpellRES("bdresurr","safana")
+		SmallWait(1)
+		ApplySpellRES("bdrejuve","safana")
+		ActionOverride("safana",ChangeAIScript("bdsafana",OVERRIDE))
+		ActionOverride("safana",SetDialog("bdsafana"))
+END
+
+IF
+	Global("SOD_fromimport","global",1)
+	Global("BD_Imoen_Items","GLOBAL",1)
+	OR(2)
+		Global("bd_party_has_lockpicking","BD0120",0)
+		Global("bd_party_has_traps","BD0120",0)
+	!BeenInParty("safana")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		CreateCreature("safana7",[934.1718],NE)
+END
+>>>>>>>>
+COPY_EXISTING ~BDINTRO.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~BDINTRO_SAFANA_rep.baf~ ~BDINTRO_SAFANA_add.baf~ EVALUATE_BUFFER
 
 // Related to "JO_JOIN_TRAVELER_NumInParty" in all_In.baf
 
@@ -89,7 +142,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 						~
 //			PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
 //					INNER_ACTION BEGIN
-//				EXTEND_TOP ~%SOURCE_RES%.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~ 
+//				EXTEND_TOP ~%SOURCE_RES%.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~
 //					END
 //			END
 BUT_ONLY
@@ -151,7 +204,7 @@ END // ACTION_FOR_EACH // SetCutSceneBreakable
 
 ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
 	ACTION_FOR_EACH bcs IN AR0041 AR0042 AR0043 AR0044 AR0045 AR0046 BEGIN
-	
+
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -200,7 +253,7 @@ ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
 END // GAME_IS ~bg2ee bgt eet~
 
 	ACTION_FOR_EACH bcs IN BDBALDUR BDELEV02 BDEXITBF BDNORES2 HELLPOOL BEGIN
-	
+
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -209,7 +262,7 @@ END // GAME_IS ~bg2ee bgt eet~
 ^[%TAB% ]*IsOverMe(Player1)~
 				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 				PATCH_IF (num_matches > 0) /*AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BALDUR.bcs~)*/ BEGIN
-					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7) 
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(7)
 IsOverMe(Familiar)
 IsOverMe(Player1)~
 					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
@@ -222,7 +275,7 @@ IsOverMe(Player1)~
 	END // ACTION_FOR_EACH // CreateVisualEffectObject
 
 	ACTION_FOR_EACH bcs IN BALDUR BALDUR25 BDBALDUR BEGIN
-	
+
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -359,7 +412,7 @@ ACTION_FOR_EACH Death_var IN
 // Dark Horizons
 // Mod Nikita_BG1           ~cmnikita~                            // Nikita
 // Mod Thorin               ~CMTTHOR~                             // Thorin
-// Mod Morwen                ~CMTMORW~                            // Morwen 
+// Mod Morwen                ~CMTMORW~                            // Morwen
 
 // DSotSC
 // Mod Bardo                ~DSBARDO~                              // Bardo
@@ -583,7 +636,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN BDBALDUR BDELEV02 BDEXITBF BDNORES2 HELLPOOL BEGIN
-	
+
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -604,7 +657,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN BALDUR BALDUR25 BDBALDUR BEGIN
-	
+
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -626,7 +679,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN K#TELBGT AR0602 IWSHCUT1 IDSHCUT1 BDCUT62 BD0103 BEGIN
-	
+
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -647,7 +700,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////
 
 	ACTION_FOR_EACH bcs IN BDCUT61A BDCUT62 BDCUT65 K#TELBGT BEGIN
-	
+
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
@@ -761,7 +814,7 @@ ACTION_FOR_EACH Death_var IN // ACTION_FOR_EACH BGSoD
 // Dark Horizons
 // Mod Nikita_BG1           ~cmnikita~                            // Nikita
 // Mod Thorin               ~CMTTHOR~                             // Thorin
-// Mod Morwen                ~CMTMORW~                            // Morwen 
+// Mod Morwen                ~CMTMORW~                            // Morwen
 
 // DSotSC
 // Mod Bardo                ~DSBARDO~                              // Bardo
@@ -814,9 +867,9 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDBALDUR.tph~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
 
 
-		ACTION_IF GAME_IS ~eet~ BEGIN
+
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BD0103.tph~
-		END
+
 // EXTEND_TOP ~BD0103.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BD0103.baf~ EVALUATE_BUFFER
 
 /*
@@ -1058,7 +1111,7 @@ EXTEND_BOTTOM ~LOVEME1A.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/LOVEME1A.ba
 */
 
 		ACTION_IF GAME_IS ~eet~ BEGIN
-INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/AR4000.tph~ // ToB transition 
+INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/AR4000.tph~ // ToB transition
 		END
 
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/ar2500.tph~
@@ -1105,7 +1158,7 @@ END // ACTION_FOR_EACH BG2
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-// SoD transition 
+// SoD transition
 
 // BD0120 is Korlaz Donjon
 ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
