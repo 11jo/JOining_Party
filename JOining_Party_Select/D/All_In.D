@@ -156,7 +156,6 @@ StartDialogueNoSet(Player6)~ EXIT
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		~ GOTO JO_JOINYes
-
 	IF ~!IsGabber(Player1)
 		Global("JO_JOIN_SWITCHING","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
