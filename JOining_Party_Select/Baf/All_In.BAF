@@ -531,7 +531,7 @@ END
 IF // Selected party member to make room
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	!Global("JO_JOIN_SWITCHING","GLOBAL",1) // Don't use this block when Switching Party
+	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Don't use this block when Switching Party
 	InParty(Myself)
 	!InPartySlot(Myself,0)
 //

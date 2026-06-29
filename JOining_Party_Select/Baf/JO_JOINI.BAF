@@ -2388,8 +2388,8 @@ IF // First check
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
 	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1) // Is Master Area
-		Global("JO_JOIN_BLOP","GLOBAL",1)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
 	OR(2)
@@ -2405,22 +2405,22 @@ IF // First check
 // No combat
 	OR(2)
 		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
 	OR(2)
 		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
 
 // Party member can be eligible
 	OR(2)
-		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
 		NumInPartyGT(3)
 	OR(4)
-		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	OR(4)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
+		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
 		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
