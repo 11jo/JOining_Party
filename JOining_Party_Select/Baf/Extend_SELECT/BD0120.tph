@@ -58,7 +58,7 @@ THEN
 		ActionOverride("#Ishy",DestroyItem("JOMINHP1"))
 		SmallWait(1)
 		ActionOverride("#Ishy",ChangeEnemyAlly("#Ishy",NEUTRAL))
-		ActionOverride("#Ishy",RemoveFamiliar()) TODO : To do each time ?
+		ActionOverride("#Ishy",RemoveFamiliar()) // TODO : To do each time ?
 		SetGlobal("JO_TRAVELER_#Ishy","GLOBAL",0)
 		ActionOverride("#Ishy",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
