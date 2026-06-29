@@ -112,6 +112,11 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 		Continue()
+	RESPONSE #4
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		DisplayString(Myself,~Done.~)
+		Continue()
 /*	RESPONSE #8
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)

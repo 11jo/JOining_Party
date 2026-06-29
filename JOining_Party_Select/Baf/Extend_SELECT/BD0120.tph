@@ -1,39 +1,4 @@
-// 1
-
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%_All_In.baf~ BEGIN
-
-<<<<<<<< .../JOining_bd0120.baf
-
-IF
-	InMyArea("%IMOEN_DV%")
-	Global("JO_JOIN_bd0120_%IMOEN_DV%","MYAREA",0)
-	OR(4)
-		!Global("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
-		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,CONTROLLED))
-		!TriggerOverride("%IMOEN_DV%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		ActionOverride("%IMOEN_DV%",EquipItemEx("JOMINHP1",1))
-		SmallWait(1)
-		ActionOverride("%IMOEN_DV%",DestroyItem("JOMINHP1"))
-		SmallWait(1)
-		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
-		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_InParty","LOCALS",0))
-		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_Valid","LOCALS",0))
-		ActionOverride("%IMOEN_DV%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		SetGlobal("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
-		ActionOverride("%IMOEN_DV%",DestroySelf())
-		Continue()
-END
-
->>>>>>>>
-EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
-
-	END
-
-///////////////////////////////////////////////////////////////////////////////
+// Mods
 
 // Ishilka mod special
 
@@ -76,13 +41,52 @@ THEN
 END
 
 >>>>>>>>
-EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
+
+// 1
+
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%_All_In.baf~ BEGIN
+
+<<<<<<<< .../JOining_bd0120.baf
+
+IF
+	InMyArea("%IMOEN_DV%")
+	Global("JO_JOIN_bd0120_%IMOEN_DV%","MYAREA",0)
+	OR(4)
+		!Global("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
+		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,CONTROLLED))
+		!TriggerOverride("%IMOEN_DV%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("%IMOEN_DV%",EquipItemEx("JOMINHP1",1))
+		SmallWait(1)
+		ActionOverride("%IMOEN_DV%",DestroyItem("JOMINHP1"))
+		SmallWait(1)
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_InParty","LOCALS",0))
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_Valid","LOCALS",0))
+		ActionOverride("%IMOEN_DV%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		SetGlobal("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
+		ActionOverride("%IMOEN_DV%",DestroySelf())
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+
+	END
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
 
 <<<<<<<< .../JOining_bd0120.baf
 
