@@ -129,7 +129,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",1)
 		Continue()
-		
+
 END
 
 IF
@@ -326,7 +326,7 @@ IF
 	HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~^RVoilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !^-~)
+		DisplayString(Myself, ~^RVoilà qui n'est pas normal... The Engagement scroll is in my inventory !^-~)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
 END
@@ -367,11 +367,11 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// 
+//
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
-// 
+//
 //	REPLACE_TRAVELER_NumInParty
 THEN
 	RESPONSE #100
@@ -395,13 +395,13 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-// 
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+//
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-// 
+//
 		// ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])
@@ -423,53 +423,16 @@ END
 
 IF // Undercity_TempleofBhaal
 //
-//		AreaCheck("%NBaldursGate_DucalPalace_L1%") // Added in BDSODTRN.bcs // Related to EndlessBG1
-	AreaCheck("%Undercity_TempleofBhaal%") // Also Added in Undercity_TempleofBhaal.bcs
+	!AreaCheck("%Undercity_TempleofBhaal%")
+	!AreaCheck("BD0120")
 //
-	Dead("Sarevok") // Only after Sarevok death
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+	!Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-END
-
-IF // Undercity_TempleofBhaal
-//
-	!AreaCheck("%NBaldursGate_DucalPalace_L1%") // Related to EndlessBG1
-	OR(2)
-		!AreaCheck("%Undercity_TempleofBhaal%")
-		!Dead("Sarevok")
-//
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
-END
-
-// SoD Start
-
-IF // Korlaz Donjon
-//
-	AreaCheck("BD0120")
-	!Global("JO_JOIN_bd0120","BD0120",1) // Only before araa script is completely finish
-//
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-END
-
-IF // Korlaz Donjon
-//
-	OR(2)
-		!AreaCheck("BD0120")
-		Global("JO_JOIN_bd0120","BD0120",1)
-//
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+		SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
 END
 
 //////////////////////
@@ -484,7 +447,7 @@ IF // SoD End
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
 END
 
 IF // SoD End
@@ -495,10 +458,10 @@ IF // SoD End
 	!AreaCheck("BD6100")
 	!AreaCheck("BD6200")
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 END
 */
 

@@ -33,6 +33,55 @@ EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	END
 
+///////////////////////////////////////////////////////////////////////////////
+
+// Ishilka mod special
+
+
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ BEGIN
+
+<<<<<<<< .../JOining_bd0120.baf
+
+IF
+	InMyArea("#Ishy")
+	Global("JO_JOIN_bd0120_#Ishy","MYAREA",0)
+	OR(4)
+		!Global("JO_TRAVELER_#Ishy","GLOBAL",0)
+		TriggerOverride("#Ishy",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("#Ishy",Allegiance(Myself,CONTROLLED))
+		!TriggerOverride("#Ishy",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("#Ishy",EquipItemEx("JOMINHP1",1))
+		SmallWait(1)
+		ActionOverride("#Ishy",DestroyItem("JOMINHP1"))
+		SmallWait(1)
+		ActionOverride("#Ishy",ChangeEnemyAlly("#Ishy",NEUTRAL))
+		ActionOverride("#Ishy",RemoveFamiliar()) TODO : To do each time ?
+		SetGlobal("JO_TRAVELER_#Ishy","GLOBAL",0)
+		ActionOverride("#Ishy",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
+		DisplayString("#Ishy",~See you on the other side !~)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_#Ishy","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+
+	END
+
+///////////////////////////////////////////////////////////////////////////////
+
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
 
 <<<<<<<< .../JOining_bd0120.baf
@@ -66,7 +115,7 @@ THEN
 		ActionOverride("Edwin",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Edwin",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Edwin","MYAREA",1)
-		DisplayString("Edwin",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Edwin",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -117,7 +166,7 @@ THEN
 		ActionOverride("Jaheira",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Jaheira",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Jaheira","MYAREA",1)
-		DisplayString("Jaheira",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Jaheira",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -168,7 +217,7 @@ THEN
 		ActionOverride("Minsc",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Minsc",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Minsc","MYAREA",1)
-		DisplayString("Minsc",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Minsc",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -219,7 +268,7 @@ THEN
 		ActionOverride("Viconia",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Viconia",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Viconia","MYAREA",1)
-		DisplayString("Viconia",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Viconia",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -270,7 +319,7 @@ THEN
 		ActionOverride("Dorn",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Dorn",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Dorn","MYAREA",1)
-		DisplayString("Dorn",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Dorn",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -321,7 +370,7 @@ THEN
 		ActionOverride("Neera",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Neera",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Neera","MYAREA",1)
-		DisplayString("Neera",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Neera",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -372,7 +421,7 @@ THEN
 		ActionOverride("Rasaad",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Rasaad",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Rasaad","MYAREA",1)
-		DisplayString("Rasaad",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Rasaad",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -432,7 +481,7 @@ THEN
 		ActionOverride("Ajantis",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Ajantis",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
-		DisplayString("Ajantis",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Ajantis",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -494,7 +543,7 @@ THEN
 		ActionOverride("Alora",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Alora",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Alora","MYAREA",1)
-		DisplayString("Alora",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Alora",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -560,7 +609,7 @@ THEN
 		ActionOverride("Branwen",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Branwen",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
-		DisplayString("Branwen",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Branwen",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -622,7 +671,7 @@ THEN
 		ActionOverride("Coran",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Coran",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Coran","MYAREA",1)
-		DisplayString("Coran",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Coran",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -684,7 +733,7 @@ THEN
 		ActionOverride("Dynaheir",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Dynaheir",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Dynaheir","MYAREA",1)
-		DisplayString("Dynaheir",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Dynaheir",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -742,7 +791,7 @@ THEN
 		ActionOverride("Eldoth",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Eldoth",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Eldoth","MYAREA",1)
-		DisplayString("Eldoth",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Eldoth",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -808,7 +857,7 @@ THEN
 		ActionOverride("Faldorn",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Faldorn",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
-		DisplayString("Faldorn",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Faldorn",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -874,7 +923,7 @@ THEN
 		ActionOverride("Garrick",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Garrick",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
-		DisplayString("Garrick",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Garrick",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -936,7 +985,7 @@ THEN
 		ActionOverride("Kagain",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Kagain",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Kagain","MYAREA",1)
-		DisplayString("Kagain",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Kagain",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -998,7 +1047,7 @@ THEN
 		ActionOverride("Khalid",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Khalid",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Khalid","MYAREA",1)
-		DisplayString("Khalid",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Khalid",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1056,7 +1105,7 @@ THEN
 		ActionOverride("Kivan",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Kivan",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Kivan","MYAREA",1)
-		DisplayString("Kivan",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Kivan",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1118,7 +1167,7 @@ THEN
 		ActionOverride("Montaron",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Montaron",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Montaron","MYAREA",1)
-		DisplayString("Montaron",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Montaron",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1180,7 +1229,7 @@ THEN
 		ActionOverride("Quayle",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Quayle",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Quayle","MYAREA",1)
-		DisplayString("Quayle",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Quayle",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1242,7 +1291,7 @@ THEN
 		ActionOverride("Safana",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Safana",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Safana","MYAREA",1)
-		DisplayString("Safana",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Safana",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1300,7 +1349,7 @@ THEN
 		ActionOverride("Sharteel",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Sharteel",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Sharteel","MYAREA",1)
-		DisplayString("Sharteel",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Sharteel",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1366,7 +1415,7 @@ THEN
 		ActionOverride("Skie",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Skie",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
-		DisplayString("Skie",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Skie",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1428,7 +1477,7 @@ THEN
 		ActionOverride("Tiax",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Tiax",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Tiax","MYAREA",1)
-		DisplayString("Tiax",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Tiax",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1490,7 +1539,7 @@ THEN
 		ActionOverride("Xan",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Xan",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Xan","MYAREA",1)
-		DisplayString("Xan",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Xan",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1552,7 +1601,7 @@ THEN
 		ActionOverride("Xzar",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Xzar",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Xzar","MYAREA",1)
-		DisplayString("Xzar",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Xzar",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1614,7 +1663,7 @@ THEN
 		ActionOverride("Yeslick",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		ActionOverride("Yeslick",ChangeAIScript("JO_JOINX",RACE))
 		SetGlobal("JO_JOIN_bd0120_Yeslick","MYAREA",1)
-		DisplayString("Yeslick",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Yeslick",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1675,7 +1724,7 @@ THEN
 		ActionOverride("Baeloth",EquipItemEx("JOMINHP1",0))
 		ActionOverride("Baeloth",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
 		SetGlobal("JO_JOIN_bd0120_Baeloth","MYAREA",1)
-		DisplayString("Baeloth",~Still a traveler, let's loading switch when possible !~)
+		ActionOverride("Baeloth",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -1688,18 +1737,25 @@ THEN
 		Continue()
 END
 
+>>>>>>>>
+EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+
+	END
+
+// Final block
+
+<<<<<<<< .../JOining_bd0120.baf
+
 IF
 	Delay(3)
 	Global("JO_JOIN_bd0120","MYAREA",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
-		DisplayStringHead(Player1,~Loading switch should happen soon !~)
 		SetGlobal("JO_JOIN_bd0120","MYAREA",1) // Special last block
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading switch
+		DisplayStringHead(Player1,~Loading switch is happening very soon !~)
 END
 
 >>>>>>>>
 EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
-
-	END

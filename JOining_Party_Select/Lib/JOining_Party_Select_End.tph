@@ -7,6 +7,7 @@
 // Avoid traveler to reintegrate party in Korlaz donjon
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~BDINTRO.bcs~ THEN BEGIN
+
 		COPY_EXISTING ~BDINTRO.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
 	// BDINTRO situation
@@ -22,7 +23,6 @@
 			END
 		END
 			BUT_ONLY
-	END
 
 	// Safana situation // Delete JoinPartyOverride
 
@@ -95,6 +95,8 @@ END
 >>>>>>>>
 COPY_EXISTING ~BDINTRO.bcs~ ~override~
   REPLACE_BCS_BLOCK ~BDINTRO_SAFANA_rep.baf~ ~BDINTRO_SAFANA_add.baf~ EVALUATE_BUFFER
+ 
+	END // FILE_EXISTS_IN_GAME ~BDINTRO.bcs~
 
 // Related to "JO_JOIN_TRAVELER_NUM" in all_In.baf
 

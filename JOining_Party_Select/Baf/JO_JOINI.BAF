@@ -834,7 +834,7 @@ THEN
 		// SmallWait(1)
 		DestroyItem("JOMINHP1")
 		// SmallWait(1)
-		DisplayStringHead(Myself,~Hey.~)
+		DisplayString(Myself,~Hey.~)
 		SetInterrupt(TRUE)
 		JoinParty() // Go to All_In_Baf Switch between familiar and party
 END
@@ -2405,7 +2405,7 @@ END
 
 IF // Special case : Traveler was about to switch but something prevent it
 //
-	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //
 	Global("JO_NOJOIN","GLOBAL",0)
 //
@@ -2502,7 +2502,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
-		DisplayStringHead(Myself,~No party member want to switch with me ? We need to change that.~)
+		DisplayStringHead(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
 		SetInterrupt(TRUE)
 END
 
@@ -3119,7 +3119,7 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
-	Global("JO_JOIN_NEVER_FILL","LOCALS",0)
+	!Global("JO_JOIN_NEVER_FILL","LOCALS",1)
 THEN
 	RESPONSE #25
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)

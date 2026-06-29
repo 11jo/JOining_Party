@@ -107,6 +107,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
 		SetGlobal("JO_JOIN_BD0103_END","MYAREA",1) // Special last block
 END
 
