@@ -1,3 +1,12 @@
+/*
+ 299 BanterBlockTime(I:Time*)
+This action extends the time taken for the banter timer to expire. The banter timers are hardcoded and every time one expires an NPC’s b**.dlg is called.
+
+300 BanterBlockFlag(I:State*Boolean)
+This action dictates whether the banter timer can expire.
+*/
+
+
 
 IF
 	OR(2)
