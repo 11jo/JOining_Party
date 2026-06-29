@@ -2394,682 +2394,283 @@ END
 			// JO_JOIN_SWITCH_WITH_ME (If set to 1 then the party member is available for switching with a traveler)
 				// JO_JOIN_READY_TO_SWITCH (After some time in party, a party member can echange place with a traveler)
 					// JO_JOIN_Wannabe (Party member eligible and willing to be traveler)
-						// JO_JOIN_SWITCH_WAIT (Used in Block Wait to make sure only one traveler is switching)
 // Note :
 	// Make traveler party member for some time regulary.
 		// Used for maximise triggering all interactions
 ///////////////////////////////////////////////////////////////////////////////
 
-
-// Block wait 4 // Secondary Switching Party 1  
-
-IF // Special case : Traveler was about to switch but something prevent it
-//
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-//
-	Global("JO_NOJOIN","GLOBAL",0)
-//
-	OR(4)
-		GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-		Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
-		Global("JO_JOIN_SWITCHING","GLOBAL",1)
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-	OR(3)
-		NumInPartyLT(6)
-		!TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-	OR(3)
-		NumInPartyLT(5)
-		!TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-	OR(3)
-		NumInPartyLT(4)
-		!TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-	OR(4)
-		NumInPartyLT(3)
-		!TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-	OR(4)
-		NumInPartyLT(2)
-		!TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-	OR(3)
-		!TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0) // Allow other travelers to start first check (step 2)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1) // Go back in all-in.baf Primary Switching Party 1
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TEN_HOURS) // Will try again in 50 minutes
-		DisplayString(Myself,~No party member are available to switch with me, I'm ready when it's possible.~)
-		SetInterrupt(TRUE)
-END
-
-
-// No Wannabe in party
-
-IF // If no party member are available to be traveler the Player need to make some available.
-//
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Set in All_In.baf
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1) // Set in All_In.baf
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//
-	OR(2)
-		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
-	NumInPartyGT(1)
-	!TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",1))
-	OR(2)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-		!TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",1))
-	OR(2)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-		!TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",1))
-	OR(2)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-		!TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",1))
-// 	!TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : See below, but this block could be expanded to take party member not valid in consideration.
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
-		DisplayStringHead(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
-		SetInterrupt(TRUE)
-END
-
-
 // Main Switching Party 1
 
 IF // First check
+	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Switching party step 0
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-// 
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	Global("JO_JOIN_SWITCHING","GLOBAL",0) // No other traveler attempt to Switching Party
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // No one try to Leave Party
 	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_AREA","MYAREA",1) // Is Master Area
 		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Set in All_In.baf
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1) // Set in All_In.baf
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//
-//		ActionListEmpty()
+// Local checks
+	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer between switch exprired
+	!Global("JO_Myself_Valid","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0) // Can switch
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0) // Not dead
+
+// No combat
 	OR(2)
 		!ActuallyInCombat()
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
 	OR(2)
 		!See([ENEMY])
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
+
+// Party member can be eligible
 	OR(2)
 		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 		NumInPartyGT(3)
-	OR(6)
-		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		NumInPartyGT(3)
-	OR(5)
+	OR(4)
+		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-THEN
-	RESPONSE #0
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Avoid multi switch
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // Go to Block wait 1 (look down)
-END
-
-
-// Block wait 2.1 // Secondary Switching Party 1
-
-IF // Return to Main Switching Party 1 if another traveler is already active (probably useless)
-//
-	Global("JO_NOJOIN","GLOBAL",1) // Someone is switching...
-	!Global("JO_NOJOIN_LOCALS","LOCALS",1) // ...it's not me.
-//
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
-	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		DisplayString(Myself,~Another traveler already Switching Party, I'm ready when it's possible.~)
-END
-
-
-/// Block wait 2 // Secondary Switching Party 1
-
-IF // After block wait 1 if everything is in order, let's switch !
-//
-	Global("JO_NOJOIN","GLOBAL",0) // JO_NOJOIN = 0 we continue !
-//
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
-	Global("JO_JOIN_SWITCH_WAIT","LOCALS",1)
-	OR(6)
+	OR(4)
+		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		NumInPartyGT(3)
-	OR(5)
-		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
-		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 		DisplayString(Myself,~Switching Party !~)
-		SetInterrupt(TRUE)
 END
-
-
-/// Block wait 1 // Secondary Switching Party 1
-
-IF // Temporise to avoid that more than one traveler try to switch
-//
-	Global("JO_NOJOIN","GLOBAL",0)
-//
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
-	Global("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-	NumInPartyGT(2)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",1) // Go to Block Wait 2 (Look up) or Block Wait 2.1 (Look up)
-		DisplayString(Myself,~Waiting to Switching Party.~)
-END
-
 
 // Main Switching Party 2 // Randomly select a member... Wannabe !
 
 IF // PartySlot6
-// 
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-//
-//		ActionListEmpty()
-	OR(2)
-		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
+
+	!InPartySlot(PartySlot6,0) // security: not target Player1
 	TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
-//
-	!TriggerOverride(PartySlot6,InPartySlot(Myself,0))
-//	RandomNum(5,1)
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!TriggerOverride(PartySlot6,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // PartySlot6
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot6)
 		ActionOverride(PartySlot6,FaceObject(Myself)) // FIXME
-		DisplayStringHead(PartySlot6,~Hum ?~)
-		ActionOverride(PartySlot6,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(PartySlot6,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
-		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // PartySlot6
-		ActionOverride(PartySlot6,SetGlobal("JO_JOIN","LOCALS",1))
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
 IF // PartySlot5
-// 
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-//
-//		ActionListEmpty()
-	OR(2)
-		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
+
+	!InPartySlot(PartySlot5,0) // security: not target Player1
 	TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot5,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
-//
-	!TriggerOverride(PartySlot5,InPartySlot(Myself,0))
-//	RandomNum(5,4)
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!TriggerOverride(PartySlot5,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // PartySlot5
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot5)
 		ActionOverride(PartySlot5,FaceObject(Myself)) // FIXME
-		DisplayStringHead(PartySlot5,~What ?~)
-		ActionOverride(PartySlot5,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(PartySlot5,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
-		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // PartySlot5
-		ActionOverride(PartySlot5,SetGlobal("JO_JOIN","LOCALS",1))
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
 IF // PartySlot4
-// 
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-//
-//		ActionListEmpty()
-	OR(2)
-		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
+
+	!InPartySlot(PartySlot4,0) // security: not target Player1
 	TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot4,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
-//
-	!TriggerOverride(PartySlot4,InPartySlot(Myself,0))
-//	RandomNum(5,3)
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!TriggerOverride(PartySlot4,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // PartySlot4
+		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
+		ActionOverride(PartySlot4,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot4)
 		ActionOverride(PartySlot4,FaceObject(Myself)) // FIXME
-		DisplayStringHead(PartySlot4,~Don't disturb...~)
-		ActionOverride(PartySlot4,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(PartySlot4,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
-		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // PartySlot4
-		ActionOverride(PartySlot4,SetGlobal("JO_JOIN","LOCALS",1))
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
 IF // PartySlot3
-// 
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-//
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-//
-//		ActionListEmpty()
-	OR(2)
-		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
+	Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
+
+	!InPartySlot(PartySlot3,0) // security: not target Player1
 	TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot3,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
-//
-	!TriggerOverride(PartySlot3,InPartySlot(Myself,0))
-//	RandomNum(5,2)
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!TriggerOverride(PartySlot3,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // PartySlot3
+		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
+		ActionOverride(PartySlot3,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot3)
 		ActionOverride(PartySlot3,FaceObject(Myself)) // FIXME
-		DisplayStringHead(PartySlot3,~Yes ?~)
-		ActionOverride(PartySlot3,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(PartySlot3,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
-		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // PartySlot3
-		ActionOverride(PartySlot3,SetGlobal("JO_JOIN","LOCALS",1))
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
 IF // PartySlot2
-// 
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-//
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-//
-//		ActionListEmpty()
-	OR(2)
-		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
+	Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
+
+	!InPartySlot(PartySlot2,0) // security: not target Player1
 	TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot2,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
-//
-	!TriggerOverride(PartySlot2,InPartySlot(Myself,0))
-//	RandomNum(5,1)
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!TriggerOverride(PartySlot2,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // PartySlot2
+		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
+		ActionOverride(PartySlot2,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot2)
 		ActionOverride(PartySlot2,FaceObject(Myself)) // FIXME
-		DisplayStringHead(PartySlot2,~Hé ?~)
-		ActionOverride(PartySlot2,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(PartySlot2,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
-		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // PartySlot2
-		ActionOverride(PartySlot2,SetGlobal("JO_JOIN","LOCALS",1))
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
 IF // PartySlot1
-// 
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",1)
-//
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS")
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3)
-//
-//		ActionListEmpty()
-	OR(2)
-		!ActuallyInCombat()
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-//
+	Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
+
+	!InPartySlot(PartySlot1,0) // security: not target Player1
 	TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot1,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",0))
-//
-	!TriggerOverride(PartySlot1,InPartySlot(Myself,0))
-//	RandomNum(5,1)
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!TriggerOverride(PartySlot1,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1) // PartySlot1
+		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
+		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot1)
 		ActionOverride(PartySlot1,FaceObject(Myself)) // FIXME
-		DisplayStringHead(PartySlot1,~Ho !~)
-		ActionOverride(PartySlot1,SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS))
-		ActionOverride(PartySlot1,SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
-		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
-		SmallWait(2)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1) // PartySlot1
-		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
 		SetInterrupt(TRUE)
 END
 
+IF // No slot found
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TEN_HOURS) // Will try again in 50 minutes
+		DisplayString(Myself,~No party member are available to switch with me, I'm ready when it's possible.~)
+END
 
 // Main Switching Party 3
 
+IF // Security block
+	Global("JO_JOIN_SWITCHING","GLOBAL",3) // Switching party step 3
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	!NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^RHo!? No more slot?^-~)
+		Continue()
+END
+
 IF // Travelers take place in party
-// 
+	Global("JO_JOIN_SWITCHING","GLOBAL",3) // Switching party step 3
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",4)
-//
-//		ActionListEmpty()
-//		!ActuallyInCombat()
-//		!See([ENEMY])
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		EquipItemEx("JOMINHP1",1)
+		SmallWait(1)
+		DestroyItem("JOMINHP1")
+		SetInterrupt(TRUE)
+		JoinParty()
+		Continue()
+END
+
+IF // Travelers take place in party
+	Global("JO_JOIN_SWITCHING","GLOBAL",3) // Switching party step 3
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	NumInPartyLT(6)
 //
 	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
 THEN
 	RESPONSE #1 // PartySlot1
-		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~Who is the leader ?~)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		SmallWait(2)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SetInterrupt(TRUE)
-		JoinParty()
 	RESPONSE #2 // PartySlot2
-		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~Here I go !~)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		SmallWait(2)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SetInterrupt(TRUE)
-		JoinParty()
 	RESPONSE #3 // PartySlot3
-		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~Back again !~)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		SmallWait(2)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SetInterrupt(TRUE)
-		JoinParty()
 	RESPONSE #4 // PartySlot4
-		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~Hello there !~)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		SmallWait(2)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SetInterrupt(TRUE)
-		JoinParty()
 	RESPONSE #5 // PartySlot5
-		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~It's about time.~)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		SmallWait(2)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SetInterrupt(TRUE)
-		JoinParty()
 	RESPONSE #6 // PartySlot6
-		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~My turn !~)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCH_WAIT","LOCALS",0)
-		SmallWait(2)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SetInterrupt(TRUE)
-		JoinParty()
 END
 
-// SP 5.1 // Secondary Switching Party 3 // If something prevent the traveler to Join
-
-IF // Reset variable for traveler
-//
-	Delay(10) // Prevent to be checked before PartySlotx leave the party
-//
-	GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
-	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	NumInPartyGT(5)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",21)
-		Continue()
-END
 
 ///////////////////////////////////////////////////////////////////////////////
 

@@ -473,11 +473,14 @@ END
 
 IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Switching Party
 //
+	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Party switching inactive
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 //
-	!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
+	OR(2)
+		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
@@ -494,63 +497,19 @@ END
 
 IF // After Switching Party with a party member Reset JO_NOJOIN and set JO_JOIN_SWITCH_TIMER, and other related variables
 //
-	OR(2)
-		!Global("JO_NOJOIN_LOCALS","LOCALS",0)
-		!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-//
+	Global("JO_JOIN_SWITCHING","GLOBAL",3) // Switching party step 3
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	InParty(Myself)
-//
-	!Global("JO_JOINI","LOCALS",1) // Make sure we are InParty for good
-	Global("JO_Myself_LeaveParty","LOCALS",0) // Make sure we are InParty for good
-	Global("JO_%Death_var%_LeaveParty","GLOBAL",0) // Make sure we are InParty for good
 THEN
-	RESPONSE #25
-		SetInterrupt(FALSE)
+	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobalTimerRandom("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS, TWO_DAYS)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		DisplayString(Myself,~It's a nice feeling.~)
-		SetInterrupt(TRUE)
-		Continue()
-	RESPONSE #25
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_DAYS)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		DisplayString(Myself,~It's a nice feeling.~)
-		SetInterrupt(TRUE)
-		Continue()
-	RESPONSE #25
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		DisplayString(Myself,~It's a nice feeling.~)
-		SetInterrupt(TRUE)
-		Continue()
-	RESPONSE #25
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",EIGHTEEN_HOURS)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		DisplayString(Myself,~It's a nice feeling.~)
-		SetInterrupt(TRUE)
 		Continue()
 END
 
@@ -1295,16 +1254,30 @@ THEN
 		Continue()
 END
 
+// fellow travelers (End party switching)
+
+IF
+	Global("JO_JOIN","LOCALS",1)
+	Global("JO_JOIN_SWITCHING","GLOBAL",2) // Switching party step 2
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3) // set by traveler during party switch
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		DisplayStringHead(Myself,~Hum ?~)
+		Continue()
+END
+
+
 // fellow travelers (End first time from party to familiar)
 
 // Secondary Traveler 1
 
 IF
 	Global("JO_JOIN_TALK","LOCALS",1)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
