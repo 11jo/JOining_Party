@@ -10,7 +10,7 @@
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%AJANTIS_JOINED%")
@@ -45,7 +45,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Ajantis.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%ALORA_JOINED%")
@@ -80,7 +80,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Alora.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%BRANWEN_JOINED%")
@@ -116,7 +116,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Branwen.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%CORAN_JOINED%")
@@ -150,7 +150,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Coran.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%DYNAHEIR_JOINED%")
@@ -187,7 +187,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dynaheir.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%ELDOTH_JOINED%")
@@ -221,7 +221,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Eldoth.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%FALDORN_JOINED%")
@@ -257,7 +257,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Faldorn.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%GARRICK_JOINED%")
@@ -293,7 +293,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Garrick.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #100
 		SetDialog("%KAGAIN_JOINED%")
@@ -327,7 +327,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Kagain.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%KHALID_JOINED%")
@@ -363,7 +363,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Khalid.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%KIVAN_JOINED%") 
@@ -397,7 +397,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Kivan.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%MONTARON_JOINED%")
@@ -431,7 +431,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Montaron.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%QUAYLE_JOINED%")
@@ -465,7 +465,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Quayle.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%SAFANA_JOINED%")
@@ -501,7 +501,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Safana.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%SHARTEEL_JOINED%")
@@ -537,7 +537,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Sharteel.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%SKIE_JOINED%")
@@ -573,7 +573,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Skie.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%TIAX_JOINED%")
@@ -607,7 +607,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Tiax.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%XAN_JOINED%")
@@ -641,7 +641,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Xan.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%XZAR_JOINED%")
@@ -675,7 +675,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Xzar.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("%YESLICK_JOINED%")
@@ -709,7 +709,7 @@ EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Yeslick.baf~ EVALUATE_BUFFER
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 THEN
 	RESPONSE #1
 		SetDialog("BAELOTHJ")
