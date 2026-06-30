@@ -147,28 +147,65 @@ StartDialogueNoSet(Player6)~ EXIT
 
 // Switch with a player
 	IF ~!IsGabber(Player1)
+		IsGabber(PartySlot1)
 		Global("JO_JOIN_SWITCHING","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
 		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",1)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
+		IsGabber(PartySlot2)
 		Global("JO_JOIN_SWITCHING","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
 		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		OR(3)
-			IsGabber(PartySlot6)
-			IsGabber(PartySlot5)
-			IsGabber(PartySlot4)
-		!Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",2)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
-			~ GOTO JO_JOINYes
-// Manage travelers
+		~ GOTO JO_JOINYes// Manage travelers
+	IF ~!IsGabber(Player1)
+		IsGabber(PartySlot3)
+		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
+			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+		~ GOTO JO_JOINYes
+	IF ~!IsGabber(Player1)
+		IsGabber(PartySlot4)
+		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",4)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
+			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+		~ GOTO JO_JOINYes
+	IF ~!IsGabber(Player1)
+		IsGabber(PartySlot5)
+		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",5)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
+			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+		~ GOTO JO_JOINYes
+	IF ~!IsGabber(Player1)
+		IsGabber(PartySlot6)
+		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",6)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
+			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
+			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
+		~ GOTO JO_JOINYes
 	IF ~~ THEN REPLY ~^0xFF16537eWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2 //
 	IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3 //
 

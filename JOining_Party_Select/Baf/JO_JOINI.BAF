@@ -2412,9 +2412,22 @@ IF // First check
 
 // Party member can be eligible
 	NumInPartyAliveGT(1)
+	!GlobalGT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",5)
 	OR(2)
-		Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",1)
+		NumInPartyGT(1)
+	OR(2)
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",2)
+		NumInPartyGT(2)
+	OR(2)
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",3)
 		NumInPartyGT(3)
+	OR(2)
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",4)
+		NumInPartyGT(4)
+	OR(2)
+		GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",5)
+		NumInPartyGT(5)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
@@ -2428,6 +2441,7 @@ IF // PartySlot6
 	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",6)
 
 	!InPartySlot(PartySlot6,0) // security: not target Player1
 	TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
@@ -2452,6 +2466,7 @@ IF // PartySlot5
 	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",5)
 
 	!InPartySlot(PartySlot5,0) // security: not target Player1
 	TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
@@ -2476,6 +2491,7 @@ IF // PartySlot4
 	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",4)
 
 	!InPartySlot(PartySlot4,0) // security: not target Player1
 	TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
@@ -2500,7 +2516,7 @@ IF // PartySlot3
 	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
+	GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",3)
 
 	!InPartySlot(PartySlot3,0) // security: not target Player1
 	TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
@@ -2525,7 +2541,7 @@ IF // PartySlot2
 	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
+	GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",2)
 
 	!InPartySlot(PartySlot2,0) // security: not target Player1
 	TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
@@ -2550,7 +2566,7 @@ IF // PartySlot1
 	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_SUPERIOR_SLOT","GLOBAL",0)
+	GlobalLT("JO_JOIN_SP_SAFE_SLOT","GLOBAL",1)
 
 	!InPartySlot(PartySlot1,0) // security: not target Player1
 	TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
