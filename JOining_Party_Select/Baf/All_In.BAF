@@ -473,6 +473,7 @@ END
 
 IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Switching Party
 //
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Party switching inactive
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
@@ -481,13 +482,36 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Sw
 	OR(2)
 		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
 		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
+	!Global("JO_JOIN_Wannabe","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 		DisplayString(Myself,~Ready to Switching Party when it's possible.~)
+		Continue()
+END
+
+IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",0 then the NPC is not available for a Switching Party
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Party switching inactive
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+
+	OR(4)
+		!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		Global("JO_Myself_Valid","LOCALS",0)
+		Global("JO_JOIN_Wannabe","LOCALS",0)
+		GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
+	OR(4)
+		!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		Global("JO_Myself_Valid","LOCALS",0)
+		Global("JO_JOIN_Wannabe","LOCALS",0)
+		Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		DisplayString(Myself,~I'm not ready to Switching Party.~)
 		Continue()
 END
 
