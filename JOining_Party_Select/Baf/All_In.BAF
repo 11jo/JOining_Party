@@ -1285,47 +1285,11 @@ IF
 	Global("JO_JOIN_SWITCHING","GLOBAL",2) // Switching party step 2
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3) // set by traveler during party switch
 THEN
-	RESPONSE #20
+	RESPONSE #100
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		DisplayStringHead(Myself,~Hum ?~)
-		Continue()
-	RESPONSE #20
-		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		DisplayStringHead(Myself,~What ?~)
-		Continue()
-	RESPONSE #20
-		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		DisplayStringHead(Myself,~Don't disturb...~)
-		Continue()
-	RESPONSE #20
-		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		DisplayStringHead(Myself,~Yes ?~)
-		Continue()
-	RESPONSE #20
-		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		DisplayStringHead(Myself,~Hé ?~)
-		Continue()
-	RESPONSE #20
-		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		DisplayStringHead(Myself,~Ho !~)
 		Continue()
 END
 

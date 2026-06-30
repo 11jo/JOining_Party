@@ -2453,11 +2453,12 @@ IF // PartySlot6
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		FaceObject(PartySlot6)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // PartySlot6
+		DisplayStringHead(PartySlot6,~Hum ?~)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN","LOCALS",1))
-		FaceObject(PartySlot6)
 		SetInterrupt(TRUE)
 END
 
@@ -2477,11 +2478,12 @@ IF // PartySlot5
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		FaceObject(PartySlot5)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // PartySlot5
+		DisplayStringHead(PartySlot5,~What ?~)
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN","LOCALS",1))
-		FaceObject(PartySlot5)
 		SetInterrupt(TRUE)
 END
 
@@ -2501,11 +2503,12 @@ IF // PartySlot4
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		FaceObject(PartySlot4)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // PartySlot4
+		DisplayStringHead(PartySlot4,~Don't disturb...~)
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN","LOCALS",1))
-		FaceObject(PartySlot4)
 		SetInterrupt(TRUE)
 END
 
@@ -2525,11 +2528,12 @@ IF // PartySlot3
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		FaceObject(PartySlot3)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // PartySlot3
+		DisplayStringHead(PartySlot3,~Yes ?~)
 		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot3,SetGlobal("JO_JOIN","LOCALS",1))
-		FaceObject(PartySlot3)
 		SetInterrupt(TRUE)
 END
 
@@ -2549,11 +2553,12 @@ IF // PartySlot2
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		FaceObject(PartySlot2)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // PartySlot2
+		DisplayStringHead(PartySlot2,~Hé ?~)
 		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot2,SetGlobal("JO_JOIN","LOCALS",1))
-		FaceObject(PartySlot2)
 		SetInterrupt(TRUE)
 END
 
@@ -2573,11 +2578,12 @@ IF // PartySlot1
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		FaceObject(PartySlot1)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1) // PartySlot1
+		DisplayStringHead(PartySlot1,~Ho !~)
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
-		FaceObject(PartySlot1)
 		SetInterrupt(TRUE)
 END
 
