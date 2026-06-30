@@ -480,7 +480,7 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Sw
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 //
 	OR(2)
-		!Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
 		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
@@ -507,7 +507,7 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",0 then the NPC is not available for 
 		!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		Global("JO_Myself_Valid","LOCALS",0)
 		Global("JO_JOIN_Wannabe","LOCALS",0)
-		Global("JO_DEV_PS_NO_TIMER","GLOBAL",0)
+		Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
