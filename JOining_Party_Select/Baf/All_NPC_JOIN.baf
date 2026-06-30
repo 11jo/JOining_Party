@@ -1,4 +1,8 @@
-// For non-traveler NPCs
+///////////////////////////////////////////////////////////////////////////////
+
+// Base // For non-traveler NPCs
+
+///////////////////////////////////////////////////////////////////////////////
 
 IF
 	Die()
@@ -11,10 +15,10 @@ END
 // Base
 
 IF
-	!Global("JO_JOIN_NOTRAVELER","LOCALS",1)
+	!Global("JO_JOIN_PARTY_MEMBER","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_NOTRAVELER","LOCALS",1)
+		SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1)
 END
 
 // !InPartyAllowDead()
@@ -73,52 +77,9 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Special delay banters for party members when specific actions are performed
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-//
-	!Global("JO_JOIN_Banter_Block","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_Banter_Block","LOCALS",0)
-END
-
-IF
-	!Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	!Global("JO_JOIN","LOCALS",0)
-	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	!Global("JO_JOINI","LOCALS",0)
-	!Global("JO_JOIN_FORCE_SWITCH","LOCALS",0)
-	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	!Global("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-	GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-//
-	!Global("JO_JOIN_Banter_Block","LOCALS",1)
-//
-	!Global("JO_JOIN_BLOP","GLOBAL",2) // Dev test without BanterBlockTime
-THEN
-	RESPONSE #100
-		BanterBlockTime(100)
-		DisplayString(Myself,~Delay conversation.~)
-		SetGlobal("JO_JOIN_Banter_Block","LOCALS",1)
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
 // Loading Switch
 
 ///////////////////////////////////////////////////////////////////////////////
-
 
 // For party member After Main Loading Switch 3 // Special non-traveler NPCs
 
