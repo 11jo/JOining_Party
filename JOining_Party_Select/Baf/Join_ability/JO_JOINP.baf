@@ -403,6 +403,7 @@ THEN
 		BanterBlockFlag(TRUE)
 		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
 		DisplayString(Myself,~Delay conversations.~)
+		Continue()
 END
 
 IF
@@ -419,6 +420,7 @@ THEN
 	RESPONSE #100
 		BanterBlockFlag(FALSE)
 		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+		Continue()
 END
 
 ///////////////////////////////////////////////////////////////////////////////
