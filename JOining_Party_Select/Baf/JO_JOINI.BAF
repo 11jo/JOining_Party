@@ -561,7 +561,13 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",1)
 		Continue()
-/*	RESPONSE #28
+//	RESPONSE #28 // Party member only
+		//SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		//Continue()
+//	RESPONSE #29 // Party member only
+		//SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		//Continue()
+/*	RESPONSE #30
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()*/
 END

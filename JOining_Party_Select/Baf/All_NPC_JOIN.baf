@@ -4,6 +4,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Security
+
 IF
 	Die()
 THEN
@@ -12,7 +14,7 @@ THEN
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 END
 
-// Base
+// Non-traveler NPCs
 
 IF
 	!Global("JO_JOIN_PARTY_MEMBER","LOCALS",1)
