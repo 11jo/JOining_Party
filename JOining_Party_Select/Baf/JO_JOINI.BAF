@@ -668,7 +668,7 @@ IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another 
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0) // Enable next block
-		DisplayString(Myself,~I have to wait more before a Quick Switch.~)
+		DisplayString(Myself,~I have to wait before a Quick Switch.~)
 		Continue()
 END
 
@@ -2596,7 +2596,7 @@ THEN
 		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TEN_HOURS) // Will try again in 50 minutes
-		DisplayString(Myself,~No party member are available to switch with me, I'm ready when it's possible.~)
+		DisplayString(Myself,~No party member is available to switch with me, I'm ready when it's possible.~)
 END
 
 // Main Switching Party 3
@@ -2608,7 +2608,7 @@ IF // Security block
 	!NumInPartyLT(6)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself,~^RHo!? The party is full?^-~)
+		DisplayString(Myself,~^RVoilà qui n'est pas normal... The party is full.^-~)
 		Continue()
 END
 
