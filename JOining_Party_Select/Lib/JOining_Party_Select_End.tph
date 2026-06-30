@@ -139,7 +139,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 				END
 			END
 // INNER_ACTION BEGIN APPEND ~MASTAREA.2da~ ~%SOURCE_RES% value~ UNLESS ~%SOURCE_RES%~ END
-				PATCH_PRINT ~... // %SOURCE_RES% is in mastarea.2da or sodmarea
+				PATCH_PRINT ~... // %SOURCE_RES% is in mastarea.2da or sodmarea.2da
 				Adding Global("JO_JOIN_AREA","MYAREA",1)
 						~
 //			PATCH_IF (SOURCE_SIZE > 0x11b) AND NOT (RESOURCE_CONTAINS ~mastarea.2da~ ~%SOURCE_RES%~) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN

@@ -85,59 +85,8 @@ EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 ///////////////////////////////////////////////////////////////////////////////
 
-<<<<<<< HEAD
 
 ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
-=======
-// Ishilka mod special
-
-
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ BEGIN
-
-<<<<<<<< .../JOining_bd0120.baf
-
-IF
-	InMyArea("#Ishy")
-	Global("JO_JOIN_bd0120_#Ishy","MYAREA",0)
-	OR(4)
-		!Global("JO_TRAVELER_#Ishy","GLOBAL",0)
-		TriggerOverride("#Ishy",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("#Ishy",Allegiance(Myself,CONTROLLED))
-		!TriggerOverride("#Ishy",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		ActionOverride("#Ishy",EquipItemEx("JOMINHP1",1))
-		SmallWait(1)
-		ActionOverride("#Ishy",DestroyItem("JOMINHP1"))
-		SmallWait(1)
-		ActionOverride("#Ishy",ChangeEnemyAlly("#Ishy",NEUTRAL))
-		ActionOverride("#Ishy",RemoveFamiliar()) TODO : To do each time ?
-		SetGlobal("JO_TRAVELER_#Ishy","GLOBAL",0)
-		ActionOverride("#Ishy",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
-		DisplayString("#Ishy",~See you on the other side !~)
-		SetInterrupt(TRUE)
-		Continue()
-END
-
-IF
-	Global("JO_JOIN_bd0120_#Ishy","MYAREA",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
-		Continue()
-END
-
->>>>>>>>
-EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
-
-	END
-
-///////////////////////////////////////////////////////////////////////////////
-
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
->>>>>>> 11a656b (Polishing)
 
 <<<<<<<< .../JOining_bd0120.baf
 
