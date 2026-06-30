@@ -384,17 +384,17 @@ This spell transports the caster to any place within the visual range of the cas
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINI.bcs~ BEGIN
+// Traveler dedicated scripts
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
 
-	END
-
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINX.bcs~ BEGIN
-
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINX.baf~ EVALUATE_BUFFER
 
-	END
+// Irregular party members
+
+		COPY ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~
+
+		COMPILE ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~ EVALUATE_BUFFER
 
 //////////////////////////////////////////////////////////////////////////////////////
 
