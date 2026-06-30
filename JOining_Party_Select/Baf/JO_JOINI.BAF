@@ -2458,7 +2458,6 @@ THEN
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot6)
-		ActionOverride(PartySlot6,FaceObject(Myself)) // FIXME
 		SetInterrupt(TRUE)
 END
 
@@ -2483,7 +2482,6 @@ THEN
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot5)
-		ActionOverride(PartySlot5,FaceObject(Myself)) // FIXME
 		SetInterrupt(TRUE)
 END
 
@@ -2508,7 +2506,6 @@ THEN
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot4)
-		ActionOverride(PartySlot4,FaceObject(Myself)) // FIXME
 		SetInterrupt(TRUE)
 END
 
@@ -2533,7 +2530,6 @@ THEN
 		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot3,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot3)
-		ActionOverride(PartySlot3,FaceObject(Myself)) // FIXME
 		SetInterrupt(TRUE)
 END
 
@@ -2558,7 +2554,6 @@ THEN
 		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot2,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot2)
-		ActionOverride(PartySlot2,FaceObject(Myself)) // FIXME
 		SetInterrupt(TRUE)
 END
 
@@ -2583,7 +2578,6 @@ THEN
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
 		FaceObject(PartySlot1)
-		ActionOverride(PartySlot1,FaceObject(Myself)) // FIXME
 		SetInterrupt(TRUE)
 END
 
@@ -2608,7 +2602,7 @@ IF // Security block
 	!NumInPartyLT(6)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself,~^RHo!? No more slot?^-~)
+		DisplayStringHead(Myself,~^RHo!? The party is full?^-~)
 		Continue()
 END
 
