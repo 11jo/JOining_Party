@@ -140,7 +140,7 @@
 | JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
 | JO_JOIN | L | Transform to traveler | 1: process of becoming traveler is actived<br>2: process is over<br>Other: normal status |
 | JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
-| JO_JOIN_CLEAR | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: Script needs to be updated<br>3: Script is up to date<br>Other: nothing|
+| JO_JOIN_CLEAR | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: nothing<br>3: Script is up to date<br>Other: nothing|
 | JO_JOIN_IS_JOINING | L | The traveler will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
 | JO_JOIN_HIDE_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
@@ -151,11 +151,12 @@
 | JO_JOIN_Move_Done | L | Related to `JO_JOIN_Move_Around` used to make the script apply only once until next command | 0: False<br>Other: True
 | JO_JOIN_SWITCHING_PARTY | G | Prevent Switching party between traveler and party member when loading a save. | 0: True<br>Other: False |
 | JO_JOIN_SWITCH_TIMER | L | Timer for Switching party between traveler and party member. | n/a |
-| JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Switch between traveler and party member in process<br>3: Ready to random switch<br>4: Random switch between traveler and party member in process
-| JO_JOIN_SWITCH_WITH_ME | L | Used to choose with Player2 or Player3 or Player4 or Player5 or Player6. | 0: Available<br>2: Player2 chosen<br>3: Player3 chosen<br>4: Player4 chosen<br>5: Player5 chosen<br>6: Player6 chosen
+| JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Conditions are clear<br>3: Im the party member who switch
+| JO_JOIN_SWITCH_WITH_ME | L | Party switching with PartySlotX is process | 0: Available<br>1: PartySlot1<br>2: PartySlot2<br>3: PartySlot3<br>4: PartySlot4<br>5: PartySlot5<br>6: PartySlot6
 | JO_JOIN_BANTER_TIME | L | Timer for fire banters when traveler. | n/a |
 | JO_JOIN_LOAD_SWITCH | L | Party member variable when temporary removed at loading. | 0: Available<br>1: processing<br>2: party member reintegration in process
 | JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>Other: True
+| JO_JOIN_IS_Wannabe | L | JO_JOIN_Wannabe is set to 1 first time | 0: False<br>Other: True
 | JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
 | JO_JOIN_NEVER_SWITCH | L | Prevent traveler switch with party member. | 0: False<br>Other: True
 | JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | 0: False<br>Other: True
@@ -165,6 +166,8 @@
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
 | JO_JOIN_LOADING | G | Launch Loading Switch script/CutSceneLite |0: not initialized<br>1: initialisation<br>2: slot6 is leaving<br>3: travelers switching<br>4: slot6 returns and go back to aventure
+| JO_JOIN_SWITCHING | G | Party switching step | 0: inactive<br>1: is starting<br>2: target found<br>3: switching
+| JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
 
 ---
 
