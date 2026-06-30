@@ -381,6 +381,48 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Banter Block
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Delay banters for party members when specific actions are performed
+
+IF
+	OR(7)
+		!Global("JO_JOIN_LOADING","GLOBAL",0)
+		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		!Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		!Global("JO_NOJOIN","GLOBAL",0)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+THEN
+	RESPONSE #100
+		BanterBlockFlag(TRUE)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
+		DisplayString(Myself,~Delay conversations.~)
+END
+
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+THEN
+	RESPONSE #100
+		BanterBlockFlag(FALSE)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
 // JO_JOIN_BANTER_TIMER centralised for all travelers
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -504,6 +546,7 @@ THEN
 	RESPONSE #100
 		ActionOverride(Player2,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
 		ActionOverride(Player2,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
 END
 
 IF
@@ -512,6 +555,7 @@ THEN
 	RESPONSE #100
 		ActionOverride(Player3,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
 		ActionOverride(Player3,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
 END
 
 IF
@@ -520,6 +564,7 @@ THEN
 	RESPONSE #100
 		ActionOverride(Player4,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
 		ActionOverride(Player4,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
 END
 
 IF
@@ -528,6 +573,7 @@ THEN
 	RESPONSE #100
 		ActionOverride(Player5,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
 		ActionOverride(Player5,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
 END
 
 IF
@@ -536,4 +582,5 @@ THEN
 	RESPONSE #100
 		ActionOverride(Player6,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
 		ActionOverride(Player6,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
 END
