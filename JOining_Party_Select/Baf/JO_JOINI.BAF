@@ -2620,6 +2620,36 @@ IF // Travelers take place in party
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 //
 	NumInPartyLT(6)
+//
+	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
+THEN
+	RESPONSE #1 // PartySlot1
+		DisplayStringHead(Myself,~Who is the leader ?~)
+		Continue()
+	RESPONSE #2 // PartySlot2
+		DisplayStringHead(Myself,~Here I go !~)
+		Continue()
+	RESPONSE #3 // PartySlot3
+		DisplayStringHead(Myself,~Back again !~)
+		Continue()
+	RESPONSE #4 // PartySlot4
+		DisplayStringHead(Myself,~Hello there !~)
+		Continue()
+	RESPONSE #5 // PartySlot5
+		DisplayStringHead(Myself,~It's about time.~)
+		Continue()
+	RESPONSE #6 // PartySlot6
+		DisplayStringHead(Myself,~My turn !~)
+		Continue()
+END
+
+
+IF // Travelers take place in party
+	Global("JO_JOIN_SWITCHING","GLOBAL",3) // Switching party step 3
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+//
+	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2628,34 +2658,9 @@ THEN
 		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
-		SmallWait(2)
-//		RemoveFamiliar()
+		SmallWait(1)
 		SetInterrupt(TRUE)
 		JoinParty()
-		Continue()
-END
-
-IF // Travelers take place in party
-	Global("JO_JOIN_SWITCHING","GLOBAL",3) // Switching party step 3
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-//
-	NumInPartyLT(6)
-//
-	Switch("JO_JOIN_SWITCH_WITH_ME","LOCALS")
-THEN
-	RESPONSE #1 // PartySlot1
-		DisplayStringHead(Myself,~Who is the leader ?~)
-	RESPONSE #2 // PartySlot2
-		DisplayStringHead(Myself,~Here I go !~)
-	RESPONSE #3 // PartySlot3
-		DisplayStringHead(Myself,~Back again !~)
-	RESPONSE #4 // PartySlot4
-		DisplayStringHead(Myself,~Hello there !~)
-	RESPONSE #5 // PartySlot5
-		DisplayStringHead(Myself,~It's about time.~)
-	RESPONSE #6 // PartySlot6
-		DisplayStringHead(Myself,~My turn !~)
 END
 
 
