@@ -1,53 +1,133 @@
+// Mods
+
+// Ishilka mod special
+
+
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ BEGIN
+
+<<<<<<<< .../JOining_bd0120.baf
+
+IF
+	InMyArea("#Ishy")
+	Global("JO_JOIN_bd0120_#Ishy","MYAREA",0)
+	OR(4)
+		!Global("JO_TRAVELER_#Ishy","GLOBAL",0)
+		TriggerOverride("#Ishy",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("#Ishy",Allegiance(Myself,CONTROLLED))
+		!TriggerOverride("#Ishy",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("#Ishy",EquipItemEx("JOMINHP1",1))
+		SmallWait(1)
+		ActionOverride("#Ishy",DestroyItem("JOMINHP1"))
+		SmallWait(1)
+		ActionOverride("#Ishy",ChangeEnemyAlly("#Ishy",NEUTRAL))
+		ActionOverride("#Ishy",RemoveFamiliar()) // TODO : To do each time ?
+		SetGlobal("JO_TRAVELER_#Ishy","GLOBAL",0)
+		ActionOverride("#Ishy",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
+		DisplayString("#Ishy",~See you on the other side !~)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_#Ishy","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+
+	END
+
+///////////////////////////////////////////////////////////////////////////////
+
+
 // 1
 
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%All_In.baf~ BEGIN
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%_All_In.baf~ BEGIN
 
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("%IMOEN_DV%")
 	Global("JO_JOIN_bd0120_%IMOEN_DV%","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
 		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("%IMOEN_DV%",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("%IMOEN_DV%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
-		SetGlobal("BD_Imoen_Items","GLOBAL",1)
-		ActionOverride("Imoen_import_eq",TakeCreatureItems("IMOEN2",ALL))
+		SetInterrupt(FALSE)
+		ActionOverride("%IMOEN_DV%",EquipItemEx("JOMINHP1",1))
+		SmallWait(1)
+		ActionOverride("%IMOEN_DV%",DestroyItem("JOMINHP1"))
+		SmallWait(1)
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_InParty","LOCALS",0))
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_Myself_Valid","LOCALS",0))
 		ActionOverride("%IMOEN_DV%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		SmallWait(1)
-		ActionOverride("%IMOEN_DV%",LeaveParty())
+		SetGlobal("JO_TRAVELER_%IMOEN_DV%","GLOBAL",0)
 		ActionOverride("%IMOEN_DV%",DestroySelf())
 		Continue()
 END
 
 >>>>>>>>
-EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	END
 
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
+///////////////////////////////////////////////////////////////////////////////
+
+
+ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ BEGIN
 
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Edwin")
 	Global("JO_JOIN_bd0120_Edwin","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Edwin","GLOBAL",0)
 		TriggerOverride("Edwin",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Edwin",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Edwin",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Edwin",ChangeAIScript("BDEDWIN",OVERRIDE))
+		ActionOverride("Edwin",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Edwin",DestroyItem("JOMINHP1"))
 		ActionOverride("Edwin",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Edwin",FAMILIAR)
+		ActionOverride("Edwin",ChangeEnemyAlly("Edwin",FAMILIAR))
+		ActionOverride("Edwin",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Edwin","GLOBAL",1)
+		ActionOverride("Edwin",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Edwin",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Edwin",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Edwin",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Edwin",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Edwin",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Edwin","MYAREA",1)
+		ActionOverride("Edwin",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Edwin","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Edwin","MYAREA",1)
 		Continue()
 END
@@ -64,17 +144,41 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Jaheira")
 	Global("JO_JOIN_bd0120_Jaheira","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Jaheira","GLOBAL",0)
 		TriggerOverride("Jaheira",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Jaheira",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Jaheira",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Jaheira",ChangeAIScript("BDJAHEIR",OVERRIDE))
+		ActionOverride("Jaheira",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Jaheira",DestroyItem("JOMINHP1"))
 		ActionOverride("Jaheira",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Jaheira",FAMILIAR)
+		ActionOverride("Jaheira",ChangeEnemyAlly("Jaheira",FAMILIAR))
+		ActionOverride("Jaheira",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Jaheira","GLOBAL",1)
+		ActionOverride("Jaheira",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Jaheira",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Jaheira",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Jaheira",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Jaheira",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Jaheira",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Jaheira","MYAREA",1)
+		ActionOverride("Jaheira",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Jaheira","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Jaheira","MYAREA",1)
 		Continue()
 END
@@ -91,17 +195,41 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Minsc")
 	Global("JO_JOIN_bd0120_Minsc","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Minsc","GLOBAL",0)
 		TriggerOverride("Minsc",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Minsc",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Minsc",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Minsc",ChangeAIScript("BDMINSC",OVERRIDE))
+		ActionOverride("Minsc",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Minsc",DestroyItem("JOMINHP1"))
 		ActionOverride("Minsc",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Minsc",FAMILIAR)
+		ActionOverride("Minsc",ChangeEnemyAlly("Minsc",FAMILIAR))
+		ActionOverride("Minsc",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Minsc","GLOBAL",1)
+		ActionOverride("Minsc",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Minsc",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Minsc",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Minsc",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Minsc",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Minsc",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Minsc","MYAREA",1)
+		ActionOverride("Minsc",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Minsc","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Minsc","MYAREA",1)
 		Continue()
 END
@@ -118,17 +246,41 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Viconia")
 	Global("JO_JOIN_bd0120_Viconia","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Viconia","GLOBAL",0)
 		TriggerOverride("Viconia",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Viconia",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Viconia",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Viconia",ChangeAIScript("BDVICONI",OVERRIDE))
+		ActionOverride("Viconia",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Viconia",DestroyItem("JOMINHP1"))
 		ActionOverride("Viconia",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Viconia",FAMILIAR)
+		ActionOverride("Viconia",ChangeEnemyAlly("Viconia",FAMILIAR))
+		ActionOverride("Viconia",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Viconia","GLOBAL",1)
+		ActionOverride("Viconia",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Viconia",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Viconia",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Viconia",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Viconia",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Viconia",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Viconia","MYAREA",1)
+		ActionOverride("Viconia",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Viconia","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Viconia","MYAREA",1)
 		Continue()
 END
@@ -145,17 +297,41 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Dorn")
 	Global("JO_JOIN_bd0120_Dorn","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Dorn","GLOBAL",0)
 		TriggerOverride("Dorn",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Dorn",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Dorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Dorn",ChangeAIScript("BDDORN",OVERRIDE))
+		ActionOverride("Dorn",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Dorn",DestroyItem("JOMINHP1"))
 		ActionOverride("Dorn",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Dorn",FAMILIAR)
+		ActionOverride("Dorn",ChangeEnemyAlly("Dorn",FAMILIAR))
+		ActionOverride("Dorn",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Dorn","GLOBAL",1)
+		ActionOverride("Dorn",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Dorn",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Dorn",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Dorn",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Dorn",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Dorn",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Dorn","MYAREA",1)
+		ActionOverride("Dorn",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Dorn","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Dorn","MYAREA",1)
 		Continue()
 END
@@ -172,17 +348,41 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Neera")
 	Global("JO_JOIN_bd0120_Neera","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Neera","GLOBAL",0)
 		TriggerOverride("Neera",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Neera",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Neera",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Neera",ChangeAIScript("BDNEERA",OVERRIDE))
+		ActionOverride("Neera",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Neera",DestroyItem("JOMINHP1"))
 		ActionOverride("Neera",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Neera",FAMILIAR)
+		ActionOverride("Neera",ChangeEnemyAlly("Neera",FAMILIAR))
+		ActionOverride("Neera",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Neera","GLOBAL",1)
+		ActionOverride("Neera",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Neera",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Neera",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Neera",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Neera",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Neera",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Neera","MYAREA",1)
+		ActionOverride("Neera",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Neera","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Neera","MYAREA",1)
 		Continue()
 END
@@ -199,17 +399,41 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 IF
 	InMyArea("Rasaad")
 	Global("JO_JOIN_bd0120_Rasaad","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Rasaad","GLOBAL",0)
 		TriggerOverride("Rasaad",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Rasaad",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Rasaad",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Rasaad",ChangeAIScript("BDRASAAD",OVERRIDE))
+		ActionOverride("Rasaad",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Rasaad",DestroyItem("JOMINHP1"))
 		ActionOverride("Rasaad",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Rasaad",FAMILIAR)
+		ActionOverride("Rasaad",ChangeEnemyAlly("Rasaad",FAMILIAR))
+		ActionOverride("Rasaad",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Rasaad","GLOBAL",1)
+		ActionOverride("Rasaad",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Rasaad",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Rasaad",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Rasaad",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Rasaad",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Rasaad",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Rasaad","MYAREA",1)
+		ActionOverride("Rasaad",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Rasaad","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Rasaad","MYAREA",1)
 		Continue()
 END
@@ -223,22 +447,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 // 2
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%AJANTIS_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDAJANTJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Ajantis")
 	Global("JO_JOIN_bd0120_Ajantis","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Ajantis","GLOBAL",0)
 		TriggerOverride("Ajantis",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Ajantis",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Ajantis",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
+		ActionOverride("Ajantis",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Ajantis",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Ajantis",DestroyItem("JOMINHP1"))
 		ActionOverride("Ajantis",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Ajantis",FAMILIAR)
+		ActionOverride("Ajantis",ChangeEnemyAlly("Ajantis",FAMILIAR))
+		ActionOverride("Ajantis",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Ajantis","GLOBAL",1)
+		ActionOverride("Ajantis",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Ajantis",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Ajantis",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Ajantis",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Ajantis",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Ajantis",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
+		ActionOverride("Ajantis",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Ajantis","MYAREA",0)
+	InMyArea("Ajantis")
+	InParty("Ajantis")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
 		Continue()
 END
@@ -250,22 +509,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Alora_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%ALORA_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDALORAJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Alora")
 	Global("JO_JOIN_bd0120_Alora","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Alora","GLOBAL",0)
 		TriggerOverride("Alora",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Alora",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Alora",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
+		ActionOverride("Alora",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Alora",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Alora",DestroyItem("JOMINHP1"))
 		ActionOverride("Alora",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Alora",FAMILIAR)
+		ActionOverride("Alora",ChangeEnemyAlly("Alora",FAMILIAR))
+		ActionOverride("Alora",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Alora","GLOBAL",1)
+		ActionOverride("Alora",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Alora",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Alora",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Alora",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Alora",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Alora",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Alora","MYAREA",1)
+		ActionOverride("Alora",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Alora","MYAREA",0)
+	InMyArea("Alora")
+	InParty("Alora")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Alora",ChangeAIScript("%ALORA_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Alora","MYAREA",1)
 		Continue()
 END
@@ -281,22 +575,57 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "BRANWEN_BCS" "BRANWEN_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%BRANWEN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDBRANWJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Branwen")
 	Global("JO_JOIN_bd0120_Branwen","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Branwen","GLOBAL",0)
 		TriggerOverride("Branwen",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Branwen",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Branwen",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
+		ActionOverride("Branwen",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Branwen",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Branwen",DestroyItem("JOMINHP1"))
 		ActionOverride("Branwen",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Branwen",FAMILIAR)
+		ActionOverride("Branwen",ChangeEnemyAlly("Branwen",FAMILIAR))
+		ActionOverride("Branwen",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Branwen","GLOBAL",1)
+		ActionOverride("Branwen",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Branwen",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Branwen",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Branwen",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Branwen",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Branwen",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
+		ActionOverride("Branwen",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Branwen","MYAREA",0)
+	InMyArea("Branwen")
+	InParty("Branwen")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
 		Continue()
 END
@@ -308,22 +637,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Coran_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%CORAN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDCORANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Coran")
 	Global("JO_JOIN_bd0120_Coran","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Coran","GLOBAL",0)
 		TriggerOverride("Coran",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Coran",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Coran",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
+		ActionOverride("Coran",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Coran",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Coran",DestroyItem("JOMINHP1"))
 		ActionOverride("Coran",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Coran",FAMILIAR)
+		ActionOverride("Coran",ChangeEnemyAlly("Coran",FAMILIAR))
+		ActionOverride("Coran",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Coran","GLOBAL",1)
+		ActionOverride("Coran",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Coran",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Coran",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Coran",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Coran",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Coran",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Coran","MYAREA",1)
+		ActionOverride("Coran",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Coran","MYAREA",0)
+	InMyArea("Coran")
+	InParty("Coran")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Coran",ChangeAIScript("%CORAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Coran","MYAREA",1)
 		Continue()
 END
@@ -335,22 +699,53 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Dynaheir_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%DYNAHEIR_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDDYNAHJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Dynaheir")
 	Global("JO_JOIN_bd0120_Dynaheir","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Dynaheir","GLOBAL",0)
 		TriggerOverride("Dynaheir",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Dynaheir",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Dynaheir",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Dynaheir",ChangeAIScript("BDDYNAHE",OVERRIDE))
+		ActionOverride("Dynaheir",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Dynaheir",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Dynaheir",DestroyItem("JOMINHP1"))
 		ActionOverride("Dynaheir",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Dynaheir",FAMILIAR)
+		ActionOverride("Dynaheir",ChangeEnemyAlly("Dynaheir",FAMILIAR))
+		ActionOverride("Dynaheir",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Dynaheir","GLOBAL",1)
+		ActionOverride("Dynaheir",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Dynaheir",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Dynaheir",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Dynaheir",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Dynaheir",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Dynaheir",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Dynaheir","MYAREA",1)
+		ActionOverride("Dynaheir",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Dynaheir","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Dynaheir","MYAREA",1)
 		Continue()
 END
@@ -362,22 +757,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Eldoth_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%ELDOTH_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDELDOTJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Eldoth")
 	Global("JO_JOIN_bd0120_Eldoth","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Eldoth","GLOBAL",0)
 		TriggerOverride("Eldoth",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Eldoth",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Eldoth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
+		ActionOverride("Eldoth",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Eldoth",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Eldoth",DestroyItem("JOMINHP1"))
 		ActionOverride("Eldoth",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Eldoth",FAMILIAR)
+		ActionOverride("Eldoth",ChangeEnemyAlly("Eldoth",FAMILIAR))
+		ActionOverride("Eldoth",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Eldoth","GLOBAL",1)
+		ActionOverride("Eldoth",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Eldoth",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Eldoth",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Eldoth",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Eldoth",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Eldoth",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Eldoth","MYAREA",1)
+		ActionOverride("Eldoth",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Eldoth","MYAREA",0)
+	InMyArea("Eldoth")
+	InParty("Eldoth")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Eldoth",ChangeAIScript("%ELDOTH_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Eldoth","MYAREA",1)
 		Continue()
 END
@@ -393,22 +823,57 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "FALDORN_BCS" "FALDORN_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%FALDORN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDFALDOJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Faldorn")
 	Global("JO_JOIN_bd0120_Faldorn","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Faldorn","GLOBAL",0)
 		TriggerOverride("Faldorn",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Faldorn",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Faldorn",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
+		ActionOverride("Faldorn",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Faldorn",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Faldorn",DestroyItem("JOMINHP1"))
 		ActionOverride("Faldorn",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Faldorn",FAMILIAR)
+		ActionOverride("Faldorn",ChangeEnemyAlly("Faldorn",FAMILIAR))
+		ActionOverride("Faldorn",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Faldorn","GLOBAL",1)
+		ActionOverride("Faldorn",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Faldorn",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Faldorn",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Faldorn",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Faldorn",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Faldorn",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
+		ActionOverride("Faldorn",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Faldorn","MYAREA",0)
+	InMyArea("Faldorn")
+	InParty("Faldorn")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
 		Continue()
 END
@@ -424,22 +889,57 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "GARRICK_BCS" "GARRICK_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%GARRICK_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDGARRIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Garrick")
 	Global("JO_JOIN_bd0120_Garrick","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Garrick","GLOBAL",0)
 		TriggerOverride("Garrick",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Garrick",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Garrick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
+		ActionOverride("Garrick",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Garrick",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Garrick",DestroyItem("JOMINHP1"))
 		ActionOverride("Garrick",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Garrick",FAMILIAR)
+		ActionOverride("Garrick",ChangeEnemyAlly("Garrick",FAMILIAR))
+		ActionOverride("Garrick",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Garrick","GLOBAL",1)
+		ActionOverride("Garrick",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Garrick",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Garrick",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Garrick",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Garrick",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Garrick",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
+		ActionOverride("Garrick",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Garrick","MYAREA",0)
+	InMyArea("Garrick")
+	InParty("Garrick")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
 		Continue()
 END
@@ -451,22 +951,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Kagain_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%KAGAIN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDKAGAIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Kagain")
 	Global("JO_JOIN_bd0120_Kagain","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Kagain","GLOBAL",0)
 		TriggerOverride("Kagain",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Kagain",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Kagain",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
+		ActionOverride("Kagain",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Kagain",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Kagain",DestroyItem("JOMINHP1"))
 		ActionOverride("Kagain",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Kagain",FAMILIAR)
+		ActionOverride("Kagain",ChangeEnemyAlly("Kagain",FAMILIAR))
+		ActionOverride("Kagain",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Kagain","GLOBAL",1)
+		ActionOverride("Kagain",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Kagain",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Kagain",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Kagain",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Kagain",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Kagain",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Kagain","MYAREA",1)
+		ActionOverride("Kagain",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Kagain","MYAREA",0)
+	InMyArea("Kagain")
+	InParty("Kagain")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Kagain",ChangeAIScript("%KAGAIN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Kagain","MYAREA",1)
 		Continue()
 END
@@ -478,22 +1013,53 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Khalid_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%KHALID_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDKHALIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Khalid")
 	Global("JO_JOIN_bd0120_Khalid","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Khalid","GLOBAL",0)
 		TriggerOverride("Khalid",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Khalid",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Khalid",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Khalid",ChangeAIScript("BDKHALID",OVERRIDE))
+		ActionOverride("Khalid",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Khalid",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Khalid",DestroyItem("JOMINHP1"))
 		ActionOverride("Khalid",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Khalid",FAMILIAR)
+		ActionOverride("Khalid",ChangeEnemyAlly("Khalid",FAMILIAR))
+		ActionOverride("Khalid",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Khalid","GLOBAL",1)
+		ActionOverride("Khalid",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Khalid",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Khalid",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Khalid",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Khalid",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Khalid",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Khalid","MYAREA",1)
+		ActionOverride("Khalid",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Khalid","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Khalid","MYAREA",1)
 		Continue()
 END
@@ -505,22 +1071,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Kivan_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%KIVAN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDKIVANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Kivan")
 	Global("JO_JOIN_bd0120_Kivan","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Kivan","GLOBAL",0)
 		TriggerOverride("Kivan",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Kivan",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Kivan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
+		ActionOverride("Kivan",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Kivan",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Kivan",DestroyItem("JOMINHP1"))
 		ActionOverride("Kivan",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Kivan",FAMILIAR)
+		ActionOverride("Kivan",ChangeEnemyAlly("Kivan",FAMILIAR))
+		ActionOverride("Kivan",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Kivan","GLOBAL",1)
+		ActionOverride("Kivan",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Kivan",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Kivan",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Kivan",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Kivan",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Kivan",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Kivan","MYAREA",1)
+		ActionOverride("Kivan",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Kivan","MYAREA",0)
+	InMyArea("Kivan")
+	InParty("Kivan")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Kivan",ChangeAIScript("%KIVAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Kivan","MYAREA",1)
 		Continue()
 END
@@ -532,22 +1133,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Montaron_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%MONTARON_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDMONTAJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Montaron")
 	Global("JO_JOIN_bd0120_Montaron","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Montaron","GLOBAL",0)
 		TriggerOverride("Montaron",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Montaron",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Montaron",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
+		ActionOverride("Montaron",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Montaron",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Montaron",DestroyItem("JOMINHP1"))
 		ActionOverride("Montaron",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Montaron",FAMILIAR)
+		ActionOverride("Montaron",ChangeEnemyAlly("Montaron",FAMILIAR))
+		ActionOverride("Montaron",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Montaron","GLOBAL",1)
+		ActionOverride("Montaron",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Montaron",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Montaron",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Montaron",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Montaron",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Montaron",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Montaron","MYAREA",1)
+		ActionOverride("Montaron",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Montaron","MYAREA",0)
+	InMyArea("Montaron")
+	InParty("Montaron")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Montaron",ChangeAIScript("%MONTARON_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Montaron","MYAREA",1)
 		Continue()
 END
@@ -559,22 +1195,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Quayle_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%QUAYLE_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDQUAYLJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Quayle")
 	Global("JO_JOIN_bd0120_Quayle","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Quayle","GLOBAL",0)
 		TriggerOverride("Quayle",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Quayle",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Quayle",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
+		ActionOverride("Quayle",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Quayle",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Quayle",DestroyItem("JOMINHP1"))
 		ActionOverride("Quayle",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Quayle",FAMILIAR)
+		ActionOverride("Quayle",ChangeEnemyAlly("Quayle",FAMILIAR))
+		ActionOverride("Quayle",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Quayle","GLOBAL",1)
+		ActionOverride("Quayle",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Quayle",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Quayle",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Quayle",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Quayle",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Quayle",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Quayle","MYAREA",1)
+		ActionOverride("Quayle",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Quayle","MYAREA",0)
+	InMyArea("Quayle")
+	InParty("Quayle")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Quayle",ChangeAIScript("%QUAYLE_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Quayle","MYAREA",1)
 		Continue()
 END
@@ -586,22 +1257,53 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Safana_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%SAFANA_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDSAFANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Safana")
 	Global("JO_JOIN_bd0120_Safana","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Safana","GLOBAL",0)
 		TriggerOverride("Safana",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Safana",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Safana",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Safana",ChangeAIScript("BDSAFANA",OVERRIDE))
+		ActionOverride("Safana",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Safana",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Safana",DestroyItem("JOMINHP1"))
 		ActionOverride("Safana",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Safana",FAMILIAR)
+		ActionOverride("Safana",ChangeEnemyAlly("Safana",FAMILIAR))
+		ActionOverride("Safana",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Safana","GLOBAL",1)
+		ActionOverride("Safana",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Safana",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Safana",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Safana",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Safana",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Safana",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Safana","MYAREA",1)
+		ActionOverride("Safana",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Safana","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Safana","MYAREA",1)
 		Continue()
 END
@@ -613,22 +1315,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%SHARTEEL_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDSHARTJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Sharteel")
 	Global("JO_JOIN_bd0120_Sharteel","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Sharteel","GLOBAL",0)
 		TriggerOverride("Sharteel",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Sharteel",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Sharteel",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
+		ActionOverride("Sharteel",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Sharteel",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Sharteel",DestroyItem("JOMINHP1"))
 		ActionOverride("Sharteel",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Sharteel",FAMILIAR)
+		ActionOverride("Sharteel",ChangeEnemyAlly("Sharteel",FAMILIAR))
+		ActionOverride("Sharteel",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Sharteel","GLOBAL",1)
+		ActionOverride("Sharteel",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Sharteel",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Sharteel",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Sharteel",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Sharteel",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Sharteel",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Sharteel","MYAREA",1)
+		ActionOverride("Sharteel",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Sharteel","MYAREA",0)
+	InMyArea("Sharteel")
+	InParty("Sharteel")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Sharteel",ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Sharteel","MYAREA",1)
 		Continue()
 END
@@ -644,22 +1381,57 @@ ACTION_IF (MOD_IS_INSTALLED ~EET_END.TP2~ ~0~) BEGIN
 			OUTER_SPRINT "SKIE_BCS" "SKIE_"
 END
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%SKIE_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDSKIEJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Skie")
 	Global("JO_JOIN_bd0120_Skie","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Skie","GLOBAL",0)
 		TriggerOverride("Skie",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Skie",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Skie",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
+		ActionOverride("Skie",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Skie",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Skie",DestroyItem("JOMINHP1"))
 		ActionOverride("Skie",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Skie",FAMILIAR)
+		ActionOverride("Skie",ChangeEnemyAlly("Skie",FAMILIAR))
+		ActionOverride("Skie",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Skie","GLOBAL",1)
+		ActionOverride("Skie",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Skie",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Skie",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Skie",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Skie",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Skie",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
+		ActionOverride("Skie",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Skie","MYAREA",0)
+	InMyArea("Skie")
+	InParty("Skie")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
 		Continue()
 END
@@ -671,22 +1443,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Tiax_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%TIAX_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDTIAXJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Tiax")
 	Global("JO_JOIN_bd0120_Tiax","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Tiax","GLOBAL",0)
 		TriggerOverride("Tiax",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Tiax",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Tiax",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
+		ActionOverride("Tiax",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Tiax",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Tiax",DestroyItem("JOMINHP1"))
 		ActionOverride("Tiax",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Tiax",FAMILIAR)
+		ActionOverride("Tiax",ChangeEnemyAlly("Tiax",FAMILIAR))
+		ActionOverride("Tiax",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Tiax","GLOBAL",1)
+		ActionOverride("Tiax",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Tiax",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Tiax",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Tiax",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Tiax",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Tiax",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Tiax","MYAREA",1)
+		ActionOverride("Tiax",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Tiax","MYAREA",0)
+	InMyArea("Tiax")
+	InParty("Tiax")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Tiax",ChangeAIScript("%TIAX_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Tiax","MYAREA",1)
 		Continue()
 END
@@ -698,22 +1505,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Xan_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%XAN_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDXANJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Xan")
 	Global("JO_JOIN_bd0120_Xan","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Xan","GLOBAL",0)
 		TriggerOverride("Xan",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Xan",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Xan",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
+		ActionOverride("Xan",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Xan",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Xan",DestroyItem("JOMINHP1"))
 		ActionOverride("Xan",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Xan",FAMILIAR)
+		ActionOverride("Xan",ChangeEnemyAlly("Xan",FAMILIAR))
+		ActionOverride("Xan",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Xan","GLOBAL",1)
+		ActionOverride("Xan",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Xan",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Xan",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Xan",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Xan",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Xan",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Xan","MYAREA",1)
+		ActionOverride("Xan",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Xan","MYAREA",0)
+	InMyArea("Xan")
+	InParty("Xan")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Xan",ChangeAIScript("%XAN_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Xan","MYAREA",1)
 		Continue()
 END
@@ -725,22 +1567,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Xzar_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%XZAR_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDXZARJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Xzar")
 	Global("JO_JOIN_bd0120_Xzar","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Xzar","GLOBAL",0)
 		TriggerOverride("Xzar",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Xzar",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Xzar",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
+		ActionOverride("Xzar",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Xzar",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Xzar",DestroyItem("JOMINHP1"))
 		ActionOverride("Xzar",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Xzar",FAMILIAR)
+		ActionOverride("Xzar",ChangeEnemyAlly("Xzar",FAMILIAR))
+		ActionOverride("Xzar",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Xzar","GLOBAL",1)
+		ActionOverride("Xzar",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Xzar",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Xzar",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Xzar",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Xzar",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Xzar",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Xzar","MYAREA",1)
+		ActionOverride("Xzar",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Xzar","MYAREA",0)
+	InMyArea("Xzar")
+	InParty("Xzar")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Xzar",ChangeAIScript("%XZAR_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Xzar","MYAREA",1)
 		Continue()
 END
@@ -752,22 +1629,57 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Yeslick_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "%YESLICK_JOINED%"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDYESLIJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Yeslick")
 	Global("JO_JOIN_bd0120_Yeslick","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Yeslick","GLOBAL",0)
 		TriggerOverride("Yeslick",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Yeslick",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Yeslick",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
+		ActionOverride("Yeslick",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Yeslick",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Yeslick",DestroyItem("JOMINHP1"))
 		ActionOverride("Yeslick",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Yeslick",FAMILIAR)
+		ActionOverride("Yeslick",ChangeEnemyAlly("Yeslick",FAMILIAR))
+		ActionOverride("Yeslick",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Yeslick","GLOBAL",1)
+		ActionOverride("Yeslick",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Yeslick",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Yeslick",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Yeslick",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Yeslick",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		ActionOverride("Yeslick",ChangeAIScript("JO_JOINX",RACE))
+		SetGlobal("JO_JOIN_bd0120_Yeslick","MYAREA",1)
+		ActionOverride("Yeslick",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Yeslick","MYAREA",0)
+	InMyArea("Yeslick")
+	InParty("Yeslick")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Yeslick",ChangeAIScript("%YESLICK_BCS%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Yeslick","MYAREA",1)
 		Continue()
 END
@@ -779,22 +1691,52 @@ EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/Baeloth_All_In.baf~ BEGIN
 
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+OUTER_SPRINT "SoD_JOINED" "BAELOTHJ"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_JOINED" "BDBAELOJ"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
 	InMyArea("Baeloth")
 	Global("JO_JOIN_bd0120_Baeloth","MYAREA",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_Baeloth","GLOBAL",0)
 		TriggerOverride("Baeloth",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("Baeloth",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("Baeloth",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ActionOverride("Baeloth",ChangeAIScript("BDBAELOT",OVERRIDE))
+		ActionOverride("Baeloth",SetDialog("%SoD_JOINED%"))
+		ActionOverride("Baeloth",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
+		ActionOverride("Baeloth",DestroyItem("JOMINHP1"))
 		ActionOverride("Baeloth",ChangeAIScript("JO_JOINI",GENERAL))
 		SmallWait(1)
-		ChangeEnemyAlly("Baeloth",FAMILIAR)
+		ActionOverride("Baeloth",ChangeEnemyAlly("Baeloth",FAMILIAR))
+		ActionOverride("Baeloth",AddFamiliar())
+		SetGlobal("JO_TRAVELER_Baeloth","GLOBAL",1)
+		ActionOverride("Baeloth",SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY))
+		ActionOverride("Baeloth",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SmallWait(1)
+		ActionOverride("Baeloth",GiveItemCreate("JOMINHP1",Myself,0,0,0))
+		SmallWait(1)
+		ActionOverride("Baeloth",EquipItemEx("JOMINHP1",0))
+		ActionOverride("Baeloth",SetGlobal("JO_JOIN_CLEAR","LOCALS",3))
+		SetGlobal("JO_JOIN_bd0120_Baeloth","MYAREA",1)
+		ActionOverride("Baeloth",DisplayString(Myself,~Still a traveler, let's loading switch when possible !~))
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_bd0120_Baeloth","MYAREA",0)
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_bd0120_Baeloth","MYAREA",1)
 		Continue()
 END
@@ -803,3 +1745,21 @@ END
 EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	END
+
+// Final block
+
+<<<<<<<< .../JOining_bd0120.baf
+
+IF
+	Delay(3)
+	Global("JO_JOIN_bd0120","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+		SetGlobal("JO_JOIN_bd0120","MYAREA",1) // Special last block
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading switch
+		DisplayStringHead(Player1,~Loading switch is happening very soon !~)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER

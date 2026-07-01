@@ -23,111 +23,69 @@ END
 	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
 		// JO_JOIN_AREA (Check if current area is a master area)
 			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
-				// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+				// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 					// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
 						// JO_JOIN_BLOP (Dev test for no master area)
-							// JO_JOIN_SWITCHING_ROOM (In case area is JO2608.are prevent to end loading switch prematurely)
 ///////////////////////////////////////////////////////////////////////////////
 
-// If area ISN'T a master area, then go to the Switching Room.
-
-// Secondary Loading Switch 1 // Special // SWITCHING_ROOM JO2608.ARE
 
 IF
-// 
 	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	NumInPartyGT(5)
 	OR(2)
-		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
-		See([ENEMY])
-// Dev
-	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
-// 
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",0)
+		StateCheck(PartySlot6,CD_STATE_NOTVALID)
+		TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",0)) // prevent ineligible travelers to switch
 THEN
 	RESPONSE #100
-		ClearAllActions()
-		SetCutSceneLite(TRUE)
-		CreateVisualEffectObject("JOBG402",Player1)
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",1) // We are in the Switching room
-		FadeToColor([20.0],0)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		ScreenShake([20.20],5)
 		Wait(1)
-		StorePartyLocations()
-		FadeFromColor([30.0],0)
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1570.1050],1))
-		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],1))
-		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],1))
-		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],1))
-		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],1))
-		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],1))
-		LeaveAreaLUAPanic("JO2608","",[1570.1050],1)
-		LeaveAreaLUA("JO2608","",[1570.1050],1)
-		MultiPlayerSync()
-		Wait(1)
-		CreateVisualEffectObject("JOBG402",Player1)
-		SetCutSceneLite(FALSE)
-		Continue()
+		DisplayStringHead(Myself,~^0xFF16537eThe sixth party member can't switch with traveler.~)
 END
 
-// If area IS a master area, then Loading Switch !
-
-// Main Loading Switch 1
-
 IF
-// 
-	OR(3)
+	OR(2)
 		OnCreation()
 		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
-		Global("JO_JOIN_SWITCHING_ROOM","LOCALS",1)
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1) // Current area is a master area
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
-	OR(2)
-		!See([ENEMY])
-		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-// 
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	InPartySlot(PartySlot6,0) // Charname is PartySlot6
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
-		ClearAllActions()
-		MoveViewObject(Player1,INSTANT)
-		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
-		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		ScreenShake([20.20],5)
+		Wait(1)
+		DisplayStringHead(Myself,~^0xFF16537eI am the sixth party member, better be in another place.~)
+END
+
+IF
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		DisplayStringHead(Myself,~Loading Switch is temporarely unavailable here.~)
+END
+
+
+
+IF // Conditions are OK: loading switch starting
+	OR(2)
+		OnCreation()
+		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+THEN
+	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
-		DisplayStringHead(Myself,~Travelers !~)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
-		SetInterrupt(TRUE)
-		Continue()
 END
 
-// If area ISN'T a master area, this block come after // Main 1 // Loading Switch
-
-// Secondary Loading Switch 3 // Special // SWITCHING_ROOM JO2608.ARE
-
-IF
-// 
-	Global("JO_JOIN_SWITCHING_ROOM","LOCALS",2) // Set in JO_JOINL.baf
-// 
-	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-THEN
-	RESPONSE #100
-		DisplayStringHead(Myself,~Let's return to venture forth !!~)
-		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
-		FadeToColor([20.0],0)
-		CreateVisualEffectObject("JOBG402",Player1)
-		Wait(1)
-		RestorePartyLocations()
-		SetGlobal("JO_JOIN_SWITCHING_ROOM","LOCALS",0) // We are ready to leave the Switching Room
-		FadeFromColor([30.0],0)
-		Wait(1)
-		CreateVisualEffectObject("JOBG402",Player1)
-END
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -148,6 +106,100 @@ THEN
 		SetGlobal("JO_JOIN_PLAYER_INIT","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_SWEET_DREAM","LOCALS",FOUR_HOURS) // TODO : Unused at the moment
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",FOUR_HOURS)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// PartySlot
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_PARTYSLOT (Value is party member place in UI)
+// Note :
+	// Used to know what slot were who even when traveler
+///////////////////////////////////////////////////////////////////////////////
+
+// Check Player1 Slot
+
+IF
+	TriggerOverride(PartySlot1,InPartySlot(Myself,0))
+	Global("JO_JOIN_PROTAGONIST","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",1)
+		Continue()
+
+END
+
+IF
+	!TriggerOverride(PartySlot1,InPartySlot(Myself,0))
+	Global("JO_JOIN_PROTAGONIST","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",0)
+		Continue()
+END
+
+// Check party Slot
+
+IF
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	InParty(PartySlot6)
+	!TriggerOverride(PartySlot6,Global("JO_JOIN_PARTYSLOT","LOCALS",6))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",6))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	InParty(PartySlot5)
+	!TriggerOverride(PartySlot5,Global("JO_JOIN_PARTYSLOT","LOCALS",5))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",5))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	InParty(PartySlot4)
+	!TriggerOverride(PartySlot4,Global("JO_JOIN_PARTYSLOT","LOCALS",4))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",4))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	InParty(PartySlot3)
+	!TriggerOverride(PartySlot3,Global("JO_JOIN_PARTYSLOT","LOCALS",3))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",3))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	InParty(PartySlot2)
+	!TriggerOverride(PartySlot2,Global("JO_JOIN_PARTYSLOT","LOCALS",2))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",2))
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	InParty(PartySlot1)
+	!TriggerOverride(PartySlot1,Global("JO_JOIN_PARTYSLOT","LOCALS",1))
+THEN
+	RESPONSE #100
+		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_PARTYSLOT","LOCALS",1))
 		Continue()
 END
 
@@ -264,9 +316,9 @@ THEN
 	RESPONSE #100
 //		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0) // Reset JO_JOIN_Move_Around
+		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
 		SetGlobal("JO_JOIN","LOCALS",0) // Reset JO_JOIN
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0) // Security reset the cutscene global
-		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
 END
 
 // Prevent edge case when traveler special item finish in Player1 inventory
@@ -274,7 +326,7 @@ IF
 	HasItem("JOMINHP1",Player1)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself, ~^RVoilà qui n'est pas normal... JOMINHP1 est dans mon inventaire !^-~)
+		DisplayString(Myself, ~^RVoilà qui n'est pas normal... The Engagement scroll is in my inventory !^-~)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
 END
@@ -305,7 +357,7 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_TRAVELER_NumInParty (Check if a least one traveler is present)
+	// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 // Special
 	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
 // Note :
@@ -315,14 +367,59 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// 
+//
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0)
-// 
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+//
 //	REPLACE_TRAVELER_NumInParty
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // If there is no traveler reste the global
+		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // If there is no traveler reste the global
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Banter Block
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Delay banters for party members when specific actions are performed
+
+IF
+	OR(7)
+		!Global("JO_JOIN_LOADING","GLOBAL",0)
+		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		!Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		!Global("JO_NOJOIN","GLOBAL",0)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+THEN
+	RESPONSE #100
+		BanterBlockFlag(TRUE)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
+		DisplayString(Myself,~Delay conversations.~)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+THEN
+	RESPONSE #100
+		BanterBlockFlag(FALSE)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
 		Continue()
 END
 
@@ -342,12 +439,13 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-// 
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+//
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-// 
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
+//
 		// ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])
@@ -365,40 +463,126 @@ END
 
 // Avoid lauching banters in specific area // TODO : To Double Check
 
-IF
-	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
-	!Global("JO_JOIN_TRAVELER_NumInParty","GLOBAL",0) // Should prevent Loading switch if no traveler exists
-	OR(7)
 // BG1 End
-		AreaCheck("%NBaldursGate_DucalPalace_L1%")
-		AreaCheck("%Undercity_TempleofBhaal%")
-// Korlaz Donjon
-		AreaCheck("BD0120")
-		AreaCheck("BD0130")
-// SoD End
-		AreaCheck("BD6000")
-		AreaCheck("BD6100")
-		AreaCheck("BD6200")
+
+IF // Undercity_TempleofBhaal
+//
+	!AreaCheck("%Undercity_TempleofBhaal%")
+	!AreaCheck("BD0120")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	!Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",13) // Launch JO_JOIN_Move_Around block 13 in JO_JOINI.BAF
-		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+		SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
 END
 
-IF
-	Global("JO_JOIN_NEVER_BANTER","LOCALS",1)
-// BG1 End
-	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
-	!AreaCheck("%Undercity_TempleofBhaal%")
-// Korlaz Donjon
-	!AreaCheck("BD0120")
-	!AreaCheck("BD0130")
-// SoD End
+//////////////////////
+
+/* Soon...
+IF // SoD End
+//
+	AreaCheck("BD6000")
+	AreaCheck("BD6100")
+	AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+END
+
+IF // SoD End
+//
+//		!AreaCheck("BD0130") // Should not be a problem
+//
 	!AreaCheck("BD6000")
 	!AreaCheck("BD6100")
 	!AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_Move_Around","GLOBAL",14) // Launch JO_JOIN_Move_Around block 14 in JO_JOINI.BAF
-		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+END
+*/
+
+///////////////////////////////////////////////////////////////////////////////
+
+// SoD bdplayer.bcs set in bdintro.bcs
+IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+	HotKey(B)
+	OR(2)
+		INI("QAMODE",1)
+		Global("BD_QAMODE","global",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		StartDialogOverride("bddebug",Myself)
+END
+
+// EET player1.bcs set in ar0602.bcs
+IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	Global("JO_JOIN_Player1_DLG","ar0602",0)
+THEN
+	RESPONSE #100
+		SetDialog("Player1")
+		SetGlobal("JO_JOIN_Player1_DLG","ar0602",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Irregular party members
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Ctrl-J / Not in PDIALOG.2DA / Created party member
+
+IF
+	!TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+THEN
+	RESPONSE #100
+		ActionOverride(Player2,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
+		ActionOverride(Player2,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
+END
+
+IF
+	!TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+THEN
+	RESPONSE #100
+		ActionOverride(Player3,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
+		ActionOverride(Player3,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
+END
+
+IF
+	!TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+THEN
+	RESPONSE #100
+		ActionOverride(Player4,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
+		ActionOverride(Player4,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
+END
+
+IF
+	!TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+THEN
+	RESPONSE #100
+		ActionOverride(Player5,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
+		ActionOverride(Player5,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
+END
+
+IF
+	!TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+THEN
+	RESPONSE #100
+		ActionOverride(Player6,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
+		ActionOverride(Player6,SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+		Continue()
 END

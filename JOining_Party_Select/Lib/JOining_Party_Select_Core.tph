@@ -384,17 +384,17 @@ This spell transports the caster to any place within the visual range of the cas
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINI.bcs~ BEGIN
+// Traveler dedicated scripts
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
 
-	END
-
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO_JOINX.bcs~ BEGIN
-
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINX.baf~ EVALUATE_BUFFER
 
-	END
+// Irregular party members
+
+		COPY ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~
+
+		COMPILE ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~ EVALUATE_BUFFER
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -410,8 +410,6 @@ This spell transports the caster to any place within the visual range of the cas
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
 //	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_JOIN_LOAD~ ~~
 
-EXTEND_TOP ~JO_JOINL.bcs~ ~JOining_Party_Select/Baf/Join_ability/JO_LOAD_JO_JOINL.baf~ EVALUATE_BUFFER
-
 // Charname override script JO_JOINP.baf
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Replace DPLAYER3/Join_ability.baf
 //	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~~
@@ -425,6 +423,12 @@ EXTEND_TOP ~JO_JOINL.bcs~ ~JOining_Party_Select/Baf/Join_ability/JO_LOAD_JO_JOIN
 // EXTEND_BOTTOM ~PLAYER1D.bcs~ ~JOining_Party_Select/Baf/Join_ability/Player1D.baf~
 
 EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~BDBALDUR.bcs~ BEGIN
+
+EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
+
+	END
 
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
 

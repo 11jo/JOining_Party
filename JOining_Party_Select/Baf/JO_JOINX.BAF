@@ -358,7 +358,10 @@ END
 // Basic without script
 
 IF
-	Allegiance(Myself,FAMILIAR)
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN_CLEAR","LOCALS",3)
 THEN
 	RESPONSE #100

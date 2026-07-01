@@ -1,12 +1,24 @@
-// For non-traveler NPCs
+///////////////////////////////////////////////////////////////////////////////
+
+// Base // For non-traveler NPCs
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Die()
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
+END
 
 // Base
 
 IF
-	!Global("JO_JOIN_NOTRAVELER","LOCALS",1)
+	!Global("JO_JOIN_PARTY_MEMBER","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_NOTRAVELER","LOCALS",1)
+		SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1)
 END
 
 // !InPartyAllowDead()
@@ -61,4 +73,28 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Loading Switch
+
+///////////////////////////////////////////////////////////////////////////////
+
+// For party member After Main Loading Switch 3 // Special non-traveler NPCs
+
+IF // The party member making room for traveler Loading Switch if the party is full reintegrate the party right after
+//
+	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
+	GlobalGT("JO_JOIN_LOADING","GLOBAL",3) // Loading switch "almost" finished
+//
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",-1))
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		Activate(Myself)
+		DisplayStringHead(Myself,~I'm back !~)
+		JoinParty()
+		Continue()
 END
