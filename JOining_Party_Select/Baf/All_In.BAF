@@ -100,22 +100,18 @@ THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)
-		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #2
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
-		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #3
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)
-		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #4
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
-		DisplayString(Myself,~Done.~)
 		Continue()
 /*	RESPONSE #8
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -176,8 +172,7 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1) // If not the script will loop...
 
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)
-//		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
 		Activate(Myself)
 
@@ -187,14 +182,15 @@ THEN
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 
-//		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
 		SetGlobal("JO_Myself_InParty","LOCALS",1)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
 		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 
-//		EquipItemEx("JOMINHP1",0)
-//		DisplayString(Myself,@103)
+		EquipItemEx("JOMINHP1",1)
+		DestroyItem("JOMINHP1")
+		DisplayString(Myself,@103)
 		Continue()
 /*	RESPONSE #17
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -231,12 +227,13 @@ THEN
 //		ChangeEnemyAlly(Myself,FAMILIAR)
 //		DisplayString(Myself,~Done. I am linked to you !~)
 		Continue()
-	RESPONSE #24
+/*	RESPONSE #24
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1)
+//		RemoveFamiliar()
 //		ChangeEnemyAlly(Myself,CONTROLLED)
 //		DisplayString(Myself,~Done. I am more independant !~)
-		Continue()
+		Continue()*/
 /*	RESPONSE #25
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)
@@ -498,7 +495,7 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Sw
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-		DisplayString(Myself,~Ready to Switching Party when it's possible.~)
+		DisplayString(Myself,~Ready to Switching Party.~)
 		Continue()
 END
 
@@ -945,6 +942,7 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
+//		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
 END
@@ -1270,7 +1268,7 @@ THEN
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)
-		SmallWait(1)
+		SmallWait(2)
 		ChangeEnemyAlly(Myself,CONTROLLED)
 		AddFamiliar()
 		FaceObject(Player1)
@@ -1417,7 +1415,7 @@ THEN
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)
-		SmallWait(1)
+		SmallWait(2)
 		ChangeEnemyAlly(Myself,CONTROLLED)
 		SmallWait(1)
  // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in

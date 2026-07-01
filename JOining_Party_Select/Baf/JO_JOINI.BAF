@@ -542,11 +542,12 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
 		ChangeEnemyAlly(Myself,FAMILIAR)
+//		AddFamiliar()
 		DisplayString(Myself,~Done. I am linked to you !~)
-	RESPONSE #24
+/*	RESPONSE #24
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1)
-		ChangeEnemyAlly(Myself,CONTROLLED)
+		ChangeEnemyAlly(Myself,CONTROLLED)*/
 		DisplayString(Myself,~Done. I am more independant !~)
 	RESPONSE #25
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -1602,6 +1603,7 @@ IF // Return to CONTOLLED if was CONTOLLED
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~Still independant !~)
+//		RemoveFamiliar()
 		ChangeEnemyAlly(Myself,CONTROLLED)
 END
 
@@ -2632,6 +2634,8 @@ THEN
 		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
+		SmallWait(2)
+//		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
 		Continue()
@@ -2772,6 +2776,7 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
+//		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
 END

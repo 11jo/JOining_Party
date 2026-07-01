@@ -123,6 +123,7 @@ StartDialogueNoSet(Player6)~ EXIT
 			SmallWait(1)
 			DestroyItem("JOMINHP1")
 			SmallWait(2)
+//			RemoveFamiliar()
 			JoinParty()~ GOTO JO_JOINYes //
 		IF ~~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -139,11 +140,13 @@ StartDialogueNoSet(Player6)~ EXIT
 // Indepandance for traveler // ChangeEnemyAlly
 /*
 	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFF6aa84fIt's better for the group if you are more independent.^-~ DO ~SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1) SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
-						ChangeEnemyAlly(Myself,CONTROLLED)~ GOTO JO_JOINYes //
+//		RemoveFamiliar()
+		ChangeEnemyAlly(Myself,CONTROLLED)~ GOTO JO_JOINYes //
 */
 
 	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFffe599I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
-				ChangeEnemyAlly(Myself,FAMILIAR)~ GOTO JO_JOINYes //
+	ChangeEnemyAlly(Myself,FAMILIAR)
+//	AddFamiliar()~ GOTO JO_JOINYes //
 
 // Switch with a player
 	IF ~!IsGabber(Player1)
@@ -256,6 +259,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
+//		RemoveFamiliar()
 		JoinParty()~ GOTO JO_JOINYes //
 	IF ~Global("JO_JOIN_Wannabe","LOCALS",1)~ THEN REPLY ~^0xFF16537eJoin the group properly, please, and at beginning don't make room for travelers.^-~ DO ~
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",0)
@@ -268,6 +272,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
+//		RemoveFamiliar()
 		JoinParty()~ GOTO JO_JOINYes //
 	IF ~Global("JO_JOIN_Wannabe","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Join the group properly, please, and at beginning make room for travelers.^-~ DO ~
 		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
@@ -280,6 +285,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(2)
+//		RemoveFamiliar()
 		JoinParty()~ GOTO JO_JOINYes //
 // JOJOINNE.D
 	IF ~~ THEN REPLY ~^GI prefer to adress everyone...^-~ DO ~
