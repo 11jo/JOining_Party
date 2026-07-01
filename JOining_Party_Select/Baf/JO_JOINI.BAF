@@ -2452,7 +2452,6 @@ IF // PartySlot6
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)
 
 	!InPartySlot(PartySlot6,0) // security: not target Player1
-	TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
@@ -2477,7 +2476,6 @@ IF // PartySlot5
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
 
 	!InPartySlot(PartySlot5,0) // security: not target Player1
-	TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot5,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
@@ -2502,7 +2500,6 @@ IF // PartySlot4
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
 
 	!InPartySlot(PartySlot4,0) // security: not target Player1
-	TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot4,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
@@ -2527,7 +2524,6 @@ IF // PartySlot3
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
 
 	!InPartySlot(PartySlot3,0) // security: not target Player1
-	TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot3,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
@@ -2552,7 +2548,6 @@ IF // PartySlot2
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
 
 	!InPartySlot(PartySlot2,0) // security: not target Player1
-	TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot2,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
@@ -2577,7 +2572,6 @@ IF // PartySlot1
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
 
 	!InPartySlot(PartySlot1,0) // security: not target Player1
-	TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 	!TriggerOverride(PartySlot1,Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
