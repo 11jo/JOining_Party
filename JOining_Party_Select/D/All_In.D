@@ -304,7 +304,6 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
 		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
 
-		SetGlobal("JO_JOIN_LOAD_PARTY","LOCALS",0)
 //		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)

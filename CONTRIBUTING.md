@@ -154,14 +154,11 @@
 | JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Conditions are clear<br>3: Im the party member who switch
 | JO_JOIN_SWITCH_WITH_ME | L | Party switching with PartySlotX is process | 0: Available<br>1: PartySlot1<br>2: PartySlot2<br>3: PartySlot3<br>4: PartySlot4<br>5: PartySlot5<br>6: PartySlot6
 | JO_JOIN_BANTER_TIME | L | Timer for fire banters when traveler. | n/a |
-| JO_JOIN_LOAD_SWITCH | L | Party member variable when temporary removed at loading. | 0: Available<br>1: processing<br>2: party member reintegration in process
 | JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>Other: True
 | JO_JOIN_IS_Wannabe | L | JO_JOIN_Wannabe is set to 1 first time | 0: False<br>Other: True
 | JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
 | JO_JOIN_NEVER_SWITCH | L | Prevent traveler switch with party member. | 0: False<br>Other: True
-| JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | 0: False<br>Other: True
-| JO_JOIN_LOAD_TRAVELER | L | Travelers switch quickly in party at loading | 0: False<br>1: True<br>2: ??
-| JO_JOIN_LOAD_PARTY | L | Party members leave the groupe at loading | 0: False<br>1: wait step1<br>2: wait step2<br>3: in progress
+| JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | Unused
 | JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
@@ -210,9 +207,6 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_IS_Wannabe","LOCALS") // First time InParty JO_JOIN_Wannabe is set to 1 only once
 	GetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS")
 	GetGlobal("JO_JOIN_IS_HIDDEN","LOCALS")
-
-	GetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS") // Travelers switch quickly in party at loading
-	GetGlobal("JO_JOIN_LOAD_PARTY","LOCALS") // Party members leave the groupe at loading
 
 	GetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS") // Travelers and Party members are ready and available to switch their place.
 	GetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS") // Travelers and Party members are in process of switching place
