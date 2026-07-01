@@ -2430,7 +2430,7 @@ IF // First check
 		NumInPartyGT(5)
 THEN
 	RESPONSE #100
-		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 		DisplayString(Myself,~Switching Party !~)
 END
