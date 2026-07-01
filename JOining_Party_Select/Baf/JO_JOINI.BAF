@@ -2440,7 +2440,6 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
-		DisplayString(Myself,~Switching Party !~)
 END
 
 // Main Switching Party 2 // Randomly select a member... Wannabe !
@@ -2460,6 +2459,7 @@ IF // PartySlot6
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Switching Party !~)
 		FaceObject(PartySlot6)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",6) // PartySlot6
@@ -2484,6 +2484,7 @@ IF // PartySlot5
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Switching Party !~)
 		FaceObject(PartySlot5)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",5) // PartySlot5
@@ -2508,6 +2509,7 @@ IF // PartySlot4
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Switching Party !~)
 		FaceObject(PartySlot4)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",4) // PartySlot4
@@ -2532,6 +2534,7 @@ IF // PartySlot3
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Switching Party !~)
 		FaceObject(PartySlot3)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",3) // PartySlot3
@@ -2556,6 +2559,7 @@ IF // PartySlot2
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Switching Party !~)
 		FaceObject(PartySlot2)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",2) // PartySlot2
@@ -2580,6 +2584,7 @@ IF // PartySlot1
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		DisplayString(Myself,~Switching Party !~)
 		FaceObject(PartySlot1)
 		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 2
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",1) // PartySlot1
@@ -2587,6 +2592,42 @@ THEN
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
 		SetInterrupt(TRUE)
+END
+
+IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
+		NumInPartyLT(6)
+		TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
+		NumInPartyLT(5)
+		TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
+		NumInPartyLT(4)
+		TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		NumInPartyLT(3)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		NumInPartyLT(2)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(2)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
 END
 
 IF // No slot found
@@ -2597,7 +2638,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TEN_HOURS) // Will try again in 50 minutes
 		DisplayString(Myself,~No party member is available to switch with me, I'm ready when it's possible.~)
 END
 
