@@ -396,6 +396,10 @@ This spell transports the caster to any place within the visual range of the cas
 
 		COMPILE ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~ EVALUATE_BUFFER
 
+// CutSceneBreakable
+
+		COMPILE ~JOining_Party_Select/Baf/JO_JOINB.baf~ EVALUATE_BUFFER
+
 //////////////////////////////////////////////////////////////////////////////////////
 
 // Player1 script override additions
@@ -407,14 +411,17 @@ This spell transports the caster to any place within the visual range of the cas
 // Modified in JOining_Party_Select_End before compiling.
 
 // Loading Switch
+
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
 //	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_JOIN_LOAD~ ~~
 
 // Charname override script JO_JOINP.baf
+
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Replace DPLAYER3/Join_ability.baf
 //	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~~
 
 // JO_JOIN_COUNT_TRAVELER for JO_JOINC.baf
+
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER
 //	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_COUNT_TRAVELER~ ~~
 

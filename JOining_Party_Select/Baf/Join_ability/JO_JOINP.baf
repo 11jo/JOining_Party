@@ -81,6 +81,9 @@ IF // Conditions are OK: loading switch starting
 THEN
 	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
+		SetAreaScript("JO_JOINB",OVERRIDE)
+		SetCutSceneBreakable(TRUE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
@@ -401,13 +404,14 @@ IF
 THEN
 	RESPONSE #100
 		BanterBlockFlag(TRUE)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
+		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
 		DisplayString(Myself,~Delay conversations.~)
 		Continue()
 END
 
 IF
-	Delay(5)
 	Global("JO_JOIN_LOADING","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING","GLOBAL",0)
@@ -416,6 +420,7 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
+	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","LOCALS")
 	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
 THEN
 	RESPONSE #100
