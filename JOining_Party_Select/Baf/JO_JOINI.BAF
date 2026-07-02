@@ -2521,7 +2521,7 @@ IF // PartySlot6
 	!TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
 		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!TriggerOverride(PartySlot6,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2547,7 +2547,7 @@ IF // PartySlot5
 	!TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
 		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!TriggerOverride(PartySlot5,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2573,7 +2573,7 @@ IF // PartySlot4
 	!TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
 		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!TriggerOverride(PartySlot4,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2599,7 +2599,7 @@ IF // PartySlot3
 	!TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
 		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!TriggerOverride(PartySlot3,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2625,7 +2625,7 @@ IF // PartySlot2
 	!TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
 		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!TriggerOverride(PartySlot2,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -2651,7 +2651,7 @@ IF // PartySlot1
 	!TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",0))
 	OR(2)
 		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!TriggerOverride(PartySlot1,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
+		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
