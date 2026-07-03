@@ -620,46 +620,27 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated TODO : besoin de perfectionner la méthode, c'est convenable mais mieux serait mieux.
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 0
-					END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\([^)]*\)("\([^)]*\)"))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
-Activate("\3")
 	\0 ~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ActionOverride(\1) StartDialog(\3) found in %SOURCE_FILESPEC%
-				~
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 1
-					END
-			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\([^)]*\)(\([^)]*\)))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (Done_Already = 1) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
-	\0 ~
+/*					INNER_ACTION BEGIN
+			OUTER_SPRINT ~Done_Already~ ~\1~ 
+					END*/
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride(\1) StartDialog() found in %SOURCE_FILESPEC%
 				~
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 1
-					END
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\([^)]*\)("\([^)]*\)"))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (Done_Already = 1) BEGIN
+			PATCH_IF (num_matches > 0) /*AND NOT (~\3~ STRING_EQUAL_CASE ~%Done_Already%~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride() StartDialog(\3) found in %SOURCE_FILESPEC%
 				~
 			END
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 0
-					END
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),Dialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -671,43 +652,24 @@ Activate("\3")
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",Dialog\([^)]*\)("\([^)]*\)"))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
-Activate("\3")
-	\0 ~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ActionOverride(\1) Dialog(\3) found in %SOURCE_FILESPEC%
-				~
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 1
-					END
-			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",Dialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (Done_Already = 1) BEGIN
+			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride(\1) Dialog() found in %SOURCE_FILESPEC%
 				~
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 1
-					END
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),Dialog\([^)]*\)("\([^)]*\)"))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (Done_Already = 1) BEGIN
+			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride() Dialog(\3) found in %SOURCE_FILESPEC%
 				~
 			END
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 0
-					END
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),PlayerDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -719,43 +681,24 @@ Activate("\3")
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",PlayerDialog\([^)]*\)("\([^)]*\)"))~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
-Activate("\3")
-	\0 ~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ActionOverride(\1) PlayerDialog(\3) found in %SOURCE_FILESPEC%
-				~
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 1
-					END
-			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",PlayerDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (Done_Already = 1) BEGIN
+			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride(\1) PlayerDialog() found in %SOURCE_FILESPEC%
 				~
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 1
-					END
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),PlayerDialog\([^)]*\)("\([^)]*\)"))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (Done_Already = 1) BEGIN
+			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride() PlayerDialog(\3) found in %SOURCE_FILESPEC%
 				~
 			END
-					INNER_ACTION BEGIN
-			OUTER_SET Done_Already = 0
-					END
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*StartDialog\([^)]*\)(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
