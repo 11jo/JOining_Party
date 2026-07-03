@@ -23,6 +23,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		Activate("%Death_var%")
 		ActionOverride("%bdmenhi%",StartDialogueNoSet("%Death_var%"))
 END
 
