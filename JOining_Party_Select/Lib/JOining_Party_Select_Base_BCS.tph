@@ -619,7 +619,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride StartDialog() found in %SOURCE_FILESPEC%
 				~
 			END
-// Special travelers need to be Activated very quick if deactivated
+// Special travelers need to be Activated very quick if deactivated TODO : besoin de perfectionner la méthode, c'est convenable mais mieux serait mieux.
 					INNER_ACTION BEGIN
 			OUTER_SET Done_Already = 0
 					END

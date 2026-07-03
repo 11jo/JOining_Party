@@ -22,5 +22,4 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroySelf())
-		Continue()
 END
