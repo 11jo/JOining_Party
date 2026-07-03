@@ -2438,6 +2438,69 @@ THEN
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
 
+IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Switching party step 0
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
+	OR(2)
+		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
+		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer between switch exprired
+	!Global("JO_Myself_Valid","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0) // Can switch
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0) // Not dead
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
+		NumInPartyLT(6)
+		TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
+		NumInPartyLT(5)
+		TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
+		NumInPartyLT(4)
+		TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		NumInPartyLT(3)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		NumInPartyLT(2)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
+	OR(2)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
+END
+
 IF // Waiting to Switching Party.
 //
 	Global("JO_JOIN_SWITCHING","GLOBAL",1) // Switching party step 1
@@ -2595,42 +2658,6 @@ THEN
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3)) // active All_in block
 		ActionOverride(PartySlot1,SetGlobal("JO_JOIN","LOCALS",1))
 		SetInterrupt(TRUE)
-END
-
-IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1) // It is my switching party
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-
-	OR(3)
-		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
-		NumInPartyLT(6)
-		TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
-	OR(3)
-		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
-		NumInPartyLT(5)
-		TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
-	OR(3)
-		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
-		NumInPartyLT(4)
-		TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
-	OR(3)
-		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
-		NumInPartyLT(3)
-		TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
-	OR(3)
-		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
-		NumInPartyLT(2)
-		TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
-	OR(2)
-		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
-		TriggerOverride(PartySlot1,Global("JO_JOIN_Wannabe","LOCALS",0))
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
-		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
 END
 
 IF // No slot found
