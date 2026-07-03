@@ -2399,16 +2399,10 @@ IF // First check
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
-	OR(2)
-		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer between switch exprired
-	!Global("JO_Myself_Valid","LOCALS",0)
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0) // Can switch
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0) // Not dead
 // No combat
 	OR(2)
 		!ActuallyInCombat()
@@ -2452,16 +2446,10 @@ IF // No slot found because they are safe or members are not wannabe
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
-	OR(2)
-		!Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
-		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer between switch exprired
-	!Global("JO_Myself_Valid","LOCALS",0)
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0) // Can switch
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0) // Not dead
 // No combat
 	OR(2)
 		!ActuallyInCombat()
