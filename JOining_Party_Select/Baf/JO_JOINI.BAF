@@ -2447,7 +2447,6 @@ IF // No slot found because they are safe or members are not wannabe
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
