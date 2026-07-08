@@ -17,7 +17,7 @@
 // Large range or different area
 IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
-	!See(Player1)
+	!InMyArea(Player1)
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
 		Allegiance(Myself,CONTROLLED)

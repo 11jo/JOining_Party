@@ -112,7 +112,7 @@ END
 // Large range or different area
 IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
-	!See(Player1)
+	!InMyArea(Player1)
 	InParty(Myself)
 THEN
 	RESPONSE #100
