@@ -19,7 +19,7 @@ ACTION_FOR_EACH bcs IN
 
 /////////////////////////// Continuous ///////////////////////////
 
-// Original Imoen ~%IMOEN_BCS%~ ~IMOEN~ ~IMOE25~ // ~TTIMOEN~
+// Original Imoen ~%IMOEN_BCS%~ ~BDIMOENS~ ~IMOE25~ ~IMOEN~ // BDIMOENS is for Imoen4Ever // ~TTIMOEN~
 // Original Imoen // EET_END ~IMOEN_~
 // Original Imoen // EET_ODD ~IMOEN2~
 
@@ -36,7 +36,7 @@ OUTER_SPRINT "BG1_DREAM" "IMOEND"
 
 	OUTER_SPRINT "SoD_BANTER" "BIMOEN" // SoD
 	OUTER_SPRINT "BG2_BANTER" "BIMOEN2"
-		OUTER_SPRINT "SoD_DREAM" "BDIMOEN" // SoD
+		OUTER_SPRINT "SoD_DREAM" "BDIMOEND" // SoD
 		OUTER_SPRINT "BG2_DREAM" "IMOEN2D"
 // 			ACTION_IF (GAME_IS ~eet~) BEGIN
 // OUTER_SPRINT "TOB_BANTER" "BIMOEN2"
@@ -527,7 +527,7 @@ END
 
 ACTION_FOR_EACH bcs IN
 
-// Original Ajantis ~%AJANTIS_BCS%~ // Class script ~BDAJANTC~
+// Original Ajantis ~%AJANTIS_BCS%~ ~BDAJANTI~ // BDAJANTI is for Ajantis_BG1_Expansion // Class script ~BDAJANTC~
 
 BEGIN
 
