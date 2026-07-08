@@ -32,7 +32,6 @@ IF // The party member making room for traveler Loading Switch if the party is f
 		Global("JO_JOIN_LOADING","GLOBAL",0) // Broken cutscene
 //
 	NumInPartyLT(6)
-	!IsActive(Myself)
 THEN
 	RESPONSE #100
 		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",-1))
