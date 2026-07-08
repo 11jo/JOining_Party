@@ -712,7 +712,7 @@ IF
 	Global("JO_JOIN_Fill_Party","LOCALS",0)
 //
 	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1) // Master Area
+		Global("JO_JOIN_IS_MASTER_AREA","MYAREA",1) // Master Area
 		Global("JO_JOIN_BLOP","GLOBAL",1) //Testing variable
 //
 	OR(2)
@@ -828,7 +828,7 @@ END
 IF
 // 
 	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
+		Global("JO_JOIN_IS_MASTER_AREA","MYAREA",1)
 		Global("JO_JOIN_BLOP","GLOBAL",1)
 //
 //		ActionListEmpty()
@@ -2414,7 +2414,7 @@ IF // First check
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
 	OR(2)
-		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_IS_MASTER_AREA","MYAREA",0) // Is Master Area
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
@@ -2483,7 +2483,7 @@ IF // No slot found because they are safe or members are not wannabe
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
 	OR(2)
-		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_IS_MASTER_AREA","MYAREA",0) // Is Master Area
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive

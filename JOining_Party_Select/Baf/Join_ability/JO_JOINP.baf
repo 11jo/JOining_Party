@@ -21,7 +21,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
 	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
-		// JO_JOIN_AREA (Check if current area is a master area)
+		// JO_JOIN_IS_MASTER_AREA (Check if current area is a master area)
 			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
 				// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 					// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
@@ -32,7 +32,7 @@ END
 IF
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	NumInPartyGT(5)
 	OR(2)
@@ -49,7 +49,7 @@ END
 IF
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	InPartySlot(PartySlot6,0) // Charname is PartySlot6
 THEN
 	RESPONSE #100
@@ -62,7 +62,7 @@ END
 IF
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
@@ -76,7 +76,7 @@ END
 IF // Conditions are OK: loading switch starting
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100

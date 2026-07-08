@@ -20,7 +20,7 @@ IF
 	!AreaCheck("JO2608")
 	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
 	OR(3)
-		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
+		!Global("JO_JOIN_IS_MASTER_AREA","MYAREA",1)  // Current area IS'NT a master area
 		ActuallyInCombat()
 		Detect([ENEMY])
 THEN
