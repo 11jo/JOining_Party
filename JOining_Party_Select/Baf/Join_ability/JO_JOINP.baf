@@ -86,6 +86,7 @@ THEN
 		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END
 

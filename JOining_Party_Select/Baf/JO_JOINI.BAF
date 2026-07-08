@@ -14,6 +14,22 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 
+// Large range or different area
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",1)
+	!See(Player1)
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveGlobalObject(Myself,Player1)
+END
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
 IF // Security, nothing should prevent a loading switch
 //
 	OR(2)
