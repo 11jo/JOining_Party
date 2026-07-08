@@ -572,10 +572,12 @@ THEN
 	RESPONSE #26
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #27
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",1)
+		DisplayString(Myself,~Done.~)
 		Continue()
 //	RESPONSE #28 // Party member only
 		//SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -2810,7 +2812,7 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_NEVER_JOIN","LOCALS",0)
+//	Global("JO_JOIN_NEVER_JOIN","LOCALS",0) // Only for Quick Switch
 	!Global("JO_JOIN_NEVER_FILL","LOCALS",1)
 THEN
 	RESPONSE #25
