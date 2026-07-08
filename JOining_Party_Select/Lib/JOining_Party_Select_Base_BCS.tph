@@ -609,6 +609,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
 				~
 			END
+// Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -618,15 +619,29 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride StartDialog() found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),PlayerDialog\([^)]*\)(\([^)]*\)))~
+// Special travelers need to be Activated very quick if deactivated TODO : besoin de perfectionner la méthode, c'est convenable mais mieux serait mieux.
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
 	\0 ~
+/*					INNER_ACTION BEGIN
+			OUTER_SPRINT ~Done_Already~ ~\1~ 
+					END*/
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ActionOverride PlayerDialog() found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // ActionOverride(\1) StartDialog() found in %SOURCE_FILESPEC%
 				~
 			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\([^)]*\)("\([^)]*\)"))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) /*AND NOT (~\3~ STRING_EQUAL_CASE ~%Done_Already%~)*/ BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride() StartDialog(\3) found in %SOURCE_FILESPEC%
+				~
+			END
+// Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),Dialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -636,6 +651,55 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride Dialog() found in %SOURCE_FILESPEC%
 				~
 			END
+// Special travelers need to be Activated very quick if deactivated
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",Dialog\([^)]*\)(\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride(\1) Dialog() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),Dialog\([^)]*\)("\([^)]*\)"))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride() Dialog(\3) found in %SOURCE_FILESPEC%
+				~
+			END
+// Normal addition
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),PlayerDialog\([^)]*\)(\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride PlayerDialog() found in %SOURCE_FILESPEC%
+				~
+			END
+// Special travelers need to be Activated very quick if deactivated
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",PlayerDialog\([^)]*\)(\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride(\1) PlayerDialog() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),PlayerDialog\([^)]*\)("\([^)]*\)"))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride() PlayerDialog(\3) found in %SOURCE_FILESPEC%
+				~
+			END
+// Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*StartDialog\([^)]*\)(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -645,6 +709,17 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // StartDialog() found in %SOURCE_FILESPEC%
 				~
 			END
+// Special travelers need to be Activated very quick if deactivated
+			SPRINT textToReplace ~^[%TAB% ]*StartDialog\([^)]*\)("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\2")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartDialog(/2) found in %SOURCE_FILESPEC%
+				~
+			END
+// Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*PlayerDialog\([^)]*\)(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -654,6 +729,17 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // PlayerDialog() found in %SOURCE_FILESPEC%
 				~
 			END
+// Special travelers need to be Activated very quick if deactivated
+			SPRINT textToReplace ~^[%TAB% ]*PlayerDialog\([^)]*\)("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\2")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // PlayerDialog(/2) found in %SOURCE_FILESPEC%
+				~
+			END
+// Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*Dialog\([^)]*\)(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -661,6 +747,16 @@ OUTER_SPRINT "slashdeux" "\2"
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Dialog() found in %SOURCE_FILESPEC%
+				~
+			END
+// Special travelers need to be Activated very quick if deactivated
+			SPRINT textToReplace ~^[%TAB% ]*Dialog\([^)]*\)("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\2")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Dialog(/2) found in %SOURCE_FILESPEC%
 				~
 			END
 ///////////////////////////////////////////////////////////////////////////////

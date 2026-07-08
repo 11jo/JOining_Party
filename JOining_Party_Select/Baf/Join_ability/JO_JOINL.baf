@@ -50,6 +50,21 @@ END
 // Active loading switch sequence
 IF
 	Global("JO_JOIN_LOADING","GLOBAL",1)
+	OR(2)
+		InMyArea(PartySlot6)
+		!NumInPartyGT(5)
+	OR(2)
+		InMyArea(PartySlot5)
+		!NumInPartyGT(4)
+	OR(2)
+		InMyArea(PartySlot4)
+		!NumInPartyGT(3)
+	OR(2)
+		InMyArea(PartySlot3)
+		!NumInPartyGT(2)
+	OR(2)
+		InMyArea(PartySlot2)
+		!NumInPartyGT(1)
 THEN
 	RESPONSE #100
 		ClearAllActions()
@@ -85,6 +100,17 @@ IF
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		Continue()
+END
+
+
+IF
+	Global("JO_JOIN_LOADING","GLOBAL",2)
+	Global("JO_JOIN_LOOK_AT_ME","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",1)
+		MoveViewObject(Player1,INSTANT)
 END
 
 
@@ -127,7 +153,11 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		DisplayStringHead(Myself,~Let's return to venture forth !!~)
+		SetCutSceneBreakable(FALSE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetAreaScript("",OVERRIDE)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		FadeToColor([20.0],0)
 		CreateVisualEffectObject("JOBG402",Player1)
@@ -149,9 +179,13 @@ IF
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
+		SetCutSceneBreakable(FALSE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetAreaScript("",OVERRIDE)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		DisplayStringHead(Myself,~let's venture forth !~)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 END

@@ -81,8 +81,12 @@ IF // Conditions are OK: loading switch starting
 THEN
 	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
+		SetAreaScript("JO_JOINB",OVERRIDE)
+		SetCutSceneBreakable(TRUE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END
 
@@ -401,6 +405,8 @@ IF
 THEN
 	RESPONSE #100
 		BanterBlockFlag(TRUE)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
+		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
 		DisplayString(Myself,~Delay conversations.~)
 		Continue()
@@ -415,6 +421,7 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
+	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","LOCALS")
 	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -467,7 +474,9 @@ END
 
 IF // Undercity_TempleofBhaal
 //
-	!AreaCheck("%Undercity_TempleofBhaal%")
+	OR(2)
+		!AreaCheck("%Undercity_TempleofBhaal%")
+		!Dead("Sarevok")
 	!AreaCheck("BD0120")
 //
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
@@ -544,6 +553,7 @@ END
 
 IF
 	!TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+	!TriggerOverride(Player2,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
 THEN
 	RESPONSE #100
 		ActionOverride(Player2,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -553,6 +563,7 @@ END
 
 IF
 	!TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+	!TriggerOverride(Player3,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
 THEN
 	RESPONSE #100
 		ActionOverride(Player3,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -562,6 +573,7 @@ END
 
 IF
 	!TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+	!TriggerOverride(Player4,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
 THEN
 	RESPONSE #100
 		ActionOverride(Player4,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -571,6 +583,7 @@ END
 
 IF
 	!TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+	!TriggerOverride(Player5,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
 THEN
 	RESPONSE #100
 		ActionOverride(Player5,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -580,6 +593,7 @@ END
 
 IF
 	!TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
+	!TriggerOverride(Player6,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
 THEN
 	RESPONSE #100
 		ActionOverride(Player6,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J

@@ -60,6 +60,8 @@ THEN
 		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+		SmallWait(2)
+//		ActionOverride("%Death_var%",RemoveFamiliar())
 		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,NEUTRAL))
 		SmallWait(1)
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
