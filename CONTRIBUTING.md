@@ -156,7 +156,7 @@
 | JO_JOIN_SWITCH_WITH_ME | L | Party switching with PartySlotX is process | 0: Available<br>1: PartySlot1<br>2: PartySlot2<br>3: PartySlot3<br>4: PartySlot4<br>5: PartySlot5<br>6: PartySlot6
 | JO_JOIN_BANTER_TIME | L | Timer for fire banters when traveler. | n/a |
 | JO_JOIN_WANNABE_TRAVELER | L | Party member eligible to become traveler. | 0: False<br>Other: True
-| JO_JOIN_IS_Wannabe | L | JO_JOIN_WANNABE_TRAVELER is set to 1 first time | 0: False<br>Other: True
+| JO_JOIN_WANNABE_INIT | L | JO_JOIN_WANNABE_TRAVELER is set to 1 first time | 0: False<br>Other: True
 | JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
 | JO_JOIN_NEVER_SWITCH | L | Prevent traveler switch with party member. | 0: False<br>Other: True
 | JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | Unused
@@ -217,7 +217,7 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS")
 	GetGlobal("JO_Myself_LeaveParty","LOCALS")
 	GetGlobal("JO_JOIN_Fill_Party","LOCALS") // Allow traveler to join the group properly if free slots are available
-	GetGlobal("JO_JOIN_IS_Wannabe","LOCALS") // First time InParty JO_JOIN_WANNABE_TRAVELER is set to 1 only once
+	GetGlobal("JO_JOIN_WANNABE_INIT","LOCALS") // First time InParty JO_JOIN_WANNABE_TRAVELER is set to 1 only once
 	GetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS")
 	GetGlobal("JO_JOIN_IS_HIDDEN","LOCALS")
 

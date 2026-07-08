@@ -157,8 +157,8 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 
-		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",1)
-//		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
+		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",1)
+//		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",0)
 //		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
@@ -306,10 +306,10 @@ END
 IF
 	Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 	InParty(Myself)
-	Global("JO_JOIN_IS_Wannabe","LOCALS",0) // Only once
+	Global("JO_JOIN_WANNABE_INIT","LOCALS",0) // Only once
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",1)
+		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",1)
 		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		Continue()
