@@ -36,7 +36,7 @@ IF
 		TimeOfDay(NIGHT)
 		TimeOfDay(DUSK)
 //
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Not at loading
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Not at loading
 //
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
@@ -102,7 +102,7 @@ END
 IF
 //
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Not at loading
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Not at loading
 	Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
 //
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)

@@ -74,7 +74,7 @@ IF ~True()~ THEN BEGIN 0
 // Free slots in party // Fill party
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
 		NumInParty(5)
-		Global("JO_JOIN_LOADING","GLOBAL",0)
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",0)
@@ -84,7 +84,7 @@ IF ~True()~ THEN BEGIN 0
 		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF6aa84fThere is room for one traveler to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
 		NumInParty(4)
-		Global("JO_JOIN_LOADING","GLOBAL",0)
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",0)
@@ -94,7 +94,7 @@ IF ~True()~ THEN BEGIN 0
 		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF6aa84fThere is room for two travelers to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
 		NumInParty(3)
-		Global("JO_JOIN_LOADING","GLOBAL",0)
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",0)
@@ -310,7 +310,7 @@ IF ~True()~ THEN BEGIN 0
 
 
 // Corrections
-	IF ~Global("JO_JOIN_LOADING","GLOBAL",0)
+	IF ~Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		OR(2)
 			Global("JO_JOIN_IS_MASTER_AREA","MYAREA",1)
 			Global("JO_JOIN_BLOP","GLOBAL",1)
@@ -321,7 +321,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Let's Blop !^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",1) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Don't switch if not in a master area or if ennemies are at sight.^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",0) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING.~ DO ~SetGlobal("JO_JOIN_LOADING","GLOBAL",0)~ EXIT //
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING_SWITCH.~ DO ~SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_CUTSCENE","GLOBAL",0)~ THEN REPLY ~JO_JOIN_CUTSCENE.~ DO ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)~ THEN REPLY ~JO_JOIN_SWITCHING_PARTY.~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)~ EXIT
 
@@ -398,7 +398,7 @@ IF ~True()~ THEN BEGIN 0
 
 
 		SetTokenGlobal("JO_JOIN_FORCE_LOAD","GLOBAL","JO_JOIN_FORCE_LOAD")
-		SetTokenGlobal("JO_JOIN_LOADING","GLOBAL","JO_JOIN_LOADING")
+		SetTokenGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL","JO_JOIN_LOADING_SWITCH")
 		SetTokenGlobal("JO_JOIN_LOAD","LOCALS","JO_JOIN_LOAD")
 		SetTokenGlobal("JO_JOIN_LOADING_PLAYER","LOCALS","JO_JOIN_LOADING_PLAYER")
 		SetTokenGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL","JO_JOIN_LOAD_PARTY_WAIT")
