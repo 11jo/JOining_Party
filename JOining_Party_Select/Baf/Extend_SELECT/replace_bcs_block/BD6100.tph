@@ -24,7 +24,9 @@ THEN
 END
 
 IF
-	!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+	OR(2)
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 	Global("bd_%Death_var%_sleep","bd6100",0)
 	StateCheck("%Death_var%",STATE_SLEEPING)
 THEN
@@ -51,7 +53,9 @@ END
 
 <<<<<<<<BD6100_bdsleep_add.baf
 IF
-	!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+	OR(2)
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 	Global("bd_finale","bd6100",4)
 	Global("bd_%Death_var%_down","bd6100",0)
 	!GlobalTimerNotExpired("bd_sleep_timer","bd6100")
