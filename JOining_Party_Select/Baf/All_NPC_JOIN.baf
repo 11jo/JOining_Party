@@ -85,7 +85,7 @@ END
 
 // Large range or different area
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",1)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 	!InMyArea(Player1)
 	InParty(Myself)
 THEN
@@ -101,8 +101,8 @@ IF // The party member making room for traveler Loading Switch if the party is f
 //
 	Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
 	OR(2)
-		GlobalGT("JO_JOIN_LOADING","GLOBAL",3) // Loading switch "almost" finished
-		Global("JO_JOIN_LOADING","GLOBAL",0) // Broken cutscene
+		GlobalGT("JO_JOIN_LOADING_SWITCH","GLOBAL",3) // Loading switch "almost" finished
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Broken cutscene
 //
 	NumInPartyLT(6)
 THEN

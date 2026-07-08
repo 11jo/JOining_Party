@@ -151,60 +151,60 @@ StartDialogueNoSet(Player6)~ EXIT
 // Switch with a player
 	IF ~!IsGabber(Player1)
 		IsGabber(PartySlot1)
-		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
-		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
 		IsGabber(PartySlot2)
-		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
-		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		~ GOTO JO_JOINYes// Manage travelers
 	IF ~!IsGabber(Player1)
 		IsGabber(PartySlot3)
-		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
-		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
 		IsGabber(PartySlot4)
-		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
-		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
 		IsGabber(PartySlot5)
-		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
-		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 		~ GOTO JO_JOINYes
 	IF ~!IsGabber(Player1)
 		IsGabber(PartySlot6)
-		Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!TriggerOverride(LastTalkedToBy,Global("JO_Myself_Valid","LOCALS",0))
-		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_Wannabe","LOCALS",0))
-		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+		!TriggerOverride(LastTalkedToBy,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+		GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)~ THEN REPLY ~^0xFF5b5b5bSwitch with me.^-~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 			ActionOverride(LastTalkedToBy,SetGlobal("JO_JOIN","LOCALS",1))
 			SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
@@ -261,8 +261,8 @@ StartDialogueNoSet(Player6)~ EXIT
 		SmallWait(2)
 //		RemoveFamiliar()
 		JoinParty()~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_Wannabe","LOCALS",1)~ THEN REPLY ~^0xFF16537eJoin the group properly, please, and at beginning don't make room for travelers.^-~ DO ~
-		SetGlobal("JO_JOIN_Wannabe","LOCALS",0)
+	IF ~Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)~ THEN REPLY ~^0xFF16537eJoin the group properly, please, and at beginning don't make room for travelers.^-~ DO ~
+		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -274,8 +274,8 @@ StartDialogueNoSet(Player6)~ EXIT
 		SmallWait(2)
 //		RemoveFamiliar()
 		JoinParty()~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_Wannabe","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Join the group properly, please, and at beginning make room for travelers.^-~ DO ~
-		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
+	IF ~Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Join the group properly, please, and at beginning make room for travelers.^-~ DO ~
+		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
 		SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -302,7 +302,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0)
 
 //		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
@@ -320,10 +320,10 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 
-		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
+		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -343,7 +343,7 @@ StartDialogueNoSet(Player6)~ EXIT
 
 
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
@@ -359,7 +359,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4I am currently talking to you, so it's fine !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO LEGION
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING.~ DO ~SetGlobal("JO_JOIN_LOADING","GLOBAL",0)~ EXIT //
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING_SWITCH.~ DO ~SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_CUTSCENE","GLOBAL",0)~ THEN REPLY ~JO_JOIN_CUTSCENE.~ DO ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~ EXIT //
 	/*IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_SWITCHING_PARTY.~ DO ~SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_TRAVELER_PARTY.~ DO ~SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)~ EXIT //
@@ -378,7 +378,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING")
 		SetTokenGlobal("JO_JOINI","LOCALS","JO_JOINI")
 		SetTokenGlobal("JO_JOIN_TALK","LOCALS","JO_JOIN_TALK")
-		SetTokenGlobal("JO_JOIN_CLEAR","LOCALS","JO_JOIN_CLEAR")
+		SetTokenGlobal("JO_JOIN_SET_JOINX","LOCALS","JO_JOIN_SET_JOINX")
 
 
 		SetTokenGlobal("JO_JOIN_PRIVACY","LOCALS","JO_JOIN_PRIVACY")
@@ -401,10 +401,10 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetTokenGlobal("JO_JOIN_NEVER_JOIN","LOCALS","JO_JOIN_NEVER_JOIN")
 
 
-		SetTokenGlobal("JO_JOIN_IS_Wannabe","LOCALS","JO_JOIN_IS_Wannabe")
+		SetTokenGlobal("JO_JOIN_WANNABE_INIT","LOCALS","JO_JOIN_WANNABE_INIT")
 		SetTokenGlobal("JO_JOIN_JOIN_TIMER","LOCALS","JO_JOIN_JOIN_TIMER")
 		SetTokenGlobal("JO_JOIN_SWITCH_TIMER","LOCALS","JO_JOIN_SWITCH_TIMER")
-		SetTokenGlobal("JO_JOIN_SWITCHING","GLOBAL","JO_JOIN_SWITCHING")
+		SetTokenGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL","JO_JOIN_SWITCHING_PARTY")
 		SetTokenGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS","JO_JOIN_READY_TO_SWITCH")
 		SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME")
 		SetTokenGlobal("JO_JOIN_QUICK_SWITCH","LOCALS","JO_JOIN_QUICK_SWITCH")
@@ -440,7 +440,7 @@ StartDialogueNoSet(Player6)~ EXIT
 
 
 		SetTokenGlobal("JO_JOIN_FORCE_LOAD","GLOBAL","JO_JOIN_FORCE_LOAD")
-		SetTokenGlobal("JO_JOIN_LOADING","GLOBAL","JO_JOIN_LOADING")
+		SetTokenGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL","JO_JOIN_LOADING_SWITCH")
 		SetTokenGlobal("JO_JOIN_LOAD","LOCALS","JO_JOIN_LOAD")
 		SetTokenGlobal("JO_JOIN_LOADING_PLAYER","LOCALS","JO_JOIN_LOADING_PLAYER")
 		SetTokenGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL","JO_JOIN_LOAD_PARTY_WAIT")
@@ -680,7 +680,7 @@ IF ~~ THEN BEGIN JO_JOINStat
 	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am not considered like ready to talk.^-~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(4)
-			!Global("JO_JOIN_CLEAR","LOCALS",0)
+			!Global("JO_JOIN_SET_JOINX","LOCALS",0)
 			!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 			!Global("JO_JOINI","LOCALS",0)
 			!Global("JO_JOIN_TALK","LOCALS",0)~ THEN REPLY ~Il semble que la transition ne soit pas terminée.~ GOTO JO_JOINStatEnd

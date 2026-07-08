@@ -65,7 +65,7 @@ To enable the PID, charname need to use his ability on a traveler, then Charname
 - REPLY : _"Something feel wrong, we can settle this now."_ // **Cancel most variables assigned to the traveler.** (Except "We need to adjust...") (**To use only if problems arise**)
 - REPLY : _"JO_NOJOIN."_ // **This variable is set when a transition between party and traveler is processing.** (Should not appear when no one switch)
 - REPLY : _"I am currently talking with you !."_ // **JO_JOIN variable is set to make the PID available for the traveler** (Should always appear)
-- REPLY : _"JO_JOIN_LOADING."_ // **This variable is set when the Loading Switch process** (Should never appear)
+- REPLY : _"JO_JOIN_LOADING_SWITCH."_ // **This variable is set when the Loading Switch process** (Should never appear)
 
 - REPLY : _"How do you feel as traveler."_ // **Ask the traveler to check statut.** (Will be expanded)
 
@@ -152,7 +152,7 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 - REPLY : _"Let's Blop !"_ **Enable  Loading Switch and Switching Party in every area and situation.**
 - REPLY : _"Don't switch if not in a master area or if ennemies are at sight."_ **In these situations the group will be transported in special Candelkeep area for the Loading Switch.** (The Switching Party will wait for better circonstances)
 - REPLY : _"JO_NOJOIN."_ // **This variable is set when a transition between party and traveler is processing.** (Should not appear when no one switch)
-- REPLY : _"JO_JOIN_LOADING."_ // **This variable is set when the Loading Switch process** (Should never appear)
+- REPLY : _"JO_JOIN_LOADING_SWITCH."_ // **This variable is set when the Loading Switch process** (Should never appear)
 - REPLY : _"JO_JOIN_CUTSCENE."_ // **This variable is set when a cutscene is processing** (Should never appear)
 
 - REPLY : _"Let's try a Loading Switch !"_ **Force the Loading Switch at anytime.** (To use if something isn't right or for fun...)

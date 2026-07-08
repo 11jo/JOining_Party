@@ -4,7 +4,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_LOADING (Finish Loading Switch script/CutSceneLite)
+	// JO_JOIN_LOADING_SWITCH (Finish Loading Switch script/CutSceneLite)
 		// JO_JOIN_LOAD (Used by Charname to slow down the script execution and by travelers loading steps)
 			// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_Select_End.tph Expand the trigger with OR(3) for each travelers))
@@ -16,11 +16,11 @@
 
 // TP on JO2608 map if current area is not a master area or fight is ongoing
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",1)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 	!AreaCheck("JO2608")
 	!Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for no master area
 	OR(3)
-		!Global("JO_JOIN_AREA","MYAREA",1)  // Current area IS'NT a master area
+		!Global("JO_JOIN_IS_MASTER_AREA","MYAREA",1)  // Current area IS'NT a master area
 		ActuallyInCombat()
 		Detect([ENEMY])
 THEN
@@ -49,7 +49,7 @@ END
 
 // Active loading switch sequence
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",1)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 	OR(2)
 		InMyArea(PartySlot6)
 		!NumInPartyGT(5)
@@ -74,18 +74,18 @@ THEN
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		DisplayStringHead(Myself,~Travelers !~)
-		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		SetInterrupt(TRUE)
 END
 
 
 // One party member have to make room for traveler Loading Switch if the party is full
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",2)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInPartyGT(5)
 THEN
 	RESPONSE #100
-		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
@@ -95,17 +95,17 @@ END
 
 // Party is not full, just go to step3
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",2)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	!NumInPartyGT(5)
 THEN
 	RESPONSE #100
-		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		Continue()
 END
 
 
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",2)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	Global("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -117,7 +117,7 @@ END
 // delay
 IF
 	Delay(1)
-	Global("JO_JOIN_LOADING","GLOBAL",3)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
 	!Global("JO_JOIN_LOAD","LOCALS",0)
 	NumInPartyLT(6)
 THEN
@@ -130,13 +130,13 @@ END
 IF
 // 
 	Global("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
-	Global("JO_JOIN_LOADING","GLOBAL",3)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
 	Global("JO_JOIN_LOAD","LOCALS",0)
 //	REPLACE_TRAVELER_JO_LOAD_NO_SET
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~Almost...~)
-		IncrementGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -145,14 +145,14 @@ END
 
 IF
 	AreaCheck("JO2608")
-	Global("JO_JOIN_LOADING","GLOBAL",4)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",4)
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		DisplayStringHead(Myself,~Let's return to venture forth !!~)
 		SetCutSceneBreakable(FALSE)
@@ -175,7 +175,7 @@ END
 
 IF
 	!AreaCheck("JO2608")
-	Global("JO_JOIN_LOADING","GLOBAL",4)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",4)
 	!GlobalGT("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -184,7 +184,7 @@ THEN
 		SetAreaScript("",OVERRIDE)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		DisplayStringHead(Myself,~let's venture forth !~)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf

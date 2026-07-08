@@ -20,8 +20,8 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
-		// JO_JOIN_AREA (Check if current area is a master area)
+	// JO_JOIN_LOADING_SWITCH (Launch Loading Switch script/CutSceneLite)
+		// JO_JOIN_IS_MASTER_AREA (Check if current area is a master area)
 			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
 				// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
 					// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
@@ -32,7 +32,7 @@ END
 IF
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	NumInPartyGT(5)
 	OR(2)
@@ -49,7 +49,7 @@ END
 IF
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	InPartySlot(PartySlot6,0) // Charname is PartySlot6
 THEN
 	RESPONSE #100
@@ -62,7 +62,7 @@ END
 IF
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
@@ -76,7 +76,7 @@ END
 IF // Conditions are OK: loading switch starting
 	OR(2)
 		OnCreation()
-		Global("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Force Loading Switch
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100
@@ -86,7 +86,7 @@ THEN
 		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
 		SetGlobal("JO_JOIN_CUTSCENE ","GLOBAL",0)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
-		SetGlobal("JO_JOIN_LOADING","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END
@@ -373,7 +373,7 @@ END
 
 IF
 //
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
 //
@@ -394,9 +394,9 @@ END
 
 IF
 	OR(7)
-		!Global("JO_JOIN_LOADING","GLOBAL",0)
+		!Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		!Global("JO_JOIN_SWITCHING","GLOBAL",0)
+		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		!Global("JO_NOJOIN","GLOBAL",0)
@@ -414,9 +414,9 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_LOADING","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
@@ -449,7 +449,7 @@ END
 IF
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
 //
-	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	!GlobalTimerNotExpired("JO_JOIN_BANTER_TIMER","LOCALS")
 	!AreaCheck("JO2608")
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
