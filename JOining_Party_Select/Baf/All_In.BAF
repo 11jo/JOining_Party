@@ -298,19 +298,19 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_Wannabe (If set to 1 the NPC is available to be a traveler Can be changed in PID)
+	// JO_JOIN_WANNABE_TRAVELER (If set to 1 the NPC is available to be a traveler Can be changed in PID)
 // Note :
 	// A party member available to be traveler
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Global("JO_JOIN_Wannabe","LOCALS",0)
+	Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 	InParty(Myself)
 	Global("JO_JOIN_IS_Wannabe","LOCALS",0) // Only once
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",1)
-		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
+		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		Continue()
 END
@@ -324,7 +324,7 @@ END
 	// JO_JOIN_SWITCH_TIMER (Timer make sure the NPC stay long enough in party)
 		// JO_JOIN_SWITCH_WITH_ME (If set to 1 then the party member is available for switching with a traveler)
 			// JO_JOIN_READY_TO_SWITCH (After some time in party, a party member can echange place with a traveler)
-				// JO_JOIN_Wannabe (Party member eligible and willing to be traveler)
+				// JO_JOIN_WANNABE_TRAVELER (Party member eligible and willing to be traveler)
 // Note :
 	// Related to Switching party in JO_JOINI.baf
 		// Reset globals and set JO_JOIN_SWITCH_TIMER randomly
@@ -494,7 +494,7 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Sw
 		!GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
 	Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 	!Global("JO_Myself_Valid","LOCALS",0)
-	!Global("JO_JOIN_Wannabe","LOCALS",0)
+	!Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
@@ -511,12 +511,12 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",0 then the NPC is not available for 
 	OR(4)
 		!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		Global("JO_Myself_Valid","LOCALS",0)
-		Global("JO_JOIN_Wannabe","LOCALS",0)
+		Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 		GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS") // Timer make sure the party member stay long enough in party
 	OR(4)
 		!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		Global("JO_Myself_Valid","LOCALS",0)
-		Global("JO_JOIN_Wannabe","LOCALS",0)
+		Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 		Global("JO_JOIN_PS_NO_TIMER_DEV","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -612,11 +612,11 @@ IF // If no party member are available to be traveler the Player need to make so
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",1))
-	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",1))
+	!TriggerOverride(Player6,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
+	!TriggerOverride(Player5,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
+	!TriggerOverride(Player4,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
+	!TriggerOverride(Player3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
+	!TriggerOverride(Player2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
 // 	!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : See below, but this block could be expanded to take party member not valid in consideration.
 //	RandomNum(5,2)
 THEN
@@ -652,7 +652,7 @@ IF // PartySlot6
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	!TriggerOverride(PartySlot6,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(PartySlot6,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	!TriggerOverride(PartySlot6,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
 //	!TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
@@ -689,7 +689,7 @@ IF // PartySlot5
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	!TriggerOverride(PartySlot5,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(PartySlot5,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	!TriggerOverride(PartySlot5,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
 //	!TriggerOverride(PartySlot5,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
@@ -725,7 +725,7 @@ IF // PartySlot4
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	!TriggerOverride(PartySlot4,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(PartySlot4,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	!TriggerOverride(PartySlot4,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
 //	!TriggerOverride(PartySlot4,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
@@ -761,7 +761,7 @@ IF // PartySlot3
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	!TriggerOverride(PartySlot3,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(PartySlot3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	!TriggerOverride(PartySlot3,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
 //	!TriggerOverride(PartySlot3,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,2)
@@ -797,7 +797,7 @@ IF // PartySlot2
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
-	!TriggerOverride(PartySlot2,Global("JO_JOIN_Wannabe","LOCALS",0))
+	!TriggerOverride(PartySlot2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	!TriggerOverride(PartySlot2,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
 //	!TriggerOverride(PartySlot2,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
 //	RandomNum(5,1)
@@ -1210,7 +1210,7 @@ END
 							// JO_JOIN_NEVER_BANTER (Prevent lauching banters)
 								// JO_JOIN (Used to make a party member a traveler)
 									// JO_JOIN_IS_TRAVELER (Set to 1 if the character is a traveler)
-										// JO_JOIN_Wannabe (If set to 1 the NPC is available to be a traveler Can be changed in PID)
+										// JO_JOIN_WANNABE_TRAVELER (If set to 1 the NPC is available to be a traveler Can be changed in PID)
 // Note :
 	// First time from party to familiar
 		 // Add script GENERAL JO_JOINI
@@ -1245,7 +1245,7 @@ THEN
 //
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
-		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
+		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
 //
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -1280,7 +1280,7 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
-		SetGlobal("JO_JOIN_Wannabe","LOCALS",1)
+		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
@@ -1378,7 +1378,7 @@ THEN
 		AddFamiliar()
 		SmallWait(1)
 //
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_WANNABE_TRAVELER in All_in
 //
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
@@ -1421,7 +1421,7 @@ THEN
 		SmallWait(2)
 		ChangeEnemyAlly(Myself,CONTROLLED)
 		SmallWait(1)
- // Related to Switching party in JO_JOINI and JO_JOIN_Wannabe in All_in
+ // Related to Switching party in JO_JOINI and JO_JOIN_WANNABE_TRAVELER in All_in
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
