@@ -161,7 +161,7 @@ THEN
 //		SetGlobal("JO_JOIN_IS_Wannabe","LOCALS",0)
 //		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
@@ -484,7 +484,7 @@ END
 IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Switching Party
 //
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Party switching inactive
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Party switching inactive
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
@@ -504,7 +504,7 @@ END
 
 IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",0 then the NPC is not available for a Switching Party
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Party switching inactive
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Party switching inactive
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 
@@ -531,12 +531,12 @@ END
 
 IF // After Switching Party with a party member Reset JO_NOJOIN and set JO_JOIN_SWITCH_TIMER, and other related variables
 //
-	Global("JO_JOIN_SWITCHING","GLOBAL",3) // Switching party step 3
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",3) // Switching party step 3
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	InParty(Myself)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
@@ -565,7 +565,7 @@ END
 IF // Selected party member to make room
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
 	InParty(Myself)
 	!InPartySlot(Myself,0)
 //
@@ -599,7 +599,7 @@ IF // If no party member are available to be traveler the Player need to make so
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
 //
 	NumInPartyGT(5)
 	OR(2)
@@ -636,7 +636,7 @@ IF // PartySlot6
 //
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
@@ -673,7 +673,7 @@ IF // PartySlot5
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
@@ -709,7 +709,7 @@ IF // PartySlot4
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
@@ -745,7 +745,7 @@ IF // PartySlot3
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
@@ -781,7 +781,7 @@ IF // PartySlot2
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 	Global("JO_NOJOIN","GLOBAL",0)
@@ -998,7 +998,7 @@ IF // Reintegrate the party member in party
 	
 	Global("JO_JOIN_LOADING","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 //
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
@@ -1293,11 +1293,11 @@ END
 
 IF
 	Global("JO_JOIN","LOCALS",1)
-	Global("JO_JOIN_SWITCHING","GLOBAL",2) // Switching party step 2
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",2) // Switching party step 2
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3) // set by traveler during party switch
 THEN
 	RESPONSE #100
-		IncrementGlobal("JO_JOIN_SWITCHING","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)

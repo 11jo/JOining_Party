@@ -31,7 +31,7 @@ EXTEND_BOTTOM JOJOINNE 3
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player2))~ EXIT
-  IF ~Global("JO_JOIN_SWITCHING","GLOBAL",0)
+  IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -39,14 +39,14 @@ EXTEND_BOTTOM JOJOINNE 3
 	!TriggerOverride(Player2,Global("JO_JOIN_Wannabe","LOCALS",0))
 	!TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
 		~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 				ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 				ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2))~ EXIT
 END
 
 EXTEND_BOTTOM JOJOINNE 4
-  IF ~Global("JO_JOIN_SWITCHING","GLOBAL",0)
+  IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -61,14 +61,14 @@ EXTEND_BOTTOM JOJOINNE 4
 	!TriggerOverride(Player3,Global("JO_JOIN_Wannabe","LOCALS",0))
 	!TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
 		~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 				ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 				ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2))~ EXIT
 END
 
 EXTEND_BOTTOM JOJOINNE 5
-  IF ~Global("JO_JOIN_SWITCHING","GLOBAL",0)
+  IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -83,14 +83,14 @@ EXTEND_BOTTOM JOJOINNE 5
 	!TriggerOverride(Player4,Global("JO_JOIN_Wannabe","LOCALS",0))
 	!TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
 		~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 				ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 				ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2))~ EXIT
 END
 
 EXTEND_BOTTOM JOJOINNE 6
-  IF ~Global("JO_JOIN_SWITCHING","GLOBAL",0)
+  IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -105,14 +105,14 @@ EXTEND_BOTTOM JOJOINNE 6
 	!TriggerOverride(Player5,Global("JO_JOIN_Wannabe","LOCALS",0))
 	!TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
 		~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 				ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 				ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2))~ EXIT
 END
 
 EXTEND_BOTTOM JOJOINNE 7
-  IF ~Global("JO_JOIN_SWITCHING","GLOBAL",0)
+  IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -127,7 +127,7 @@ EXTEND_BOTTOM JOJOINNE 7
 	!TriggerOverride(Player6,Global("JO_JOIN_Wannabe","LOCALS",0))
 	!TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
 		~ THEN REPLY ~^0xFF16537e...switch with %%Death_var%_name%^- !~
-			DO ~SetGlobal("JO_JOIN_SWITCHING","GLOBAL",2)
+			DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",2)
 				ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",3))
 				ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2))~ EXIT
