@@ -132,6 +132,7 @@
 | JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
 | JO_%Death_var%_LeaveParty | G | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
 | JO_Myself_LeaveParty | L | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
+| JO_JOIN_LEAVING_PARTY | G | |
 | JO_JOIN_JOIN | L | Timer for switching traveler to NPCs regulary | n/a |
 | JO_JOIN_SLEEPING_DEAD | L | If traveler is sleeping dead | 0: False<br>Other: True |
 | JO_JOIN_TALK | L | For first time becoming a traveler | 0: False<br>Other: True |
@@ -163,6 +164,7 @@
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
 | JO_JOIN_LOADING | G | Launch Loading Switch script/CutSceneLite |0: not initialized<br>1: initialisation<br>2: slot6 is leaving<br>3: travelers switching<br>4: slot6 returns and go back to aventure
+| JO_JOIN_LOADING_PLAYER | L | Player1: Check if a party member is deactivated during loading switch<br>Other: Check is the active creature is deactivated during loading switch| 0: False<br>Other: True
 | JO_JOIN_SWITCHING | G | Party switching step | 0: inactive<br>1: is starting<br>2: target found<br>3: switching
 | JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
 | JO_JOIN_TRAVELER_NUM | G | Check if a least one traveler is present | 0: False<br>Other: True
@@ -171,6 +173,11 @@
 | JO_JOIN_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
 | JO_JOIN_JOIN_TIMER | L | | n/a
 | JO_JOIN_BANTER_TIMER | L | | n/a
+| JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
+| JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party |
+| JO_JOIN_INDEPANDANCE | L | Deactive travelers if Charname is separate from the party but in the same area |
+| JO_JOIN_QUICK_SWITCH | L | |
+| JO_JOIN_LOAD_PARTY_WAIT | G | | 0: False<br>Other: True
 
 ---
 
