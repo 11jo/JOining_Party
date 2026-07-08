@@ -141,7 +141,7 @@
 | JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
 | JO_JOIN | L | Transform to traveler | 1: process of becoming traveler is actived<br>2: process is over<br>Other: normal status |
 | JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
-| JO_JOIN_CLEAR | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: nothing<br>3: Script is up to date<br>Other: nothing|
+| JO_JOIN_SET_JOINX | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: nothing<br>3: Script is up to date<br>Other: nothing|
 | JO_JOIN_IS_JOINING | L | The traveler will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
 | JO_JOIN_HIDE_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
@@ -211,7 +211,7 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_IS_JOINING","LOCALS")
 	GetGlobal("JO_JOINI","LOCALS")
 	GetGlobal("JO_JOIN_TALK","LOCALS")
-	GetGlobal("JO_JOIN_CLEAR","LOCALS")
+	GetGlobal("JO_JOIN_SET_JOINX","LOCALS")
 
 	GetGlobal("JO_JOIN_Move_Done","LOCALS")
 	GetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS")

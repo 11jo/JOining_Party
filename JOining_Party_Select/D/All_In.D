@@ -302,7 +302,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN_TALK","LOCALS",0)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0)
 
 //		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
 //		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
@@ -378,7 +378,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING")
 		SetTokenGlobal("JO_JOINI","LOCALS","JO_JOINI")
 		SetTokenGlobal("JO_JOIN_TALK","LOCALS","JO_JOIN_TALK")
-		SetTokenGlobal("JO_JOIN_CLEAR","LOCALS","JO_JOIN_CLEAR")
+		SetTokenGlobal("JO_JOIN_SET_JOINX","LOCALS","JO_JOIN_SET_JOINX")
 
 
 		SetTokenGlobal("JO_JOIN_PRIVACY","LOCALS","JO_JOIN_PRIVACY")
@@ -680,7 +680,7 @@ IF ~~ THEN BEGIN JO_JOINStat
 	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am not considered like ready to talk.^-~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(4)
-			!Global("JO_JOIN_CLEAR","LOCALS",0)
+			!Global("JO_JOIN_SET_JOINX","LOCALS",0)
 			!Global("JO_JOIN_IS_JOINING","LOCALS",0)
 			!Global("JO_JOINI","LOCALS",0)
 			!Global("JO_JOIN_TALK","LOCALS",0)~ THEN REPLY ~Il semble que la transition ne soit pas terminée.~ GOTO JO_JOINStatEnd
