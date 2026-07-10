@@ -1326,7 +1326,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 // Variables : :
 	// JO_JOIN_JOIN_TIMER (Set when a party member become a traveler or when a traveler do a quick switch)
-		// JO_JOIN_FORCE_SWITCH (Set by PID)
+		// JO_JOIN_QUICK_FORCE_JOIN (Set by PID)
 			// JO_JOINI (Set in JO_JOINI.baf when a traveler is in party for a Quick Switch)
 // Note :
 	// Switch between familiar and party
@@ -1385,7 +1385,7 @@ THEN
 //
 		SetGlobal("JO_JOIN","LOCALS",2)
 //
-		SetGlobal("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
 //
 // Add switch familiar related  script
 //		ChangeAIScript("",RACE)
@@ -1426,7 +1426,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobal("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		SetInterrupt(TRUE)
 		Face(S)
