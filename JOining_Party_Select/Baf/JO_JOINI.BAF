@@ -633,6 +633,16 @@ END
 				// Also used by Loading Party
 ///////////////////////////////////////////////////////////////////////////////
 
+// Primary // Reset the Quick Switch on Creation
+
+IF
+//
+	OnCreation()
+THEN
+	RESPONSE #100
+		SetGlobalTimerRandom("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",TWELVE_HOURS,TWO_DAYS)
+END
+
 // Main Quick Switch 1
 
 IF

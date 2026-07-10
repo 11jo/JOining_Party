@@ -1333,22 +1333,6 @@ END
 		// Also used by Loading Party
 ///////////////////////////////////////////////////////////////////////////////
 
-// Primary // Reset the Quick Switch on Creation
-
-IF
-//
-	OnCreation()
-THEN
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_DAYS)
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",EIGHTEEN_HOURS)
-END
-
 // Main Quick Switch 4 (Previous are in JO_JOINI.baf)
 
 IF // ChangeEnemyAlly(Myself,FAMILIAR)
