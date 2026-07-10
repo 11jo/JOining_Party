@@ -466,7 +466,7 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
 
-		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",0)
+		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
@@ -609,7 +609,7 @@ IF // security check
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0)
+//		SetGlobal("JO_JOIN_JOIN_TIMER","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
@@ -2870,7 +2870,6 @@ THEN
 		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
@@ -2926,38 +2925,3 @@ THEN
 END
 
 ///////////////////////////////////////////////////////////////////////////////
-
-// Security if JO_JOIN_TRAVELER_SWITCH don't implement properly
-
-// TODO : Should not be needed anymore
-
-///////////////////////////////////////////////////////////////////////////////
-/*
-IF
-	GlobalGT("JO_JOIN_MY_SWITCH","LOCALS",0)
-//
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_NOJOIN","GLOBAL",0)
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN_IS_JOINING","LOCALS",0)
-//
-	Switch("JO_JOIN_MY_SWITCH","LOCALS")
-THEN
-	RESPONSE #1
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-1)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-1)
-		DisplayStringHead(Myself,~1 !~)
-	RESPONSE #2
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-2)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-2)
-		DisplayStringHead(Myself,~2 !~)
-	RESPONSE #3
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-3)
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-3)
-		DisplayStringHead(Myself,~3 !~)
-END
-*/
