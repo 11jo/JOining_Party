@@ -220,8 +220,8 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fI did dream about you !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes //
 // Temporary : travelers switch
-	IF ~Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bRemain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
-	IF ~!Global("JO_JOIN_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bRemain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~!Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
 	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
 // Banters
 	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am exhausted by your conversation, please stop interrupting the group.^-~ DO ~
@@ -245,7 +245,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ GOTO JO_JOINYes //
 	IF ~~ THEN REPLY ~^0xFF5b5b5bJoin the group properly, please, and don't switch your place with travelers.^-~ DO ~
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
 		SmallWait(1)
@@ -318,7 +318,7 @@ StartDialogueNoSet(Player6)~ EXIT
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 
 		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
@@ -398,7 +398,7 @@ StartDialogueNoSet(Player6)~ EXIT
 
 		SetTokenGlobal("JO_JOIN_NEVER_BANTER","LOCALS","JO_JOIN_NEVER_BANTER")
 		SetTokenGlobal("JO_JOIN_NEVER_SWITCH","LOCALS","JO_JOIN_NEVER_SWITCH")
-		SetTokenGlobal("JO_JOIN_NEVER_JOIN","LOCALS","JO_JOIN_NEVER_JOIN")
+		SetTokenGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS","JO_JOIN_QUICK_NEVER_JOIN")
 
 
 		SetTokenGlobal("JO_JOIN_WANNABE_INIT","LOCALS","JO_JOIN_WANNABE_INIT")
@@ -689,9 +689,9 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)~ THEN REPLY ~I am dead...~ GOTO JO_JOINStatEnd
 //
-	IF ~!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS") !Global("JO_JOIN_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^0xFF6aa84fI am ready for a Quick Switch.^-~ GOTO JO_JOINStatEnd
+	IF ~!GlobalTimerNotExpired("JO_JOIN_JOIN_TIMER","LOCALS") !Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^0xFF6aa84fI am ready for a Quick Switch.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Global("JO_JOIN_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't join the group for a Quick Switch.^-~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't join the group for a Quick Switch.^-~ GOTO JO_JOINStatEnd
 //
 	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",1)~ THEN REPLY ~^0xFF5b5b5bI don't participate to the conversations.^-~ GOTO JO_JOINStatEnd
 //
