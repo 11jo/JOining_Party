@@ -110,11 +110,11 @@ THEN
 		Continue()
 	RESPONSE #3
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",1)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",1)
 		Continue()
 	RESPONSE #4
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		Continue()
 /*	RESPONSE #8
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
@@ -155,10 +155,10 @@ THEN
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 
 		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
-//		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN)
+//		SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",ONE_TURN)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
@@ -930,7 +930,7 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_TRAVELER_Myself","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -1204,7 +1204,7 @@ END
 	// JO_JOIN_SWITCH_TIMER (Timer for starting for Switching Party)
 			// JO_NOJOIN (Check if no traveler is currently switching)
 				// JO_JOIN_TALK (Used to display string We are now fellow travelers.)
-					// JO_JOIN_NEVER_JOIN (Prevent Quick Switch and Fill Party)
+					// JO_JOIN_QUICK_NEVER_JOIN (Prevent Quick Switch and Fill Party)
 						// JO_JOIN_NEVER_SWITCH (Prevent the Switching Party)
 							// JO_JOIN_NEVER_BANTER (Prevent lauching banters)
 								// JO_JOIN (Used to make a party member a traveler)
@@ -1246,10 +1246,10 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
 //
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
-//		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",ONE_TURN) // Moved in Jo_Joini to facilitate componant Traveler Quick Switch Timer
+//		SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",ONE_TURN) // Moved in Jo_Joini to facilitate componant Traveler Quick Switch Timer
 		ChangeAIScript("JO_JOINI",GENERAL)
 		SetInterrupt(TRUE)
 		Continue()
@@ -1280,7 +1280,7 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
-		SetGlobal("JO_JOIN_NEVER_JOIN","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		ChangeAIScript("JO_JOINI",GENERAL)
@@ -1298,7 +1298,7 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-//		SetGlobalTimer("JO_JOIN_JOIN_TIMER","LOCALS",TWO_DAYS) // Not related to SWITCHING_PARTY
+//		SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",TWO_DAYS) // Not related to SWITCHING_PARTY
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		Continue()
 END
@@ -1325,29 +1325,13 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables : :
-	// JO_JOIN_JOIN_TIMER (Set when a party member become a traveler or when a traveler do a quick switch)
-		// JO_JOIN_FORCE_SWITCH (Set by PID)
+	// JO_JOIN_QUICK_JOIN_TIMER (Set when a party member become a traveler or when a traveler do a quick switch)
+		// JO_JOIN_QUICK_FORCE_JOIN (Set by PID)
 			// JO_JOINI (Set in JO_JOINI.baf when a traveler is in party for a Quick Switch)
 // Note :
 	// Switch between familiar and party
 		// Also used by Loading Party
 ///////////////////////////////////////////////////////////////////////////////
-
-// Primary // Reset the Quick Switch on Creation
-
-IF
-//
-	OnCreation()
-THEN
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_DAYS)
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS)
-	RESPONSE #25
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",EIGHTEEN_HOURS)
-END
 
 // Main Quick Switch 4 (Previous are in JO_JOINI.baf)
 
@@ -1385,7 +1369,7 @@ THEN
 //
 		SetGlobal("JO_JOIN","LOCALS",2)
 //
-		SetGlobal("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
 //
 // Add switch familiar related  script
 //		ChangeAIScript("",RACE)
@@ -1426,7 +1410,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",2)
-		SetGlobal("JO_JOIN_FORCE_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		SetInterrupt(TRUE)
 		Face(S)

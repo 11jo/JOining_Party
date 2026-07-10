@@ -170,8 +170,8 @@
 | JO_JOIN_TRAVELER_NUM | G | Check if a least one traveler is present | 0: False<br>Other: True
 | JO_JOIN_FORCE_LOAD | G | Force the Loading Switch at will | 0: False<br>Other: True
 | JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly if free slots are available | 0: False<br>Other: True
-| JO_JOIN_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
-| JO_JOIN_JOIN_TIMER | L | | n/a
+| JO_JOIN_QUICK_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
+| JO_JOIN_QUICK_JOIN_TIMER | L | | n/a
 | JO_JOIN_BANTER_TIMER | L | | n/a
 | JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
 | JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party |
@@ -203,7 +203,7 @@ CLUAConsole:
 
 	GetGlobal("JO_JOIN_IS_TRAVELER","LOCALS") // NPC is a traveler
 	GetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS") // Party members are available to leave the groupe at loading
-	GetGlobal("JO_JOIN_NEVER_JOIN","LOCALS") // Temporarly prevent travelers to switch or join the group // Reinitialised at loading and when switching
+	GetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS") // Temporarly prevent travelers to switch or join the group // Reinitialised at loading and when switching
 	GetGlobal("JO_JOIN_NEVER_BANTER","LOCALS") // Prevent banter // Reactivate by dialg only
 	GetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS") // Prevent JO_JOIN_READY_TO_SWITCH and so Prevent switching place with party members
 
@@ -224,7 +224,7 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS") // Travelers and Party members are ready and available to switch their place.
 	GetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS") // Travelers and Party members are in process of switching place
 
-	GetGlobal("JO_JOIN_JOIN_TIMER","LOCALS")
+	GetGlobal("JO_JOIN_QUICK_JOIN_TIMER","LOCALS")
 	GetGlobal("JO_JOIN_BANTER_TIMER","LOCALS")
 	GetGlobal("JO_JOIN_SWITCH_TIMER","LOCALS")
 
