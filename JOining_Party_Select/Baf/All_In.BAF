@@ -164,7 +164,7 @@ THEN
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
@@ -280,12 +280,12 @@ IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
 	InParty(Myself)
-	!Global("JO_JOIN_Fill_Party","LOCALS",0)
+	!Global("JO_JOIN_FILL_PARTY","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetInterrupt(TRUE)
 		Continue()

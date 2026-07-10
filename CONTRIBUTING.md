@@ -169,7 +169,7 @@
 | JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
 | JO_JOIN_TRAVELER_NUM | G | Check if a least one traveler is present | 0: False<br>Other: True
 | JO_JOIN_FORCE_LOAD | G | Force the Loading Switch at will | 0: False<br>Other: True
-| JO_JOIN_Fill_Party | L | Allow traveler to join the group properly if free slots are available | 0: False<br>Other: True
+| JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly if free slots are available | 0: False<br>Other: True
 | JO_JOIN_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
 | JO_JOIN_JOIN_TIMER | L | | n/a
 | JO_JOIN_BANTER_TIMER | L | | n/a
@@ -216,7 +216,7 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_Move_Done","LOCALS")
 	GetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS")
 	GetGlobal("JO_Myself_LeaveParty","LOCALS")
-	GetGlobal("JO_JOIN_Fill_Party","LOCALS") // Allow traveler to join the group properly if free slots are available
+	GetGlobal("JO_JOIN_FILL_PARTY","LOCALS") // Allow traveler to join the group properly if free slots are available
 	GetGlobal("JO_JOIN_WANNABE_INIT","LOCALS") // First time InParty JO_JOIN_WANNABE_TRAVELER is set to 1 only once
 	GetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS")
 	GetGlobal("JO_JOIN_IS_HIDDEN","LOCALS")

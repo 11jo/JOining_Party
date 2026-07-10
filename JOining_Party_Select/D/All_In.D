@@ -327,7 +327,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_Fill_Party","LOCALS",0)
+		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
@@ -411,7 +411,7 @@ StartDialogueNoSet(Player6)~ EXIT
 
 
 		SetTokenGlobal("JO_JOIN_NEVER_FILL","LOCALS","JO_JOIN_NEVER_FILL")
-		SetTokenGlobal("JO_JOIN_Fill_Party","LOCALS","JO_JOIN_Fill_Party")
+		SetTokenGlobal("JO_JOIN_FILL_PARTY","LOCALS","JO_JOIN_FILL_PARTY")
 
 
 		SetTokenGlobal("JO_JOIN_CAMPAIGN_BANTER","GLOBAL","JO_JOIN_CAMPAIGN_BANTER")
