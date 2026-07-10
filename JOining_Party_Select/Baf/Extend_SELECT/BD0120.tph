@@ -27,7 +27,6 @@ THEN
 		SetGlobal("JO_TRAVELER_#Ishy","GLOBAL",0)
 		ActionOverride("#Ishy",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		SetGlobal("JO_JOIN_bd0120_#Ishy","MYAREA",1)
-		DisplayString("#Ishy",~See you on the other side !~)
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -41,7 +40,7 @@ THEN
 END
 
 >>>>>>>>
-EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~bdintro.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	END
 
@@ -81,7 +80,7 @@ THEN
 END
 
 >>>>>>>>
-EXTEND_TOP ~bd0120.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~bdintro.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 	END
 

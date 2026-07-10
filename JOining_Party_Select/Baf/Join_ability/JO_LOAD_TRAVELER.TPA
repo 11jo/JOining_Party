@@ -14,6 +14,7 @@
 // Loading Switch
 COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
 	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
+	InMyArea("%Death_var%")
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
 	Global("JO_JOIN_LOAD","LOCALS",0)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
