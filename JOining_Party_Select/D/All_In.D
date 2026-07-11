@@ -126,16 +126,17 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~IsGabber(Player1) GlobalGT("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes //
 
 // Indepandance for traveler // ChangeEnemyAlly
+
 /*
 	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFF6aa84fIt's better for the group if you are more independent.^-~ DO ~SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1) SetGlobal("JO_JOIN_FAMILIAR","LOCALS",0)
 //		RemoveFamiliar()
 		ChangeEnemyAlly(Myself,CONTROLLED)~ GOTO JO_JOINYes //
 */
-
+/*
 	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFFffe599I prefer to have a strong bond with you.^-~ DO ~SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
 	ChangeEnemyAlly(Myself,FAMILIAR)
 //	AddFamiliar()~ GOTO JO_JOINYes //
-
+*/
 // Switch with a player
 	IF ~!IsGabber(Player1)
 		IsGabber(PartySlot1)

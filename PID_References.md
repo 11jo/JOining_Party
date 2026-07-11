@@ -101,24 +101,50 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 ---
 
 - REPLY : _"Sorry, I'm just trying to draw some attention..."_ // **Close the dialog.**
+
 - REPLY : _"Stop the Quick Switch for a while, please."_ // **Prevent the Quick Switch for all travelers.**
 - REPLY : _"You are free to Quick Switch when you feel like."_ // **Allow the Quick Switch for all travelers.**
+- REPLY : _"Let's switch, one by one, quietly and in order."_ // **Force the Quick Switch for all travelers.** (Except those who are prevented to do so) (Collision with "Stop the Quick Switch for a while, please.")
+- REPLY : _"Quick Switch isn't available here."_ // **The Quick Switch is disabled for story reasons, will be reactivated shortly after event or in another area.**
+
 - REPLY : _"I don't want to see any of you in my dream."_ // **Deactive all travelers for cutscenes.**
-- REPLY : _"I did dream about my dear fellow travelers !" // **Reactive all travelers for cutscenes.*
+- REPLY : _"I did dream about my dear fellow travelers !"_ // **Reactive all travelers for cutscenes.*
+
+- REPLY : _"I don't want to see any of you right now !"_ // **Deactive all travelers at will.**
+- REPLY : _"Alright you can come back, sorry for dismissed my dear fellow travelers."_ // **Reactive all travelers at will.*
+
 - REPLY : _"I am exhausted by all these conversations, please stop interrupting the group."_ // **Deactive banters for all travelers.**
 - REPLY : _"On second thought, I miss our discussions... Let's talk to each others."_ // **Reactive banters for all travelers.**
+
 - REPLY : _"I am an open book, no need for privacy."_ // **Allow all travelers to follow when only Charname is transported in another area, without the group.**
-- REPLY : _"I need some privacy, don't follow me in another area."
-- REPLY : _"I am an open book, no need for privacy."_ // **Deactive all travelers when only Charname is transported in another area, without the group.**
-- REPLY : _"All of you can follow me when I walk away from the group, better stick together."_ // **All traveler are allowed to stay with Charname when apart of the party.** (See option below)
-- REPLY : _"I am pretty independant, none of you should follow me when I walk away from the group !"_ // **Deactive all travelers when Charname is not near other party members.** (Allow Charname to explore alone)
-- REPLY : _"Let's switch, one by one, quietly and in order."_ // **Force the Quick Switch for all travelers.** (Except those who are prevented to do so) (Collision with "Stop the Quick Switch for a while, please.")
+- REPLY : _"I need some privacy, don't follow me in another area."_ // **Deactive all travelers when only Charname is transported in another area, without the group.**
+
+- REPLY : _"I am pretty independant, don't follow me when I walk..."_ // **Deactive all travelers when Charname is not near other party members.** (Allow Charname to explore alone)
+	-  30 steps away from the group !
+	-  50 steps away from the group !
+	-  80 steps away from the group !
+	-  100 steps away from the group !
+- REPLY : _"Follow me when I walk away from the group, better stick together."_ // **All traveler are allowed to stay with Charname when apart of the party.** (See option above)
+
+
 - REPLY : _"Do whatever you want."_ // Same as both _"We need to adjust..."_ // **Close the dialog.**
-- REPLY : _"There is room for one traveler to come in party."_ // **Make a random traveler reintegrate the group completly.** (Won't work for travelers that aren't allowed to Quick Switch)
-- REPLY : _"There is room for two travelers to come in party."_ // **Make a random traveler reintegrate the group completly.**  (Won't work for travelers that aren't allowed to Quick Switch)
-- REPLY : _"There is room for three travelers to come in party."_ // **Make a random traveler reintegrate the group completly.** (Won't work for travelers that aren't allowed to Quick Switch)
+
+- REPLY : _"There is room for one traveler to come in party."_ // **Make a random traveler reintegrate the group completly.**
+- REPLY : _"There is room for two travelers to come in party."_ // **Make a random traveler reintegrate the group completly.**
+- REPLY : _"There is room for three travelers to come in party."_ // **Make a random traveler reintegrate the group completly.**
+- REPLY : _"Travelers don't come in party when Fill Party."_ // **Prevent travelers to reintegrate the group when above options are used and also prevent them to come automaticaly in party when it include less than three members.** (Apply also to party members)
+- REPLY : _"Travelers come in party when Fill Party."_ // **Allow travelers to reintegrate the group when above options are used and also Allow them to come automaticaly in party when it include less than three members.** (Apply also to party members)
+
+
+
 - REPLY : _"Travelers stop switching places with party members."_ // **Prevent the Switching Party for all travelers.**
 - REPLY : _"Travelers if party members are available you can switch places."_ // **Allow the Switching Party for all travelers.**
+- REPLY : _"Travelers you can switch places only with the last three party member !"_ // **Allow the Switching Party only with the last three members portrayed in the UI.**
+- REPLY : _"Travelers you can switch places with every party members !"_ // **Allow the Switching Party with every members portrayed in the UI.**
+- REPLY : _"Party members stop switching places with travelers."_ // **Prevent the Switching Party for all party members.**
+- REPLY : _"Party members if travelers are available you can switch places."_ // **Prevent the Switching Party for all party members.**
+
+
 
 - REPLY : _"I like to ..."_ // **Acces to others reply options below.**
 
@@ -133,20 +159,17 @@ To enable the PID, charname need to use his ability onhimself, a dialog will sta
 	- REPLY : _"Leave the Switching Room !"_ // **Transport everyone to the previous position.** (Can also return using the Switching Room door way.)
 
 - REPLY : _"PlayerX want to..."_ // **Jump to another party member to manage travelers.**  (All party members are listed in game)
-
 	- REPLY : _"Wait PlayerX, we don't have time for this !"_ // **Close the dialog.**
 	- REPLY : _"On second thought, let's start over."_ // **Return to previous dialog options.**
 	- REPLY : _"...discuss with _"Traveler Name" !"_ **Make the party member jump to a traveler PID.** (All travelers are listed in game)
-
 - REPLY : _"PlayerX become a traveler please..."_ // **Make the party member become a traveler" (Same as using Charname ability on a party member)
 - REPLY : _"PlayerX, you can switch your place with travelers."_ **Enable the Switching Party for the party member**
 - REPLY : _"PlayerX, don't switch your place with travelers."_ **Disable the Switching Party for the party member**
 
-// The two options below will probably be deleted
-- REPLY : _"PlayerX, at beginning don't make room for travelers."_ // **Prevent the party member to **Loading Switch** and **Switching Party**. (Use only for party member that need to absolutely stay always in party)
-- REPLY : _"PlayerX, at beginning make room for travelers."_// **Allow the party member to **Loading Switch** and **Switching Party**. 
+- REPLY : _"Let's try a Loading Switch !"_ // **Perform a manual Loading Switch at any time** (Used if regular Loading witch didn't go well or at will)
+- REPLY : _"Loading Switch isn't available here."_ // **The Loading Switch is disabled for story reasons, will be reactivated shortly after event or in another area.**
 
-- REPLY : _"There's something wrong with travelers, let's settle this now."_ // **Cancel most variables assigned to all travelers.** (Except "We need to adjust...") (**To use only if problems arise**)
+- REPLY : _"There's something wrong with travelers, let's settle this now."_ // **Reset / Cancel most variables assigned to all travelers.** (Except "We need to adjust...") (**To use only if problems arise**)
 
 // The five options below will probly be masked in the futur
 - REPLY : _"Let's Blop !"_ **Enable  Loading Switch and Switching Party in every area and situation.**

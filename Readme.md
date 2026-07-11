@@ -83,6 +83,7 @@ You can check [PID options and what they do here](https://github.com/11jo/JOinin
 
 - **Quick Switch Timer** when a free party member slot is kept or free
   - Allow to change frequency travelers will come in party for a short moment. (Same purpose as the initial Loading Switch )
+  - Related random timers will use random time between player choice and the double of player choice.
   - Redundant with the Switching Party but still can be usefull.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log
@@ -95,6 +96,7 @@ You can check [PID options and what they do here](https://github.com/11jo/JOinin
 
 - **Switching Party Timer**
   - Allow to change frequency travelers will switch their places with party members if a party member is eligible and willing to be traveler.
+  - Related random timers will use random time between player choice and the double of player choice.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log
   
@@ -118,6 +120,8 @@ Starting a new game, Charname receive a special ability the "Engagement.
     - Allow to switch to only one traveler to dialog.
 	- Allow to select a party member to dialog with one traveler.
 	- Quicker and easier that Using the ability on only one traveler then engage conversation.
+
+**Travelers will "fill"** unless the option is deactivated in PID travelers will reinteger the party when it include less than three members.
 
 **Travelers will "switch"** in party some time to time to allow them **to be considered as party member** continually.
 	- If a party slot remain empty.

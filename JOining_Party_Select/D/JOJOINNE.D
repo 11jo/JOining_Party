@@ -37,7 +37,7 @@ IF ~True()~ THEN BEGIN 0
 		NumInPartyLT(6)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's Quick Switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
 	IF ~!Global("JO_JOIN_BLOP","GLOBAL",1)
-		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~Quick Switch isn't available here.^-~ EXIT //
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~Quick Switch isn't available here.~ EXIT //
 
 // Cutscenes
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
@@ -64,8 +64,9 @@ IF ~True()~ THEN BEGIN 0
 /*
 	IF ~~ THEN REPLY ~^0xFFffe599It's better for the group if travelers are more independent.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",24)~ EXIT
 */
-
+/*
 	IF ~~ THEN REPLY ~^0xFF6aa84fI prefer to have a strong bond with my travelers.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",23)~ EXIT //
+*/
 
 // Checks
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT //
