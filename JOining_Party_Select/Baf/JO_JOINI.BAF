@@ -1162,6 +1162,10 @@ IF
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player2,100)
+// FIXME: PlayerX can be not found and MoveGlobalObject move to Player1 again and again
+//	OR(2)
+//		InMyArea(Player2)
+//		!Range(Player1,100)
 THEN
 	RESPONSE #100
 		MoveGlobalObject(Myself,Player2)
@@ -1186,6 +1190,8 @@ IF
 		Allegiance(Myself,FAMILIAR)
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+// FIXME: PlayerX can be not found and MoveGlobalObject move to Player1 again and again
+//	InMyArea(Player2)
 	!PersonalSpaceDistance(Player2,5)
 	OR(2)
 		Global("JO_JOIN_LINK_TYPE","LOCALS",2)
