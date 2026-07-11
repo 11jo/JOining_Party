@@ -178,6 +178,7 @@
 | JO_JOIN_INDEPANDANCE | L | Deactive travelers if Charname is separate from the party but in the same area |
 | JO_JOIN_QUICK_SWITCH | L | |
 | JO_JOIN_LOAD_PARTY_WAIT | G | | 0: False<br>Other: True
+| JO_JOIN_FORCE_HIDE | G | Force travelers to be deactivate | 0: False<br>Other: True |
 
 ---
 

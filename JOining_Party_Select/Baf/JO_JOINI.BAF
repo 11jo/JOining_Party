@@ -50,14 +50,14 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	OR(2)
 		!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
-		Global("JO_JOIN_FORCE_HIDE","GLOBAL",1)
+		!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
 		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(2)
-		Global("JO_JOIN_CUTSCENE","GLOBAL",1)
-		Global("JO_JOIN_FORCE_HIDE","GLOBAL",1)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+		!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
 	IsActive(Myself)
 THEN
 	RESPONSE #100
@@ -67,7 +67,7 @@ END
 
 IF
 //
-	!Global("JO_JOIN_FORCE_HIDE","GLOBAL",1)
+	Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
 //
 	!Global("JO_JOIN_IS_HIDDEN","LOCALS",0)
 	OR(3)

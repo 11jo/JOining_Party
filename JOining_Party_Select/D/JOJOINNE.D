@@ -42,7 +42,7 @@ IF ~True()~ THEN BEGIN 0
 // Cutscenes
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000I did dream about my dear fellow travelers !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",2)~ EXIT // Accounted for in JO_JOINI
-	IF ~!Global("JO_JOIN_FORCE_HIDE","GLOBAL",1)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you right now !^-~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
+	IF ~Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you right now !^-~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
 	IF ~!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Alright you can come back, sorry for dismissed my dear fellow travelers.^-~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ EXIT // Accounted for in JO_JOINI
 
 // Banters
