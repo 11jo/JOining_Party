@@ -4,13 +4,34 @@ APPEND ~%joining_dlg%~
 	~Global("JO_JOIN","LOCALS",1)~ THEN BEGIN LEGIONPlayerX
 		SAY ~^0xFFffe599Who dare speaking to me ?^-~
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				TriggerOverride(Player1,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
+				TriggerOverride(Player1,Gender(Myself,FEMALE))
+				OR(2)
+					GlobalGT("CHAPTER","GLOBAL",6)
+					GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
-				!TriggerOverride(Player1,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
+				!TriggerOverride(Player1,Gender(Myself,FEMALE))
+				OR(2)
+					GlobalGT("CHAPTER","GLOBAL",6)
+					GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
+SetGlobal("JO_JOIN","LOCALS",0)
+SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
+SmallWait(1)
+StartDialogueNoSet(Player1)~ EXIT
+			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
+				!GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)
+				GlobalLT("CHAPTER","GLOBAL",4)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> and I am completely at loss, for god sake !^-~ DO ~
+SetGlobal("JO_JOIN","LOCALS",0)
+SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
+SmallWait(1)
+StartDialogueNoSet(Player1)~ EXIT
+			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
+				!GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)
+				GlobalGT("CHAPTER","GLOBAL",3)
+				GlobalLT("CHAPTER","GLOBAL",7)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> pupille of Gorion, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
 SmallWait(1)
