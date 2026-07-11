@@ -69,6 +69,9 @@ THEN
 	RESPONSE #100
 		ClearAllActions()
 		SetInterrupt(FALSE)
+		SetAreaScript("JO_JOINB",OVERRIDE)
+		SetCutSceneBreakable(TRUE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
 		MoveViewObject(Player1,INSTANT)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)

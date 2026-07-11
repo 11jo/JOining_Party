@@ -81,9 +81,6 @@ IF // Conditions are OK: loading switch starting
 THEN
 	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
-		SetAreaScript("JO_JOINB",OVERRIDE)
-		SetCutSceneBreakable(TRUE)
-		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
 		SetGlobal("JO_JOIN_CUTSCENE ","GLOBAL",0)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
