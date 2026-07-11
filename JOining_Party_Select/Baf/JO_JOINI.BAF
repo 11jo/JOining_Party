@@ -116,7 +116,7 @@ END
 
 IF
 //
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1) // Don't reactivate if cutscene is in motion
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
 	OR(5)
 		InMyArea(Player2)
@@ -124,7 +124,7 @@ IF
 		InMyArea(Player4)
 		InMyArea(Player5)
 		InMyArea(Player6)
-	Global("JO_JOIN_PRIVACY","LOCALS",1)
+	!Global("JO_JOIN_PRIVACY","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_PRIVACY","LOCALS",0)
@@ -200,7 +200,7 @@ END
 
 IF
 //
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1) // Don't reactivate if cutscene is in motion
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
 	OR(2)
 		Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
@@ -241,7 +241,7 @@ END
 
 IF
 //
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1) // Don't reactivate if cutscene is in motion
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
 	OR(2)
 		Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
@@ -282,7 +282,7 @@ END
 
 IF
 //
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1) // Don't reactivate if cutscene is in motion
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
 	OR(2)
 		Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
@@ -323,7 +323,7 @@ END
 
 IF
 //
-	!Global("JO_JOIN_CUTSCENE","GLOBAL",1) // Don't reactivate if cutscene is in motion
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
 	OR(2)
 		Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID

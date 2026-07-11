@@ -174,8 +174,12 @@
 | JO_JOIN_QUICK_JOIN_TIMER | L | | n/a
 | JO_JOIN_BANTER_TIMER | L | | n/a
 | JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
-| JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party |
+| JO_JOIN_NOPRIVACY | G | | 0: False<br>Other: True |
+| JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party | 0: False<br>Other: True
 | JO_JOIN_INDEPANDANCE | L | Deactive travelers if Charname is separate from the party but in the same area |
+| JO_JOIN_MOVE_INDEPENDANT | L | |
+| JO_JOIN_NEED_INDEPANDANT | L | |
+| JO_JOIN_IS_INDEPANDANT | L | | 
 | JO_JOIN_QUICK_SWITCH | L | |
 | JO_JOIN_LOAD_PARTY_WAIT | G | | 0: False<br>Other: True
 | JO_JOIN_FORCE_HIDE | G | Force travelers to be deactivate | 0: False<br>Other: True |
