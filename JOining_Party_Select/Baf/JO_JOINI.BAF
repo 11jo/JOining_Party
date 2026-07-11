@@ -118,13 +118,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(5)
+	!Global("JO_JOIN_PRIVACY","LOCALS",0)
+	OR(7)
+		!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)
+		!NumInPartyAliveGT(1)
 		InMyArea(Player2)
 		InMyArea(Player3)
 		InMyArea(Player4)
 		InMyArea(Player5)
 		InMyArea(Player6)
-	!Global("JO_JOIN_PRIVACY","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_PRIVACY","LOCALS",0)
