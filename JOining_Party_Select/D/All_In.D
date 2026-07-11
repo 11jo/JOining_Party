@@ -112,19 +112,7 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~~ THEN BEGIN LEGION
 	SAY ~...~
 		IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
-		IF ~~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~
-			SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-			SetGlobal("JO_JOIN","LOCALS",0)
-			SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-			SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-			SmallWait(1)
-			EquipItemEx("JOMINHP1",1)
-			SmallWait(1)
-			DestroyItem("JOMINHP1")
-			SmallWait(2)
-//			RemoveFamiliar()
-			JoinParty()~ GOTO JO_JOINYes //
+		IF ~~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
 		IF ~~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)

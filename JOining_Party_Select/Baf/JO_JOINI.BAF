@@ -2798,9 +2798,10 @@ IF
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 //
 //	!Global("JO_JOIN_IS_JOINING","LOCALS",0) // Why ?
-	OR(2)
+	OR(3)
 		Global("JO_JOIN_FILL_PARTY","LOCALS",1)
 		NumInPartyLT(3) // Come in party if less than 3 party members
+		Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)
 //
 	!Global("JO_JOIN_FILL_PARTY","LOCALS",2) // Prevent boucle due to previous OR(2) above
 	// add Continue() below, it should make this one useless but could allow mor than one traveler to fill party
@@ -2823,7 +2824,9 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 //	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0) // Only for Quick Switch
-	!Global("JO_JOIN_NEVER_FILL","LOCALS",1)
+	OR(2)
+		!Global("JO_JOIN_NEVER_FILL","LOCALS",1)
+		Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)
 THEN
 	RESPONSE #25
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
@@ -2878,8 +2881,11 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
@@ -2929,8 +2935,11 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		Continue()
 END
 
