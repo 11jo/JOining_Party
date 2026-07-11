@@ -1255,7 +1255,7 @@ THEN
 		Continue()
 END
 
-// TODO : Maybe not necessary with block  // Return to CONTOLLED if was CONTOLLED in Jo_joini.baf
+// TODO : Maybe not necessary with block  // Return to CONTROLLED if was CONTROLLED in Jo_joini.baf
 IF // ChangeEnemyAlly(Myself,CONTROLLED)
 	Global("JO_JOIN","LOCALS",1)
 	Allegiance(Myself,PC)
@@ -1360,17 +1360,12 @@ THEN
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		AddFamiliar()
 		SmallWait(1)
-//
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // TODO: Added // Related to Switching party in JO_JOINI and JO_JOIN_WANNABE_TRAVELER in All_in
-//
+//		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // Only for Switching Party
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
-//
 		SetGlobal("JO_JOIN","LOCALS",2)
-//
 		SetGlobal("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
-//
 // Add switch familiar related  script
 //		ChangeAIScript("",RACE)
 //		ChangeAIScript("",CLASS)
@@ -1404,8 +1399,7 @@ THEN
 		SmallWait(2)
 		ChangeEnemyAlly(Myself,CONTROLLED)
 		SmallWait(1)
- // Related to Switching party in JO_JOINI and JO_JOIN_WANNABE_TRAVELER in All_in
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+//		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY) // Only for Switching Party
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 		SetGlobal("JO_JOINI","LOCALS",0)
@@ -1417,28 +1411,4 @@ THEN
 		Continue() // To relevant JO_JOIN... blocks
 END
 
-///////////////////////////////////////////////////////////////////////////////
-
-// Loading travelers END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Related to Loading travelers reset global (when JO_JOIN_TRAVELER_SWITCH return to zero then party members can reinteger the group.)
-/*
-IF
-	!Global("JO_JOIN_MY_SWITCH","LOCALS",0)
-//
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	Global("JO_JOINI","LOCALS",0)
-	Global("JO_JOIN","LOCALS",2)
-THEN
-	RESPONSE #100
-		IncrementGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",-1)
-		IncrementGlobal("JO_JOIN_MY_SWITCH","LOCALS",-1)
-END
-*/
 ///////////////////////////////////////////////////////////////////////////////
