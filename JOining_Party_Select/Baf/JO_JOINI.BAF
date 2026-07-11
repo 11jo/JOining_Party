@@ -102,7 +102,7 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	Global("JO_JOIN_NOPRIVACY","GLOBAL",0)
 	Global("JO_JOIN_PRIVACY","LOCALS",0)
-	NumInPartyGT(1)
+	NumInPartyAliveGT(1)
 	!InMyArea(Player2)
 	!InMyArea(Player3)
 	!InMyArea(Player4)
@@ -185,7 +185,7 @@ IF // Range 100
 //
 	!AreaCheck("JO2608")
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	NumInPartyGT(1)
+	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
 	!TriggerOverride(Player1,Range(Player2,100))
 	!TriggerOverride(Player1,Range(Player3,100))
@@ -226,7 +226,7 @@ IF // Range 80
 //
 	!AreaCheck("JO2608")
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	NumInPartyGT(1)
+	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
 	!TriggerOverride(Player1,Range(Player2,80))
 	!TriggerOverride(Player1,Range(Player3,80))
@@ -267,7 +267,7 @@ IF // Range 50
 //
 	!AreaCheck("JO2608")
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	NumInPartyGT(1)
+	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
 	!TriggerOverride(Player1,Range(Player2,50))
 	!TriggerOverride(Player1,Range(Player3,50))
@@ -308,7 +308,7 @@ IF // Range 30
 //
 	!AreaCheck("JO2608")
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	NumInPartyGT(1)
+	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID
 	!TriggerOverride(Player1,Range(Player2,30))
 	!TriggerOverride(Player1,Range(Player3,30))
