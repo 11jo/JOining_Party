@@ -83,6 +83,37 @@ THEN
 		Continue()
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
+// Check if traveler are in party
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
+// Special
+	// REPLACE TRAVELER NumInParty (Expanded at installation by JOining_Party_Select_End.tph)
+// Note :
+	// Related to BD0120.bcs and maybe other transitions (see JOining_Party_Select_End.tph)
+		// Disable the Loading Switch if no traveler are her
+			// Related block in JO_JOINP
+///////////////////////////////////////////////////////////////////////////////
+
+// Have a variable that say "at least one traveler is here"
+IF
+//
+	
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",1)
+END
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 // Privacy / Indepandance
