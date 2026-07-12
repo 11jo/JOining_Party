@@ -182,8 +182,11 @@
 | JO_JOIN_MOVE_INDEPENDANT | L | |
 | JO_JOIN_NEED_INDEPANDANT | L | |
 | JO_JOIN_IS_INDEPANDANT | L | | 
-| JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly and automatically if free slots are available | 0: False<br>Other: True
+| JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly and automatically if free slots are available | 0: False<br>1: work in progress<br>2: end
 | JO_JOIN_NEVER_FILL | L | Prevent traveler to join the group properly and automatically if free slots are available | 0: False<br>Other: True |
+| JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
+| JO_JOIN_AREA | A | If current area is master area | 0: False<br>Other: True |
+| JO_JOIN_AREA_TRANSITION | G | If Player1 is currently on transition area between campaign | 0: False<br>Other: True |
 
 ---
 

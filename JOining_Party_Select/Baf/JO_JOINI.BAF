@@ -2829,7 +2829,7 @@ END
 
 IF
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
@@ -2840,19 +2840,19 @@ IF
 	OR(3)
 		Global("JO_JOIN_FILL_PARTY","LOCALS",1)
 		NumInPartyLT(3) // Come in party if less than 3 party members
-		Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)
+		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 //
 	!Global("JO_JOIN_FILL_PARTY","LOCALS",2) // Prevent boucle due to previous OR(2) above
 	// add Continue() below, it should make this one useless but could allow mor than one traveler to fill party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
-	!InPartyAllowDead(PartySlot6)
+	NumInPartyLT(6)
 //
 	ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])
 //
-	Global("JO_Myself_Valid","LOCALS",1)
+	!Global("JO_Myself_Valid","LOCALS",0)
 //
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
@@ -2864,8 +2864,8 @@ IF
 	Global("JO_JOINI","LOCALS",0)
 //	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0) // Only for Quick Switch
 	OR(2)
-		!Global("JO_JOIN_NEVER_FILL","LOCALS",1)
-		Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)
+		Global("JO_JOIN_NEVER_FILL","LOCALS",0)
+		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 THEN
 	RESPONSE #25
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
@@ -2902,7 +2902,7 @@ IF
 //
 	Global("JO_JOIN_FILL_PARTY","LOCALS",2)
 //
-	Global("JO_Myself_Valid","LOCALS",1)
+	!Global("JO_Myself_Valid","LOCALS",0)
 //
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
@@ -2918,7 +2918,6 @@ THEN
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -2937,7 +2936,7 @@ END
 IF
 	!Global("JO_JOIN_FILL_PARTY","LOCALS",0)
 //
-	Global("JO_Myself_Valid","LOCALS",1)
+	!Global("JO_Myself_Valid","LOCALS",0)
 //
 	OR(3)
 		Allegiance(Myself,FAMILIAR)
@@ -2972,7 +2971,6 @@ THEN
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
