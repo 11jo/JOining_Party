@@ -14,9 +14,8 @@
 // Loading Switch
 COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
 	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
-	InMyArea("%Death_var%")
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
-	Global("JO_JOIN_LOAD","LOCALS",0)
+	GlobalLT("JO_JOIN_LOAD","LOCALS",4)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
 	Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
 	NumInPartyLT(6)
@@ -24,7 +23,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		FaceObject("%Death_var%")
-		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
+		IncrementGlobal("JO_JOIN_LOAD","LOCALS",1)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
