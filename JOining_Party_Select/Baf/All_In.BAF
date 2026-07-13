@@ -21,34 +21,6 @@ THEN
 		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
 END
 
-
-// For party member After Main Loading Switch 3 //
-
-IF // The party member making room for traveler Loading Switch if the party is full reintegrate the party right after
-//
-	!Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // Is deactivated
-	OR(2)
-		NumInPartyGT(3)
-		Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
-	OR(3)
-		NumInPartyGT(4)
-		Global("JO_JOIN_LOADING_PLAYER","LOCALS",2) // Is deactivated
-		Global("JO_JOIN_LOADING_PLAYER","LOCALS",1) // Is deactivated
-	OR(2)
-		GlobalGT("JO_JOIN_LOADING_SWITCH","GLOBAL",3) // Loading switch "almost" finished
-		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Broken cutscene
-//
-	NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		ActionOverride(Player1,IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",-1))
-		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-		Activate(Myself)
-		DisplayStringHead(Myself,~I'm back !~)
-		JoinParty()
-		Continue()
-END
-
 // For Traveler After Main Loading Switch 3
 
 IF
