@@ -171,6 +171,7 @@
 | JO_JOIN_LOADING_SWITCH | G | Launch Loading Switch script/CutSceneLite |0: not initialized<br>1: initialisation<br>2: slot6 is leaving<br>3: travelers switching<br>4: slot6 returns and go back to aventure
 | JO_JOIN_LOADING_PLAYER | L | Player1: Check if a party member is deactivated during loading switch<br>Other: Check is the active creature is deactivated during loading switch| 0: False<br>Other: True
 | JO_JOIN_LOAD_PARTY_WAIT | G | | 0: False<br>Other: True
+| JO_JOIN_LOADING_MAX | L | | Number of traveler autorised to switch at the same time | 1: 1 traveler<br>2:  2 travelers<br>3:  3 travelers<br>
 | JO_JOIN_FORCE_LOAD | G | Force the Loading Switch at will | 0: False<br>Other: True
 | JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
 | JO_JOIN_QUICK_SWITCH | L | |
