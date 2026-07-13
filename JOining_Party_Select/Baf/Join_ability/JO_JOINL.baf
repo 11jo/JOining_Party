@@ -82,14 +82,18 @@ THEN
 END
 
 
-// One party member have to make room for traveler Loading Switch if the party is full
+// At least one party member have to make room for traveler Loading Switch if the party is full
+
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
-	NumInPartyGT(5)
+	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",3)
+		SetGlobal("JO_JOIN_LOAD_MAX","LOCALS",3)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",3))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
@@ -106,11 +110,45 @@ END
 
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
-	NumInParty(5)
+	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2)
+		SetGlobal("JO_JOIN_LOAD_MAX","LOCALS",2)
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
+		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
+		ActionOverride(PartySlot6,LeaveParty())
+		ActionOverride(PartySlot6,Deactivate(Myself))
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
+		ActionOverride(PartySlot5,LeaveParty())
+		ActionOverride(PartySlot5,Deactivate(Myself))
+END
+
+IF
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		SetGlobal("JO_JOIN_LOAD_MAX","LOCALS",1)
+		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
+		ActionOverride(PartySlot6,LeaveParty())
+		ActionOverride(PartySlot6,Deactivate(Myself))
+END
+
+IF
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
+	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2)
+		SetGlobal("JO_JOIN_LOAD_MAX","LOCALS",3)
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
@@ -123,11 +161,28 @@ END
 
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
-	NumInParty(4)
+	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!NumInPartyGT(5)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		SetGlobal("JO_JOIN_LOAD_MAX","LOCALS",2)
+		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
+		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
+		ActionOverride(PartySlot5,LeaveParty())
+		ActionOverride(PartySlot5,Deactivate(Myself))
+END
+
+IF
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
+	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+	!NumInPartyGT(4)
+THEN
+	RESPONSE #100
+		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
+		SetGlobal("JO_JOIN_LOAD_MAX","LOCALS",3)
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot4,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot4,LeaveParty())
@@ -141,6 +196,7 @@ IF
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOAD_MAX","LOCALS",3)
 		Continue()
 END
 
@@ -155,33 +211,14 @@ THEN
 END
 
 // delay
-IF
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
-	!Global("JO_JOIN_LOAD","LOCALS",0)
-	NumInPartyLT(4)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
-END
 
-// delay
-IF
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
-	!Global("JO_JOIN_LOAD","LOCALS",0)
-	NumInPartyLT(5)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
-END
-
-// delay
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
 	!Global("JO_JOIN_LOAD","LOCALS",0)
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_LOAD","LOCALS",2)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 END
 
 // Main Loading Switch 3
