@@ -93,8 +93,11 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(6)
 	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot6,0)
 	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot5,0)
 	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot4,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -118,7 +121,9 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(6)
 	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot6,0)
 	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot5,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -138,6 +143,7 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(6)
 	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot6,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -153,7 +159,9 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(5)
 	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot5,0)
 	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot4,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -173,6 +181,7 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(5)
 	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot5,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -188,6 +197,7 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(4)
 	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+	!InPartySlot(PartySlot4,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
