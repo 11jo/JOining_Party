@@ -296,6 +296,13 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
 // 2
   COUNT_REGEXP_INSTANCES  ~^Ariadne[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Ariadne_as_Real_traveler
 
+// New Tales of the Sword Coast
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Nathan[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Nathan_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Nathan[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Nathan_as_Real_traveler
+
 // Next_Traveler BG1
 
 ////////////////////////////////////////////// Mods BG2
