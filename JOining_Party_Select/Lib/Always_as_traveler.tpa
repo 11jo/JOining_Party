@@ -1698,6 +1698,30 @@ END
 
 	END
 
+// New Tales of the Sword Coast
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~Setup-NOzWM.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Theodor_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Theodor~ ~~
+			PRINT ~    Theodor as traveler
+			~
+
+END ELSE ACTION_IF Theodor_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Theodor~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Theodor~ ~~
+			PRINT ~    Theodor as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG1
 
 
