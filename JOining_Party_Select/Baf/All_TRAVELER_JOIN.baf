@@ -103,6 +103,41 @@ THEN
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
 END
 
+///////////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_CUTSCENE
+
+///////////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_HIDE_CUTSCENE (Set in PID, enable or disable travelers in cutscene)
+		// JO_JOIN_IS_HIDDEN (Set in PID, enable or disable travelers in cutscene)
+			// JO_JOIN_CUTSCENE (General global set ny all game cutscenes)
+// Note :
+	// Active or deactive travelers in cutscene.
+//////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+IF
+//
+	!AreaCheck("JO2608")
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+	OR(2)
+		!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
+		!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	OR(2)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+		!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
+	IsActive(Myself)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",1)
+		Deactivate(Myself)
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Loading Switch

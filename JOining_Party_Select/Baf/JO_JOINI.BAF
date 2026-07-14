@@ -10,62 +10,8 @@
 			// JO_JOIN_CUTSCENE (General global set ny all game cutscenes)
 // Note :
 	// Active or deactive travelers in cutscene.
+//////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////
-
-// Large range or different area
-IF
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
-	OR(2)
-		!InMyArea(Player1)
-		!Range(Player1,100)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-THEN
-	RESPONSE #100
-		MoveGlobalObject(Myself,Player1)
-END
-
-///////////////////////////////////////////////////////////////////////////////////
-
-
-IF // Security, nothing should prevent a loading switch
-//
-	OR(2)
-		AreaCheck("JO2608")
-		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
-	!IsActive(Myself)
-THEN
-	RESPONSE #100
-		Activate(Myself)
-END
-
-///////////////////////////////////////////////////////////////////////////////////
-
-
-IF
-//
-	!AreaCheck("JO2608")
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	OR(2)
-		!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
-		!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	OR(2)
-		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-		!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
-	IsActive(Myself)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",1)
-		Deactivate(Myself)
-END
 
 IF
 //
@@ -83,6 +29,44 @@ THEN
 		Activate(Myself)
 		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
 		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Loading Switch
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_LOADING_SWITCH (Launch Loading Switch script/CutSceneLite)
+		// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
+			// JO_JOIN_LOAD (Used by travelers loading steps)
+///////////////////////////////////////////////////////////////////////////////
+
+ // Security, nothing should prevent a loading switch
+
+IF // Large range or different area
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+	OR(2)
+		!InMyArea(Player1)
+		!Range(Player1,100)
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveGlobalObject(Myself,Player1)
+END
+
+IF // Security, traveler deactivated
+//
+	OR(2)
+		AreaCheck("JO2608")
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
+	!IsActive(Myself)
+THEN
+	RESPONSE #100
+		Activate(Myself)
 END
 
 ///////////////////////////////////////////////////////////////////////////////
