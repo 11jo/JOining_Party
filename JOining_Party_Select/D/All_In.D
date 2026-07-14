@@ -9,8 +9,6 @@ APPEND ~%joining_dlg%~
 					GlobalGT("CHAPTER","GLOBAL",6)
 					GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
 				!TriggerOverride(Player1,Gender(Myself,FEMALE))
@@ -18,49 +16,35 @@ StartDialogueNoSet(Player1)~ EXIT
 					GlobalGT("CHAPTER","GLOBAL",6)
 					GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
 				!GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)
 				GlobalLT("CHAPTER","GLOBAL",4)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> and I am completely at loss, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
 				!GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)
 				GlobalGT("CHAPTER","GLOBAL",3)
 				GlobalLT("CHAPTER","GLOBAL",7)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> pupille of Gorion, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 
 			IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF5b5b5bIt's me <PLAYER2>, sorry to interrupt...^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER2","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player2)~ EXIT
 
 			IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER3>, my dear.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER3","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player3)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 				TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence ! It's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_FPLAYER4","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player4)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 				!TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence it's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_MPLAYER4","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player4)~ EXIT
 
 			IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
@@ -68,8 +52,6 @@ StartDialogueNoSet(Player4)~ EXIT
 					TimeOfDay(DAY)
 					TimeOfDay(MORNING)~ THEN REPLY ~^0xFF6aa84fI <PLAYER5>, found you particulary beautiful today.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER5","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player5)~ EXIT
 
 			IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0)) 
@@ -77,14 +59,10 @@ StartDialogueNoSet(Player5)~ EXIT
 					TimeOfDay(NIGHT)
 					TimeOfDay(DUSK)~ THEN REPLY ~^0xFF6aa84fI <PLAYER5>, found you particulary beautiful tonight.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER5","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player5)~ EXIT
 
 			IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFffe599Entering <PLAYER6>.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
-SetGlobal("JO_JOIN_TALK_PLAYER6","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player6)~ EXIT
 
 			IF ~~ THEN REPLY ~^0xFF7f6000I'm already bored.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
@@ -92,39 +70,39 @@ StartDialogueNoSet(Player6)~ EXIT
 
 // Playerx initiate
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER1","LOCALS",1)~ THEN BEGIN LEGIONPlayer1
+	IF WEIGHT #-1 ~IsGabber(Player1)~ THEN BEGIN LEGIONPlayer1
 		SAY ~^0xFFffe599Hey ! Who could have foreseen that you would lead such a legion ?^-~
-			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER1","LOCALS",0)~ GOTO LEGION
+			IF ~~ THEN GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER2","LOCALS",1)~ THEN BEGIN LEGIONPlayer2
-		SAY ~^0xFFffe599What do you want little <PLAYER2> ?^-~
-			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER2","LOCALS",0)~ GOTO LEGION
+	IF WEIGHT #-1 ~IsGabber(Player2)~ THEN BEGIN LEGIONPlayer2
+		SAY ~^0xFFffe599What do you want little <GABBER> ?^-~
+			IF ~~ THEN GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER3","LOCALS",1)~ THEN BEGIN LEGIONPlayer3
-		SAY ~^0xFFffe599Oh my ! It's you <PLAYER3> !^-~
-			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER3","LOCALS",0)~ GOTO LEGION
+	IF WEIGHT #-1 ~IsGabber(Player3)~ THEN BEGIN LEGIONPlayer3
+		SAY ~^0xFFffe599Oh my ! It's you <GABBER> !^-~
+			IF ~~ THEN GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_FPLAYER4","LOCALS",1)~ THEN BEGIN LEGIONPlayer4F
-		SAY ~^0xFFffe599Sorry Mistress <PLAYER4>.^-~
-				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_FPLAYER4","LOCALS",0)~ GOTO LEGION
+	IF WEIGHT #-1 ~IsGabber(Player4) Gender(Player4,FEMALE)~ THEN BEGIN LEGIONPlayer4F
+		SAY ~^0xFFffe599Sorry Mistress <GABBER>.^-~
+				IF ~~ THEN GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_MPLAYER4","LOCALS",1)~ THEN BEGIN LEGIONPlayer4M
-		SAY ~^0xFFffe599Sorry Master <PLAYER4>.^-~
-				IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_MPLAYER4","LOCALS",0)~ GOTO LEGION
+	IF WEIGHT #-1 ~IsGabber(Player4) !Gender(Player4,FEMALE)~ THEN BEGIN LEGIONPlayer4M
+		SAY ~^0xFFffe599Sorry Master <GABBER>.^-~
+				IF ~~ THEN GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER5","LOCALS",1)~ THEN BEGIN LEGIONPlayer5
-		SAY ~^0xFFffe599Arw! You make me blush <PLAYER5>.^-~
-			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER5","LOCALS",0)~ GOTO LEGION
+	IF WEIGHT #-1 ~IsGabber(Player5)~ THEN BEGIN LEGIONPlayer5
+		SAY ~^0xFFffe599Arw! You make me blush <GABBER>.^-~
+			IF ~~ THEN GOTO LEGION
 	END
 
-	IF WEIGHT #-1 ~Global("JO_JOIN_TALK_PLAYER6","LOCALS",1)~ THEN BEGIN LEGIONPlayer6
-		SAY ~^0xFFffe599Wow <PLAYER6> !^-~
-			IF ~~ THEN DO ~SetGlobal("JO_JOIN_TALK_PLAYER6","LOCALS",0)~ GOTO LEGION
+	IF WEIGHT #-1 ~IsGabber(Player6)~ THEN BEGIN LEGIONPlayer6
+		SAY ~^0xFFffe599Wow <GABBER> !^-~
+			IF ~~ THEN GOTO LEGION
 	END
 
 
