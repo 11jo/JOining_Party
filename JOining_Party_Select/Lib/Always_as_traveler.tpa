@@ -1578,6 +1578,183 @@ END
 
 	END
 
+// New Tales of the Sword Coast
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~Setup-NOzWM.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Kasandra_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kasandra~ ~~
+			PRINT ~    Kasandra as traveler
+			~
+
+END ELSE ACTION_IF Kasandra_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kasandra~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Kasandra~ ~~
+			PRINT ~    Kasandra as real traveler
+			~
+
+END
+
+ACTION_IF Masambe_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Masambe~ ~~
+			PRINT ~    Masambe as traveler
+			~
+
+END ELSE ACTION_IF Masambe_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Masambe~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Masambe~ ~~
+			PRINT ~    Masambe as real traveler
+			~
+
+END
+
+ACTION_IF Alethra_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Alethra~ ~~
+			PRINT ~    Alethra as traveler
+			~
+
+END ELSE ACTION_IF Alethra_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Alethra~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Alethra~ ~~
+			PRINT ~    Alethra as real traveler
+			~
+
+END
+
+ACTION_IF Rimardo_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Rimardo~ ~~
+			PRINT ~    Rimardo as traveler
+			~
+
+END ELSE ACTION_IF Rimardo_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Rimardo~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Rimardo~ ~~
+			PRINT ~    Rimardo as real traveler
+			~
+
+END
+
+ACTION_IF Talindra_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Talindra~ ~~
+			PRINT ~    Talindra as traveler
+			~
+
+END ELSE ACTION_IF Talindra_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Talindra~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Talindra~ ~~
+			PRINT ~    Talindra as real traveler
+			~
+
+END
+
+ACTION_IF Theodor_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Theodor~ ~~
+			PRINT ~    Theodor as traveler
+			~
+
+END ELSE ACTION_IF Theodor_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Theodor~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Theodor~ ~~
+			PRINT ~    Theodor as real traveler
+			~
+
+END
+
+ACTION_IF Ariadne_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Ariadne~ ~~
+			PRINT ~    Ariadne as traveler
+			~
+
+END ELSE ACTION_IF Ariadne_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Ariadne~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Ariadne~ ~~
+			PRINT ~    Ariadne as real traveler
+			~
+
+END
+
+ACTION_IF Nathan_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Nathan~ ~~
+			PRINT ~    Nathan as traveler
+			~
+
+END ELSE ACTION_IF Nathan_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Nathan~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Nathan~ ~~
+			PRINT ~    Nathan as real traveler
+			~
+
+END
+
+ACTION_IF Namiir_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Namiir~ ~~
+			PRINT ~    Namiir as traveler
+			~
+
+END ELSE ACTION_IF Namiir_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Namiir~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Namiir~ ~~
+			PRINT ~    Namiir as real traveler
+			~
+
+END
+
+ACTION_IF Miranda_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Miranda~ ~~
+			PRINT ~    Miranda as traveler
+			~
+
+END ELSE ACTION_IF Miranda_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Miranda~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Miranda~ ~~
+			PRINT ~    Miranda as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG1
 
 
