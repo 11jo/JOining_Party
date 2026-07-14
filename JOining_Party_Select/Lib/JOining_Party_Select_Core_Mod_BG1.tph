@@ -1608,6 +1608,46 @@ BEGIN
 	END
 END
 
+// New Tales of the Sword Coast
+
+OUTER_SPRINT "BG1_JOINED" "NathanJ"
+OUTER_SPRINT "BG1_BCS" "Nathan"
+OUTER_SPRINT "SoD_JOINED" "NathanJ"
+OUTER_SPRINT "SoD_BCS" "Nathan"
+OUTER_SPRINT "BG1_BANTER" "NathanB"
+OUTER_SPRINT "SoD_BANTER" "NathanB"
+OUTER_SPRINT "EET_BANTER" "NathanB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Nathan ~Nathan~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Nathan_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+	END
+END
+
 // Next_Traveler BG1
 
 
