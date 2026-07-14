@@ -10,6 +10,19 @@
 				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_Select_End.tph Expand the trigger with OR(3) for each travelers))
 					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_Select_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
 ///////////////////////////////////////////////////////////////////////////////
+IF
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+	Global("JO_JOIN_LOADING_BREAKABLE","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetAreaScript("JO_JOINB",OVERRIDE)
+		SetCutSceneBreakable(TRUE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",1)
+		SetInterrupt(TRUE)
+		Continue()
+END
 
 //	REPLACE_TRAVELER_JO_LOAD_TRAVELER
 
