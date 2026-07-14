@@ -377,6 +377,7 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_MY_SWITCH","LOCALS",0)~ THEN REPLY ~JO_JOIN_MY_SWITCH.~ DO ~SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)~ EXIT*/
 	IF ~~ THEN REPLY ~^GHow do you feel as traveler.^-~ GOTO JO_JOINStat //
 	IF ~IsGabber(Player1)~ THEN REPLY ~It's nothing, a little fever at worst.~ DO ~ActionOverride(Player1,SetGlobal("JO_JOIN","LOCALS",0))
+	ActionOverride(Player1,ChangeAIScript("JO_JOINP",OVERRIDE))
 	SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
 	ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF660000Show logs.^-~ DO ~
