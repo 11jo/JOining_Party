@@ -1650,6 +1650,30 @@ END
 
 	END
 
+// New Tales of the Sword Coast
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~Setup-NOzWM.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Rimardo_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Rimardo~ ~~
+			PRINT ~    Rimardo as traveler
+			~
+
+END ELSE ACTION_IF Rimardo_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Rimardo~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Rimardo~ ~~
+			PRINT ~    Rimardo as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG1
 
 
