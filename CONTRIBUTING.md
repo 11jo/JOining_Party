@@ -126,44 +126,68 @@
 | JO_Myself_InParty | L | Replace regular `InParty(Myself)` | 0: False<br>Other: True |
 | JO_Myself_Valid | L | Replace regular `IsValidForPartyDialog(Myself)` | 0: False<br>Other: True |
 | JO_NOJOIN | G | Familiars can no longer switch | 0: False<br>Other: True |
-| JO_JOIN_CAMPAIGN | G | Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>5: EET<br>Other: not initialized
+| JO_JOIN_CAMPAIGN | G | **For regular NPC** (Include Imoen) : Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>Other: not initialized
+| JO_JOIN_CAMPAIGN_EET | G | **For continuous NPC** (Except Imoen) : Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>5: EET<br>Other: not initialized
+| JO_JOIN_CAMPAIGN_BANTER | G | Set variable corresponding to game campaign to enable relevant banters / Dream talks dialogs |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>Other: not initialized
 | JO_JOIN_PLAYER1_INIT | G | Special Charname at character creation, to be sure DPLAYER3.BCS is set | 0: False<br>Other: True |
 | JO_JOIN_PLAYER_INIT | L | Special exportable character at creation | 0: False<br>Other: True |
 | JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
 | JO_%Death_var%_LeaveParty | G | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
 | JO_Myself_LeaveParty | L | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
+| JO_JOIN_LEAVING_PARTY | G | |
 | JO_JOIN_JOIN | L | Timer for switching traveler to NPCs regulary | n/a |
 | JO_JOIN_SLEEPING_DEAD | L | If traveler is sleeping dead | 0: False<br>Other: True |
-| JO_JOIN_TALK | L | For first time becoming a traveler | 0: False<br>Other: True |
-| JO_JOINI | L | Set when traveler switch in party, and enable block to return to traveler state | 0: False<br>Other: True |
 | JO_JOIN_LINK_PLAYER_ID | L | Used to link a traveler to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|
 | JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
+| JO_JOIN_WANNABE_TRAVELER | L | Party member eligible to become traveler. | 0: False<br>Other: True
+| JO_JOIN_WANNABE_INIT | L | JO_JOIN_WANNABE_TRAVELER is set to 1 first time | 0: False<br>Other: True
 | JO_JOIN | L | Transform to traveler | 1: process of becoming traveler is actived<br>2: process is over<br>Other: normal status |
-| JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
-| JO_JOIN_CLEAR | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: Script needs to be updated<br>3: Script is up to date<br>Other: nothing|
+| JO_JOIN_TALK | L | For first time becoming a traveler | 0: False<br>Other: True |
+| JO_JOINI | L | Set when traveler switch in party, and enable block to return to traveler state | 0: False<br>Other: True |
 | JO_JOIN_IS_JOINING | L | The traveler will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
+| JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
+| JO_JOIN_SET_JOINX | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: nothing<br>3: Script is up to date<br>Other: nothing|
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
-| JO_JOIN_HIDE_DURING_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
-| JO_JOIN_IS_HIDDEN_BY_CUTSCENE | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
-| JO_NEVER_JOIN | L | Prevent the traveler to switch, WARNING will not be available for most interactions. | 0: False<br>Other: True |
+| JO_JOIN_HIDE_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
+| JO_JOIN_IS_HIDDEN | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
+| JO_JOIN_FORCE_HIDE | G | Force travelers to be deactivate | 0: False<br>Other: True |
 | JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
 | JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
 | JO_JOIN_Move_Done | L | Related to `JO_JOIN_Move_Around` used to make the script apply only once until next command | 0: False<br>Other: True
-| JO_JOIN_SWITCHING_PARTY | G | Prevent Switching party between traveler and party member when loading a save. | 0: True<br>Other: False |
+| JO_JOIN_SWITCHING_PARTY | G | Party switching step | 0: inactive<br>1: is starting<br>2: target found<br>3: switching
 | JO_JOIN_SWITCH_TIMER | L | Timer for Switching party between traveler and party member. | n/a |
-| JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Switch between traveler and party member in process<br>3: Ready to random switch<br>4: Random switch between traveler and party member in process
-| JO_JOIN_SWITCH_WITH_ME | L | Used to choose with Player2 or Player3 or Player4 or Player5 or Player6. | 0: Available<br>2: Player2 chosen<br>3: Player3 chosen<br>4: Player4 chosen<br>5: Player5 chosen<br>6: Player6 chosen
-| JO_JOIN_BANTER_TIME | L | Timer for fire banters when traveler. | n/a |
-| JO_JOIN_LOAD_SWITCH | L | Party member variable when temporary removed at loading. | 0: Available<br>1: processing<br>2: party member reintegration in process
-| JO_JOIN_Wannabe | L | Party member eligible to become traveler. | 0: False<br>Other: True
-| JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
+| JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Conditions are clear<br>3: Im the party member who switch
+| JO_JOIN_SWITCH_WITH_ME | L | Party switching with PartySlotX is process | 0: Available<br>1: PartySlot1<br>2: PartySlot2<br>3: PartySlot3<br>4: PartySlot4<br>5: PartySlot5<br>6: PartySlot6
 | JO_JOIN_NEVER_SWITCH | L | Prevent traveler switch with party member. | 0: False<br>Other: True
-| JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | 0: False<br>Other: True
-| JO_JOIN_LOAD_TRAVELER | L | Travelers switch quickly in party at loading | 0: False<br>1: True<br>2: ??
-| JO_JOIN_LOAD_PARTY | L | Party members leave the groupe at loading | 0: False<br>1: wait step1<br>2: wait step2<br>3: in progress
+| JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | Unused
+| JO_JOIN_BANTER_TIME | L | Timer for fire banters when traveler. | Unused
+| JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
 | JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
+| JO_JOIN_BANTER_TIMER | L | | n/a
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
+| JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
+| JO_JOIN_TRAVELER_NUM | G | Check if a least one traveler is present | 0: False<br>Other: True
+| JO_JOIN_LOADING_SWITCH | G | Launch Loading Switch script/CutSceneLite |0: not initialized<br>1: initialisation<br>2: slot6 is leaving<br>3: travelers switching<br>4: slot6 returns and go back to aventure
+| JO_JOIN_LOADING_PLAYER | L | Player1: Check if a party member is deactivated during loading switch<br>Other: Check is the active creature is deactivated during loading switch| 0: False<br>Other: True
+| JO_JOIN_LOAD_PARTY_WAIT | G | | 0: False<br>Other: True
+| JO_JOIN_LOADING_MAX | L | | Number of traveler autorised to switch at the same time | 1: 1 traveler<br>2:  2 travelers<br>3:  3 travelers<br>
+| JO_JOIN_FORCE_LOAD | G | Force the Loading Switch at will | 0: False<br>Other: True
+| JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
+| JO_JOIN_QUICK_SWITCH | L | |
+| JO_JOIN_QUICK_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
+| JO_JOIN_QUICK_JOIN_TIMER | L | | n/a
+| JO_JOIN_NOPRIVACY | G | | 0: False<br>Other: True |
+| JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party | 0: False<br>Other: True
+| JO_JOIN_INDEPANDANCE | L | Deactive travelers if Charname is separate from the party but in the same area |
+| JO_JOIN_MOVE_INDEPENDANT | L | |
+| JO_JOIN_NEED_INDEPANDANT | L | |
+| JO_JOIN_IS_INDEPANDANT | L | | 
+| JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly and automatically if free slots are available | 0: False<br>1: work in progress<br>2: end
+| JO_JOIN_NEVER_FILL | L | Prevent traveler to join the group properly and automatically if free slots are available | 0: False<br>Other: True |
+| JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
+| JO_JOIN_AREA | A | If current area is master area | 0: False<br>Other: True |
+| JO_JOIN_AREA_TRANSITION | G | If Player1 is currently on transition area between campaign | 0: False<br>Other: True |
 
 ---
 
@@ -171,13 +195,15 @@
 
 CLUAConsole:
 
+	GetGlobal("JO_JOIN_CAMPAIGN_EET","GLOBAL")
 	GetGlobal("JO_JOIN_CAMPAIGN","GLOBAL")
+	GetGlobal("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 	GetGlobal("JO_JOIN_Move_Around","GLOBAL")
 	GetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL") // At loading : Party members awaiting to reintegrate the group
 	GetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL") // At loading : Travelers processing switch.
 	GetGlobal("JO_NOJOIN","GLOBAL") // A traveler is currently switching
 	GetGlobal("JO_JOIN_CUTSCENE","GLOBAL")
-	GetGlobal("JO_JOIN_PLAYER1_INIT","GLOBAL") // Baldur.bcs, security set DPLAYER3.bcs to Charname, only once.
+	GetGlobal("JO_JOIN_PLAYER1_INIT","GLOBAL") // Baldur.bcs, security set JO_joinP.bcs to Charname, only once.
 
 ### CLUALOCALS (Cursor on the character to return personnal variables)
 
@@ -188,8 +214,8 @@ CLUAConsole:
 	GetGlobal("JO_Myself_InParty","LOCALS")
 
 	GetGlobal("JO_JOIN_IS_TRAVELER","LOCALS") // NPC is a traveler
-	GetGlobal("JO_JOIN_Wannabe","LOCALS") // Party members are available to leave the groupe at loading
-	GetGlobal("JO_JOIN_NEVER_JOIN","LOCALS") // Temporarly prevent travelers to switch or join the group // Reinitialised at loading and when switching
+	GetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS") // Party members are available to leave the groupe at loading
+	GetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS") // Temporarly prevent travelers to switch or join the group // Reinitialised at loading and when switching
 	GetGlobal("JO_JOIN_NEVER_BANTER","LOCALS") // Prevent banter // Reactivate by dialg only
 	GetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS") // Prevent JO_JOIN_READY_TO_SWITCH and so Prevent switching place with party members
 
@@ -197,23 +223,20 @@ CLUAConsole:
 	GetGlobal("JO_JOIN_IS_JOINING","LOCALS")
 	GetGlobal("JO_JOINI","LOCALS")
 	GetGlobal("JO_JOIN_TALK","LOCALS")
-	GetGlobal("JO_JOIN_CLEAR","LOCALS")
+	GetGlobal("JO_JOIN_SET_JOINX","LOCALS")
 
 	GetGlobal("JO_JOIN_Move_Done","LOCALS")
 	GetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS")
 	GetGlobal("JO_Myself_LeaveParty","LOCALS")
-	GetGlobal("JO_JOIN_Fill_Party","LOCALS") // Allow traveler to join the group properly if free slots are available
-	GetGlobal("JO_JOIN_IS_Wannabe","LOCALS") // First time InParty JO_JOIN_Wannabe is set to 1 only once
-	GetGlobal("JO_JOIN_HIDE_DURING_CUTSCENE","LOCALS")
-	GetGlobal("JO_JOIN_IS_HIDDEN_BY_CUTSCENE","LOCALS")
-
-	GetGlobal("JO_JOIN_LOAD_TRAVELER","LOCALS") // Travelers switch quickly in party at loading
-	GetGlobal("JO_JOIN_LOAD_PARTY","LOCALS") // Party members leave the groupe at loading
+	GetGlobal("JO_JOIN_FILL_PARTY","LOCALS") // Allow traveler to join the group properly if free slots are available
+	GetGlobal("JO_JOIN_WANNABE_INIT","LOCALS") // First time InParty JO_JOIN_WANNABE_TRAVELER is set to 1 only once
+	GetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS")
+	GetGlobal("JO_JOIN_IS_HIDDEN","LOCALS")
 
 	GetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS") // Travelers and Party members are ready and available to switch their place.
 	GetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS") // Travelers and Party members are in process of switching place
 
-	GetGlobal("JO_JOIN_JOIN_TIMER","LOCALS")
+	GetGlobal("JO_JOIN_QUICK_JOIN_TIMER","LOCALS")
 	GetGlobal("JO_JOIN_BANTER_TIMER","LOCALS")
 	GetGlobal("JO_JOIN_SWITCH_TIMER","LOCALS")
 

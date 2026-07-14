@@ -1,0 +1,44 @@
+///////////////////////////////////////////////////////////////////////////////
+
+// Cutscene Breakable
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	CutSceneBroken()
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetCutSceneBreakable(FALSE)
+		ClearAllActions()
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetAreaScript("",OVERRIDE)
+		SetCutSceneLite(FALSE)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// CutSceneBreakable for loading switch
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	CutSceneBroken()
+	Switch("JO_JOIN_BREAKABLE","GLOBAL")
+THEN
+	RESPONSE #1
+		SetInterrupt(FALSE)
+		ScreenShake([20.20],5)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
+		ActionOverride(Player1,SetGlobal("JO_JOIN_LOAD","LOCALS",0))
+		ActionOverride(Player1,ChangeAIScript("JO_JOINP",OVERRIDE))
+		DisplayStringHead(Player1,~^RSomething is wrong we need the Loading Switch !^-~)
+		SetInterrupt(TRUE)
+END

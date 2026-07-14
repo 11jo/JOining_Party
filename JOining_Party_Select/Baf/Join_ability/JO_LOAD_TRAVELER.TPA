@@ -2,11 +2,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
-	// JO_JOIN_LOADING (Launch Loading Switch script/CutSceneLite)
+	// JO_JOIN_LOADING_SWITCH (Launch Loading Switch script/CutSceneLite)
 		// JO_JOIN_LOAD (Used by travelers loading steps)
 ///////////////////////////////////////////////////////////////////////////////
 
-// Main 3 // After JO_LOAD_JO_JOINL.baf Main 2
+// Main 3
 
 	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ BEGIN
 
@@ -14,25 +14,28 @@
 // Loading Switch
 COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
 	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
-	Global("JO_JOIN_LOADING","GLOBAL",1)
-	OR(2)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
-	TriggerOverride("%Death_var%",Global("JO_JOIN_LOAD","LOCALS",0))
-	Global("JO_JOIN_LOAD","LOCALS",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
+	// JO_JOIN_LOAD is increment until it equals JO_JOIN_LOADING_MAX
+	!LocalsEqual("JO_JOIN_LOAD","JO_JOIN_LOADING_MAX")
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-//		ActionOverride("Death_var%",MoveToOffset([0.1]))
-		SetGlobal("JO_JOIN_LOAD","LOCALS",1)
+		FaceObject("%Death_var%")
+		IncrementGlobal("JO_JOIN_LOAD","LOCALS",1)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
-		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1))
-		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",1))
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
+		SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",1)
+		SetTokenObject("JO_TRAVELERNAME","%Death_var%")
+		DisplayStringHead(Myself,~<JO_TRAVELERNAME>...~)
 		SetInterrupt(TRUE)
 END
 
 	\0~~~~~
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_NO_SET~ ~!Global("JO_TRAVELER_%Death_var%","GLOBAL",2)
+\0~
 
 	END

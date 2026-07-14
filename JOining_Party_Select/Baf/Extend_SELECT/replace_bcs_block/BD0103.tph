@@ -46,14 +46,22 @@ END
 
 IF
 	Global("K#PartySoD","BD0103",0)
-	OR(3)
+	OR(4)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+		TriggerOverride("%Death_var%",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
+		ApplySpellRES("bdresurr","%Death_var%")  // No such index
 		ActionOverride("%Death_var%",SetGlobal("K#PartySoD","LOCALS",1))
 		SetGlobal("K#PartySoD","BD0103",1)
+		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",1))
+		SmallWait(1)
+		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+		SmallWait(2)
+//		ActionOverride("%Death_var%",RemoveFamiliar())
 		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,NEUTRAL))
 		SmallWait(1)
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
@@ -63,9 +71,51 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroySelf())
+		SetInterrupt(TRUE)
 		Continue()
 END
 
 >>>>>>>>
 COPY_EXISTING ~bd0103.bcs~ ~override~
   REPLACE_BCS_BLOCK ~bd0103_rep.baf~ ~bd0103_add.baf~ EVALUATE_BUFFER
+
+
+	ACTION_IF (!VARIABLE_IS_SET Once_bd0103) BEGIN // run only once per install
+
+<<<<<<<< .../Once_bd0103.baf
+
+IF
+	Global("JO_JOIN_BD0103_START","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+		SetGlobal("JO_JOIN_BD0103_START","MYAREA",1) // Special first block
+END
+
+>>>>>>>>
+EXTEND_TOP ~bd0103.bcs~ ~.../Once_bd0103.baf~ EVALUATE_BUFFER
+
+OUTER_SET Once_bd0103 = 1
+
+	END
+
+
+	ACTION_IF (!VARIABLE_IS_SET Once_again_bd0103) BEGIN // run only once per install
+
+<<<<<<<< .../Once_again_bd0103.baf
+
+IF
+	Global("JO_JOIN_BD0103_END","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+		SetGlobal("JO_JOIN_BD0103_END","MYAREA",1) // Special last block
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~bd0103.bcs~ ~.../Once_again_bd0103.baf~ EVALUATE_BUFFER
+
+OUTER_SET Once_again_bd0103 = 1
+
+	END

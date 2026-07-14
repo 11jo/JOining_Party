@@ -3,40 +3,20 @@
 // Yeah Start ( Switch between familiar and party)
 
 IF
-	OR(2)
+	OR(3)
 		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOIN_CLEAR","LOCALS",1)
+	Global("JO_JOIN_SET_JOINX","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",2)
-		SetGlobal("JO_JOIN_LOAD","LOCALS",3)
 		DisplayStringHead(Myself,~Yeah.~)
+		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",3)
+		ChangeAIScript("JO_JOINX",RACE) // Go to JO_JOINX (ScriptAction / XP)
 		SetInterrupt(TRUE)
-		Continue() // Go to Yeah End
 END
-
-///////////////////////////////////////////////////////////////////////////////
-
-// JO_JOINX
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Yeah End (End Switch between familiar and party)
-
-IF
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Global("JO_JOIN_CLEAR","LOCALS",2)
-THEN
-	RESPONSE #100
-		ChangeAIScript("JO_JOINX",RACE)// Go to JO_JOINX (ScriptAction / XP)
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",3)
-END
-
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////

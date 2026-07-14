@@ -358,11 +358,14 @@ END
 // Basic without script
 
 IF
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CLEAR","LOCALS",3)
+	OR(3)
+		Allegiance(Myself,FAMILIAR)
+		Allegiance(Myself,CONTROLLED)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_SET_JOINX","LOCALS",3)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_CLEAR","LOCALS",0)
+		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0)
 		ChangeAIScript("",RACE)
 END
 

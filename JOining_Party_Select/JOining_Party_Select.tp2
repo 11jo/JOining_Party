@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/JOining_Party_Select/backup~
 AUTHOR ~~
 
-VERSION ~Beta.1.3.2~
+VERSION ~Beta.1.4~
 
 AUTO_EVAL_STRINGS
 
@@ -36,7 +36,7 @@ LANGUAGE ~English~
 BEGIN ~JOining Party~
 DESIGNATED 0
 LABEL ~JOining_Party-Out~
-REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet bgt~ ~Necessite BGEE / BG2EE / BGT / EET~
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Necessite BGEE / BG2EE / EET~
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -98,6 +98,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "ONE_HOUR"
 
+			OUTER_SPRINT "Switch_Timer_random" "ONE_HOUR,FOUR_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 BEGIN ~Two hours (10 mn)~
@@ -110,6 +112,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 0
 
 			OUTER_SPRINT "Switch_Timer" "TWO_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_HOURS,SIX_HOURS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -124,6 +128,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "FOUR_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_HOURS,EIGHT_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 BEGIN ~Six hours (30 mn)~
@@ -136,6 +142,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 0
 
 			OUTER_SPRINT "Switch_Timer" "SIX_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIX_HOURS,TEN_HOURS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -150,6 +158,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "EIGHT_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "EIGHT_HOURS,TWELVE_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 BEGIN ~Ten hours (50 mn / 10 hours in game)~
@@ -162,6 +172,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 0
 
 			OUTER_SPRINT "Switch_Timer" "TEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TEN_HOURS,FOURTEEN_HOURS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -176,6 +188,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "TWELVE_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "TWELVE_HOURS,SIXTEEN_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 BEGIN ~Fourteen hours (70 mn)~
@@ -188,6 +202,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 0
 
 			OUTER_SPRINT "Switch_Timer" "FOURTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOURTEEN_HOURS,EIGHTEEN_HOURS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -202,6 +218,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "SIXTEEN_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "SIXTEEN_HOURS,TWENTY_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 BEGIN ~Eighteen hours (90 mn)~
@@ -214,6 +232,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 0
 
 			OUTER_SPRINT "Switch_Timer" "EIGHTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHTEEN_HOURS,ONE_DAY"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -229,6 +249,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "TWENTY_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "TWENTY_HOURS,TWO_DAYS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 
@@ -242,6 +264,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 0
 
 			OUTER_SPRINT "Switch_Timer" "ONE_DAY"
+
+			OUTER_SPRINT "Switch_Timer_random" "ONE_DAY,THREE_DAYS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -257,6 +281,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "TWO_DAYS"
 
+			OUTER_SPRINT "Switch_Timer_random" "TWO_DAYS,FOUR_DAYS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 
@@ -271,6 +297,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "THREE_DAYS"
 
+			OUTER_SPRINT "Switch_Timer_random" "THREE_DAYS,FIVE_DAYS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 
@@ -284,6 +312,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 0
 
 			OUTER_SPRINT "Switch_Timer" "FOUR_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_DAYS,SIX_DAYS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -518,6 +548,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "TWO_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "TWO_HOURS,FOUR_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 //
@@ -532,6 +564,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 2
 
 			OUTER_SPRINT "Switch_Timer" "FOUR_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_HOURS,EIGHT_HOURS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -548,6 +582,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "SIX_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "SIX_HOURS,TWELVE_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 //
@@ -562,6 +598,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 2
 
 			OUTER_SPRINT "Switch_Timer" "EIGHT_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHT_HOURS,SIXTEEN_HOURS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -578,6 +616,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "TEN_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "TEN_HOURS,TWENTY_HOURS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 //
@@ -592,6 +632,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 2
 
 			OUTER_SPRINT "Switch_Timer" "TWELVE_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWELVE_HOURS,ONE_DAY"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -608,6 +650,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "FOURTEEN_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "FOURTEEN_HOURS,ONE_DAY"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 //
@@ -622,6 +666,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 2
 
 			OUTER_SPRINT "Switch_Timer" "SIXTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIXTEEN_HOURS,ONE_DAY"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -638,6 +684,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "EIGHTEEN_HOURS"
 
+			OUTER_SPRINT "Switch_Timer_random" "EIGHTEEN_HOURS,TWO_DAYS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 //
@@ -652,6 +700,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 2
 
 			OUTER_SPRINT "Switch_Timer" "TWENTY_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWENTY_HOURS,TWO_DAYS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -668,6 +718,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "ONE_DAY"
 
+			OUTER_SPRINT "Switch_Timer_random" "ONE_DAY,THREE_DAYS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 //
@@ -682,6 +734,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 2
 
 			OUTER_SPRINT "Switch_Timer" "TWO_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_DAYS,FOUR_DAYS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
@@ -698,6 +752,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 
 			OUTER_SPRINT "Switch_Timer" "THREE_DAYS"
 
+			OUTER_SPRINT "Switch_Timer_random" "THREE_DAYS,SIX_DAYS"
+
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
 //
@@ -712,6 +768,8 @@ REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component
 			OUTER_SET switch_componant_timer = 2
 
 			OUTER_SPRINT "Switch_Timer" "FOUR_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_DAYS,EIGHT_DAYS"
 
 INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
 
