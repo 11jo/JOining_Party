@@ -1578,6 +1578,30 @@ END
 
 	END
 
+// New Tales of the Sword Coast
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~Setup-NOzWM.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Kasandra_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kasandra~ ~~
+			PRINT ~    Kasandra as traveler
+			~
+
+END ELSE ACTION_IF Kasandra_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Kasandra~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Kasandra~ ~~
+			PRINT ~    Kasandra as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG1
 
 
