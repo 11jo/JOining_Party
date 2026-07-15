@@ -2441,6 +2441,7 @@ END
 IF // First check
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 // Global checks
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
@@ -2904,6 +2905,7 @@ THEN
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -2938,6 +2940,7 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -2957,6 +2960,7 @@ THEN
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
