@@ -210,7 +210,7 @@ StartDialogueNoSet(Player6)~ EXIT
 // Temporary : travelers switch
 	IF ~Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bRemain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
-	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~Global("JO_Myself_LeaveParty","LOCALS",0)~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
 // Banters
 	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am exhausted by your conversation, please stop interrupting the group.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
