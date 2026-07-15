@@ -606,7 +606,7 @@ THEN
 		Continue()
 	RESPONSE #1
 		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",2)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",10)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -633,7 +633,7 @@ IF // Reintegrate the party member in party
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	NumInPartyLT(6)
 	Global("JO_JOIN_LEAVE_PARTY","LOCALS",2)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",2)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",10)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
