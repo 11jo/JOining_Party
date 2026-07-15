@@ -125,9 +125,9 @@ IF // If no party member are available to be traveler the Player need to make so
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	NumInPartyGT(5)
-	OR(3)
+	!TriggerOverride(PartySlot6,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
+	OR(2)
 		TriggerOverride(PartySlot6,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
-		!TriggerOverride(PartySlot6,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
  		TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0)) // Prevent the Leave Party if PartySlot6 isn't available.
 THEN
 	RESPONSE #100
@@ -159,8 +159,8 @@ IF // PartySlot6
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	NumInPartyGT(5)
-	!TriggerOverride(PartySlot6,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	!TriggerOverride(PartySlot6,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
+	!TriggerOverride(PartySlot6,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	!TriggerOverride(PartySlot6,Global("JO_Myself_Valid","LOCALS",0)) // Prevent the Leave Party if PartySlot6 isn't available.
 THEN
 	RESPONSE #100
