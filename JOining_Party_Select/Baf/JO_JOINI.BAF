@@ -173,14 +173,13 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-// Block wait 1 // Secondary Leave Party 1
+// Block wait 2
 
 IF // Temporise to avoid that more than one traveler try to switch
 //
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LEAVE_WAIT","LOCALS",0)
 
 	// step 0 without kicked member or step 2 with kicked member
 	OR(2)
@@ -201,12 +200,11 @@ THEN
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",2)
-		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",1)
 		DisplayString(Myself,~Waiting to Leave Party.~)
 		SetInterrupt(TRUE)
 END
 
-// Block wait 2 // Secondary Leave Party 1
+// Block wait 3
 
 IF // After block wait 1 if everything is in order, let's switch !
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
@@ -218,7 +216,7 @@ THEN
 		DisplayString(Myself,~Leave Party !~)
 END
 
-// Secondary Leave Party 2
+// Secondary Leave Party 3
 
 IF // If something arise we reset to make the traveler go back to Main Leave Party 1
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
@@ -232,36 +230,19 @@ THEN
 		DisplayString(Myself,~I Leave Party in a moment...~)
 END
 
-// Main Leave Party 2
+// Main Leave Party 4
 
 IF // If / When party isn't full, come in party
 //
-	
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	OR(2)
-		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-	OR(2)
-		Global("JO_NOJOIN","GLOBAL",0)
-		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-//
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",4)
+	Global("JO_Myself_LeaveParty","LOCALS",2)
 	NumInPartyLT(6)
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",5)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_TRAVELER_Myself","LOCALS",0)
@@ -271,7 +252,6 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
-		SmallWait(1)
 		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
