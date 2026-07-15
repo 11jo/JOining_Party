@@ -188,6 +188,7 @@
 | JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
 | JO_JOIN_AREA | A | If current area is master area | 0: False<br>Other: True |
 | JO_JOIN_AREA_TRANSITION | G | If Player1 is currently on transition area between campaign | 0: False<br>Other: True |
+| JO_JOIN_LEAVE_PARTY | L | Set by the traveler who leave the party but the group is full and set by Slot6 who temporarly leave the party | 0: False<br>Other: True |
 
 ---
 
