@@ -576,23 +576,22 @@ THEN
 		Continue()
 END
 
-// Main Leave Party 3
+// Main Leave Party 5
 
 IF // Then leave party the regular way.
 //
-	
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-	Allegiance(Myself,PC)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",5)
+	Global("JO_Myself_LeaveParty","LOCALS",2)
+	InParty(Myself)
 	!InPartySlot(Myself,0)
-	Switch("JO_JOIN_LEAVING_PARTY","GLOBAL") // Set to 1 when a party member need to make room
+	Switch("JO_JOIN_LEAVE_PARTY","LOCALS") // Set to 1 when a party member need to make room
 THEN
-	RESPONSE #0
+	RESPONSE #0 // no member have been kicked
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // end process
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -606,7 +605,8 @@ THEN
 		Continue()
 	RESPONSE #1
 		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",10)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",6)
+		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -618,22 +618,18 @@ THEN
 		Continue()
 END
 
-// Secondary Leave Party 2
+// Secondary Leave Party 6
 
 IF // Reintegrate the party member in party
 //
-	
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 //
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	NumInPartyLT(6)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",6)
 	Global("JO_JOIN_LEAVE_PARTY","LOCALS",2)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",10)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	NumInPartyLT(6)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
