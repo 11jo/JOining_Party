@@ -548,17 +548,17 @@ END
 // Secondary Leave Party 1
 
 IF // Selected party member to make room
-	
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
+	Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 	InParty(Myself)
 	!InPartySlot(Myself,0)
-//
-	Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",2)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",2) // go to step 2
 		LeaveParty()
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
