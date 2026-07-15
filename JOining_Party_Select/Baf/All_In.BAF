@@ -646,152 +646,6 @@ THEN
 		SetInterrupt(TRUE)
 END
 
-/* // Only PartySlot6 should make room
-IF // PartySlot5
-//
-	
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-//
-	NumInPartyGT(5)
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-//
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	!TriggerOverride(PartySlot5,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
-	!TriggerOverride(PartySlot5,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
-//	!TriggerOverride(PartySlot5,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
-//	RandomNum(5,2)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
-		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-		SetInterrupt(TRUE)
-END
-
-IF // PartySlot4
-//
-	
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-//
-	NumInPartyGT(5)
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-//
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	!TriggerOverride(PartySlot4,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
-	!TriggerOverride(PartySlot4,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
-//	!TriggerOverride(PartySlot4,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
-//	RandomNum(5,2)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
-		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-		SetInterrupt(TRUE)
-END
-
-IF // PartySlot3
-//
-	
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-//
-	NumInPartyGT(5)
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-//
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	!TriggerOverride(PartySlot3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
-	!TriggerOverride(PartySlot3,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
-//	!TriggerOverride(PartySlot3,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
-//	RandomNum(5,2)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
-		ActionOverride(PartySlot3,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-		SetInterrupt(TRUE)
-END
-
-IF // PartySlot2
-//
-	
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-//
-	NumInPartyGT(5)
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-//
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-//
-	!TriggerOverride(PartySlot2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
-	!TriggerOverride(PartySlot2,GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0))
-//	!TriggerOverride(PartySlot2,Global("JO_Myself_Valid","LOCALS",0)) // TODO : could prevent the Leave Party if no party member are available.
-//	RandomNum(5,1)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",1)
-		ActionOverride(PartySlot2,SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1))
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-		SetInterrupt(TRUE)
-END
-*/
-
 // Block wait 1 // Secondary Leave Party 1
 
 IF // Temporise to avoid that more than one traveler try to switch
@@ -959,6 +813,7 @@ THEN
 		Continue()
 	RESPONSE #1
 		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",2)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -985,15 +840,16 @@ IF // Reintegrate the party member in party
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	NumInPartyLT(6)
 	Global("JO_JOIN_LEAVE_PARTY","LOCALS",2)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",1)
 		SmallWait(1)
