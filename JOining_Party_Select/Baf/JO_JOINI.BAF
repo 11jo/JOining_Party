@@ -209,56 +209,26 @@ END
 // Block wait 2 // Secondary Leave Party 1
 
 IF // After block wait 1 if everything is in order, let's switch !
-//
-	
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_LEAVE_WAIT","LOCALS",1)
-	OR(2)
-		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-	OR(2)
-		Global("JO_NOJOIN","GLOBAL",0)
-		Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-//
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
+	Global("JO_Myself_LeaveParty","LOCALS",2)
 	NumInPartyLT(6)
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",2)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",4)
 		DisplayString(Myself,~Leave Party !~)
-		SetInterrupt(TRUE)
 END
 
 // Secondary Leave Party 2
 
 IF // If something arise we reset to make the traveler go back to Main Leave Party 1
-//
-	
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_LEAVE_PARTY","LOCALS",1)
-//
-	NumInPartyGT(5)
-	OR(2)
-		!Global("JO_Myself_LeaveParty","LOCALS",0)
-		!Global("JO_%Death_var%_LeaveParty","GLOBAL",0)
-	!Global("JO_Myself_Valid","LOCALS",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
+	Global("JO_Myself_LeaveParty","LOCALS",2)
+	!NumInPartyLT(6)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		DisplayString(Myself,~I Leave Party in a moment...~)
 END
 
