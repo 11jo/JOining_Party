@@ -556,9 +556,10 @@ IF // Selected party member to make room
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~Oh no ! Less travelers~)
+		LeaveParty()
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",2)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",2) // go to step 2
-		LeaveParty()
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
@@ -569,7 +570,6 @@ THEN
 		FaceObject(Player1)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
-		DisplayStringHead(Myself,~Oh no ! Less travelers~)
 		ChangeAIScript("JO_JOINI",GENERAL)
 		SetInterrupt(TRUE)
 		Continue()
@@ -637,15 +637,12 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		SmallWait(1)
 		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
 		DestroyItem("JOMINHP1")
-		SmallWait(2)
 		DisplayStringHead(Myself,~I'm back !~)
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // When a party member retrieve is place
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		SetInterrupt(TRUE)
 		JoinParty()
 END
