@@ -618,35 +618,6 @@ THEN
 		Continue()
 END
 
-// Secondary Leave Party 6
-
-IF // Reintegrate the party member in party
-//
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-//
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",6)
-	Global("JO_JOIN_LEAVE_PARTY","LOCALS",2)
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		EquipItemEx("JOMINHP1",1)
-		DestroyItem("JOMINHP1")
-		DisplayStringHead(Myself,~I'm back !~)
-		SetGlobal("JO_NOJOIN","GLOBAL",0) // When a party member retrieve is place
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		SetInterrupt(TRUE)
-		JoinParty()
-END
-
 ///////////////////////////////////////////////////////////////////////////////
 
 // Security
