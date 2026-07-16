@@ -200,6 +200,8 @@ THEN
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",2)
+		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
+		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		DisplayString(Myself,~Waiting to Leave Party.~)
 		SetInterrupt(TRUE)
 END
@@ -241,8 +243,6 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",5)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
-		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_TRAVELER_Myself","LOCALS",0)

@@ -611,6 +611,7 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		DisplayStringHead(Myself,~Farewell...~)
 		LeaveParty()
 		SetInterrupt(TRUE)
@@ -641,7 +642,6 @@ THEN
 		DestroyItem("JOMINHP1")
 		DisplayStringHead(Myself,~I'm back !~)
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // When a party member retrieve is place
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		SetInterrupt(TRUE)
 		JoinParty()
