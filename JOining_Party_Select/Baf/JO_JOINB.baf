@@ -41,4 +41,23 @@ THEN
 		ActionOverride(Player1,ChangeAIScript("JO_JOINP",OVERRIDE))
 		DisplayStringHead(Player1,~^RSomething is wrong we need the Loading Switch !^-~)
 		SetInterrupt(TRUE)
+	RESPONSE #2
+		SetInterrupt(FALSE)
+		ScreenShake([20.20],5)
+		ActionOverride(Player1,SetGlobal("JO_JOIN_CORRECT_TRAVELER","LOCALS",0))
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetGlobal("JO_JOIN_CUTSCENE ","GLOBAL",0)
+//		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Keep set to 1 to launch Loading Switch
+		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",1)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
+		ActionOverride(Player1,SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR))
+		ActionOverride(Player1,SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","LOCALS",ONE_HOUR))
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
+		ChangeAIScript("JO_JOINP",OVERRIDE)
+		DisplayStringHead(Player1,~^RSomething is wrong Loading Switch imminent.^-~)
+		SetInterrupt(TRUE)
 END

@@ -1,0 +1,88 @@
+///////////////////////////////////////////////////////////////////////////////
+
+// Loading Switch
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+	// JO_JOIN_LOADING_SWITCH (Launch Loading Switch script/CutSceneLite)
+		// JO_JOIN_AREA (Check if current area is a master area)
+			// JO_JOIN_FORCE_LOAD (Force the Loading Switch at will)
+				// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
+					// JO_JOIN_LOADING_PLAYER (Check if party member are deactivated)
+						// JO_JOIN_BLOP (Dev test for no master area)
+///////////////////////////////////////////////////////////////////////////////
+
+
+// Sanitize variables.
+IF
+//
+	InPartySlot(Myself,0)
+//
+THEN
+	RESPONSE #100
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetGlobal("JO_JOIN_CUTSCENE ","GLOBAL",0)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",1)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
+		ActionOverride("JOJOINNE",DestroySelf())
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
+		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","LOCALS",ONE_HOUR)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Sanitize NPC.
+IF
+//
+	OR(3)
+		!InMyArea("%Death_var%")
+		!Allegiance("%Death_var%",FAMILIAR)
+		!Allegiance("%Death_var%",CONTROLLED)
+//
+	OR(3)
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		!TriggerOverride("%Death_var%",Global("JO_TRAVELER_Myself","LOCALS",1))
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		ActionOverride("%Death_var%",SetGlobal("JO_TRAVELER_Myself","LOCALS",0))
+		Continue()
+END
+IF
+//
+	InMyArea("%Death_var%")
+//
+	OR(2)
+		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("JOIR648","%Death_var%")
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Launch Loading Switch.
+IF
+//
+	InPartySlot(Myself,0)
+//
+THEN
+	RESPONSE #100
+		ChangeAIScript("JO_JOINL",OVERRIDE)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////

@@ -432,6 +432,12 @@ This spell transports the caster to any place within the visual range of the cas
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Replace DPLAYER3/Join_ability.baf
 //	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~~
 
+ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
+
+	EXTEND_BOTTOM ~JO_JOINP.bcs~ ~JOining_Party_Select/Baf/Join_ability/JO_JOINP_BOTTOM.baf~  EVALUATE_BUFFER
+
+END
+
 // JO_JOIN_COUNT_TRAVELER for JO_JOINC.baf
 
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER

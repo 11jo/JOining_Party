@@ -1,37 +1,64 @@
-/*
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // JO_JOIN_CORRECT_TRAVELER
 
 ///////////////////////////////////////////////////////////////////////////////
 
-//	ADD_JO_JOIN_CORRECT_TRAVELER
 IF
 	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",1)
 THEN
 	RESPONSE #100
-		Continue()
+		SetGlobal("JO_JOIN_CORRECT_TRAVELER","LOCALS",2)
+//	ADD_JO_JOIN_CORRECT_TRAVELER_SET_GLOBAL
+		DisplayStringHead(Player1,~Set Before.~)
+END
+
+//	ADD_JO_JOIN_CORRECT_TRAVELER_BLOCK
+
+// Sanitize variables.
+IF
+	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",2)
+//	ADD_TRAVELER_JO_JOIN_CORRECT_GLOBAL // Global("JO_JOIN_CORRECT_%Death_var%","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+//	ADD_JO_JOIN_CORRECT_TRAVELER_SET_GLOBAL
+		SetGlobal("JO_JOIN_CORRECT_TRAVELER","LOCALS",3)
+		DisplayStringHead(Player1,~Almost Before...~)
+		SetInterrupt(TRUE)
 END
 
 IF
-	!Global("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
+	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",3)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_CORRECT_TRAVELER","LOCALS",0)
-		SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",0)
-		ChangeAIScript("",RACE)
+//
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetGlobal("JO_JOIN_CUTSCENE ","GLOBAL",0)
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1) // Set to 1 to launch Loading Switch
+		SetGlobal("JO_JOIN_PROTAGONIST","GLOBAL",1)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
+//
+		ActionOverride("JOJOINNE",DestroySelf())
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
+		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","LOCALS",ONE_HOUR)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
+//
+		SetCutSceneBreakable(FALSE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetAreaScript("",OVERRIDE)
+		SetCutSceneLite(FALSE)
+		ChangeAIScript("JO_JOINP",OVERRIDE)
+		DisplayStringHead(Player1,~Loading Switch imminent.~)
+		SetInterrupt(TRUE)
 END
-*/
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 ///////////////////////////////////////////////////////////////////////////////
 

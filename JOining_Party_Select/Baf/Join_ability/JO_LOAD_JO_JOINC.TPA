@@ -1,0 +1,289 @@
+// JO_LOAD_JO_JOINC.TPA EXTEND_TOP for JO_JOINC.bcs at installation by JOining_Party_Select_End.tph
+
+///////////////////////////////////////////////////////////////////////////////
+// Variables :
+///////////////////////////////////////////////////////////////////////////////
+
+
+	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ BEGIN
+
+
+// CORRECT_TRAVELER
+COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~//	ADD_TRAVELER_JO_JOIN_CORRECT_GLOBAL~ ~~~~~Global("JO_JOIN_CORRECT_%Death_var%","LOCALS",1)
+	\0~~~~~
+	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_CORRECT_TRAVELER_SET_GLOBAL~ ~SetGlobal("JO_JOIN_CORRECT_%Death_var%","LOCALS",0)
+\0~
+	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_CORRECT_TRAVELER_BLOCK~ ~~~~~
+
+// Sanitize party member.
+IF
+	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",2)
+	InParty("%Death_var%")
+	OR(3)
+		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+//		TriggerOverride("%Death_var%",Allegiance(Myself,CONTROLLED))
+		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(4)
+		!TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+//		!TriggerOverride("%Death_var%",Allegiance(Myself,CONTROLLED))
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",1))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",1))
+	Global("JO_JOIN_CORRECT_%Death_var%","LOCALS",0)
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_NOJOIN_LOCALS","LOCALS","JO_NOJOIN_LOCALS"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOINI","LOCALS","JO_JOINI"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_TALK","LOCALS","JO_JOIN_TALK"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_SET_JOINX","LOCALS","JO_JOIN_SET_JOINX"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LEAVE_PARTY","LOCALS","JO_JOIN_LEAVE_PARTY"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_QUICK_SWITCH","LOCALS","JO_JOIN_QUICK_SWITCH"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_FILL_PARTY","LOCALS","JO_JOIN_FILL_PARTY"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS","JO_JOIN_FORCE_FILL_PARTY"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_BANTER_INTERACT","LOCALS","JO_JOIN_BANTER_INTERACT"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_DREAM_DONE","LOCALS","JO_JOIN_DREAM_DONE"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS","JO_JOIN_HIDE_CUTSCENE"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_IS_HIDDEN","LOCALS","JO_JOIN_IS_HIDDEN"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LOAD","LOCALS","JO_JOIN_LOAD"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LOADING_PLAYER","LOCALS","JO_JOIN_LOADING_PLAYER"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LOADING_MAX","LOCALS","JO_JOIN_LOADING_MAX"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_TRAVELER_Myself","LOCALS","JO_TRAVELER_Myself"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_IS_TRAVELER","LOCALS","JO_JOIN_IS_TRAVELER"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_Valid","LOCALS","JO_Myself_Valid"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_InParty","LOCALS","JO_Myself_InParty"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_AllowDead","LOCALS","JO_Myself_AllowDead"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS","JO_JOIN_SLEEPING_DEAD"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_PARTYSLOT","LOCALS","JO_JOIN_PARTYSLOT"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_CONTROLLED","LOCALS","JO_JOIN_CONTROLLED"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_FAMILIAR","LOCALS","JO_JOIN_FAMILIAR"))
+		ActionOverride("%Death_var%",DisplayString(Myself,@105))
+//
+		ReallyForceSpellRES("JOIR648","%Death_var%")
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		ActionOverride("%Death_var%",RemoveFamiliar())
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+//
+		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",1))
+		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+//
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_InParty","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",1))
+//
+		ActionOverride("%Death_var%",ChangeAIScript("",GENERAL))
+//
+		ActionOverride("%Death_var%",SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOINI","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_TALK","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_LeaveParty","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0))
+//
+		ActionOverride("%Death_var%",DisplayStringHead(Myself,~Full party.~))
+//
+		SetGlobal("JO_JOIN_CORRECT_%Death_var%","LOCALS",1)
+END
+
+// Sanitize travelers.
+IF
+	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",2)
+	InMyArea("%Death_var%")
+	!InParty("%Death_var%")
+	OR(3)
+		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+//		TriggerOverride("%Death_var%",Allegiance(Myself,CONTROLLED))
+		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	OR(4)
+		!TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+//		!TriggerOverride("%Death_var%",Allegiance(Myself,CONTROLLED))
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		!Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+	!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",1))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",1))
+	!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",1))
+	Global("JO_JOIN_CORRECT_%Death_var%","LOCALS",0)
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_NOJOIN_LOCALS","LOCALS","JO_NOJOIN_LOCALS"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_JOIN_IS_JOINING"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOINI","LOCALS","JO_JOINI"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_TALK","LOCALS","JO_JOIN_TALK"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_SET_JOINX","LOCALS","JO_JOIN_SET_JOINX"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LEAVE_PARTY","LOCALS","JO_JOIN_LEAVE_PARTY"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS","JO_JOIN_SWITCH_WITH_ME"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_QUICK_SWITCH","LOCALS","JO_JOIN_QUICK_SWITCH"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_FILL_PARTY","LOCALS","JO_JOIN_FILL_PARTY"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS","JO_JOIN_FORCE_FILL_PARTY"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_BANTER_INTERACT","LOCALS","JO_JOIN_BANTER_INTERACT"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_DREAM_DONE","LOCALS","JO_JOIN_DREAM_DONE"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS","JO_JOIN_HIDE_CUTSCENE"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_IS_HIDDEN","LOCALS","JO_JOIN_IS_HIDDEN"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LOAD","LOCALS","JO_JOIN_LOAD"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LOADING_PLAYER","LOCALS","JO_JOIN_LOADING_PLAYER"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_LOADING_MAX","LOCALS","JO_JOIN_LOADING_MAX"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_TRAVELER_Myself","LOCALS","JO_TRAVELER_Myself"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_IS_TRAVELER","LOCALS","JO_JOIN_IS_TRAVELER"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_Valid","LOCALS","JO_Myself_Valid"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_InParty","LOCALS","JO_Myself_InParty"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_Myself_AllowDead","LOCALS","JO_Myself_AllowDead"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS","JO_JOIN_SLEEPING_DEAD"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_PARTYSLOT","LOCALS","JO_JOIN_PARTYSLOT"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_CONTROLLED","LOCALS","JO_JOIN_CONTROLLED"))
+		ActionOverride("%Death_var%",SetTokenGlobal("JO_JOIN_FAMILIAR","LOCALS","JO_JOIN_FAMILIAR"))
+		ActionOverride("%Death_var%",DisplayString(Myself,@105))
+//
+		Activate("%Death_var%")
+		ReallyForceSpellRES("JOIR648","%Death_var%")
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		ActionOverride("%Death_var%",RemoveFamiliar())
+		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,FAMILIAR))
+		ActionOverride("%Death_var%",AddFamiliar())
+//
+		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",1))
+		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+//
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_InParty","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",1))
+//
+		ActionOverride("%Death_var%",SetBeenInPartyFlags())
+		ActionOverride("%Death_var%",ChangeAIScript("JO_JOINI",GENERAL))
+		ActionOverride("%Death_var%",ChangeAIScript("",RACE))
+//
+		ActionOverride("%Death_var%",SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOINI","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_TALK","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_LeaveParty","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0))
+//		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0))
+//
+		GiveItemCreate("JOMINHP1",Myself,0,0,0)
+		SmallWait(1)
+		EquipItemEx("JOMINHP1",0)
+		ActionOverride("%Death_var%",DisplayStringHead(Myself,~Fully Loaded.~))
+//
+		SetGlobal("JO_JOIN_CORRECT_%Death_var%","LOCALS",1)
+END
+
+// Nothing to do.
+IF
+	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",2)
+	Global("JO_JOIN_CORRECT_%Death_var%","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CORRECT_%Death_var%","LOCALS",1)
+//		SetTokenObject("JO_TRAVELERNAME","%Death_var%")
+//		DisplayStringHead(Myself,~<JO_TRAVELERNAME> is a free spirit.~)
+		DisplayString(Myself,~%%Death_var%_name% is a free spirit.~)
+END
+
+\0~~~~~
+
+END
+
+/*
+// Sanitize not in my area.
+IF
+	Global("JO_JOIN_CORRECT_TRAVELER","LOCALS",2)
+	!TriggerOverride(Player2,InMyArea("%Death_var%"))
+	!TriggerOverride(Player3,InMyArea("%Death_var%"))
+	!TriggerOverride(Player4,InMyArea("%Death_var%"))
+	!TriggerOverride(Player5,InMyArea("%Death_var%"))
+	!TriggerOverride(Player6,InMyArea("%Death_var%"))
+	!InMyArea("%Death_var%")
+	!InParty("%Death_var%")
+	OR(6)
+		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
+//		TriggerOverride("%Death_var%",Allegiance(Myself,CONTROLLED))
+		TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",1))
+		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))
+		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
+		!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
+	Global("JO_JOIN_CORRECT_%Death_var%","LOCALS",0)
+THEN
+	RESPONSE #100
+		Activate("%Death_var%")
+		ReallyForceSpellRES("JOIR648","%Death_var%")
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		ActionOverride("%Death_var%",RemoveFamiliar())
+		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,NEUTRAL))
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+//
+		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",1))
+		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+//
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_InParty","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
+//
+		ActionOverride("%Death_var%",ChangeAIScript("",GENERAL))
+		ActionOverride("%Death_var%",ChangeAIScript("",RACE))
+		ActionOverride("%Death_var%",SetLeavePartyDialogueFile())
+//
+		ActionOverride("%Death_var%",SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOINI","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_TALK","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_Myself_LeaveParty","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOAD","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",0))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0))
+//
+		ActionOverride("%Death_var%",DisplayString(Myself,~Fuller !~))
+//
+		SetGlobal("JO_JOIN_CORRECT_%Death_var%","LOCALS",1)
+END
+*/

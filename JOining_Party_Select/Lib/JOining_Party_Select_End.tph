@@ -310,7 +310,7 @@ COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINL.baf~ ~weidu_external/JOinin
 // Charname override script JO_JOINP.baf
 COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINP.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~
 
-// JO_JOIN_COUNT_TRAVELER for JO_JOINC.baf
+// JO_JOIN_COUNT_TRAVELER and Before Loading Switch for JO_JOINC.baf 
 COPY ~JOining_Party_Select/Baf/Join_ability/JO_JOINC.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~
 
 
@@ -576,6 +576,8 @@ BEGIN
 //////////////////////////////////////////////////////////////////////////////////////
 
 	INCLUDE ~JOining_Party_Select/Baf/Join_ability/JO_LOAD_TRAVELER.tpa~
+
+	INCLUDE ~JOining_Party_Select/Baf/Join_ability/JO_LOAD_JO_JOINC.tpa~
 
 // All_In modified and created for each traveler
 COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER

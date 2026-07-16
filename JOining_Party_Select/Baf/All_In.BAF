@@ -148,12 +148,14 @@ THEN
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
+		
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
-		SetGlobal("JO_JOIN_DREAM_REST","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1) // If not the script will loop...
 

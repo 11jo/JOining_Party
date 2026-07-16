@@ -1,0 +1,68 @@
+// Player1 override script to BOTTOM
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Avoid lauching banters in specific area // TODO : To Double Check
+
+// BG1 End
+
+IF // Undercity_TempleofBhaal
+//
+	OR(2)
+		!AreaCheck("%Undercity_TempleofBhaal%")
+		!Dead("Sarevok")
+	!AreaCheck("BD0120")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	!Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+		SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+END
+
+//////////////////////
+
+/* Soon...
+IF // SoD End
+//
+	AreaCheck("BD6000")
+	AreaCheck("BD6100")
+	AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+END
+
+IF // SoD End
+//
+//		!AreaCheck("BD0130") // Should not be a problem
+//
+	!AreaCheck("BD6000")
+	!AreaCheck("BD6100")
+	!AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+END
+*/
+
+///////////////////////////////////////////////////////////////////////////////
+
+// SoD bdplayer.bcs set in bdintro.bcs
+IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+	HotKey(B)
+	OR(2)
+		INI("QAMODE",1)
+		Global("BD_QAMODE","global",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		StartDialogOverride("bddebug",Myself)
+END
