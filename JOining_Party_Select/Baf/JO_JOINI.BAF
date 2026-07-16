@@ -115,6 +115,7 @@ IF // If no party member are available to be traveler the Player need to make so
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 //
 	OR(2)
@@ -149,6 +150,7 @@ IF // PartySlot6
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 //
 	OR(2)
