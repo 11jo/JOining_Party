@@ -572,7 +572,7 @@ THEN
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~^0xFF16537eThe sixth party member cant make room for me ? In the meantime, we’re stuck together.^-~)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_%Death_var%_LeaveParty","LOCALS",0)
+		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",0)
 		SetInterrupt(TRUE)
 		Continue()
 END
