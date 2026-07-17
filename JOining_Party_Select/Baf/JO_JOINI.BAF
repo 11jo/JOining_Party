@@ -107,6 +107,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 // Block wait 3
+// TODO: probably useless
 
 IF // After block wait 1 if everything is in order, let's switch !
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
