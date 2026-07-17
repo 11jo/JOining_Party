@@ -82,7 +82,7 @@ THEN
 	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",0)
-		SetGlobal("JO_JOIN_CUTSCENE ","GLOBAL",0)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
