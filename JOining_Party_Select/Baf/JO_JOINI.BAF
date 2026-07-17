@@ -228,6 +228,16 @@ THEN
 		Continue()
 END
 
+IF
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+THEN
+	RESPONSE #100
+		Activate(Myself)
+		SetGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+		Continue()
+END
 
 IF // Range 100
 //
@@ -250,19 +260,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,99))
 		TriggerOverride(Player1,Range(Player3,99))
 		TriggerOverride(Player1,Range(Player4,99))
 		TriggerOverride(Player1,Range(Player5,99))
 		TriggerOverride(Player1,Range(Player6,99))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -291,19 +297,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,79))
 		TriggerOverride(Player1,Range(Player3,79))
 		TriggerOverride(Player1,Range(Player4,79))
 		TriggerOverride(Player1,Range(Player5,79))
 		TriggerOverride(Player1,Range(Player6,79))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -332,19 +334,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,49))
 		TriggerOverride(Player1,Range(Player3,49))
 		TriggerOverride(Player1,Range(Player4,49))
 		TriggerOverride(Player1,Range(Player5,49))
 		TriggerOverride(Player1,Range(Player6,49))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -373,19 +371,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,29))
 		TriggerOverride(Player1,Range(Player3,29))
 		TriggerOverride(Player1,Range(Player4,29))
 		TriggerOverride(Player1,Range(Player5,29))
 		TriggerOverride(Player1,Range(Player6,29))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
