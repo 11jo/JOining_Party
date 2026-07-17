@@ -679,6 +679,7 @@ END
 
 IF // If / When party isn't full, come in party
 //
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",4)
 	Global("JO_Myself_LeaveParty","LOCALS",2)
 	NumInPartyLT(6)
@@ -750,6 +751,7 @@ END
 // Secondary Leave Party 6
 
 IF // Reintegrate the party member in party
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",6)
 	Global("JO_JOIN_LEAVE_PARTY","LOCALS",2)
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
