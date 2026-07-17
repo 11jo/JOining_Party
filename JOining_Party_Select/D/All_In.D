@@ -118,11 +118,11 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 
 // Indepandance
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes //
 
 // Indepandance for traveler // ChangeEnemyAlly
 

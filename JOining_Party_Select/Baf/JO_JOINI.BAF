@@ -203,31 +203,26 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 //
-	Global("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+	!LocalsEqual("JO_JOIN_INDEPANDANCE","JO_JOIN_NEED_INDEPANDANT")
 	Switch("JO_JOIN_NEED_INDEPANDANT","LOCALS")
 THEN
 	RESPONSE #0
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 		DisplayString(Myself,~I am reassured.~)
 		Continue()
 	RESPONSE #3
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",3)
 		DisplayString(Myself,~I watch you from here.~)
 		Continue()
 	RESPONSE #5
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",5)
 		DisplayString(Myself,~Don't step away too much.~)
 		Continue()
 	RESPONSE #8
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",8)
 		DisplayString(Myself,~Don't go too far.~)
 		Continue()
 	RESPONSE #10
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",10)
 		DisplayString(Myself,~Be careful out there.~)
 		Continue()
@@ -582,27 +577,22 @@ THEN
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #18
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()
 	RESPONSE #19
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #20
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #21
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #22
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
