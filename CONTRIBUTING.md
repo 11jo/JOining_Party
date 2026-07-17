@@ -166,6 +166,7 @@
 | JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 | JO_JOIN_BANTER_TIMER | L | | n/a
+| JO_JOIN_BANTER_BLOCK | G | |
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
 | JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
 | JO_JOIN_TRAVELER_NUM | G | Check if a least one traveler is present | 0: False<br>Other: True
@@ -189,6 +190,8 @@
 | JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
 | JO_JOIN_AREA | A | If current area is master area | 0: False<br>Other: True |
 | JO_JOIN_AREA_TRANSITION | G | If Player1 is currently on transition area between campaign | 0: False<br>Other: True |
+| JO_JOIN_COUNT_TRAVELER | L | If True, Player1 display travelers count | 0: False<br>Other: True |
+| JO_JOIN_LEGION | L | Traveler count, Player1 only | n/a |
 
 ---
 
