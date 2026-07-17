@@ -136,7 +136,6 @@
 | JO_Myself_LeaveParty | L | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>1: activate<br>2: processing |
 | JO_JOIN_LEAVING_PARTY | G | Leaving party process step | 0: inactive<br>1: party member kicking is needed<br>2: waiting<br>3: prepare to join party<br>4: Join party<br>5: Leave party<br>6: party member reintegrate the group
 | JO_JOIN_LEAVE_PARTY | L | Set by the traveler who leave the party but the group is full and set by Slot6 who temporarly leave the party | 0: False<br>Other: True |
-| JO_JOIN_JOIN | L | Timer for switching traveler to NPCs regulary | n/a |
 | JO_JOIN_SLEEPING_DEAD | L | If traveler is sleeping dead | 0: False<br>Other: True |
 | JO_JOIN_LINK_PLAYER_ID | L | Used to link a traveler to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|
 | JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
@@ -161,11 +160,10 @@
 | JO_JOIN_SWITCH_WITH_ME | L | Party switching with PartySlotX is process | 0: Available<br>1: PartySlot1<br>2: PartySlot2<br>3: PartySlot3<br>4: PartySlot4<br>5: PartySlot5<br>6: PartySlot6
 | JO_JOIN_NEVER_SWITCH | L | Prevent traveler switch with party member. | 0: False<br>Other: True
 | JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | Unused
-| JO_JOIN_BANTER_TIME | L | Timer for fire banters when traveler. | Unused
 | JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
 | JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
-| JO_JOIN_BANTER_TIMER | L | | n/a
+| JO_JOIN_BANTER_TIMER | L | Timer for fire banters when traveler. | n/a
 | JO_JOIN_BANTER_BLOCK | G | |
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
 | JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
