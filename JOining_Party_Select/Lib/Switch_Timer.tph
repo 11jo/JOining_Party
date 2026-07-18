@@ -197,7 +197,7 @@ END // ACTION_PHP_EACH
 
 ///////////////////////////////////////////////////////////////////////////////
 
-	ACTION_FOR_EACH bcs IN P#KI25 P#DE25 #SevD25 kiar25 zai25 YxYv25 BEGIN
+	ACTION_FOR_EACH bcs IN P#KI25 P#DE25 ~#SevD25~ kiar25 zai25 YxYv25 BEGIN
 
 		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 
@@ -244,3 +244,4 @@ END // ACTION_PHP_EACH
 		END // FILE_EXISTS_IN_GAME
 
 	END // ACTION_FOR_EACH
+END
