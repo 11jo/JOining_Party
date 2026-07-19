@@ -54,11 +54,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
 
 // Indepandance
-	IF ~~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
-	IF ~~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",20)~ EXIT //
-	IF ~~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",21)~ EXIT //
-	IF ~~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT 
-	IF ~~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
+	IF ~~ THEN REPLY ~Independance menu~ GOTO INDEPENDANCE
 
 // ChangeEnemyAlly
 /*
@@ -610,3 +606,15 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Indepandance
+IF ~~ THEN BEGIN INDEPENDANCE
+	SAY ~Independance menu~
+	IF ~~ THEN REPLY ~Go back~ GOTO 0
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~Deactive Independance~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",1)~ GOTO 0
+	IF ~!Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^GActive Independance^-~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ GOTO 0
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",20)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",21)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT 
+END
