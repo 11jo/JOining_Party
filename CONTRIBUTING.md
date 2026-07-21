@@ -175,6 +175,7 @@
 | JO_JOIN_LOADING_MAX | L | | Number of traveler autorised to switch at the same time | 1: 1 traveler<br>2:  2 travelers<br>3:  3 travelers<br>
 | JO_JOIN_FORCE_LOAD | G | Force the Loading Switch at will | 0: False<br>Other: True
 | JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
+| JO_JOIN_NO_QUICK_SWITCH | G | Active quick switch | 0: False<br>Other: True |
 | JO_JOIN_QUICK_SWITCH | L | |
 | JO_JOIN_QUICK_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
 | JO_JOIN_QUICK_JOIN_TIMER | L | | n/a

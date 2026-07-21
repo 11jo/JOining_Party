@@ -730,6 +730,7 @@ IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another 
 //
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	OR(4)
@@ -752,6 +753,7 @@ END
 // Main Quick Switch 2
 
 IF
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	OR(2)
 		Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Delay(20)

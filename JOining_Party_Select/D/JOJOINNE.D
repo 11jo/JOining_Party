@@ -28,16 +28,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~~ THEN REPLY ~Sorry, I'm just trying to draw some attention...~ EXIT
 
 // Temporary : travelers switch
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bStop the Quick Switch for a while, please.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",3)~ EXIT // Reset when loading a save.
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000You are free to Quick Switch when you feel like.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",4)~ EXIT //
-	IF ~OR(2)
-			Global("JO_JOIN_AREA","MYAREA",1)
-			Global("JO_JOIN_BLOP","GLOBAL",1)
-		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
-		NumInPartyLT(6)
-		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's Quick Switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0) SmallWait(1) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
-	IF ~!Global("JO_JOIN_BLOP","GLOBAL",1)
-		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~Quick Switch isn't available here.~ EXIT //
+	IF ~~ THEN REPLY ~Quick switch menu~ GOTO QUICK_SWITCH
 
 // Cutscenes
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
@@ -627,4 +618,24 @@ IF ~~ THEN BEGIN SWITCH_PARTY
 	IF ~Global("JO_JOIN_NO_SWITCHING_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ THEN REPLY ~^0xFF16537eTravelers you can switch places only with the last party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ EXIT //
 	IF ~Global("JO_JOIN_NO_SWITCHING_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bParty members stop switching places with travelers.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",28)~ EXIT //
 	IF ~Global("JO_JOIN_NO_SWITCHING_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Party members if travelers are available you can switch places.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",29)~ EXIT //
+END
+
+// Quick switch
+IF ~~ THEN BEGIN QUICK_SWITCH
+	SAY ~Quick switch menu~
+	IF ~~ THEN REPLY ~Go back~ GOTO 0
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~Deactive Quick switch~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",1)~ GOTO 0
+	IF ~!Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~^GActive Quick switch^-~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ GOTO 0
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bStop the Quick Switch for a while, please.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",3)~ EXIT // Reset when loading a save.
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000You are free to Quick Switch when you feel like.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",4)~ EXIT //
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)
+		OR(2)
+			!Global("JO_JOIN_AREA","MYAREA",0)
+			!Global("JO_JOIN_BLOP","GLOBAL",0)
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+		NumInPartyLT(6)
+		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's Quick Switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)
+		Global("JO_JOIN_BLOP","GLOBAL",0)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~Quick Switch isn't available here.~ EXIT //
 END
