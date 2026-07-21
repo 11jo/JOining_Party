@@ -154,7 +154,7 @@
 | JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
 | JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
 | JO_JOIN_Move_Done | L | Related to `JO_JOIN_Move_Around` used to make the script apply only once until next command | 0: False<br>Other: True
-| JO_JOIN_NO_SWITCHING_PARTY | G | Active party switching | 0: False<br>Other: True
+| JO_JOIN_NO_SWITCH_PARTY | G | Active party switching | 0: False<br>Other: True
 | JO_JOIN_SWITCHING_PARTY | G | Party switching step | 0: inactive<br>1: is starting<br>2: target found<br>3: switching
 | JO_JOIN_SWITCH_TIMER | L | Timer for Switching party between traveler and party member. | n/a |
 | JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Conditions are clear<br>3: Im the party member who switch

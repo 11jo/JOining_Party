@@ -2465,7 +2465,7 @@ END
 // Main Switching Party 1
 
 IF // First check
-	Global("JO_JOIN_NO_SWITCHING_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
@@ -2536,7 +2536,7 @@ THEN
 END
 
 IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_NO_SWITCHING_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 // Global checks
