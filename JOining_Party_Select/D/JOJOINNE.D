@@ -60,38 +60,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFTravelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT //
 
 // Free slots in party // Fill party
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
-		NumInParty(5)
-		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_NOJOIN","GLOBAL",0)
-		OR(2)
-			Global("JO_JOIN_AREA","MYAREA",1)
-			Global("JO_JOIN_BLOP","GLOBAL",1)
-		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF6aa84fThere is room for one traveler to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
-		NumInParty(4)
-		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_NOJOIN","GLOBAL",0)
-		OR(2)
-			Global("JO_JOIN_AREA","MYAREA",1)
-			Global("JO_JOIN_BLOP","GLOBAL",1)
-		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF6aa84fThere is room for two travelers to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
-		NumInParty(3)
-		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		Global("JO_NOJOIN","GLOBAL",0)
-		OR(2)
-			Global("JO_JOIN_AREA","MYAREA",1)
-			Global("JO_JOIN_BLOP","GLOBAL",1)
-		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^0xFF6aa84fThere is room for three travelers to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF16537eTravelers don't come in party when Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",27)~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Travelers come in party when Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",26)~ EXIT //
+	IF ~~ THEN REPLY ~Fill party menu~ GOTO FILL_PARTY
 
 // Switching party between travelers and party members
 	IF ~~ THEN REPLY ~Switch party menu~ GOTO SWITCH_PARTY
@@ -638,4 +607,49 @@ IF ~~ THEN BEGIN QUICK_SWITCH
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)
 		Global("JO_JOIN_BLOP","GLOBAL",0)
 		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~Quick Switch isn't available here.~ EXIT //
+END
+
+
+// Fill party
+
+IF ~~ THEN BEGIN FILL_PARTY
+	SAY ~Fill party menu~
+	IF ~~ THEN REPLY ~Go back~ GOTO 0
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~Deactive Fill party~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",1)~ GOTO 0
+	IF ~!Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~^GActive Fill party^-~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ GOTO 0
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)
+		Global("JO_JOIN_Move_Around","GLOBAL",0)
+		NumInParty(5)
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_NOJOIN","GLOBAL",0)
+		OR(2)
+			!Global("JO_JOIN_AREA","MYAREA",0)
+			!Global("JO_JOIN_BLOP","GLOBAL",0)
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fThere is room for one traveler to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)
+		Global("JO_JOIN_Move_Around","GLOBAL",0)
+		NumInParty(4)
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_NOJOIN","GLOBAL",0)
+		OR(2)
+			!Global("JO_JOIN_AREA","MYAREA",0)
+			!Global("JO_JOIN_BLOP","GLOBAL",0)
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fThere is room for two travelers to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)
+		Global("JO_JOIN_Move_Around","GLOBAL",0)
+		NumInParty(3)
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		Global("JO_NOJOIN","GLOBAL",0)
+		OR(2)
+			!Global("JO_JOIN_AREA","MYAREA",0)
+			!Global("JO_JOIN_BLOP","GLOBAL",0)
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fThere is room for three travelers to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF16537eTravelers don't come in party when Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",27)~ EXIT //
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Travelers come in party when Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",26)~ EXIT //
 END

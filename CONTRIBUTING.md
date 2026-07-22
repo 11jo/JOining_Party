@@ -185,6 +185,7 @@
 | JO_JOIN_INDEPANDANCE | L | Deactive travelers if Charname is separate from the party but in the same area | 0: inactive<br>3: 30 feet<br>5: 5 feet<br>8: 80 feet<br>10: 100 feet
 | JO_JOIN_NEED_INDEPANDANT | L | Desired value for `JO_JOIN_INDEPANDANCE` | 0: inactive<br>3: 30 feet<br>5: 5 feet<br>8: 80 feet<br>10: 100 feet
 | JO_JOIN_IS_INDEPANDANT | L | Set if the traveler is Deactivate by INDEPANDANCE process | 0: False<br>Other: True
+| JO_JOIN_NO_FILL_PARTY | G | Active fill party | process | 0: False<br>Other: True
 | JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly and automatically if free slots are available | 0: False<br>1: work in progress<br>2: end
 | JO_JOIN_NEVER_FILL | L | Prevent traveler to join the group properly and automatically if free slots are available | 0: False<br>Other: True |
 | JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
