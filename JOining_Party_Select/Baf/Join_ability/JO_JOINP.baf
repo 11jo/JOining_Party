@@ -89,6 +89,13 @@ THEN
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END
 
+IF // security, it would appear that, on occasion, JO_JOINL does not activate properly
+	!Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^RHum... JO_JOINL script is not active, it is not normal.^-~)
+		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
+END
 
 ///////////////////////////////////////////////////////////////////////////////
 
