@@ -2215,6 +2215,36 @@ IF
 	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
+	Global("BDAI_DISABLE_ATTACK","LOCALS",0) // can attack
+	OR(2)
+		!Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
+		!CanEquipRanged()
+	!HasWeaponEquiped(Myself)
+	!Class(Myself,MONK)
+	Delay(30)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,~I dont have any weapon.~)
+		Continue()
+END
+
+IF
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_SET_JOINX","LOCALS",0)
+	Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
+	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+//
+	ActionListEmpty()
 	Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
 	Global("BDAI_DISABLE_ATTACK","LOCALS",0) // can attack
 	!CanEquipRanged()
