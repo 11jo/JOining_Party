@@ -164,7 +164,8 @@
 | JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
 | JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 | JO_JOIN_BANTER_TIMER | L | Timer for fire banters when traveler. | n/a
-| JO_JOIN_BANTER_BLOCK | G | |
+| JO_JOIN_BANTER_BLOCK | G | Active if BanterBlockFlag action is set to TRUE by the mod | 0: False<br>Other: True |
+| JO_JOIN_BANTERBLOCKTIMER | G | `JO_JOIN_BANTER_BLOCK` blocking timer | n/a |
 | JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
 | JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
 | JO_JOIN_TRAVELER_NUM | G | Check if a least one traveler is present | 0: False<br>Other: True

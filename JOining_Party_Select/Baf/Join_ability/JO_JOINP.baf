@@ -412,7 +412,7 @@ THEN
 	RESPONSE #100
 		BanterBlockFlag(TRUE)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
-		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","LOCALS",ONE_HOUR)
+		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","GLOBAL",ONE_HOUR)
 		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
 		DisplayString(Myself,~Delay conversations.~)
 		Continue()
@@ -427,7 +427,7 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
-	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","LOCALS")
+	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","GLOBAL")
 	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
 THEN
 	RESPONSE #100
