@@ -133,8 +133,15 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~~ THEN BEGIN LEGION
 	SAY ~...~
 		IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
-		IF ~NumInPartyLT(6)~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
-		IF ~NumInPartyLT(6)~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
+		IF ~Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
+			NumInPartyLT(6)
+		~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
+		IF ~Global("JO_JOIN_IS_JOINING","LOCALS",0)
+			NumInPartyLT(6)
+			OR(2)
+				Global("JO_JOIN_AREA","MYAREA",1)
+				Global("JO_JOIN_BLOP","GLOBAL",1)
+		~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
