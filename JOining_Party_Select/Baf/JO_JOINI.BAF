@@ -100,6 +100,41 @@ THEN
 		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",1)
 END
 
+///////////////////////////////////////////////////////////////////////////////
+
+// Leave Party
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Block wait 3
+// TODO: probably useless
+
+IF // After block wait 1 if everything is in order, let's switch !
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
+	Global("JO_Myself_LeaveParty","LOCALS",2)
+	NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",4)
+		DisplayString(Myself,~Leave Party !~)
+END
+
+// Secondary Leave Party 3
+
+IF // If something arise we reset to make the traveler go back to Main Leave Party 1
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
+	Global("JO_Myself_LeaveParty","LOCALS",2)
+	!NumInPartyLT(6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		DisplayString(Myself,~I Leave Party in a moment...~)
+END
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 // Privacy / Indepandance
@@ -168,40 +203,48 @@ IF
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
 //
-	Global("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
+	!LocalsEqual("JO_JOIN_INDEPANDANCE","JO_JOIN_NEED_INDEPANDANT")
 	Switch("JO_JOIN_NEED_INDEPANDANT","LOCALS")
 THEN
 	RESPONSE #0
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 		DisplayString(Myself,~I am reassured.~)
 		Continue()
 	RESPONSE #3
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",3)
 		DisplayString(Myself,~I watch you from here.~)
 		Continue()
 	RESPONSE #5
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",5)
 		DisplayString(Myself,~Don't step away too much.~)
 		Continue()
 	RESPONSE #8
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",8)
 		DisplayString(Myself,~Don't go too far.~)
 		Continue()
 	RESPONSE #10
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",1)
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",10)
 		DisplayString(Myself,~Be careful out there.~)
 		Continue()
 END
 
+IF
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+		!Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
+THEN
+	RESPONSE #100
+		Activate(Myself)
+		SetGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+		Continue()
+END
 
 IF // Range 100
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
@@ -220,19 +263,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,99))
 		TriggerOverride(Player1,Range(Player3,99))
 		TriggerOverride(Player1,Range(Player4,99))
 		TriggerOverride(Player1,Range(Player5,99))
 		TriggerOverride(Player1,Range(Player6,99))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -243,6 +282,7 @@ END
 IF // Range 80
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
@@ -261,19 +301,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,79))
 		TriggerOverride(Player1,Range(Player3,79))
 		TriggerOverride(Player1,Range(Player4,79))
 		TriggerOverride(Player1,Range(Player5,79))
 		TriggerOverride(Player1,Range(Player6,79))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -284,6 +320,7 @@ END
 IF // Range 50
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
@@ -302,19 +339,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,49))
 		TriggerOverride(Player1,Range(Player3,49))
 		TriggerOverride(Player1,Range(Player4,49))
 		TriggerOverride(Player1,Range(Player5,49))
 		TriggerOverride(Player1,Range(Player6,49))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -325,6 +358,7 @@ END
 IF // Range 30
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID
@@ -343,19 +377,15 @@ IF
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 //
-	OR(2)
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+	Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID
 //
-	OR(6)
+	OR(5)
 		TriggerOverride(Player1,Range(Player2,29))
 		TriggerOverride(Player1,Range(Player3,29))
 		TriggerOverride(Player1,Range(Player4,29))
 		TriggerOverride(Player1,Range(Player5,29))
 		TriggerOverride(Player1,Range(Player6,29))
-		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
-//
-	Global("JO_JOIN_IS_INDEPANDANT","LOCALS",1)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -477,7 +507,6 @@ THEN
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
@@ -548,27 +577,22 @@ THEN
 		DisplayString(Myself,~Done.~)
 		Continue()
 	RESPONSE #18
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Continue()
 	RESPONSE #19
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #20
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #21
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
 	RESPONSE #22
-		SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0)
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
@@ -706,6 +730,7 @@ IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another 
 //
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	OR(4)
@@ -728,6 +753,7 @@ END
 // Main Quick Switch 2
 
 IF
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	OR(2)
 		Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Delay(20)
@@ -2197,6 +2223,36 @@ IF
 	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
+	Global("BDAI_DISABLE_ATTACK","LOCALS",0) // can attack
+	OR(2)
+		!Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
+		!CanEquipRanged()
+	!HasWeaponEquiped(Myself)
+	!Class(Myself,MONK)
+	Delay(30)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,~I dont have any weapon.~)
+		Continue()
+END
+
+IF
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_SET_JOINX","LOCALS",0)
+	Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
+	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+//
+	ActionListEmpty()
 	Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
 	Global("BDAI_DISABLE_ATTACK","LOCALS",0) // can attack
 	!CanEquipRanged()
@@ -2439,8 +2495,10 @@ END
 // Main Switching Party 1
 
 IF // First check
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 // Global checks
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
@@ -2508,6 +2566,7 @@ THEN
 END
 
 IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 // Global checks
@@ -2816,6 +2875,9 @@ END
 IF
 //
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+	OR(2)
+		Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) // Fill party is active
+		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 //
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
@@ -2904,6 +2966,7 @@ THEN
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -2938,6 +3001,7 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -2957,6 +3021,7 @@ THEN
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)

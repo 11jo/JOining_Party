@@ -133,18 +133,21 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~~ THEN BEGIN LEGION
 	SAY ~...~
 		IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
-		IF ~NumInPartyLT(6)~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
-		IF ~NumInPartyLT(6)~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
+		IF ~Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
+			NumInPartyLT(6)
+		~ THEN REPLY ~^GJoin the group properly, please.^-~ DO ~SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
+		IF ~Global("JO_JOIN_IS_JOINING","LOCALS",0)
+			NumInPartyLT(6)
+			OR(2)
+				Global("JO_JOIN_AREA","MYAREA",1)
+				Global("JO_JOIN_BLOP","GLOBAL",1)
+		~ THEN REPLY ~^0xFF7f6000Join the group, just for a minute.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SmallWait(1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 
 // Indepandance
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",8)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","GLOBAL",10)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ GOTO JO_JOINYes //
-	IF ~IsGabber(Player1) !Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_MOVE_INDEPENDANT","LOCALS",0) SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes //
+	IF ~IsGabber(Player1)~ THEN REPLY ~Independance menu~ GOTO INDEPENDANCE
 
 // Indepandance for traveler // ChangeEnemyAlly
 
@@ -232,7 +235,7 @@ StartDialogueNoSet(Player6)~ EXIT
 // Temporary : travelers switch
 	IF ~Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bRemain a fellow traveler but don't join the group anymore, at least for a moment.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",1)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes //
-	IF ~~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SmallWait(1) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~Global("JO_Myself_LeaveParty","LOCALS",0)~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes //
 // Banters
 	IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am exhausted by your conversation, please stop interrupting the group.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -323,7 +326,6 @@ StartDialogueNoSet(Player6)~ EXIT
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVE_WAIT","LOCALS",0)
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
@@ -399,7 +401,6 @@ StartDialogueNoSet(Player6)~ EXIT
 
 		SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty")
 		SetTokenGlobal("JO_JOIN_LEAVE_PARTY","LOCALS","JO_JOIN_LEAVE_PARTY")
-		SetTokenGlobal("JO_JOIN_LEAVE_WAIT","LOCALS","JO_JOIN_LEAVE_WAIT")
 		SetTokenGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL","JO_JOIN_LEAVING_PARTY")
 
 
@@ -424,13 +425,14 @@ StartDialogueNoSet(Player6)~ EXIT
 
 		SetTokenGlobal("JO_JOIN_NEVER_FILL","LOCALS","JO_JOIN_NEVER_FILL")
 		SetTokenGlobal("JO_JOIN_FILL_PARTY","LOCALS","JO_JOIN_FILL_PARTY")
+		SetTokenGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS","JO_JOIN_FORCE_FILL_PARTY")
 
 
 		SetTokenGlobal("JO_JOIN_CAMPAIGN_BANTER","GLOBAL","JO_JOIN_CAMPAIGN_BANTER")
 		SetTokenGlobal("JO_JOIN_BANTER_TIMER","GLOBAL","JO_JOIN_BANTER_TIMER_G")
 		SetTokenGlobal("JO_JOIN_BANTER_TIMER","LOCALS","JO_JOIN_BANTER_TIMER_L")
 		SetTokenGlobal("JO_JOIN_BANTER_INTERACT","LOCALS","JO_JOIN_BANTER_INTERACT")
-		SetTokenGlobal("JO_JOIN_Banter_Block","LOCALS","JO_JOIN_Banter_Block")
+		SetTokenGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL","JO_JOIN_BANTER_BLOCK")
 		SetTokenGlobal("JO_JOIN_DREAM_DONE","LOCALS","JO_JOIN_DREAM_DONE")
 		SetTokenGlobal("JO_JOIN_DREAM_REST","GLOBAL","JO_JOIN_DREAM_REST")
 
@@ -737,4 +739,16 @@ END
 
 ////////////////////////////////////////////////////
 
+	// Indepandance
+	IF ~~ THEN BEGIN INDEPENDANCE
+		SAY ~Independance with <GABBER>~
+		IF ~~ THEN REPLY ~Go back~ GOTO LEGION
+		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes //
+		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ GOTO JO_JOINYes //
+		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ GOTO JO_JOINYes //
+		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ GOTO JO_JOINYes //
+		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ GOTO JO_JOINYes //
+	END
+
 END // APPEND
+

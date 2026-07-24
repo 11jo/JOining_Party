@@ -166,7 +166,7 @@ APPEND ~SODMAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT0)
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT2)
 		WRITE_LONG  0x14 (THIS BAND BNOT BIT5)
-		WRITE_LONG  0x48 THIS | BIT2 | BIT7
+		WRITE_LONG  0x48 THIS | BIT7
 		WRITE_SHORT  0x4e ~100~
 
 	COPY_EXISTING ~JO2608.wed~ ~override~
@@ -448,6 +448,18 @@ ACTION_FOR_EACH Death_var IN
 
 // Kale BG1
 // Mod Kale_BG1 ~X3Kale~
+
+// New Tales of the Sword Coast
+// Mod Kasandra ~Kasandra~
+// Mod Masambe ~Masambe~
+// Mod Alethra ~Alethra~
+// Mod Rimardo ~Rimardo~
+// Mod Talindra ~Talindra~
+// Mod Theodor ~Theodor~
+// Mod Ariadne ~Ariadne~
+// Mod Nathan ~Nathan~
+// Mod Namiir ~Namiir~
+// Mod Miranda ~Miranda~
 
 // Next_Traveler BG1
 
@@ -851,6 +863,18 @@ ACTION_FOR_EACH Death_var IN // ACTION_FOR_EACH BGSoD
 
 // Kale BG1
 // Mod Kale_BG1 ~X3Kale~
+
+// New Tales of the Sword Coast
+// Mod Kasandra ~Kasandra~
+// Mod Masambe ~Masambe~
+// Mod Alethra ~Alethra~
+// Mod Rimardo ~Rimardo~
+// Mod Talindra ~Talindra~
+// Mod Theodor ~Theodor~
+// Mod Ariadne ~Ariadne~
+// Mod Nathan ~Nathan~
+// Mod Namiir ~Namiir~
+// Mod Miranda ~Miranda~
 
 // Next_Traveler BG1
 
