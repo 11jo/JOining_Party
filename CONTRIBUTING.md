@@ -147,6 +147,7 @@
 | JO_JOIN_IS_JOINING | L | The traveler will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
 | JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
 | JO_JOIN_SET_JOINX | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: nothing<br>3: Script is up to date<br>Other: nothing|
+| JO_JOIN_SET_JOINM | L | Used to keep assigned RACE script (JOINM) to check variables | 1: Call to script<br>2: Script is running<br>Other: nothing |
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
 | JO_JOIN_HIDE_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
 | JO_JOIN_IS_HIDDEN | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
