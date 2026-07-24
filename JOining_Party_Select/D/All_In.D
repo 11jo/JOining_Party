@@ -477,7 +477,9 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetTokenGlobal("JO_JOIN_FAMILIAR","LOCALS","JO_JOIN_FAMILIAR")
 
 		DisplayString(Myself,@104) ~ GOTO JO_JOINStatEnd
-	END
+
+	IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~Smart reset.~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ GOTO JO_JOINStatEnd
+END
 
 IF ~~ THEN BEGIN JO_JOINYes
 	SAY ~Done !~

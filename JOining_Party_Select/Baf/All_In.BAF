@@ -1123,3 +1123,12 @@ THEN
 END
 
 ///////////////////////////////////////////////////////////////////////////////
+
+
+IF
+	Global("JO_JOIN_SET_JOINM","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",2)
+		ChangeAIScript("JO_JOINM",RACE) // Go to JO_JOINM (Reset)
+END

@@ -1,0 +1,227 @@
+//// TEST Without Continue()
+
+// Sync JO_JOIN_IS_TRAVELER / JO_TRAVELER_%Death_var%
+
+/*
+IF
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - JO_TRAVELER_%Death_var% value = 0, expected: 1^-~)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",1)
+END
+
+IF
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_TRAVELER_%Death_var%","GLOBAL","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_TRAVELER_%Death_var% value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+END
+*/
+
+IF
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	InPartyAllowDead(Myself)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_IS_TRAVELER","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_IS_TRAVELER = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+END
+
+IF
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!InPartyAllowDead(Myself)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_IS_TRAVELER","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_IS_TRAVELER = <JO_TEST_VALUE>, expected: 1^-~)
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
+END
+
+
+
+///// TEST With Continue()
+
+IF
+	InPartySlot(Myself,0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - i'm Player1, expected: False -- No change^-~)
+		Continue()
+END
+
+// JO_JOIN_SLEEPING_DEAD
+
+IF
+	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	InPartyAllowDead(Myself)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_SLEEPING_DEAD = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+		Continue()
+END
+
+
+
+// Allegiance
+
+
+IF
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Allegiance(Myself,NEUTRAL)
+	!Allegiance(Myself,FAMILIAR)
+	!Allegiance(Myself,CONTROLLED)
+	!StateCheck(Myself,STATE_CHARMED)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - Allegiance = ??, expected: FAMILIAR OR CONTROLLED OR NEUTRAL -- No change^-~)
+		// TODO?
+		Continue()
+END
+
+IF
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	!Allegiance(Myself,NEUTRAL)
+	!StateCheck(Myself,STATE_CHARMED)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - Allegiance = ??, expected: NEUTRAL -- No change^-~)
+		// TODO?
+		Continue()
+END
+
+
+
+// JO_NOJOIN_LOCALS
+
+
+IF
+	!Global("JO_NOJOIN_LOCALS","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_NOJOIN_LOCALS","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_NOJOIN_LOCALS value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
+		Continue()
+END
+
+
+// JOMINHP1
+
+IF
+   	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	HasItem("JOMINHP1",Myself)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - JOMINHP1 is in inventory, expected: False^-~)
+		EquipItemEx("JOMINHP1",1)
+		DestroyItem("JOMINHP1")
+		Continue()
+END
+
+IF
+   	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	NumItems("JOMINHP1",Myself,0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - JOMINHP1 is not in inventory, expected: True^-~)
+		GiveItemCreate("JOMINHP1",Myself,0,0,0)
+		SmallWait(1)
+		EquipItemEx("JOMINHP1",0)
+		Continue()
+END
+
+IF
+   	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	NumItemsGT("JOMINHP1",Myself,0)
+	OR(3) // TODO: better check
+		CheckStat(Myself,0,MINHITPOINTS)
+		CheckStat(Myself,0,IGNOREDRAINDEATH)
+		CheckStat(Myself,0,IMMUNE_TO_TURN_UNDEAD)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - JOMINHP1 is not active, expected: True^-~)
+		EquipItemEx("JOMINHP1",0)
+		Continue()
+END
+
+IF
+   	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	NumItemsGT("JOMINHP1",Myself,1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^R Test - I have too many JOMINHP1, expected: 1^-~)
+		DestroyItem("JOMINHP1")
+		Continue()
+END
+
+
+// JO_Myself_InParty
+
+IF
+	Global("JO_Myself_InParty","LOCALS",0)
+	!StateCheck(Myself,STATE_REALLY_DEAD)
+	OR(2)
+		InParty(Myself)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_Myself_InParty","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_Myself_InParty value = <JO_TEST_VALUE>, expected: 1^-~)
+		SetGlobal("JO_Myself_InParty","LOCALS",1)
+		Continue()
+END
+
+IF
+	!Global("JO_Myself_InParty","LOCALS",0)
+	StateCheck(Myself,STATE_REALLY_DEAD)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_Myself_InParty","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_Myself_InParty value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		Continue()
+END
+
+
+// JO_JOIN_TALK
+
+IF
+	!Global("JO_JOIN_TALK","LOCALS",0)
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_TALK","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_TALK value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		Continue()
+END
+
+
+
+
+
+
+
+
+
+
+// END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",0)
+		DisplayStringHead(Myself,~End test.~)
+		ChangeAIScript("",RACE)
+END
