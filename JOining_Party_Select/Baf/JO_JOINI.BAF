@@ -231,7 +231,9 @@ END
 IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // Don't reactivate if cutscene is in motion
 	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
-	Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+	OR(2)
+		Global("JO_JOIN_INDEPANDANCE","LOCALS",0)
+		!Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 THEN
 	RESPONSE #100
 		Activate(Myself)
@@ -242,6 +244,7 @@ END
 IF // Range 100
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",10) // Set in PID
@@ -279,6 +282,7 @@ END
 IF // Range 80
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",8) // Set in PID
@@ -316,6 +320,7 @@ END
 IF // Range 50
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",5) // Set in PID
@@ -353,6 +358,7 @@ END
 IF // Range 30
 //
 	!AreaCheck("JO2608")
+	Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	NumInPartyAliveGT(1)
 	Global("JO_JOIN_INDEPANDANCE","LOCALS",3) // Set in PID
@@ -724,6 +730,7 @@ IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another 
 //
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	OR(4)
@@ -746,6 +753,7 @@ END
 // Main Quick Switch 2
 
 IF
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	OR(2)
 		Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Delay(20)
@@ -2487,6 +2495,7 @@ END
 // Main Switching Party 1
 
 IF // First check
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
@@ -2557,6 +2566,7 @@ THEN
 END
 
 IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 // Global checks
@@ -2865,6 +2875,9 @@ END
 IF
 //
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+	OR(2)
+		Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) // Fill party is active
+		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 //
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)

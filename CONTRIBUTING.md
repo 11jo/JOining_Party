@@ -154,6 +154,7 @@
 | JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
 | JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
 | JO_JOIN_Move_Done | L | Related to `JO_JOIN_Move_Around` used to make the script apply only once until next command | 0: False<br>Other: True
+| JO_JOIN_NO_SWITCH_PARTY | G | Active party switching | 0: False<br>Other: True
 | JO_JOIN_SWITCHING_PARTY | G | Party switching step | 0: inactive<br>1: is starting<br>2: target found<br>3: switching
 | JO_JOIN_SWITCH_TIMER | L | Timer for Switching party between traveler and party member. | n/a |
 | JO_JOIN_READY_TO_SWITCH | L | Is active when a party member or a traveler is available to switch. | 0: False<br>1: Ready to switch<br>2: Conditions are clear<br>3: Im the party member who switch
@@ -175,14 +176,17 @@
 | JO_JOIN_LOADING_MAX | L | | Number of traveler autorised to switch at the same time | 1: 1 traveler<br>2:  2 travelers<br>3:  3 travelers<br>
 | JO_JOIN_FORCE_LOAD | G | Force the Loading Switch at will | 0: False<br>Other: True
 | JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
+| JO_JOIN_NO_QUICK_SWITCH | G | Active quick switch | 0: False<br>Other: True |
 | JO_JOIN_QUICK_SWITCH | L | |
 | JO_JOIN_QUICK_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
 | JO_JOIN_QUICK_JOIN_TIMER | L | | n/a
 | JO_JOIN_NOPRIVACY | G | | 0: False<br>Other: True |
 | JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party | 0: False<br>Other: True
+| JO_JOIN_NOINDEPANDANCE | G | If set, independance process is inactive | 0: False<br>Other: True |
 | JO_JOIN_INDEPANDANCE | L | Deactive travelers if Charname is separate from the party but in the same area | 0: inactive<br>3: 30 feet<br>5: 5 feet<br>8: 80 feet<br>10: 100 feet
 | JO_JOIN_NEED_INDEPANDANT | L | Desired value for `JO_JOIN_INDEPANDANCE` | 0: inactive<br>3: 30 feet<br>5: 5 feet<br>8: 80 feet<br>10: 100 feet
 | JO_JOIN_IS_INDEPANDANT | L | Set if the traveler is Deactivate by INDEPANDANCE process | 0: False<br>Other: True
+| JO_JOIN_NO_FILL_PARTY | G | Active fill party | process | 0: False<br>Other: True
 | JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly and automatically if free slots are available | 0: False<br>1: work in progress<br>2: end
 | JO_JOIN_NEVER_FILL | L | Prevent traveler to join the group properly and automatically if free slots are available | 0: False<br>Other: True |
 | JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
