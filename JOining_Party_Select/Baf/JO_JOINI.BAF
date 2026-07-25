@@ -1478,8 +1478,7 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 // Variables : :
 	// JO_JOIN_SLEEPING_DEAD (Traveler are immortal, this variable is used to simulate their fall when HP are inferior to 2)
-		// JO_JOIN_TIMER_DEAD (Duration before recovering when SLEEPING_DEAD)
-			// JO_JOIN_QUICK_JOIN_TIMER (Security Used to make the traveler do a Quick Switch) TODO : Temporarely ?
+		// JO_JOIN_QUICK_JOIN_TIMER (Security Used to make the traveler do a Quick Switch) TODO : Temporarely ?
 // Note :
 	// Dead but not really  (// Related to AllInBaf set statut when Dead but not really )
 ///////////////////////////////////////////////////////////////////////////////
@@ -1493,10 +1492,7 @@ IF
 //
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	HPLT(Myself,2)
 THEN
 	RESPONSE #10
@@ -1580,17 +1576,14 @@ IF
 //
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	HPLT(Myself,2)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SmallWait(1)
-		SetGlobalTimer("JO_JOIN_TIMER_DEAD","LOCALS",ONE_TURN)
 		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",1)
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		ChangeEnemyAlly(Myself,NEUTRAL)
 		SetSequence(SEQ_DIE)
 		Wait(2)
@@ -1607,20 +1600,17 @@ IF
 	OR(3)
 		!ActuallyInCombat()
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-		HPGT(Myself,20)
-	OR(4)
-		!ActuallyInCombat()
-		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
-		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",ONE_ROUND) // Temporaire pour les tests ou utile pour les joueurs ?  TODO : Temporarely ?
+		// SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",ONE_ROUND) // Temporaire pour les tests ou utile pour les joueurs ?  TODO : Temporarely ?
 		ChangeEnemyAlly(Myself,FAMILIAR)
 		ReallyForceSpellRES("JOIR648",Myself)
 		Wait(2)
 		SetSequence(SEQ_EMERGE)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+		SetGlobal("JO_Myself_InParty","LOCALS",1)
 		SetInterrupt(TRUE)
 		Continue() // Important
 END
@@ -1633,43 +1623,28 @@ IF
 	OR(3)
 		!ActuallyInCombat()
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-		HPGT(Myself,20)
-	OR(4)
-		!ActuallyInCombat()
-		!GlobalTimerNotExpired("JO_JOIN_TIMER_DEAD","LOCALS")
 		HPGT(Myself,4)
-		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 THEN
 	RESPONSE #10
 		DisplayStringHead(Myself,~Still alive !~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~Dead ? No more !~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~The sun shines, and I am amazed to see another day.~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~Perhaps I'll survive longer than I had originally thought.~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~You didn't abandon me !~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~It was a... Nice experiment...~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~Well, I guess we have to go on...~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~I may have overreacted.~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~Of "curse"... I didn't mean it.~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	RESPONSE #10
 		DisplayStringHead(Myself,~Well, that escalated quickly...~)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 END
 
 IF // Return to CONTOLLED if was CONTOLLED
