@@ -2223,6 +2223,7 @@ IF
 	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
+	!ActuallyInCombat()
 	Global("BDAI_DISABLE_ATTACK","LOCALS",0) // can attack
 	OR(2)
 		!Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
@@ -2253,6 +2254,7 @@ IF
 	!GlobalGT("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 //
 	ActionListEmpty()
+	!ActuallyInCombat()
 	Global("BDAI_ATTACK_MODE","LOCALS",2) // ranged
 	Global("BDAI_DISABLE_ATTACK","LOCALS",0) // can attack
 	!CanEquipRanged()
