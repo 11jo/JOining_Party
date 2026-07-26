@@ -2940,6 +2940,10 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		EquipItemEx("JOMINHP1",1)
+		// SmallWait(1)
+		DestroyItem("JOMINHP1")
+		// SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
@@ -2949,11 +2953,6 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SmallWait(1)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SmallWait(2)
 //		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
