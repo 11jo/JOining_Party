@@ -178,6 +178,7 @@
 | JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
 | JO_JOIN_NO_QUICK_SWITCH | G | Active quick switch | 0: False<br>Other: True |
 | JO_JOIN_QUICK_SWITCH | L | |
+| JO_JOIN_QUICK_FORCE_JOIN | L | Force the quick switch | 0: False<br>Other: True |
 | JO_JOIN_QUICK_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
 | JO_JOIN_QUICK_JOIN_TIMER | L | | n/a
 | JO_JOIN_NOPRIVACY | G | | 0: False<br>Other: True |

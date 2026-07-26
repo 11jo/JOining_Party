@@ -753,7 +753,9 @@ END
 // Main Quick Switch 2
 
 IF
-	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
+	OR(2)
+		Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
+		!Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0) // Set by JO_JOIN_Move_Around
 	OR(2)
 		Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Delay(20)
