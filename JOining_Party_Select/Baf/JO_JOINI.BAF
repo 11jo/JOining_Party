@@ -777,7 +777,7 @@ IF
 //		Global("JO_JOIN_FILL_PARTY","LOCALS",1) // Set by JO_JOIN_Move_Around  // TODO : Verify why it was here, should be standalone
 		Global("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",1)
 //
-//	ActionListEmpty()
+	ActionListEmpty()
 	OR(2)
 		!ActuallyInCombat()
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
