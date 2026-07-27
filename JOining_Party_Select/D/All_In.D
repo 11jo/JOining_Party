@@ -257,49 +257,15 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fYou can switch with regular party members.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ GOTO JO_JOINYes //
-	IF ~~ THEN REPLY ~^0xFF5b5b5bJoin the group properly, please, and don't switch your place with travelers.^-~ DO ~
-		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SmallWait(1)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SmallWait(2)
-//		RemoveFamiliar()
-		JoinParty()~ GOTO JO_JOINYes //
-	IF ~!Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)~ THEN REPLY ~^0xFF16537eJoin the group properly, please, and at beginning don't make room for travelers.^-~ DO ~
+	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",0) Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0) NumInPartyLT(6)~ THEN REPLY ~^0xFF5b5b5bJoin the group properly, please, and don't switch your place with travelers.^-~ DO ~
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~!Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0) Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0) NumInPartyLT(6)~ THEN REPLY ~^0xFF16537eJoin the group properly, please, and at beginning don't make room for travelers.^-~ DO ~
 		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SmallWait(1)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SmallWait(2)
-//		RemoveFamiliar()
-		JoinParty()~ GOTO JO_JOINYes //
-	IF ~Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Join the group properly, please, and at beginning make room for travelers.^-~ DO ~
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
+	IF ~Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0) Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0) NumInPartyLT(6)~ THEN REPLY ~^0xFF7f6000Join the group properly, please, and at beginning make room for travelers.^-~ DO ~
 		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1)
-		SmallWait(1)
-		SetGlobal("JO_JOIN","LOCALS",0)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		SmallWait(1)
-		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
-		DestroyItem("JOMINHP1")
-		SmallWait(2)
-//		RemoveFamiliar()
-		JoinParty()~ GOTO JO_JOINYes //
+		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
 // JOJOINNE.D
 	IF ~~ THEN REPLY ~^GI prefer to adress everyone...^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)

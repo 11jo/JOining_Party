@@ -2952,7 +2952,7 @@ THEN
 		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		// SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0) // conflict with Join the group properly, please, and don't switch your place with travelers.
 //		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
