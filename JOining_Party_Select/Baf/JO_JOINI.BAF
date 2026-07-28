@@ -878,11 +878,6 @@ END
 // Main Quick Switch 3
 
 IF
-// 
-	OR(2)
-		Global("JO_JOIN_AREA","MYAREA",1)
-		Global("JO_JOIN_BLOP","GLOBAL",1)
-//
 //		ActionListEmpty()
 	OR(2)
 		!ActuallyInCombat()
