@@ -47,14 +47,6 @@ IF ~True()~ THEN BEGIN 0
 // Indepandance
 	IF ~~ THEN REPLY ~Independance menu~ GOTO INDEPENDANCE
 
-// ChangeEnemyAlly
-/*
-	IF ~~ THEN REPLY ~^0xFFffe599It's better for the group if travelers are more independent.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",24)~ EXIT
-*/
-/*
-	IF ~~ THEN REPLY ~^0xFF6aa84fI prefer to have a strong bond with my travelers.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",23)~ EXIT //
-*/
-
 // Checks
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFTravelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT //
@@ -367,9 +359,6 @@ IF ~True()~ THEN BEGIN 0
 
 		SetTokenGlobal("JO_JOIN_PROTAGONIST","GLOBAL","JO_JOIN_PROTAGONIST")
 		SetTokenGlobal("JO_JOIN_PARTYSLOT","LOCALS","JO_JOIN_PARTYSLOT")
-
-		SetTokenGlobal("JO_JOIN_CONTROLLED","LOCALS","JO_JOIN_CONTROLLED")
-		SetTokenGlobal("JO_JOIN_FAMILIAR","LOCALS","JO_JOIN_FAMILIAR")
 
 		DisplayString(Myself,@104) ~ EXIT
 END

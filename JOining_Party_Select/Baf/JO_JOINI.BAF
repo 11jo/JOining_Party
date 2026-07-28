@@ -596,17 +596,12 @@ THEN
 		SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		DisplayString(Myself,~Done.~)
-	RESPONSE #23
+	RESPONSE #23 // unused
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",0)
-		ChangeEnemyAlly(Myself,FAMILIAR)
-//		AddFamiliar()
-		DisplayString(Myself,~Done. I am linked to you !~)
-/*	RESPONSE #24
+		DisplayString(Myself,~Done.~)
+/*	RESPONSE #24 // unused
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
-		SetGlobal("JO_JOIN_CONTROLLED","LOCALS",1)
-		ChangeEnemyAlly(Myself,CONTROLLED)*/
-		DisplayString(Myself,~Done. I am more independant !~)
+		DisplayString(Myself,~Done.~)*/
 	RESPONSE #25
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)
@@ -1649,18 +1644,6 @@ THEN
 		DisplayStringHead(Myself,~Well, that escalated quickly...~)
 END
 
-IF // Return to CONTOLLED if was CONTOLLED
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_CONTROLLED","LOCALS",1)
-THEN
-	RESPONSE #100
-		DisplayStringHead(Myself,~Still independant !~)
-//		RemoveFamiliar()
-		ChangeEnemyAlly(Myself,CONTROLLED)
-END
 
 ///////////////////////////////////////////////////////////////////////////////
 
