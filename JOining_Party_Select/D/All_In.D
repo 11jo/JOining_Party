@@ -631,8 +631,6 @@ IF ~~ THEN BEGIN JO_JOINStat
 //
 	IF ~Allegiance(Myself,FAMILIAR)~ THEN REPLY ~^0xFF6aa84fI am considered like a familiar.^-~ GOTO JO_JOINStatEnd
 //
-	IF ~Allegiance(Myself,CONTROLLED)~ THEN REPLY ~^0xFF7f6000I am considered like an ally.^-~ GOTO JO_JOINStatEnd
-//
 	IF ~Global("JO_Myself_Valid","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bI am not considered like ready to talk.^-~ GOTO JO_JOINStatEnd
 //
 	IF ~OR(4)

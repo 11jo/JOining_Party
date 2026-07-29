@@ -45,10 +45,7 @@ IF
 //
 	Global("JO_JOIN","LOCALS",1)
 //
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		StartDialogueNoSet([PC])
@@ -807,7 +804,6 @@ IF
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 	!StateCheck(Myself,STATE_CHARMED)
 	!Allegiance(Myself,FAMILIAR)
-	!Allegiance(Myself,CONTROLLED)
 	!InParty(Myself)
 	!Global("JO_JOINI","LOCALS",1) // TODO: Added
 	OR(2)
@@ -835,10 +831,7 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
-	OR(3)
-		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -858,9 +851,6 @@ IF
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
 		!Allegiance(Myself,FAMILIAR)
-		InParty(Myself)
-	OR(2)
-		!Allegiance(Myself,CONTROLLED)
 		InParty(Myself)
 	OR(3)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -887,7 +877,6 @@ IF // TODO : Seem to execute several times when a traveler reintegrate the party
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
 	!Allegiance(Myself,FAMILIAR)
-	!Allegiance(Myself,CONTROLLED)
 	HasItem("JOMINHP1",Myself)
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	Global("JO_JOIN","LOCALS",0)
