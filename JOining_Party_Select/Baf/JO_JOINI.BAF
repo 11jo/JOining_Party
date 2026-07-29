@@ -18,9 +18,8 @@ IF
 	Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
 //
 	!Global("JO_JOIN_IS_HIDDEN","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	!IsActive(Myself)
@@ -49,9 +48,8 @@ IF // Large range or different area
 	OR(2)
 		!InMyArea(Player1)
 		!Range(Player1,100)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -90,9 +88,8 @@ IF
 	
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
 THEN
@@ -193,9 +190,8 @@ IF
 	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 // 
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
@@ -420,9 +416,8 @@ IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_Move_Around","GLOBAL",0)
 	!GlobalGT("JO_JOIN_Move_Done","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Switch("JO_JOIN_Move_Around","GLOBAL")
 THEN
@@ -641,9 +636,8 @@ IF // security check
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading TODO : Yes or no, maybe irrelevant with the new Loading Switch...
 	OnCreation()
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -780,9 +774,8 @@ IF
 		!See([ENEMY])
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
 //
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -885,9 +878,8 @@ IF
 	OR(2)
 		!See([ENEMY])
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for See([ENEMY])
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
@@ -1039,9 +1031,8 @@ IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added // Prevent linked traveler to avoid a fight to follow a party member
 	!See([ENEMY])
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player1Fill,100)
 //
@@ -1064,9 +1055,8 @@ IF
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // no cutscene
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!PersonalSpaceDistance(Player1Fill,5) // PersonalSpaceDistance is more reliable than Range at such a low range
 	OR(2)
@@ -1095,9 +1085,8 @@ IF
 	ActionListEmpty()
 	!ActuallyInCombat() // TODO: Added
 	!See([ENEMY])
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	PersonalSpaceDistance(Player1,5) // PersonalSpaceDistance is more reliable than Range at such a low range
 	OR(2)
@@ -1135,9 +1124,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player1,100)
 THEN
@@ -1160,9 +1148,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",1)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!PersonalSpaceDistance(Player1,5)
 	OR(2)
@@ -1192,9 +1179,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player2,100)
 // FIXME: PlayerX can be not found and MoveGlobalObject move to Player1 again and again
@@ -1221,9 +1207,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",2)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 // FIXME: PlayerX can be not found and MoveGlobalObject move to Player1 again and again
 //	InMyArea(Player2)
@@ -1255,9 +1240,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player3,100)
 THEN
@@ -1280,9 +1264,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",3)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!PersonalSpaceDistance(Player3,5)
 	OR(2)
@@ -1312,9 +1295,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player4,100)
 THEN
@@ -1337,9 +1319,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",4)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!PersonalSpaceDistance(Player4,5)
 	OR(2)
@@ -1369,9 +1350,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player5,100)
 THEN
@@ -1394,9 +1374,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",5)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!PersonalSpaceDistance(Player5,5)
 	OR(2)
@@ -1425,9 +1404,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!Range(Player6,100)
 THEN
@@ -1450,9 +1428,8 @@ IF
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",6)
 	GlobalGT("JO_JOIN_LINK_TYPE","LOCALS",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	!PersonalSpaceDistance(Player6,5)
 	OR(2)
@@ -1668,9 +1645,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	StateCheck(Myself,STATE_POISONED)
 	CheckStatLT(Myself,100,RESISTPOISON)
@@ -1705,9 +1681,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	CheckStatLT(Myself,4,VISUALRANGE) // plus général que STATE_BLIND
 	Delay(60)
@@ -1738,9 +1713,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	CheckSpellState(Myself,DISEASED)
 	Delay(60)
@@ -1771,9 +1745,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	CheckSpellState(Myself,DEAFENED)
 	Delay(60)
@@ -1807,9 +1780,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	CheckStatGT(Myself,49,SPELLFAILUREMAGE)
 	!CheckSpellState(Myself,DEAFENED) // on exclu le cas de la surdité (géré à part)
@@ -1845,9 +1817,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	CheckStatGT(Myself,49,SPELLFAILUREPRIEST)
 	!CheckSpellState(Myself,DEAFENED)
@@ -1885,9 +1856,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	StateCheck(Myself,STATE_SILENCED)
 	Delay(60)
@@ -1918,9 +1888,8 @@ IF
 //
 	ActionListEmpty()
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(2)
 		CheckStatGT(Myself,6,FATIGUE)
@@ -2859,9 +2828,8 @@ IF
 //
 	!Global("JO_Myself_Valid","LOCALS",0)
 //
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -2909,9 +2877,8 @@ IF
 //
 	!Global("JO_Myself_Valid","LOCALS",0)
 //
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	NumInPartyLT(6)
@@ -2943,9 +2910,8 @@ IF
 //
 	!Global("JO_Myself_Valid","LOCALS",0)
 //
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	NumInPartyGT(5)

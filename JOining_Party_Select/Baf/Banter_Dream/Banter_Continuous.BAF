@@ -48,9 +48,8 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	!ActuallyInCombat()
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
@@ -124,9 +123,8 @@ IF
 	ActionListEmpty()
 	!ActuallyInCombat()
 	!See([ENEMY])
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 //
 	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
