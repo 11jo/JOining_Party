@@ -60,8 +60,8 @@ INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.t
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
 
 
-// CD_STATE_NOTVALID without STATE_SILENCED
-APPEND ~STATE.IDS~ ~0x80100FEF JO_STATE_NOTVALID~
+// CD_STATE_NOTVALID without STATE_SILENCED but with STATE_CHARMED → scripts may be not active
+APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 UNLESS ~JO_STATE_NOTVALID~
 
 ///////////////////////////////////////////////////////////////////////////////
