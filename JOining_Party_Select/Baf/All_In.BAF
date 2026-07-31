@@ -799,6 +799,7 @@ IF
 	
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // warning: le personnage peut être NEUTRAL car son partenaire vient d'être renvoyé du groupe, le process de leave party doit se terminer normalement
 //
 	OR(2)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -846,6 +847,7 @@ IF
 	
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // warning: le personnage peut être NEUTRAL car son partenaire vient d'être renvoyé du groupe, le process de leave party doit se terminer normalement
 //
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
 //
