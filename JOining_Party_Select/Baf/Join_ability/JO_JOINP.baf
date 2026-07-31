@@ -36,7 +36,7 @@ IF
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	NumInPartyGT(5)
 	OR(2)
-		StateCheck(PartySlot6,CD_STATE_NOTVALID)
+		StateCheck(PartySlot6,JO_STATE_NOTVALID)
 		TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",0)) // prevent ineligible travelers to switch
 THEN
 	RESPONSE #100
