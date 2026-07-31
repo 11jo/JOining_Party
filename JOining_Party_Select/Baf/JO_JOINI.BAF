@@ -898,6 +898,7 @@ THEN
 		DestroyItem("JOMINHP1")
 		// SmallWait(1)
 		DisplayString(Myself,~Hey.~)
+		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty() // Go to All_In_Baf Switch between familiar and party
 END
@@ -2780,6 +2781,7 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
+		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
 END
@@ -2898,7 +2900,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		// SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0) // conflict with Join the group properly, please, and don't switch your place with travelers.
-//		RemoveFamiliar()
+		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
 END

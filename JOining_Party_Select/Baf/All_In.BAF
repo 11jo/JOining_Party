@@ -685,7 +685,7 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
-//		RemoveFamiliar()
+		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
 END
@@ -754,6 +754,7 @@ THEN
 		DisplayStringHead(Myself,~I'm back !~)
 		SetGlobal("JO_NOJOIN","GLOBAL",0) // When a party member retrieve is place
 		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
+		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
 END
