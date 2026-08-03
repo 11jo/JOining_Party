@@ -207,8 +207,51 @@ THEN
 END
 
 
+// Deactivate
 
+IF
+	IsActive(Myself)
+	!Global("JO_JOIN_PRIVACY","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_PRIVACY","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_PRIVACY value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_PRIVACY","LOCALS",0)
+		Continue()
+END
 
+IF
+	IsActive(Myself)
+	!Global("JO_JOIN_IS_HIDDEN","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_IS_HIDDEN","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_IS_HIDDEN value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
+		Continue()
+END
+
+IF
+	IsActive(Myself)
+	!Global("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_IS_INDEPANDANT value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_IS_INDEPANDANT","LOCALS",0)
+		Continue()
+END
+
+IF
+	IsActive(Myself)
+	!Global("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_LOADING_PLAYER","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_LOADING_PLAYER value = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		Continue()
+END
 
 
 
