@@ -361,6 +361,8 @@ IF ~True()~ THEN BEGIN 0
 		SetTokenGlobal("JO_JOIN_PARTYSLOT","LOCALS","JO_JOIN_PARTYSLOT")
 
 		DisplayString(Myself,@104) ~ EXIT
+
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Smart reset.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",31)~ EXIT //
 END
 
 //
