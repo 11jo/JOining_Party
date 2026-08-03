@@ -196,6 +196,8 @@
 | JO_JOIN_AREA_TRANSITION | G | If Player1 is currently on transition area between campaign | 0: False<br>Other: True |
 | JO_JOIN_COUNT_TRAVELER | L | If True, Player1 display travelers count | 0: False<br>Other: True |
 | JO_JOIN_LEGION | L | Traveler count, Player1 only | n/a |
+| JO_JOIN_PARTY_MEMBER | L | Party member not listed in Pdialog.2da | 0: False<br>Other: True |
+| JO_JOIN_PARTY_TRAVELER | L | Party member listed in Pdialog.2da | 0: False<br>Other: True |
 
 ---
 
