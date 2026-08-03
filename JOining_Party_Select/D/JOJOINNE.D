@@ -72,14 +72,12 @@ IF ~True()~ THEN BEGIN 0
 			!TriggerOverride(Player2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))~ THEN REPLY ~^0xFFFFB4B4<PLAYER2>, you can switch your place with travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
 		ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
 		!TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",1))
 		TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER2>, don't switch your place with travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 // leave the group at loading
 	/*IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
@@ -97,37 +95,30 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for one more day.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",1))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for two more days.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for three more days.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for four more days.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",4))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for five more days.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",5))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for six more days.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",6))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for seven more days.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",7))
-		SmallWait(1)
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 */
 
@@ -415,7 +406,6 @@ IF ~~ THEN BEGIN 1
 			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player1))~ EXIT*/
 END
 
@@ -441,7 +431,6 @@ IF ~~ THEN BEGIN 2
 			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player2))~ EXIT*/
 END
 
@@ -467,7 +456,6 @@ IF ~~ THEN BEGIN 3
 			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player3))~ EXIT*/
 END
 
@@ -493,7 +481,6 @@ IF ~~ THEN BEGIN 4
 			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player4))~ EXIT*/
 END
 
@@ -519,7 +506,6 @@ IF ~~ THEN BEGIN 5
 			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player5))~ EXIT*/
 END
 
@@ -545,7 +531,6 @@ IF ~~ THEN BEGIN 6
 			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
 			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				SmallWait(1) 
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player6))~ EXIT*/
 END
 

@@ -10,7 +10,6 @@ APPEND ~%joining_dlg%~
 					GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> Daughter of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
 				!TriggerOverride(Player1,Gender(Myself,FEMALE))
@@ -19,14 +18,12 @@ StartDialogueNoSet(Player1)~ EXIT
 					GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> the Son of Bhaal, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
 				!GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)
 				GlobalLT("CHAPTER","GLOBAL",4)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> and I am completely at loss, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 			IF ~!TriggerOverride(Player1,Global("JO_Myself_Valid","LOCALS",0))
 				!GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)
@@ -34,33 +31,28 @@ StartDialogueNoSet(Player1)~ EXIT
 				GlobalLT("CHAPTER","GLOBAL",7)~ THEN REPLY ~^0xFF7f6000I am <CHARNAME> pupille of Gorion, for god sake !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",1)
-SmallWait(1)
 StartDialogueNoSet(Player1)~ EXIT
 
 			IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF5b5b5bIt's me <PLAYER2>, sorry to interrupt...^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",2)
-SmallWait(1)
 StartDialogueNoSet(Player2)~ EXIT
 
 			IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFF00FF<PLAYER3>, my dear.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",3)
-SmallWait(1)
 StartDialogueNoSet(Player3)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 				TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence ! It's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",4)
-SmallWait(1)
 StartDialogueNoSet(Player4)~ EXIT
 
 			IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 				!TriggerOverride(Player4,Gender(Myself,FEMALE))~ THEN REPLY ~^0xFF82E6FFSilence it's <PLAYER4> speaking !^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",4)
-SmallWait(1)
 StartDialogueNoSet(Player4)~ EXIT
 
 			IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
@@ -69,7 +61,6 @@ StartDialogueNoSet(Player4)~ EXIT
 					TimeOfDay(MORNING)~ THEN REPLY ~^0xFF6aa84fI <PLAYER5>, found you particulary beautiful today.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",5)
-SmallWait(1)
 StartDialogueNoSet(Player5)~ EXIT
 
 			IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0)) 
@@ -78,13 +69,11 @@ StartDialogueNoSet(Player5)~ EXIT
 					TimeOfDay(DUSK)~ THEN REPLY ~^0xFF6aa84fI <PLAYER5>, found you particulary beautiful tonight.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",5)
-SmallWait(1)
 StartDialogueNoSet(Player5)~ EXIT
 
 			IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFffe599Entering <PLAYER6>.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",6)
-SmallWait(1)
 StartDialogueNoSet(Player6)~ EXIT
 
 			IF ~~ THEN REPLY ~^0xFF7f6000I'm already bored.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
