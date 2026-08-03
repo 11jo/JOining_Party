@@ -181,7 +181,7 @@
 | JO_JOIN_QUICK_SWITCH | L | |
 | JO_JOIN_QUICK_FORCE_JOIN | L | Force the quick switch | 0: False<br>Other: True |
 | JO_JOIN_QUICK_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
-| JO_JOIN_QUICK_JOIN_TIMER | L | | n/a
+| JO_JOIN_QUICK_JOIN_TIMER | L | Timer between quick switch | n/a
 | JO_JOIN_NOPRIVACY | G | | 0: False<br>Other: True |
 | JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party | 0: False<br>Other: True
 | JO_JOIN_NOINDEPANDANCE | G | If set, independance process is inactive | 0: False<br>Other: True |
@@ -198,6 +198,31 @@
 | JO_JOIN_LEGION | L | Traveler count, Player1 only | n/a |
 | JO_JOIN_PARTY_MEMBER | L | Party member not listed in Pdialog.2da | 0: False<br>Other: True |
 | JO_JOIN_PARTY_TRAVELER | L | Party member listed in Pdialog.2da | 0: False<br>Other: True |
+| JO_JOIN_TALK_PLAYER | L | The party member who is going to speak with the traveler | 0: inactive<br>1: Player1<br>…<br>6: Player6
+| JO_JOIN_PROTAGONIST | G | Active if Player is in PartySlot0. Unused. | 0: False<br>Other: True |
+| JO_JOIN_PS_NO_TIMER_DEV | G | Deactive the timer during party switch | 0: False<br>Other: True |
+| JO_JOIN_RETURN_SLOT | G | |
+| JO_JOIN_PARTYSLOT | L | |
+| JO_JOIN_BANTER_INTERACT | L | |
+| JO_JOIN_BANTER_TIMER | G | |
+| JO_JOIN_BLOP | G | |
+| JO_JOIN_BREAKABLE | G | |
+| JO_JOIN_DREAM_REST | G | |
+| JO_JOIN_DREAM_REST | L | |
+| JO_JOIN_LOAD | L | |
+| JO_JOIN_LOADING_BREAKABLE | L | |
+| JO_JOIN_LOOK_AT_ME | L | |
+| JO_NOJOIN_LOCALS | L | |
+| JO_JOINP_%Death_var% | L | |
+| JO_JOIN_Player1_DLG | A | |
+| JO_JOIN_BG1_TRANSITION | A | |
+| JO_JOIN_CAMPAIGN_BG1 | A | |
+| JO_JOIN_CAMPAIGN_BG2 | A | |
+| JO_JOIN_CAMPAIGN_SoD | A | |
+| JO_JOIN_CAMPAIGN_ToB | A | |
+| JO_JOIN_BD0103_START | A | |
+| JO_JOIN_BD0103_END | A | |
+
 
 ---
 
