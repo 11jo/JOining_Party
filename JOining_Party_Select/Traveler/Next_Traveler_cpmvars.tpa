@@ -27,8 +27,9 @@
 /*
 // In Progress...
 Do not use
-*/
+
 	OUTER_SET Traveler_Continuous = 0
+*/
 
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
 
@@ -45,7 +46,10 @@ Do not use
 
 	OUTER_SPRINT "NEW_TRAVELER_DeathVar" ""
 
+
+////////////////////////////////////////////////////////////////////////////
 ////////  OVERRIDE_SCRIPT
+////////////////////////////////////////////////////////////////////////////
 
 // Override_script for BG1.
 
@@ -67,7 +71,10 @@ Do not use
 	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" ""
 			// Check if override ToB script is associated to a cre, if not JOining_Party_Select_Joined.tph and Switch_Timer.tph need an addition
 
+
+////////////////////////////////////////////////////////////////////////////
 ////////  JOINING_DIALOG
+////////////////////////////////////////////////////////////////////////////
 
 // Joining_dialog for BG1. // Info in PDIALOG.2DA (Look only on BGSoD not EET)
 
@@ -85,7 +92,10 @@ Do not use
 
 	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" ""
 
+
+////////////////////////////////////////////////////////////////////////////
 ////////  DREAM_BANTER
+////////////////////////////////////////////////////////////////////////////
 
 // Dream_banter for BG1. // Info in PDIALOG.2DA (Look only on BGSoD not EET)
 
@@ -104,7 +114,9 @@ Do not use
 	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_TOB" ""
 
 
+////////////////////////////////////////////////////////////////////////////
 ////////  REGULAR_BANTER
+////////////////////////////////////////////////////////////////////////////
 
 // Regular_banter for BG1. // Info in INTERDIA.2DA (Look only on BGSoD not EET)
 
@@ -121,6 +133,34 @@ Do not use
 // Regular_banter for ToB if any. // Info in INTERDIA.2DA (Look only on BG2 not EET)
 
 	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_TOB" ""
+
+
+////////////////////////////////////////////////////////////////////////////
+////////  REGULAR_DIALOG
+////////////////////////////////////////////////////////////////////////////
+
+//  Recrutement dialog // TODO
+
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_DIALOG_NAME_BG1" ""
+	
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_DIALOG_NAME_SoD" ""
+	
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_DIALOG_NAME_BG2" ""
+	
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_DIALOG_NAME_TOB" ""
+
+
+////////////////////////////////////////////////////////////////////////////
+////////  LEAVE_DIALOG
+////////////////////////////////////////////////////////////////////////////
+
+	OUTER_SPRINT "NEW_TRAVELER_LEAVE_DIALOG_NAME_BG1" ""
+	
+	OUTER_SPRINT "NEW_TRAVELER_LEAVE_DIALOG_NAME_SoD" ""
+	
+	OUTER_SPRINT "NEW_TRAVELER_LEAVE_DIALOG_NAME_BG2" ""
+	
+	OUTER_SPRINT "NEW_TRAVELER_LEAVE_DIALOG_NAME_TOB" ""
 
 //
 
