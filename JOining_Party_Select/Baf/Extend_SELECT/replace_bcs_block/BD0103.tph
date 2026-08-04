@@ -68,7 +68,7 @@ THEN
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",0))
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-//		ActionOverride("%Death_var%",SetDialog("%REGULAR_DIALOG_NAME%")) // Recrutement dialog
+		ActionOverride("%Death_var%",SetLeavePartyDialogFile())
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroySelf())
 		SetInterrupt(TRUE)
