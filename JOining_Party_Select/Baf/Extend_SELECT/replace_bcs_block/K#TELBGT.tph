@@ -44,7 +44,7 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
 //		ActionOverride("%Death_var%",SetDialog("%REGULAR_DIALOG_NAME%")) // Recrutement dialog
 		SmallWait(1)
-		SmallWait(1)ActionOverride("%Death_var%",DestroySelf())
+		ActionOverride("%Death_var%",DestroySelf())
 		Continue()
 END
 
