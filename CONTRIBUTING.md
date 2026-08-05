@@ -133,7 +133,6 @@
 | JO_JOIN_PLAYER_INIT | L | Special exportable character at creation | 0: False<br>Other: True |
 | JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
 | JO_Myself_LeaveParty | L | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>1: activate<br>2: processing |
-| JO_JOIN_LEAVING_PARTY | G | Leaving party process step | 0: inactive<br>1: party member kicking is needed<br>2: waiting<br>3: prepare to join party<br>4: Join party<br>5: Leave party<br>6: party member reintegrate the group
 | JO_JOIN_LEAVE_PARTY | L | Set by the traveler who leave the party but the group is full and set by Slot6 who temporarly leave the party | 0: False<br>Other: True |
 | JO_JOIN_SLEEPING_DEAD | L | If traveler is sleeping dead | 0: False<br>Other: True |
 | JO_JOIN_LINK_PLAYER_ID | L | Used to link a traveler to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|

@@ -375,9 +375,8 @@ END
 // Delay banters for party members when specific actions are performed
 
 IF
-	OR(7)
+	OR(6)
 		!Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
@@ -397,7 +396,6 @@ END
 
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
