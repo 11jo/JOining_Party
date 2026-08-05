@@ -131,7 +131,6 @@ THEN
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -567,7 +566,7 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Related to party member // Secondary Leave Party 1 above
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Related to party member // Secondary Leave Party 1 above
 //
 	OR(3)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)

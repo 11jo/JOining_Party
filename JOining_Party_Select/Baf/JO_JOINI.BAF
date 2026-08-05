@@ -465,7 +465,6 @@ THEN
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -2386,7 +2385,7 @@ IF // First check
 		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
 	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
@@ -2456,7 +2455,7 @@ IF // No slot found because they are safe or members are not wannabe
 		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
 	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
