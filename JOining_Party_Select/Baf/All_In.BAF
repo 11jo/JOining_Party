@@ -543,6 +543,7 @@ THEN
 		SmallWait(1)
 		DestroyItem("JOMINHP1")
 		SmallWait(1)
+		ChangeAIScript("",GENERAL)
 		RemoveFamiliar()
 		ChangeEnemyAlly(Myself,NEUTRAL)
 		SetLeavePartyDialogFile()
