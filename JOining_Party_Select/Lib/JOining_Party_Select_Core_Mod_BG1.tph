@@ -138,7 +138,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
-						ACTION_IF (GAME_IS ~eet~) BEGIN
+						ACTION_IF (GAME_IS ~eet~)  BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
@@ -466,44 +466,6 @@ BEGIN
 END
 
 /////////////////////////// Dark Horizons ///////////////////////////
-
-OUTER_SPRINT "BG1_JOINED" "CMTNIKJ"
-OUTER_SPRINT "BG1_BCS" "cmtnikit"
-OUTER_SPRINT "BG1_BANTER" "BCMTNIK"
-OUTER_SPRINT "SoD_BANTER" "BCMTNIK"
-OUTER_SPRINT "SoD_JOINED" "CMTNIKJ"
-OUTER_SPRINT "SoD_BCS" "cmtnikit"
-// OUTER_SPRINT "EET_BANTER" "BCMTNIK"
-OUTER_SPRINT "BG1_DREAM" "CMTNIKD"
-OUTER_SPRINT "SoD_DREAM" "CMTNIKD"
-// OUTER_SPRINT "EET_DREAM" "CMTNIKD"
-
-ACTION_FOR_EACH bcs IN
-
-// Mod Nikita_BG1 ~cmtnikit~
-
-BEGIN
-
-	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
-
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
-
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
-
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
-
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
-
-						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
-						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
-						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
-						END
-
-	END
-END
 
 OUTER_SPRINT "BG1_JOINED" "CMTTHORJ"
 OUTER_SPRINT "BG1_BCS" "cmtthor"

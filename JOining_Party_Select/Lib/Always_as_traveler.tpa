@@ -1156,23 +1156,6 @@ END
 
 ACTION_IF (MOD_IS_INSTALLED ~DARKHORIZONS.TP2~ ~0~) THEN BEGIN
 
-	ACTION_IF Nikita_BG1_as_traveler = 1 THEN BEGIN
-
-			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// Mod Nikita_BG1~ ~~
-				PRINT ~    Nikita_BG1 as traveler
-				~
-
-	END ELSE ACTION_IF Nikita_BG1_as_Real_traveler = 1 THEN BEGIN
-
-			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// Mod Nikita_BG1~ ~~
-				REPLACE_TEXTUALLY ~// Mod Real Nikita_BG1~ ~~
-				PRINT ~    Nikita_BG1 as real traveler
-				~
-
-	END
-
 	ACTION_IF Thorin_as_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1825,28 +1808,6 @@ ACTION_IF (MOD_IS_INSTALLED ~SBS.tp2~ 0) ||
 				REPLACE_TEXTUALLY ~// Mod Sandra~ ~~
 				REPLACE_TEXTUALLY ~// Mod Real Sandra~ ~~
 				PRINT ~    Sandra as real traveler
-				~
-
-	END
-
-END
-
-
-ACTION_IF (MOD_IS_INSTALLED ~NIKITAREDUX.TP2~ ~0~) THEN BEGIN
-
-	ACTION_IF Nikita_Redux_as_traveler = 1 THEN BEGIN
-
-			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// Mod NikitaRedux~ ~~
-				PRINT ~    NikitaRedux as traveler
-				~
-
-	END ELSE ACTION_IF NikitaRedux_as_Real_traveler = 1 THEN BEGIN
-
-			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// Mod NikitaRedux~ ~~
-				REPLACE_TEXTUALLY ~// Mod Real NikitaRedux~ ~~
-				PRINT ~    NikitaRedux as real traveler
 				~
 
 	END
@@ -2712,5 +2673,27 @@ END
 
 
 /////////////////////////// Continuous ///////////////////////////
+
+
+ACTION_IF (MOD_IS_INSTALLED ~DARKHORIZONS.TP2~ ~0~) OR (MOD_IS_INSTALLED ~NIKITAREDUX.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Nikita_as_traveler = 1 THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// Mod Nikita~ ~~
+				PRINT ~    Nikita as traveler
+				~
+
+	END ELSE ACTION_IF Nikita_as_Real_traveler = 1 THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// Mod Nikita~ ~~
+				REPLACE_TEXTUALLY ~// Mod Real Nikita~ ~~
+				PRINT ~    Nikita as real traveler
+				~
+
+	END
+
+END
 
 // Next_Traveler Continuous
