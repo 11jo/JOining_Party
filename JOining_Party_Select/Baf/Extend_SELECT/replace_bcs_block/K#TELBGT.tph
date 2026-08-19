@@ -33,6 +33,7 @@ THEN
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
 		SmallWait(2)
+		ActionOverride("%Death_var%",ChangeAIScript("WTASIGHT",GENERAL))
 		ActionOverride("%Death_var%",RemoveFamiliar())
 		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,NEUTRAL))
 		SmallWait(1)
