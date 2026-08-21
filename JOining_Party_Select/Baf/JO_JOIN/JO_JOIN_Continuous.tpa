@@ -32,7 +32,7 @@ END ELSE BEGIN
 END
 ACTION_IF (GAME_IS ~eet~) BEGIN // BG1 / EET
 		OUTER_SPRINT "RESPONSE_EET" ~~~~~RESPONSE #5
-				SetDialog("%BG1_JOINED%")
+				SetDialog("%BG2_JOINED%")
 				SmallWait(1)
 				SetGlobal("JO_JOIN","LOCALS",0)
 				Continue()~~~~~
