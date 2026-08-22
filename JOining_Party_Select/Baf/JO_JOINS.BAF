@@ -1,0 +1,38 @@
+// JO_JOINS
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// TakeCreatureItems
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_BDCUT62","GLOBAL",1) // BDCUT62.BCS
+THEN
+	RESPONSE #100
+		ActionOverride("Equipment_party",TakeCreatureItems(Myself,ALL))
+		LeaveAreaLUA("bd0104","",[522.965],2)
+//
+		SetGlobal("JO_JOIN_SCRIPT","LOCALS",0)
+		ChangeAIScript("",RACE)
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	OR(2)
+		Global("JO_JOIN_IDSHCUT1","GLOBAL",1) // IDSHCUT1.BCS
+		Global("JO_JOIN_IWSHCUT1","GLOBAL",1) // IWSHCUT1.BCS
+THEN
+	RESPONSE #100
+		ActionOverride("IWD_Container",TakeCreatureItems(Myself,ALL))
+//
+		SetGlobal("JO_JOIN_SCRIPT","LOCALS",0)
+		ChangeAIScript("",RACE)
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+

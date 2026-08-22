@@ -5,3 +5,20 @@ THEN
 	RESPONSE #100
 		PlaySong(%BPTheme%)
 END
+
+IF
+	Global("JO2608_Explore","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO2608_Explore","MYAREA",1)
+		Explore()
+END
+
+// Reset JO_JOIN_CAMPAIGN_TRANSITION for Switch trigger in JO_JOINI
+IF
+	!Global("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
+END
+

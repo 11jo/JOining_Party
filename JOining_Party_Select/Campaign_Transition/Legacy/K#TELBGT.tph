@@ -53,3 +53,11 @@ COPY_EXISTING ~K#TELBGT.bcs~ ~override~
   REPLACE_BCS_BLOCK EVALUATE_BUFFER ~K#TELBGT_rep.baf~ ~K#TELBGT_add.baf~
 
 	END
+
+
+ // TODO : Keep some travelers or not
+/*
+		ActionOverride("%Death_var%",DestroySelf())
+Or
+		ActionOverride("%Death_var%",JumpToPoint([xx.yy]))
+*/

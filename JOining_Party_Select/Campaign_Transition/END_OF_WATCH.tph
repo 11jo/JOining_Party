@@ -1,0 +1,22 @@
+
+
+<<<<<<<< .../JOining_JO2608.baf
+
+IF
+	Global("JO2608_Create","MYAREA",0)
+	TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_WATCH","LOCALS",3))
+	!InMyArea("%Death_var%")
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1))
+		SetGlobal("JO2608_Create","MYAREA",1)
+		MoveGlobal("JO2608","%Death_var%",[801.499])
+		Wait(1)
+		ActionOverride("JO_JOIN_Room_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+		Wait(3)
+		ActionOverride("%Death_var%",RandomWalk())
+		SetGlobal("JO2608_Create","MYAREA",0)
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~JO2608.bcs~ ~.../JOining_JO2608.baf~ EVALUATE_BUFFER
