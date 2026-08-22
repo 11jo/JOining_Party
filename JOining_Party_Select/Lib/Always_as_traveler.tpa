@@ -13,6 +13,10 @@ ACTION_IF (GAME_IS ~tob bgt bgee bg2ee eet~) THEN BEGIN
 				REPLACE_TEXTUALLY ~// Original Imoen~ ~~
 				REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
 				REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
+					PATCH_IF (GAME_IS ~bg2ee~ AND NOT GAME_IS ~eet~) BEGIN
+					// Special Imoen in Irenicus Donjon
+				REPLACE_TEXTUALLY ~// ImoenIren~ ~~
+					END
 				PRINT ~    Imoen as traveler
 				~
 
@@ -23,6 +27,10 @@ ACTION_IF (GAME_IS ~tob bgt bgee bg2ee eet~) THEN BEGIN
 				REPLACE_TEXTUALLY ~// %Don_t_replace_anything_ODD%~ ~~
 				REPLACE_TEXTUALLY ~// %Don_t_replace_anything_END%~ ~~
 				REPLACE_TEXTUALLY ~// Original Real Imoen~ ~~
+					PATCH_IF (GAME_IS ~bg2ee~ AND NOT GAME_IS ~eet~) BEGIN
+					// Special Imoen in Irenicus Donjon
+				REPLACE_TEXTUALLY ~// ImoenIren~ ~~
+					END
 				PRINT ~    Imoen Real as traveler
 				~
 
