@@ -258,8 +258,6 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -333,8 +331,6 @@ StartDialogueNoSet(Player6)~ EXIT
 
 
 		SetTokenGlobal("JO_Myself_LeaveParty","LOCALS","JO_Myself_LeaveParty")
-		SetTokenGlobal("JO_JOIN_LEAVE_PARTY","LOCALS","JO_JOIN_LEAVE_PARTY")
-		SetTokenGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL","JO_JOIN_LEAVING_PARTY")
 
 
 //		SetTokenGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL","JO_JOIN_PARTY_SWITCH")

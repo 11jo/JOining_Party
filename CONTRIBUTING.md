@@ -132,10 +132,7 @@
 | JO_JOIN_PLAYER1_INIT | G | Special Charname at character creation, to be sure DPLAYER3.BCS is set | 0: False<br>Other: True |
 | JO_JOIN_PLAYER_INIT | L | Special exportable character at creation | 0: False<br>Other: True |
 | JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
-| JO_%Death_var%_LeaveParty | G | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>Other: True |
 | JO_Myself_LeaveParty | L | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>1: activate<br>2: processing |
-| JO_JOIN_LEAVING_PARTY | G | Leaving party process step | 0: inactive<br>1: party member kicking is needed<br>2: waiting<br>3: prepare to join party<br>4: Join party<br>5: Leave party<br>6: party member reintegrate the group
-| JO_JOIN_LEAVE_PARTY | L | Set by the traveler who leave the party but the group is full and set by Slot6 who temporarly leave the party | 0: False<br>Other: True |
 | JO_JOIN_SLEEPING_DEAD | L | If traveler is sleeping dead | 0: False<br>Other: True |
 | JO_JOIN_LINK_PLAYER_ID | L | Used to link a traveler to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|
 | JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
@@ -148,7 +145,7 @@
 | JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
 | JO_JOIN_SET_JOINX | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: nothing<br>3: Script is up to date<br>Other: nothing|
 | JO_JOIN_SET_JOINM | L | Used to keep assigned RACE script (JOINM) to check variables | 1: Call to script<br>2: Script is running<br>Other: nothing |
-| JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>Other: True |
+| JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>2: CutSceneLite is active<br>Other: CutSceneMod is active |
 | JO_JOIN_HIDE_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
 | JO_JOIN_IS_HIDDEN | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
 | JO_JOIN_FORCE_HIDE | G | Force travelers to be deactivate | 0: False<br>Other: True |

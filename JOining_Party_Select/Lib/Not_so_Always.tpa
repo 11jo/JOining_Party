@@ -209,6 +209,12 @@
 
 		INCLUDE ~JOining_Party_Select/Lib/Always_as_traveler.tpa~
 
+
+// CD_STATE_NOTVALID without STATE_SILENCED but with STATE_CHARMED ? scripts may be not active
+
+APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
+	UNLESS ~JO_STATE_NOTVALID~
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Extend_JOJOINNE.D workaround

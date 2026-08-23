@@ -97,41 +97,6 @@ THEN
 		SetGlobal("JO_JOIN_TRAVELER_NUM","GLOBAL",1)
 END
 
-///////////////////////////////////////////////////////////////////////////////
-
-// Leave Party
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Block wait 3
-// TODO: probably useless
-
-IF // After block wait 1 if everything is in order, let's switch !
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
-	Global("JO_Myself_LeaveParty","LOCALS",2)
-	NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",4)
-		DisplayString(Myself,~Leave Party !~)
-END
-
-// Secondary Leave Party 3
-
-IF // If something arise we reset to make the traveler go back to Main Leave Party 1
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",3)
-	Global("JO_Myself_LeaveParty","LOCALS",2)
-	!NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		DisplayString(Myself,~I Leave Party in a moment...~)
-END
-
 ///////////////////////////////////////////////////////////////////////////////////
 
 // Privacy / Indepandance
@@ -187,7 +152,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 // 
 	OR(2)
@@ -501,8 +465,6 @@ THEN
 		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
 
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVE_PARTY","LOCALS",0)
-		SetGlobal("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
@@ -706,7 +668,6 @@ IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
 // 
 	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
@@ -727,10 +688,9 @@ IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another 
 	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	OR(4)
+	OR(3)
 		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!Global("JO_NOJOIN","GLOBAL",0)
-		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		!Global("JO_JOIN_FILL_PARTY","LOCALS",0)
 // 
 	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
@@ -759,7 +719,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
 //
 	OR(2)
@@ -1028,7 +987,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // no linked
@@ -1053,7 +1011,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)
@@ -1081,7 +1038,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	Delay(5)
@@ -1121,7 +1077,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1145,7 +1100,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1176,7 +1130,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1204,7 +1157,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1237,7 +1189,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1261,7 +1212,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1292,7 +1242,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1316,7 +1265,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1347,7 +1295,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1371,7 +1318,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1401,7 +1347,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -1425,7 +1370,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 	Global("JO_NOJOIN","GLOBAL",0)
 //
 	ActionListEmpty()
@@ -2430,7 +2374,6 @@ IF // First check
 	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 // Global checks
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
@@ -2442,7 +2385,7 @@ IF // First check
 		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
 	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
@@ -2512,7 +2455,7 @@ IF // No slot found because they are safe or members are not wannabe
 		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
 		!Global("JO_JOIN_BLOP","GLOBAL",0)
 // Local checks
-	!GlobalGT("JO_JOIN_LEAVE_PARTY","LOCALS",0) // Leave Party inactive
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
 	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
 	Global("JO_JOIN","LOCALS",0)
 	Global("JO_JOINI","LOCALS",0)
@@ -2815,7 +2758,6 @@ IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0) // Don't use this block when Leave Party
 //
 //	!Global("JO_JOIN_IS_JOINING","LOCALS",0) // Why ?
 	OR(3)

@@ -29,12 +29,12 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",LeaveParty())
-		SetGlobal("JO_%Death_var%_LeaveParty","GLOBAL",1)
 		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
 		SmallWait(2)
-//		ActionOverride("%Death_var%",RemoveFamiliar())
+		ActionOverride("%Death_var%",ChangeAIScript("WTASIGHT",GENERAL))
+		ActionOverride("%Death_var%",RemoveFamiliar())
 		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,NEUTRAL))
 		SmallWait(1)
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
@@ -42,7 +42,9 @@ THEN
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",0))
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		SmallWait(1)ActionOverride("%Death_var%",DestroySelf())
+		ActionOverride("%Death_var%",SetLeavePartyDialogFile())
+		SmallWait(1)
+		ActionOverride("%Death_var%",DestroySelf())
 		Continue()
 END
 
