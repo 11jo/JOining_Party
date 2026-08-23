@@ -1,0 +1,58 @@
+// Prevent some BG1 or SoD traveler to vanish in EET (Only for traveler with no content in SoD or BG2)
+
+ACTION_IF MOD_IS_INSTALLED ~IWD_EET_END.TP2~ ~0~ BEGIN
+
+<<<<<<<<override_DestroySelf_add.baf
+IF
+	!AreaType(IWDAREA)
+	Global("JO_Myself_AllowDead","LOCALS",0)
+	GlobalGT("CHAPTER","GLOBAL",13)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+>>>>>>>>
+
+<<<<<<<<override_DestroySelf_rep.baf
+IF
+	!AreaType(IWDAREA)
+	Global("JO_Myself_AllowDead","LOCALS",0)
+	GlobalGT("CHAPTER","GLOBAL",13)
+	Global("JO_JOIN_END_OF_SOD","LOCALS",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+>>>>>>>>
+COPY_EXISTING ~%bcs%.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~ EVALUATE_BUFFER
+	BUT_ONLY_IF_IT_CHANGES
+
+END ELSE BEGIN
+
+<<<<<<<<override_DestroySelf_add.baf
+IF
+	Global("JO_Myself_AllowDead","LOCALS",0)
+	GlobalGT("CHAPTER","GLOBAL",13)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+>>>>>>>>
+
+<<<<<<<<override_DestroySelf_rep.baf
+IF
+	Global("JO_Myself_AllowDead","LOCALS",0)
+	GlobalGT("CHAPTER","GLOBAL",13)
+	Global("JO_JOIN_END_OF_SOD","LOCALS",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+>>>>>>>>
+COPY_EXISTING ~%bcs%.bcs~ ~override~
+  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~ EVALUATE_BUFFER
+	BUT_ONLY_IF_IT_CHANGES
+
+END
+ 

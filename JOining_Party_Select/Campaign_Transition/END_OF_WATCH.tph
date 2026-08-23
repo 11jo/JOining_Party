@@ -1,14 +1,15 @@
 
+// Regular
 
 <<<<<<<< .../JOining_JO2608.baf
 
 IF
 	Global("JO2608_Create","MYAREA",0)
-	TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_WATCH","LOCALS",3))
+	!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_WATCH","LOCALS",0))
 	!InMyArea("%Death_var%")
 THEN
 	RESPONSE #100
-		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",0))
 		SetGlobal("JO2608_Create","MYAREA",1)
 		MoveGlobal("JO2608","%Death_var%",[801.499])
 		Wait(1)
@@ -20,3 +21,125 @@ END
 
 >>>>>>>>
 EXTEND_BOTTOM ~JO2608.bcs~ ~.../JOining_JO2608.baf~ EVALUATE_BUFFER
+
+// SoD_Content
+
+	ACTION_IF ~%Death_var%_SoD_Content~ = 1 THEN BEGIN
+
+
+<<<<<<<< .../JOining_SoD_JO2608.baf
+
+IF
+	!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_BG1","LOCALS",0))
+	InMyArea("%Death_var%")
+THEN
+	RESPONSE #100
+		DisplayString("%Death_var%",~%%Death_var%_name% has heard about the crusade.~)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",0))
+		Wait(4)
+		ActionOverride("%Death_var%",DestroySelf())
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~JO2608.bcs~ ~.../JOining_SoD_JO2608.baf~ EVALUATE_BUFFER
+
+
+	END 
+
+
+// BG2_Content
+
+		ACTION_IF ~%Death_var%_BG2_Content~ = 1 THEN BEGIN
+
+
+<<<<<<<< .../JOining_BG2_JO2608.baf
+
+IF
+	!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_SOD","LOCALS",0))
+	InMyArea("%Death_var%")
+THEN
+	RESPONSE #100
+		DisplayString("%Death_var%",~%%Death_var%_name% has heard about the city of coins.~)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",0))
+		Wait(4)
+		ActionOverride("%Death_var%",DestroySelf())
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~JO2608.bcs~ ~.../JOining_BG2_JO2608.baf~ EVALUATE_BUFFER
+
+
+		END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// END_OF_WATCH
+
+///////////////////////////////////////////////////////////////////////////////
+
+//		ACTION_IF ~BG1_%Death_var%_Select~ = 1 OR ~SoD_%Death_var%_Select~ = 1 OR ~Continuous_%Death_var%_Select~ = 1 THEN BEGIN
+
+COPY ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~  ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~ EVALUATE_BUFFER
+	REPLACE_TEXTUALLY ~// REPLACE_END_OF_WATCH~ ~~~~~IF
+	AreaCheck("BD0120")
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	Global("JO_Myself_LeaveParty","LOCALS",0)
+	Global("JO_JOIN_END_OF_WATCH","LOCALS",1)
+	Switch("JO_JOIN_TALK_TRANSITION","LOCALS") // Only one traveler say something (Set in JO_JOINI.baf)
+THEN
+	RESPONSE #0
+		SetGlobal("K#PartySoD","LOCALS",1)
+		CreateVisualEffectObject("JOBG402",Myself)
+		Wait(2)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",1)
+		DestroySelf()
+	RESPONSE #1
+		SetGlobal("K#PartySoD","LOCALS",1)
+		DisplayStringHead(Myself,~We will meet again.~)
+		Wait(3)
+		CreateVisualEffectObject("JOBG402",Myself)
+		Wait(2)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",1)
+		DestroySelf()
+END
+
+IF
+	AreaCheck("BD6000")
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	Global("JO_Myself_LeaveParty","LOCALS",0)
+	Global("JO_JOIN_END_OF_WATCH","LOCALS",1)
+	Switch("JO_JOIN_TALK_TRANSITION","LOCALS") // Only one traveler say something (Set in JO_JOINI.baf)
+THEN
+	RESPONSE #0
+		CreateVisualEffectObject("JOBG402",Myself)
+		Wait(2)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
+		DestroySelf()
+	RESPONSE #1
+		DisplayStringHead(Myself,~Gonna make a diversion, the Flamming Fist will search for you everywhere...~)
+		Wait(3)
+		CreateVisualEffectObject("JOBG402",Myself)
+		Wait(2)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
+		DestroySelf()
+END~~~~~
+
+//		END
+

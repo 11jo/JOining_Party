@@ -30,6 +30,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ EVALUATE_BUFFER
@@ -84,6 +86,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ZYJCOB_All_In.baf~ EVALUATE_BUFFER
@@ -137,6 +141,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -194,6 +200,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/rh#isra_All_In.baf~ EVALUATE_BUFFER
@@ -249,6 +257,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -310,6 +320,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_JARLAXE_All_In.baf~ EVALUATE_BUFFER
@@ -369,6 +381,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_ARTEMIS_All_In.baf~ EVALUATE_BUFFER
@@ -421,6 +435,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -476,6 +492,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_BRUENOR_All_In.baf~ EVALUATE_BUFFER
@@ -529,6 +547,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -584,6 +604,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_DRIZZT_All_In.baf~ EVALUATE_BUFFER
@@ -637,6 +659,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -694,6 +718,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMTTHOR_All_In.baf~ EVALUATE_BUFFER
@@ -748,6 +774,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -804,6 +832,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/DSBARDO_All_In.baf~ EVALUATE_BUFFER
@@ -856,6 +886,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -910,6 +942,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Conchobhair_All_In.baf~ EVALUATE_BUFFER
@@ -962,6 +996,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1016,6 +1052,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ferthgil_All_In.baf~ EVALUATE_BUFFER
@@ -1068,6 +1106,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1122,6 +1162,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/KEIRIA_All_In.baf~ EVALUATE_BUFFER
@@ -1175,6 +1217,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/SKEEZER_All_In.baf~ EVALUATE_BUFFER
@@ -1227,6 +1271,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1301,6 +1347,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/WILL_All_In.baf~ EVALUATE_BUFFER
@@ -1356,6 +1404,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1413,6 +1463,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/J#Indi_All_In.baf~ EVALUATE_BUFFER
@@ -1468,6 +1520,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1525,6 +1579,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#DAVE_All_In.baf~ EVALUATE_BUFFER
@@ -1578,6 +1634,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1633,6 +1691,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#LITT_All_In.baf~ EVALUATE_BUFFER
@@ -1687,6 +1747,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#MOID_All_In.baf~ EVALUATE_BUFFER
@@ -1740,6 +1802,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1799,6 +1863,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/X3Kale_All_In.baf~ EVALUATE_BUFFER
@@ -1855,6 +1921,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kasandra_All_In.baf~ EVALUATE_BUFFER
@@ -1908,6 +1976,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -1963,6 +2033,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Alethra_All_In.baf~ EVALUATE_BUFFER
@@ -2016,6 +2088,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -2071,6 +2145,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Talindra_All_In.baf~ EVALUATE_BUFFER
@@ -2124,6 +2200,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -2179,6 +2257,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ariadne_All_In.baf~ EVALUATE_BUFFER
@@ -2232,6 +2312,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
@@ -2287,6 +2369,8 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Namiir_All_In.baf~ EVALUATE_BUFFER
@@ -2340,6 +2424,8 @@ ACTION_FOR_EACH bcs IN
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 

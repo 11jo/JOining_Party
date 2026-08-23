@@ -2,26 +2,36 @@
 
 ACTION_FOR_EACH Death_var IN
 
-// Original Imoen           ~%IMOEN_DV%~ // ImoenIren ~Imoen~ // ~ttimoen~    // Imoen
-// Original Edwin           ~Edwin~                               // Edwin
-// Original Jaheira         ~Jaheira~    // ~ttjaheir~            // Jaheira
-// Original Minsc           ~Minsc~      // ~ttminsc~             // Minsc
-// Original Viconia         ~Viconia~                             // Viconia
-// Original Dorn            ~Dorn~                                // Dorn
-// Original Neera           ~Neera~                               // Neera
-// Original Rasaad          ~Rasaad~                              // Rasaad
+~%IMOEN_DV%~ // ImoenIren ~Imoen~ // ~ttimoen~    // Imoen
+~Edwin~                               // Edwin
+~Jaheira~    // ~ttjaheir~            // Jaheira
+~Minsc~      // ~ttminsc~             // Minsc
+~Viconia~                             // Viconia
+~Dorn~                                // Dorn
+~Neera~                               // Neera
+~Rasaad~                              // Rasaad
 
 /////////////////////////// Continuous ///////////////////////////
 
-// EET Nikita           ~cmnikita~                            // Nikita
+~cmnikita~                            // Nikita
 
-// EET Alora_Continuous           ~Alora~                            // Alora_Continuous
+~Alora~                            // Alora_Continuous
 
 // Next_Traveler Continuous
 
 BEGIN
 
-							OUTER_SET ~Continuous_%Death_var%_Select~ = 1
+							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 1
+
+							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
+
+								OUTER_SET EVAL ~%Death_var%_SoD_Content~ = 0
+
+								OUTER_SET EVAL ~%Death_var%_BG2_Content~ = 0
 
 END
 
@@ -31,113 +41,123 @@ ACTION_FOR_EACH Death_var IN
 
 /////////////////////////// bg1 ///////////////////////////
 
-// Original Ajantis         ~Ajantis~                             // Ajantis
-// Original Alora           ~Alora~                               // Alora
-// Original Branwen         ~Branwen~    // ~ttbran~              // Branwen
-// Original Coran           ~Coran~                               // Coran
-// Original Dynaheir        ~Dynaheir~                            // Dynaheir
+~Ajantis~                             // Ajantis
+~Alora~                               // Alora
+~Branwen~    // ~ttbran~              // Branwen
+~Coran~                               // Coran
+~Dynaheir~                            // Dynaheir
 
-// Original Eldoth          ~Eldoth~                              // Eldoth
-// Original Faldorn         ~Faldorn~                             // Faldorn
-// Original Garrick         ~Garrick~                             // Garrick
+~Eldoth~                              // Eldoth
+~Faldorn~                             // Faldorn
+~Garrick~                             // Garrick
 
-// Original Kagain          ~Kagain~                              // Kagain
-// Original Khalid          ~Khalid~                              // Khalid
-// Original Kivan           ~Kivan~                               // Kivan
+~Kagain~                              // Kagain
+~Khalid~                              // Khalid
+~Kivan~                               // Kivan
 
-// Original Montaron        ~Montaron~                            // Montaron
-// Original Quayle          ~Quayle~                              // Quayle
-// Original Safana          ~Safana~                              // Safana
-// Original Sharteel        ~Sharteel~    // ~Shar-teel~          // Sharteel
-// Original Skie            ~Skie~                                // Skie
-// Original Tiax            ~Tiax~                                // Tiax
+~Montaron~                            // Montaron
+~Quayle~                              // Quayle
+~Safana~                              // Safana
+~Sharteel~    // ~Shar-teel~          // Sharteel
+~Skie~                                // Skie
+~Tiax~                                // Tiax
 
-// Original Xan             ~Xan~         // ttxan~               // Xan
-// Original Xzar            ~Xzar~                                // Xzar
-// Original Yeslick         ~Yeslick~                             // Yeslick
+~Xan~         // ttxan~               // Xan
+~Xzar~                                // Xzar
+~Yeslick~                             // Yeslick
 
-// Original Baeloth         ~Baeloth~                             // Baeloth
+~Baeloth~                             // Baeloth
 
 /////////////////////////// Mods BG1 ///////////////////////////
 
 // Ishlilka_The-Wizard-Slayer
-// Mod Ishlilka             ~#Ishy~                               // Ishlilka
+~#Ishy~                               // Ishlilka
 
 // ChaosKnight-kit
-// Mod Jacob                ~ZYJCOB~                              // Jacob
+~ZYJCOB~                              // Jacob
 
 // Askaria-Quest
-// Mod Askaria              ~ZYASKA~                              // Askaria
+~ZYASKA~                              // Askaria
 
 // Isra BG1
-// Mod Isra_BG1             ~rh#isra~                             // Isra
+~rh#isra~                             // Isra
 
 // Finch
-// Mod Finch                ~SUFINCH~                             // Finch
+~SUFINCH~                             // Finch
 
 // Drizzt Saga
-// Mod Jarlaxle_Saga        ~F_JARLAXE~                           // Jarlaxle
-// Mod Artemis_Enteri_Saga  ~F_ARTEMIS~                           // Artemis Enteri
-// Mod Catti-Brie_Saga      ~F_CATTIBR~                           // Catti-Brie
-// Mod Bruenor_Saga         ~F_BRUENOR~                           // Bruenor
-// Mod Regis_Saga           ~F_REGIS~                             // Regis
-// Mod Drizzt_Saga          ~F_DRIZZT~                            // Drizzt
-// Mod Wulfgar_Saga         ~F_WULFGAR~                           // Wulfgar
+~F_JARLAXE~                           // Jarlaxle
+~F_ARTEMIS~                           // Artemis Enteri
+~F_CATTIBR~                           // Catti-Brie
+~F_BRUENOR~                           // Bruenor
+~F_REGIS~                             // Regis
+~F_DRIZZT~                            // Drizzt
+~F_WULFGAR~                           // Wulfgar
 
 // Dark Horizons
-// Mod Thorin               ~CMTTHOR~                             // Thorin
-// Mod Morwen                ~CMTMORW~                            // Morwen
+~CMTTHOR~                             // Thorin
+~CMTMORW~                            // Morwen
 
 // DSotSC
-// Mod Bardo                ~DSBARDO~                              // Bardo
-// Mod Bub_Snikt            ~DSBUB~                                // Bub Snikt
-// Mod Conchobhair          ~Conchobhair~                          // Conchobhair
-// Mod CuChoinneach         ~CuChoinneach~                         // CuChoinneach
-// Mod Ferthgil_Trollslayer ~Ferthgil~                             // Ferthgil Trollslayer
-// Mod Jet'laya             ~JETLAYA~                              // Jet'laya
-// Mod Keiria_Silverstring  ~KEIRIA~                               // Keiria Silverstring
-// Mod Skeezer_Lumpkin_VI   ~SKEEZER~                              // Skeezer Lumpkin VI
-// Mod Thorfinn_Hauskluniff ~Thorfinn~                             // Thorfinn Hauskluniff
+~DSBARDO~                              // Bardo
+~DSBUB~                                // Bub Snikt
+~Conchobhair~                          // Conchobhair
+~CuChoinneach~                         // CuChoinneach
+~Ferthgil~                             // Ferthgil Trollslayer
+~JETLAYA~                              // Jet'laya
+~KEIRIA~                               // Keiria Silverstring
+~SKEEZER~                              // Skeezer Lumpkin VI
+~Thorfinn~                             // Thorfinn Hauskluniff
 
 // NTotSC
-// Mod Will_Scarlet         ~WILL~                                 // Will Scarlet
+~WILL~                                 // Will Scarlet
 
 // Valerie
-// Mod Valerie ~T2VAL~
+~T2VAL~
 
 // Indira
-// Mod Indira ~J#Indi~
+~J#Indi~
 
 // Bristlelick
-// Mod Bristlelick ~L#BRIST~
+~L#BRIST~
 
 // Glam's npc pack
-// Mod Dave ~GV#DAVE~
-// Mod Flara ~GV#FLAR~
-// Mod Littlun ~GV#LITT~
-// Mod Moidre ~GV#MOID~
-// Mod Vynd ~GV#VYND~
+~GV#DAVE~
+~GV#FLAR~
+~GV#LITT~
+~GV#MOID~
+~GV#VYND~
 
 // Kale BG1
-// Mod Kale_BG1 ~X3Kale~
+~X3Kale~
 
 // New Tales of the Sword Coast
-// Mod Kasandra ~Kasandra~
-// Mod Masambe ~Masambe~
-// Mod Alethra ~Alethra~
-// Mod Rimardo ~Rimardo~
-// Mod Talindra ~Talindra~
-// Mod Theodor ~Theodor~
-// Mod Ariadne ~Ariadne~
-// Mod Nathan ~Nathan~
-// Mod Namiir ~Namiir~
-// Mod Miranda ~Miranda~
+~Kasandra~
+~Masambe~
+~Alethra~
+~Rimardo~
+~Talindra~
+~Theodor~
+~Ariadne~
+~Nathan~
+~Namiir~
+~Miranda~
 
 // Next_Traveler BG1
 
 BEGIN
 
-							OUTER_SET ~BG1_%Death_var%_Select~ = 1
+							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 1
+
+							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
+
+								OUTER_SET EVAL ~%Death_var%_SoD_Content~ = 0
+
+								OUTER_SET EVAL ~%Death_var%_BG2_Content~ = 0
 
 END
 
@@ -147,16 +167,26 @@ ACTION_FOR_EACH Death_var IN
 
 /////////////////////////// SoD ///////////////////////////
 
-// Original Voghiln         ~Voghiln~                             // Voghiln
-// Original Corwin          ~Corwin~                              // Corwin
-// Original Mkhiin          ~Mkhiin~                              // Mkhiin
-// Original Glint           ~Glint~                               // Glint
+~Voghiln~                             // Voghiln
+~Corwin~                              // Corwin
+~Mkhiin~                              // Mkhiin
+~Glint~                               // Glint
 
 // Next_Traveler SoD
 
 BEGIN
 
-							OUTER_SET ~SoD_%Death_var%_Select~ = 1
+							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 1
+
+							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
+
+								OUTER_SET EVAL ~%Death_var%_SoD_Content~ = 0
+
+								OUTER_SET EVAL ~%Death_var%_BG2_Content~ = 0
 
 END
 
@@ -166,128 +196,134 @@ ACTION_FOR_EACH Death_var IN
 
 /////////////////////////// bg2 ///////////////////////////
 
-// Original Aerie           ~Aerie~                               // Aerie
-// Original Anomen          ~Anomen~                              // Anomen
-// Original Cernd           ~Cernd~                               // Cernd
-// Original Haerdalis       ~Haerdalis~                           // Haerdalis
-// Original Hexxat          ~Hexxat~                              // Hexxat
-// Original Jan             ~Jan~                                 // Jan
-// Original Keldorn         ~Keldorn~                             // Keldorn
-// Original Korgan          ~Korgan~                              // Korgan
-// Original Mazzy           ~Mazzy~                               // Mazzy
-// Original Nalia           ~Nalia~                               // Nalia
-// Original Sarevok         ~Sarevok~                             // Sarevok
-// Original Valygar         ~Valygar~                             // Valygar
-// Original Wilson          ~Wilson~                              // Wilson
-// Original Yoshimo         ~Yoshimo~                             // Yoshimo
+~Aerie~                               // Aerie
+~Anomen~                              // Anomen
+~Cernd~                               // Cernd
+~Haerdalis~                           // Haerdalis
+~Hexxat~                              // Hexxat
+~Jan~                                 // Jan
+~Keldorn~                             // Keldorn
+~Korgan~                              // Korgan
+~Mazzy~                               // Mazzy
+~Nalia~                               // Nalia
+~Sarevok~                             // Sarevok
+~Valygar~                             // Valygar
+~Wilson~                              // Wilson
+~Yoshimo~                             // Yoshimo
 
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2
-// Mod Alora BG2            ~%CMALORA%~                              // Alora
+~%CMALORA%~                              // Alora
 
 // Yeslick BG2
-// Mod Yeslick BG2          ~LK#YESLK~                             // Yeslick
+~LK#YESLK~                             // Yeslick
 
 // The Undying
-// Mod Undying              ~cmninaf~                              // Ninafer
-// Mod Undying              ~callisto~                             // Callisto
+~cmninaf~                              // Ninafer
+~callisto~                             // Callisto
 
 // Summon Bhaalspawn
-// Mod Sandra               ~BHAALSPW~                             // Sandra
+~BHAALSPW~                             // Sandra
 
 // VampireTales
-// Mod Miriam               ~cmgmiriam~                            // Miriam
+~cmgmiriam~                            // Miriam
 
 // Kim
-// Mod Kim                  ~Kim~                                  // Kim
+~Kim~                                  // Kim
 
 // Severian
-// Mod Severian             ~#Severian~                            // Severian
+~#Severian~                            // Severian
 
 // Frennedan
-// Mod Frennedan            ~Frennedan~                            // Frennedan
+~Frennedan~                            // Frennedan
 
 // Branwen BG2
-// Mod Branwen_BG2          ~O#Bran~                               // Branwen
+~O#Bran~                               // Branwen
 // Tiax BG2
-// Mod Tiax_BG2             ~O#Tiax~                               // Tiax
+~O#Tiax~                               // Tiax
 // Xan BG2
-// Mod Xan_BG2              ~O#XAN~                                // Xan
+~O#XAN~                                // Xan
 // Coran BG2
-// Mod Coran_BG2            ~O#Coran~                              // Coran
+~O#Coran~                              // Coran
 
 // Auren Aseph
-// Mod Auren                ~K#AUREN~                              // Auren
+~K#AUREN~                              // Auren
 
 // Isra BG2
-// Mod Isra_BG2             ~rh#Isra2~                             // Isra
+~rh#Isra2~                             // Isra
 
 // Nephele
-// Mod Nephele_Samios       ~Nephele~                              // Nephele
+~Nephele~                              // Nephele
 
 // Sheena
-// Mod Sheena               ~K#SHEENA~                             // Sheena
+~K#SHEENA~                             // Sheena
 
 // Kiara / Zaiya
-// Mod Kiara                ~Kiara~                                // Kiara
-// Mod Zaiya                ~Zaiya~                                // Zaiya
+~Kiara~                                // Kiara
+~Zaiya~                                // Zaiya
 
 // The Beaurin Legacy
-// Mod Minyae               ~QI#MI~                                // Minyae
-// Mod Elaryn               ~QI#ELA~                               // Elaryn
+~QI#MI~                                // Minyae
+~QI#ELA~                               // Elaryn
 
 // Tyris Flare
-// Mod Tyris                ~g#Tyris~                              // Tyris
+~g#Tyris~                              // Tyris
 
 // Region of Terror
-// Mod Wulfgar_Terror            ~Wulfg2~                              // Wulfgar
-// Mod Regis_Terror              ~Reg2~                                // Regis
-// Mod Drizzt_Terror             ~Driz2~                               // Drizz
-// Mod Bruenor_Terror            ~Brue2~                               // Bruenor
-// Mod Catti-Brie_Terror         ~Catt2~                               // Catti-Brie
-// Mod Artemis_Entreri_Terror    ~Enter2~                              // Artemis
-// Mod Jarlaxle_Terror           ~Jarlax2~                             // Jarlaxle
-// Mod Tapio_Perkiomaki_Terror   ~Tapio~                               // Tapio
-// Mod Randall_Terror            ~Randall~                             // Randall
-// Mod Alissa_Terror             ~ALISSA1~                             // Alissa
-// Mod Mordragon_Terror          ~Mordrg~                              // Mordragon
+~Wulfg2~                              // Wulfgar
+~Reg2~                                // Regis
+~Driz2~                               // Drizz
+~Brue2~                               // Bruenor
+~Catt2~                               // Catti-Brie
+~Enter2~                              // Artemis
+~Jarlax2~                             // Jarlaxle
+~Tapio~                               // Tapio
+~Randall~                             // Randall
+~ALISSA1~                             // Alissa
+~Mordrg~                              // Mordragon
 
 //Shadow over Soubar
-// Mod Selence_Hillstar_Soubar   ~SELENCE~                             // Selence
-// Mod Charlotte_Soubar          ~CHARLOTT~                            // Charlotte
-// Mod Bolivar_Soubar            ~BOLIVAR~                             // Bolivar
-// Mod Tomas_Tomalson_Soubar     ~TOMASTM~                             // Tomas
+~SELENCE~                             // Selence
+~CHARLOTT~                            // Charlotte
+~BOLIVAR~                             // Bolivar
+~TOMASTM~                             // Tomas
 
 // ajantisbg2
-// Mod Ajantis_BG2          ~C#Ajantis~                            // Ajantis
+~C#Ajantis~                            // Ajantis
 
 // Kivan and Deheriana
-// Mod Kivan_BG2            ~P#KIVAN~                              // Kivan
-// Mod Deheriana            ~P#DEHER~                              // Deheriana
+~P#KIVAN~                              // Kivan
+~P#DEHER~                              // Deheriana
 
 // Yvette
-// Mod Yvette ~YxYve~
+~YxYve~
 
 // The Luxley Family
-// Mod Sebastian ~fhlseb~
-// Mod Andrei ~FHLAND~
+~fhlseb~
+~FHLAND~
 
 //  Beyond the Law
-// Mod Kiyone ~Kiyone~
-// Mod Kova ~Kova~
+~Kiyone~
+~Kova~
 
 // Petsy
-// Mod Petsy ~L3PETSY~
+~L3PETSY~
 
 // Kale BG2
-// Mod Kale_BG2 ~X3Kal~
+~X3Kal~
 
 // Next_Traveler BG2
 
 BEGIN
 
-							OUTER_SET ~BG2_%Death_var%_Select~ = 1
+							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
+
+							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 1
 
 END
 

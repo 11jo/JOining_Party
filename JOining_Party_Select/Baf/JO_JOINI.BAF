@@ -129,7 +129,7 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0) // No join stop
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
-	Global("JO_JOIN_END_OF_WATCH","LOCALS",1)
+	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
 	Delay(15)
 	Switch("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL") // Only one traveler say something (Reset in JO2608.baf)
 THEN
@@ -140,14 +140,14 @@ THEN
 		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
 		Wait(4)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
 		ChangeAIScript("",GENERAL)
 		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetInterrupt(FALSE)
 		Wait(4)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
 		ChangeAIScript("",GENERAL)
 		SetInterrupt(TRUE)
 END
