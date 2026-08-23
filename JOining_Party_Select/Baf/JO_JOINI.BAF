@@ -105,14 +105,6 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-IF // Block temporary
-//
-	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
-END
-
 
 IF
 	OR(2)
