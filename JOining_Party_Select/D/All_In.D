@@ -131,7 +131,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 
 // Indepandance
-	IF ~IsGabber(Player1)~ THEN REPLY ~Independance menu~ GOTO INDEPENDANCE
+	IF ~IsGabber(Player1)~ THEN REPLY ~^0xFF82E6FFIndependance behavior.^-~ GOTO INDEPENDANCE
 
 
 // Switch with a player
@@ -239,68 +239,10 @@ StartDialogueNoSet(Player6)~ EXIT
 		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
 		SmallWait(1)
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT //
+
 // Corrections
-	IF ~~ THEN REPLY ~Something feel wrong, we can settle this now.~ DO ~
-		SetGlobal("JO_JOIN","LOCALS",0)
+	IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~So, we need a little adjustment ?~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ GOTO JO_JOINStatEnd
 
-		SetGlobal("JO_NOJOIN","GLOBAL",0)
-		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
-		SetGlobal("JO_JOINI","LOCALS",0)
-		SetGlobal("JO_JOIN_TALK","LOCALS",0)
-		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0)
-
-//		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
-//		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
-//		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
-
-		SetGlobal("JO_JOIN_PRIVACY","LOCALS",0)
-		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
-
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
-
-		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
-
-		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",0)
-		SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",ONE_TURN)
-		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
-		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
-		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
-
-		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
-		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
-		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
-		SetGlobal("JO_JOIN_DREAM_REST","LOCALS",0)
-
-		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
-
-		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
-		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
-		Activate(Myself)
-
-
-		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
-		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
-		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",0)
-		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
-
-		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
-		SetGlobal("JO_Myself_Valid","LOCALS",1)
-		SetGlobal("JO_Myself_InParty","LOCALS",1)
-		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
-		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-
-		EquipItemEx("JOMINHP1",0)
-		DisplayString(Myself,@103)
-		ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4I am currently talking to you, so it's fine !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO LEGION
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING_SWITCH.~ DO ~SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ EXIT //
@@ -404,7 +346,68 @@ StartDialogueNoSet(Player6)~ EXIT
 
 		DisplayString(Myself,@104) ~ GOTO JO_JOINStatEnd
 
-	IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~Smart reset.~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ GOTO JO_JOINStatEnd
+	IF ~~ THEN REPLY ~^0xFF660000Something feel wrong, we can settle this now.^-~ DO ~
+		SetGlobal("JO_JOIN","LOCALS",0)
+
+		SetGlobal("JO_NOJOIN","GLOBAL",0)
+		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		SetGlobal("JO_JOINI","LOCALS",0)
+		SetGlobal("JO_JOIN_TALK","LOCALS",0)
+		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0)
+
+//		SetGlobal("JO_JOIN_PARTY_SWITCH","GLOBAL",0)
+//		SetGlobal("JO_JOIN_TRAVELER_SWITCH","GLOBAL",0)
+//		SetGlobal("JO_JOIN_MY_SWITCH","LOCALS",0)
+
+		SetGlobal("JO_JOIN_PRIVACY","LOCALS",0)
+		SetGlobal("JO_JOIN_INDEPANDANCE","LOCALS",0)
+
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
+
+		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",0)
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
+
+		SetGlobal("JO_JOIN_WANNABE_INIT","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",ONE_TURN)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN)
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
+		SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+		SetGlobal("JO_JOIN_DREAM_REST","LOCALS",0)
+
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
+
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
+		SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
+		Activate(Myself)
+
+
+		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",0)
+		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+
+		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
+		SetGlobal("JO_Myself_Valid","LOCALS",1)
+		SetGlobal("JO_Myself_InParty","LOCALS",1)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
+		SetGlobal("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+
+		EquipItemEx("JOMINHP1",0)
+		DisplayString(Myself,@103)
+		ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
+
 END
 
 IF ~~ THEN BEGIN JO_JOINYes
@@ -667,8 +670,8 @@ END
 
 	// Indepandance
 	IF ~~ THEN BEGIN INDEPENDANCE
-		SAY ~Independance with <GABBER>~
-		IF ~~ THEN REPLY ~Go back~ GOTO LEGION
+		SAY ~More independance with <GABBER>~
+		IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO LEGION
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes //
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ GOTO JO_JOINYes //
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ GOTO JO_JOINYes //
