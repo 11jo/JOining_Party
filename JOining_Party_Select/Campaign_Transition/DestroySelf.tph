@@ -1,4 +1,6 @@
 // Prevent some BG1 or SoD traveler to vanish in EET (Only for traveler with no content in SoD or BG2)
+	// Global("JO_JOIN_END_OF_BG1","LOCALS",0) will be at 1 for NPC without SoD content
+		// Global("JO_JOIN_END_OF_SOD","LOCALS",0) will be at 1 for NPC without BG2 content
 
 ACTION_IF MOD_IS_INSTALLED ~IWD_EET_END.TP2~ ~0~ BEGIN
 
