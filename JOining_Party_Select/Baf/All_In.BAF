@@ -540,9 +540,7 @@ THEN
 		SetGlobal("JO_JOINI","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
 		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
 		DestroyItem("JOMINHP1")
-		SmallWait(1)
 		ChangeAIScript("WTASIGHT",GENERAL)
 		RemoveFamiliar()
 		ChangeEnemyAlly(Myself,NEUTRAL)
@@ -691,7 +689,6 @@ IF // TODO : Seem to execute several times when a traveler reintegrate the party
 THEN
 	RESPONSE #100
 		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
 		DestroyItem("JOMINHP1")
 END
 

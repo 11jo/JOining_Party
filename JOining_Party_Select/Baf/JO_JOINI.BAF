@@ -846,7 +846,6 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SmallWait(1)
 		MoveToObject(Player1Fill)
 		SetInterrupt(TRUE)
 	RESPONSE #1
@@ -856,7 +855,6 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SmallWait(1)
 		MoveToObject(Player1)
 		SetInterrupt(TRUE)
 	RESPONSE #2
@@ -866,7 +864,6 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SmallWait(1)
 		MoveToObject(Player2)
 		SetInterrupt(TRUE)
 	RESPONSE #3
@@ -876,7 +873,6 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SmallWait(1)
 		MoveToObject(Player3)
 		SetInterrupt(TRUE)
 	RESPONSE #4
@@ -886,7 +882,6 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SmallWait(1)
 		MoveToObject(Player4)
 		SetInterrupt(TRUE)
 	RESPONSE #5
@@ -896,7 +891,6 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SmallWait(1)
 		MoveToObject(Player5)
 		SetInterrupt(TRUE)
 	RESPONSE #6
@@ -906,7 +900,6 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
-		SmallWait(1)
 		MoveToObject(Player6)
 		SetInterrupt(TRUE)
 END
@@ -941,9 +934,7 @@ THEN
 		SetGlobal("JO_JOINI","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",1) // ScriptAction All_in_Baf
 		EquipItemEx("JOMINHP1",1)
-		// SmallWait(1)
 		DestroyItem("JOMINHP1")
-		// SmallWait(1)
 		DisplayString(Myself,~Hey.~)
 		RemoveFamiliar()
 		SetInterrupt(TRUE)
@@ -2809,9 +2800,7 @@ THEN
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		EquipItemEx("JOMINHP1",1)
-		SmallWait(1)
 		DestroyItem("JOMINHP1")
-		SmallWait(1)
 		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
@@ -2918,9 +2907,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		EquipItemEx("JOMINHP1",1)
-		// SmallWait(1)
 		DestroyItem("JOMINHP1")
-		// SmallWait(1)
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
