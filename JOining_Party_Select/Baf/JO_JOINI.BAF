@@ -104,14 +104,11 @@ END
 // JO_JOIN_CAMPAIGN_TRANSITION
 
 ///////////////////////////////////////////////////////////////////////////////////
-
-IF // Block temporary
-//
-	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
-END
+// Note :
+		// Lead to Leave Party in All_in.baf
+			// Special BG1/SoD end
+				// Related to END_OF_WATCH in All_in.baf and END_OF_WATCH.tph
+/////////////////////////////////////////////////////////////////////////////////
 
 
 IF

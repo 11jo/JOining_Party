@@ -1,3 +1,8 @@
+// Expand JO2608.baf
+	// Regular : At BG or SoD end, Travelers go to the switching room and can be recruted again.
+		// SoD_Content : At BG end, Travelers with SoD content are destroyself once in the switching room.
+			// BG2_Content : At SoD end, Travelers with BG2 content are destroyself once in the switching room.
+
 
 // Regular
 
@@ -76,6 +81,12 @@ EXTEND_BOTTOM ~JO2608.bcs~ ~.../JOining_BG2_JO2608.baf~ EVALUATE_BUFFER
 
 // END_OF_WATCH
 
+///////////////////////////////////////////////////////////////////////////////
+// Note :
+		// Expand All_in.baf for BG1/SoD npc
+			// After Leave Party above
+				// Special BG1/SoD end
+					// Related to JO_JOIN_CAMPAIGN_TRANSITION in JO_JOINI.baf
 ///////////////////////////////////////////////////////////////////////////////
 
 //		ACTION_IF ~BG1_%Death_var%_Select~ = 1 OR ~SoD_%Death_var%_Select~ = 1 OR ~Continuous_%Death_var%_Select~ = 1 THEN BEGIN

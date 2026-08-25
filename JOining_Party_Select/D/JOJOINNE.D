@@ -28,7 +28,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~~ THEN REPLY ~Sorry, I'm just trying to draw some attention...~ EXIT
 
 // Temporary : travelers switch
-	IF ~~ THEN REPLY ~Quick switch menu~ GOTO QUICK_SWITCH
+	IF ~~ THEN REPLY ~^0xFF16537eQuick switch behavior^-~ GOTO QUICK_SWITCH
 
 // Cutscenes
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
@@ -45,17 +45,17 @@ IF ~True()~ THEN BEGIN 0
 	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
 
 // Indepandance
-	IF ~~ THEN REPLY ~Independance menu~ GOTO INDEPENDANCE
+	IF ~~ THEN REPLY ~^0xFF16537eIndependance behavior.^-~ GOTO INDEPENDANCE
 
 // Checks
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFTravelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT //
 
 // Free slots in party // Fill party
-	IF ~~ THEN REPLY ~Fill party menu~ GOTO FILL_PARTY
+	IF ~~ THEN REPLY ~^0xFF16537eFill party behavior.^-~ GOTO FILL_PARTY
 
 // Switching party between travelers and party members
-	IF ~~ THEN REPLY ~Switch party menu~ GOTO SWITCH_PARTY
+	IF ~~ THEN REPLY ~^0xFF16537eSwitching party behavior.^-~ GOTO SWITCH_PARTY
 
 	IF ~~ THEN REPLY ~^GI like to ...^-~ GOTO 1 //
 
@@ -251,7 +251,9 @@ IF ~True()~ THEN BEGIN 0
 		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~ THEN REPLY ~^GLet's try a Loading Switch !^-~ DO ~SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1)~ EXIT //
 	IF ~!Global("JO_JOIN_BLOP","GLOBAL",1)
 		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~Loading Switch isn't available here.^-~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~There's something wrong with travelers, let's settle this now.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",12) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
+
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Travelers need a little adjustment.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",31)~ EXIT //
+
 	IF ~Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Let's Blop !^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",1) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Don't switch if not in a master area or if ennemies are at sight.^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",0) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
@@ -351,7 +353,8 @@ IF ~True()~ THEN BEGIN 0
 
 		DisplayString(Myself,@104) ~ EXIT
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Smart reset.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",31)~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF660000There's something wrong with travelers, let's settle this now.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",12) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
+
 END
 
 //
@@ -537,9 +540,9 @@ END
 // Indepandance
 IF ~~ THEN BEGIN INDEPENDANCE
 	SAY ~Independance menu~
-	IF ~~ THEN REPLY ~Go back~ GOTO 0
-	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~Deactive Independance~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",1)~ GOTO 0
-	IF ~!Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^GActive Independance^-~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ GOTO 0
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~Independance not allowed~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",1)~ GOTO 0
+	IF ~!Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^GIndependance allowed^-~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ GOTO 0
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",20)~ EXIT //
@@ -550,9 +553,9 @@ END
 // Switch party
 IF ~~ THEN BEGIN SWITCH_PARTY
 	SAY ~Switch party menu~
-	IF ~~ THEN REPLY ~Go back~ GOTO 0
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ THEN REPLY ~Deactive Switch party~ DO ~SetGlobal("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",1)~ GOTO 0
-	IF ~!Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ THEN REPLY ~^GActive Switch party^-~ DO ~SetGlobal("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ GOTO 0
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ THEN REPLY ~Switching party not allowed~ DO ~SetGlobal("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",1)~ GOTO 0
+	IF ~!Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ THEN REPLY ~^GSwitching party allowed^-~ DO ~SetGlobal("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ GOTO 0
 	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bTravelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
 	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Travelers if party members are available you can switch places.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",11)~ EXIT //
 	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fTravelers you can switch places with every party members !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)~ EXIT //
@@ -566,9 +569,9 @@ END
 // Quick switch
 IF ~~ THEN BEGIN QUICK_SWITCH
 	SAY ~Quick switch menu~
-	IF ~~ THEN REPLY ~Go back~ GOTO 0
-	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~Deactive Quick switch~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",1)~ GOTO 0
-	IF ~!Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~^GActive Quick switch^-~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ GOTO 0
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~Quick switch not allowed~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",1)~ GOTO 0
+	IF ~!Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~^GQuick switch allowed^-~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ GOTO 0
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bStop the Quick Switch for a while, please.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",3)~ EXIT // Reset when loading a save.
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000You are free to Quick Switch when you feel like.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",4)~ EXIT //
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)
@@ -588,9 +591,9 @@ END
 
 IF ~~ THEN BEGIN FILL_PARTY
 	SAY ~Fill party menu~
-	IF ~~ THEN REPLY ~Go back~ GOTO 0
-	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~Deactive Fill party~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",1)~ GOTO 0
-	IF ~!Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~^GActive Fill party^-~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ GOTO 0
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~Fill party not allowed~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",1)~ GOTO 0
+	IF ~!Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~^GFill party allowed^-~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ GOTO 0
 	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)
 		NumInParty(5)

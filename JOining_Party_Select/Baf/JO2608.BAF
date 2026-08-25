@@ -14,11 +14,24 @@ THEN
 		Explore()
 END
 
+
+///////////////////////////////////////////////////////////////////////////////
+
+// END_OF_WATCH / JO_JOIN_CAMPAIGN_TRANSITION
+
+///////////////////////////////////////////////////////////////////////////////
+// Note :
+		// Expanded by END_OF_WATCH.tph
+			// Related to END_OF_WATCH in All_in.baf and END_OF_WATCH.tph
+				// Special BG1/SoD end
+					// Related to JO_JOIN_CAMPAIGN_TRANSITION in JO_JOINI.baf
+///////////////////////////////////////////////////////////////////////////////
+
 // Reset JO_JOIN_CAMPAIGN_TRANSITION for Switch trigger in JO_JOINI
 IF
 	!Global("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
+		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",0)
 END
 
