@@ -283,7 +283,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Alora_as_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) THEN BEGIN
+	ACTION_IF Alora_as_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Alora~ ~~
@@ -292,7 +292,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Alora_BG2_Content = 1
 
-	END ELSE ACTION_IF Alora_as_Real_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) THEN BEGIN
+	END ELSE ACTION_IF Alora_as_Real_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Alora~ ~~
@@ -1953,7 +1953,7 @@ END
 
 ACTION_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) THEN BEGIN
 
-	ACTION_IF Alora_BG2_as_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) THEN BEGIN
+	ACTION_IF Alora_BG2_as_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1961,7 +1961,7 @@ ACTION_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) THEN BEGIN
 				PRINT ~    Alora BG2 as traveler
 				~
 
-	END ELSE ACTION_IF Alora_BG2_as_Real_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) THEN BEGIN
+	END ELSE ACTION_IF Alora_BG2_as_Real_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Mod Alora BG2~ ~~
@@ -2882,7 +2882,7 @@ END
 /////////////////////////// Continuous ///////////////////////////
 
 
-ACTION_IF (MOD_IS_INSTALLED ~DARKHORIZONS.TP2~ ~0~) OR (MOD_IS_INSTALLED ~NIKITAREDUX.TP2~ ~0~) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~DARKHORIZONS.TP2~ ~0~ OR MOD_IS_INSTALLED ~NIKITAREDUX.TP2~ ~0~) THEN BEGIN
 
 	ACTION_IF Nikita_as_traveler = 1 THEN BEGIN
 

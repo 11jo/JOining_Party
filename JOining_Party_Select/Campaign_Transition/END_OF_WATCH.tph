@@ -106,6 +106,7 @@ COPY ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~  ~weidu
 	Switch("JO_JOIN_TALK_TRANSITION","LOCALS") // Only one traveler say something (Set in JO_JOINI.baf)
 THEN
 	RESPONSE #0
+		MakeGlobalOverride()
 		SetGlobal("K#PartySoD","LOCALS",1)
 		CreateVisualEffectObject("JOBG402",Myself)
 		Wait(2)
@@ -113,6 +114,7 @@ THEN
 		SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",1)
 		DestroySelf()
 	RESPONSE #1
+		MakeGlobalOverride()
 		SetGlobal("K#PartySoD","LOCALS",1)
 		DisplayStringHead(Myself,~We will meet again.~)
 		Wait(3)
@@ -137,12 +139,14 @@ IF
 	Switch("JO_JOIN_TALK_TRANSITION","LOCALS") // Only one traveler say something (Set in JO_JOINI.baf)
 THEN
 	RESPONSE #0
+		MakeGlobalOverride()
 		CreateVisualEffectObject("JOBG402",Myself)
 		Wait(2)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
 		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
 		DestroySelf()
 	RESPONSE #1
+		MakeGlobalOverride()
 		DisplayStringHead(Myself,~Gonna make a diversion, the Flamming Fist will search for you everywhere...~)
 		Wait(3)
 		CreateVisualEffectObject("JOBG402",Myself)
