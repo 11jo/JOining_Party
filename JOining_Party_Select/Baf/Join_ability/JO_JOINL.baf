@@ -318,3 +318,13 @@ THEN
 		DisplayStringHead(Myself,~let's venture forth !~)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 END
+
+
+
+// Last block: Stop at this point
+IF
+	True()
+THEN
+	RESPONSE #100
+		NoAction()
+END
