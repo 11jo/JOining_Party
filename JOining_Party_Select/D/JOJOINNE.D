@@ -27,8 +27,16 @@ IF ~True()~ THEN BEGIN 0
 	= ~Fellow travelers !~
 	IF ~~ THEN REPLY ~Sorry, I'm just trying to draw some attention...~ EXIT
 
-// Temporary : travelers switch
-	IF ~~ THEN REPLY ~^0xFF16537eQuick switch behavior^-~ GOTO QUICK_SWITCH
+// Travelers switch
+	IF ~~ THEN REPLY ~Quick switch behavior.~ GOTO QUICK_SWITCH
+// Indepandance
+	IF ~~ THEN REPLY ~Independance behavior.~ GOTO INDEPENDANCE
+// Free slots in party // Fill party
+	IF ~~ THEN REPLY ~Fill party behavior.~ GOTO FILL_PARTY
+// Switching party between travelers and party members
+	IF ~~ THEN REPLY ~Switching party behavior.~ GOTO SWITCH_PARTY
+
+	IF ~~ THEN REPLY ~^GI like to ...^-~ GOTO 1 //
 
 // Cutscenes
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
