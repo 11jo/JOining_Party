@@ -17,7 +17,8 @@ EXTEND_BOTTOM JOJOINNE 2
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^-...discuss with %%Death_var%_name%^- !~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
+			DO ~ActionOverride("JOJOINNE",DestroySelf())
+				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player1))~ EXIT
 END
 

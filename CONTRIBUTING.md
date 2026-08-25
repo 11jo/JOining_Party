@@ -43,6 +43,9 @@
 - [JOining_Party_Select_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Core.tph)  
    - Implement scripts and dialogs, (JO_JOINI, JO_JOINX). Extend startings areas scripts, baldur's.bcs and dplayer3.bcs
    - Add items, effects and spells.
+
+- [JOining_Party_Outer.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Outer.tph)  
+   - Set some installation variables depending of NPC campaign, used to assign script blocks only if needed.
    
 - [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)  
    - Select desired Travelers, set to 1 to install or 0 to not install.
@@ -191,6 +194,12 @@
 | JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
 | JO_JOIN_AREA | A | If current area is master area | 0: False<br>Other: True |
 | JO_JOIN_AREA_TRANSITION | G | If Player1 is currently on transition area between campaign | 0: False<br>Other: True |
+| JO_JOIN_CAMPAIGN_TRANSITION | G | Prevent multiple travelers to execute the same action | 0: False<br>Other: True |
+| JO_JOIN_TALK_TRANSITION | L | Associated to JO_JOIN_CAMPAIGN_TRANSITION only one traveler will talk | 0: False<br>Other: True |
+| JO_JOIN_END_OF_WATCH | L | Travelers leave the group for the Switching room, variable associated to JO_JOIN_CAMPAIGN_TRANSITION | 0: False<br>Other: True |
+| JO_JOIN_END_OF_SOD | L | Enabled at SoD end, used to distinguish traveler with BG2 content | 0: Special<br>Other: Special |
+| JO_JOIN_END_OF_BG1 | L | Enabled at BG1 end, used to distinguish traveler with SoD content | 0: Special<br>Other: Special |
+| JO2608_Create | L | Simple area variable to slow down script process | 0: False<br>Other: True |
 | JO_JOIN_COUNT_TRAVELER | L | If True, Player1 display travelers count | 0: False<br>Other: True |
 | JO_JOIN_LEGION | L | Traveler count, Player1 only | n/a |
 | JO_JOIN_PARTY_MEMBER | L | Party member not listed in Pdialog.2da | 0: False<br>Other: True |

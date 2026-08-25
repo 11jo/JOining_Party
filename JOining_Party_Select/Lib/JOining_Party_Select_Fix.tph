@@ -2,7 +2,7 @@
 
 ACTION_FOR_EACH Death_var IN
 
-// Original Real Imoen           ~%IMOEN_DV%~ ~Imoen~ // ~ttimoen~     // Imoen
+// Original Real Imoen           ~%IMOEN_DV%~ // ImoenIren ~Imoen~ // ~ttimoen~     // Imoen
 // Original Real Edwin           ~Edwin~                               // Edwin
 // Original Real Jaheira         ~Jaheira~    // ~ttjaheir~            // Jaheira
 // Original Real Minsc           ~Minsc~      // ~ttminsc~             // Minsc
@@ -10,10 +10,6 @@ ACTION_FOR_EACH Death_var IN
 // Original Real Dorn            ~Dorn~                                // Dorn
 // Original Real Neera           ~Neera~                               // Neera
 // Original Real Rasaad          ~Rasaad~                              // Rasaad
-
-/////////////////////////// Continuous ///////////////////////////
-
-// Next_Traveler Continuous
 
 /////////////////////////// bg1 ///////////////////////////
 
@@ -98,7 +94,6 @@ ACTION_FOR_EACH Death_var IN
 // Mod Real Wulfgar_Saga         ~F_WULFGAR~                           // Wulfgar
 
 // Dark Horizons
-// Mod Real Nikita_BG1           ~cmnikita~                            // Nikita
 // Mod Real Thorin               ~CMTTHOR~                             // Thorin
 // Mod Real Morwen                ~CMTMORW~                            // Morwen 
 
@@ -153,7 +148,7 @@ ACTION_FOR_EACH Death_var IN
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2
-// Mod Real Alora BG2            ~CMALORA~                              // Alora
+// Mod Real Alora BG2            ~%CMALORA%~                              // Alora
 
 // Yeslick BG2
 // Mod Real Yeslick BG2          ~LK#YESLK~                             // Yeslick
@@ -165,8 +160,6 @@ ACTION_FOR_EACH Death_var IN
 // Summon Bhaalspawn
 // Mod Real Sandra               ~BHAALSPW~                             // Sandra
 
-// NikitaRedux
-// Mod Real NikitaRedux          ~cmnikita~                             // Nikita
 
 // VampireTales
 // Mod Real Miriam               ~cmgmiriam~                            // Miriam
@@ -256,6 +249,14 @@ ACTION_FOR_EACH Death_var IN
 // Mod Real Kale_BG2 ~X3Kal~
 
 // Next_Traveler BG2
+
+/////////////////////////// Mods Continuous ///////////////////////////
+
+// EET Real Nikita           ~cmnikita~                            // Nikita
+
+// EET Real Alora_Continuous           ~Alora~                            // Alora_Continuous
+
+// Next_Traveler Continuous
 
 BEGIN
 // Avoid additionnal warnings for missing ressources 

@@ -160,11 +160,9 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
 
 // Dark Horizons
 // 1
-  COUNT_REGEXP_INSTANCES  ~^Nikita_BG1[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                Nikita_BG1_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Thorin[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                    Thorin_as_traveler
   COUNT_REGEXP_INSTANCES  ~^Morwen[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                                    Morwen_as_traveler
 // 2
-  COUNT_REGEXP_INSTANCES  ~^Nikita_BG1[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                Nikita_BG1_as_Real_traveler
   COUNT_REGEXP_INSTANCES  ~^Thorin[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                    Thorin_as_Real_traveler
   COUNT_REGEXP_INSTANCES  ~^Morwen[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                                    Morwen_as_Real_traveler
   
@@ -317,11 +315,6 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Sandra_Summon_Bhaalspawn[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                   Sandra_Summon_Bhaalspawn_as_traveler
 // 2
   COUNT_REGEXP_INSTANCES  ~^Sandra_Summon_Bhaalspawn[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                   Sandra_Summon_Bhaalspawn_as_Real_traveler
-
-// 1
-  COUNT_REGEXP_INSTANCES  ~^Nikita_Redux[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                               Nikita_Redux_as_traveler
-// 2
-  COUNT_REGEXP_INSTANCES  ~^Nikita_Redux[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                               Nikita_Redux_as_Real_traveler
 
 // 1
   COUNT_REGEXP_INSTANCES  ~^Kim_The_Pirate[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                             Kim_The_Pirate_as_traveler
@@ -507,5 +500,15 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
 
 
 /////////////////////////// Continuous ///////////////////////////
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Nikita[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                               Nikita_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Nikita[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                               Nikita_as_Real_traveler
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Alora_Continuous[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                               Alora_Continuous_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Alora_Continuous[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                               Alora_Continuous_as_Real_traveler
 
 // Next_Traveler Continuous

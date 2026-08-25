@@ -93,11 +93,6 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Rasaad // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RASAAD~)
 
 //////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////// Continuous ///////////////////////////
-
-// Next_Traveler Continuous
-
-//////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////// bg1 ///////////////////////////
 
 // Ajantis
@@ -256,7 +251,6 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Mod Wulfgar_Saga AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_WULFGA~)
 
 // Dark Horizons
-// Mod Nikita_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtnikit~)
 // Mod Thorin AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtthor~)
 // Mod Morwen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtmorw~)
 
@@ -323,9 +317,6 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Summon Bhaalspawn (BHAALSPW)
 // Mod Sandra AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BHAALSPW~)
-
-// Nikita Redux (cmnikita)
-// Mod NikitaRedux AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmnikita~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNIK25~)
 
 // Vampire Tales (cmgmiriam)
 // Mod Miriam AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMIRI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMGMI25~)
@@ -427,6 +418,14 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Mod Kale_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X3Kal~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X3Kal25~)
 
 // Next_Traveler BG2
+
+/////////////////////////// Mods Continuous ///////////////////////////
+
+// EET Nikita AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtnikit~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmnikita~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNIK25~)
+
+// EET Alora_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ALORA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalora~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalo25~)
+
+// Next_Traveler Continuous
 
 
 	BEGIN 

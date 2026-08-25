@@ -17,10 +17,6 @@ ACTION_FOR_EACH joining_dlg IN
 // Original Neera                ~%NEERA_JOINED%~    ~NEERA25J~   ~BDNEERAJ~                                                               // Neera
 // Original Rasaad               ~%RASAAD_JOINED%~   ~RASAA25J~   ~BDRASAAJ~                                                               // Rasaad
 
-/////////////////////////// Continuous ///////////////////////////
-
-// Next_Traveler Continuous
-
 /////////////////////////// bg1 ///////////////////////////
 
 
@@ -107,7 +103,6 @@ ACTION_FOR_EACH joining_dlg IN
 // Mod Wulfgar_Saga              ~F_WULFGJ~                           // Wulfgar
 
 // Dark Horizons
-// Mod Nikita_BG1                ~CMTNIKJ~                            // Nikita
 // Mod Thorin                    ~CMTTHORJ~                           // Thorin
 // Mod Morwen                    ~CMTMORWJ~                           // Morwen 
 
@@ -172,9 +167,6 @@ ACTION_FOR_EACH joining_dlg IN
 
 // Summon Bhaalspawn
 // Mod Sandra                    ~bhalspwj~  ~bhal25j~                                 // Sandra
-
-// NikitaRedux
-// Mod NikitaRedux               ~CMNIKITJ~  ~CMNIK25~                                 // Nikita
 
 // VampireTales
 // Mod Miriam                    ~CMGMIRIj~  ~CMGMI25J~                                // Miriam
@@ -265,6 +257,14 @@ ACTION_FOR_EACH joining_dlg IN
 
 // Next_Traveler BG2
 
+/////////////////////////// Mods Continuous ///////////////////////////
+
+// EET Nikita              ~CMTNIKJ~  ~CMNIKITJ~                          // Nikita
+
+// EET Alora_Continuous           ~%ALORA_JOINED%~  ~BDALORAJ~  ~CMALORAJ~  ~CMALO25J~                          // Alora_Continuous
+
+// Next_Traveler Continuous
+
 BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%joining_dlg%.dlg~ BEGIN
@@ -342,7 +342,13 @@ WRITE_ASCII DIALOG ~JOJOINNE~ (8)
 
 		COMPILE ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
 
+	END
+
 		COMPILE ~JOining_Party_Select/Baf/JO260801.baf~ EVALUATE_BUFFER
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
+
+		EXTEND_TOP ~JO2608.bcs~ ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
 
 	END
 
@@ -398,7 +404,7 @@ This spell transports the caster to any place within the visual range of the cas
 
 // Traveler dedicated scripts
 
-		COMPILE ~JOining_Party_Select/Baf/JO_JOINI.baf~ EVALUATE_BUFFER
+		COMPILE ~weidu_external/JOining_Party_Select/JO_JOINI.baf~ EVALUATE_BUFFER
 
 		COMPILE ~JOining_Party_Select/Baf/JO_JOINX.baf~ EVALUATE_BUFFER
 

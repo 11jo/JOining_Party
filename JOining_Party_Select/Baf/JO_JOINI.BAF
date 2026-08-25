@@ -67,6 +67,89 @@ THEN
 		Activate(Myself)
 END
 
+///////////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_SCRIPT
+
+///////////////////////////////////////////////////////////////////////////////////
+
+IF
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	!Global("JO_JOIN_SCRIPT","GLOBAL",0)
+	Global("JO_JOIN_MY_SCRIPT","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_MY_SCRIPT","LOCALS",1)
+		ChangeAIScript("JO_JOINS",RACE) // Go to JO_JOINS
+END
+
+IF
+//
+	Global("JO_JOIN_SCRIPT","GLOBAL",0)
+	!Global("JO_JOIN_MY_SCRIPT","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_MY_SCRIPT","GLOBAL",0)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_CAMPAIGN_TRANSITION
+
+///////////////////////////////////////////////////////////////////////////////////
+// Note :
+		// Lead to Leave Party in All_in.baf
+			// Special BG1/SoD end
+				// Related to END_OF_WATCH in All_in.baf and END_OF_WATCH.tph
+/////////////////////////////////////////////////////////////////////////////////
+
+
+IF
+	OR(2)
+		AreaCheck("BD6000")
+		AreaCheck("BD0120")
+	OR(3)
+		AreaCheck("BD6000")
+		Dead("bdkorlas")
+		Global("BD_KORLASZ_SURRENDER","GLOBAL",1)
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
+	Delay(15)
+	Switch("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL") // Only one traveler say something (Reset in JO2608.baf)
+THEN
+	RESPONSE #0
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
+		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
+		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
+		Wait(4)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
+		ChangeAIScript("",GENERAL)
+		SetInterrupt(TRUE)
+	RESPONSE #1
+		SetInterrupt(FALSE)
+		Wait(4)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
+		ChangeAIScript("",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Check if traveler are in party
