@@ -1880,6 +1880,8 @@ OUTER_SPRINT "SoD_BANTER" "BDVOGHIB"
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Voghiln_All_In.baf~ EVALUATE_BUFFER
@@ -2005,6 +2007,8 @@ OUTER_SPRINT "SoD_BANTER" "BDGLINTB"
 	OUTER_SPRINT "SoD_DREAM" "BDGLINTD"
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 

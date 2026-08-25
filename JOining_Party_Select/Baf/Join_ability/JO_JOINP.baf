@@ -449,6 +449,20 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Reset JO_JOIN_SCRIPT
+
+IF
+//
+	!Global("JO_JOIN_SCRIPT","GLOBAL",0)
+	Delay(30)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_MY_SCRIPT","GLOBAL",0)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Avoid lauching banters in specific area // TODO : To Double Check
 
 // BG1 End
