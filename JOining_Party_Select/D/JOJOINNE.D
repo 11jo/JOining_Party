@@ -1,5 +1,6 @@
 
 // ^0xFF16537e Marron (Close)
+// ^0xFF2968A6 Marron
 // ^0xFF7f6000 Bleu foncé/turquoise (Open)
 // ^0xFF5b5b5b Gris (Close)
 // ^0xFF6aa84f Vert (Open)
@@ -25,7 +26,9 @@ BEGIN ~JOJOINNE~
 IF ~True()~ THEN BEGIN 0
 	SAY ~Ahem !~
 	= ~Fellow travelers !~
-	IF ~~ THEN REPLY ~Sorry, I'm just trying to draw some attention...~ EXIT
+	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
+
+	IF ~~ THEN REPLY ~^GI like to ...^-~ GOTO MOVE_AROUND //
 
 // Travelers switch
 	IF ~~ THEN REPLY ~Quick switch behavior.~ GOTO QUICK_SWITCH
@@ -36,36 +39,29 @@ IF ~True()~ THEN BEGIN 0
 // Switching party between travelers and party members
 	IF ~~ THEN REPLY ~Switching party behavior.~ GOTO SWITCH_PARTY
 
-	IF ~~ THEN REPLY ~^GI like to ...^-~ GOTO 1 //
-
-// Cutscenes
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000I did dream about my dear fellow travelers !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",2)~ EXIT // Accounted for in JO_JOINI
-	IF ~Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you right now !^-~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
-	IF ~!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Alright you can come back, sorry for dismissed my dear fellow travelers.^-~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ EXIT // Accounted for in JO_JOINI
-
-// Banters
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am exhausted by all these conversations, please stop interrupting the group.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000On second thought, I miss our discussions... Let's talk to each others.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT //
-
-// Privacy
-	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",0)~ EXIT //
-	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
-
-// Indepandance
-	IF ~~ THEN REPLY ~^0xFF16537eIndependance behavior.^-~ GOTO INDEPENDANCE
-
-// Checks
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT //
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFTravelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT //
-
-// Free slots in party // Fill party
-	IF ~~ THEN REPLY ~^0xFF16537eFill party behavior.^-~ GOTO FILL_PARTY
-
-// Switching party between travelers and party members
-	IF ~~ THEN REPLY ~^0xFF16537eSwitching party behavior.^-~ GOTO SWITCH_PARTY
-
-	IF ~~ THEN REPLY ~^GI like to ...^-~ GOTO 1 //
+	IF ~!AreaCheck("JO2608")~ THEN REPLY ~^GGo to the Switching Room !^-~ DO ~
+		StorePartyLocations()
+		CreateVisualEffectObject("JOBG402",Player1)
+		FadeToColor([15.0],0)
+		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1631.1209],1))
+		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],1))
+		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],1))
+		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],1))
+		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],1))
+		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],1))
+		MoveViewObject(Player1,INSTANT)
+		FadeFromColor([30.0],0)
+		Wait(1)
+		CreateVisualEffectObject("JOBG402",Player1)~ EXIT //
+	IF ~AreaCheck("JO2608")~ THEN REPLY ~^GLeave the Switching Room !^-~ DO ~
+		CreateVisualEffectObject("JOBG402",Player1)
+		Wait(2)
+		FadeToColor([15.0],0)
+		RestorePartyLocations()
+		MoveViewObject(Player1,INSTANT)
+		FadeFromColor([30.0],0)
+		Wait(2)
+		CreateVisualEffectObject("JOBG402",Player1)~ EXIT //
 
 
 // Player2
@@ -260,16 +256,16 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!Global("JO_JOIN_BLOP","GLOBAL",1)
 		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~Loading Switch isn't available here.^-~ EXIT //
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Travelers need a little adjustment.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",31)~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6Travelers need a little adjustment.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",31)~ EXIT //
 
-	IF ~Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Let's Blop !^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",1) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
-	IF ~!Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF660000Don't switch if not in a master area or if ennemies are at sight.^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",0) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
+	IF ~Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6Let's Blop !^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",1) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
+	IF ~!Global("JO_JOIN_BLOP","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6Don't switch if not in a master area or if ennemies are at sight.^-~ DO ~SetGlobal("JO_JOIN_BLOP","GLOBAL",0) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ THEN REPLY ~JO_JOIN_LOADING_SWITCH.~ DO ~SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_CUTSCENE","GLOBAL",0)~ THEN REPLY ~JO_JOIN_CUTSCENE.~ DO ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)~ THEN REPLY ~JO_JOIN_SWITCHING_PARTY.~ DO ~SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)~ EXIT
 
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF660000Show logs.^-~ DO ~
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6Show logs.^-~ DO ~
 		SetTokenGlobal("JO_JOIN","LOCALS","JO_JOIN")
 		SetTokenGlobal("JO_JOIN_DEV_MODE","GLOBAL","JO_JOIN_DEV_MODE")
 		SetTokenGlobal("JO_JOIN_BLOP","GLOBAL","JO_JOIN_BLOP")
@@ -361,7 +357,7 @@ IF ~True()~ THEN BEGIN 0
 
 		DisplayString(Myself,@104) ~ EXIT
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF660000There's something wrong with travelers, let's settle this now.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",12) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6There's something wrong with travelers, let's settle this now.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",12) ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
 
 END
 
@@ -377,39 +373,32 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-IF ~~ THEN BEGIN 1
+IF ~~ THEN BEGIN MOVE_AROUND
 	SAY ~Heu...~
 	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+// Cutscenes
+	IF ~Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you right now !^-~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
+	IF ~!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Alright you can come back, sorry for dismissed my dear fellow travelers.^-~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ EXIT // Accounted for in JO_JOINI
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT // Accounted for in JO_JOINI
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000I did dream about my dear fellow travelers !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",2)~ EXIT // Accounted for in JO_JOINI
+// Banters
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am exhausted by all these conversations, please stop interrupting the group.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000On second thought, I miss our discussions... Let's talk to each others.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT //
+// Checks
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT //
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFTravelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT //
+
 //	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",16)~ EXIT // Deprecated by the one below see JO_JOINC.BAF
 	IF ~!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFA legion ?^-~ DO ~ActionOverride(Player1,ChangeAIScript("JO_JOINC",RACE)) ActionOverride(Player1,SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1))~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Stay close to me or your partner !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",17)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~To all travelers ! Get lost !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",5)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFf4ccccEverybody say, Youhou !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",6)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Don't be afraid and come closer...^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",9)~ EXIT //
-	IF ~!AreaCheck("JO2608")~ THEN REPLY ~^GGo to the Switching Room !^-~ DO ~
-		StorePartyLocations()
-		CreateVisualEffectObject("JOBG402",Player1)
-		FadeToColor([15.0],0)
-		ActionOverride(Player1,LeaveAreaLUA("JO2608","",[1631.1209],1))
-		ActionOverride(Player2,LeaveAreaLUA("JO2608","",[1362.944],1))
-		ActionOverride(Player3,LeaveAreaLUA("JO2608","",[1318.1106],1))
-		ActionOverride(Player4,LeaveAreaLUA("JO2608","",[1530.955],1))
-		ActionOverride(Player5,LeaveAreaLUA("JO2608","",[1398.1172],1))
-		ActionOverride(Player6,LeaveAreaLUA("JO2608","",[1251.1065],1))
-		MoveViewObject(Player1,INSTANT)
-		FadeFromColor([30.0],0)
-		Wait(1)
-		CreateVisualEffectObject("JOBG402",Player1)~ EXIT //
-	IF ~AreaCheck("JO2608")~ THEN REPLY ~^GLeave the Switching Room !^-~ DO ~
-		CreateVisualEffectObject("JOBG402",Player1)
-		Wait(2)
-		FadeToColor([15.0],0)
-		RestorePartyLocations()
-		MoveViewObject(Player1,INSTANT)
-		FadeFromColor([30.0],0)
-		Wait(2)
-		CreateVisualEffectObject("JOBG402",Player1)~ EXIT //
+
+// Privacy
+	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",0)~ EXIT //
+	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
 /*	IF ~OR(2)
 			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
