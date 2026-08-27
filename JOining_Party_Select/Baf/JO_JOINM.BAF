@@ -51,7 +51,7 @@ IF
 	InPartySlot(Myself,0)
 THEN
 	RESPONSE #100
-		DisplayStringHead(Myself,~^R Test - i'm Player1, expected: False -- No change^-~)
+		DisplayStringHead(Myself,~^R Test - I'm Player1, expected: False -- No change^-~)
 		Continue()
 END
 
@@ -265,6 +265,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",0)
-		DisplayStringHead(Myself,~End test.~)
+		DisplayStringHead(Myself,~Ended !~)
 		ChangeAIScript("",RACE)
 END

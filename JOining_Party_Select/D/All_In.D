@@ -256,7 +256,7 @@ StartDialogueNoSet(Player6)~ EXIT
 	ActionOverride(Player1,ChangeAIScript("JO_JOINP",OVERRIDE))
 	SetGlobal("JO_JOIN_Move_Around","GLOBAL",0)
 	ActionOverride("JOJOINNE",DestroySelf())~ EXIT //
-	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6Show logs.^-~ DO ~
+	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6Show us what you got.^-~ DO ~
 		SetTokenGlobal("JO_JOIN","LOCALS","JO_JOIN")
 		SetTokenGlobal("JO_JOIN_DEV_MODE","GLOBAL","JO_JOIN_DEV_MODE")
 		SetTokenGlobal("JO_JOIN_BLOP","GLOBAL","JO_JOIN_BLOP")
