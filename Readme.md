@@ -51,7 +51,8 @@ There is no real limitation as for the number of familiars / travelers that play
 
 Compatibility : BGEE, SOD, BG2EE and EET.  
 
-- Install JOining Party **AFTER** mods that add any dialog or script options related to NPC.
+- Install JOining Party **AFTER** mods that add any dialog or script options related to NPC. 
+   - For EET install JOining Party **AFTER** EET_End.
 - [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is completly incompatible with this mod if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
 - Joining_Party use script slots permanently or temporarly : 
   - SCRIPT_OVERRIDE for Charname (permanent)

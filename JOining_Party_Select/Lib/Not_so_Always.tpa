@@ -215,10 +215,6 @@
 
 		COPY ~JOining_Party_Select/Baf/JO_JOINI.baf~	~weidu_external/JOining_Party_Select/JO_JOINI.baf~
 
-// Load travelers selection
-
-		INCLUDE ~JOining_Party_Select/Lib/Always_as_traveler.tpa~
-
 
 // CD_STATE_NOTVALID without STATE_SILENCED but with STATE_CHARMED ? scripts may be not active
 
@@ -390,3 +386,74 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 // Next_Traveler Continuous
 			OUTER_SPRINT "cmnikita_name"                "Nikita"
 //////////////////////////////////////////////////////////////////////////////////////
+
+
+// Special Continuous
+
+	OUTER_SET Continuous_Alora = 0 // DESIGNATED 1
+
+	OUTER_SET Continuous_Ajantis = 0 // DESIGNATED 2 
+
+	OUTER_SET Continuous_Branwen = 0 // DESIGNATED 5
+
+	OUTER_SET Continuous_Coran = 0 // DESIGNATED 4
+
+	OUTER_SET Continuous_Isra = 0 // DESIGNATED 7
+
+	OUTER_SET Continuous_Walahnan = 0 // DESIGNATED 6
+
+	OUTER_SET Continuous_Xan = 0 // DESIGNATED 3
+
+// 
+
+ACTION_IF (GAME_IS ~eet~) BEGIN
+
+	ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~1~) BEGIN
+
+		OUTER_SET Continuous_Alora = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~2~) BEGIN
+
+		OUTER_SET Continuous_Ajantis = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~XAN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~3~) BEGIN
+
+		OUTER_SET Continuous_Xan = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~CORAN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~4~) BEGIN
+
+		OUTER_SET Continuous_Coran = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~5~) BEGIN
+
+		OUTER_SET Continuous_Branwen = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~6~) BEGIN
+
+		OUTER_SET Continuous_Walahnan = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~7~) BEGIN
+
+		OUTER_SET Continuous_Isra = 1
+
+	END
+
+END
+
+// 
+
+// Load travelers selection
+
+		INCLUDE ~JOining_Party_Select/Lib/Always_as_traveler.tpa~

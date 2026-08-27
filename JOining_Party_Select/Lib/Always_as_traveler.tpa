@@ -258,7 +258,7 @@ END
 
 ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
-	ACTION_IF Ajantis_as_traveler = 1 THEN BEGIN
+	ACTION_IF Ajantis_as_traveler = 1 AND NOT Continuous_Ajantis = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Ajantis~ ~~
@@ -269,7 +269,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Ajantis_BG2_Content = 1
 
-	END ELSE ACTION_IF Ajantis_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Ajantis_as_Real_traveler = 1 AND NOT Continuous_Ajantis = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Ajantis~ ~~
@@ -304,7 +304,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Branwen_as_traveler = 1 THEN BEGIN
+	ACTION_IF Branwen_as_traveler = 1 AND NOT Continuous_Branwen = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Branwen~ ~~
@@ -313,7 +313,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Branwen_BG2_Content = 1
 
-	END ELSE ACTION_IF Branwen_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Branwen_as_Real_traveler = 1 AND NOT Continuous_Branwen = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Branwen~ ~~
@@ -325,7 +325,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Coran_as_traveler = 1 THEN BEGIN
+	ACTION_IF Coran_as_traveler = 1 AND NOT Continuous_Coran = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Coran~ ~~
@@ -334,7 +334,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Coran_BG2_Content = 1
 
-	END ELSE ACTION_IF Coran_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Coran_as_Real_traveler = 1 AND NOT Continuous_Coran = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Coran~ ~~
@@ -691,7 +691,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Xan_as_traveler = 1 THEN BEGIN
+	ACTION_IF Xan_as_traveler = 1 AND NOT Continuous_Coran = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Xan~ ~~
@@ -700,7 +700,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Xan_BG2_Content = 1
 
-	END ELSE ACTION_IF Xan_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Xan_as_Real_traveler = 1 AND NOT Continuous_Coran = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Xan~ ~~
@@ -1181,7 +1181,7 @@ ACTION_IF (MOD_IS_INSTALLED ~ASKARIA.TP2~ ~0~) THEN BEGIN
 END
 
 
-ACTION_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND NOT Continuous_Isra = 1) THEN BEGIN
 
 	ACTION_IF Isra_BG1_as_traveler = 1 THEN BEGIN
 
@@ -2237,7 +2237,7 @@ ACTION_IF (MOD_IS_INSTALLED ~AURENASEPH.TP2~ ~0~) THEN BEGIN
 
 END
 
-ACTION_IF (MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~ AND NOT Continuous_Isra = 1) THEN BEGIN
 
 	ACTION_IF Isra_BG2_as_traveler = 1 THEN BEGIN
 
@@ -2665,7 +2665,7 @@ END
 
 // Ajantis_BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~ajantisbg2.TP2~ ~0~) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~ajantisbg2.TP2~ ~0~ AND NOT Continuous_Ajantis = 1) THEN BEGIN
 
 	ACTION_IF Ajantis_BG2_as_traveler = 1 THEN BEGIN
 
@@ -2910,7 +2910,7 @@ END
 
 ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
-	ACTION_IF Alora_Continuous_as_traveler = 1 THEN BEGIN
+	ACTION_IF Alora_Continuous_as_traveler = 1 OR (Alora_as_traveler = 1 AND Continuous_Alora = 1) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// EET Alora_Continuous~ ~~
@@ -2919,7 +2919,7 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 				OUTER_SET Alora_BG2_Content = 1
 
-	END ELSE ACTION_IF Alora_Continuous_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Alora_Continuous_as_Real_traveler = 1 OR (Alora_as_Real_traveler = 1 AND Continuous_Alora = 1) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// EET Alora_Continuous~ ~~
@@ -2928,6 +2928,31 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				~
 
 				OUTER_SET Alora_BG2_Content = 1
+
+	END
+
+	ACTION_IF Ajantis_Continuous_as_traveler = 1 OR (Ajantis_as_traveler = 1 AND Continuous_Ajantis = 1) THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// EET Ajantis_Continuous~ ~~
+				PRINT ~    Ajantis_Continuous as traveler
+				~
+
+				OUTER_SET Ajantis_SoD_Content = 1
+
+				OUTER_SET Ajantis_BG2_Content = 1
+
+	END ELSE ACTION_IF Ajantis_Continuous_as_Real_traveler = 1 OR (Ajantis_as_Real_traveler = 1 AND Continuous_Ajantis = 1) THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// EET Ajantis_Continuous~ ~~
+				REPLACE_TEXTUALLY ~// EET Real Ajantis_Continuous~ ~~
+				PRINT ~    Ajantis_Continuous as real traveler
+				~
+
+				OUTER_SET Ajantis_SoD_Content = 1
+
+				OUTER_SET Ajantis_BG2_Content = 1
 
 	END
 
