@@ -30,7 +30,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ EVALUATE_BUFFER
 
@@ -38,13 +40,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -68,13 +86,39 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ZYJCOB_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -98,13 +142,39 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ZYASKA_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -130,7 +200,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/rh#isra_All_In.baf~ EVALUATE_BUFFER
 
@@ -138,13 +210,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -170,7 +258,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/SUFINCH_All_In.baf~ EVALUATE_BUFFER
 
@@ -178,13 +268,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -214,7 +320,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_JARLAXE_All_In.baf~ EVALUATE_BUFFER
 
@@ -222,13 +330,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -257,7 +381,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_ARTEMIS_All_In.baf~ EVALUATE_BUFFER
 
@@ -265,13 +391,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -294,7 +436,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_CATTIBR_All_In.baf~ EVALUATE_BUFFER
 
@@ -302,13 +446,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -332,7 +492,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_BRUENOR_All_In.baf~ EVALUATE_BUFFER
 
@@ -340,13 +502,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -370,7 +548,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_REGIS_All_In.baf~ EVALUATE_BUFFER
 
@@ -378,13 +558,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -408,7 +604,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_DRIZZT_All_In.baf~ EVALUATE_BUFFER
 
@@ -416,13 +614,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -446,7 +660,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_WULFGAR_All_In.baf~ EVALUATE_BUFFER
 
@@ -454,56 +670,34 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
 
 /////////////////////////// Dark Horizons ///////////////////////////
-
-OUTER_SPRINT "BG1_JOINED" "CMTNIKJ"
-OUTER_SPRINT "BG1_BCS" "cmtnikit"
-OUTER_SPRINT "BG1_BANTER" "BCMTNIK"
-OUTER_SPRINT "SoD_BANTER" "BCMTNIK"
-OUTER_SPRINT "SoD_JOINED" "CMTNIKJ"
-OUTER_SPRINT "SoD_BCS" "cmtnikit"
-// OUTER_SPRINT "EET_BANTER" "BCMTNIK"
-OUTER_SPRINT "BG1_DREAM" "CMTNIKD"
-OUTER_SPRINT "SoD_DREAM" "CMTNIKD"
-// OUTER_SPRINT "EET_DREAM" "CMTNIKD"
-
-ACTION_FOR_EACH bcs IN
-
-// Mod Nikita_BG1 ~cmtnikit~
-
-BEGIN
-
-	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
-
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
-
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/cmnikita_All_In.baf~ EVALUATE_BUFFER
-
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
-
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
-
-						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
-						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
-						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
-						END
-
-	END
-END
 
 OUTER_SPRINT "BG1_JOINED" "CMTTHORJ"
 OUTER_SPRINT "BG1_BCS" "cmtthor"
@@ -524,7 +718,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMTTHOR_All_In.baf~ EVALUATE_BUFFER
 
@@ -532,13 +728,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -563,7 +775,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CMTMORW_All_In.baf~ EVALUATE_BUFFER
 
@@ -571,13 +785,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -602,7 +832,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/DSBARDO_All_In.baf~ EVALUATE_BUFFER
 
@@ -610,13 +842,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -639,7 +887,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/DSBUB_All_In.baf~ EVALUATE_BUFFER
 
@@ -647,13 +897,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -676,7 +942,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Conchobhair_All_In.baf~ EVALUATE_BUFFER
 
@@ -684,13 +952,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -713,7 +997,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/CuChoinneach_All_In.baf~ EVALUATE_BUFFER
 
@@ -721,13 +1007,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -750,7 +1052,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ferthgil_All_In.baf~ EVALUATE_BUFFER
 
@@ -758,13 +1062,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -787,7 +1107,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/JETLAYA_All_In.baf~ EVALUATE_BUFFER
 
@@ -795,13 +1117,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -824,7 +1162,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/KEIRIA_All_In.baf~ EVALUATE_BUFFER
 
@@ -832,13 +1172,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -861,7 +1217,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/SKEEZER_All_In.baf~ EVALUATE_BUFFER
 
@@ -869,13 +1227,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -898,7 +1272,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Thorfinn_All_In.baf~ EVALUATE_BUFFER
 
@@ -906,13 +1282,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -955,7 +1347,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/WILL_All_In.baf~ EVALUATE_BUFFER
 
@@ -963,13 +1357,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -995,7 +1405,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/T2VAL_All_In.baf~ EVALUATE_BUFFER
 
@@ -1003,13 +1415,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1035,7 +1463,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/J#Indi_All_In.baf~ EVALUATE_BUFFER
 
@@ -1043,13 +1473,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1075,7 +1521,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#BRIST_All_In.baf~ EVALUATE_BUFFER
 
@@ -1083,13 +1531,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1115,7 +1579,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#DAVE_All_In.baf~ EVALUATE_BUFFER
 
@@ -1123,13 +1589,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1153,7 +1635,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#FLAR_All_In.baf~ EVALUATE_BUFFER
 
@@ -1161,13 +1645,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1191,7 +1691,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#LITT_All_In.baf~ EVALUATE_BUFFER
 
@@ -1199,13 +1701,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1229,7 +1747,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#MOID_All_In.baf~ EVALUATE_BUFFER
 
@@ -1237,13 +1757,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1267,7 +1803,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/GV#VYND_All_In.baf~ EVALUATE_BUFFER
 
@@ -1275,13 +1813,29 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END
@@ -1309,7 +1863,9 @@ BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
 
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/X3Kale_All_In.baf~ EVALUATE_BUFFER
 
@@ -1317,13 +1873,591 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
 						ACTION_IF (GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_EET.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BGSoD.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
 						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter_Dream/Banter_BG1.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
 						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+// New Tales of the Sword Coast
+
+OUTER_SPRINT "BG1_JOINED" "KasandrJ"
+OUTER_SPRINT "BG1_BCS" "Kasandra"
+OUTER_SPRINT "SoD_JOINED" "KasandrJ"
+OUTER_SPRINT "SoD_BCS" "Kasandra"
+OUTER_SPRINT "BG1_BANTER" "KasandrB"
+OUTER_SPRINT "SoD_BANTER" "KasandrB"
+OUTER_SPRINT "EET_BANTER" "KasandrB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Kasandra ~Kasandra~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kasandra_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "MasambeJ"
+OUTER_SPRINT "BG1_BCS" "Masambe"
+OUTER_SPRINT "SoD_JOINED" "MasambeJ"
+OUTER_SPRINT "SoD_BCS" "Masambe"
+OUTER_SPRINT "BG1_BANTER" "MasambeB"
+OUTER_SPRINT "SoD_BANTER" "MasambeB"
+OUTER_SPRINT "EET_BANTER" "MasambeB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Masambe ~Masambe~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Masambe_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "AlethraJ"
+OUTER_SPRINT "BG1_BCS" "Alethra"
+OUTER_SPRINT "SoD_JOINED" "AlethraJ"
+OUTER_SPRINT "SoD_BCS" "Alethra"
+OUTER_SPRINT "BG1_BANTER" "AlethraB"
+OUTER_SPRINT "SoD_BANTER" "AlethraB"
+OUTER_SPRINT "EET_BANTER" "AlethraB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Alethra ~Alethra~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Alethra_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "RimardoJ"
+OUTER_SPRINT "BG1_BCS" "Rimardo"
+OUTER_SPRINT "SoD_JOINED" "RimardoJ"
+OUTER_SPRINT "SoD_BCS" "Rimardo"
+OUTER_SPRINT "BG1_BANTER" "RimardoB"
+OUTER_SPRINT "SoD_BANTER" "RimardoB"
+OUTER_SPRINT "EET_BANTER" "RimardoB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Rimardo ~Rimardo~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Rimardo_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "TalindraJ"
+OUTER_SPRINT "BG1_BCS" "Talindra"
+OUTER_SPRINT "SoD_JOINED" "TalindraJ"
+OUTER_SPRINT "SoD_BCS" "Talindra"
+OUTER_SPRINT "BG1_BANTER" "TalindraB"
+OUTER_SPRINT "SoD_BANTER" "TalindraB"
+OUTER_SPRINT "EET_BANTER" "TalindraB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Talindra ~Talindra~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Talindra_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "TheodorJ"
+OUTER_SPRINT "BG1_BCS" "Theodor"
+OUTER_SPRINT "SoD_JOINED" "TheodorJ"
+OUTER_SPRINT "SoD_BCS" "Theodor"
+OUTER_SPRINT "BG1_BANTER" "TheodorB"
+OUTER_SPRINT "SoD_BANTER" "TheodorB"
+OUTER_SPRINT "EET_BANTER" "TheodorB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Theodor ~Theodor~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Theodor_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "AriadneJ"
+OUTER_SPRINT "BG1_BCS" "Ariadne"
+OUTER_SPRINT "SoD_JOINED" "AriadneJ"
+OUTER_SPRINT "SoD_BCS" "Ariadne"
+OUTER_SPRINT "BG1_BANTER" "AriadneB"
+OUTER_SPRINT "SoD_BANTER" "AriadneB"
+OUTER_SPRINT "EET_BANTER" "AriadneB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Ariadne ~Ariadne~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ariadne_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "NathanJ"
+OUTER_SPRINT "BG1_BCS" "Nathan"
+OUTER_SPRINT "SoD_JOINED" "NathanJ"
+OUTER_SPRINT "SoD_BCS" "Nathan"
+OUTER_SPRINT "BG1_BANTER" "NathanB"
+OUTER_SPRINT "SoD_BANTER" "NathanB"
+OUTER_SPRINT "EET_BANTER" "NathanB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Nathan ~Nathan~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Nathan_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "NamiirJ"
+OUTER_SPRINT "BG1_BCS" "Namiir"
+OUTER_SPRINT "SoD_JOINED" "NamiirJ"
+OUTER_SPRINT "SoD_BCS" "Namiir"
+OUTER_SPRINT "BG1_BANTER" "NamiirB"
+OUTER_SPRINT "SoD_BANTER" "NamiirB"
+OUTER_SPRINT "EET_BANTER" "NamiirB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Namiir ~Namiir~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Namiir_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+	END
+END
+
+OUTER_SPRINT "BG1_JOINED" "MirandaJ"
+OUTER_SPRINT "BG1_BCS" "Miranda"
+OUTER_SPRINT "SoD_JOINED" "MirandaJ"
+OUTER_SPRINT "SoD_BCS" "Miranda"
+OUTER_SPRINT "BG1_BANTER" "MirandaB"
+OUTER_SPRINT "SoD_BANTER" "MirandaB"
+OUTER_SPRINT "EET_BANTER" "MirandaB"
+OUTER_SPRINT "BG1_DREAM" ""
+OUTER_SPRINT "SoD_DREAM" ""
+OUTER_SPRINT "EET_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Miranda ~Miranda~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Miranda_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOINBG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+			ACTION_IF (NOT ~%BG1_BANTER%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_BANTER%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_BANTER%.dlg~ OR FILE_EXISTS_IN_GAME ~%SoD_BANTER%.dlg~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Banter/Banter_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
+
+			ACTION_IF (NOT~%BG1_DREAM%~ STRING_EQUAL_CASE ~~ OR NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~ OR FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN
+
+						ACTION_IF (GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_EET.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_INCLUDES ~SoD~ AND NOT GAME_IS ~eet~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BGSoD.baf~ EVALUATE_BUFFER
+						END ELSE ACTION_IF (GAME_IS ~bgee~ AND NOT GAME_INCLUDES ~SoD~) BEGIN
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/Dream/Dream_BG1.baf~ EVALUATE_BUFFER
+						END
+
+			END
 
 	END
 END

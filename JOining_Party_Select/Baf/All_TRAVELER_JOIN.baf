@@ -17,7 +17,7 @@ END
 // Traveler NPCs
 
 IF
-	!Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1)
+	Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_PARTY_TRAVELER","LOCALS",1)
@@ -124,9 +124,8 @@ IF
 	OR(2)
 		!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
 		!Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	OR(2)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)

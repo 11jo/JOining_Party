@@ -570,6 +570,24 @@ OUTER_SPRINT "slashdeux" "\2"
 // CUTSCENES
 ///////////////////////////////////////////////////////////////////////////////
 	// StartCutSceneMode() situation
+			SPRINT textToReplace ~\(^[%TAB% ]*SetCursorState(TRUE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",2)
+	SetCursorState(TRUE)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // SetCursorState(TRUE) found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~\(^[%TAB% ]*SetCursorState(FALSE)\)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+	SetCursorState(FALSE)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // SetCursorState(FALSE) found in %SOURCE_FILESPEC%
+				~
+			END
 // Special : when StartCutSceneEx is placed before StartCutSceneMode we invert them (See BlackHearts mod implementation)
 			SPRINT textToReplace ~^[%TAB% ]*StartCutSceneEx(\([^)]*\)
 			^[%TAB% ]*StartCutSceneMode()~
@@ -581,23 +599,16 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
 				~
 			END
+//
 			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
+	SetCutSceneLite(TRUE)
 	Wait(1)
 	StartCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
-				~
-			END
-			SPRINT textToReplace ~\(^[%TAB% ]*SetCursorState(TRUE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
-	SetCursorState(TRUE)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // SetCursorState(TRUE) found in %SOURCE_FILESPEC%
 				~
 			END
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),EndCutSceneMode())~
@@ -618,15 +629,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~\(^[%TAB% ]*SetCursorState(FALSE)\)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-	SetCursorState(FALSE)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // SetCursorState(FALSE) found in %SOURCE_FILESPEC%
-				~
-			END
+//////// Activate ///////////
+//////// ////// ///////////
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -638,7 +642,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated TODO : besoin de perfectionner la méthode, c'est convenable mais mieux serait mieux.
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\([^)]*\)(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\(ue\)?("\([^)]*\)",\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
@@ -650,13 +654,34 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride(\1) StartDialog() found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\([^)]*\)("\([^)]*\)"))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialogNoSet(\([^)]*\)))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
+	\0 ~
+/*					INNER_ACTION BEGIN
+			OUTER_SPRINT ~Done_Already~ ~\1~ 
+					END*/
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride(\1) StartDialog() found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\(ue\)?("\([^)]*\)","\([^)]*\)"))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) /*AND NOT (~\3~ STRING_EQUAL_CASE ~%Done_Already%~)*/ BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\4")
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // ActionOverride() StartDialog(\3) found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // ActionOverride() StartDialog(\4) found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialogNoSet("\([^)]*\)"))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) /*AND NOT (~\3~ STRING_EQUAL_CASE ~%Done_Already%~)*/ BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\2")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // ActionOverride() StartDialog(\2) found in %SOURCE_FILESPEC%
 				~
 			END
 // Normal addition
@@ -728,13 +753,22 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
-			SPRINT textToReplace ~^[%TAB% ]*StartDialog\([^)]*\)("\([^)]*\)")~
+			SPRINT textToReplace ~^[%TAB% ]*StartDialog\(ue\)?("\([^)]*\)","\([^)]*\)")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\2")
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\3")
 	\0 ~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // StartDialog(/2) found in %SOURCE_FILESPEC%
+				PATCH_PRINT ~... // StartDialog(/3) found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~^[%TAB% ]*StartDialogNoSet("\([^)]*\)")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
+	\0 ~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // StartDialog(/1) found in %SOURCE_FILESPEC%
 				~
 			END
 // Normal addition

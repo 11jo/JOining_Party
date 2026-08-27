@@ -105,17 +105,17 @@ END
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(6)
-	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot6,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot6,0)
-	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot5,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot5,0)
-	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot4,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot4,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",3)
-		SetGlobal("JO_JOIN_LOADING_MAX ","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",3))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
@@ -133,15 +133,15 @@ END
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(6)
-	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot6,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot6,0)
-	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot5,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot5,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2)
-		SetGlobal("JO_JOIN_LOADING_MAX ","LOCALS",2)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",2)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
@@ -155,13 +155,13 @@ END
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(6)
-	!StateCheck(PartySlot6,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot6,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot6,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		SetGlobal("JO_JOIN_LOADING_MAX ","LOCALS",1)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",1)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
@@ -171,15 +171,15 @@ END
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(5)
-	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot5,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot5,0)
-	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot4,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot4,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2)
-		SetGlobal("JO_JOIN_LOADING_MAX ","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
@@ -193,13 +193,13 @@ END
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(5)
-	!StateCheck(PartySlot5,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot5,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot5,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		SetGlobal("JO_JOIN_LOADING_MAX ","LOCALS",2)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",2)
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
@@ -209,13 +209,13 @@ END
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",2)
 	NumInParty(4)
-	!StateCheck(PartySlot4,CD_STATE_NOTVALID)
+	!StateCheck(PartySlot4,JO_STATE_NOTVALID)
 	!InPartySlot(PartySlot4,0)
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		SetGlobal("JO_JOIN_LOADING_MAX ","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot4,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot4,LeaveParty())
@@ -229,7 +229,7 @@ IF
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
-		SetGlobal("JO_JOIN_LOADING_MAX ","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
 		Continue()
 END
 
@@ -317,4 +317,14 @@ THEN
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		DisplayStringHead(Myself,~let's venture forth !~)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
+END
+
+
+
+// Last block: Stop at this point
+IF
+	True()
+THEN
+	RESPONSE #100
+		NoAction()
 END

@@ -36,7 +36,7 @@ IF
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	NumInPartyGT(5)
 	OR(2)
-		StateCheck(PartySlot6,CD_STATE_NOTVALID)
+		StateCheck(PartySlot6,JO_STATE_NOTVALID)
 		TriggerOverride(PartySlot6,Global("JO_Myself_InParty","LOCALS",0)) // prevent ineligible travelers to switch
 THEN
 	RESPONSE #100
@@ -82,13 +82,20 @@ THEN
 	RESPONSE #100
 		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",0)
-		SetGlobal("JO_JOIN_CUTSCENE ","GLOBAL",0)
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
 		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
 END
 
+IF // security, it would appear that, on occasion, JO_JOINL does not activate properly
+	!Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~^RHum... JO_JOINL script is not active, it is not normal.^-~)
+		ChangeAIScript("JO_JOINL",OVERRIDE) // Go to JO_JOINL.baf
+END
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -221,7 +228,6 @@ END
 IF
 	!Global("JO_Myself_AllowDead","LOCALS",0)
 	!InPartyAllowDead(Myself)
-	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
@@ -231,9 +237,7 @@ END
 // InPartyAllowDead()
 IF
 	Global("JO_Myself_AllowDead","LOCALS",0)
-	OR(2)
-		InPartyAllowDead(Myself)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	InPartyAllowDead(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
@@ -244,9 +248,6 @@ END
 IF
 	!Global("JO_Myself_InParty","LOCALS",0)
 	!InParty(Myself)
-	OR(2)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
@@ -256,12 +257,7 @@ END
 // InParty()
 IF
 	Global("JO_Myself_InParty","LOCALS",0)
-	OR(2)
-		InParty(Myself)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	OR(2)
-		InParty(Myself)
-		Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+	InParty(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_InParty","LOCALS",1)
@@ -272,11 +268,6 @@ END
 IF
 	!Global("JO_Myself_Valid","LOCALS",0)
 	!IsValidForPartyDialogue(Myself)
-	OR(4)
-		Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-		!Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-		StateCheck(Myself,CD_STATE_NOTVALID)
-		!IsActive(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
@@ -286,14 +277,7 @@ END
 // Is(If)ValidForPartyDialog(ue)
 IF
 	Global("JO_Myself_Valid","LOCALS",0)
-	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
-	IsActive(Myself)
-	OR(2)
-		IsValidForPartyDialogue(Myself)
-		!StateCheck(Myself,CD_STATE_NOTVALID)
-	OR(2)
-		InParty(Myself)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	IsValidForPartyDialogue(Myself)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_Myself_Valid","LOCALS",1)
@@ -391,9 +375,8 @@ END
 // Delay banters for party members when specific actions are performed
 
 IF
-	OR(7)
+	OR(6)
 		!Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-		!Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
@@ -405,7 +388,7 @@ THEN
 	RESPONSE #100
 		BanterBlockFlag(TRUE)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
-		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","LOCALS",ONE_HOUR)
+		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","GLOBAL",ONE_HOUR)
 		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
 		DisplayString(Myself,~Delay conversations.~)
 		Continue()
@@ -413,14 +396,13 @@ END
 
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_LEAVING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
-	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","LOCALS")
+	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","GLOBAL")
 	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -462,6 +444,20 @@ THEN
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",TWELVE_HOURS) // Reset timer
 		DisplayString(Myself,~We have time for a little chat.~)
 		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",1)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Reset JO_JOIN_SCRIPT
+
+IF
+//
+	!Global("JO_JOIN_SCRIPT","GLOBAL",0)
+	Delay(30)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_MY_SCRIPT","GLOBAL",0)
 		Continue()
 END
 
@@ -551,8 +547,8 @@ END
 // Ctrl-J / Not in PDIALOG.2DA / Created party member
 
 IF
-	!TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
-	!TriggerOverride(Player2,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
+	TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+	TriggerOverride(Player2,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride(Player2,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -561,8 +557,8 @@ THEN
 END
 
 IF
-	!TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
-	!TriggerOverride(Player3,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
+	TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+	TriggerOverride(Player3,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride(Player3,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -571,8 +567,8 @@ THEN
 END
 
 IF
-	!TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
-	!TriggerOverride(Player4,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
+	TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+	TriggerOverride(Player4,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride(Player4,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -581,8 +577,8 @@ THEN
 END
 
 IF
-	!TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
-	!TriggerOverride(Player5,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
+	TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+	TriggerOverride(Player5,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride(Player5,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J
@@ -591,8 +587,8 @@ THEN
 END
 
 IF
-	!TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",1))
-	!TriggerOverride(Player6,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",1))
+	TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+	TriggerOverride(Player6,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
 		ActionOverride(Player6,ChangeAIScript("JO_JOINJ",GENERAL)) // JO_JOINJ for Ctrl-J

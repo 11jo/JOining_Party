@@ -1,10 +1,9 @@
 
 IF
 	InMyArea("%Death_var%")
-	OR(4)
+	OR(3)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		TriggerOverride("%Death_var%",Allegiance(Myself,FAMILIAR))
-		TriggerOverride("%Death_var%",Allegiance(Myself,CONTROLLED))
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
@@ -12,7 +11,8 @@ THEN
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
 		SmallWait(2)
-//		ActionOverride("%Death_var%",RemoveFamiliar())
+		ActionOverride("%Death_var%",ChangeAIScript("WTASIGHT",GENERAL))
+		ActionOverride("%Death_var%",RemoveFamiliar())
 		ActionOverride("%Death_var%",ChangeEnemyAlly(Myself,NEUTRAL))
 		SmallWait(1)
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_AllowDead","LOCALS",0))
@@ -20,6 +20,7 @@ THEN
 		ActionOverride("%Death_var%",SetGlobal("JO_Myself_Valid","LOCALS",0))
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0))
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		ActionOverride("%Death_var%",SetLeavePartyDialogFile())
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroySelf())
 END
