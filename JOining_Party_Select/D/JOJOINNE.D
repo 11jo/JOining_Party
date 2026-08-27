@@ -542,11 +542,11 @@ IF ~~ THEN BEGIN INDEPENDANCE
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~Independance not allowed~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",1)~ GOTO 0
 	IF ~!Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^GIndependance allowed^-~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ GOTO 0
-	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Follow me when I walk away from the group, better stick together.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
-	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
-	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",20)~ EXIT //
-	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",21)~ EXIT //
-	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bI am pretty independant, don't follow me when I walk 100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT 
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~Follow me when I walk away from the group, better stick together.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",18)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",20)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",21)~ EXIT //
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT 
 END
 
 // Switch party
@@ -555,14 +555,14 @@ IF ~~ THEN BEGIN SWITCH_PARTY
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
 	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ THEN REPLY ~Switching party not allowed~ DO ~SetGlobal("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",1)~ GOTO 0
 	IF ~!Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ THEN REPLY ~^GSwitching party allowed^-~ DO ~SetGlobal("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ GOTO 0
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bTravelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Travelers if party members are available you can switch places.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",11)~ EXIT //
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fTravelers you can switch places with every party members !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)~ EXIT //
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)~ THEN REPLY ~^0xFF16537eTravelers you can switch places only with the last three party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)~ EXIT //
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)~ THEN REPLY ~^0xFF16537eTravelers you can switch places only with the last two party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)~ EXIT //
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ THEN REPLY ~^0xFF16537eTravelers you can switch places only with the last party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ EXIT //
-	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bParty members stop switching places with travelers.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",28)~ EXIT //
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFf4ccccTravelers stop switching places with party members.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",10)~ EXIT //
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFf4ccccTravelers if party members are available you can switch places.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",11)~ EXIT //
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Party members stop switching places with travelers.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",28)~ EXIT //
 	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Party members if travelers are available you can switch places.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",29)~ EXIT //
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)~ THEN REPLY ~^0xFF2968A6Travelers you can switch places with every party members !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)~ EXIT //
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)~ THEN REPLY ~^0xFF2968A6Travelers you can switch places only with the last three party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)~ EXIT //
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)~ THEN REPLY ~^0xFF2968A6Travelers you can switch places only with the last two party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)~ EXIT //
+	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ THEN REPLY ~^0xFF2968A6Travelers you can switch places only with the last party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ EXIT //
 END
 
 // Quick switch
@@ -571,8 +571,8 @@ IF ~~ THEN BEGIN QUICK_SWITCH
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~Quick switch not allowed~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",1)~ GOTO 0
 	IF ~!Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~^GQuick switch allowed^-~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ GOTO 0
-	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF5b5b5bStop the Quick Switch for a while, please.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",3)~ EXIT // Reset when loading a save.
-	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000You are free to Quick Switch when you feel like.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",4)~ EXIT //
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Stop the Quick Switch for a while, please.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",3)~ EXIT // Reset when loading a save.
+	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~You are free to Quick Switch when you feel like.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",4)~ EXIT //
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)
 		OR(2)
 			!Global("JO_JOIN_AREA","MYAREA",0)
@@ -603,7 +603,7 @@ IF ~~ THEN BEGIN FILL_PARTY
 		OR(2)
 			!Global("JO_JOIN_AREA","MYAREA",0)
 			!Global("JO_JOIN_BLOP","GLOBAL",0)
-		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fThere is room for traveler to Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
-	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF16537eTravelers don't come in party when Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",27)~ EXIT //
-	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF7f6000Travelers come in party when Fill Party.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",26)~ EXIT //
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~There is room for traveler to Fill Party.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",15)~ EXIT //
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Travelers don't come in party when Fill Party.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",27)~ EXIT //
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Travelers come in party when Fill Party.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",26)~ EXIT //
 END
