@@ -2956,14 +2956,14 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
-	ACTION_IF Alora_Continuous_as_traveler = 1 OR (Alora_as_traveler = 1 AND Continuous_Alora = 1) THEN BEGIN
+	ACTION_IF Kivan_Continuous_as_traveler = 1 OR (Kivan_as_traveler = 1 AND Continuous_Kivan = 1) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// EET Alora_Continuous~ ~~
-				PRINT ~    Alora_Continuous as traveler
+				REPLACE_TEXTUALLY ~// EET Kivan~ ~~
+				PRINT ~    Kivan_Continuous as traveler
 				~
 
-				OUTER_SET Alora_BG2_Content = 1
+				OUTER_SET Kivan_BG2_Content = 1
 
 	END ELSE ACTION_IF Kivan_Continuous_as_Real_traveler = 1 OR (Kivan_as_Real_traveler = 1 AND Continuous_Kivan = 1) THEN BEGIN
 
@@ -2974,6 +2974,33 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				~
 
 				OUTER_SET Kivan_BG2_Content = 1
+
+	END
+
+// Walahnan_Continuous
+
+	ACTION_IF Walahnan_Continuous_as_traveler = 1 OR (Walahnan_as_traveler = 1 AND Continuous_Walahnan = 1) THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// EET Walahnan_Continuous~ ~~
+				PRINT ~    Walahnan_Continuous as traveler
+				~
+
+				OUTER_SET Walahnan_Sod_Content = 1
+
+				OUTER_SET Walahnan_BG2_Content = 1
+
+	END ELSE ACTION_IF Walahnan_Continuous_as_Real_traveler = 1 OR (Walahnan_as_Real_traveler = 1 AND Continuous_Walahnan = 1) THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// EET Walahnan_Continuous~ ~~
+				REPLACE_TEXTUALLY ~// EET Real Walahnan_Continuous~ ~~
+				PRINT ~    Walahnan_Continuous as real traveler
+				~
+
+				OUTER_SET Walahnan_Sod_Content = 1
+
+				OUTER_SET Walahnan_BG2_Content = 1
 
 	END
 
