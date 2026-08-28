@@ -763,7 +763,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				OUTER_SET Baeloth_SoD_Content = 1
 
-				// OUTER_SET Baeloth_BG2_Content = 1
+				OUTER_SET Baeloth_BG2_Content = 1
 
 	END ELSE ACTION_IF Baeloth_as_Real_traveler = 1 THEN BEGIN
 
@@ -775,7 +775,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				OUTER_SET Baeloth_SoD_Content = 1
 
-				// OUTER_SET Baeloth_BG2_Content = 1
+				OUTER_SET Baeloth_BG2_Content = 1
 
 	END
 
@@ -1238,6 +1238,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Jarlaxle_Saga as traveler
 				~
 
+				OUTER_SET F_JARLAXE_BG2_Content = 1
+
 	END ELSE ACTION_IF Jarlaxle_Saga_as_Real_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1245,6 +1247,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				REPLACE_TEXTUALLY ~// Mod Real Jarlaxle_Saga~ ~~
 				PRINT ~    Jarlaxle_Saga as real traveler
 				~
+
+				OUTER_SET F_JARLAXE_BG2_Content = 1
 
 	END
 
@@ -1255,6 +1259,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Artemis_Enteri_Saga as traveler
 				~
 
+				OUTER_SET F_ARTEMIS_BG2_Content = 1
+
 	END ELSE ACTION_IF Artemis_Enteri_Saga_as_Real_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1262,6 +1268,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				REPLACE_TEXTUALLY ~// Mod Real Artemis_Enteri_Saga~ ~~
 				PRINT ~    Artemis_Enteri_Saga as real traveler
 				~
+
+				OUTER_SET F_ARTEMIS_BG2_Content = 1
 
 	END
 
@@ -1272,6 +1280,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Catti-Brie_Saga as traveler
 				~
 
+				OUTER_SET F_CATTIBR_BG2_Content = 1
+
 	END ELSE ACTION_IF Catti-Brie_Saga_as_Real_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1279,6 +1289,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				REPLACE_TEXTUALLY ~// Mod Real Catti-Brie_Saga~ ~~
 				PRINT ~    Catti-Brie_Saga as real traveler
 				~
+
+				OUTER_SET F_CATTIBR_BG2_Content = 1
 
 	END
 
@@ -1289,6 +1301,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Bruenor_Saga as traveler
 				~
 
+				OUTER_SET F_BRUENOR_BG2_Content = 1
+
 	END ELSE ACTION_IF Bruenor_Saga_as_Real_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1297,6 +1311,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Bruenor_Saga as real traveler
 				~
 
+
+				OUTER_SET F_BRUENOR_BG2_Content = 1
 	END
 
 	ACTION_IF Regis_Saga_as_traveler = 1 THEN BEGIN
@@ -1306,6 +1322,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Regis_Saga as traveler
 				~
 
+				OUTER_SET F_REGIS_BG2_Content = 1
+
 	END ELSE ACTION_IF Regis_Saga_as_Real_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1313,6 +1331,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				REPLACE_TEXTUALLY ~// Mod Real Regis_Saga~ ~~
 				PRINT ~    Regis_Saga as real traveler
 				~
+
+				OUTER_SET F_REGIS_BG2_Content = 1
 
 	END
 
@@ -1323,6 +1343,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Drizzt_Saga as traveler
 				~
 
+				OUTER_SET F_DRIZZT_BG2_Content = 1
+
 	END ELSE ACTION_IF Drizzt_Saga_as_Real_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1330,6 +1352,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				REPLACE_TEXTUALLY ~// Mod Real Drizzt_Saga~ ~~
 				PRINT ~    Drizzt_Saga as real traveler
 				~
+
+				OUTER_SET F_DRIZZT_BG2_Content = 1
 
 	END
 
@@ -1340,6 +1364,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				PRINT ~    Wulfgar_Saga as traveler
 				~
 
+				OUTER_SET F_WULFGAR_BG2_Content = 1
+
 	END ELSE ACTION_IF Wulfgar_Saga_as_Real_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -1347,6 +1373,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
 				REPLACE_TEXTUALLY ~// Mod Real Wulfgar_Saga~ ~~
 				PRINT ~    Wulfgar_Saga as real traveler
 				~
+
+				OUTER_SET F_WULFGAR_BG2_Content = 1
 
 	END
 
@@ -1950,20 +1978,28 @@ END
 
 	ACTION_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~) THEN BEGIN
 
-ACTION_IF Walahnan_as_traveler = 1 THEN BEGIN
+ACTION_IF Walahnan_as_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Walahnan~ ~~
 			PRINT ~    Walahnan as traveler
 			~
 
-END ELSE ACTION_IF Walahnan_as_Real_traveler = 1 THEN BEGIN
+				OUTER_SET L#WALAH_Sod_Content = 1
+
+				OUTER_SET L#WALAH_BG2_Content = 1
+
+END ELSE ACTION_IF Walahnan_as_Real_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Walahnan~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Walahnan~ ~~
 			PRINT ~    Walahnan as real traveler
 			~
+
+				OUTER_SET L#WALAH_Sod_Content = 1
+
+				OUTER_SET L#WALAH_BG2_Content = 1
 
 END
 
@@ -2900,6 +2936,30 @@ END
 
 END
 
+// Walahnan BG2
+
+
+	ACTION_IF (MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~) THEN BEGIN
+
+ACTION_IF Walahnan_BG2_as_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Walahnan_BG2~ ~~
+			PRINT ~    Walahnan_BG2 as traveler
+			~
+
+END ELSE ACTION_IF Walahnan_BG2_as_Real_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Walahnan_BG2~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Walahnan_BG2~ ~~
+			PRINT ~    Walahnan_BG2 as real traveler
+			~
+
+END
+
+	END
+
 // Next_Traveler BG2
 
 
@@ -3010,9 +3070,9 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				PRINT ~    Walahnan_Continuous as traveler
 				~
 
-				OUTER_SET Walahnan_Sod_Content = 1
+				OUTER_SET L#WALAH_Sod_Content = 1
 
-				OUTER_SET Walahnan_BG2_Content = 1
+				OUTER_SET L#WALAH_BG2_Content = 1
 
 	END ELSE ACTION_IF Walahnan_Continuous_as_Real_traveler = 1 OR (Walahnan_as_Real_traveler = 1 AND Continuous_Walahnan = 1) THEN BEGIN
 
@@ -3022,9 +3082,9 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				PRINT ~    Walahnan_Continuous as real traveler
 				~
 
-				OUTER_SET Walahnan_Sod_Content = 1
+				OUTER_SET L#WALAH_Sod_Content = 1
 
-				OUTER_SET Walahnan_BG2_Content = 1
+				OUTER_SET L#WALAH_BG2_Content = 1
 
 	END
 
