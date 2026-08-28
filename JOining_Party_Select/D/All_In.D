@@ -242,7 +242,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT //
 
 // Corrections
-	IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF2968A6So, we need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ GOTO JO_JOINStatEnd
+	IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF2968A6So, we need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
 
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT //
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_JOIN","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4I am currently talking to you, so it's fine !^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO LEGION

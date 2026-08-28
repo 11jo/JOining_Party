@@ -30,7 +30,7 @@ THEN
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
 		SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",1)
 		SetTokenObject("JO_TRAVELERNAME","%Death_var%")
-		DisplayStringHead(Myself,~<JO_TRAVELERNAME>...~)
+		DisplayStringHead(Myself,~%%Death_var%_name%...~)
 		SetInterrupt(TRUE)
 END
 
