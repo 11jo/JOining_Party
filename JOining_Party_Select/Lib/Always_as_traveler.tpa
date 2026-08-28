@@ -536,7 +536,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Kivan_as_traveler = 1 THEN BEGIN
+	ACTION_IF Kivan_as_traveler = 1 AND (NOT Kivan_Continuous_as_traveler = 1 AND NOT Kivan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Kivan~ ~~
@@ -545,7 +545,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Kivan_BG2_Content = 1
 
-	END ELSE ACTION_IF Kivan_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Kivan_as_Real_traveler = 1 AND (NOT Kivan_Continuous_as_traveler = 1 AND NOT Kivan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Kivan~ ~~
@@ -2688,7 +2688,7 @@ END
 
 // Kivan and Deheriana
 
-ACTION_IF (MOD_IS_INSTALLED ~setup-kivan.TP2~ ~100~) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~setup-kivan.TP2~ ~100~ AND NOT Continuous_Kivan = 1) THEN BEGIN
 
 	ACTION_IF Kivan_BG2_as_traveler = 1 THEN BEGIN
 
@@ -2953,6 +2953,27 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				OUTER_SET Ajantis_SoD_Content = 1
 
 				OUTER_SET Ajantis_BG2_Content = 1
+
+	END
+
+	ACTION_IF Alora_Continuous_as_traveler = 1 OR (Alora_as_traveler = 1 AND Continuous_Alora = 1) THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// EET Alora_Continuous~ ~~
+				PRINT ~    Alora_Continuous as traveler
+				~
+
+				OUTER_SET Alora_BG2_Content = 1
+
+	END ELSE ACTION_IF Kivan_Continuous_as_Real_traveler = 1 OR (Kivan_as_Real_traveler = 1 AND Continuous_Kivan = 1) THEN BEGIN
+
+			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+				REPLACE_TEXTUALLY ~// EET Kivan_Continuous~ ~~
+				REPLACE_TEXTUALLY ~// EET Real Kivan_Continuous~ ~~
+				PRINT ~    Kivan_Continuous as real traveler
+				~
+
+				OUTER_SET Kivan_BG2_Content = 1
 
 	END
 
