@@ -345,7 +345,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SetTokenGlobal("JO_JOIN_PROTAGONIST","GLOBAL","JO_JOIN_PROTAGONIST")
 		SetTokenGlobal("JO_JOIN_PARTYSLOT","LOCALS","JO_JOIN_PARTYSLOT")
 
-		DisplayString(Myself,@104) ~ GOTO JO_JOINStatEnd
+		DisplayString(Myself,@104) ~ EXIT //
 
 	IF ~~ THEN REPLY ~^0xFF2968A6Something feel wrong, we can settle this now.^-~ DO ~
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -662,7 +662,7 @@ END
 
 IF ~~ THEN BEGIN JO_JOINStatEnd
 	SAY ~I hope I am fine.~
-	IF ~~ THEN DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO LEGION
+	IF ~~ THEN DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
 END
 
 ////////////////////////////////////////////////////
