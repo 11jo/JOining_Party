@@ -661,6 +661,8 @@ ACTION_FOR_EACH Death_var IN
 
 // EET Walahnan_Continuous     ~L#WALAH~                                   // Walahnan_Continuous
 
+// EET Coran_Continuous        ~Coran~                                     // Coran_Continuous
+
 // Next_Traveler Continuous
 
 BEGIN
@@ -963,6 +965,8 @@ ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
 
 // EET Walahnan_Continuous     ~L#WALAH~                                   // Walahnan_Continuous
 
+// EET Coran_Continuous        ~Coran~                                     // Coran_Continuous
+
 // Next_Traveler Continuous
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -1003,6 +1007,9 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/PRISMCUT.tph~
 EXTEND_BOTTOM ~GARRCUT.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/GARRCUT.baf~ EVALUATE_BUFFER
 */
 
+ACTION_IF (MOD_IS_INSTALLED ~iwd2_eet.TP2~ ~0~) BEGIN
+	OUTER_SPRINT ~// 60CLCKIR_IWD2_EET~ ~~
+END
 EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BDBALDUR.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ICELAND.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~ICELAND1.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/ICELAND1.baf~ EVALUATE_BUFFER
@@ -1188,6 +1195,8 @@ ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
 
 // EET Walahnan_Continuous     ~L#WALAH~                                   // Walahnan_Continuous
 
+// EET Coran_Continuous        ~Coran~                                     // Coran_Continuous
+
 // Next_Traveler Continuous
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -1253,6 +1262,9 @@ EXTEND_BOTTOM ~HALL5.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/HALL1.baf~ EVA
 	OUTER_SPRINT ~Wait~ ~Wait(18)~
 EXTEND_BOTTOM ~HALL6.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/HALL1.baf~ EVALUATE_BUFFER
 
+ACTION_IF (MOD_IS_INSTALLED ~iwd2_eet.TP2~ ~0~) BEGIN
+	OUTER_SPRINT ~// 60CLCKIR_IWD2_EET~ ~~
+END
 EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BALDUR.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/BALDUR.baf~ EVALUATE_BUFFER
 EXTEND_BOTTOM ~CUT218E.bcs~ ~JOining_Party_Select/Baf/Extend_SELECT/CUT218E.baf~ EVALUATE_BUFFER

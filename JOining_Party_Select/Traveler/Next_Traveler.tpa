@@ -6,7 +6,7 @@ ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 	OUTER_SPRINT "Mod" "Mod"
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~	~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
-			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %Mod% %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%                             // %NEW_TRAVELER_NAME% 
 
 // %Next_Traveler Traveler_Game%~~~~~
 END
@@ -15,7 +15,7 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 	OUTER_SPRINT "Next_Traveler Traveler_Game" "Next_Traveler BG2"
 	OUTER_SPRINT "Mod" "Mod"
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~	~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
-			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %Mod% %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%                             // %NEW_TRAVELER_NAME% 
 
 // %Next_Traveler Traveler_Game%~~~~~
 END
@@ -24,7 +24,7 @@ ACTION_IF Traveler_Continuous = 1 THEN BEGIN
 	OUTER_SPRINT "Next_Traveler Traveler_Game" "Next_Traveler Continuous"
 	OUTER_SPRINT "Mod" "EET"
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~	~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
-			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %Mod% %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%                             // %NEW_TRAVELER_NAME% 
 
 // %Next_Traveler Traveler_Game%~~~~~
 END
@@ -32,7 +32,7 @@ END
 /*
 ACTION_IF Traveler_SoD = 1 THEN BEGIN
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~	~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
-			REPLACE_TEXTUALLY ~// Next_Traveler SoD~ ~~~~~// Mod %NEW_TRAVELER_NAME% ~%NEW_TRAVELER_DeathVar%
+			REPLACE_TEXTUALLY ~// Next_Traveler SoD~ ~~~~~               // %NEW_TRAVELER_NAME% 
 
 // Next_Traveler SoD~~~~~
 END
@@ -772,7 +772,6 @@ OUTER_SPRINT "BG2_BANTER" "%NEW_TRAVELER_REGULAR_BANTER_NAME_BG2%"
 OUTER_SPRINT "BG2_DREAM" "%NEW_TRAVELER_DREAM_BANTER_NAME_BG2%"
 ACTION_IF (GAME_IS ~eet~) BEGIN
 OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
-
 END ELSE BEGIN
 OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%"
 END
