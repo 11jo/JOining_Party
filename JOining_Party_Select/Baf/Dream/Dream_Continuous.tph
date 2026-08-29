@@ -1,0 +1,99 @@
+
+ACTION_IF (GAME_IS ~bgee eet~) AND (FILE_EXISTS_IN_GAME ~%BG1_DREAM%.bcs~) BEGIN // BG1
+		OUTER_SPRINT "RESPONSE_DREAM_BG1" ~~~~~	RESPONSE #1
+//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		DisplayString(Myself,~Try to dream talk.~)
+		ChangeAIScript("%BG1_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_DREAM_BG1" ""
+END
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) BEGIN // SoD
+		OUTER_SPRINT "RESPONSE_DREAM_SoD" ~~~~~	RESPONSE #2
+//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		DisplayString(Myself,~Try to dream talk.~)
+		ChangeAIScript("%SoD_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_DREAM_SoD" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) AND (FILE_EXISTS_IN_GAME ~%BG2_DREAM%.bcs~) BEGIN // BG2
+		OUTER_SPRINT "RESPONSE_DREAM_BG2" ~~~~~	RESPONSE #3
+//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		DisplayString(Myself,~Try to dream talk.~)
+		ChangeAIScript("%BG2_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_DREAM_BG2" ""
+END
+ACTION_IF (GAME_IS ~bg2ee eet~) AND (FILE_EXISTS_IN_GAME ~%TOB_DREAM%.bcs~) BEGIN // ToB
+		OUTER_SPRINT "RESPONSE_DREAM_ToB" ~~~~~	RESPONSE #4
+//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		DisplayString(Myself,~Try to dream talk.~)
+		ChangeAIScript("%TOB_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_DREAM_ToB" ""
+END
+
+<<<<<<<< .../JOining_NPC.baf
+IF
+	PartyRested()
+	Global("JO_JOIN_DREAM_DONE","LOCALS",1)
+THEN	
+	RESPONSE #100
+		ChangeAIScript("",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
+//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+END
+
+IF
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+//	Global("JO_JOIN_DREAM_REST","GLOBAL",1) // Not at the moment related to Player1D.BAF
+	Global("JO_JOIN_DREAM_DONE","LOCALS",0)
+	Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+//
+	OR(2)
+//		Global("JO_JOIN_DREAM_REST","GLOBAL",1)
+		HotKey(S)
+		CheckStatGT([PC],6,FATIGUE)
+	OR(3)
+//		Global("JO_JOIN_DREAM_REST","GLOBAL",1)
+		HotKey(S)
+		TimeOfDay(NIGHT)
+		TimeOfDay(DUSK)
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Not at loading
+//
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	Global("JO_Myself_LeaveParty","LOCALS",0)
+//
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	!ActuallyInCombat()
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_NEVER_BANTER","LOCALS",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
+	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
+//	RandomNum(4,2)
+THEN
+%RESPONSE_DREAM_BG1%
+%RESPONSE_DREAM_SoD%
+%RESPONSE_DREAM_BG2%
+%RESPONSE_DREAM_ToB%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_NPC.baf~ EVALUATE_BUFFER
