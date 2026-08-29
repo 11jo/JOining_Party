@@ -1,3 +1,28 @@
+/////////////////////////// Original ///////////////////////////
+
+/////////////// Reset
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" ""
+OUTER_SPRINT "BG1_BCS" ""
+OUTER_SPRINT "BG1_BANTER" ""
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" ""
+		OUTER_SPRINT "BG2_BCS" ""
+		OUTER_SPRINT "BG2_BANTER" ""
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
 /////////////////////////// Continuous ///////////////////////////
 
  OUTER_SET JOining_Imoen = 0
@@ -8,8 +33,6 @@
  OUTER_SET JOining_Dorn = 0
  OUTER_SET JOining_Neera = 0
  OUTER_SET JOining_Rasaad = 0
-
-/////////////////////////// Continuous ///////////////////////////
 		
 // Imoen
 
@@ -48,7 +71,7 @@ OUTER_SPRINT "BG1_DREAM" "IMOEND"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -101,7 +124,7 @@ OUTER_SPRINT "BG1_DREAM" "EDWIND"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Edwin_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -145,7 +168,7 @@ OUTER_SPRINT "BG1_DREAM" "JAHEID"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Jaheira_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -194,7 +217,7 @@ OUTER_SPRINT "BG1_DREAM" "MINSCD"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Minsc_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -242,7 +265,7 @@ OUTER_SPRINT "BG1_DREAM" "VICOND"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Viconia_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -291,7 +314,7 @@ OUTER_SPRINT "BG1_DREAM" "DORND"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Dorn_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -340,7 +363,7 @@ OUTER_SPRINT "BG1_DREAM" "NEERAD"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Neera_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -389,7 +412,7 @@ OUTER_SPRINT "BG1_DREAM" "RASAADD"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Rasaad_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN1.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_Continuous.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -456,7 +479,7 @@ OUTER_SPRINT "EET_BANTER" "BAJANT"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ajantis_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -512,7 +535,7 @@ OUTER_SPRINT "EET_BANTER" "BALORA"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Alora_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -570,7 +593,7 @@ OUTER_SPRINT "EET_BANTER" "BBRANW"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Branwen_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -626,7 +649,7 @@ OUTER_SPRINT "EET_BANTER" "BCORAN"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Coran_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -682,7 +705,7 @@ OUTER_SPRINT "EET_BANTER" "BDYNAH"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Dynaheir_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -738,7 +761,7 @@ OUTER_SPRINT "EET_BANTER" "BELDOT"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Eldoth_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -796,7 +819,7 @@ OUTER_SPRINT "EET_BANTER" "BFALDO"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Faldorn_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -854,7 +877,7 @@ OUTER_SPRINT "EET_BANTER" "BGARRI"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Garrick_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -910,7 +933,7 @@ OUTER_SPRINT "EET_BANTER" "BKAGAI"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kagain_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -966,7 +989,7 @@ OUTER_SPRINT "EET_BANTER" "BKHALI"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Khalid_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1022,7 +1045,7 @@ OUTER_SPRINT "EET_BANTER" "BKIVAN"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Kivan_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1078,7 +1101,7 @@ OUTER_SPRINT "EET_BANTER" "BMONTA"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Montaron_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1134,7 +1157,7 @@ OUTER_SPRINT "EET_BANTER" "BQUAYL"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Quayle_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1190,7 +1213,7 @@ OUTER_SPRINT "EET_BANTER" "BSAFAN"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Safana_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1246,7 +1269,7 @@ OUTER_SPRINT "EET_BANTER" "BSHART"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1304,7 +1327,7 @@ OUTER_SPRINT "EET_BANTER" "BSKIE"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Skie_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1360,7 +1383,7 @@ OUTER_SPRINT "EET_BANTER" "BTIAX"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Tiax_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1416,7 +1439,7 @@ OUTER_SPRINT "EET_BANTER" "BXANNN"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Xan_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1472,7 +1495,7 @@ OUTER_SPRINT "EET_BANTER" "BXZAR"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Xzar_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1528,7 +1551,7 @@ OUTER_SPRINT "EET_BANTER" "BYESLI"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Yeslick_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1584,7 +1607,7 @@ OUTER_SPRINT "EET_BANTER" "BDBAELOB"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Baeloth_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN2.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG1.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1654,7 +1677,7 @@ OUTER_SPRINT "SoD_BANTER" "BDVOGHIB"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Voghiln_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_SoD.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1696,7 +1719,7 @@ OUTER_SPRINT "SoD_BANTER" "BDCORWIB"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Corwin_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_SoD.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1738,7 +1761,7 @@ OUTER_SPRINT "SoD_BANTER" "BDMKHIIB"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Mkhiin_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_SoD.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1782,7 +1805,7 @@ OUTER_SPRINT "SoD_BANTER" "BDGLINTB"
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Glint_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN3.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_SoD.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1848,7 +1871,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Aerie_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1890,7 +1913,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Anomen_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1933,7 +1956,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Cernd_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -1975,7 +1998,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Haerdalis_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2017,7 +2040,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Hexxat_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2059,7 +2082,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Jan_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2101,7 +2124,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Keldorn_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2143,7 +2166,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Korgan_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2185,7 +2208,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Mazzy_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2227,7 +2250,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Nalia_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2267,7 +2290,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sarevok_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2309,7 +2332,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Valygar_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2351,7 +2374,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Wilson_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 
@@ -2393,7 +2416,7 @@ BEGIN
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Yoshimo_All_In.baf~ EVALUATE_BUFFER
 		
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN4.tpa~
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Original_BG2.tpa~
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
 

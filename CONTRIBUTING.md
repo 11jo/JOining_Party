@@ -4,17 +4,14 @@
 - [JOining_Party_Select.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select.tph)  
    - DeathVars selection for JOining_Party_Select_Base_BCS.tph and JOining_Party_Select_Base_BCS.tph
    - Real Traveler only.
-   
-- [JOining_Party_Select_Base.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Base.tph)  
-   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for all NPCs death variable in game (DLG and BCS).
 
 - [JOining_Party_Select_Base_BCS.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Base_BCS.tph) 
    - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for all NPCs death variable or existing Myself in game. 
-   - Extend party ACTIONS to real traveler for each selected NPCs death variable in BCS. 
+   - Extend party actions to real traveler for each selected NPCs death variable in BCS. 
    - Search and replace Cutscenes related actions to avoid unintended behavior and allow traveler deactivation.
    
 - [JOining_Party_Select_Base_DLG.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Select_Base_DLG.tph) 
-   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for all NPCs death variable in game.
+   - Search and replace `InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead...` for all NPCs death variable or existing Myself in game.
    - Extend party actions to real traveler for each selected NPCs death variable in DLG. 
    - Search and replace Cutscenes related actions to avoid unintended behavior and allow traveler deactivation.
 
@@ -39,6 +36,9 @@
 
 - [JOining_Party_Core_Mod_BG2.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Core_Mod_BG2.tph)  
    - Implement scripts and dialogs for each selected mod bg2 NPCs. (All_TRAVELER_JOIN, All_In.baf, JO_JOINI, JO_JOIN, Banter.baf)
+
+- [JOining_Party_Core_Continuous.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Core_Continuous.tph)  
+   - Implement scripts and dialogs for each selected mod Continuous NPCs for EET. (All_TRAVELER_JOIN, All_In.baf, JO_JOINI, JO_JOIN, Banter, Dream talk)
 
 - [JOining_Party_Core.tph](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Lib/JOining_Party_Core.tph)  
    - Implement scripts and dialogs, (JO_JOINI, JO_JOINX). Extend startings areas scripts, baldur's.bcs and dplayer3.bcs
@@ -68,10 +68,13 @@
 - [All_In.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/All_In.BAF)  
    - Added to each selected NPCs to deal with Npc to Familiar switch and statut.
 
-- [%JO_JOIN%.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOIN)  
-   -  JO_JOIN1.tpa to JO_JOIN5.tpa are specific additions for Familiar, it will set the right dialog and script depending of the campaign and NPC/Familiar.
+- [%JO_JOIN%.tpa](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOIN)  
+   -  JO_JOIN_"".tpa are specific additions for Familiar, it will set the right dialog and script depending of the campaign and the NPC / Familiar.
 
-- [%BANTER%.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf)  
+- [%BANTER%.TPH](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/Banter)  
+   -  Banter_BG1_BG2_BGSoD_EET.tpa are specific additions for Familiar, it will add a script block to set the right banter dialog to each travelers.
+
+- [%DREAM%.TPH](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/Dream)  
    -  Banter_BG1_BG2_BGSoD_EET.tpa are specific additions for Familiar, it will add a script block to set the right banter dialog to each travelers.
 
 - [JO_JOINI.BAF](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/Baf/JO_JOINI.BAF)  

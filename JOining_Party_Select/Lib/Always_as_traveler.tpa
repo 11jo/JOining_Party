@@ -813,6 +813,8 @@ ACTION_IF (GAME_INCLUDES ~SoD~) THEN BEGIN
 					PRINT ~    Corwin as traveler
 					~
 
+				OUTER_SET Corwin_BG2_Content = 1
+
 		END ELSE ACTION_IF Corwin_as_Real_traveler = 1 THEN BEGIN
 
 				COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -820,6 +822,8 @@ ACTION_IF (GAME_INCLUDES ~SoD~) THEN BEGIN
 					REPLACE_TEXTUALLY ~// Original Real Corwin~ ~~
 					PRINT ~    Corwin Real as traveler
 					~
+
+				OUTER_SET Corwin_BG2_Content = 1
 
 		END
 

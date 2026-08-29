@@ -1,4 +1,10 @@
-ACTION_IF (GAME_IS ~bgee~) BEGIN // BG1
+/*
+*/
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+// BG1
+ACTION_IF (GAME_IS ~bgee eet~) BEGIN
 		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
 				SetDialog("%BG1_JOINED%")
 				SmallWait(1)
@@ -8,17 +14,26 @@ ACTION_IF (GAME_IS ~bgee~) BEGIN // BG1
 END ELSE BEGIN
 		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
 END
-ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN // SoD
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) BEGIN
+					ACTION_IF (~%SoD_JOINED%~ STRING_EQUAL_CASE ~~) BEGIN
+						OUTER_SPRINT "SoD_JOINED" "JO_JOINJ"
+					END
 		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
 				SetDialog("%SoD_JOINED%")
 				SmallWait(1)
-				SetGlobal("JO_JOIN","LOCALS",0)
 		//		ChangeAIScript("%SoD_BCS%",OVERRIDE)
+				SetGlobal("JO_JOIN","LOCALS",0)
 				Continue()~~~~~
 END ELSE BEGIN
 		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
 END
-ACTION_IF (GAME_IS ~bg2ee~) BEGIN // BG2 / ToB
+// BG2 / ToB
+ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN
+					ACTION_IF (~%BG2_JOINED%~ STRING_EQUAL_CASE ~~) BEGIN
+						OUTER_SPRINT "BG2_JOINED" "JO_JOINJ"
+						OUTER_SPRINT "TOB_JOINED" "JO_JOINJ"
+					END
 		OUTER_SPRINT "RESPONSE_JOINED_BG2" ~~~~~RESPONSE #3
 				SetDialog("%BG2_JOINED%")
 				SmallWait(1)
@@ -34,27 +49,19 @@ ACTION_IF (GAME_IS ~bg2ee~) BEGIN // BG2 / ToB
 END ELSE BEGIN
 		OUTER_SPRINT "RESPONSE_JOINED_BG2" ""
 END
-ACTION_IF (GAME_IS ~eet~) BEGIN // EET
-		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
-				SetDialog("%BG2_JOINED%")
-				SmallWait(1)
-				SetGlobal("JO_JOIN","LOCALS",0)
-				Continue()~~~~~
-END ELSE BEGIN
-		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
-END
 
-<<<<<<<< .../JOining_NPC.baf
+<<<<<<<< .../JOining_mod_bg1.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)
-	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+	Switch("JO_JOIN_CAMPAIGN","GLOBAL")
 THEN
 %RESPONSE_JOINED_BG1%
 %RESPONSE_JOINED_SoD%
 %RESPONSE_JOINED_BG2%
-%RESPONSE_JOINED_EET%
 END
 
 >>>>>>>>
-EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_NPC.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_mod_bg1.baf~ EVALUATE_BUFFER
+
+////////////////////////////////////////////////////
