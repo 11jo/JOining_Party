@@ -4,7 +4,7 @@ IF
 	!HasItemEquipedReal("BDSW2H01","%Death_var%")  // Lame du dragon +3
 THEN
 	RESPONSE #100
-		ApplySpellRES("BDDRAGB2","%Death_var%")  // No such index
+		ApplySpellRES("BDDRAGB2","%Death_var%")
 		Continue()
 END
 
@@ -16,6 +16,6 @@ IF
 	TriggerOverride("%Death_var%",Global("ChultRobe","LOCALS",0))
 THEN
 	RESPONSE #100
-		ActionOverride("%Death_var%",ApplySpellRES("60CLCKIR",Myself))  // No such index
+		ActionOverride("%Death_var%",ApplySpellRES("60CLCKIR",Myself))
 		ActionOverride("%Death_var%",SetGlobal("ChultRobe","LOCALS",1))
 END

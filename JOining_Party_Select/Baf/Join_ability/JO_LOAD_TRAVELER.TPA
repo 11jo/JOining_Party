@@ -1,4 +1,4 @@
-// JO_LOAD_TRAVELER.TPA EXTEND_TOP for JO_JOINL.bcs at installation by JOining_Party_Select_End.tph
+// JO_LOAD_TRAVELER.TPA add block for each traveler in JO_JOINL.bcs at installation by JOining_Party_Select_End.tph
 
 ///////////////////////////////////////////////////////////////////////////////
 // Variables :
@@ -8,34 +8,34 @@
 
 // Main 3
 
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ BEGIN
+ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ BEGIN
 
 
-// Loading Switch
-COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
-	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
-	// JO_JOIN_LOAD is increment until it equals JO_JOIN_LOADING_MAX
-	!LocalsEqual("JO_JOIN_LOAD","JO_JOIN_LOADING_MAX")
-	Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
-	Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
-	NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		FaceObject("%Death_var%")
-		IncrementGlobal("JO_JOIN_LOAD","LOCALS",1)
-		SmallWait(1)
-		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
-		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
-		SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",1)
-		SetTokenObject("JO_TRAVELERNAME","%Death_var%")
-		DisplayStringHead(Myself,~<JO_TRAVELERNAME>...~)
-		SetInterrupt(TRUE)
-END
-
-	\0~~~~~
-	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_NO_SET~ ~!Global("JO_TRAVELER_%Death_var%","GLOBAL",2)
-\0~
-
+	// Loading Switch
+	COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
+		REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
+		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
+		// JO_JOIN_LOAD is increment until it equals JO_JOIN_LOADING_MAX
+		!LocalsEqual("JO_JOIN_LOAD","JO_JOIN_LOADING_MAX")
+		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
+		Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
+		NumInPartyLT(6)
+	THEN
+		RESPONSE #100
+			SetInterrupt(FALSE)
+			FaceObject("%Death_var%")
+			IncrementGlobal("JO_JOIN_LOAD","LOCALS",1)
+			SmallWait(1)
+			SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",1)
+			SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",2)
+			SetGlobal("JO_TRAVELER_%Death_var%_SET","GLOBAL",1)
+			SetTokenObject("JO_TRAVELERNAME","%Death_var%")
+			DisplayStringHead(Myself,~<JO_TRAVELERNAME>...~)
+			SetInterrupt(TRUE)
 	END
+	
+		\0~~~~~
+		REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_NO_SET~ ~!Global("JO_TRAVELER_%Death_var%","GLOBAL",2)
+	\0~
+
+END

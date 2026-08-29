@@ -385,7 +385,7 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-// Special Continuous
+// Special Continuous_End
 
 	OUTER_SET Continuous_Alora = 0 // DESIGNATED 1
 
@@ -470,6 +470,8 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 		OUTER_SET Continuous_Kivan = 1
 
 	END
+
+// Next_Traveler Continuous
 
 END
 

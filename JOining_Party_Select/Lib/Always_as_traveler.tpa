@@ -1,6 +1,8 @@
 
-// Read selected Travelers in Joining.ini
-INCLUDE ~JOining_Party_Select/Lib/JOining_Traveler.tpa~
+
+// Read selected Travelers in JOining_Traveler.ini
+	INCLUDE ~JOining_Party_Select/Lib/JOining_Traveler.tpa~
+
 
 /////////////////////////// Continuous NPCs ///////////////////////////
 
@@ -2994,6 +2996,8 @@ END
 
 ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
+// Alora_Continuous
+
 	ACTION_IF Alora_Continuous_as_traveler = 1 OR (Alora_as_traveler = 1 AND Continuous_Alora = 1) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -3014,6 +3018,8 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				OUTER_SET Alora_BG2_Content = 1
 
 	END
+
+// Ajantis_Continuous
 
 	ACTION_IF Ajantis_Continuous_as_traveler = 1 OR (Ajantis_as_traveler = 1 AND Continuous_Ajantis = 1) THEN BEGIN
 
@@ -3040,10 +3046,12 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+// Kivan_Continuous
+
 	ACTION_IF Kivan_Continuous_as_traveler = 1 OR (Kivan_as_traveler = 1 AND Continuous_Kivan = 1) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// EET Kivan~ ~~
+				REPLACE_TEXTUALLY ~// EET Kivan_Continuous~ ~~
 				PRINT ~    Kivan_Continuous as traveler
 				~
 
@@ -3088,6 +3096,6 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
-END
-
 // Next_Traveler Continuous
+
+END
