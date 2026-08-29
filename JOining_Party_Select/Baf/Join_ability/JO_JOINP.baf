@@ -465,25 +465,24 @@ END
 
 // Avoid lauching banters in specific area // TODO : To Double Check
 
-// BG1 End
+///////////////////////////////////////////////////////////////////////////////
 
-IF // Undercity_TempleofBhaal
-//
-	OR(2)
-		!AreaCheck("%Undercity_TempleofBhaal%")
-		!Dead("Sarevok")
-	!AreaCheck("BD0120")
-//
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//
-	!Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-		SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
-END
-
-//////////////////////
+// BG1 End (See in JO_JOINP.baf REPLACE_TEXTUALLY in JOining_Party_Core.tph)
+//	REPLACE_BG1toSoD	IF // Undercity_TempleofBhaal
+//	REPLACE_BG1toSoD	//
+//	REPLACE_BG1toSoD		OR(2)
+//	REPLACE_BG1toSoD			!AreaCheck("%Undercity_TempleofBhaal%")
+//	REPLACE_BG1toSoD			!Dead("Sarevok")
+//	REPLACE_BG1toSoD		!AreaCheck("BD0120")
+//	REPLACE_BG1toSoD	//
+//	REPLACE_BG1toSoD		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//	REPLACE_BG1toSoD	//
+//	REPLACE_BG1toSoD		!Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+//	REPLACE_BG1toSoD	THEN
+//	REPLACE_BG1toSoD		RESPONSE #100
+//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+//	REPLACE_BG1toSoD	END
 
 /* Soon...
 IF // SoD End
@@ -515,28 +514,32 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// SoD bdplayer.bcs set in bdintro.bcs
-IF
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
-	HotKey(B)
-	OR(2)
-		INI("QAMODE",1)
-		Global("BD_QAMODE","global",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		StartDialogOverride("bddebug",Myself)
-END
+// Workaround for unused Player1 scripts override
+
+///////////////////////////////////////////////////////////////////////////////
+
+// SoD bdplayer.bcs set in bdintro.bcs (See in JO_JOINP.baf REPLACE_TEXTUALLY in JOining_Party_Core.tph)
+//	REPLACE_BG1toSoD	IF
+//	REPLACE_BG1toSoD		Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+//	REPLACE_BG1toSoD		HotKey(B)
+//	REPLACE_BG1toSoD		OR(2)
+//	REPLACE_BG1toSoD			INI("QAMODE",1)
+//	REPLACE_BG1toSoD			Global("BD_QAMODE","global",1)
+//	REPLACE_BG1toSoD	THEN
+//	REPLACE_BG1toSoD		RESPONSE #100
+//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+//	REPLACE_BG1toSoD			StartDialogOverride("bddebug",Myself)
+//	REPLACE_BG1toSoD	END
 
 // EET player1.bcs set in ar0602.bcs
-IF
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
-	Global("JO_JOIN_Player1_DLG","ar0602",0)
-THEN
-	RESPONSE #100
-		SetDialog("Player1")
-		SetGlobal("JO_JOIN_Player1_DLG","ar0602",1)
-END
+//	REPLACE_SoDtoBG2	IF
+//	REPLACE_SoDtoBG2		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+//	REPLACE_SoDtoBG2		Global("JO_JOIN_Player1_DLG","ar0602",0)
+//	REPLACE_SoDtoBG2	THEN
+//	REPLACE_SoDtoBG2		RESPONSE #100
+//	REPLACE_SoDtoBG2			SetDialog("Player1")
+//	REPLACE_SoDtoBG2			SetGlobal("JO_JOIN_Player1_DLG","ar0602",1)
+//	REPLACE_SoDtoBG2	END
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -544,8 +547,7 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Ctrl-J / Not in PDIALOG.2DA / Created party member
-
+// In case of : Ctrl-J / Npc not in PDIALOG.2DA (Npc created without real dialog)
 IF
 	TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 	TriggerOverride(Player2,Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))

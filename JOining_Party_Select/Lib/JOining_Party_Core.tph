@@ -438,31 +438,29 @@ END
 //////////////////////////////////////////////////////////////////////////////////////
 
 // Player1 script override additions
+	// Modified in JOining_Party_Select_End before compiling.
 
 //////////////////////////////////////////////////////////////////////////////////////
-
-// EXTEND_TOP ~DPLAYER3.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability.baf~ EVALUATE_BUFFER
-
-// Modified in JOining_Party_Select_End before compiling.
 
 // Loading Switch
-
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
-//	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_JOIN_LOAD~ ~~
 
 // Charname override script JO_JOINP.baf
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Join_ability.baf
+			PATCH_IF GAME_IS ~bgee bgt eet~ BEGIN
+				REPLACE_TEXTUALLY ~//	REPLACE_BG1toSoD~ ~~
+			END
+			PATCH_IF GAME_IS ~eet~ BEGIN
+				REPLACE_TEXTUALLY ~//	REPLACE_SoDtoBG2~ ~~
+			END
 
-		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Replace DPLAYER3/Join_ability.baf
-//	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~~
 
 // JO_JOIN_COUNT_TRAVELER for JO_JOINC.baf
-
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER
-//	REPLACE_TEXTUALLY ~//	ADD_JO_JOIN_COUNT_TRAVELER~ ~~
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// EXTEND_BOTTOM ~PLAYER1D.bcs~ ~JOining_Party_Select/Baf/Join_ability/Player1D.baf~
+// EXTEND_BOTTOM ~PLAYER1D.bcs~ ~JOining_Party_Select/Baf/Join_ability/Player1D.baf~ // Dream talk
 
 	EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
 
@@ -472,11 +470,14 @@ ACTION_IF FILE_EXISTS_IN_GAME ~BDBALDUR.bcs~ BEGIN
 
 END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~BALDUR25.bcs~ BEGIN
+
 	EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
 
+END
 
-// Starting areas additions
 
+// Starting areas additions (Set variables for campaigns)
 ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
 
 	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
@@ -484,22 +485,7 @@ ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
 END
 
 ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
-/*
-ACTION_IF GAME_IS ~eet~ BEGIN
-OUTER_SPRINT "Banter_MODERN_EET" ~~~~~
-IF
-	Global("JO_JOIN_CAMPAIGN","GLOBAL",5)
-	Global("JO_JOIN_CAMPAIGN_SoD","MYAREA",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_CAMPAIGN","GLOBAL",6)
-		SetGlobal("JO_JOIN_CAMPAIGN_SoD","MYAREA",1)
-END
-~~~~~
-END ELSE BEGIN
-OUTER_SPRINT "Banter_MODERN_EET" ""
-END
-*/
+
 	EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 	EXTEND_BOTTOM ~BD0120.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 
