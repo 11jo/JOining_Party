@@ -1,5 +1,5 @@
 // JO_JOINL.BAF Loading Switch script for Player1
-	// Expanded at installation by JOining_Party_Select_End.tph
+	// Expanded at installation by JOining_Party_End.tph
 		// Commented blocks below will be duplicated for each potential travelers with JO_LOAD_TRAVELER.TPA.
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7,8 +7,8 @@
 	// JO_JOIN_LOADING_SWITCH (Finish Loading Switch script/CutSceneLite)
 		// JO_JOIN_LOAD (Used by Charname to slow down the script execution and by travelers loading steps)
 			// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
-				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_Select_End.tph Expand the trigger with OR(3) for each travelers))
-					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_Select_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
+				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_End.tph Expand the trigger with OR(3) for each travelers))
+					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
 ///////////////////////////////////////////////////////////////////////////////
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
