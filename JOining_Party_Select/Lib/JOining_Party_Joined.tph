@@ -114,10 +114,10 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Dynaheir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DYNAHEIR_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDDYNAHE~)
 
 // Eldoth
-// Original Eldoth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ELDOTH_BCS%~)
+// Original Eldoth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ELDOTH_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDELDOTH~)
 
 // Faldorn
-// Original Faldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%FALDORN_BCS%~)
+// Original Faldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%FALDORN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~bdFALDORN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~bdfaldor~)
 // Original Faldorn // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~FALDORN_~)
 // Original Faldorn // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~FALDORN~)
 
@@ -145,7 +145,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Safana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SAFANA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDSAFANA~)
 
 // Sharteel
-// Original Sharteel AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~)
+// Original Sharteel AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~k9shar~)
 
 // Skie
 // Original Skie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SKIE_BCS%~)

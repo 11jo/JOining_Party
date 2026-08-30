@@ -447,6 +447,12 @@ OUTER_SPRINT "SoD_JOINED" "%AJANTIS_JOINED%"
 OUTER_SPRINT "SoD_JOINED" "BDAJANTJ"
 	END
 
+	ACTION_IF (MOD_IS_INSTALLED ~SETUP-AJANTISBG1.TP2~ ~0~) BEGIN
+OUTER_SPRINT "SoD_BCS" "BDAJANTI"
+ 	END ELSE BEGIN
+OUTER_SPRINT "SoD_BCS" "%AJANTIS_BCS%"
+	END
+
 <<<<<<<< .../JOining_bd0120.baf
 
 IF
@@ -459,7 +465,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
+		ActionOverride("Ajantis",ChangeAIScript("%SoD_BCS%",OVERRIDE))
 		ActionOverride("Ajantis",SetDialog("%SoD_JOINED%"))
 		ActionOverride("Ajantis",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
@@ -490,7 +496,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Ajantis",ChangeAIScript("%AJANTIS_BCS%",OVERRIDE))
+		ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
 		Continue()
 END
