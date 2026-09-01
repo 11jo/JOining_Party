@@ -25,6 +25,15 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // DeathVar : !InPartyAllowDead found in %SOURCE_FILESPEC%
 				~
 			END
+// !InPartyAllowDead("Rasaad") // BG4800
+			SPRINT textToReplace ~TriggerOverride("Rasaad",Global("JO_Myself_AllowDead","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BG4800.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("Rasaad")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
+				~
+			END
 	// Myself
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead(Myself)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -67,6 +76,31 @@ OUTER_SPRINT "slashdeux" "\2"
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
+				~
+			END
+// !InParty("Dorn, Neera, ohhfak") // BG2301 / BG3300 / AR0406
+			SPRINT textToReplace ~TriggerOverride("Dorn",Global("JO_Myself_InParty","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BG2301.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("Dorn")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~TriggerOverride("Neera",Global("JO_Myself_InParty","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BG3300.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("Neera")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~TriggerOverride("ohhfak",Global("JO_Myself_InParty","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR0406.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("ohhfak")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
@@ -839,3 +873,47 @@ OUTER_SPRINT "slashdeux" "\2"
 			END
 		END
 BUT_ONLY
+
+/*
+	ACTION_FOR_EACH bcs IN BG2301 BG3300 BG4800 AR0406 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
+		  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~TriggerOverride("Dorn",Global("JO_Myself_InParty","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BG2301.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("Dorn")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : Dorn found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~TriggerOverride("Neera",Global("JO_Myself_InParty","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BG3300.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("Neera")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : Neera found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~TriggerOverride("Rasaad",Global("JO_Myself_InParty","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BG4800.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("Rasaad")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : Rasaad found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~TriggerOverride("ohhfak",Global("JO_Myself_InParty","LOCALS",0))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) AND (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~AR0406.bcs~) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!InMyArea("ohhfak")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // DeathVar : ohhfak found in %SOURCE_FILESPEC%
+				~
+			END
+			END
+			BUT_ONLY
+		END
+	END // ACTION_FOR_EACH
+*/

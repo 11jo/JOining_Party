@@ -538,7 +538,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Kivan_as_traveler = 1 AND (NOT Kivan_Continuous_as_traveler = 1 AND NOT Kivan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	ACTION_IF Kivan_as_traveler = 1 AND NOT Continuous_Kivan = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Kivan~ ~~
@@ -547,7 +547,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Kivan_BG2_Content = 1
 
-	END ELSE ACTION_IF Kivan_as_Real_traveler = 1 AND (NOT Kivan_Continuous_as_traveler = 1 AND NOT Kivan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	END ELSE ACTION_IF Kivan_as_Real_traveler = 1 AND NOT Continuous_Kivan = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Kivan~ ~~
@@ -1984,7 +1984,7 @@ END
 
 	ACTION_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~) THEN BEGIN
 
-ACTION_IF Walahnan_as_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+ACTION_IF Walahnan_as_traveler = 1 AND NOT Continuous_Walahnan = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Walahnan~ ~~
@@ -1995,7 +1995,7 @@ ACTION_IF Walahnan_as_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 
 
 				OUTER_SET L#WALAH_BG2_Content = 1
 
-END ELSE ACTION_IF Walahnan_as_Real_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+END ELSE ACTION_IF Walahnan_as_Real_traveler = 1 AND NOT Continuous_Walahnan = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Walahnan~ ~~
@@ -2019,7 +2019,7 @@ END
 
 ACTION_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) THEN BEGIN
 
-	ACTION_IF Alora_BG2_as_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	ACTION_IF Alora_BG2_as_traveler = 1 AND NOT Continuous_Alora = 1 THEN BEGIN
 
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -2027,7 +2027,7 @@ ACTION_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) THEN BEGIN
 				PRINT ~    Alora BG2 as traveler
 				~
 
-	END ELSE ACTION_IF Alora_BG2_as_Real_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	END ELSE ACTION_IF Alora_BG2_as_Real_traveler = 1 AND NOT Continuous_Alora = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Mod Alora BG2~ ~~
@@ -2947,14 +2947,14 @@ END
 
 	ACTION_IF (MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~) THEN BEGIN
 
-ACTION_IF Walahnan_BG2_as_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+ACTION_IF Walahnan_BG2_as_traveler = 1 AND NOT Continuous_Walahnan = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Walahnan_BG2~ ~~
 			PRINT ~    Walahnan_BG2 as traveler
 			~
 
-END ELSE ACTION_IF Walahnan_BG2_as_Real_traveler = 1 AND (NOT Walahnan_Continuous_as_traveler = 1 AND NOT Walahnan_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+END ELSE ACTION_IF Walahnan_BG2_as_Real_traveler = 1 AND NOT Continuous_Walahnan = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Walahnan_BG2~ ~~

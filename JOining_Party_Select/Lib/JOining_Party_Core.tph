@@ -1,8 +1,21 @@
 // Add D / Baf
 
+
 //////////////////////////////////////////////////////////////////////////////////////
 
-//                                    DLG                                           //
+//                            Special DLG                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+		COMPILE ~JOining_Party_Select/D/JO_JOINJ.D~
+
+					OUTER_SPRINT "joining_dlg" "JO_JOINJ"
+
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/All_In.D~
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                            Regular DLG                                           //
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -286,7 +299,12 @@ BEGIN
 
 		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/All_In.D~
 
+	END ELSE BEGIN
+
+		COPY_EXISTING ~JO_JOINJ.DLG~ ~override/%joining_dlg%.dlg~
+
 	END
+
 END
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -409,19 +427,6 @@ This spell transports the caster to any place within the visual range of the cas
 	COPY ~JOining_Party_Select/Spl/DiDoor~							~override~
 
 END
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-//                            Special DLG                                           //
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-		COMPILE ~JOining_Party_Select/D/JO_JOINJ.D~
-
-					OUTER_SPRINT "joining_dlg" "JO_JOINJ"
-
-		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/All_In.D~
 
 
 //////////////////////////////////////////////////////////////////////////////////////

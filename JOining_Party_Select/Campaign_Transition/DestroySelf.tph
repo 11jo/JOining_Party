@@ -27,7 +27,7 @@ THEN
 END
 >>>>>>>>
 COPY_EXISTING ~%bcs%.bcs~ ~override~
-  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~  ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE%: DestroySelf() block not found...~ END
+  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~  ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE% : DestroySelf() block don't exists in %SOURCE_FILE%... No need patching~ END
 
 END ELSE BEGIN
 
@@ -52,7 +52,7 @@ THEN
 END
 >>>>>>>>
 COPY_EXISTING ~%bcs%.bcs~ ~override~
-  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~ ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE%: DestroySelf() block not found...~ END
+  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~ ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE% : DestroySelf() block don't exists in %SOURCE_FILE%... No need patching~ END
 
 END
 
@@ -79,7 +79,7 @@ THEN
 END
 >>>>>>>>
 COPY_EXISTING ~%bcs%.bcs~ ~override~
-  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~  ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE%: DestroySelf() block not found...~ END
+  REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~  ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE% : DestroySelf() block don't exists in %SOURCE_FILE%... No need patching~ END
 
 END ELSE BEGIN
 
@@ -103,7 +103,7 @@ END
 >>>>>>>>
 COPY_EXISTING ~%bcs%.bcs~ ~override~
   REPLACE_BCS_BLOCK ~override_DestroySelf_add.baf~ ~override_DestroySelf_rep.baf~
-	ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE% : DestroySelf() block don't exists in %SOURCE_FILE%...~ 
+	ON_MISMATCH PATCH_PRINT ~%SOURCE_FILE% : DestroySelf() block don't exists in %SOURCE_FILE%... No need patching~ 
 		/*INNER_ACTION BEGIN
 			EXTEND_BOTTOM ~%bcs%.bcs~ ~override_DestroySelf_rep.baf~
 				PATCH_PRINT ~%SOURCE_FILE% : DestroySelf() block added in %SOURCE_FILE%...~
