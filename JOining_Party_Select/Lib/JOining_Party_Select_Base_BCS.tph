@@ -572,6 +572,167 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // Death_var : CreateCreatureObjectCopy found in %SOURCE_FILESPEC%
 				~
 			END
+// Avoid adding RealTraveler in their own CutSceneId.
+// Imoen
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("%IMOEN_DV%")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("%IMOEN_DV%")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("%IMOEN_DV%"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: %IMOEN_DV%~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
+// Edwin
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("Edwin")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("Edwin")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("Edwin"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: Edwin~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
+// Jaheira
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("Jaheira")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("Jaheira")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("Jaheira"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: Jaheira~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
+// Minsc
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("Minsc")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("Minsc")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("Minsc"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: Minsc~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
+// Viconia
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("Viconia")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("Viconia")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("Viconia"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: Viconia~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
+// Dorn
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("Dorn")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("Dorn")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("Dorn"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: Dorn~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
+// Neera
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("Neera")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("Neera")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("Neera"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: Neera~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
+// Rasaad
+			SPRINT textToSee ~^[%TAB% ]*CutSceneId("Rasaad")~
+			COUNT_REGEXP_INSTANCES ~%textToSee%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					SPRINT textToReplace ~^[%TAB% ]*ClearActions("Rasaad")~
+						PATCH_IF (num_matches > 0) BEGIN
+							REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ClearActions("JO_Delete")~
+					END
+						SPRINT textToReplace ~^[%TAB% ]*ActionOverride("Rasaad"~
+							PATCH_IF (num_matches > 0) BEGIN
+								REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("JO_Delete"~
+						END
+							SPRINT textToReplace ~^[%TAB% ]*.*"JO_Delete".*~
+								PATCH_IF (num_matches > 0) BEGIN
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+							END
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for CutSceneId: Rasaad~
+					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
+					~
+			END
 // Not usefull at the moment and OR() issues see bderinye.BCS.
 /*// StateCheck situation
 			SPRINT textToReplace ~^[%TAB% ]*StateCheck(Player3,\([^)]*\))
