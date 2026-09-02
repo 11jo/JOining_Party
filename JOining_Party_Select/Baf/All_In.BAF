@@ -513,7 +513,7 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-		SetGlobalTimerRandom("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS, TWO_DAYS)
+		SetGlobalTimerRandom("JO_JOIN_SWITCH_TIMER","LOCALS",TWELVE_HOURS,TWO_DAYS)
 		SetGlobal("JO_JOIN_SWITCH_WITH_ME","LOCALS",0)
 		DisplayString(Myself,~It's a nice feeling.~)
 		Continue()
