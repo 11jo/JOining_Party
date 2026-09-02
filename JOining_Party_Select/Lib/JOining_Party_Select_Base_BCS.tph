@@ -688,7 +688,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride(\1) StartDialog() found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialogNoSet(\([^)]*\)))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\([^)]*\)NoSet\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
@@ -709,7 +709,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride() StartDialog(\4) found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialogNoSet("\([^)]*\)"))~
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\([^)]*\)NoSet\([^)]*\)("\([^)]*\)"))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) /*AND NOT (~\3~ STRING_EQUAL_CASE ~%Done_Already%~)*/ BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\2")

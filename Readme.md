@@ -18,7 +18,7 @@
 
 
 ### Beta state !
-
+----------------
 
 **Installation could last between 10 to 30+ minutes depending of the number of NPCs chosen and the number of mods installed**
 
@@ -46,22 +46,23 @@
 	- The area is similar as Candlekeep area. 
 
 
-## Overwiew :  
+### Overwiew :
 ----------------
 
 This mod aims to provide a way to extend the limit of 6 characters in party by using the familiar status, while preserving quests, interjections, and banters in order to enjoy the NPCs / travelers as party member.
 
-There is no real limitation as for the number of familiars / travelers that players can have along side them. However, to prevent the scripts from being overwhelmed, it’s advisable not to have more than five or six travelers.
+There is no real limitation as for the number of familiars / travelers that players can have along side them. However, to prevent the scripts from being overwhelmed, itâ€™s advisable not to have more than five or six travelers.
 
 
-## Instruction :  
+### Instruction : 
 ----------------
 
 Compatibility : BGEE, SOD, BG2EE and EET.  
 
-- Install JOining Party **AFTER** mods that add any dialog or script options related to NPC. 
-   - For EET install JOining Party **AFTER** EET_End.
-- [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is completly incompatible with this mod if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
+- Install JOining Party **AFTER** mods that add any dialog or script options related to NPC.
+	- Install JOining Party in last position if possible to allow reinstallation for futur version .
+	- For **EET** install JOining Party **AFTER** EET_End.
+	- [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is completly incompatible with this mod if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
 - Joining_Party use script slots permanently or temporarly : 
   - SCRIPT_OVERRIDE for Charname (permanent)
   - SCRIPT_GENERAL for traveler (permanent)
@@ -83,7 +84,8 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 You can check [PID options and what they do here](https://github.com/11jo/JOining_Party/blob/main/PID_References.md).
 
 
-##### Componants :  
+### Componants :
+----------------
 
 - **Install the main componant** "JOining Party !" 
   - Replace any InParty, !InParty, IsValidForPartyDialog, !IfValidForPartyDialogue, InpartyAllowDead... by traveler references to make them count as party member and allow quests and interjections to process.  
@@ -110,10 +112,10 @@ You can check [PID options and what they do here](https://github.com/11jo/JOinin
   - Related random timers will use random time between player choice and the double of player choice.
   - Can be reinstalled multiple time at any time, if another timer is more suitable.
   - Don't appear in weidu.log
-  
----
 
-#### In game :
+
+### In game :
+----------------
 
 Starting a new game, Charname receive a special ability the "Engagement.
 
@@ -132,37 +134,39 @@ Starting a new game, Charname receive a special ability the "Engagement.
 	- Allow to select a party member to dialog with one traveler.
 	- Quicker and easier that Using the ability on only one traveler then engage conversation.
 
-**Travelers will "fill party"** unless the option is deactivated in PID travelers will reinteger the party when it include less than three members.
+---
 
-**Travelers will "switch"** in party some time to time to allow them **to be considered as party member** continually.
+- **Travelers will "fill party"** unless the option is deactivated in PID travelers will reinteger the party when it include less than three members.
+
+- **Travelers will "switch"** in party some time to time to allow them **to be considered as party member** continually.
 	- If a party slot remain empty.
 	- Every custom time.
 	- When loading a save (very important !!!).
 	- If not in combat or in the process of doing something.
 
-**Travelers will "always be available"** to **talks, PID, interjects and quests like a party member**.
+- **Travelers will "always be available"** to **talks, PID, interjects and quests like a party member**.
 	- The Joining dialogs will adapt depending of the campaign.
 	- The Banter dialogs will adapt depending of the campaign.
 	- The Dream talk scripts will adapt depending of the campaign.
 
-**Travelers will "switch their places with party member"** some time to time **if a party member is eligible and willing** to be traveler.
+- **Travelers will "switch their places with party member"** some time to time **if a party member is eligible and willing** to be traveler.
 	- Every custom time.
 	- If not in combat or in the process of doing something.
 
-**Travelers will "start their Banter dialog"** some time to time.
+- **Travelers will "start their Banter dialog"** some time to time.
 	- The banter dialog will adapt depending of the campaign.
 	- If conditions are meets a banter will fire, if not nothing will happen.
 	- Every custom time.
 	- If not in combat or in the process of doing something.
 
-**Travelers will "start their Dream talk scripts"** some time to time. (**Experimental**)
+- **Travelers will "start their Dream talk scripts"** some time to time. (**Experimental**)
 	- The dream talk script will adapt depending of the campaign.
 	- If conditions are meets a banter will dream talk, if not nothing will happen.
 	- When the party try to rest.
 	- If not in combat or in the process of doing something.
 	- With HotKey(S) if needed.
 
-**Travelers will "leave"** before a campaign transition.
+- **Travelers will "leave"** before a campaign transition.
 	- Their gears will be placed in the shell near Alundo statue.
 	- If travelers have content in next campaign they will destroyself.
 	- If travelers don't have content in next campaign they will remain recrutable.
@@ -178,7 +182,7 @@ At the moment **several indication texts will appear in dialog box** to inform t
 
 
 
-## Installation / Uninstallation :
+### Installation / Uninstallation :
 ---------------------------------
 
 
@@ -196,7 +200,7 @@ Afterwards, you may delete the following files:
     and the contents of the "JOining_Party" subfolder 
 
 
-## Credits / Remerciements :
+### Credits / Remerciements :
 ---------------------------------
 
 - Rivvers / @RiwsPy (Co author)
@@ -204,7 +208,7 @@ Afterwards, you may delete the following files:
 - @Darpaek (Beta testing)
 
 
-## Version History :
+### Version History :
 --------------------
 
 - Beta v1.3
