@@ -1,6 +1,7 @@
 /////////////////////////// Mods BG2 ///////////////////////////
 
 ////////////////////////////////////////////////////
+
 // BG2
 ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN
 					ACTION_IF (~%BG2_JOINED%~ STRING_EQUAL_CASE ~~) BEGIN
@@ -15,10 +16,11 @@ ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN
 END ELSE BEGIN
 		OUTER_SPRINT "RESPONSE_JOINED_BG2" ""
 END
+
 // ToB
-ACTION_IF (GAME_IS ~bg2ee eet~) BEGIN
+ACTION_IF (GAME_IS ~bg2ee~) BEGIN
 					ACTION_IF (~%TOB_JOINED%~ STRING_EQUAL_CASE ~~) AND (NOT~%BG2_JOINED%~ STRING_EQUAL_CASE ~~) BEGIN
-						OUTER_SPRINT "TOB_JOINED" "BG2_JOINED"
+						OUTER_SPRINT "TOB_JOINED" "%BG2_JOINED%"
 					END ELSE BEGIN
 						OUTER_SPRINT "TOB_JOINED" "JO_JOINJ"
 					END
@@ -32,7 +34,23 @@ END ELSE BEGIN
 		OUTER_SPRINT "RESPONSE_JOINED_TOB" ""
 END
 
-<<<<<<<< .../JOining_mod_bg1.baf
+ACTION_IF (GAME_IS ~eet~) BEGIN
+					ACTION_IF (NOT~%BG2_JOINED%~ STRING_EQUAL_CASE ~~) BEGIN
+						OUTER_SPRINT "TOB_JOINED" "%BG2_JOINED%"
+					END ELSE BEGIN
+						OUTER_SPRINT "TOB_JOINED" "JO_JOINJ"
+					END
+		OUTER_SPRINT "RESPONSE_JOINED_TOB" ~~~~~RESPONSE #4
+				SetDialog("%TOB_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%TOB_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_TOB" ""
+END
+
+<<<<<<<< .../JOining_mod_bg2.baf
 
 IF
 	Global("JO_JOIN","LOCALS",2)

@@ -28,7 +28,7 @@
 
 - **Loading Switch :**
 	- **When loading a save the Travelers have to switch once before being reliably available for script and dialog.**
-	- When loading a save, one or two party members available and willing to be traveler will temporarly leave the group to allow all travelers to reintegrate the group very quickly, it's an **very important state** that need to happen to make them reliably available for scripts and dialogs*.
+	- When loading a save, one or two party members available and willing to be traveler will temporarly leave the group to allow all travelers to reintegrate the group very quickly, it's an **very important state** that need to happen to make them reliably available for scripts and dialogs.
 
 - **Switching Party :**
 	- Party members and travelers will switch regulary to make sure no interaction is lost. (Only for party members eligible to be a traveler)
@@ -36,6 +36,14 @@
 
 - **Quick Switch :**
 	- If a free slot is available traveler will regulary reintegrate the party for a short instant.
+
+- **Fill Party :**
+	- If there is less than three party members, some travelers will integrate the party.
+
+- **Switching Room :**
+	- A special area to perform the **Loading Switch** if current area isn't suited for several switchs in a row.
+	- The Switching room can be acceded at anytime, have some containers, allow resting and will host travelers leaving before transition.
+	- The area is similar as Candlekeep area. 
 
 
 ## Overwiew :  
@@ -64,11 +72,13 @@ Compatibility : BGEE, SOD, BG2EE and EET.
 - 0 the NPC is not expanded to become a traveler.
 - 1 Npc will be expended to be traveler (Familiar fully considered as party member.)
 	- By default all NPC integrated to the mod will be set to 1. (Except for Continuous original game NPC)
+<!--
 - 2 Npc will be expended to be a real traveler :
 	- By default all Continuous original game NPC, will be set to 2. (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera and Rasaad)
 	- (Familiar fully considered as party member and will expand party blocs ACTIONS for more realisme.)
 	- (It expand blocks that concern Player2 to Player6 for traveler to follow the group movement in some case, so add only few of them)
 	- (Warning Option 2 is Experimental and will expend installation time significaly, to use only with few traveler.)
+-->
 
 You can check [PID options and what they do here](https://github.com/11jo/JOining_Party/blob/main/PID_References.md).
 
@@ -122,7 +132,7 @@ Starting a new game, Charname receive a special ability the "Engagement.
 	- Allow to select a party member to dialog with one traveler.
 	- Quicker and easier that Using the ability on only one traveler then engage conversation.
 
-**Travelers will "fill"** unless the option is deactivated in PID travelers will reinteger the party when it include less than three members.
+**Travelers will "fill party"** unless the option is deactivated in PID travelers will reinteger the party when it include less than three members.
 
 **Travelers will "switch"** in party some time to time to allow them **to be considered as party member** continually.
 	- If a party slot remain empty.
@@ -150,6 +160,12 @@ Starting a new game, Charname receive a special ability the "Engagement.
 	- If conditions are meets a banter will dream talk, if not nothing will happen.
 	- When the party try to rest.
 	- If not in combat or in the process of doing something.
+	- With HotKey(S) if needed.
+
+**Travelers will "leave"** before a campaign transition.
+	- Their gears will be placed in the shell near Alundo statue.
+	- If travelers have content in next campaign they will destroyself.
+	- If travelers don't have content in next campaign they will remain recrutable.
 
   
 **Before** a switch they will look to Charname or a party member and say "Hey", before joining the group.
