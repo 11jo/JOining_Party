@@ -54,7 +54,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
     PATCH_IF NOT (~%override_script%~ STRING_EQUAL_CASE ~idiot01~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NONE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SHOUT~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~INITDLG~)
 
 // Imoen
-// Original Imoen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%IMOEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDIMOENS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOE25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTIMOEN~) // BDIMOENS is for Imoen4Ever
+// Original Imoen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%IMOEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDIMOENS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOE25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C#STIMOE~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTIMOEN~) // BDIMOENS is for Imoen4Ever
 // Original Imoen // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN_~)
 // Original Imoen // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN2~)
 
