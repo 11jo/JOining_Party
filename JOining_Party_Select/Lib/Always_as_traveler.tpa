@@ -2966,6 +2966,81 @@ END
 
 	END
 
+// Autumns Twilight
+
+
+ACTION_IF (MOD_IS_INSTALLED ~Autumns_Twilight.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Dusk_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dusk~ ~~
+			PRINT ~    Dusk as traveler
+			~
+
+	END ELSE ACTION_IF Dusk_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dusk~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Dusk~ ~~
+			PRINT ~    Dusk as real traveler
+			~
+
+	END
+
+	ACTION_IF Fall_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fall~ ~~
+			PRINT ~    Fall as traveler
+			~
+
+	END ELSE ACTION_IF Fall_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fall~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Fall~ ~~
+			PRINT ~    Fall as real traveler
+			~
+
+	END
+
+	ACTION_IF Cho'Nuja_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Cho'Nuja~ ~~
+			PRINT ~    Cho'Nuja as traveler
+			~
+
+	END ELSE ACTION_IF Cho'Nuja_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Cho'Nuja~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Cho'Nuja~ ~~
+			PRINT ~    Cho'Nuja as real traveler
+			~
+
+	END
+
+	ACTION_IF Alendir_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Alendir~ ~~
+			PRINT ~    Alendir as traveler
+			~
+
+	END ELSE ACTION_IF Alendir_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Alendir~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Alendir~ ~~
+			PRINT ~    Alendir as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 

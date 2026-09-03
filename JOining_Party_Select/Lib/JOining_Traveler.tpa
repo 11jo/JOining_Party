@@ -510,6 +510,19 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
 // 2
   COUNT_REGEXP_INSTANCES  ~^Walahnan_BG2[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Walahnan_BG2_as_Real_traveler
 
+// Autumns Twilight
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Dusk[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Dusk_as_traveler
+  COUNT_REGEXP_INSTANCES  ~^Fall[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Fall_as_traveler
+  COUNT_REGEXP_INSTANCES  ~^Cho'Nuja[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                          Cho'Nuja_as_traveler
+  COUNT_REGEXP_INSTANCES  ~^Alendir[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                           Alendir_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Dusk[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Dusk_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Fall[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Fall_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Cho'Nuja[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                          Cho'Nuja_as_Real_traveler
+  COUNT_REGEXP_INSTANCES  ~^Alendir[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                           Alendir_as_Real_traveler
+
 // Next_Traveler BG2
 
 
