@@ -6,7 +6,7 @@ ACTION_IF Traveler_BG1 = 1 THEN BEGIN
 	OUTER_SPRINT "Mod" "Mod"
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~	~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
-			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%                             // %NEW_TRAVELER_NAME% 
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%~                             // %NEW_TRAVELER_NAME% 
 
 // %Next_Traveler Traveler_Game%~~~~~
 END
@@ -15,7 +15,7 @@ ACTION_IF Traveler_BG2 = 1 THEN BEGIN
 	OUTER_SPRINT "Next_Traveler Traveler_Game" "Next_Traveler BG2"
 	OUTER_SPRINT "Mod" "Mod"
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~	~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
-			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%                             // %NEW_TRAVELER_NAME% 
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%~                             // %NEW_TRAVELER_NAME% 
 
 // %Next_Traveler Traveler_Game%~~~~~
 END
@@ -24,7 +24,7 @@ ACTION_IF Traveler_Continuous = 1 THEN BEGIN
 	OUTER_SPRINT "Next_Traveler Traveler_Game" "Next_Traveler Continuous"
 	OUTER_SPRINT "Mod" "EET"
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~	~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
-			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%                             // %NEW_TRAVELER_NAME% 
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~~%NEW_TRAVELER_DeathVar%~                             // %NEW_TRAVELER_NAME% 
 
 // %Next_Traveler Traveler_Game%~~~~~
 END
@@ -240,6 +240,7 @@ ACTION_IF Traveler_Continuous = 1 THEN BEGIN
 // Next_Traveler Continuous~~~~~
 
 	END
+
     PATCH_IF NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~ STRING_EQUAL_CASE ~~) AND NOT (~%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%~ STRING_EQUAL_CASE ~~) BEGIN
 			REPLACE_TEXTUALLY ~// Next_Traveler Continuous~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // %Mod% %NEW_TRAVELER_NAME%                  ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG1%~ ~%NEW_TRAVELER_JOINING_DIALOG_NAME_SoD%~ ~%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%~ ~%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%~
@@ -310,8 +311,6 @@ END
 
 // Next_Traveler BG1~~~~~
 
-	END
-
 END
 
 
@@ -320,6 +319,8 @@ END
 
 
 ACTION_IF Traveler_BG2 = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Mod_BG2.tph~	~JOining_Party_Select/Lib/JOining_Party_Core_Mod_BG2.tph~
 
 		REPLACE_TEXTUALLY ~// Next_Traveler BG2~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 
@@ -363,14 +364,14 @@ END
 
 // Next_Traveler BG2~~~~~
 
-	END
-
 END
 
 
 /////////////////////////// JOining_Party_Core_Continuous.tph ///////////////////////////
 
 ACTION_IF Traveler_Continuous = 1 THEN BEGIN
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Continuous.tph~	~JOining_Party_Select/Lib/JOining_Party_Core_Continuous.tph~
 
 			REPLACE_TEXTUALLY ~// Next_Traveler Continuous~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // BG1
@@ -387,7 +388,7 @@ OUTER_SPRINT "BG1_DREAM" "%NEW_TRAVELER_DREAM_BANTER_NAME_BG1%"
 		OUTER_SPRINT "BG2_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_BG2%"
 		OUTER_SPRINT "BG2_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2%"
 		OUTER_SPRINT "BG2_BANTER" "%NEW_TRAVELER_REGULAR_BANTER_NAME_BG2%"
-		OUTER_SPRINT "BG2_DREAM" "%NEW_TRAVELER_DREAM_BANTER_NAME_BG2%""
+		OUTER_SPRINT "BG2_DREAM" "%NEW_TRAVELER_DREAM_BANTER_NAME_BG2%"
 			// ToB
 			OUTER_SPRINT "TOB_JOINED" "%NEW_TRAVELER_JOINING_DIALOG_NAME_ToB%"
 			OUTER_SPRINT "TOB_BCS" "%NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB%"
@@ -421,8 +422,6 @@ END
 
 // Next_Traveler Continuous~~~~~
 
-	END
-
 END
 
 
@@ -448,8 +447,6 @@ ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_TP2%.TP2~ ~%NEW_TRAVELER_MOD_COMP
 			REPLACE_TEXTUALLY ~// %Mod% Real %NEW_TRAVELER_NAME%~ ~~
 			PRINT ~    %NEW_TRAVELER_NAME% as real traveler
 			~
-
-	END
 
 END
 

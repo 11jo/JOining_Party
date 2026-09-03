@@ -2040,7 +2040,7 @@ ACTION_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) THEN BEGIN
 END
 
 
-ACTION_IF (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND NOT Continuous_Yeslick = 1 THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND NOT Continuous_Yeslick = 1 THEN BEGIN
 
 	ACTION_IF Yeslick_BG2_as_traveler = 1 THEN BEGIN
 
@@ -3124,6 +3124,27 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				OUTER_SET Coran_SoD_Content = 1
 
 				OUTER_SET Coran_BG2_Content = 1
+
+	END
+
+// Yeslick NPC
+
+	ACTION_IF Yeslick_Continuous_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Yeslick_Continuous~ ~~
+			PRINT ~    Yeslick_Continuous as traveler
+			~
+
+	END ELSE ACTION_IF Yeslick_Continuous_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Yeslick_Continuous~ ~~
+			REPLACE_TEXTUALLY ~// EET Real Yeslick_Continuous~ ~~
+			PRINT ~    Yeslick_Continuous as real traveler
+			~
+
+				OUTER_SET Yeslick_BG2_Content = 1
 
 	END
 

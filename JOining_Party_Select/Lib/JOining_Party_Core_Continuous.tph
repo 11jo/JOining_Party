@@ -311,5 +311,52 @@ BEGIN
 	END
 END
 
+// Yeslick NPC
+// BG1
+OUTER_SPRINT "BG1_JOINED" "%YESLICK_JOINED%"
+OUTER_SPRINT "BG1_BCS" "%YESLICK_BCS%"
+OUTER_SPRINT "BG1_BANTER" "BYESLI"
+OUTER_SPRINT "BG1_DREAM" "YESLID"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" "BDYESLIJ"
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "LK#YESJ"
+		OUTER_SPRINT "BG2_BCS" "LK#YES"
+		OUTER_SPRINT "BG2_BANTER" "BLK#YES"
+		OUTER_SPRINT "BG2_DREAM" "LK#YESD"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "LK#YE25J"
+			OUTER_SPRINT "TOB_BCS" "LK#YES25"
+			OUTER_SPRINT "TOB_BANTER" "BLK#YE25"
+			OUTER_SPRINT "TOB_DREAM" "LK#YE25D"
+
+ACTION_FOR_EACH bcs IN
+
+// EET Yeslick_Continuous ~%YESLICK_BCS%~ ~~ ~LK#YES~ ~LK#YES25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Yeslick_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
 // Next_Traveler Continuous
 

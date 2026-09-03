@@ -380,8 +380,6 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 // Next_Traveler BG2
 //////////////////////////////////////////////////////////////////////////////////////
 			OUTER_SPRINT "cmnikita_name"                "Nikita"
-			OUTER_SPRINT "L#WALAH_name"                 "Walahnan"
-			OUTER_SPRINT "Coran_name"                   "Coran"
 // Next_Traveler Continuous
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -471,8 +469,6 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 		OUTER_SET Continuous_Kivan = 1
 
 	END
-
-// Next_Traveler Continuous
 
 END
 
