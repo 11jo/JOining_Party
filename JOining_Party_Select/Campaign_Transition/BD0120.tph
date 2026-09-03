@@ -3,7 +3,7 @@
 // Ishilka mod special
 
 
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/#Ishy_All_In.baf~ BEGIN
+	ACTION_IF Ishlilka_the_Wizard_Slayer_as_traveler = 1 OR Ishlilka_the_Wizard_Slayer_as_Real_traveler = 1 BEGIN
 
 <<<<<<<< .../JOining_bd0120.baf
 
@@ -50,7 +50,7 @@ EXTEND_TOP ~bdintro.bcs~ ~.../JOining_bd0120.baf~ EVALUATE_BUFFER
 
 // 1
 
-	ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/All_In/%IMOEN_DV%_All_In.baf~ BEGIN
+	ACTION_IF Imoen_as_traveler = 1 OR Imoen_as_Real_traveler = 1 BEGIN
 
 <<<<<<<< .../JOining_bd0120.baf
 
