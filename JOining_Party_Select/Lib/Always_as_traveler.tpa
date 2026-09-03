@@ -3169,7 +3169,28 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 				OUTER_SET Xan_BG2_Content = 1
 
-END
+	END
+
+// Continuous_Branwen
+
+	ACTION_IF Branwen_Continuous_as_traveler = 1 OR (Branwen_as_traveler = 1 AND Continuous_Branwen = 1) OR (Branwen_BG2_as_traveler = 1 AND Continuous_Branwen = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Branwen_Continuous~ ~~
+			PRINT ~    Branwen_Continuous as traveler
+			~
+
+	END ELSE ACTION_IF Branwen_Continuous_as_Real_traveler = 1 OR (Branwen_as_Real_traveler = 1 AND Continuous_Branwen = 1) OR (Branwen_BG2_as_Real_traveler = 1 AND Continuous_Branwen = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Branwen_Continuous~ ~~
+			REPLACE_TEXTUALLY ~// EET Real Branwen_Continuous~ ~~
+			PRINT ~    Branwen_Continuous as real traveler
+			~
+
+				OUTER_SET Branwen_BG2_Content = 1
+
+	END
 
 // Next_Traveler Continuous
 
