@@ -454,5 +454,52 @@ BEGIN
 	END
 END
 
+// Continuous_Tiax
+// BG1
+OUTER_SPRINT "BG1_JOINED" "%TIAX_JOINED%"
+OUTER_SPRINT "BG1_BCS" "%TIAX_BCS%"
+OUTER_SPRINT "BG1_BANTER" "BTIAX"
+OUTER_SPRINT "BG1_DREAM" "TIAXD"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" "BDTIAXJ"
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "O#TiaxJ"
+		OUTER_SPRINT "BG2_BCS" "O#TiaxS"
+		OUTER_SPRINT "BG2_BANTER" "BO#Tiax"
+		OUTER_SPRINT "BG2_DREAM" "O#TiaxD"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "O#Tia25J"
+			OUTER_SPRINT "TOB_BCS" "O#Tia25S"
+			OUTER_SPRINT "TOB_BANTER" "BO#Tia25"
+			OUTER_SPRINT "TOB_DREAM" "O#Tia25D"
+
+ACTION_FOR_EACH bcs IN
+
+// EET Tiax_Continuous ~%TIAX_BCS%~ ~O#TiaxS~ ~O#Tia25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Tiax_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
 // Next_Traveler Continuous
 

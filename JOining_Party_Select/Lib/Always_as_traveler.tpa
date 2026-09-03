@@ -3192,6 +3192,29 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+// Continuous_Tiax
+
+	ACTION_IF Tiax_Continuous_as_traveler = 1 OR (Tiax_as_traveler = 1 AND Continuous_Tiax = 1) OR (Tiax_BG2_as_traveler = 1 AND Continuous_Tiax = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Tiax_Continuous~ ~~
+			PRINT ~    Tiax_Continuous as traveler
+			~
+
+				OUTER_SET Tiax_BG2_Content = 1
+
+	END ELSE ACTION_IF Tiax_Continuous_as_Real_traveler = 1 OR (Tiax_as_Real_traveler = 1 AND Continuous_Tiax = 1) OR (Tiax_BG2_as_Real_traveler = 1 AND Continuous_Tiax = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Tiax_Continuous~ ~~
+			REPLACE_TEXTUALLY ~// EET Real Tiax_Continuous~ ~~
+			PRINT ~    Tiax_Continuous as real traveler
+			~
+
+				OUTER_SET Tiax_BG2_Content = 1
+
+	END
+
 // Next_Traveler Continuous
 
 END

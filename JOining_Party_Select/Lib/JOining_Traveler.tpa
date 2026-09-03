@@ -570,4 +570,11 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
 // 2
   COUNT_REGEXP_INSTANCES  ~^Branwen_Continuous[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Branwen_Continuous_as_Real_traveler
 
+// Continuous_Tiax
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Tiax_Continuous[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Tiax_Continuous_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Tiax_Continuous[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Tiax_Continuous_as_Real_traveler
+
 // Next_Traveler Continuous
