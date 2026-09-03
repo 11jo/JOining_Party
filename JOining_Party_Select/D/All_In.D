@@ -134,7 +134,7 @@ StartDialogueNoSet(Player6)~ EXIT
 			Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 			TriggerOverride(LastTalkedToBy,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0))
 			!TriggerOverride(LastTalkedToBy,GlobalTimerNotExpired("JO_JOIN_SWITCH_TIMER","LOCALS"))
-		~ THEN REPLY ~^0xFFFFDF10Join the group, just for a minute.^-~ DO ~SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN) SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0) SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
+		~ THEN REPLY ~^0xFFFFDF10Join the group, just for a minute.^-~ DO ~SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 		IF ~Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 			NumInPartyLT(6)
 		~ THEN REPLY ~^0xFF6aa84fJoin the group properly, please.^-~ DO ~SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //
