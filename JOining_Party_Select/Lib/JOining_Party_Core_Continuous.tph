@@ -215,7 +215,7 @@ BEGIN
 	END
 END
 
-// Walahnan
+// Continuous_Walahnan
 
 // BG1
 OUTER_SPRINT "BG1_JOINED" "L#WALAHJ"
@@ -263,7 +263,7 @@ BEGIN
 	END
 END
 
-// Coran
+// Continuous_Coran
 
 // BG1
 OUTER_SPRINT "BG1_JOINED" "%CORAN_JOINED%"
@@ -311,7 +311,7 @@ BEGIN
 	END
 END
 
-// Yeslick NPC
+// Continuous_Yeslick
 // BG1
 OUTER_SPRINT "BG1_JOINED" "%YESLICK_JOINED%"
 OUTER_SPRINT "BG1_BCS" "%YESLICK_BCS%"
@@ -346,6 +346,53 @@ BEGIN
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Yeslick_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+// Continuous_Xan
+// BG1
+OUTER_SPRINT "BG1_JOINED" "%XAN_JOINED%"
+OUTER_SPRINT "BG1_BCS" "%XAN_BCS%"
+OUTER_SPRINT "BG1_BANTER" "BXANNN"
+OUTER_SPRINT "BG1_DREAM" "XAND"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" "BDXANJ"
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "O#XANJ"
+		OUTER_SPRINT "BG2_BCS" "O#XanS"
+		OUTER_SPRINT "BG2_BANTER" "BO#XAN"
+		OUTER_SPRINT "BG2_DREAM" "O#XAND"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "O#XAN25J"
+			OUTER_SPRINT "TOB_BCS" "O#Xan25S"
+			OUTER_SPRINT "TOB_BANTER" "BO#XAN25"
+			OUTER_SPRINT "TOB_DREAM" "O#XAN25D"
+
+ACTION_FOR_EACH bcs IN
+
+// EET Xan_Continuous ~%XAN_BCS%~ ~O#XanS~ ~O#Xan25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Xan_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
 

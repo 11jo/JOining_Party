@@ -3127,16 +3127,16 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
-// Yeslick NPC
+// Continuous_Yeslick
 
-	ACTION_IF Yeslick_Continuous_as_traveler = 1 THEN BEGIN
+	ACTION_IF Yeslick_Continuous_as_traveler = 1 OR (Yeslick_as_traveler = 1 AND Continuous_Yeslick = 1) OR (Yeslick_BG2_as_traveler = 1 AND Continuous_Yeslick = 1) THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// EET Yeslick_Continuous~ ~~
 			PRINT ~    Yeslick_Continuous as traveler
 			~
 
-	END ELSE ACTION_IF Yeslick_Continuous_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Yeslick_Continuous_as_Real_traveler = 1 OR (Yeslick_as_Real_traveler = 1 AND Continuous_Yeslick = 1) OR (Yeslick_BG2_as_Real_traveler = 1 AND Continuous_Yeslick = 1) THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// EET Yeslick_Continuous~ ~~
@@ -3147,6 +3147,29 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				OUTER_SET Yeslick_BG2_Content = 1
 
 	END
+
+// Continuous_Xan
+
+	ACTION_IF Xan_Continuous_as_traveler = 1 OR (Xan_as_traveler = 1 AND Continuous_Xan = 1) OR (Xan_BG2_as_traveler = 1 AND Continuous_Xan = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Xan_Continuous~ ~~
+			PRINT ~    Xan_Continuous as traveler
+			~
+
+				OUTER_SET Xan_BG2_Content = 1
+
+	END ELSE ACTION_IF Xan_Continuous_as_Real_traveler = 1 OR (Xan_as_Real_traveler = 1 AND Continuous_Xan = 1) OR (Xan_BG2_as_Real_traveler = 1 AND Continuous_Xan = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Xan_Continuous~ ~~
+			REPLACE_TEXTUALLY ~// EET Real Xan_Continuous~ ~~
+			PRINT ~    Xan_Continuous as real traveler
+			~
+
+				OUTER_SET Xan_BG2_Content = 1
+
+END
 
 // Next_Traveler Continuous
 
