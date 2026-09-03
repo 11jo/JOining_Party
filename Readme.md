@@ -57,17 +57,20 @@ There is no real limitation as for the number of familiars / travelers that play
 ### Instruction : 
 ----------------
 
-Compatibility : BGEE, SOD, BG2EE and EET.  
+
+- Compatibility : BGEE, SOD, BG2EE and EET.  
+	- Recommanded : [EEex](https://github.com/Bubb13/EEex) from Bubb, to benefit of the increasing the number of characters clearing the Fog of War.
+	- Warning : [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is probably incompatible if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
+	- Compatible with : [Continuous_End](https://github.com/11jo/Continuous_End) mod that allow several NPCs to be continuous For EET.
 
 - Install JOining Party **AFTER** mods that add any dialog or script options related to NPC.
 	- Install JOining Party in last position if possible to allow reinstallation for futur version .
 	- For **EET** install JOining Party **AFTER** EET_End.
-	- [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is completly incompatible with this mod if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
-- Joining_Party use script slots permanently or temporarly : 
-  - SCRIPT_OVERRIDE for Charname (permanent)
-  - SCRIPT_GENERAL for traveler (permanent)
-  - SCRIPT_RACE for Travelers (temporarly and regulary) // Each time a traveler come and go to and from party, only the time to run.
-  - SCRIPT_RACE for Charname (Only if asked by dialog to count traveler) // Mostly unecessary.
+		- Joining_Party use script slots permanently or temporarly : 
+			- SCRIPT_OVERRIDE for Charname (permanent)
+			- SCRIPT_GENERAL for traveler (permanent)
+			- SCRIPT_RACE for Travelers (temporarly and regulary) // Each time a traveler come and go to and from party, only the time to run.
+			- SCRIPT_RACE for Charname (Only if asked by dialog to count traveler) // Mostly unecessary.
 
 **Before installing the mod** select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
 - 0 the NPC is not expanded to become a traveler.
