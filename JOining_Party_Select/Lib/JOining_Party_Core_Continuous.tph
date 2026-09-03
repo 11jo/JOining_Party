@@ -501,5 +501,52 @@ BEGIN
 	END
 END
 
+// Continuous_Isra
+// BG1
+OUTER_SPRINT "BG1_JOINED" "RH#ISRAJ"
+OUTER_SPRINT "BG1_BCS" "RH#ISRA"
+OUTER_SPRINT "BG1_BANTER" "BRH#ISRA"
+OUTER_SPRINT "BG1_DREAM" "RH#ISRAD"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "rh#isrj"
+		OUTER_SPRINT "BG2_BCS" "rh#isr"
+		OUTER_SPRINT "BG2_BANTER" "BRH#isr"
+		OUTER_SPRINT "BG2_DREAM" "rh#isrd"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "rh#is25j"
+			OUTER_SPRINT "TOB_BCS" "rh#is25"
+			OUTER_SPRINT "TOB_BANTER" "BRH#is25"
+			OUTER_SPRINT "TOB_DREAM" "rh#is25d"
+
+ACTION_FOR_EACH bcs IN
+
+// EET Isra_Continuous ~RH#ISRA~ ~~ ~rh#isr~ ~rh#is25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/rh#isra_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
 // Next_Traveler Continuous
 

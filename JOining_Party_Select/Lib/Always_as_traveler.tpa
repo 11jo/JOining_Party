@@ -3215,6 +3215,29 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+// Continuous_Isra
+
+	ACTION_IF Isra_Continuous_as_traveler = 1 OR (Isra_as_traveler = 1 AND Continuous_Isra = 1) OR (Isra_BG2_as_traveler = 1 AND Continuous_Isra = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Isra_Continuous~ ~~
+			PRINT ~    Isra_Continuous as traveler
+			~
+
+				OUTER_SET Isra_BG2_Content = 1
+
+	END ELSE ACTION_IF Isra_Continuous_as_Real_traveler = 1 OR (Isra_as_Real_traveler = 1 AND Continuous_Isra = 1) OR (Isra_BG2_as_Real_traveler = 1 AND Continuous_Isra = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Isra_Continuous~ ~~
+			REPLACE_TEXTUALLY ~// EET Real Isra_Continuous~ ~~
+			PRINT ~    Isra_Continuous as real traveler
+			~
+
+				OUTER_SET Isra_BG2_Content = 1
+
+	END
+
 // Next_Traveler Continuous
 
 END
