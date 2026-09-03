@@ -124,8 +124,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		IF ~~ THEN REPLY ~Oh ! Sorry,everything is fine.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT //
 		IF ~Global("JO_JOIN_IS_JOINING","LOCALS",0)
 			NumInPartyLT(6)
-		~ THEN REPLY ~^0xFFFFDF10Join the group, just for a minute.^-~ DO ~
-		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
+		~ THEN REPLY ~^0xFFFFDF10Join the group, just for a minute.^-~ DO ~SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_TURN) SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0) SetGlobal("JO_JOIN_IS_JOINING","LOCALS",1)~ GOTO JO_JOINYes //
 		IF ~Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 			NumInPartyLT(6)
 		~ THEN REPLY ~^0xFF6aa84fJoin the group properly, please.^-~ DO ~SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",1)~ GOTO JO_JOINYes //

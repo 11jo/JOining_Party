@@ -233,7 +233,6 @@ THEN
 	RESPONSE #31
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
-		DisplayString(Myself,~Alright. The introspection begins.~)
 		Continue()
 END
 
@@ -849,5 +848,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",2)
+		DisplayString(Myself,~Alright. The introspection begins.~)
 		ChangeAIScript("JO_JOINM",RACE) // Go to JO_JOINM (Reset)
 END
