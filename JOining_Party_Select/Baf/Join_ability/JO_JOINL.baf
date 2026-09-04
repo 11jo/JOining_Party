@@ -283,6 +283,7 @@ THEN
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
 		DisplayStringHead(Myself,~Let's return to venture forth !!~)
 		SetCutSceneBreakable(FALSE)
 		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
@@ -315,6 +316,7 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
 		DisplayStringHead(Myself,~let's venture forth !~)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 END

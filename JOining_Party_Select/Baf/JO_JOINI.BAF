@@ -728,6 +728,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
@@ -747,6 +748,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
@@ -2931,6 +2933,7 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_FILL","LOCALS",0)
 		SetGlobal("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		// SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0) // conflict with Join the group properly, please, and don't switch your place with travelers.
 		RemoveFamiliar()

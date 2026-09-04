@@ -240,7 +240,7 @@ StartDialogueNoSet(Player6)~ EXIT
 	
 // Switching party between travelers and party members
 	IF ~Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ THEN REPLY ~^0xFFf4ccccDon't switch with regular party members, be only a traveler.~ DO ~
-		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1)~ GOTO JO_JOINYes //
+		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",1) SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)~ GOTO JO_JOINYes //
 	IF ~!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fYou can switch with regular party members.^-~ DO ~
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ GOTO JO_JOINYes //
 // JOJOINNE.D

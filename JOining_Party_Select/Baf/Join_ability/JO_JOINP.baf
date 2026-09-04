@@ -28,11 +28,20 @@ END
 						// JO_JOIN_BLOP (Dev test for no master area)
 ///////////////////////////////////////////////////////////////////////////////
 
+IF
+	OnCreation()
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",1)
+		SetGlobal("JO_JOIN_BANTER_TIMER","GLOBAL",0)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_TURN)
+END
 
 IF
-	OR(2)
+	OR(3)
 		OnCreation()
 		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
+		Global("JO_JOIN_SAFE_LOAD","LOCALS",1)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	NumInPartyGT(5)
 	OR(2)
@@ -42,41 +51,48 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		ScreenShake([20.20],5)
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
 		Wait(1)
 		DisplayStringHead(Myself,~^0xFF16537eThe sixth party member can't switch with traveler.~)
 END
 
 IF
-	OR(2)
+	OR(3)
 		OnCreation()
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
+		Global("JO_JOIN_SAFE_LOAD","LOCALS",1)
 		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
 	InPartySlot(PartySlot6,0) // Charname is PartySlot6
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		ScreenShake([20.20],5)
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
 		Wait(1)
 		DisplayStringHead(Myself,~^0xFF16537eI am the sixth party member, better be in another place.~)
 END
 
 IF
-	OR(2)
+	OR(3)
 		OnCreation()
 		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
+		Global("JO_JOIN_SAFE_LOAD","LOCALS",1)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
 		DisplayStringHead(Myself,~Loading Switch is temporarely unavailable here.~)
 END
 
 
 
 IF // Conditions are OK: loading switch starting
-	OR(2)
+	OR(3)
 		OnCreation()
 		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0) // Force Loading Switch
+		Global("JO_JOIN_SAFE_LOAD","LOCALS",1)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100

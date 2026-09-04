@@ -479,7 +479,6 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",0 then the NPC is not available for 
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Party switching inactive
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-
 	OR(4)
 		!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		Global("JO_Myself_Valid","LOCALS",0)
@@ -764,10 +763,13 @@ IF
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",3) // set by traveler during party switch
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~Alright...~)
 		IncrementGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
-//		SetGlobalTimer("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",TWO_DAYS) // Not related to SWITCHING_PARTY
+		Wait(1)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
+		SetInterrupt(TRUE)
 		Continue()
 END
 
