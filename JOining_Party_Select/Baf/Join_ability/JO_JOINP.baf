@@ -473,44 +473,57 @@ END
 //	REPLACE_BG1toSoD		OR(2)
 //	REPLACE_BG1toSoD			!AreaCheck("%Undercity_TempleofBhaal%")
 //	REPLACE_BG1toSoD			!Dead("Sarevok")
-//	REPLACE_BG1toSoD		!AreaCheck("BD0120")
 //	REPLACE_BG1toSoD	//
 //	REPLACE_BG1toSoD		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //	REPLACE_BG1toSoD	//
-//	REPLACE_BG1toSoD		!Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+//	REPLACE_BG1toSoD		Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
 //	REPLACE_BG1toSoD	THEN
 //	REPLACE_BG1toSoD		RESPONSE #100
 //	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",0)
 //	REPLACE_BG1toSoD	END
 
-/* Soon...
-IF // SoD End
-//
-	AreaCheck("BD6000")
-	AreaCheck("BD6100")
-	AreaCheck("BD6200")
-//
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
-END
+// BG1 End (See in JO_JOINP.baf REPLACE_TEXTUALLY in JOining_Party_Core.tph)
+//	REPLACE_BG1toSoD	IF // Undercity_TempleofBhaal
+//	REPLACE_BG1toSoD	//
+//	REPLACE_BG1toSoD		AreaCheck("%NBaldursGate_DucalPalace_L1%")
+//	REPLACE_BG1toSoD		Dead("Sarevok")
+//	REPLACE_BG1toSoD		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//	REPLACE_BG1toSoD	//
+//	REPLACE_BG1toSoD	THEN
+//	REPLACE_BG1toSoD		RESPONSE #100
+//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+//	REPLACE_BG1toSoD	END
 
-IF // SoD End
+
+//	REPLACE_SoDtoBG2	IF
+//
+//	REPLACE_SoDtoBG2	AreaCheck("BD6000")
+//	REPLACE_SoDtoBG2	AreaCheck("BD6100")
+//	REPLACE_SoDtoBG2	AreaCheck("BD6200")
+//
+//	REPLACE_SoDtoBG2	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+//	REPLACE_SoDtoBG2	THEN
+//	REPLACE_SoDtoBG2	RESPONSE #100
+//	REPLACE_SoDtoBG2	SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+//	REPLACE_SoDtoBG2	END
+
+//	REPLACE_BG1toSoD	IF // SoD End
 //
 //		!AreaCheck("BD0130") // Should not be a problem
 //
-	!AreaCheck("BD6000")
-	!AreaCheck("BD6100")
-	!AreaCheck("BD6200")
+//	REPLACE_SoDtoBG2	!AreaCheck("BD6000")
+//	REPLACE_SoDtoBG2	!AreaCheck("BD6100")
+//	REPLACE_SoDtoBG2	!AreaCheck("BD6200")
+//	REPLACE_BG1toSoD	!AreaCheck("BD0120")
+//	REPLACE_BG1toSoD	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-END
-*/
+//	REPLACE_BG1toSoD	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//	REPLACE_BG1toSoD	THEN
+//	REPLACE_BG1toSoD	RESPONSE #100
+//	REPLACE_BG1toSoD	SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//	REPLACE_BG1toSoD	END
+
 
 ///////////////////////////////////////////////////////////////////////////////
 

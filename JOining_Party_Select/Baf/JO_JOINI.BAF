@@ -168,7 +168,7 @@ END
 // Have a variable that say "at least one traveler is here"
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	OR(2)
@@ -236,7 +236,7 @@ IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
 	Global("JO_NOJOIN","GLOBAL",0)
-// 
+//
 	OR(2)
 		Allegiance(Myself,FAMILIAR)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
@@ -681,7 +681,7 @@ END
 // Related to Reintegrate NPC into party periodically
 
 IF // security check
-// 
+//
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading TODO : Yes or no, maybe irrelevant with the new Loading Switch...
 	OnCreation()
 	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
@@ -728,6 +728,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
@@ -746,14 +747,15 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 	Global("JO_NOJOIN","GLOBAL",0)
 	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
-// 
+//
 	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
-	Global("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",1) 
+	Global("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",1)
 	!Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
 	NumInPartyLT(6)
 THEN
@@ -765,7 +767,7 @@ END
 
 IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another traveler is already active
 //
-	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
 	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
@@ -774,9 +776,9 @@ IF // Block wait 2 for Quick Switch // Return to Main Quick Switch 1 if another 
 		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		!Global("JO_NOJOIN","GLOBAL",0)
 		!Global("JO_JOIN_FILL_PARTY","LOCALS",0)
-// 
+//
 	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
-	Global("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",1) 
+	Global("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",1)
 	Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
 	NumInPartyLT(6)
 THEN
@@ -796,7 +798,7 @@ IF
 		Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Delay(20)
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 //
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
@@ -831,7 +833,7 @@ IF
 		Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 	Global("JO_JOIN_IS_JOINING","LOCALS",0)
 	!Global("JO_JOIN_LINK_TYPE","LOCALS",-1) // != static mode
-// 
+//
 	OR(2)
 		Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",1) // Set by JO_JOIN_Move_Around
 		Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
@@ -904,13 +906,14 @@ THEN
 END
 
 // Reintegrate NPC into party periodically
-	// Used by Regular switch 
+	// Used by Regular switch
 				// Also used by Loading Party
 
 // Main Quick Switch 3
 
 IF
 //		ActionListEmpty()
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	OR(2)
 		!ActuallyInCombat()
 		Global("JO_JOIN_BLOP","GLOBAL",1) // Dev test for ActuallyInCombat()
@@ -1937,6 +1940,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -1969,6 +1973,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -1999,6 +2004,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2032,6 +2038,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2065,6 +2072,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2102,6 +2110,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2129,6 +2138,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2155,6 +2165,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2186,6 +2197,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2219,6 +2231,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2250,6 +2263,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2285,6 +2299,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2313,6 +2328,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2342,6 +2358,7 @@ END
 
 IF
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	Global("JO_JOIN_Move_Around","GLOBAL",0)
@@ -2587,7 +2604,7 @@ IF
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_NOJOIN","GLOBAL",1)
 	Global("JO_NOJOIN_LOCALS","LOCALS",0)
-THEN                                                                        
+THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
 		DisplayString(Myself,~Another traveler already Switching Party, I'm ready when it's possible.~)

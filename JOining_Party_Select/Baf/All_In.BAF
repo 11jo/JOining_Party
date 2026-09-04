@@ -454,6 +454,7 @@ END
 
 IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Switching Party
 //
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Party switching inactive
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
