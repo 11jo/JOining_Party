@@ -4,6 +4,7 @@ IF
 THEN
 	RESPONSE #100
 		PlaySong(%BPTheme%)
+		Continue()
 END
 
 IF
@@ -11,7 +12,9 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO2608_Explore","MYAREA",1)
+		RemoveMapNote([1894.1155],~Travelers Items~)
 		Explore()
+		Continue()
 END
 
 
@@ -33,5 +36,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",0)
+		Continue()
 END
 

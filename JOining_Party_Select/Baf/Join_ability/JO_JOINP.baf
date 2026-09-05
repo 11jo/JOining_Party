@@ -115,6 +115,51 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Banter Block
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Delay banters for party members when specific actions are performed
+
+IF
+	OR(6)
+		!Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+		!Global("JO_NOJOIN","GLOBAL",0)
+		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+THEN
+	RESPONSE #100
+		BanterBlockFlag(TRUE)
+		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
+		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","GLOBAL",ONE_HOUR)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
+		DisplayString(Myself,~Delay conversations.~)
+		Continue()
+END
+
+IF
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","GLOBAL")
+	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+THEN
+	RESPONSE #100
+		BanterBlockFlag(FALSE)
+		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
+		Continue()
+END
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Initialize
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -384,51 +429,6 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// Banter Block
-
-///////////////////////////////////////////////////////////////////////////////
-
-// Delay banters for party members when specific actions are performed
-
-IF
-	OR(6)
-		!Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-		!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-		!Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-		!Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
-		!Global("JO_NOJOIN","GLOBAL",0)
-		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//
-	Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
-THEN
-	RESPONSE #100
-		BanterBlockFlag(TRUE)
-		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
-		SetGlobalTimer("JO_JOIN_BANTERBLOCKTIMER","GLOBAL",ONE_HOUR)
-		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",1)
-		DisplayString(Myself,~Delay conversations.~)
-		Continue()
-END
-
-IF
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN_FORCE_LOAD","GLOBAL",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//
-	!GlobalTimerNotExpired("JO_JOIN_BANTERBLOCKTIMER","GLOBAL")
-	!Global("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
-THEN
-	RESPONSE #100
-		BanterBlockFlag(FALSE)
-		SetGlobal("JO_JOIN_BANTER_BLOCK","GLOBAL",0)
-		Continue()
-END
-
-///////////////////////////////////////////////////////////////////////////////
-
 // JO_JOIN_BANTER_TIMER centralised for all travelers
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -479,66 +479,119 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// JO_JOIN_JUMP_JO2608
+
+///////////////////////////////////////////////////////////////////////////////
+// Note :
+	// Jump to JO2608 to perform area script after traveler leave for transition
+		// Related to JO_JOIN_CAMPAIGN_TRANSITION (Jo_joinI / All_in)
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+//
+	OR(2)
+		AreaCheck("BD6000")
+		AreaCheck("BD0120")
+//
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
+	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
+		Wait(4)
+		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
+		Wait(1)
+		FadeToColor([30.0],0)
+		StorePartyLocations()
+		Wait(3)
+		LeaveAreaLUA("JO2608","",[1232.891],1)
+END
+
+IF
+//
+	AreaCheck("JO2608")
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",3)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
+		FadeFromColor([45.0],0)
+		UnhideGUI()
+		RestorePartyLocations()
+END
+
+IF
+//
+	!AreaCheck("BD6000")
+	!AreaCheck("BD0120")
+	!AreaCheck("BD0130")
+	!AreaCheck("JO2608")
+	!Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",0)
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Avoid lauching banters in specific area // TODO : To Double Check
 
 ///////////////////////////////////////////////////////////////////////////////
 
-// BG1 End (See in JO_JOINP.baf REPLACE_TEXTUALLY in JOining_Party_Core.tph)
-//	REPLACE_BG1toSoD	IF // Undercity_TempleofBhaal
-//	REPLACE_BG1toSoD	//
-//	REPLACE_BG1toSoD		OR(2)
-//	REPLACE_BG1toSoD			!AreaCheck("%Undercity_TempleofBhaal%")
-//	REPLACE_BG1toSoD			!Dead("Sarevok")
-//	REPLACE_BG1toSoD	//
-//	REPLACE_BG1toSoD		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//	REPLACE_BG1toSoD	//
-//	REPLACE_BG1toSoD		Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
-//	REPLACE_BG1toSoD	THEN
-//	REPLACE_BG1toSoD		RESPONSE #100
-//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",0)
-//	REPLACE_BG1toSoD	END
+// BG1 / SoD End (See in JO_JOINP.baf REPLACE_TEXTUALLY in JOining_Party_Core.tph)
 
-// BG1 End (See in JO_JOINP.baf REPLACE_TEXTUALLY in JOining_Party_Core.tph)
-//	REPLACE_BG1toSoD	IF // Undercity_TempleofBhaal
-//	REPLACE_BG1toSoD	//
-//	REPLACE_BG1toSoD		AreaCheck("%NBaldursGate_DucalPalace_L1%")
-//	REPLACE_BG1toSoD		Dead("Sarevok")
-//	REPLACE_BG1toSoD		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//	REPLACE_BG1toSoD	//
-//	REPLACE_BG1toSoD	THEN
-//	REPLACE_BG1toSoD		RESPONSE #100
-//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
-//	REPLACE_BG1toSoD	END
-
-
-//	REPLACE_SoDtoBG2	IF
+IF // Undercity_TempleofBhaal
 //
-//	REPLACE_SoDtoBG2	AreaCheck("BD6000")
-//	REPLACE_SoDtoBG2	AreaCheck("BD6100")
-//	REPLACE_SoDtoBG2	AreaCheck("BD6200")
+	OR(2)
+		!AreaCheck("%Undercity_TempleofBhaal%")
+		!Dead("Sarevok")
 //
-//	REPLACE_SoDtoBG2	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
-//	REPLACE_SoDtoBG2	THEN
-//	REPLACE_SoDtoBG2	RESPONSE #100
-//	REPLACE_SoDtoBG2	SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
-//	REPLACE_SoDtoBG2	END
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+		SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",0)
+END
 
-//	REPLACE_BG1toSoD	IF // SoD End
+IF // Undercity_TempleofBhaal
+//
+	AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	Dead("Sarevok")
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+END
+
+IF
 //
 //		!AreaCheck("BD0130") // Should not be a problem
 //
-//	REPLACE_SoDtoBG2	!AreaCheck("BD6000")
-//	REPLACE_SoDtoBG2	!AreaCheck("BD6100")
-//	REPLACE_SoDtoBG2	!AreaCheck("BD6200")
-//	REPLACE_BG1toSoD	!AreaCheck("BD0120")
-//	REPLACE_BG1toSoD	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	!AreaCheck("BD6100")
+	!AreaCheck("BD6200")
+	!AreaCheck("BD0120")
+	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
 //
-//	REPLACE_BG1toSoD	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//	REPLACE_BG1toSoD	THEN
-//	REPLACE_BG1toSoD	RESPONSE #100
-//	REPLACE_BG1toSoD	SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-//	REPLACE_BG1toSoD	END
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+END
+
+IF
+//
+	AreaCheck("BD6100")
+	AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+END
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -548,27 +601,27 @@ END
 ///////////////////////////////////////////////////////////////////////////////
 
 // SoD bdplayer.bcs set in bdintro.bcs (See in JO_JOINP.baf REPLACE_TEXTUALLY in JOining_Party_Core.tph)
-//	REPLACE_BG1toSoD	IF
-//	REPLACE_BG1toSoD		Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
-//	REPLACE_BG1toSoD		HotKey(B)
-//	REPLACE_BG1toSoD		OR(2)
-//	REPLACE_BG1toSoD			INI("QAMODE",1)
-//	REPLACE_BG1toSoD			Global("BD_QAMODE","global",1)
-//	REPLACE_BG1toSoD	THEN
-//	REPLACE_BG1toSoD		RESPONSE #100
-//	REPLACE_BG1toSoD			SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-//	REPLACE_BG1toSoD			StartDialogOverride("bddebug",Myself)
-//	REPLACE_BG1toSoD	END
+IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+	HotKey(B)
+	OR(2)
+		INI("QAMODE",1)
+		Global("BD_QAMODE","global",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		StartDialogOverride("bddebug",Myself)
+END
 
 // EET player1.bcs set in ar0602.bcs
-//	REPLACE_SoDtoBG2	IF
-//	REPLACE_SoDtoBG2		Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
-//	REPLACE_SoDtoBG2		Global("JO_JOIN_Player1_DLG","ar0602",0)
-//	REPLACE_SoDtoBG2	THEN
-//	REPLACE_SoDtoBG2		RESPONSE #100
-//	REPLACE_SoDtoBG2			SetDialog("Player1")
-//	REPLACE_SoDtoBG2			SetGlobal("JO_JOIN_Player1_DLG","ar0602",1)
-//	REPLACE_SoDtoBG2	END
+IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	Global("JO_JOIN_Player1_DLG","ar0602",0)
+THEN
+	RESPONSE #100
+		SetDialog("Player1")
+		SetGlobal("JO_JOIN_Player1_DLG","ar0602",1)
+END
 
 ///////////////////////////////////////////////////////////////////////////////
 

@@ -396,6 +396,8 @@ ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
 
 	EXTEND_TOP ~JO2608.bcs~ ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
 
+	EXTEND_BOTTOM ~JO2608.bcs~ ~JOining_Party_Select/Baf/JO2608_Watch.baf~ EVALUATE_BUFFER
+
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.are~ BEGIN
@@ -478,12 +480,12 @@ END
 
 // Charname override script JO_JOINP.baf
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Join_ability.baf
-			PATCH_IF GAME_IS ~bgee bgt eet~ BEGIN
+			/*PATCH_IF GAME_IS ~bgee bgt eet~ BEGIN
 				REPLACE_TEXTUALLY ~//	REPLACE_BG1toSoD~ ~~
 			END
 			PATCH_IF GAME_IS ~eet~ BEGIN
 				REPLACE_TEXTUALLY ~//	REPLACE_SoDtoBG2~ ~~
-			END
+			END*/
 
 
 // JO_JOIN_COUNT_TRAVELER for JO_JOINC.baf
