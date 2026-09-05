@@ -165,7 +165,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Yeslick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%YESLICK_BCS%~)
 
 // Baeloth
-// Original Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDBAELOT~)
+// Original Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BAELOTH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDBAELOT~)
 
 /////////////////////////// SoD ///////////////////////////
 
@@ -451,8 +451,8 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // EET Xan_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%XAN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#XanS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Xan25S~)
 
 // EET Branwen_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%BRANWEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#BranS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Bra25S~)
-// Original Branwen // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN_~)
-// Original Branwen // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN~)
+// EET Branwen_Continuous // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN_~)
+// EET Branwen_Continuous // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN~)
 
 // EET Tiax_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%TIAX_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#TiaxS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Tia25S~)
 
