@@ -110,49 +110,8 @@ END
 				// Related to END_OF_WATCH in All_in.baf and END_OF_WATCH.tph
 /////////////////////////////////////////////////////////////////////////////////
 
-
-IF
-	OR(2)
-		AreaCheck("BD6000")
-		AreaCheck("BD0120")
-	OR(3)
-		AreaCheck("BD6000")
-		Dead("bdkorlas")
-		Global("BD_KORLASZ_SURRENDER","GLOBAL",1)
-//
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
-	Global("JO_NOJOIN","GLOBAL",0) // No join stop
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
-//
-	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
-	Delay(15)
-//
-	OR(2)
-		!ActuallyInCombat()
-		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
-	Switch("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL") // Only one traveler say something (Reset in JO2608.baf)
-THEN
-	RESPONSE #0
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
-		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
-		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
-		ChangeAIScript("",GENERAL)
-		SetInterrupt(TRUE)
-	RESPONSE #1
-		SetInterrupt(FALSE)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
-		ChangeAIScript("",GENERAL)
-		SetInterrupt(TRUE)
-END
+// (See in JOining_Party_Core.tph ... INCLUDE BG1_to_SoD_to_BG2.tph)
+		%JO_JOIN_CAMPAIGN_TRANSITION%
 
 
 ///////////////////////////////////////////////////////////////////////////////

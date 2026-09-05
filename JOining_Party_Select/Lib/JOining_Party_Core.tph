@@ -450,6 +450,9 @@ END
 
 //////////////////////////////////////////////////////////////////////////////////////
 
+// JO_JOINP / JO_JOINI transitions addition
+	INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_to_BG2.tph~
+
 // Traveler dedicated scripts
 
 		COMPILE ~weidu_external/JOining_Party_Select/JO_JOINI.baf~ EVALUATE_BUFFER
