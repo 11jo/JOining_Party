@@ -3,7 +3,7 @@
  // BDSODTRN cutscene to MoveToCampaign("SoD") 
 ///////////////////////////////////////////////////////////////////////////
 
-ACTION_IF GAME_IS ~eet~ BEGIN
+ACTION_IF GAME_IS ~eet~ AND MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
 
 	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
 //
@@ -21,7 +21,28 @@ THEN
 		MultiPlayerSync()
 END~~~~~
 
-END ELSE ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
+END ELSE ACTION_IF  GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
+
+	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
+//
+	Global("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)
+//
+	!AreaCheck("BD0120")
+THEN
+	RESPONSE #100
+		SetCursorState(TRUE)
+		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",0)
+		StartMovie("ENDMOVIE")
+		FadeToColor([1.0],0)
+		Wait(3)
+		StartMovie("SODCIN01")
+		FadeToColor([1.0],0)
+		Wait(1)
+		MoveToCampaign("SoD")
+		MultiPlayerSync()
+END~~~~~
+
+END ELSE ACTION_IF GAME_INCLUDES ~SoD~ AND NOT MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
 
 	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
 //
@@ -44,6 +65,31 @@ THEN
 		MoveToCampaign("SoD")
 		MultiPlayerSync()
 END~~~~~
+
+		
+
+END ELSE ACTION_IF GAME_INCLUDES ~SoD~ AND MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
+
+	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
+//
+	Global("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)
+//
+	!AreaCheck("BD0120")
+THEN
+	RESPONSE #100
+		SetCursorState(TRUE)
+		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",0)
+		StartMovie("endcrdit")
+		FadeToColor([1.0],0)
+		Wait(3)
+		StartMovie("SODCIN01")
+		FadeToColor([1.0],0)
+		Wait(1)
+		MoveToCampaign("C#STSD")
+		MultiPlayerSync()
+		SetCursorState(TRUE)
+END~~~~~
+
 
 END ELSE BEGIN
 
