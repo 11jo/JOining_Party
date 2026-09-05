@@ -128,6 +128,13 @@ IF
 //
 	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
 	Delay(15)
+//
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
 	Switch("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL") // Only one traveler say something (Reset in JO2608.baf)
 THEN
 	RESPONSE #0
@@ -135,14 +142,12 @@ THEN
 		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
 		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
 		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
-		Wait(4)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
 		ChangeAIScript("",GENERAL)
 		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetInterrupt(FALSE)
-		Wait(4)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
 		ChangeAIScript("",GENERAL)

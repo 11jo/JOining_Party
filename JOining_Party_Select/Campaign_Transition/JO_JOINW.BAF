@@ -12,23 +12,27 @@
 
 IF
 //
-	Global("JO2608_Create","MYAREA",1)
+	AreaCheck("JO2608")
+	Global("JO2608_Create","LOCALS",1)
 THEN
 	RESPONSE #100
 		FadeToColor([00.0],0)
-		ActionOverride(Player1,SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2))
-		DisplayStringHead(Player1,~...~)
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2)
+		DisplayStringHead(Myself,~...~)
 		AddMapNote([1894.1155],~Travelers Items~)
 		Wait(5)
-		DisplayStringHead(Player1,~Hum...~)
-		SetGlobal("JO2608_Create","MYAREA",0)
+		DisplayStringHead(Myself,~Hum...~)
+		SetGlobal("JO2608_Create","LOCALS",2)
 END
 
 IF
 //
-	Global("JO2608_Create","MYAREA",0)
-	TriggerOverride(Player1,Global("JO_JOIN_JUMP_JO2608","LOCALS",2))
+	AreaCheck("JO2608")
+	Global("JO2608_Create","LOCALS",2)
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",2)
 THEN
 	RESPONSE #100
-		ActionOverride(Player1,SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",3))
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",3)
+		SetGlobal("JO2608_Create","LOCALS",0)
+		ChangeAIScript("JO_JOINP",OVERRIDE)
 END

@@ -495,16 +495,24 @@ IF
 //
 	Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
 	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+//
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
 		Wait(4)
 		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
-		Wait(1)
+		Wait(4)
 		FadeToColor([30.0],0)
 		StorePartyLocations()
-		Wait(3)
+		Wait(1)
 		LeaveAreaLUA("JO2608","",[1232.891],1)
+		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
 
 IF
@@ -514,8 +522,10 @@ IF
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
+		Wait(1)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
 		FadeFromColor([45.0],0)
+		SetCutSceneLite(FALSE)
 		UnhideGUI()
 		RestorePartyLocations()
 END

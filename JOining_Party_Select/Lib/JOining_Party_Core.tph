@@ -383,20 +383,20 @@ COPY ~JOining_Party_Select/Cre/JOJOINNE.CRE~ ~override~
 		COMPILE ~JOining_Party_Select/Baf/JOJOINNE.baf~ EVALUATE_BUFFER
 
 // JO2608
+/*
+In Not_So_Always.tpa
 
 ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
 
 	COMPILE ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
 
 END
-
+*/
 	COMPILE ~JOining_Party_Select/Baf/JO260801.baf~ EVALUATE_BUFFER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
 
 	EXTEND_TOP ~JO2608.bcs~ ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
-
-	EXTEND_BOTTOM ~JO2608.bcs~ ~JOining_Party_Select/Baf/JO2608_Watch.baf~ EVALUATE_BUFFER
 
 END
 
