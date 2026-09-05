@@ -131,33 +131,37 @@
 | JO_Myself_AllowDead | L | Replace regular `InPartyAllowDead(Myself)` | 0: False<br>Other: True |
 | JO_Myself_InParty | L | Replace regular `InParty(Myself)` | 0: False<br>Other: True |
 | JO_Myself_Valid | L | Replace regular `IsValidForPartyDialog(Myself)` | 0: False<br>Other: True |
-| JO_NOJOIN | G | Familiars can no longer switch | 0: False<br>Other: True |
-| JO_JOIN_CAMPAIGN | G | **For regular NPC** (Include Imoen) : Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>Other: not initialized
-| JO_JOIN_CAMPAIGN_EET | G | **For continuous NPC** (Except Imoen) : Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>5: EET<br>Other: not initialized
-| JO_JOIN_CAMPAIGN_BANTER | G | Set variable corresponding to game campaign to enable relevant banters / Dream talks dialogs |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>Other: not initialized
-| JO_JOIN_PLAYER1_INIT | G | Special Charname at character creation, to be sure DPLAYER3.BCS is set | 0: False<br>Other: True |
-| JO_JOIN_PLAYER_INIT | L | Special exportable character at creation | 0: False<br>Other: True |
-| JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True |
 | JO_Myself_LeaveParty | L | If set traveler will automatically be added an instant to the group then removed, in order to set leaving dialog | 0: False<br>1: activate<br>2: processing |
+| **Traveler**  |   | |
+| JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
+| JO_TRAVELER_%Death_var% | G | Set if the NPC is a familiar, used to deal with LeaveParty() | 0: False<br>Other: True 
 | JO_JOIN_SLEEPING_DEAD | L | If traveler is sleeping dead | 0: False<br>Other: True |
 | JO_JOIN_LINK_PLAYER_ID | L | Used to link a traveler to a specific party member | 1: Player1<br>...<br>6: Player6<br>Other: Player1Fill|
-| JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 |
+| JO_JOIN_LINK_TYPE | L | Used to indicate the type of link to a specific party member | -1: No move<br>0: No automatic move<br>1: Teleport if > 70, move if range > 50<br>2: Teleport if > 70, move if range > 5<br>Other: Teleport if range > 70 ||
 | JO_JOIN_WANNABE_TRAVELER | L | Party member eligible to become traveler. | 0: False<br>Other: True
 | JO_JOIN_WANNABE_INIT | L | JO_JOIN_WANNABE_TRAVELER is set to 1 first time | 0: False<br>Other: True
+|   |   | |
+| JO_NOJOIN | G | Familiars can no longer switch | 0: False<br>Other: True |
+| JO_NOJOIN_LOCALS | L | |
 | JO_JOIN | L | Transform to traveler | 1: process of becoming traveler is actived<br>2: process is over<br>Other: normal status |
 | JO_JOIN_TALK | L | For first time becoming a traveler | 0: False<br>Other: True |
 | JO_JOINI | L | Set when traveler switch in party, and enable block to return to traveler state | 0: False<br>Other: True |
 | JO_JOIN_IS_JOINING | L | The traveler will go close to Charname or linked party member before switching in party | 0: False<br>Other: True |
-| JO_JOIN_IS_TRAVELER | L | If the character is traveler regardless of its EA | 0: False<br>Other: True |
 | JO_JOIN_SET_JOINX | L | Used to keep assigned RACE script (JOINX) when switching in and out party | 1: During switch, before JoinParty<br>2: nothing<br>3: Script is up to date<br>Other: nothing|
-| JO_JOIN_SET_JOINM | L | Used to keep assigned RACE script (JOINM) to check variables | 1: Call to script<br>2: Script is running<br>Other: nothing |
+| **Campaign** |   | |
+| JO_JOIN_CAMPAIGN_BG1 | A | |
+| JO_JOIN_CAMPAIGN_BG2 | A | |
+| JO_JOIN_CAMPAIGN_SoD | A | |
+| JO_JOIN_CAMPAIGN_ToB | A | |
+| JO_JOIN_CAMPAIGN | G | **For regular NPC** (Include Imoen) : Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>Other: not initialized
+| JO_JOIN_CAMPAIGN_EET | G | **For continuous NPC** (Except Imoen) : Set variable corresponding to game campaign to enable relevant override scripts and joining dialog |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>5: EET<br>Other: not initialized
+| JO_JOIN_CAMPAIGN_BANTER | G | Set variable corresponding to game campaign to enable relevant banters / Dream talks dialogs |1: BGEE<br>2: SoD<br>3: BG2EE - SoA<br>4: BG2EE - ToB<br>Other: not initialized |
+|   |   | |
 | JO_JOIN_CUTSCENE | G | Cutscene is currently active | 0: False<br>2: CutSceneLite is active<br>Other: CutSceneMod is active |
 | JO_JOIN_HIDE_CUTSCENE | L | Active or deactive traveler presence in cutscene | 0: False<br>Other: True |
 | JO_JOIN_IS_HIDDEN | L | Traveler is currently Deactivate by a cutscene | 0: False<br>Other: True |
 | JO_JOIN_FORCE_HIDE | G | Force travelers to be deactivate | 0: False<br>Other: True |
-| JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
-| JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
-| JO_JOIN_Move_Done | L | Related to `JO_JOIN_Move_Around` used to make the script apply only once until next command | 0: False<br>Other: True
+| **Switching Party** |   | |
 | JO_JOIN_NO_SWITCH_PARTY | G | Active party switching | 0: False<br>Other: True
 | JO_JOIN_SWITCHING_PARTY | G | Party switching step | 0: inactive<br>1: is starting<br>2: target found<br>3: switching
 | JO_JOIN_SWITCH_TIMER | L | Timer for Switching party between traveler and party member. | n/a |
@@ -165,13 +169,17 @@
 | JO_JOIN_SWITCH_WITH_ME | L | Party switching with PartySlotX is process | 0: Available<br>1: PartySlot1<br>2: PartySlot2<br>3: PartySlot3<br>4: PartySlot4<br>5: PartySlot5<br>6: PartySlot6
 | JO_JOIN_NEVER_SWITCH | L | Prevent traveler switch with party member. | 0: False<br>Other: True
 | JO_JOIN_PARTY_SWITCH | G | Party members awaiting to reintegrate the group | Unused
+| JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
+| **Banter / Dream talk**  |   | |
 | JO_JOIN_NEVER_BANTER | L | Prevent traveler banter. | 0: False<br>Other: True
-| JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
-| JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
 | JO_JOIN_BANTER_TIMER | L | Timer for fire banters when traveler. | n/a
 | JO_JOIN_BANTER_BLOCK | G | Active if BanterBlockFlag action is set to TRUE by the mod | 0: False<br>Other: True |
 | JO_JOIN_BANTERBLOCKTIMER | G | `JO_JOIN_BANTER_BLOCK` blocking timer | n/a |
-| JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
+| JO_JOIN_BANTER_INTERACT | L | |
+| JO_JOIN_BANTER_TIMER | G | |
+| JO_JOIN_DREAM_REST | G | Set after party resting | 0: False<br>Other: True
+| JO_JOIN_DREAM_DONE | L | Set after apply effects if `JO_JOIN_DREAM_REST` is True | 0: False<br>Other: True
+| **Loading Switch** |   | |
 | JO_TRAVELER_%Death_var%_SET | G | Set if the NPC has completed its loading switch | 0: False<br>Other: True
 | JO_JOIN_TRAVELER_NUM | G | Check if a least one traveler is present | 0: False<br>Other: True
 | JO_JOIN_LOADING_SWITCH | G | Launch Loading Switch script/CutSceneLite |0: not initialized<br>1: initialisation<br>2: slot6 is leaving<br>3: travelers switching<br>4: slot6 returns and go back to aventure
@@ -179,58 +187,64 @@
 | JO_JOIN_LOAD_PARTY_WAIT | G | | 0: False<br>Other: True
 | JO_JOIN_LOADING_MAX | L | | Number of traveler autorised to switch at the same time | 1: 1 traveler<br>2:  2 travelers<br>3:  3 travelers<br>
 | JO_JOIN_FORCE_LOAD | G | Force the Loading Switch at will | 0: False<br>Other: True
-| JO_JOIN_PS_SAFE_SLOT | G | Protect some party slot to switching party | 1: Slot1 only<br>2: Slot1 & 2<br>3: Slot1 to 3<br>4: Slot1 to 4<br>5: Slot1 to 5<br>6+: All slots<br>Other: All slot are available
+| JO_JOIN_SAFE_LOAD | L | |
+| JO_JOIN_LOAD | L | |
+| JO_JOIN_LOADING_BREAKABLE | L | |
+| JO_JOIN_LOOK_AT_ME | L | |
+| **Quick Switch** |   | |
 | JO_JOIN_NO_QUICK_SWITCH | G | Active quick switch | 0: False<br>Other: True |
 | JO_JOIN_QUICK_SWITCH | L | |
 | JO_JOIN_QUICK_FORCE_JOIN | L | Force the quick switch | 0: False<br>Other: True |
 | JO_JOIN_QUICK_NEVER_JOIN | L | Temporarly prevent travelers to switch or join the group | 0: False<br>Other: True
 | JO_JOIN_QUICK_JOIN_TIMER | L | Timer between quick switch | n/a
+|   |   | |
 | JO_JOIN_NOPRIVACY | G | | 0: False<br>Other: True |
 | JO_JOIN_PRIVACY | L | Automatically deactive travelers if Charname is in another area of the party | 0: False<br>Other: True
 | JO_JOIN_NOINDEPANDANCE | G | If set, independance process is inactive | 0: False<br>Other: True |
 | JO_JOIN_INDEPANDANCE | L | Deactive travelers if Charname is separate from the party but in the same area | 0: inactive<br>3: 30 feet<br>5: 5 feet<br>8: 80 feet<br>10: 100 feet
 | JO_JOIN_NEED_INDEPANDANT | L | Desired value for `JO_JOIN_INDEPANDANCE` | 0: inactive<br>3: 30 feet<br>5: 5 feet<br>8: 80 feet<br>10: 100 feet
 | JO_JOIN_IS_INDEPANDANT | L | Set if the traveler is Deactivate by INDEPANDANCE process | 0: False<br>Other: True
+| **Fill Party** |   | |
 | JO_JOIN_NO_FILL_PARTY | G | Active fill party | process | 0: False<br>Other: True
 | JO_JOIN_FILL_PARTY | L | Allow traveler to join the group properly and automatically if free slots are available | 0: False<br>1: work in progress<br>2: end
 | JO_JOIN_NEVER_FILL | L | Prevent traveler to join the group properly and automatically if free slots are available | 0: False<br>Other: True |
 | JO_JOIN_FORCE_FILL_PARTY | L | Force the traveler to join the group | 0: False<br>Other: True |
-| JO_JOIN_AREA | A | If current area is master area | 0: False<br>Other: True |
+| **Transition** |   | |
 | JO_JOIN_AREA_TRANSITION | G | If Player1 is currently on transition area between campaign | 0: False<br>Other: True |
 | JO_JOIN_CAMPAIGN_TRANSITION | G | Prevent multiple travelers to execute the same action | 0: False<br>Other: True |
 | JO_JOIN_TALK_TRANSITION | L | Associated to JO_JOIN_CAMPAIGN_TRANSITION only one traveler will talk | 0: False<br>Other: True |
 | JO_JOIN_END_OF_WATCH | L | Travelers leave the group for the Switching room, variable associated to JO_JOIN_CAMPAIGN_TRANSITION | 0: False<br>Other: True |
 | JO_JOIN_END_OF_SOD | L | Enabled at SoD end, used to distinguish traveler with BG2 content | 0: Special<br>Other: Special |
 | JO_JOIN_END_OF_BG1 | L | Enabled at BG1 end, used to distinguish traveler with SoD content | 0: Special<br>Other: Special |
-| JO2608_Create | L | Simple area variable to slow down script process | 0: False<br>Other: True |
+| JO_JOIN_BG1_TRANSITION | A | |
+| JO2608_Create | A | Simple area variable to slow down script process | 0: False<br>Other: True |
+| JO_JOIN_BD0120_xx | A | Specific to Korlaz donjon, used to keep traveler xx along. | 0: False<br>Other: True |
+| JO_JOIN_BD0103_START | A | |
+| JO_JOIN_BD0103_END | A | |
+| JO_JOIN_JUMP_JO2608 | L | |
+| JO_JOIN_Player1_DLG | A | 
+|   |   | |
 | JO_JOIN_COUNT_TRAVELER | L | If True, Player1 display travelers count | 0: False<br>Other: True |
+| JO_JOINP_%Death_var% | L | |
 | JO_JOIN_LEGION | L | Traveler count, Player1 only | n/a |
 | JO_JOIN_PARTY_MEMBER | L | Party member not listed in Pdialog.2da | 0: False<br>Other: True |
 | JO_JOIN_PARTY_TRAVELER | L | Party member listed in Pdialog.2da | 0: False<br>Other: True |
 | JO_JOIN_TALK_PLAYER | L | The party member who is going to speak with the traveler | 0: inactive<br>1: Player1<br>…<br>6: Player6
 | JO_JOIN_PROTAGONIST | G | Active if Player is in PartySlot0. Unused. | 0: False<br>Other: True |
+| JO_JOIN_PLAYER1_INIT | G | Special Charname at character creation, to be sure DPLAYER3.BCS is set | 0: False<br>Other: True |
+| JO_JOIN_PLAYER_INIT | L | Special exportable character at creation | 0: False<br>Other: True
+| JO_JOIN_Move_Around | G | Charname general dialog set different number to make all current traveler reaction at once | 0: No action<br>value: current `value` dialog option is active |
+| JO_JOIN_Move_Done | L | Related to `JO_JOIN_Move_Around` used to make the script apply only once until next command | 0: False<br>Other: True
+|   |   | |
+| JO_JOIN_DEV_MODE | G | Active the dev mod if is True | 0: False<br>Other: True
 | JO_JOIN_PS_NO_TIMER_DEV | G | Deactive the timer during party switch | 0: False<br>Other: True |
 | JO_JOIN_RETURN_SLOT | G | |
 | JO_JOIN_PARTYSLOT | L | |
-| JO_JOIN_BANTER_INTERACT | L | |
-| JO_JOIN_BANTER_TIMER | G | |
-| JO_JOIN_BLOP | G | |
+| JO_JOIN_BLOP | G | ||
+| JO_JOIN_SET_JOINM | L | Used to keep assigned RACE script (JOINM) to check variables | 1: Call to script<br>2: Script is running<br>Other: nothing |
+| JO_JOIN_AREA | A | If current area is master area | 0: False<br>Other: True 
 | JO_JOIN_BREAKABLE | G | |
-| JO_JOIN_DREAM_REST | G | |
-| JO_JOIN_DREAM_REST | L | |
-| JO_JOIN_LOAD | L | |
-| JO_JOIN_LOADING_BREAKABLE | L | |
-| JO_JOIN_LOOK_AT_ME | L | |
-| JO_NOJOIN_LOCALS | L | |
-| JO_JOINP_%Death_var% | L | |
-| JO_JOIN_Player1_DLG | A | |
-| JO_JOIN_BG1_TRANSITION | A | |
-| JO_JOIN_CAMPAIGN_BG1 | A | |
-| JO_JOIN_CAMPAIGN_BG2 | A | |
-| JO_JOIN_CAMPAIGN_SoD | A | |
-| JO_JOIN_CAMPAIGN_ToB | A | |
-| JO_JOIN_BD0103_START | A | |
-| JO_JOIN_BD0103_END | A | |
+|   |   | |
 
 
 ---
