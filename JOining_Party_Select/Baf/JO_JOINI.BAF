@@ -2457,15 +2457,7 @@ IF // First check
 	// JO_JOIN_PS_SAFE_SLOT must be in [0, 5]
 	!GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
-END
 
-IF //
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
 	NumInPartyGT(5)
 	OR(2)
 		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
@@ -2502,12 +2494,42 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
 
 IF //
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
+// Party member can be eligible
+	// JO_JOIN_PS_SAFE_SLOT must be in [0, 5]
+	!GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)
+
 	NumInPartyGT(4)
 	OR(3)
 		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
@@ -2541,12 +2563,42 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
 
 IF //
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
+// Party member can be eligible
+	// JO_JOIN_PS_SAFE_SLOT must be in [0, 5]
+	!GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)
+
 	NumInPartyGT(3)
 	OR(4)
 		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
@@ -2576,12 +2628,42 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
 
 IF //
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
+// Party member can be eligible
+	// JO_JOIN_PS_SAFE_SLOT must be in [0, 5]
+	!GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)
+
 	NumInPartyGT(2)
 	OR(5)
 		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
@@ -2606,12 +2688,42 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
 
 IF //
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
+// Party member can be eligible
+	// JO_JOIN_PS_SAFE_SLOT must be in [0, 5]
+	!GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)
+
 	NumInPartyGT(1)
 	OR(6)
 		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
@@ -2630,12 +2742,13 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
 
 IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It could be my switching party
 	NumInParty(6)
 	OR(3)
 		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
@@ -2669,8 +2782,32 @@ THEN
 END
 
 IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
 	NumInParty(5)
 	OR(3)
 		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
@@ -2700,8 +2837,32 @@ THEN
 END
 
 IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
 	NumInParty(4)
 	OR(3)
 		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
@@ -2727,8 +2888,32 @@ THEN
 END
 
 IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
 	NumInParty(3)
 	OR(3)
 		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
@@ -2750,8 +2935,32 @@ THEN
 END
 
 IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
+// Global checks
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	OR(2)
+		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
+		!Global("JO_JOIN_BLOP","GLOBAL",0)
+// Local checks
+	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
+	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+// No combat
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+
 	NumInParty(2)
 	OR(3)
 		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
@@ -2782,7 +2991,9 @@ END
 IF
 //
 	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step != 0
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+	OR(2)
+		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It could be my switching party
 	Global("JO_NOJOIN","GLOBAL",1)
 	Global("JO_NOJOIN_LOCALS","LOCALS",0)
 THEN
