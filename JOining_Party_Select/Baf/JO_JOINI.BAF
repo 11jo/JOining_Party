@@ -2457,6 +2457,16 @@ IF // First check
 	// JO_JOIN_PS_SAFE_SLOT must be in [0, 5]
 	!GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
 	GlobalLT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+END
+
+IF //
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInPartyGT(5)
 	OR(2)
 		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
@@ -2492,37 +2502,141 @@ IF // First check
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+END
+
+IF //
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInPartyGT(4)
+	OR(3)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(4)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(5)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(6)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(7)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+END
+
+IF //
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInPartyGT(3)
+	OR(4)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(5)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(6)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(7)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+END
+
+IF //
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInPartyGT(2)
+	OR(5)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(6)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(7)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
+END
+
+IF //
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInPartyGT(1)
+	OR(6)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+	OR(7)
+		!Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot2,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot3,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot4,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot5,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
+THEN
+	RESPONSE #100
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
 
 IF // No slot found because they are safe or members are not wannabe
-	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) // Switching party is active
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step 0
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1)
-// Global checks
-	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) // Compatible map
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
-	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
-	Global("JO_NOJOIN","GLOBAL",0) // No join stop
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
-//
-	OR(2)
-		!Global("JO_JOIN_AREA","MYAREA",0) // Is Master Area
-		!Global("JO_JOIN_BLOP","GLOBAL",0)
-// Local checks
-	Global("JO_Myself_LeaveParty","LOCALS",0) // Leave Party inactive
-	Global("JO_JOIN_IS_JOINING","LOCALS",0) // Not joining party already
-	Global("JO_JOIN","LOCALS",0)
-	Global("JO_JOINI","LOCALS",0)
-// No combat
-	OR(2)
-		!ActuallyInCombat()
-		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
-	OR(2)
-		!See([ENEMY])
-		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
-
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInParty(6)
 	OR(3)
 		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)
 		NumInPartyLT(6)
@@ -2548,6 +2662,107 @@ IF // No slot found because they are safe or members are not wannabe
 		TriggerOverride(PartySlot1,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
+END
+
+IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInParty(5)
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",4)
+		NumInPartyLT(5)
+		TriggerOverride(PartySlot5,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
+		NumInPartyLT(4)
+		TriggerOverride(PartySlot4,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		NumInPartyLT(3)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		NumInPartyLT(2)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(2)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
+END
+
+IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInParty(4)
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",3)
+		NumInPartyLT(4)
+		TriggerOverride(PartySlot4,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		NumInPartyLT(3)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		NumInPartyLT(2)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(2)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
+END
+
+IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInParty(3)
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",2)
+		NumInPartyLT(3)
+		TriggerOverride(PartySlot3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		NumInPartyLT(2)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(2)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
+		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
+END
+
+IF // No slot found because they are safe or members are not wannabe
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It is my switching party
+	NumInParty(2)
+	OR(3)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",1)
+		NumInPartyLT(2)
+		TriggerOverride(PartySlot2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+	OR(2)
+		GlobalGT("JO_JOIN_PS_SAFE_SLOT","GLOBAL",0)
+		TriggerOverride(PartySlot1,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
 		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
