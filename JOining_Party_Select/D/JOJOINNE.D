@@ -86,6 +86,9 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> Show us what you got.^-~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player2,StartDialogueNoSet(Player1))~ EXIT
 // leave the group at loading
 	/*IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
@@ -152,6 +155,9 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFFFDF10<PLAYER3> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFFFDF10<PLAYER3> Show us what you got.^-~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player3,StartDialogueNoSet(Player1))~ EXIT
 // leave the group at loading
 /*	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
@@ -185,6 +191,9 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF82E6FF<PLAYER4> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FF<PLAYER4> Show us what you got.^-~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player4,StartDialogueNoSet(Player1))~ EXIT
 // leave the group at loading
 /*	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player4,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
@@ -218,6 +227,9 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFf4cccc<PLAYER5> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFf4cccc<PLAYER5> Show us what you got.^-~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player5,StartDialogueNoSet(Player1))~ EXIT
 // leave the group at loading
 /*	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player5,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
@@ -251,6 +263,9 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFffe599<PLAYER6> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
+		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFffe599<PLAYER6> Show us what you got.^-~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player6,StartDialogueNoSet(Player1))~ EXIT
 // leave the group at loading
 /*	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player6,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))
@@ -420,7 +435,7 @@ IF ~~ THEN BEGIN MOVE_AROUND
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFTravelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFStay close to me or your partner !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",17)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFDon't be afraid and come closer...^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",9)~ EXIT //
-	
+
 // Privacy
 	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",0)~ EXIT //
 	IF ~Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI am an open book, no need for privacy.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",1)~ EXIT //
@@ -573,7 +588,7 @@ IF ~~ THEN BEGIN INDEPENDANCE
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",19)~ EXIT //
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",20)~ EXIT //
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",21)~ EXIT //
-	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT 
+	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT
 END
 
 // Switch party
@@ -604,7 +619,7 @@ IF ~~ THEN BEGIN QUICK_SWITCH
 		OR(2)
 			!Global("JO_JOIN_AREA","MYAREA",0)
 			!Global("JO_JOIN_BLOP","GLOBAL",0)
-		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0) 
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 		NumInPartyLT(6)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^GLet's Quick Switch, one by one, quietly and in order.^-~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0) SetGlobal("JO_JOIN_Move_Around","GLOBAL",7)~ EXIT //
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)
