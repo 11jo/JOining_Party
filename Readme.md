@@ -214,6 +214,23 @@ Afterwards, you may delete the following files:
 ### Version History :
 --------------------
 
+- Beta v1.5
+	- Rework Leave Party
+	- Rework Campaign transitions
+	- Rework PID
+	- Rework Installation for scripts
+	- Rename files
+	- Add support for Continuous_End mod
+	- Add support for Autumn Twilight mod
+	- Add support for New Tales of the Sword Coast mod
+	- Add support for Walahnan mods
+	- Add support for Imoen Forever mod
+	- Add support for Endless BG1 mod
+	- Clean up
+	- Typos and errors corrections
+	- Add infos in scripts files
+	- Many others things... 
+
 - Beta v1.3
 	- Big rework for the Loading Switch
 	- Rework Leave Party
