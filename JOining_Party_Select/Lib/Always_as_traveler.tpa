@@ -2011,6 +2011,34 @@ END
 
 	END
 
+// Aerie in BG:EE
+
+
+ACTION_IF (MOD_IS_INSTALLED ~BG1Aerie.TP2~ ~5000~) THEN BEGIN
+
+	ACTION_IF Aerie_BG1_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Aerie_BG1~ ~~
+			PRINT ~    Aerie BG1 as traveler
+			~
+
+				 OUTER_SET ~B2#Aeri_BG2_Content~ = 1
+
+	END ELSE ACTION_IF Aerie_BG1_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Aerie_BG1~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Aerie_BG1~ ~~
+			PRINT ~    Aerie BG1 as real traveler
+			~
+
+				 OUTER_SET ~B2#Aeri_BG2_Content~ = 1
+
+	END
+
+END
+
 // Next_Traveler BG1
 
 
