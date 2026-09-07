@@ -98,7 +98,31 @@ THEN
 		Continue()
 END
 
+// JO_JOIN_IS_JOINING
 
+IF
+	InPartyAllowDead(Myself)
+	!Global("JO_JOIN_IS_JOINING","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_IS_JOINING","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_IS_JOINING = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
+		Continue()
+END
+
+// JO_JOIN_SET_JOINX
+
+IF
+	InPartyAllowDead(Myself)
+	!Global("JO_JOIN_SET_JOINX","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_SET_JOINX","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_SET_JOINX = <JO_TEST_VALUE>, expected: 0^-~)
+		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",0)
+		Continue()
+END
 
 // JO_NOJOIN_LOCALS
 
@@ -261,10 +285,14 @@ END
 // END
 
 IF
-	True()
+	Switch("JO_JOIN_JOINM_NOTALK","LOCALS")
 THEN
-	RESPONSE #100
+	RESPONSE #0
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",0)
 		DisplayStringHead(Myself,~Ended !~)
+		ChangeAIScript("",RACE)
+	RESPONSE #1
+		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",0)
+		SetGlobal("JO_JOIN_JOINM_NOTALK","LOCALS",0)
 		ChangeAIScript("",RACE)
 END
