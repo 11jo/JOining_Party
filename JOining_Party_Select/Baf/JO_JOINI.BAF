@@ -3005,9 +3005,7 @@ END
 IF
 //
 	!Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Switching party step != 0
-	OR(2)
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
-		Global("JO_JOIN_READY_TO_SWITCH","LOCALS",20) // It could be my switching party
+	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 	Global("JO_NOJOIN","GLOBAL",1)
 	Global("JO_NOJOIN_LOCALS","LOCALS",0)
 THEN
