@@ -25,7 +25,7 @@
 // EET core without EET_END
 
 		INCLUDE ~JOining_Party_Select/Lib/eet_cpmvars.tpa~
-		PRINT ~Game is EET 
+		PRINT ~Game is EET
 		~
 
 		OUTER_SPRINT "CAMPAIGN_BGEE" "5"
@@ -145,7 +145,7 @@
 		OUTER_SPRINT "DORN25J"  "DORNJ"
 		OUTER_SPRINT "NEERA25J" "NEERAJ"
 		OUTER_SPRINT "RASAA25J" "RASAADJ"
-		
+
 		OUTER_SPRINT "AERIE25J" "AERIEJ"
 		OUTER_SPRINT "ANOME25J" "ANOMENJ"
 		OUTER_SPRINT "CERND25J" "CERNDJ"
@@ -170,7 +170,7 @@
 		OUTER_SPRINT "DORN25J"  "DORN25J"
 		OUTER_SPRINT "NEERA25J" "NEERA25J"
 		OUTER_SPRINT "RASAA25J" "RASAA25J"
-		
+
 		OUTER_SPRINT "AERIE25J" "AERIE25J"
 		OUTER_SPRINT "ANOME25J" "ANOME25J"
 		OUTER_SPRINT "CERND25J" "CERND25J"
@@ -221,7 +221,8 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 
 // Extend_JOJOINNE.D workaround
 
-			OUTER_SPRINT "%IMOEN_DV%_name"            "Imoen"
+			OUTER_SPRINT "Imoen_name"                 "Imoen"
+			OUTER_SPRINT "Imoen2_name"                "Imoen"
 			OUTER_SPRINT "Edwin_name"                 "Edwin"
 			OUTER_SPRINT "Jaheira_name"               "Jaheira"
 			OUTER_SPRINT "Minsc_name"                 "Minsc"
@@ -396,7 +397,7 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 
 	OUTER_SET Continuous_Alora = 0 // DESIGNATED 1
 
-	OUTER_SET Continuous_Ajantis = 0 // DESIGNATED 2 
+	OUTER_SET Continuous_Ajantis = 0 // DESIGNATED 2
 
 	OUTER_SET Continuous_Branwen = 0 // DESIGNATED 5
 
@@ -414,7 +415,7 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 
 	OUTER_SET Continuous_Yeslick = 0 // DESIGNATED 9
 
-// 
+//
 
 ACTION_IF (GAME_IS ~eet~) BEGIN
 
@@ -480,7 +481,7 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 
 END
 
-// 
+//
 
 // Load travelers selection
 
