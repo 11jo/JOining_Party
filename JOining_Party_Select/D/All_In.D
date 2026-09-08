@@ -250,6 +250,11 @@ StartDialogueNoSet(Player6)~ EXIT
 		SmallWait(1)
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT //
 
+// Inventory management
+		IF ~~ THEN REPLY ~^0xFF660000Carry my items please.^-~ DO ~TakeCreatureItems(LastTalkedToBy(),BACKPACK)~ EXIT
+		IF ~~ THEN REPLY ~Hand over...~ GOTO JO_JOINnaked
+		IF ~~ THEN REPLY ~^-Let's take a look at your equipment.^-~ GOTO JO_JOINequip
+
 // Corrections
 		IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF2968A6So, we need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
 
@@ -603,6 +608,64 @@ StartDialogueNoSet(Player6)~ EXIT
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF50 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",5)~ GOTO JO_JOINYes //
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF80 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",8)~ GOTO JO_JOINYes //
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",10)~ GOTO JO_JOINYes //
+	END
+
+////////////////////////////////////////////////////
+	// Inventory management
+////////////////////////////////////////////////////
+
+    // Equip items
+	IF ~~ THEN BEGIN JO_JOINequip
+		SAY ~Hey, don't undress me with your eyes...~
+			IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO LEGION
+			IF ~!HasItemSlot(Myself,SLOT_AMULET)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_AMULET)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_AMULET)~ THEN REPLY ~I already wear an amulet.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_BELT)~ THEN REPLY ~Wear the belt in you inventory.~ DO ~FillSlot(SLOT_BELT)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_BELT)~ THEN REPLY ~I already wear a belt.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_BOOTS)~ THEN REPLY ~Wear the boots in you inventory.~ DO ~FillSlot(SLOT_BOOTS)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_BOOTS)~ THEN REPLY ~I already wear boots.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_CLOAK)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_CLOAK)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_CLOAK)~ THEN REPLY ~I already wear an cloak.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_GAUNTLETS)~ THEN REPLY ~Wear the gauntlets in you inventory.~ DO ~FillSlot(SLOT_GAUNTLETS)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_GAUNTLETS)~ THEN REPLY ~I already wear gauntlets.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_RING_LEFT)~ THEN REPLY ~Wear the ring in you inventory.~ DO ~FillSlot(SLOT_RING_LEFT)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_RING_LEFT)~ THEN REPLY ~I already have a ring on my right hand.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_SHIELD)~ THEN REPLY ~Equip the shield in you inventory.~ DO ~FillSlot(SLOT_SHIELD)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_SHIELD)~ THEN REPLY ~I already carry a shield.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_HELMET)~ THEN REPLY ~Equip the helm in you inventory.~ DO ~FillSlot(SLOT_HELMET)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_HELMET)~ THEN REPLY ~I already wear a helm.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_ARMOR)~ THEN REPLY ~Equip the armor in you inventory.~ DO ~FillSlot(SLOT_ARMOR)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_ARMOR)~ THEN REPLY ~I already wear an armor.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_WEAPON)~ THEN REPLY ~Equip one of the weapon in you inventory.~ DO ~FillSlot(SLOT_WEAPON)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_WEAPON)~ THEN REPLY ~I already have a weapon.~ GOTO JO_JOINequip
+
+			IF ~!HasItemSlot(Myself,SLOT_AMMO)~ THEN REPLY ~Use the projectiles in you inventory.~ DO ~FillSlot(SLOT_AMMO)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_AMMO)~ THEN REPLY ~I already use projectiles.~ GOTO JO_JOINequip
+
+
+			IF ~!HasItemSlot(Myself,SLOT_MISC0)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC0)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_MISC1)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC1)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_MISC2)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC2)~ GOTO JO_JOINequip
+			IF ~HasItemSlot(Myself,SLOT_MISC2) HasItemSlot(Myself,SLOT_MISC1) HasItemSlot(Myself,SLOT_MISC0)~ THEN REPLY ~I cannot use more combat items.~ GOTO JO_JOINequip
+	END
+
+    // Hand over items
+	IF ~~ THEN BEGIN JO_JOINnaked
+		SAY ~Hey, don't strip me down !~
+			IF ~~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,WEAPONS))~ EXIT //
+			IF ~~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
+			IF ~~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
+			IF ~~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,BACKPACK))~ EXIT //
+			IF ~~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,ALL))~ EXIT //
 	END
 
 ////////////////////////////////////////////////////
