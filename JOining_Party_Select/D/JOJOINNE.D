@@ -65,7 +65,8 @@ IF ~True()~ THEN BEGIN 0
 
 
 // Player2
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> want to...^-~ GOTO 2 //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> want to discuss...^-~ GOTO 3discuss //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> want to switch...^-~ GOTO 3switch //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> become a traveler please...^-~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
@@ -134,7 +135,8 @@ IF ~True()~ THEN BEGIN 0
 
 
 // Player3
-	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFDF10<PLAYER3> want to...^-~ GOTO 3 //
+	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFDF10<PLAYER3> want to discuss...^-~ GOTO 4discuss //
+	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFDF10<PLAYER3> want to switch...^-~ GOTO 4switch //
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFFFFDF10<PLAYER3> become a traveler please...^-~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
@@ -170,7 +172,8 @@ IF ~True()~ THEN BEGIN 0
 
 
 // Player4
-	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER4> want to...^-~ GOTO 4 //
+	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER4> want to discuss...^-~ GOTO 5discuss //
+	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER4> want to switch...^-~ GOTO 5switch //
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFF82E6FF<PLAYER4> become a traveler please...^-~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
@@ -206,7 +209,8 @@ IF ~True()~ THEN BEGIN 0
 
 
 // Player5
-	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFf4cccc<PLAYER5> want to...^-~ GOTO 5 //
+	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFf4cccc<PLAYER5> want to discuss...^-~ GOTO 6discuss //
+	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFf4cccc<PLAYER5> want to switch...^-~ GOTO 6switch //
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFFf4cccc<PLAYER5> become a traveler please...^-~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
@@ -242,7 +246,8 @@ IF ~True()~ THEN BEGIN 0
 
 
 // Player6
-	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFffe599<PLAYER6> want to...^-~ GOTO 6 //
+	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFffe599<PLAYER6> want to discuss...^-~ GOTO 7discuss //
+	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFffe599<PLAYER6> want to switch...^-~ GOTO 7switch //
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFFffe599<PLAYER6> become a traveler please...^-~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1))~ EXIT //
 // Switching party between travelers and party members
@@ -403,15 +408,10 @@ IF ~True()~ THEN BEGIN 0
 
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+///////////////////////////////////////////////////////////////////////////////
+
+// MOVE_AROUND
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -426,6 +426,7 @@ IF ~~ THEN BEGIN MOVE_AROUND
 // Banters
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~I am exhausted by all these conversations, please stop interrupting the group.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~On second thought, I miss our discussions... Let's talk to each others.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT //
+	IF ~~ THEN REPLY ~... Discuss with...~ GOTO 2
 
 //	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^-A legion ?^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",16)~ EXIT // Deprecated by the one below see JO_JOINC.BAF
 	IF ~!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFA legion ?^-~ DO ~ActionOverride(Player1,ChangeAIScript("JO_JOINC",RACE)) ActionOverride(Player1,SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1))~ EXIT //
@@ -442,143 +443,253 @@ IF ~~ THEN BEGIN MOVE_AROUND
 
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~To all travelers ! Get lost !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",5)~ EXIT //
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Everybody say, Youhou !~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",6)~ EXIT //
-
-/*	IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				ActionOverride("%Death_var%",StartDialogueNoSet(Player1))~ EXIT*/
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Extend_JOJOINNE
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Player1
 IF ~~ THEN BEGIN 2
-	SAY ~Then...~
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.^-~ GOTO 2next
+	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 2nextnext
+END
+
+IF ~~ THEN BEGIN 2next
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 2nextnext
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+// Player2
+
+IF ~~ THEN BEGIN 3discuss
+	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER2>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-/*
-	IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				ActionOverride("%Death_var%",StartDialogueNoSet(Player2))~ EXIT*/
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.^-~ GOTO 3nextdiscuss
+	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 3nextnextdiscuss
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-///////////////////////////////////////////////////////////////////////////////
-
-IF ~~ THEN BEGIN 3
-	SAY ~Then...~
-	IF ~~ THEN REPLY ~Wait <PLAYER3>, we don't have time for this !~ EXIT
+IF ~~ THEN BEGIN 3nextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-/*
-	IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				ActionOverride("%Death_var%",StartDialogueNoSet(Player3))~ EXIT*/
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
+IF ~~ THEN BEGIN 3nextnextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
 
-///////////////////////////////////////////////////////////////////////////////
+IF ~~ THEN BEGIN 3switch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~Wait <PLAYER2>, we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 3nextswitch
+	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 3nextnextswitch
+END
 
-IF ~~ THEN BEGIN 4
-	SAY ~Then...~
+IF ~~ THEN BEGIN 3nextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 3nextnextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+// Player3
+
+IF ~~ THEN BEGIN 4discuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~Wait <PLAYER3>, we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 4nextdiscuss
+	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 4nextnextdiscuss
+END
+
+IF ~~ THEN BEGIN 4nextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 4nextnextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 4switch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~Wait <PLAYER3>, we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 4nextswitch
+	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 4nextnextswitch
+END
+
+IF ~~ THEN BEGIN 4nextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 4nextnextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+// Player4
+
+IF ~~ THEN BEGIN 5discuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~Wait <PLAYER4>, we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 5nextdiscuss
+	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 5nextnextdiscuss
+END
+
+IF ~~ THEN BEGIN 5nextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 5nextnextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 5switch
+	SAY ~Then switch...~
 	IF ~~ THEN REPLY ~Wait <PLAYER4>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-/*
-	IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				ActionOverride("%Death_var%",StartDialogueNoSet(Player4))~ EXIT*/
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 5nextswitch
+	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 5nextnextswitch
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
+IF ~~ THEN BEGIN 5nextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
 
-///////////////////////////////////////////////////////////////////////////////
+IF ~~ THEN BEGIN 5nextnextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
 
-IF ~~ THEN BEGIN 5
-	SAY ~Then...~
+// Player5
+
+IF ~~ THEN BEGIN 6discuss
+	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER5>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-/*
-	IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				ActionOverride("%Death_var%",StartDialogueNoSet(Player5))~ EXIT*/
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 6nextdiscuss
+	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 6nextnextdiscuss
 END
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
+IF ~~ THEN BEGIN 6nextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
 
-///////////////////////////////////////////////////////////////////////////////
+IF ~~ THEN BEGIN 6nextnextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
 
-IF ~~ THEN BEGIN 6
-	SAY ~Then...~
+IF ~~ THEN BEGIN 6switch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~Wait <PLAYER5>, we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 6nextswitch
+	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 6nextnextswitch
+END
+
+IF ~~ THEN BEGIN 6nextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 6nextnextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+// Player6
+
+IF ~~ THEN BEGIN 7discuss
+	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER6>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-/*
-	IF ~OR(2)
-			!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-			!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~...%Death_var% !~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
-				ActionOverride("%Death_var%",StartDialogueNoSet(Player6))~ EXIT*/
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 7nextdiscuss
+	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 7nextnextdiscuss
 END
+
+IF ~~ THEN BEGIN 7nextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 7nextnextdiscuss
+	SAY ~Then discuss...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 7switch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~Wait <PLAYER6>, we don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 7nextswitch
+	IF ~~ THEN REPLY ~... Travelers from Amn.-~ GOTO 7nextnextswitch
+END
+
+IF ~~ THEN BEGIN 7nextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
+IF ~~ THEN BEGIN 7nextnextswitch
+	SAY ~Then switch...~
+	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
+	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+END
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // Indepandance
+
+///////////////////////////////////////////////////////////////////////////////
+
 IF ~~ THEN BEGIN INDEPENDANCE
 	SAY ~Independance menu~
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
@@ -591,7 +702,13 @@ IF ~~ THEN BEGIN INDEPENDANCE
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF100 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",22)~ EXIT
 END
 
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Switch party
+
+///////////////////////////////////////////////////////////////////////////////
+
 IF ~~ THEN BEGIN SWITCH_PARTY
 	SAY ~Switch party menu~
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
@@ -607,7 +724,13 @@ IF ~~ THEN BEGIN SWITCH_PARTY
 	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0) !Global("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ THEN REPLY ~^0xFF2968A6Travelers you can switch places only with the last party member !^-~ DO ~SetGlobal("JO_JOIN_PS_SAFE_SLOT","GLOBAL",5)~ EXIT //
 END
 
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Quick switch
+
+///////////////////////////////////////////////////////////////////////////////
+
 IF ~~ THEN BEGIN QUICK_SWITCH
 	SAY ~Quick switch menu~
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
@@ -628,7 +751,11 @@ IF ~~ THEN BEGIN QUICK_SWITCH
 END
 
 
+///////////////////////////////////////////////////////////////////////////////
+
 // Fill party
+
+///////////////////////////////////////////////////////////////////////////////
 
 IF ~~ THEN BEGIN FILL_PARTY
 	SAY ~Fill party menu~
@@ -638,7 +765,6 @@ IF ~~ THEN BEGIN FILL_PARTY
 	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)
 		NumInPartyLT(6)
-		NumInPartyGT(2)
 		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
 		Global("JO_NOJOIN","GLOBAL",0)

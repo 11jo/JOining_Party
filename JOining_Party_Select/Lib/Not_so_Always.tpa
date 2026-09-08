@@ -197,6 +197,8 @@
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_End.tph~
 
+		COPY ~JOining_Party_Select/Lib/JOining_Party_JOJOINNE.tph~	~weidu_external/JOining_Party_Select/JOining_Party_JOJOINNE.tph~
+
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Original.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Core_Original.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Mod_BG1.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Core_Mod_BG1.tph~
@@ -223,6 +225,7 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 
 			OUTER_SPRINT "Imoen_name"                 "Imoen"
 			OUTER_SPRINT "Imoen2_name"                "Imoen"
+			OUTER_SPRINT "%IMOEN_DV%_name"            "Imoen"
 			OUTER_SPRINT "Edwin_name"                 "Edwin"
 			OUTER_SPRINT "Jaheira_name"               "Jaheira"
 			OUTER_SPRINT "Minsc_name"                 "Minsc"
