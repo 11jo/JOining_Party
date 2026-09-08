@@ -9,7 +9,7 @@
 			// JO_JOIN_LOAD (Used by travelers loading steps)
 ///////////////////////////////////////////////////////////////////////////////
 
-// For Party member After Main Loading Switch 1 //
+// For Traveler After Main Loading Switch 1
 
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
@@ -232,6 +232,12 @@ THEN
 		Continue()*/
 	RESPONSE #31
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
+		Continue()
+	RESPONSE #32
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		Wait(1)
+		SetGlobal("JO_JOIN_JOINM_NOTALK","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
 		Continue()
 END
@@ -479,7 +485,8 @@ IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",0 then the NPC is not available for 
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Party switching inactive
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	OR(4)
+	OR(5)
+		Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",1)
 		!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		Global("JO_Myself_Valid","LOCALS",0)
 		Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
@@ -848,9 +855,13 @@ END
 
 IF
 	Global("JO_JOIN_SET_JOINM","LOCALS",1)
+	Switch("JO_JOIN_JOINM_NOTALK","LOCALS")
 THEN
-	RESPONSE #100
+	RESPONSE #0
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",2)
 		DisplayString(Myself,~Alright. The introspection begins.~)
+		ChangeAIScript("JO_JOINM",RACE) // Go to JO_JOINM (Reset)
+	RESPONSE #1
+		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",2)
 		ChangeAIScript("JO_JOINM",RACE) // Go to JO_JOINM (Reset)
 END
