@@ -251,9 +251,16 @@ StartDialogueNoSet(Player6)~ EXIT
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT //
 
 // Inventory management
-		IF ~~ THEN REPLY ~^0xFF660000Carry my items please.^-~ DO ~TakeCreatureItems(LastTalkedToBy(),BACKPACK)~ EXIT
+/*
+		IF ~IsGabber(Player1)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player1,BACKPACK)~ EXIT
+		IF ~IsGabber(Player2)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player2,BACKPACK)~ EXIT
+		IF ~IsGabber(Player3)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player3,BACKPACK)~ EXIT
+		IF ~IsGabber(Player4)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player4,BACKPACK)~ EXIT
+		IF ~IsGabber(Player5)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player5,BACKPACK)~ EXIT
+		IF ~IsGabber(Player6)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player6,BACKPACK)~ EXIT
 		IF ~~ THEN REPLY ~Hand over...~ GOTO JO_JOINnaked
 		IF ~~ THEN REPLY ~^-Let's take a look at your equipment.^-~ GOTO JO_JOINequip
+*/
 
 // Corrections
 		IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF2968A6So, we need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
@@ -613,7 +620,7 @@ StartDialogueNoSet(Player6)~ EXIT
 ////////////////////////////////////////////////////
 	// Inventory management
 ////////////////////////////////////////////////////
-
+/*
     // Equip items
 	IF ~~ THEN BEGIN JO_JOINequip
 		SAY ~Hey, don't undress me with your eyes...~
@@ -667,7 +674,7 @@ StartDialogueNoSet(Player6)~ EXIT
 			IF ~~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,BACKPACK))~ EXIT //
 			IF ~~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,ALL))~ EXIT //
 	END
-
+*/
 ////////////////////////////////////////////////////
 // Party member
 ////////////////////////////////////////////////////

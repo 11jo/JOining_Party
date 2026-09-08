@@ -100,40 +100,6 @@ IF ~True()~ THEN BEGIN 0
 		TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFFFFB4B4<PLAYER2>, at loading make room for travelers.^-~ DO ~
 		ActionOverride(Player2,SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",1))~ EXIT*/
 
-/*
-// NEW
-// JO_JOIN_DELAY_SWITCH_TIMER see all_in.baf
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for one more day.^-~ DO ~
-		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",1))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for two more days.^-~ DO ~
-		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for three more days.^-~ DO ~
-		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for four more days.^-~ DO ~
-		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",4))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for five more days.^-~ DO ~
-		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",5))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for six more days.^-~ DO ~
-		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",6))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
-	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
-		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for seven more days.^-~ DO ~
-		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",7))
-		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
-*/
-
-
 // Player3
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFDF10<PLAYER3> want to discuss...^-~ GOTO 4discuss //
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFFFFDF10<PLAYER3> want to switch...^-~ GOTO 4switch //
@@ -457,8 +423,8 @@ IF ~~ THEN BEGIN 2
 	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~We don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.^-~ GOTO 2next
-	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 2nextnext
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 2next
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 2nextnext
 END
 
 IF ~~ THEN BEGIN 2next
@@ -479,8 +445,8 @@ IF ~~ THEN BEGIN 3discuss
 	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER2>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.^-~ GOTO 3nextdiscuss
-	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 3nextnextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 3nextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 3nextnextdiscuss
 END
 
 IF ~~ THEN BEGIN 3nextdiscuss
@@ -499,8 +465,8 @@ IF ~~ THEN BEGIN 3switch
 	SAY ~Then switch...~
 	IF ~~ THEN REPLY ~Wait <PLAYER2>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 3nextswitch
-	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 3nextnextswitch
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 3nextswitch
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 3nextnextswitch
 END
 
 IF ~~ THEN BEGIN 3nextswitch
@@ -521,8 +487,8 @@ IF ~~ THEN BEGIN 4discuss
 	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER3>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 4nextdiscuss
-	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 4nextnextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 4nextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 4nextnextdiscuss
 END
 
 IF ~~ THEN BEGIN 4nextdiscuss
@@ -541,8 +507,8 @@ IF ~~ THEN BEGIN 4switch
 	SAY ~Then switch...~
 	IF ~~ THEN REPLY ~Wait <PLAYER3>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 4nextswitch
-	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 4nextnextswitch
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 4nextswitch
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 4nextnextswitch
 END
 
 IF ~~ THEN BEGIN 4nextswitch
@@ -563,8 +529,8 @@ IF ~~ THEN BEGIN 5discuss
 	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER4>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 5nextdiscuss
-	IF ~~ THEN REPLY ~... Travelers from Amn.^-~ GOTO 5nextnextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 5nextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 5nextnextdiscuss
 END
 
 IF ~~ THEN BEGIN 5nextdiscuss
@@ -583,8 +549,8 @@ IF ~~ THEN BEGIN 5switch
 	SAY ~Then switch...~
 	IF ~~ THEN REPLY ~Wait <PLAYER4>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 5nextswitch
-	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 5nextnextswitch
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 5nextswitch
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 5nextnextswitch
 END
 
 IF ~~ THEN BEGIN 5nextswitch
@@ -605,8 +571,8 @@ IF ~~ THEN BEGIN 6discuss
 	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER5>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 6nextdiscuss
-	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 6nextnextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 6nextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 6nextnextdiscuss
 END
 
 IF ~~ THEN BEGIN 6nextdiscuss
@@ -625,8 +591,8 @@ IF ~~ THEN BEGIN 6switch
 	SAY ~Then switch...~
 	IF ~~ THEN REPLY ~Wait <PLAYER5>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 6nextswitch
-	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 6nextnextswitch
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 6nextswitch
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 6nextnextswitch
 END
 
 IF ~~ THEN BEGIN 6nextswitch
@@ -647,8 +613,8 @@ IF ~~ THEN BEGIN 7discuss
 	SAY ~Then discuss...~
 	IF ~~ THEN REPLY ~Wait <PLAYER6>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 7nextdiscuss
-	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 7nextnextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 7nextdiscuss
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 7nextnextdiscuss
 END
 
 IF ~~ THEN BEGIN 7nextdiscuss
@@ -667,8 +633,8 @@ IF ~~ THEN BEGIN 7switch
 	SAY ~Then switch...~
 	IF ~~ THEN REPLY ~Wait <PLAYER6>, we don't have time for this !~ EXIT
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
-	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 7nextswitch
-	IF ~~ THEN REPLY ~... Travelers from Amn.-~ GOTO 7nextnextswitch
+//	IF ~~ THEN REPLY ~... Travelers from the Sword Coast.~ GOTO 7nextswitch
+//	IF ~~ THEN REPLY ~... Travelers from Amn.~ GOTO 7nextnextswitch
 END
 
 IF ~~ THEN BEGIN 7nextswitch
@@ -775,3 +741,37 @@ IF ~~ THEN BEGIN FILL_PARTY
 	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Travelers don't come in party when Fill Party.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",27)~ EXIT //
 	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~Travelers come in party when Fill Party.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",26)~ EXIT //
 END
+
+
+/*
+// NEW
+// JO_JOIN_DELAY_SWITCH_TIMER see all_in.baf
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for one more day.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",1))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for two more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for three more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",2))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for four more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",4))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for five more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",5))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for six more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",6))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
+		TriggerOverride(Player2,Global("JO_JOIN_NEVER_SWITCH","LOCALS",0))~ THEN REPLY ~^-<PLAYER2>, stay in party for at least for seven more days.^-~ DO ~
+		ActionOverride(Player2,SetGlobal("JO_JOIN_DELAY_SWITCH","LOCALS",7))
+		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
+*/

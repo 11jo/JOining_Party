@@ -208,7 +208,9 @@ BEGIN
 // JOJOINNE.d Extended by each traveler
 	ACTION_IF FILE_EXISTS_IN_GAME ~JOJOINNE.dlg~ BEGIN
 
-		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE_BG1.D~
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE.D~
+
+//		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE_BG1.D~
 
 	END
 
@@ -338,7 +340,9 @@ BEGIN
 // JOJOINNE.d Extended by each traveler
 	ACTION_IF FILE_EXISTS_IN_GAME ~JOJOINNE.dlg~ BEGIN
 
-		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE_BG2.D~
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE.D~
+
+//		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE_BG2.D~
 
 	END
 
