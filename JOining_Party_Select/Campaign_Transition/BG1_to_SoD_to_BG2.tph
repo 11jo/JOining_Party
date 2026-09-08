@@ -1,0 +1,337 @@
+
+///////////////////////////////////////////////////////////////////////////
+ // BDSODTRN cutscene to MoveToCampaign("SoD") 
+///////////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~eet~ AND MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
+
+	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
+//
+	Global("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)
+//
+	!AreaCheck("BD0120")
+THEN
+	RESPONSE #100
+		SetCursorState(TRUE)
+		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",0)
+		StartMovie("SODCIN01")
+		FadeToColor([1.0],0)
+		Wait(1)
+		MoveToCampaign("SoD")
+		MultiPlayerSync()
+END~~~~~
+
+END ELSE ACTION_IF  GAME_IS ~eet~ AND NOT MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
+
+	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
+//
+	Global("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)
+//
+	!AreaCheck("BD0120")
+THEN
+	RESPONSE #100
+		SetCursorState(TRUE)
+		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",0)
+		StartMovie("ENDMOVIE")
+		FadeToColor([1.0],0)
+		Wait(3)
+		StartMovie("SODCIN01")
+		FadeToColor([1.0],0)
+		Wait(1)
+		MoveToCampaign("SoD")
+		MultiPlayerSync()
+END~~~~~
+
+END ELSE ACTION_IF GAME_INCLUDES ~SoD~ AND NOT MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
+
+	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
+//
+	Global("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)
+//
+	!AreaCheck("BD0120")
+THEN
+	RESPONSE #100
+		SetCursorState(TRUE)
+		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",0)
+		StartMovie("ENDMOVIE")
+		FadeToColor([1.0],0)
+		Wait(1)
+		StartMovie("endcrdit")
+		FadeToColor([1.0],0)
+		Wait(3)
+		StartMovie("SODCIN01")
+		FadeToColor([1.0],0)
+		Wait(1)
+		MoveToCampaign("SoD")
+		MultiPlayerSync()
+END~~~~~
+
+		
+
+END ELSE ACTION_IF GAME_INCLUDES ~SoD~ AND MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
+
+	OUTER_SPRINT "BDSODTRN_to_SoD" ~~~~~IF
+//
+	Global("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)
+//
+	!AreaCheck("BD0120")
+THEN
+	RESPONSE #100
+		SetCursorState(TRUE)
+		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",0)
+		StartMovie("endcrdit")
+		FadeToColor([1.0],0)
+		Wait(3)
+		StartMovie("SODCIN01")
+		FadeToColor([1.0],0)
+		Wait(1)
+		MoveToCampaign("C#STSD")
+		MultiPlayerSync()
+		SetCursorState(TRUE)
+END~~~~~
+
+
+END ELSE BEGIN
+
+	OUTER_SPRINT "BDSODTRN_to_SoD" ""
+
+END
+
+///////////////////////////////////////////////////////////////////////////
+ // NBaldursGate_DucalPalace_L1 and Undercity_TempleofBhaal
+///////////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
+
+	OUTER_SPRINT "BG1_to_SoD" ~~~~~IF // Undercity_TempleofBhaal
+//
+	OR(2)
+		!AreaCheck("%Undercity_TempleofBhaal%")
+		!Dead("Sarevok")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+	Global("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+		SetGlobal("JO_JOIN_BG1_TRANSITION","%Undercity_TempleofBhaal%",0)
+END
+
+IF // NBaldursGate_DucalPalace_L1
+//
+	AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	Dead("Sarevok")
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+//
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+END
+
+IF
+//
+//		!AreaCheck("BD0130") // Should not be a problem
+//
+	!AreaCheck("BD6100")
+	!AreaCheck("BD6200")
+	!AreaCheck("BD0120")
+	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+END
+
+IF
+//
+	AreaCheck("BD6100")
+	AreaCheck("BD6200")
+//
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+END~~~~~
+
+END ELSE BEGIN
+
+	OUTER_SPRINT "BG1_to_SoD" ""
+
+END
+///////////////////////////////////////////////////////////////////////////
+ // Workaround for unused Player1 scripts override
+///////////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~eet~ BEGIN
+
+	OUTER_SPRINT "Player1_DLG_for_EET" ~~~~~IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
+	Global("JO_JOIN_Player1_DLG","ar0602",0)
+THEN
+	RESPONSE #100
+		SetDialog("Player1")
+		SetGlobal("JO_JOIN_Player1_DLG","ar0602",1)
+END~~~~~
+
+	OUTER_SPRINT "bddebug_for_SoD" ~~~~~IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+	HotKey(B)
+	OR(2)
+		INI("QAMODE",1)
+		Global("BD_QAMODE","global",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		StartDialogOverride("bddebug",Myself)
+END~~~~~
+
+END ELSE ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
+
+	OUTER_SPRINT "Player1_DLG_for_EET" ""
+
+	OUTER_SPRINT "bddebug_for_SoD" ~~~~~IF
+	Global("JO_JOIN_CAMPAIGN","GLOBAL",2)
+	HotKey(B)
+	OR(2)
+		INI("QAMODE",1)
+		Global("BD_QAMODE","global",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+		StartDialogOverride("bddebug",Myself)
+END~~~~~
+
+END ELSE BEGIN
+
+	OUTER_SPRINT "Player1_DLG_for_EET" ""
+
+	OUTER_SPRINT "bddebug_for_SoD" ""
+
+END
+
+///////////////////////////////////////////////////////////////////////////
+ // JO_JOIN_JUMP_JO2608
+///////////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
+
+	OUTER_SPRINT "JO_JOIN_JUMP_for_Transitions" ~~~~~IF
+//
+	OR(2)
+		AreaCheck("BD6000")
+		AreaCheck("BD0120")
+//
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
+	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+//
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
+		Wait(4)
+		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
+		Wait(4)
+		FadeToColor([30.0],0)
+		StorePartyLocations()
+		Wait(1)
+		LeaveAreaLUA("JO2608","",[1232.891],1)
+		ChangeAIScript("JO_JOINW",OVERRIDE)
+END
+
+IF
+//
+	AreaCheck("JO2608")
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",3)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
+		Wait(1)
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
+		FadeFromColor([45.0],0)
+		SetCutSceneLite(FALSE)
+		UnhideGUI()
+		RestorePartyLocations()
+END
+
+IF
+//
+	!AreaCheck("BD6000")
+	!AreaCheck("BD0120")
+	!AreaCheck("BD0130")
+	!AreaCheck("JO2608")
+	!Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",0)
+END~~~~~
+
+END ELSE BEGIN
+
+	OUTER_SPRINT "JO_JOIN_JUMP_for_Transitions" ""
+
+END
+
+///////////////////////////////////////////////////////////////////////////
+ // JO_JOIN_CAMPAIGN_TRANSITION
+///////////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
+
+	OUTER_SPRINT "JO_JOIN_CAMPAIGN_TRANSITION" ~~~~~IF
+	OR(2)
+		AreaCheck("BD6000")
+		AreaCheck("BD0120")
+	OR(3)
+		AreaCheck("BD6000")
+		Dead("bdkorlas")
+		Global("BD_KORLASZ_SURRENDER","GLOBAL",1)
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0) // No cuscene
+	Global("JO_NOJOIN","GLOBAL",0) // No join stop
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
+//
+	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
+	Delay(15)
+//
+	OR(2)
+		!ActuallyInCombat()
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for ActuallyInCombat()
+	OR(2)
+		!See([ENEMY])
+		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
+	Switch("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL") // Only one traveler say something (Reset in JO2608.baf)
+THEN
+	RESPONSE #0
+		SetInterrupt(FALSE)
+		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
+		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
+		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
+		ChangeAIScript("",GENERAL)
+		SetInterrupt(TRUE)
+	RESPONSE #1
+		SetInterrupt(FALSE)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
+		ChangeAIScript("",GENERAL)
+		SetInterrupt(TRUE)
+END~~~~~
+
+END ELSE BEGIN
+
+	OUTER_SPRINT "JO_JOIN_CAMPAIGN_TRANSITION" ""
+
+END
+
+
+

@@ -1,4 +1,29 @@
+/////////////// Reset
 
+// BG1
+OUTER_SPRINT "RESPONSE_DREAM_BG1" ""
+	// SoD
+	OUTER_SPRINT "RESPONSE_DREAM_SoD" ""
+		// BG2
+		OUTER_SPRINT "RESPONSE_DREAM_BG2" ""
+			// ToB
+			OUTER_SPRINT "RESPONSE_DREAM_ToB" ""
+/////////////////////////////////////////////////////
+
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (FILE_EXISTS_IN_GAME ~%SoD_DREAM%.bcs~) AND (NOT ~%SoD_DREAM%~ STRING_EQUAL_CASE ~~) BEGIN // SoD
+		OUTER_SPRINT "RESPONSE_DREAM_SoD" ~~~~~	RESPONSE #2
+//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
+		DisplayString(Myself,~Try to dream talk.~)
+		ChangeAIScript("%SoD_DREAM%",RACE)
+		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
+		Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_DREAM_SoD" ""
+END
+
+ACTION_IF (NOT ~%RESPONSE_DREAM_SoD%~ STRING_EQUAL_CASE ~~) BEGIN
+
+<<<<<<<< .../JOining_NPC.baf
 IF
 	PartyRested()
 	Global("JO_JOIN_DREAM_DONE","LOCALS",1)
@@ -8,16 +33,6 @@ THEN
 		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
 //		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
 END
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 IF
 //
@@ -56,23 +71,12 @@ IF
 	!Global("JO_Myself_Valid","LOCALS",0)
 	Switch("JO_JOIN_CAMPAIGN_BANTER","GLOBAL")
 //	RandomNum(4,2)
+	!AreaCheck("JO2608")
 THEN
-	RESPONSE #1
-//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
-		DisplayString(Myself,~Try to dream talk.~)
-		ChangeAIScript("%BG1_DREAM%",RACE)
-		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
-		Continue()
-	RESPONSE #2
-//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
-		DisplayString(Myself,~Try to dream talk.~)
-		ChangeAIScript("%SoD_DREAM%",RACE)
-		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
-		Continue()
-	RESPONSE #5
-//		SetGlobal("JO_JOIN_DREAM_REST","GLOBAL",0)
-		DisplayString(Myself,~Try to dream talk.~)
-		ChangeAIScript("%EET_DREAM%",RACE)
-		SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",1)
-		Continue()
+%RESPONSE_DREAM_SoD%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_NPC.baf~ EVALUATE_BUFFER
+
 END

@@ -1,5 +1,5 @@
 // JO_JOINL.BAF Loading Switch script for Player1
-	// Expanded at installation by JOining_Party_Select_End.tph
+	// Expanded at installation by JOining_Party_End.tph
 		// Commented blocks below will be duplicated for each potential travelers with JO_LOAD_TRAVELER.TPA.
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7,8 +7,8 @@
 	// JO_JOIN_LOADING_SWITCH (Finish Loading Switch script/CutSceneLite)
 		// JO_JOIN_LOAD (Used by Charname to slow down the script execution and by travelers loading steps)
 			// JO_JOIN_TRAVELER_NUM (Check if a least one traveler is present)
-				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_Select_End.tph Expand the trigger with OR(3) for each travelers))
-					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_Select_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
+				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_End.tph Expand the trigger with OR(3) for each travelers))
+					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
 ///////////////////////////////////////////////////////////////////////////////
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -115,7 +115,7 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",3)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",4)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",3))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
@@ -141,7 +141,7 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",2)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
@@ -161,7 +161,7 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",1)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",2)
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
@@ -179,7 +179,7 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",4)
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
@@ -199,7 +199,7 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",2)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
@@ -215,7 +215,7 @@ THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 		IncrementGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",4)
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot4,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot4,LeaveParty())
@@ -229,7 +229,7 @@ IF
 THEN
 	RESPONSE #100
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
-		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",3)
+		SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",4)
 		Continue()
 END
 
@@ -283,6 +283,8 @@ THEN
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",32)
 		DisplayStringHead(Myself,~Let's return to venture forth !!~)
 		SetCutSceneBreakable(FALSE)
 		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
@@ -315,6 +317,8 @@ THEN
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOOK_AT_ME","LOCALS",0)
+		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",32)
 		DisplayStringHead(Myself,~let's venture forth !~)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 END

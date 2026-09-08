@@ -36,6 +36,8 @@ THEN
 		SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
+		SetGlobal("JO_JOIN_Move_Around","GLOBAL",31)
+		ActionOverride(Player1,SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0))
 		ActionOverride(Player1,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0))
 		ActionOverride(Player1,SetGlobal("JO_JOIN_LOAD","LOCALS",0))
 		ActionOverride(Player1,ChangeAIScript("JO_JOINP",OVERRIDE))

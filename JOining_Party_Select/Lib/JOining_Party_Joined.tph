@@ -52,8 +52,9 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
   COPY_EXISTING ~%cre%~ ~override~
     READ_ASCII 0x248 override_script
     PATCH_IF NOT (~%override_script%~ STRING_EQUAL_CASE ~idiot01~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~NONE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~SHOUT~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~INITDLG~)
+
 // Imoen
-// Original Imoen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%IMOEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDIMOENS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOE25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTIMOEN~) // BDIMOENS is for Imoen4Ever
+// Original Imoen AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%IMOEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDIMOENS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOE25~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C#STIMOE~) // AND NOT (~%override_script%~ STRING_EQUAL_CASE ~TTIMOEN~) // BDIMOENS is for Imoen4Ever
 // Original Imoen // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN_~)
 // Original Imoen // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~IMOEN2~)
 
@@ -113,10 +114,10 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Dynaheir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%DYNAHEIR_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDDYNAHE~)
 
 // Eldoth
-// Original Eldoth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ELDOTH_BCS%~)
+// Original Eldoth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ELDOTH_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDELDOTH~)
 
 // Faldorn
-// Original Faldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%FALDORN_BCS%~)
+// Original Faldorn AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%FALDORN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~bdFALDORN~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~bdfaldor~)
 // Original Faldorn // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~FALDORN_~)
 // Original Faldorn // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~FALDORN~)
 
@@ -144,7 +145,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Safana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SAFANA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDSAFANA~)
 
 // Sharteel
-// Original Sharteel AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~)
+// Original Sharteel AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~k9shar~)
 
 // Skie
 // Original Skie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SKIE_BCS%~)
@@ -164,7 +165,7 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Original Yeslick AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%YESLICK_BCS%~)
 
 // Baeloth
-// Original Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDBAELOT~)
+// Original Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BAELOTH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDBAELOT~)
 
 /////////////////////////// SoD ///////////////////////////
 
@@ -299,6 +300,12 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Mod Namiir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Namiir~)
 // Mod Miranda AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Miranda~)
 
+// Walahnan
+// Mod Walahnan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#WALAH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#SWALAH~)
+
+// Aerie in BG:EE
+// Mod Aerie_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~B2#Aeri2~)
+
 // Next_Traveler BG1
 
 /////////////////////////// Mods BG2 ///////////////////////////
@@ -417,6 +424,15 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Kale BG2
 // Mod Kale_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X3Kal~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~X3Kal25~)
 
+// Walahnan BG2
+// Mod Walahnan_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2WH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2WH25~)
+
+// Autumns Twilight
+// Mod Dusk AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_DUSKS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_DUS25S~)
+// Mod Fall AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_FALLS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_FAL25S~)
+// Mod Cho'Nuja AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_CHONS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_CHO25S~)
+// Mod Alendir AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_ALENS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P_ALE25S~)
+
 // Next_Traveler BG2
 
 /////////////////////////// Mods Continuous ///////////////////////////
@@ -424,6 +440,26 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // EET Nikita AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmtnikit~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmnikita~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~CMNIK25~)
 
 // EET Alora_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%ALORA_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalora~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~cmalo25~)
+
+// EET Ajantis_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%AJANTIS_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BDAJANTI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C#Ajan~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C#Ajan25~) // BDAJANTI is for Ajantis_BG1_Expansion
+
+// EET Kivan_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%KIVAN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P#KIV01~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~P#KI25~)
+
+// EET Walahnan_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#WALAH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#SWALAH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2WH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2WH25~)
+
+// EET Coran_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%CORAN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#CORANS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#COR25S~)
+
+// EET Yeslick_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%YESLICK_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#YES~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#YES25~)
+
+// EET Xan_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%XAN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#XanS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Xan25S~)
+
+// EET Branwen_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%BRANWEN_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#BranS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Bra25S~)
+// EET Branwen_Continuous // EET_END AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN_~)
+// EET Branwen_Continuous // EET_ODD AND NOT (~%override_script%~ STRING_EQUAL_CASE ~BRANWEN~)
+
+// EET Tiax_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%TIAX_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#TiaxS~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~O#Tia25S~)
+
+// EET Isra_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RH#ISRA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#isr~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#is25~)
 
 // Next_Traveler Continuous
 
