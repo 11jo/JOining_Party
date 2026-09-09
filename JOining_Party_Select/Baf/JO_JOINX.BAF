@@ -361,8 +361,8 @@ IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
 	Global("JO_JOIN_NOSAVE_AREA","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",0)
 		RemoveAreaFlag(NOSAVE) // Test End Quick Switch
 		Continue()
 END

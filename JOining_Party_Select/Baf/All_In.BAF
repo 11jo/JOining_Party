@@ -575,7 +575,7 @@ IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","GLOBAL",0)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",0)
 		RemoveAreaFlag(NOSAVE) // Test End Switching Party
 		Continue()
 END
@@ -588,7 +588,7 @@ END
 
 IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 //
-	!Global("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+	!Global("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 	OR(2)
 		!Global("JO_JOIN_NOSAVE","MYAREA",1)
 		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
@@ -599,7 +599,7 @@ IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 		AddAreaFlag(NOSAVE) // Test Leave Party
 		Continue()
 END // End after next block
@@ -641,7 +641,7 @@ IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","GLOBAL",0)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",0)
 		RemoveAreaFlag(NOSAVE) // Test End Leave Party
 		Continue()
 END

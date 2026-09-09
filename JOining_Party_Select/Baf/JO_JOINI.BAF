@@ -786,7 +786,7 @@ END
 
 IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 //
-	!Global("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+	!Global("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 	OR(2)
 		!Global("JO_JOIN_NOSAVE","MYAREA",1)
 		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
@@ -806,6 +806,7 @@ IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 		AddAreaFlag(NOSAVE) // Test Quick Switch
 		Continue()
 END // End in JO_JOINX.baf
@@ -3065,7 +3066,7 @@ END
 
 IF  // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 //
-	!Global("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+	!Global("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 	OR(2)
 		!Global("JO_JOIN_NOSAVE","MYAREA",1)
 		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
@@ -3076,6 +3077,7 @@ IF  // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 		AddAreaFlag(NOSAVE) // Test Switching party
 		Continue()
 END // End in All_in.baf Main Switching Party 4
@@ -3331,7 +3333,7 @@ END
 
 IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 //
-	!Global("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+	!Global("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 	OR(2)
 		!Global("JO_JOIN_NOSAVE","MYAREA",1)
 		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
@@ -3361,6 +3363,7 @@ IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
 		AddAreaFlag(NOSAVE) // Test  Fill Party
 		Continue()
 END // End after Secondary Fill Party 2 below
@@ -3519,8 +3522,8 @@ IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
 	Global("JO_JOIN_NOSAVE_AREA","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",0)
 		RemoveAreaFlag(NOSAVE) // Test End Fill Party
 		Continue()
 END
