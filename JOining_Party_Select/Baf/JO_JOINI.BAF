@@ -786,7 +786,10 @@ END
 
 IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 //
-	!AreaType(NOSAVE)
+	!Global("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+	OR(2)
+		!Global("JO_JOIN_NOSAVE","MYAREA",1)
+		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
 //
 	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
@@ -3062,7 +3065,10 @@ END
 
 IF  // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
 //
-	!AreaType(NOSAVE)
+	!Global("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+	OR(2)
+		!Global("JO_JOIN_NOSAVE","MYAREA",1)
+		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
 //
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
@@ -3323,7 +3329,12 @@ END
 
 // Main Fill Party 1
 
-IF
+IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
+//
+	!Global("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
+	OR(2)
+		!Global("JO_JOIN_NOSAVE","MYAREA",1)
+		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
 //
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	OR(2)
@@ -3508,7 +3519,8 @@ IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
 	Global("JO_JOIN_NOSAVE_AREA","LOCALS",1)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		SetGlobal("JO_JOIN_NOSAVE_MYSELF","GLOBAL",1)
 		RemoveAreaFlag(NOSAVE) // Test End Fill Party
 		Continue()
 END
