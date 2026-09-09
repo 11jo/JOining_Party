@@ -241,16 +241,25 @@ StartDialogueNoSet(Player6)~ EXIT
 				SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2)
 			~ GOTO JO_JOINYes
 
-		IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
+// JOJOINNE.D
+		IF ~~ THEN REPLY ~I prefer to adress everyone...~ DO ~
+		SetGlobal("JO_JOIN","LOCALS",0)
+		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
+		SmallWait(1)
+		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT
 
-		IF ~~ THEN REPLY ~^0xFFFF00FFWe need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
+// Strategy
+
+		IF ~~ THEN REPLY ~^0xFF6B4763We need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
+
+		IF ~~ THEN REPLY ~^0xFF705268We need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
 
 /*
 		IF ~~ THEN REPLY ~^0xFF2968A6We need to adjust our party.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG4
 */
 
 // Cutscenes
-		IF ~Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFFf4ccccI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes
+		IF ~Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF82E6FFI don't want to see you in my dream anymore !^-~ DO ~SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",1)~ GOTO JO_JOINYes
 
 		IF ~!Global("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fI did dream about you !^-~ DO ~SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)~ GOTO JO_JOINYes
 
@@ -260,7 +269,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		IF ~!Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fRemain a fellow traveler but join the group when needed.^-~ DO ~SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)~ GOTO JO_JOINYes
 
 // Banters
-		IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFFf4ccccI am exhausted by your conversation, please stop interrupting the group.^-~ DO ~
+		IF ~Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFF705268I am exhausted by your conversation, please stop interrupting the group.^-~ DO ~
 		SetGlobal("JO_JOIN_NEVER_BANTER","LOCALS",1)~ GOTO JO_JOINYes
 
 		IF ~!Global("JO_JOIN_NEVER_BANTER","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fOn second thought, I miss your discussions... Please continue.^-~ DO ~
@@ -279,26 +288,19 @@ StartDialogueNoSet(Player6)~ EXIT
 		IF ~!Global("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ THEN REPLY ~^0xFF6aa84fYou can switch with regular party members.^-~ DO ~
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)~ GOTO JO_JOINYes
 
-// JOJOINNE.D
-		IF ~~ THEN REPLY ~I prefer to adress everyone...~ DO ~
-		SetGlobal("JO_JOIN","LOCALS",0)
-		CreateCreatureObject("JOJOINNE",Myself,0,0,0)
-		SmallWait(1)
-		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT
-
 // Inventory management
 /*
-		IF ~IsGabber(Player1)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player1,BACKPACK))~ EXIT
+		IF ~IsGabber(Player1)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~SetGlobal("JO_JOIN_MANAGE","LOCALS",1)~ GOTO JO_JOINYes
 
-		IF ~IsGabber(Player2)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player2,BACKPACK))~ EXIT
+		IF ~IsGabber(Player2)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~SetGlobal("JO_JOIN_MANAGE","LOCALS",2)~ GOTO JO_JOINYes
 
-		IF ~IsGabber(Player3)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player3,BACKPACK))~ EXIT
+		IF ~IsGabber(Player3)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~SetGlobal("JO_JOIN_MANAGE","LOCALS",3)~ GOTO JO_JOINYes
 
-		IF ~IsGabber(Player4)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player4,BACKPACK))~ EXIT
+		IF ~IsGabber(Player4)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~SetGlobal("JO_JOIN_MANAGE","LOCALS",4)~ GOTO JO_JOINYes
 
-		IF ~IsGabber(Player5)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player5,BACKPACK))~ EXIT
+		IF ~IsGabber(Player5)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~SetGlobal("JO_JOIN_MANAGE","LOCALS",5)~ GOTO JO_JOINYes
 
-		IF ~IsGabber(Player6)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player6,BACKPACK))~ EXIT
+		IF ~IsGabber(Player6)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~SetGlobal("JO_JOIN_MANAGE","LOCALS",6)~ GOTO JO_JOINYes
 
 		IF ~~ THEN REPLY ~Hand over...~ GOTO JO_JOINnaked
 
@@ -309,6 +311,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		IF ~Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF2968A6So, we need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0) SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT
 
 		IF ~~ THEN REPLY ~^0xFF2968A6How do you feel as traveler.^-~ GOTO JO_JOINStat
+
 
 // Dev
 		IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0) !Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~JO_NOJOIN.~ DO ~SetGlobal("JO_NOJOIN","GLOBAL",0) SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)~ EXIT
@@ -720,117 +723,120 @@ StartDialogueNoSet(Player6)~ EXIT
 // Equip items
 	IF ~~ THEN BEGIN JO_JOINequip
 		SAY ~Hey, don't undress me with your eyes...~
+			IF ~~ THEN REPLY ~Oh ! I wouldn't dare.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
 			IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO LEGION
-			IF ~!HasItemSlot(Myself,SLOT_AMULET) !HasItemCategory(Myself,AMULET,FALSE)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_AMULET)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_AMULET)~ THEN REPLY ~I already wear an amulet.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_AMULET) !HasItemCategory("%Death_var%",AMULET,FALSE)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_AMULET)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_AMULET)~ THEN REPLY ~I already wear an amulet.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_BELT) !HasItemCategory(Myself,BELT,FALSE)~ THEN REPLY ~Wear the belt in you inventory.~ DO ~FillSlot(SLOT_BELT)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_BELT)~ THEN REPLY ~I already wear a belt.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_BELT) !HasItemCategory("%Death_var%",BELT,FALSE)~ THEN REPLY ~Wear the belt in you inventory.~ DO ~FillSlot(SLOT_BELT)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_BELT)~ THEN REPLY ~I already wear a belt.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_BOOTS) !HasItemCategory(Myself,BOOT,FALSE)~ THEN REPLY ~Wear the boots in you inventory.~ DO ~FillSlot(SLOT_BOOTS)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_BOOTS)~ THEN REPLY ~I already wear boots.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_BOOTS) !HasItemCategory("%Death_var%",BOOT,FALSE)~ THEN REPLY ~Wear the boots in you inventory.~ DO ~FillSlot(SLOT_BOOTS)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_BOOTS)~ THEN REPLY ~I already wear boots.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_CLOAK) !HasItemCategory(Myself,CLOAK,FALSE)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_CLOAK)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_CLOAK)~ THEN REPLY ~I already wear an cloak.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_CLOAK) !HasItemCategory("%Death_var%",CLOAK,FALSE)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_CLOAK)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_CLOAK)~ THEN REPLY ~I already wear an cloak.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_GAUNTLETS) !HasItemCategory(Myself,RING,FALSE)~ THEN REPLY ~Wear the gauntlets in you inventory.~ DO ~FillSlot(SLOT_GAUNTLETS)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_GAUNTLETS)~ THEN REPLY ~I already wear gauntlets.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_GAUNTLETS) !HasItemCategory("%Death_var%",RING,FALSE)~ THEN REPLY ~Wear the gauntlets in you inventory.~ DO ~FillSlot(SLOT_GAUNTLETS)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_GAUNTLETS)~ THEN REPLY ~I already wear gauntlets.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_RING_LEFT) !HasItemCategory(Myself,RING,FALSE)~ THEN REPLY ~Wear the ring in you inventory.~ DO ~FillSlot(SLOT_RING_LEFT)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_RING_LEFT)~ THEN REPLY ~I already have a ring on my right hand.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_RING_LEFT) !HasItemCategory("%Death_var%",RING,FALSE)~ THEN REPLY ~Wear the ring in you inventory.~ DO ~FillSlot(SLOT_RING_LEFT)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_RING_LEFT)~ THEN REPLY ~I already have a ring on my right hand.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_SHIELD) !HasItemCategory(Myself,SHIELD,FALSE)~ THEN REPLY ~Equip the shield in you inventory.~ DO ~FillSlot(SLOT_SHIELD)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_SHIELD)~ THEN REPLY ~I already carry a shield.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_SHIELD) !HasItemCategory("%Death_var%",SHIELD,FALSE)~ THEN REPLY ~Equip the shield in you inventory.~ DO ~FillSlot(SLOT_SHIELD)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_SHIELD)~ THEN REPLY ~I already carry a shield.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_HELMET) !HasItemCategory(Myself,HELMET,FALSE)~ THEN REPLY ~Equip the helm in you inventory.~ DO ~FillSlot(SLOT_HELMET)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_HELMET)~ THEN REPLY ~I already wear a helm.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_HELMET) !HasItemCategory("%Death_var%",HELMET,FALSE)~ THEN REPLY ~Equip the helm in you inventory.~ DO ~FillSlot(SLOT_HELMET)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_HELMET)~ THEN REPLY ~I already wear a helm.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_ARMOR) !HasItemCategory(Myself,ARMOR,FALSE)~ THEN REPLY ~Equip the armor in you inventory.~ DO ~FillSlot(SLOT_ARMOR)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_ARMOR)~ THEN REPLY ~I already wear an armor.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_ARMOR) !HasItemCategory("%Death_var%",ARMOR,FALSE)~ THEN REPLY ~Equip the armor in you inventory.~ DO ~FillSlot(SLOT_ARMOR)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_ARMOR)~ THEN REPLY ~I already wear an armor.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_WEAPON)~ THEN REPLY ~Equip one of the weapon in you inventory.~ DO ~FillSlot(SLOT_WEAPON)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_WEAPON)~ THEN REPLY ~I already have a weapon.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_WEAPON)~ THEN REPLY ~Equip one of the weapon in you inventory.~ DO ~FillSlot(SLOT_WEAPON)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_WEAPON)~ THEN REPLY ~I already have a weapon.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_AMMO) 
+			IF ~!HasItemSlot("%Death_var%",SLOT_AMMO) 
 			OR(3)
-				!HasItemCategory(Myself,BULLET,FALSE)
-				!HasItemCategory(Myself,ARROW,FALSE)
-				!HasItemCategory(Myself,BOLT,FALSE)~ THEN REPLY ~Use the projectiles in you inventory.~ DO ~FillSlot(SLOT_AMMO)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_AMMO)~ THEN REPLY ~I already use projectiles.~ GOTO JO_JOINequip
+				!HasItemCategory("%Death_var%",BULLET,FALSE)
+				!HasItemCategory("%Death_var%",ARROW,FALSE)
+				!HasItemCategory("%Death_var%",BOLT,FALSE)~ THEN REPLY ~Use the projectiles in you inventory.~ DO ~FillSlot(SLOT_AMMO)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_AMMO)~ THEN REPLY ~I already use projectiles.~ GOTO JO_JOINequip
 
 
-			IF ~!HasItemSlot(Myself,SLOT_MISC0)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC0)~ GOTO JO_JOINequip
-			IF ~!HasItemSlot(Myself,SLOT_MISC1)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC1)~ GOTO JO_JOINequip
-			IF ~!HasItemSlot(Myself,SLOT_MISC2)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC2)~ GOTO JO_JOINequip
-			IF ~HasItemSlot(Myself,SLOT_MISC2) HasItemSlot(Myself,SLOT_MISC1) HasItemSlot(Myself,SLOT_MISC0)~ THEN REPLY ~I cannot use more combat items.~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_MISC0)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC0)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_MISC1)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC1)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot("%Death_var%",SLOT_MISC2)~ THEN REPLY ~Be ready to use one of the combat items in you inventory.~ DO ~FillSlot(SLOT_MISC2)~ GOTO JO_JOINequip
+			IF ~HasItemSlot("%Death_var%",SLOT_MISC2) HasItemSlot("%Death_var%",SLOT_MISC1) HasItemSlot("%Death_var%",SLOT_MISC0)~ THEN REPLY ~I cannot use more combat items.~ GOTO JO_JOINequip
 	END // JO_JOINequip
 
 // Hand over items
 	IF ~~ THEN BEGIN JO_JOINnaked
 		SAY ~Hey, don't strip me down !~
-			IF ~IsGabber(Player1)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,WEAPONS))~ EXIT
+			IF ~~ THEN REPLY ~Oh ! I wouldn't dare.~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ EXIT
+			IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO LEGION
+			IF ~IsGabber(Player1)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player1,SetGlobal("JO_JOIN_MANAGE","LOCALS",1))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player2)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,WEAPONS))~ EXIT
+			IF ~IsGabber(Player2)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN_MANAGE","LOCALS",1))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player3)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,WEAPONS))~ EXIT
+			IF ~IsGabber(Player3)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN_MANAGE","LOCALS",1))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player4)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,WEAPONS))~ EXIT
+			IF ~IsGabber(Player4)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN_MANAGE","LOCALS",1))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player5)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,WEAPONS))~ EXIT
+			IF ~IsGabber(Player5)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN_MANAGE","LOCALS",1))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player6)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,WEAPONS))~ EXIT //
-
-
-			IF ~IsGabber(Player1)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT
-
-			IF ~IsGabber(Player2)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT
-
-			IF ~IsGabber(Player3)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT
-
-			IF ~IsGabber(Player4)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT
-
-			IF ~IsGabber(Player5)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT
-
-			IF ~IsGabber(Player6)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT
+			IF ~IsGabber(Player6)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN_MANAGE","LOCALS",1))~ GOTO JO_JOINYes
 
 
-			IF ~IsGabber(Player1)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,EQUIPPED))~ EXIT
+			IF ~IsGabber(Player1)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player1,SetGlobal("JO_JOIN_MANAGE","LOCALS",2))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player2)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,EQUIPPED))~ EXIT
+			IF ~IsGabber(Player2)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN_MANAGE","LOCALS",2))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player3)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,EQUIPPED))~ EXIT
+			IF ~IsGabber(Player3)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN_MANAGE","LOCALS",2))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player4)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,EQUIPPED))~ EXIT
+			IF ~IsGabber(Player4)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN_MANAGE","LOCALS",2))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player5)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,EQUIPPED))~ EXIT
+			IF ~IsGabber(Player5)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN_MANAGE","LOCALS",2))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player6)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,EQUIPPED))~ EXIT
-
-
-			IF ~IsGabber(Player1)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,BACKPACK))~ EXIT
-
-			IF ~IsGabber(Player2)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,BACKPACK))~ EXIT
-
-			IF ~IsGabber(Player3)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,BACKPACK))~ EXIT
-
-			IF ~IsGabber(Player4)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,BACKPACK))~ EXIT
-
-			IF ~IsGabber(Player5)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,BACKPACK))~ EXIT
-
-			IF ~IsGabber(Player6)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,BACKPACK))~ EXIT
+			IF ~IsGabber(Player6)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN_MANAGE","LOCALS",2))~ GOTO JO_JOINYes
 
 
-			IF ~IsGabber(Player1)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,ALL))~ EXIT
+			IF ~IsGabber(Player1)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player1,SetGlobal("JO_JOIN_MANAGE","LOCALS",3))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player2)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,ALL))~ EXIT
+			IF ~IsGabber(Player2)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN_MANAGE","LOCALS",3))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player3)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,ALL))~ EXIT
+			IF ~IsGabber(Player3)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN_MANAGE","LOCALS",3))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player4)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,ALL))~ EXIT
+			IF ~IsGabber(Player4)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN_MANAGE","LOCALS",3))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player5)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,ALL))~ EXIT
+			IF ~IsGabber(Player5)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN_MANAGE","LOCALS",3))~ GOTO JO_JOINYes
 
-			IF ~IsGabber(Player6)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,ALL))~ EXIT
+			IF ~IsGabber(Player6)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN_MANAGE","LOCALS",3))~ GOTO JO_JOINYes
+
+
+			IF ~IsGabber(Player1)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player1,SetGlobal("JO_JOIN_MANAGE","LOCALS",4))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player2)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN_MANAGE","LOCALS",4))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player3)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN_MANAGE","LOCALS",4))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player4)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN_MANAGE","LOCALS",4))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player5)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN_MANAGE","LOCALS",4))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player6)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN_MANAGE","LOCALS",4))~ GOTO JO_JOINYes
+
+
+			IF ~IsGabber(Player1)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player1,SetGlobal("JO_JOIN_MANAGE","LOCALS",5))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player2)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN_MANAGE","LOCALS",5))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player3)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN_MANAGE","LOCALS",5))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player4)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN_MANAGE","LOCALS",5))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player5)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN_MANAGE","LOCALS",5))~ GOTO JO_JOINYes
+
+			IF ~IsGabber(Player6)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN_MANAGE","LOCALS",5))~ GOTO JO_JOINYes
 
 	END // JO_JOINnaked
 */

@@ -10,7 +10,8 @@
 // ^0xFF82E6FF Jaune gold.............  (Player4)
 // ^0xFFf4cccc Rose clair............. (Player5)
 // ^0xFF660000  Bleu foncé/brillant............. (Player6)
-
+// ^0xFF6B4763 Violet
+// 705268
 // ^G Vert clair (Special)
 // ^- Blanc (Special)
 // ^0xFFFFBF5F Bleu un peu plus foncé (Special)
@@ -456,25 +457,25 @@ IF ~~ THEN BEGIN MOVE_AROUND
 
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI don't want to see any of you in my dream.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",1)~ EXIT
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI did dream about my dear fellow travelers !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",2)~ EXIT
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fI did dream about my dear fellow travelers !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",2)~ EXIT
 
 // Banters
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~I am exhausted by all these conversations, please stop interrupting the group.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF705268I am exhausted by all these conversations, please stop interrupting the group.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",13)~ EXIT
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~On second thought, I miss our discussions... Let's talk to each others.~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF6aa84fOn second thought, I miss our discussions... Let's talk to each others.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",14)~ EXIT
 
 	IF ~~ THEN REPLY ~^GDiscuss with ...^-~ GOTO 2
 
 	IF ~!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFA legion ?^-~ DO ~ActionOverride(Player1,ChangeAIScript("JO_JOINC",RACE)) ActionOverride(Player1,SetGlobal("JO_JOIN_COUNT_TRAVELER","LOCALS",1))~ EXIT
 
 // Strategy
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFDo whatever you want.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF6B4763Do whatever you want.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",8)~ EXIT
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFTravelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF705268Travelers, stay at this location.^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",25)~ EXIT
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFStay close to me or your partner !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",17)~ EXIT
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF6B4763Stay close to me or your partner !^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",17)~ EXIT
 
-	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFFFF00FFDon't be afraid and come closer...^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",9)~ EXIT
+	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF6B4763Don't be afraid and come closer...^-~ DO ~SetGlobal("JO_JOIN_Move_Around","GLOBAL",9)~ EXIT
 
 // Privacy
 	IF ~!Global("JO_JOIN_NOPRIVACY","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFI need some privacy, don't follow me in another area.^-~ DO ~SetGlobal("JO_JOIN_NOPRIVACY","GLOBAL",0)~ EXIT
