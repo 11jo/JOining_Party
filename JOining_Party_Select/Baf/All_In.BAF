@@ -570,11 +570,34 @@ THEN
 		Continue()
 END
 
+IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
+	Global("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
+		RemoveAreaFlag(NOSAVE) // Test End Switching Party
+		Continue()
+END
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // Leave Party
 
 ///////////////////////////////////////////////////////////////////////////////
+
+IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
+//
+	!AreaType(NOSAVE)
+//
+	!Global("JO_Myself_LeaveParty","LOCALS",0)
+	!Global("JO_Myself_Valid","LOCALS",0)
+	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // Test Leave Party
+		Continue()
+END // End after next block
 
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
@@ -605,6 +628,15 @@ THEN
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		SetGlobal("JO_Myself_InParty","LOCALS",0)
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		Continue()
+END
+
+IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
+	Global("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
+		RemoveAreaFlag(NOSAVE) // Test End Leave Party
 		Continue()
 END
 
