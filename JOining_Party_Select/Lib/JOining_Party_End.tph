@@ -61,6 +61,18 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 										PATCH_PRINT ~...%SOURCE_FILESPEC% don't have // RemoveAreaFlag(NOSAVE) ...No need patching.
 										~
 									END
+								SPRINT textToReplace ~AddAreaFlag(NOSAVE)~
+								COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+									PATCH_IF (num_matches > 0) BEGIN
+										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_SAVE_AREA","MYAREA",0)
+									\0~	
+										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+										PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+										~
+									END ELSE BEGIN
+										PATCH_PRINT ~...%SOURCE_FILESPEC% don't have // AddAreaFlag(NOSAVE) ...No need patching.
+										~
+									END
 							END
 					END
 				END ELSE BEGIN
@@ -78,6 +90,15 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 									\0~
 										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 										PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+										~
+									END
+									SPRINT textToReplace ~RemoveAreaFlag(NOSAVE)~
+									COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+									PATCH_IF (num_matches > 0) BEGIN
+										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_NOSAVE","MYAREA",0)
+									\0~
+										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+										PATCH_PRINT ~... // RemoveAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
 										~
 									END
 								END
