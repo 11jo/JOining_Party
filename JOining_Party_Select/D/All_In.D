@@ -252,12 +252,12 @@ StartDialogueNoSet(Player6)~ EXIT
 
 // Inventory management
 /*
-		IF ~IsGabber(Player1)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player1,BACKPACK)~ EXIT
-		IF ~IsGabber(Player2)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player2,BACKPACK)~ EXIT
-		IF ~IsGabber(Player3)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player3,BACKPACK)~ EXIT
-		IF ~IsGabber(Player4)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player4,BACKPACK)~ EXIT
-		IF ~IsGabber(Player5)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player5,BACKPACK)~ EXIT
-		IF ~IsGabber(Player6)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~TakeCreatureItems(Player6,BACKPACK)~ EXIT
+		IF ~IsGabber(Player1)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player1,BACKPACK))~ EXIT
+		IF ~IsGabber(Player2)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player2,BACKPACK))~ EXIT
+		IF ~IsGabber(Player3)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player3,BACKPACK))~ EXIT
+		IF ~IsGabber(Player4)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player4,BACKPACK))~ EXIT
+		IF ~IsGabber(Player5)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player5,BACKPACK))~ EXIT
+		IF ~IsGabber(Player6)~ THEN REPLY ~^0xFF82E6FFCarry my items please.^-~ DO ~ActionOverride(Myself,TakeCreatureItems(Player6,BACKPACK))~ EXIT
 		IF ~~ THEN REPLY ~Hand over...~ GOTO JO_JOINnaked
 		IF ~~ THEN REPLY ~^-Let's take a look at your equipment.^-~ GOTO JO_JOINequip
 */
@@ -625,37 +625,41 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~~ THEN BEGIN JO_JOINequip
 		SAY ~Hey, don't undress me with your eyes...~
 			IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO LEGION
-			IF ~!HasItemSlot(Myself,SLOT_AMULET)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_AMULET)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_AMULET) !HasItemCategory(Myself,AMULET,FALSE)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_AMULET)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_AMULET)~ THEN REPLY ~I already wear an amulet.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_BELT)~ THEN REPLY ~Wear the belt in you inventory.~ DO ~FillSlot(SLOT_BELT)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_BELT) !HasItemCategory(Myself,BELT,FALSE)~ THEN REPLY ~Wear the belt in you inventory.~ DO ~FillSlot(SLOT_BELT)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_BELT)~ THEN REPLY ~I already wear a belt.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_BOOTS)~ THEN REPLY ~Wear the boots in you inventory.~ DO ~FillSlot(SLOT_BOOTS)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_BOOTS) !HasItemCategory(Myself,BOOT,FALSE)~ THEN REPLY ~Wear the boots in you inventory.~ DO ~FillSlot(SLOT_BOOTS)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_BOOTS)~ THEN REPLY ~I already wear boots.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_CLOAK)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_CLOAK)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_CLOAK) !HasItemCategory(Myself,CLOAK,FALSE)~ THEN REPLY ~Wear the amulet in you inventory.~ DO ~FillSlot(SLOT_CLOAK)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_CLOAK)~ THEN REPLY ~I already wear an cloak.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_GAUNTLETS)~ THEN REPLY ~Wear the gauntlets in you inventory.~ DO ~FillSlot(SLOT_GAUNTLETS)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_GAUNTLETS) !HasItemCategory(Myself,RING,FALSE)~ THEN REPLY ~Wear the gauntlets in you inventory.~ DO ~FillSlot(SLOT_GAUNTLETS)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_GAUNTLETS)~ THEN REPLY ~I already wear gauntlets.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_RING_LEFT)~ THEN REPLY ~Wear the ring in you inventory.~ DO ~FillSlot(SLOT_RING_LEFT)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_RING_LEFT) !HasItemCategory(Myself,RING,FALSE)~ THEN REPLY ~Wear the ring in you inventory.~ DO ~FillSlot(SLOT_RING_LEFT)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_RING_LEFT)~ THEN REPLY ~I already have a ring on my right hand.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_SHIELD)~ THEN REPLY ~Equip the shield in you inventory.~ DO ~FillSlot(SLOT_SHIELD)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_SHIELD) !HasItemCategory(Myself,SHIELD,FALSE)~ THEN REPLY ~Equip the shield in you inventory.~ DO ~FillSlot(SLOT_SHIELD)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_SHIELD)~ THEN REPLY ~I already carry a shield.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_HELMET)~ THEN REPLY ~Equip the helm in you inventory.~ DO ~FillSlot(SLOT_HELMET)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_HELMET) !HasItemCategory(Myself,HELMET,FALSE)~ THEN REPLY ~Equip the helm in you inventory.~ DO ~FillSlot(SLOT_HELMET)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_HELMET)~ THEN REPLY ~I already wear a helm.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_ARMOR)~ THEN REPLY ~Equip the armor in you inventory.~ DO ~FillSlot(SLOT_ARMOR)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_ARMOR) !HasItemCategory(Myself,ARMOR,FALSE)~ THEN REPLY ~Equip the armor in you inventory.~ DO ~FillSlot(SLOT_ARMOR)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_ARMOR)~ THEN REPLY ~I already wear an armor.~ GOTO JO_JOINequip
 
 			IF ~!HasItemSlot(Myself,SLOT_WEAPON)~ THEN REPLY ~Equip one of the weapon in you inventory.~ DO ~FillSlot(SLOT_WEAPON)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_WEAPON)~ THEN REPLY ~I already have a weapon.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot(Myself,SLOT_AMMO)~ THEN REPLY ~Use the projectiles in you inventory.~ DO ~FillSlot(SLOT_AMMO)~ GOTO JO_JOINequip
+			IF ~!HasItemSlot(Myself,SLOT_AMMO) 
+			OR(3)
+				!HasItemCategory(Myself,BULLET,FALSE)
+				!HasItemCategory(Myself,ARROW,FALSE)
+				!HasItemCategory(Myself,BOLT,FALSE)~ THEN REPLY ~Use the projectiles in you inventory.~ DO ~FillSlot(SLOT_AMMO)~ GOTO JO_JOINequip
 			IF ~HasItemSlot(Myself,SLOT_AMMO)~ THEN REPLY ~I already use projectiles.~ GOTO JO_JOINequip
 
 
@@ -668,11 +672,41 @@ StartDialogueNoSet(Player6)~ EXIT
     // Hand over items
 	IF ~~ THEN BEGIN JO_JOINnaked
 		SAY ~Hey, don't strip me down !~
-			IF ~~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,WEAPONS))~ EXIT //
-			IF ~~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
-			IF ~~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
-			IF ~~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,BACKPACK))~ EXIT //
-			IF ~~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(LastTalkedToBy(),TakeCreatureItems(Myself,ALL))~ EXIT //
+			IF ~IsGabber(Player1)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,WEAPONS))~ EXIT //
+			IF ~IsGabber(Player2)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,WEAPONS))~ EXIT //
+			IF ~IsGabber(Player3)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,WEAPONS))~ EXIT //
+			IF ~IsGabber(Player4)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,WEAPONS))~ EXIT //
+			IF ~IsGabber(Player5)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,WEAPONS))~ EXIT //
+			IF ~IsGabber(Player6)~ THEN REPLY ~... You're weapons.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,WEAPONS))~ EXIT //
+
+			
+			IF ~IsGabber(Player1)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
+			IF ~IsGabber(Player2)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
+			IF ~IsGabber(Player3)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
+			IF ~IsGabber(Player4)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
+			IF ~IsGabber(Player5)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
+			IF ~IsGabber(Player6)~ THEN REPLY ~... Combat items.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,QUICKITEMS))~ EXIT //
+
+			IF ~IsGabber(Player1)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
+			IF ~IsGabber(Player2)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
+			IF ~IsGabber(Player3)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
+			IF ~IsGabber(Player4)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
+			IF ~IsGabber(Player5)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
+			IF ~IsGabber(Player6)~ THEN REPLY ~... The items you're wearing.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,EQUIPPED))~ EXIT //
+
+			IF ~IsGabber(Player1)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,BACKPACK))~ EXIT //
+			IF ~IsGabber(Player2)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,BACKPACK))~ EXIT //
+			IF ~IsGabber(Player3)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,BACKPACK))~ EXIT //
+			IF ~IsGabber(Player4)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,BACKPACK))~ EXIT //
+			IF ~IsGabber(Player5)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,BACKPACK))~ EXIT //
+			IF ~IsGabber(Player6)~ THEN REPLY ~... The items you're carrying.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,BACKPACK))~ EXIT //
+
+			IF ~IsGabber(Player1)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player1,TakeCreatureItems(Myself,ALL))~ EXIT //
+			IF ~IsGabber(Player2)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player2,TakeCreatureItems(Myself,ALL))~ EXIT //
+			IF ~IsGabber(Player3)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player3,TakeCreatureItems(Myself,ALL))~ EXIT //
+			IF ~IsGabber(Player4)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player4,TakeCreatureItems(Myself,ALL))~ EXIT //
+			IF ~IsGabber(Player5)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player5,TakeCreatureItems(Myself,ALL))~ EXIT //
+			IF ~IsGabber(Player6)~ THEN REPLY ~... Everything you got.~ DO ~ActionOverride(Player6,TakeCreatureItems(Myself,ALL))~ EXIT //
 	END
 */
 ////////////////////////////////////////////////////

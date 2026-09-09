@@ -88,7 +88,7 @@ IF ~True()~ THEN BEGIN 0
 		ActionOverride(Player2,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
-		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> need a little adjustment ?^-~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player2,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFFFB4B4<PLAYER2> Show us what you got.^-~ DO ~ActionOverride(Player2,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player2,StartDialogueNoSet(Player1))~ EXIT
@@ -126,7 +126,7 @@ IF ~True()~ THEN BEGIN 0
 		ActionOverride(Player3,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
-		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFFFDF10<PLAYER3> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFFFDF10<PLAYER3> need a little adjustment ?^-~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player3,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFFFDF10<PLAYER3> Show us what you got.^-~ DO ~ActionOverride(Player3,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player3,StartDialogueNoSet(Player1))~ EXIT
@@ -165,7 +165,7 @@ IF ~True()~ THEN BEGIN 0
 		ActionOverride(Player4,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
-		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF82E6FF<PLAYER4> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFF82E6FF<PLAYER4> need a little adjustment ?^-~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player4,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FF<PLAYER4> Show us what you got.^-~ DO ~ActionOverride(Player4,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player4,StartDialogueNoSet(Player1))~ EXIT
@@ -204,7 +204,7 @@ IF ~True()~ THEN BEGIN 0
 		ActionOverride(Player5,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
-		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFf4cccc<PLAYER5> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFf4cccc<PLAYER5> need a little adjustment ?^-~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFf4cccc<PLAYER5> Show us what you got.^-~ DO ~ActionOverride(Player5,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player5,StartDialogueNoSet(Player1))~ EXIT
@@ -243,7 +243,7 @@ IF ~True()~ THEN BEGIN 0
 		ActionOverride(Player6,SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0))~ EXIT //
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
-		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFffe599<PLAYER6> need a little adjustment ?^-~ DO ~SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)~ EXIT //
+		Global("JO_JOIN_SET_JOINM","LOCALS",0)~ THEN REPLY ~^0xFFffe599<PLAYER6> need a little adjustment ?^-~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1))~ EXIT //
 	IF ~!TriggerOverride(Player6,Global("JO_Myself_Valid","LOCALS",0))
 		TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))
 		!Global("JO_JOIN_DEV_MODE","GLOBAL",0)~ THEN REPLY ~^0xFFffe599<PLAYER6> Show us what you got.^-~ DO ~ActionOverride(Player6,SetGlobal("JO_JOIN","LOCALS",1)) ActionOverride(Player6,StartDialogueNoSet(Player1))~ EXIT
