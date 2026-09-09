@@ -784,33 +784,6 @@ END
 
 // Block wait 1 for Quick Switch
 
-IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
-//
-	!Global("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
-	OR(2)
-		!Global("JO_JOIN_NOSAVE","MYAREA",1)
-		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
-//
-	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
-	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
-	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
-	Global("JO_NOJOIN","GLOBAL",0)
-	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
-//
-	Global("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
-	Global("JO_JOIN_QUICK_JOIN_TIMER","LOCALS",1)
-	Global("JO_JOIN_QUICK_SWITCH","LOCALS",1)
-	NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
-		AddAreaFlag(NOSAVE) // Test Quick Switch
-		Continue()
-END // End in JO_JOINX.baf
-
 IF
 //
 	Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0) // Quick switch is active
@@ -827,6 +800,8 @@ IF
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Quick Switch
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",2) // Enable next block
 END
 
@@ -2596,6 +2571,8 @@ IF // First check
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2665,6 +2642,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2730,6 +2709,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2790,6 +2771,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2844,6 +2827,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -3063,24 +3048,6 @@ THEN
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",TWO_TURNS)
 		DisplayString(Myself,~^0xFF16537eNo party member want to switch with me ? It isn't right...^-~)
 END
-
-IF  // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
-//
-	!Global("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
-	OR(2)
-		!Global("JO_JOIN_NOSAVE","MYAREA",1)
-		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
-//
-	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",1) // Switching party step 1
-	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
-	Global("JO_NOJOIN","GLOBAL",0) // No join stop
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
-		AddAreaFlag(NOSAVE) // Test Switching party
-		Continue()
-END // End in All_in.baf Main Switching Party 4
 
 IF // Waiting to Switching Party.
 //
@@ -3331,43 +3298,6 @@ END
 
 // Main Fill Party 1
 
-IF // JO_JOIN_NOSAVE_AREA Duplicate next block triggers
-//
-	!Global("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
-	OR(2)
-		!Global("JO_JOIN_NOSAVE","MYAREA",1)
-		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
-//
-	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
-	OR(2)
-		Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0) // Fill party is active
-		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
-	OR(3)
-		Global("JO_JOIN_FILL_PARTY","LOCALS",1)
-		NumInPartyLT(3) // Come in party if less than 3 party members
-		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
-//
-	!Global("JO_JOIN_FILL_PARTY","LOCALS",2) // Prevent boucle due to previous OR(2) above
-	// add Continue() below, it should make this one useless but could allow mor than one traveler to fill party
-	Global("JO_NOJOIN","GLOBAL",0)
-//
-	NumInPartyLT(6)
-	!Global("JO_Myself_Valid","LOCALS",0)
-//
-	OR(2)
-		Allegiance(Myself,FAMILIAR)
-		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
-	OR(2)
-		Global("JO_JOIN_NEVER_FILL","LOCALS",0)
-		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",1)
-		AddAreaFlag(NOSAVE) // Test  Fill Party
-		Continue()
-END // End after Secondary Fill Party 2 below
-
 IF
 //
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
@@ -3410,24 +3340,32 @@ IF
 		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 THEN
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
 		DisplayStringHead(Myself,~Let me in !~)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
 		DisplayStringHead(Myself,~Incoming !~)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
 		DisplayStringHead(Myself,~There is plenty of room in this group...~)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
@@ -3515,16 +3453,6 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobalTimer("JO_JOIN_SWITCH_TIMER","LOCALS",ONE_DAY)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
-		Continue()
-END
-
-IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
-	Global("JO_JOIN_NOSAVE_AREA","LOCALS",1)
-THEN
-	RESPONSE #100
-		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
-		SetGlobal("JO_JOIN_NOSAVE_MYSELF","MYAREA",0)
-		RemoveAreaFlag(NOSAVE) // Test End Fill Party
 		Continue()
 END
 
