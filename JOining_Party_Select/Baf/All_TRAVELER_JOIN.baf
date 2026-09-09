@@ -104,6 +104,8 @@ THEN
 END
 
 IF // JO_JOIN_NOSAVE_AREA Remove flag if needed
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
 	OR(2)
 		!Global("JO_JOIN_NOSAVE","MYAREA",1)
 		Global("JO_JOIN_SAVE_AREA","MYAREA",1)
@@ -112,14 +114,18 @@ THEN
 	RESPONSE #100
 		RemoveAreaFlag(NOSAVE) // AreaFlag End Leave Party / Switching party / Quick switch / Fill party
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
+		DisplayString(Myself,~It's good.~)
 END
 
 IF // JO_JOIN_NOSAVE_AREA don't remove flag if Global("JO_JOIN_NOSAVE","MYAREA",1)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+	Global("JO_NOJOIN","GLOBAL",0)
 	!Global("JO_JOIN_NOSAVE","MYAREA",0)
 	Global("JO_JOIN_NOSAVE_AREA","LOCALS",1)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",0)
+		DisplayString(Myself,~It's good.~)
 END
 
 ///////////////////////////////////////////////////////////////////////////////////

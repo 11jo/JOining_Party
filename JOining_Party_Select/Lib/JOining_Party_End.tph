@@ -43,7 +43,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 					PATCH_PRINT ~... // %SOURCE_RES% is a no save area
 					Adding Global("JO_JOIN_NOSAVE","MYAREA",1)
 						~
-				PATCH_IF NOT (~%SOURCE_RES%.bcs~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
+/*				PATCH_IF NOT (~%SOURCE_RES%.bcs~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
 					PATCH_PRINT ~... // %SOURCE_RES% have area script
 						~
 					INNER_ACTION BEGIN
@@ -102,7 +102,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 										~
 									END
 								END
-						END
+						END*/
 			END
 BUT_ONLY
 
