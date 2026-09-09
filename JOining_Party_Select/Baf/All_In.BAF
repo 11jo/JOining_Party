@@ -234,12 +234,12 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
 		Continue()
-	RESPONSE #32
+/*	RESPONSE #32 // Could be problematic if IA inactive at loading
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Wait(1)
 		SetGlobal("JO_JOIN_JOINM_NOTALK","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
-		Continue()
+		Continue()*/
 END
 
 ///////////////////////////////////////////////////////////////////////////////
