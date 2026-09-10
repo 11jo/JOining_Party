@@ -120,17 +120,17 @@ THEN
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
 		ActionOverride(PartySlot6,Deactivate(Myself))
-		ActionOverride(PartySlot6,ClearActions(Myself))
+		ActionOverride(PartySlot6,ChangeAIScript("JO_JOINK",GENERAL))
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
 		ActionOverride(PartySlot5,Deactivate(Myself))
-		ActionOverride(PartySlot5,ClearActions(Myself))
+		ActionOverride(PartySlot5,ChangeAIScript("JO_JOINK",GENERAL))
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot4,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot4,LeaveParty())
 		ActionOverride(PartySlot4,Deactivate(Myself))
-		ActionOverride(PartySlot4,ClearActions(Myself))
+		ActionOverride(PartySlot4,ChangeAIScript("JO_JOINK",GENERAL))
 END
 
 IF
@@ -148,13 +148,13 @@ THEN
 		ActionOverride(PartySlot6,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",2))
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
-		ActionOverride(PartySlot6,ClearActions(Myself))
+		ActionOverride(PartySlot6,ChangeAIScript("JO_JOINK",GENERAL))
 		ActionOverride(PartySlot6,Deactivate(Myself))
 		ActionOverride(PartySlot5,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
 		ActionOverride(PartySlot5,Deactivate(Myself))
-		ActionOverride(PartySlot5,ClearActions(Myself))
+		ActionOverride(PartySlot5,ChangeAIScript("JO_JOINK",GENERAL))
 END
 
 IF
@@ -171,7 +171,7 @@ THEN
 		ActionOverride(PartySlot6,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot6,LeaveParty())
 		ActionOverride(PartySlot6,Deactivate(Myself))
-		ActionOverride(PartySlot6,ClearActions(Myself))
+		ActionOverride(PartySlot6,ChangeAIScript("JO_JOINK",GENERAL))
 END
 
 IF
@@ -190,12 +190,12 @@ THEN
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
 		ActionOverride(PartySlot5,Deactivate(Myself))
-		ActionOverride(PartySlot5,ClearActions(Myself))
+		ActionOverride(PartySlot5,ChangeAIScript("JO_JOINK",GENERAL))
 		ActionOverride(PartySlot4,SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",1))
 		ActionOverride(PartySlot4,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot4,LeaveParty())
 		ActionOverride(PartySlot4,Deactivate(Myself))
-		ActionOverride(PartySlot4,ClearActions(Myself))
+		ActionOverride(PartySlot4,ChangeAIScript("JO_JOINK",GENERAL))
 END
 
 IF
@@ -212,7 +212,7 @@ THEN
 		ActionOverride(PartySlot5,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot5,LeaveParty())
 		ActionOverride(PartySlot5,Deactivate(Myself))
-		ActionOverride(PartySlot5,ClearActions(Myself))
+		ActionOverride(PartySlot5,ChangeAIScript("JO_JOINK",GENERAL))
 END
 
 IF
@@ -229,7 +229,7 @@ THEN
 		ActionOverride(PartySlot4,DisplayStringHead(Myself,~Oh no ! More Travelers...~))
 		ActionOverride(PartySlot4,LeaveParty())
 		ActionOverride(PartySlot4,Deactivate(Myself))
-		ActionOverride(PartySlot4,ClearActions(Myself))
+		ActionOverride(PartySlot4,ChangeAIScript("JO_JOINK",GENERAL))
 END
 
 // Party is not full, just go to step3

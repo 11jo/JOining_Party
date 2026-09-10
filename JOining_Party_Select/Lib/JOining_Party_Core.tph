@@ -453,9 +453,6 @@ END
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// JO_JOINP / JO_JOINI transitions addition
-	INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_to_BG2.tph~
-
 // Traveler dedicated scripts
 
 		COMPILE ~weidu_external/JOining_Party_Select/JO_JOINI.baf~ EVALUATE_BUFFER
@@ -483,6 +480,8 @@ END
 
 // Loading Switch
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
+
+		COMPILE ~JOining_Party_Select/Baf/Join_ability/JO_JOINK.baf~ EVALUATE_BUFFER
 
 // Charname override script JO_JOINP.baf
 		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Join_ability.baf
