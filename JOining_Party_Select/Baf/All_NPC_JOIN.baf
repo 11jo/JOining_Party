@@ -103,8 +103,6 @@ IF
 	GlobalGT("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch active
 	GlobalLT("JO_JOIN_LOADING_SWITCH","GLOBAL",4) // Loading switch active
 	!Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // Is deactivated
-	!Allegiance(Myself,FAMILIAR)
-	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
 		NoAction()
