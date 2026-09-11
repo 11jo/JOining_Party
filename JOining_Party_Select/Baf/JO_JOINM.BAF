@@ -23,6 +23,27 @@ THEN
 END
 */
 
+/*
+// Check for non potential traveler
+IF
+	Global("JO_JOIN_PARTY_MEMBER","LOCALS",1)
+	OR(4)
+		!Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		!Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
+		!Global("JO_JOIN_QUICK_SWITCH","LOCALS",0)
+		!Global("JO_JOIN_FILL_PARTY","LOCALS",0)
+	InPartyAllowDead(Myself)
+THEN
+	RESPONSE #100
+		SetTokenGlobal("JO_JOIN_PARTY_MEMBER","LOCALS","JO_TEST_VALUE")
+		DisplayStringHead(Myself,~^R Test - JO_JOIN_PARTY_MEMBER = <JO_TEST_VALUE>, expected: 1 but other values have to be 0^-~)
+		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
+		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
+		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+END
+*/
+
 IF
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	InPartyAllowDead(Myself)

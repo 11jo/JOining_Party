@@ -603,8 +603,8 @@ OUTER_SPRINT "slashdeux" "\2"
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
-	SetCutSceneLite(TRUE)
-	Wait(1)
+//	SetCutSceneLite(TRUE)
+//	Wait(1)
 	StartCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // StartCutSceneMode() first action found in %SOURCE_FILESPEC%
