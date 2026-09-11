@@ -25,7 +25,7 @@ COPY_EXISTING ~ISHYSCRP.bcs~ ~override~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~
-		DisplayStringHead(Myself,~See you on the other side !~)
+		DisplayStringHead(Myself,@1000)
 	\0~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Ishy_MoveBetweenAreas : SaveGame found in %SOURCE_FILESPEC% for Ishilka
