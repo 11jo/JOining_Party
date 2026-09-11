@@ -1,0 +1,11 @@
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		EndCutSceneMode()
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+		SetGlobal("JO_JOIN_c#ebg122","GLOBAL",1)
+		SetCursorState(TRUE)
+END

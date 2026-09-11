@@ -32,6 +32,10 @@ END
 
 // Reset JO_JOIN_CAMPAIGN_TRANSITION for Switch trigger in JO_JOINI
 IF
+	!AreaCheck("BD6100")
+	!AreaCheck("BD6200")
+	!AreaCheck("BD0120")
+	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
 	!Global("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100

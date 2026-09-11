@@ -70,7 +70,7 @@ StartDialogueNoSet(Player4)~ EXIT
 			IF ~!TriggerOverride(Player5,Global("JO_Myself_Valid","LOCALS",0))
 				OR(2)
 					TimeOfDay(DAY)
-					TimeOfDay(MORNING)~ THEN REPLY ~^0xFFf4ccccfI <PLAYER5>, found you particulary beautiful today.^-~ DO ~
+					TimeOfDay(MORNING)~ THEN REPLY ~^0xFFf4ccccI <PLAYER5>, found you particulary beautiful today.^-~ DO ~
 SetGlobal("JO_JOIN","LOCALS",0)
 SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",5)
 StartDialogueNoSet(Player5)~ EXIT

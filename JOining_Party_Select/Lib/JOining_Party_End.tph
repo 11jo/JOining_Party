@@ -1,4 +1,8 @@
+// JOining_Party_End.tph
 
+// Compatiblity with transition mods
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_compat.tph~
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,7 +57,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 								COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 									PATCH_IF (num_matches > 0) BEGIN
 										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_SAVE_AREA","MYAREA",1)
-									\0~	
+									\0~
 										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 										PATCH_PRINT ~... // RemoveAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
 										~
@@ -65,7 +69,7 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 								COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 									PATCH_IF (num_matches > 0) BEGIN
 										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_SAVE_AREA","MYAREA",0)
-									\0~	
+									\0~
 										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 										PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
 										~
@@ -928,6 +932,9 @@ END
 	INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
 
 // Transition between campaigns
+
+// JO_JOINP / JO_JOINI transitions addition
+
 		INCLUDE ~JOining_Party_Select/Campaign_Transition/END_OF_WATCH.tph~
 
 /*
@@ -1365,6 +1372,22 @@ COPY_EXISTING ~%Undercity_TempleofBhaal%.bcs~ ~override~
 			END
 		END
 
+COPY_EXISTING ~BDROPE.BCS~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*OR(2)
+^[%TAB% ]*StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+^[%TAB% ]*Dead("%IMOEN_DV%")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
+		StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+		Dead("%IMOEN_DV%")
+		!InMyArea("%IMOEN_DV%")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Ishy_ENDOFBG1 : SaveGame found in %SOURCE_FILESPEC% for Ishilka
+				~
+			END
+		END
 
 // MoveToCampaign("SoD") script
 COPY_EXISTING ~BDSODTRN.bcs~ ~override~
@@ -1373,7 +1396,8 @@ COPY_EXISTING ~BDSODTRN.bcs~ ~override~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)~
+		StartCutSceneMode()
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // BDSODTRN : EndOfBG1 found in %SOURCE_FILESPEC% for JO_JOIN_AREA_TRANSITION
 				~
@@ -1390,9 +1414,11 @@ IF
 	Dead("Sarevok")
 	Global("EndOfBG1","GLOBAL",0)
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+	Global("JO_JOIN_DucalPalace_TRANSITION","MYAREA",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+		SetGlobal("JO_JOIN_DucalPalace_TRANSITION","MYAREA",1)
 		Continue()
 END
 

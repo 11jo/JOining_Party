@@ -275,6 +275,7 @@ IF
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~Almost...~)
+//		ClearAllActions()
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
 END
 

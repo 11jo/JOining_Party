@@ -16,12 +16,11 @@ IF
 	Global("JO2608_Create","LOCALS",1)
 THEN
 	RESPONSE #100
-		FadeToColor([00.0],0)
+		FadeToColor([45.0],0)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2)
-		DisplayStringHead(Myself,~...~)
 		AddMapNote([1894.1155],~Travelers Items~)
-		Wait(5)
 		DisplayStringHead(Myself,~Hum...~)
+		Wait(2)
 		SetGlobal("JO2608_Create","LOCALS",2)
 END
 
@@ -32,6 +31,7 @@ IF
 	Global("JO_JOIN_JUMP_JO2608","LOCALS",2)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOHOLD_JO2608","MYAREA",1)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",3)
 		SetGlobal("JO2608_Create","LOCALS",0)
 		ChangeAIScript("JO_JOINP",OVERRIDE)
