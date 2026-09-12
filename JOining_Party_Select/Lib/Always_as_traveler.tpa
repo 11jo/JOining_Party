@@ -3239,6 +3239,8 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 			PRINT ~    Yeslick_Continuous as traveler
 			~
 
+				 OUTER_SET Yeslick_BG2_Content = 1
+
 	END ELSE ACTION_IF Yeslick_Continuous_as_Real_traveler = 1 OR (Yeslick_as_Real_traveler = 1 AND Continuous_Yeslick = 1) OR (Yeslick_BG2_as_Real_traveler = 1 AND Continuous_Yeslick = 1) THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~

@@ -20,7 +20,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_NOHOLD_JO2608","MYAREA",0)
-		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_NOHOLD_JO2608","LOCALS",0)
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_NOHOLD_JO2608","LOCALS",1)
 		SetGlobal("JO2608_Create","LOCALS",1)
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",0))
 		MoveGlobal("JO2608","%Death_var%",[%x_coo%.%y_coo%])
@@ -70,6 +70,16 @@ THEN
 		ActionOverride("%Death_var%",DestroySelf())
 END
 
+IF
+	AreaCheck("JO2608")
+	InMyArea("%Death_var%")
+	TriggerOverride("%Death_var%",Global("JO_JOIN_NOHOLD_JO2608","LOCALS",0))
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_NOHOLD_JO2608","LOCALS",1)
+		ActionOverride("%Death_var%",ForceSpell("%Death_var%",HOLD_PARTY))
+END
+
 >>>>>>>>
 EXTEND_TOP ~JO_JOINW.bcs~ ~.../JOining_SoD_JO2608.baf~ EVALUATE_BUFFER
 
@@ -111,6 +121,16 @@ THEN
 		SmallWait(2)
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",0))
 		ActionOverride("%Death_var%",DestroySelf())
+END
+
+IF
+	AreaCheck("JO2608")
+	InMyArea("%Death_var%")
+	TriggerOverride("%Death_var%",Global("JO_JOIN_NOHOLD_JO2608","LOCALS",0))
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_NOHOLD_JO2608","LOCALS",1)
+		ActionOverride("%Death_var%",ForceSpell("%Death_var%",HOLD_PARTY))
 END
 
 >>>>>>>>
@@ -199,30 +219,31 @@ COPY ~weidu_external/JOining_Party_Select/All_In/%Death_var%_All_In.baf~  ~weidu
 	Global("JO_NOJOIN","GLOBAL",0) // No join stop
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
-	Global("JO_Myself_LeaveParty","LOCALS",0)
+//	Global("JO_Myself_LeaveParty","LOCALS",0)
 	Global("JO_JOIN_END_OF_WATCH","LOCALS",1)
 	Switch("JO_JOIN_TALK_TRANSITION","LOCALS") // Only one traveler say something (Set in JO_JOINI.baf)
 THEN
 	RESPONSE #0
+		SetInterrupt(FALSE)
 		MakeGlobalOverride()
 		SetGlobal("K#PartySoD","LOCALS",1)
-		CreateVisualEffectObject("JOBG402",Myself)
-		Wait(2)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
 		SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",1)
+		CreateVisualEffectObject("JOBG402",Myself)
 		DestroySelf()
+		SetInterrupt(TRUE)
 	RESPONSE #1
+		SetInterrupt(FALSE)
 		MakeGlobalOverride()
 		SetGlobal("K#PartySoD","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",1)
 		DisplayStringHead(Myself,~We will meet again.~)
 		SetCutSceneLite(TRUE)
 		HideGUI()
-		Wait(1)
 		CreateVisualEffectObject("JOBG402",Myself)
-		Wait(2)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
-		SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",1)
 		DestroySelf()
+		SetInterrupt(TRUE)
 END
 
 IF
@@ -234,28 +255,31 @@ IF
 	Global("JO_NOJOIN","GLOBAL",0) // No join stop
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
-	Global("JO_Myself_LeaveParty","LOCALS",0)
+//	Global("JO_Myself_LeaveParty","LOCALS",0)
 	Global("JO_JOIN_END_OF_WATCH","LOCALS",1)
 	Switch("JO_JOIN_TALK_TRANSITION","LOCALS") // Only one traveler say something (Set in JO_JOINI.baf)
 THEN
 	RESPONSE #0
+		SetInterrupt(FALSE)
 		MakeGlobalOverride()
-		CreateVisualEffectObject("JOBG402",Myself)
-		Wait(2)
+		SetGlobal("K#PartySoD","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
 		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
+		CreateVisualEffectObject("JOBG402",Myself)
 		DestroySelf()
+		SetInterrupt(TRUE)
 	RESPONSE #1
+		SetInterrupt(FALSE)
 		MakeGlobalOverride()
+		SetGlobal("K#PartySoD","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
 		DisplayStringHead(Myself,~Gonna make a diversion, the Flamming Fist will search for you everywhere...~)
 		SetCutSceneLite(TRUE)
 		HideGUI()
-		Wait(1)
 		CreateVisualEffectObject("JOBG402",Myself)
-		Wait(2)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
-		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
 		DestroySelf()
+		SetInterrupt(TRUE)
 END
 
 
@@ -265,23 +289,77 @@ END
 
 //		END
 
-<<<<<<<< .../JOining_stay_JO2608.baf
+<<<<<<<< .../JOining_stay_JO2608AL.baf
 
 IF
+	InMyArea([PC])
+	AreaCheck("JO2608")
 	InMyArea("%Death_var%")
 	!Dead("%Death_var%")
-	TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_WATCH","LOCALS",0))
-	TriggerOverride("%Death_var%",Global("JO_JOIN_NOHOLD_JO2608","LOCALS",0))
-	Global("JO_JOIN_NOHOLD_JO2608","MYAREA",1)
+	TriggerOverride("%Death_var%",Global("JO_JOIN_NOHOLD_JO2608","LOCALS",1))
+	TriggerOverride(Player1,Global("JO2608_Create","LOCALS",0))
 THEN
 	RESPONSE #100
-		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_NOHOLD_JO2608","LOCALS",1)
-		ActionOverride("%Death_var%",ForceSpell("%Death_var%",NOHOLD_PARTY))
+		ActionOverride("JO2608AL",ForceSpell("%Death_var%",NOHOLD_PARTY))
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_NOHOLD_JO2608","LOCALS",0)
 		ActionOverride("%Death_var%",RandomWalk())
 		Continue()
 END
 
 IF
+	InMyArea([PC])
+	AreaCheck("JO2608")
+	InMyArea("%Death_var%")
+	!Dead("%Death_var%")
+	TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
+	!TriggerOverride("%Death_var%",Global("JO_JOIN_NOHOLD_JO2608","LOCALS",1))
+	Global("JO_JOIN_GATHER_JO2608","MYAREA",1)
+	TriggerOverride("%Death_var%",Global("JO_JOIN_SEE_JO2608","LOCALS",0))
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SEE_JO2608","LOCALS",1)
+		ActionOverride("%Death_var%",MoveToObjectNoInterrupt("JO2608AL"))
+		Continue()
+END
+
+IF
+	InMyArea([PC])
+	AreaCheck("JO2608")
+	InMyArea("%Death_var%")
+	!Dead("%Death_var%")
+	TriggerOverride("%Death_var%",Global("JO_JOIN_SEE_JO2608","LOCALS",2))
+	TriggerOverride("%Death_var%",See("JO2608AL"))
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SEE_JO2608","LOCALS",3)
+		ActionOverride("%Death_var%",RandomWalk())
+		Continue()
+END
+
+IF
+	InMyArea([PC])
+	AreaCheck("JO2608")
+	InMyArea("%Death_var%")
+	!Dead("%Death_var%")
+	TriggerOverride("%Death_var%",Global("JO_JOIN_SEE_JO2608","LOCALS",3))
+	OR(2)
+		!TriggerOverride("%Death_var%",See("JO2608AL"))
+		Global("JO_JOIN_GATHER_JO2608","MYAREA",0)
+THEN
+	RESPONSE #100
+		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SEE_JO2608","LOCALS",0)
+		ActionOverride("%Death_var%",RandomWalk())
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~JO2608AL.bcs~ ~.../JOining_stay_JO2608AL.baf~ EVALUATE_BUFFER
+
+
+<<<<<<<< .../JOining_stay_JO2608.baf
+
+IF
+	InMyArea([PC])
 	TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	InMyArea("%Death_var%")
@@ -372,7 +450,7 @@ THEN
 		Continue()
 	RESPONSE #10
 		SetGlobalTimer("JO_JOIN_STAY_JO2608","LOCALS",FOUR_TURNS)
-		DisplayStringHead("%Death_var%",~Parlez plus fort, plus fort !~)
+		DisplayStringHead("%Death_var%",~Parlez plus fort, plus fortÂ !~)
 		Wait(1)
 		ActionOverride("%Death_var%",RandomWalk())
 		Continue()

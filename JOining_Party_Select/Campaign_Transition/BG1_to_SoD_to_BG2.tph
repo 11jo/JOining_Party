@@ -106,11 +106,7 @@ END
 
 ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 
-	OUTER_SPRINT "JO_JOIN_JUMP_for_Transitions" ~~~~~
-
-//%IMOEN_FOREVER_KORLASZ_JUMP_for_Transitions_JO_JOINP%
-
-	IF
+	OUTER_SPRINT "JO_JOIN_JUMP_for_Transitions" ~~~~~IF
 //
 	OR(2)
 		AreaCheck("BD6000")
@@ -125,18 +121,15 @@ ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 	OR(2)
 		!See([ENEMY])
 		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
-	Delay(5)
 THEN
 	RESPONSE #100
-		ClearAllActions()
+		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
-		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
-		FadeToColor([15.0],0)
-		Wait(2)
-		FadeToColor([200.0],0)
+		FadeToColor([30.0],0)
 		StorePartyLocations()
-		Wait(1)
-		LeaveAreaLUA("JO2608","",[-1.-1],1)
+		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
+		Wait(2)
+		LeaveAreaLUA("JO2608","",[1232.891],1)
 		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
 
@@ -144,14 +137,18 @@ IF
 //
 	AreaCheck("JO2608")
 	Global("JO_JOIN_JUMP_JO2608","LOCALS",3)
+	Delay(4)
 THEN
 	RESPONSE #100
 		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
+		RestorePartyLocations()
 		FadeFromColor([45.0],0)
+		Wait(1)
 		SetCutSceneLite(FALSE)
 		UnhideGUI()
-		RestorePartyLocations()
+		SetGlobal("JO2608_Create","LOCALS",0)
+		SetInterrupt(TRUE)
 END
 
 
@@ -202,7 +199,6 @@ ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
 	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
-//	%IMOEN_FOREVER_KORLASZ_CAMPAIGN_TRANSITION_JO_JOINI%
 	Delay(15)
 //
 	OR(2)
@@ -215,6 +211,7 @@ ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 THEN
 	RESPONSE #0
 		SetInterrupt(FALSE)
+		ClearAllActions()
 		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
 		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)

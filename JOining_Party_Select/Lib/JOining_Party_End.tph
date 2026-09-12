@@ -1372,22 +1372,7 @@ COPY_EXISTING ~%Undercity_TempleofBhaal%.bcs~ ~override~
 			END
 		END
 
-COPY_EXISTING ~BDROPE.BCS~ ~override~
-		DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~^[%TAB% ]*OR(2)
-^[%TAB% ]*StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
-^[%TAB% ]*Dead("%IMOEN_DV%")~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~OR(3)
-		StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
-		Dead("%IMOEN_DV%")
-		!InMyArea("%IMOEN_DV%")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // Ishy_ENDOFBG1 : SaveGame found in %SOURCE_FILESPEC% for Ishilka
-				~
-			END
-		END
+EXTEND_TOP ~BDROPE.bcs~ ~JOining_Party_Select/Campaign_Transition/BD0120_BDROPE.BAF~ EVALUATE_BUFFER
 
 // MoveToCampaign("SoD") script
 COPY_EXISTING ~BDSODTRN.bcs~ ~override~

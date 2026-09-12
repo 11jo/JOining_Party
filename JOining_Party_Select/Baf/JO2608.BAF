@@ -3,6 +3,7 @@ IF
 	OnCreation()
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_GATHER_JO2608","MYAREA",0)
 		PlaySong(%BPTheme%)
 		Continue()
 END
@@ -12,6 +13,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO2608_Explore","MYAREA",1)
+		CreateCreatureImpassable("JO2608AL",[1729.1305],0)
 		RemoveMapNote([1894.1155],~Travelers Items~)
 		Explore()
 		Continue()

@@ -385,6 +385,15 @@ COPY ~JOining_Party_Select/Cre/JOJOINNE.CRE~ ~override~
 
 		COMPILE ~JOining_Party_Select/Baf/JOJOINNE.baf~ EVALUATE_BUFFER
 
+// JO2608.cre
+
+COPY ~JOining_Party_Select/Cre/JO2608.CRE~ ~override/JO2608AL.CRE~
+	SAY NAME1 ~Avatar of Alaundo~
+	SAY NAME2 ~Avatar of Alaundo~
+	WRITE_ASCII SCRIPT_OVERRIDE ~JO2608AL~ (8)
+	WRITE_ASCII DEATHVAR ~JO2608AL~ (32)
+	WRITE_ASCII DIALOG ~JO2608AL~ (8)
+
 // JO2608
 /*
 In Not_So_Always.tpa
