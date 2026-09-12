@@ -603,8 +603,8 @@ OUTER_SPRINT "slashdeux" "\2"
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
-	SetCutSceneLite(TRUE)
-	Wait(1)
+//	SetCutSceneLite(TRUE)
+//	Wait(1)
 	StartCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // StartCutSceneMode() first action found in %SOURCE_FILESPEC%
@@ -651,6 +651,30 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
 				~
+			END
+///////////////////////////////////////////////////////////////////////////////
+// AreaFlag / RemoveAreaFlag
+///////////////////////////////////////////////////////////////////////////////
+	// (NOSAVE) situation
+			SPRINT textToReplace ~RemoveAreaFlag(NOSAVE)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_SAVE_AREA","MYAREA",1)
+				SetGlobal("JO_JOIN_NOSAVE","MYAREA",0)
+				\0~	
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // RemoveAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+					~
+			END
+			SPRINT textToReplace ~AddAreaFlag(NOSAVE)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_SAVE_AREA","MYAREA",0)
+				SetGlobal("JO_JOIN_NOSAVE","MYAREA",1)
+				\0~	
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+					~
 			END
 		END
 BUT_ONLY

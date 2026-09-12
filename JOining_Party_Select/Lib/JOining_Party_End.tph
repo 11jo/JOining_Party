@@ -1,4 +1,8 @@
+// JOining_Party_End.tph
 
+// Compatiblity with transition mods
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_compat.tph~
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -31,8 +35,80 @@ COPY_EXISTING_REGEXP GLOB ~.*\.are~ ~override~
 //				EXTEND_TOP ~%SOURCE_RES%.bcs~ ~JOining_Party_Select/Baf/SetMasterArea.baf~
 //					END
 //			END
+			READ_LONG 0x14 flag
+			PATCH_IF (SOURCE_SIZE > 0x11b) AND (flag BAND BIT0) AND NOT (~%SOURCE_RES%~ STRING_EQUAL_CASE ~XG0319~) BEGIN
+				LPF fj_are_structure
+					INT_VAR
+					fj_variable_value = 1
+					STR_VAR
+					fj_structure_type = "variable"
+					fj_name           = "JO_JOIN_NOSAVE"
+				END
+					PATCH_PRINT ~... // %SOURCE_RES% is a no save area
+					Adding Global("JO_JOIN_NOSAVE","MYAREA",1)
+						~
+/*				PATCH_IF NOT (~%SOURCE_RES%.bcs~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
+					PATCH_PRINT ~... // %SOURCE_RES% have area script
+						~
+					INNER_ACTION BEGIN
+						COPY_EXISTING_REGEXP ~%SOURCE_RES%.bcs~ ~override~
+							DECOMPILE_AND_PATCH BEGIN
+								SPRINT textToReplace ~RemoveAreaFlag(NOSAVE)~
+								COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+									PATCH_IF (num_matches > 0) BEGIN
+										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_SAVE_AREA","MYAREA",1)
+									\0~
+										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+										PATCH_PRINT ~... // RemoveAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+										~
+									END ELSE BEGIN
+										PATCH_PRINT ~...%SOURCE_FILESPEC% don't have // RemoveAreaFlag(NOSAVE) ...No need patching.
+										~
+									END
+								SPRINT textToReplace ~AddAreaFlag(NOSAVE)~
+								COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+									PATCH_IF (num_matches > 0) BEGIN
+										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_SAVE_AREA","MYAREA",0)
+									\0~
+										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+										PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+										~
+									END ELSE BEGIN
+										PATCH_PRINT ~...%SOURCE_FILESPEC% don't have // AddAreaFlag(NOSAVE) ...No need patching.
+										~
+									END
+							END
+					END
+				END ELSE BEGIN
+										PATCH_PRINT ~...%SOURCE_FILESPEC% don't have area script...No need patching.
+										~
+				END
+			END ELSE PATCH_IF NOT (~%SOURCE_RES%.bcs~ STRING_EQUAL_CASE ~~) AND (FILE_EXISTS_IN_GAME ~%SOURCE_RES%.bcs~) BEGIN
+						INNER_ACTION BEGIN
+							COPY_EXISTING_REGEXP ~%SOURCE_RES%.bcs~ ~override~
+								DECOMPILE_AND_PATCH BEGIN
+									SPRINT textToReplace ~AddAreaFlag(NOSAVE)~
+									COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+									PATCH_IF (num_matches > 0) BEGIN
+										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_NOSAVE","MYAREA",1)
+									\0~
+										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+										PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+										~
+									END
+									SPRINT textToReplace ~RemoveAreaFlag(NOSAVE)~
+									COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+									PATCH_IF (num_matches > 0) BEGIN
+										REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_NOSAVE","MYAREA",0)
+									\0~
+										PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+										PATCH_PRINT ~... // RemoveAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+										~
+									END
+								END
+						END*/
+			END
 BUT_ONLY
-
 
 // JO2608.are (Switching room)
 COPY ~JOining_Party_Select/Are~ ~override~
@@ -62,8 +138,12 @@ APPEND ~SODMAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// JOJOINNE.d added before being extended (by Extend_JOJOINNE.D)
-		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/JOJOINNE.D~
+// Special JOJOINNE
+
+	INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_JOJOINNE.tph~
+
+//////////////////////////////////////////////////////////////////////////////////////
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -576,17 +656,6 @@ END
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// JOJOINNE.d Extended by each traveler
-	ACTION_IF FILE_EXISTS_IN_GAME ~JOJOINNE.dlg~ BEGIN
-
-		COMPILE EVALUATE_BUFFER  ~JOining_Party_Select/D/Extend_JOJOINNE.D~
-
-	END
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////
-
 // Edge cases
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -863,6 +932,9 @@ END
 	INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDTARGET.tph~
 
 // Transition between campaigns
+
+// JO_JOINP / JO_JOINI transitions addition
+
 		INCLUDE ~JOining_Party_Select/Campaign_Transition/END_OF_WATCH.tph~
 
 /*
@@ -1300,6 +1372,7 @@ COPY_EXISTING ~%Undercity_TempleofBhaal%.bcs~ ~override~
 			END
 		END
 
+EXTEND_TOP ~BDROPE.bcs~ ~JOining_Party_Select/Campaign_Transition/BD0120_BDROPE.BAF~ EVALUATE_BUFFER
 
 // MoveToCampaign("SoD") script
 COPY_EXISTING ~BDSODTRN.bcs~ ~override~
@@ -1308,7 +1381,8 @@ COPY_EXISTING ~BDSODTRN.bcs~ ~override~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-		SetGlobal("JO_JOIN_BDSODTRN_SoD","GLOBAL",1)~
+		StartCutSceneMode()
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // BDSODTRN : EndOfBG1 found in %SOURCE_FILESPEC% for JO_JOIN_AREA_TRANSITION
 				~
@@ -1325,9 +1399,11 @@ IF
 	Dead("Sarevok")
 	Global("EndOfBG1","GLOBAL",0)
 	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+	Global("JO_JOIN_DucalPalace_TRANSITION","MYAREA",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+		SetGlobal("JO_JOIN_DucalPalace_TRANSITION","MYAREA",1)
 		Continue()
 END
 
@@ -1353,3 +1429,4 @@ EXTEND_BOTTOM ~%NBaldursGate_DucalPalace_L1%.bcs~ ~.../JOining_DucalPalace.baf~ 
 		END
 			BUT_ONLY
 	END
+

@@ -1,0 +1,20 @@
+
+IF
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		EndCutSceneMode()
+		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
+		SetGlobal("JO_JOIN_c#ebg122","GLOBAL",1)
+		SetCutSceneLite(TRUE)
+END
+
+IF
+	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		StartCutSceneEx("JOebg122",TRUE)
+		SetCutSceneLite(TRUE)
+END

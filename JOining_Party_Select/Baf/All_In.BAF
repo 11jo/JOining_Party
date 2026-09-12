@@ -234,13 +234,57 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
 		Continue()
-	RESPONSE #32
+/*	RESPONSE #32 // Could be problematic if IA inactive at loading
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
 		Wait(1)
 		SetGlobal("JO_JOIN_JOINM_NOTALK","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
-		Continue()
+		Continue()*/
 END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Inventory management
+
+///////////////////////////////////////////////////////////////////////////////
+/*
+IF // Carry my items
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_SET_JOINX","LOCALS",0)
+	Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
+	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+//
+	InParty(Myself)
+//
+	Switch("JO_JOIN_MANAGE","LOCALS")
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),WEAPONS)
+	RESPONSE #2
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),QUICKITEMS)
+	RESPONSE #3
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),EQUIPPED)
+	RESPONSE #4
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),BACKPACK)
+	RESPONSE #5
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),ALL)
+END
+*/
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -460,6 +504,7 @@ END
 
 IF // If "JO_JOIN_READY_TO_SWITCH","LOCALS",1 then the NPC is available for a Switching Party
 //
+	Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)
 	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
 	Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Party switching inactive
@@ -541,6 +586,8 @@ IF
 	!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Leave Party
 		SetGlobal("JO_JOIN_QUICK_NEVER_JOIN","LOCALS",0)
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_TRAVELER_Myself","LOCALS",0)

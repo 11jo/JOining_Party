@@ -1,0 +1,16 @@
+
+IF
+	Clicked([ANYONE])
+	NearLocation(LastTrigger,790,1660,12)
+	!InMyArea("imoen2")
+	OR(2)
+		Dead("bdkorlas")  // Korlasz
+		Global("BD_KORLASZ_SURRENDER","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("JOBG402",Player1)
+		Wait(2)
+		MoveGlobalObject("%IMOEN_DV%",Player1)
+		Wait(2)
+		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
+END

@@ -427,6 +427,41 @@ THEN
 		Continue()
 END
 
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Inventory management
+
+///////////////////////////////////////////////////////////////////////////////
+/*
+IF // Carry my items
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	Switch("JO_JOIN_MANAGE","LOCALS")
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),WEAPONS)
+	RESPONSE #2
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),QUICKITEMS)
+	RESPONSE #3
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),EQUIPPED)
+	RESPONSE #4
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),BACKPACK)
+	RESPONSE #5
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(LastTalkedToBy(),ALL)
+END
+*/
+
 ///////////////////////////////////////////////////////////////////////////////
 
 // JO_JOIN_BANTER_TIMER centralised for all travelers
@@ -490,15 +525,11 @@ END
 // (See in JOining_Party_Core.tph ... INCLUDE BG1_to_SoD_to_BG2.tph)
 		%JO_JOIN_JUMP_for_Transitions%
 
-
 ///////////////////////////////////////////////////////////////////////////////
 
 // Avoid lauching banters in specific area // TODO : To Double Check
 
 ///////////////////////////////////////////////////////////////////////////////
-
-// BG1 / SoD End (See in JOining_Party_Core.tph ... INCLUDE BG1_to_SoD_to_BG2.tph)
-		%BDSODTRN_to_SoD%
 
  // NBaldursGate_DucalPalace_L1 and Undercity_TempleofBhaal
 		%BG1_to_SoD%

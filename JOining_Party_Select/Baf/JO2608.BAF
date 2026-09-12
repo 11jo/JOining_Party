@@ -3,6 +3,7 @@ IF
 	OnCreation()
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_GATHER_JO2608","MYAREA",0)
 		PlaySong(%BPTheme%)
 		Continue()
 END
@@ -12,6 +13,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO2608_Explore","MYAREA",1)
+		CreateCreatureImpassable("JO2608AL",[1729.1305],0)
 		RemoveMapNote([1894.1155],~Travelers Items~)
 		Explore()
 		Continue()
@@ -32,6 +34,10 @@ END
 
 // Reset JO_JOIN_CAMPAIGN_TRANSITION for Switch trigger in JO_JOINI
 IF
+	!AreaCheck("BD6100")
+	!AreaCheck("BD6200")
+	!AreaCheck("BD0120")
+	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
 	!Global("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",0)
 THEN
 	RESPONSE #100

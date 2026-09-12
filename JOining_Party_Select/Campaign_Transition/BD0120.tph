@@ -20,6 +20,17 @@ COPY_EXISTING ~ISHYSCRP.bcs~ ~override~
 				PATCH_PRINT ~... // Ishy_ENDOFBG1 : SaveGame found in %SOURCE_FILESPEC% for Ishilka
 				~
 			END
+			SPRINT textToReplace ~^[%TAB% ]*MoveBetweenAreas("BD0010",[1069.533],NNW)
+^[%TAB% ]*SetGlobal("IshyFistHelp","GLOBAL",1)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~
+		DisplayStringHead(Myself,@1000)
+	\0~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Ishy_MoveBetweenAreas : SaveGame found in %SOURCE_FILESPEC% for Ishilka
+				~
+			END
 		END
 
 <<<<<<<< .../JOining_#Ishy_bd0120.baf

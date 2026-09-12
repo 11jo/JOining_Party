@@ -7,7 +7,7 @@ IF
 THEN
 	RESPONSE #100
 		FadeToColor([45.0],0)
-		Wait(3)
+		Wait(2)
 		RestorePartyLocations()
 		MoveViewObject(Player1,INSTANT)
 		FadeFromColor([30.0],0)
