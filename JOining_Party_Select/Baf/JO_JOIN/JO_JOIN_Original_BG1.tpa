@@ -1,0 +1,1180 @@
+////////////////////////// BG1 //////////////////////////
+
+////////////////////////////////////////////////////
+
+// Ajantis
+
+	ACTION_IF JOining_Ajantis = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%AJANTIS_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDAJANTJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDAJANTI",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%AJANTIS_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%AJANTIS_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Ajantis.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Ajantis.baf~ EVALUATE_BUFFER
+
+	END // JOining_Ajantis = 1
+
+////////////////////////////////////////////////////
+
+// Alora
+
+	ACTION_IF JOining_Alora = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%ALORA_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDALORAJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%ALORA_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%ALORA_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Alora.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Alora.baf~ EVALUATE_BUFFER
+
+	END // JOining_Alora = 1
+
+////////////////////////////////////////////////////
+
+// Branwen
+
+	ACTION_IF JOining_Branwen = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%BRANWEN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BRANWEN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDBRANWJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BRANWEN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%BRANWEN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BRANWEN_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Branwen.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Branwen.baf~ EVALUATE_BUFFER
+
+	END // JOining_Branwen = 1
+
+////////////////////////////////////////////////////
+
+// Coran
+
+	ACTION_IF JOining_Coran = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%CORAN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%CORAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDCORANJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDCORAN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%CORAN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%CORAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Coran.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Coran.baf~ EVALUATE_BUFFER
+
+	END // JOining_Coran = 1
+
+////////////////////////////////////////////////////
+
+// Dynaheir
+
+	ACTION_IF JOining_Dynaheir = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%DYNAHEIR_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%DYNAHEIR_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDDYNAHJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDDYNAHE",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%DYNAHEIR_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%DYNAHEIR_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Dynaheir.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Dynaheir.baf~ EVALUATE_BUFFER
+
+
+	END // JOining_Dynaheir = 1
+
+////////////////////////////////////////////////////
+
+// Eldoth
+
+	ACTION_IF JOining_Eldoth = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%ELDOTH_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%ELDOTH_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDELDOTJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDELDOTH",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%ELDOTH_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%ELDOTH_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Eldoth.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Eldoth.baf~ EVALUATE_BUFFER
+
+	END // JOining_Eldoth = 1
+
+////////////////////////////////////////////////////
+
+// Faldorn
+
+	ACTION_IF JOining_Faldorn = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%FALDORN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("FALDORN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDFALDOJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("FALDORN",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%FALDORN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("FALDORN_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Faldorn.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Faldorn.baf~ EVALUATE_BUFFER
+
+	END // JOining_Faldorn = 1
+
+////////////////////////////////////////////////////
+
+// Garrick
+
+	ACTION_IF JOining_Garrick = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%GARRICK_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("GARRICK",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDGARRIJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDGARRIC",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%GARRICK_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("GARRICK_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Garrick.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Garrick.baf~ EVALUATE_BUFFER
+
+	END // JOining_Garrick = 1
+
+////////////////////////////////////////////////////
+
+// Kagain
+
+	ACTION_IF JOining_Kagain = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%KAGAIN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KAGAIN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDKAGAIJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KAGAIN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%KAGAIN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KAGAIN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Kagain.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Kagain.baf~ EVALUATE_BUFFER
+
+	END // JOining_Kagain = 1
+
+////////////////////////////////////////////////////
+
+// Khalid
+
+	ACTION_IF JOining_Khalid = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%KHALID_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KHALID_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDKHALIJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDKHALID",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%KHALID_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KHALID_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Khalid.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Khalid.baf~ EVALUATE_BUFFER
+
+	END // JOining_Khalid = 1
+
+////////////////////////////////////////////////////
+
+// Kivan
+
+	ACTION_IF JOining_Kivan = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%KIVAN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KIVAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDKIVANJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KIVAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%KIVAN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%KIVAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Kivan.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Kivan.baf~ EVALUATE_BUFFER
+
+	END // JOining_Kivan = 1
+
+////////////////////////////////////////////////////
+
+// Montaron
+
+	ACTION_IF JOining_Montaron = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%MONTARON_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%MONTARON_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDMONTAJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%MONTARON_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%MONTARON_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%MONTARON_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Montaron.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Montaron.baf~ EVALUATE_BUFFER
+
+	END // JOining_Montaron = 1
+
+////////////////////////////////////////////////////
+
+// Quayle
+
+	ACTION_IF JOining_Quayle = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%QUAYLE_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%QUAYLE_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDQUAYLJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%QUAYLE_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%QUAYLE_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%QUAYLE_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Quayle.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Quayle.baf~ EVALUATE_BUFFER
+
+	END // JOining_Quayle = 1
+
+////////////////////////////////////////////////////
+
+// Safana
+
+	ACTION_IF JOining_Safana = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%SAFANA_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%SAFANA_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDSAFANJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDSAFANA",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%SAFANA_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%SAFANA_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Safana.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Safana.baf~ EVALUATE_BUFFER
+
+	END // JOining_Safana = 1
+
+////////////////////////////////////////////////////
+
+// Sharteel
+
+	ACTION_IF JOining_Sharteel = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%SHARTEEL_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDSHARTJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("k9shar",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%SHARTEEL_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%SHARTEEL_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Sharteel.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Sharteel.baf~ EVALUATE_BUFFER
+
+	END // JOining_Sharteel = 1
+
+////////////////////////////////////////////////////
+
+// Skie
+
+	ACTION_IF JOining_Skie = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%SKIE_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("SKIE",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDSKIEJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("SKIE",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%SKIE_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("SKIE_",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Skie.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Skie.baf~ EVALUATE_BUFFER
+
+	END // JOining_Skie = 1
+
+////////////////////////////////////////////////////
+
+// Tiax
+
+	ACTION_IF JOining_Tiax = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%TIAX_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%TIAX_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDTIAXJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%TIAX_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%TIAX_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%TIAX_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Tiax.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Tiax.baf~ EVALUATE_BUFFER
+
+	END // JOining_Tiax = 1
+
+////////////////////////////////////////////////////
+
+// Xan
+
+	ACTION_IF JOining_Xan = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%XAN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%XAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDXANJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%XAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%XAN_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%XAN_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Xan.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Xan.baf~ EVALUATE_BUFFER
+
+	END // JOining_Xan = 1
+
+////////////////////////////////////////////////////
+
+// Xzar
+
+	ACTION_IF JOining_Xzar = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%XZAR_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%XZAR_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDXZARJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%XZAR_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%XZAR_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%XZAR_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Xzar.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Xzar.baf~ EVALUATE_BUFFER
+
+	END // JOining_Xzar = 1
+
+////////////////////////////////////////////////////
+
+// Yeslick
+
+	ACTION_IF JOining_Yeslick = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("%YESLICK_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%YESLICK_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDYESLIJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%YESLICK_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("%YESLICK_JOINED%")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("%YESLICK_BCS%",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Yeslick.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Yeslick.baf~ EVALUATE_BUFFER
+
+	END // JOining_Yeslick = 1
+
+////////////////////////////////////////////////////
+
+// Baeloth BGEE
+
+	ACTION_IF JOining_Baeloth = 1 THEN BEGIN
+
+// BG1
+ACTION_IF (GAME_IS ~bgee~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ~~~~~RESPONSE #1
+				SetDialog("BAELOTHJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BAELOTH",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_BG1" ""
+END
+// SoD
+ACTION_IF (GAME_INCLUDES ~SoD~) AND (NOT GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ~~~~~RESPONSE #2
+				SetDialog("BDBAELOJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BDBAELOT",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_SoD" ""
+END
+//EET
+ACTION_IF (GAME_IS ~eet~) BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ~~~~~RESPONSE #5
+				SetDialog("BAELOTHJ")
+				SmallWait(1)
+				SetGlobal("JO_JOIN","LOCALS",0)
+		//		ChangeAIScript("BAELOTH",OVERRIDE)
+				Continue()~~~~~
+END ELSE BEGIN
+		OUTER_SPRINT "RESPONSE_JOINED_EET" ""
+END
+
+<<<<<<<< .../JOining_Baeloth.baf
+
+IF
+	Global("JO_JOIN","LOCALS",2)
+	Switch("JO_JOIN_CAMPAIGN_EET","GLOBAL")
+THEN
+%RESPONSE_JOINED_BG1%
+%RESPONSE_JOINED_SoD%
+%RESPONSE_JOINED_EET%
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~%bcs%.bcs~ ~.../JOining_Baeloth.baf~ EVALUATE_BUFFER
+
+	END // JOining_Baeloth = 1
+
+////////////////////////////////////////////////////

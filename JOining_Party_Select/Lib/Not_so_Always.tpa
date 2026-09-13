@@ -158,9 +158,6 @@
 		OUTER_SPRINT "NALIA25J" "NALIAJ"
 		OUTER_SPRINT "VALYG25J" "VALYGARJ"
 
-// Special Alora BG2
-		OUTER_SPRINT "CMALORA" "Alora"
-
 		END ELSE ACTION_IF GAME_IS ~bg2ee~ BEGIN
 
 		OUTER_SPRINT "BPTheme" "106"
@@ -186,9 +183,6 @@
 		OUTER_SPRINT "NALIA25J" "NALIA25J"
 		OUTER_SPRINT "VALYG25J" "VALYG25J"
 
-// Special Alora BG2
-		OUTER_SPRINT "CMALORA" "CMALORA"
-
 		END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -199,25 +193,23 @@
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Joined.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Joined.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_End.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_End.tph~	~weidu_external/JOining_Party_Select/JOining_Party_End.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Original.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Original.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Original.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Core_Original.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG1.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG1.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Mod_BG1.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Core_Mod_BG1.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core_Mod_BG2.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core_Mod_BG2.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Mod_BG2.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Core_Mod_BG2.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Core_Continuous.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Core_Continuous.tph~
 
-		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Core.tph~
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Core.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Core.tph~
 
 		COPY ~JOining_Party_Select/Baf/JO_JOINI.baf~	~weidu_external/JOining_Party_Select/JO_JOINI.baf~
 
-// Load travelers selection
-
-		INCLUDE ~JOining_Party_Select/Lib/Always_as_traveler.tpa~
+		COMPILE ~JOining_Party_Select/Campaign_Transition/JO_JOINW.baf~
 
 
 // CD_STATE_NOTVALID without STATE_SILENCED but with STATE_CHARMED ? scripts may be not active
@@ -332,6 +324,8 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 			OUTER_SPRINT "Namiir_name"                 "Namiir"
 			OUTER_SPRINT "Miranda_name"                 "Miranda"
 //////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "L#WALAH_name"                 "Walahnan"
+			OUTER_SPRINT "B2#Aeri_name"                 "Aerie"
 // Next_Traveler BG1
 //////////////////////////////////////////////////////////////////////////////////////
 			OUTER_SPRINT "CMALORA_name"                 "Alora"
@@ -385,8 +379,109 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 			OUTER_SPRINT "L3PETSY_name"                 "Petsy"
 //////////////////////////////////////////////////////////////////////////////////////
 			OUTER_SPRINT "X3Kal_name"                   "Kale"
+			OUTER_SPRINT "L#2WALAH_name"                 "Walahnan"
+//////////////////////////////////////////////////////////////////////////////////////
+			OUTER_SPRINT "P_Dusk_name"                 "Dusk"
+			OUTER_SPRINT "P_Fall_name"                 "Fall"
+			OUTER_SPRINT "P_Chon_name"                 "Cho'Nuja"
+			OUTER_SPRINT "P_Alen_name"                 "Alendir"
 // Next_Traveler BG2
 //////////////////////////////////////////////////////////////////////////////////////
-// Next_Traveler Continuous
 			OUTER_SPRINT "cmnikita_name"                "Nikita"
+// Next_Traveler Continuous
 //////////////////////////////////////////////////////////////////////////////////////
+
+
+// Special Continuous_End
+
+	OUTER_SET Continuous_Alora = 0 // DESIGNATED 1
+
+	OUTER_SET Continuous_Ajantis = 0 // DESIGNATED 2 
+
+	OUTER_SET Continuous_Branwen = 0 // DESIGNATED 5
+
+	OUTER_SET Continuous_Coran = 0 // DESIGNATED 4
+
+	OUTER_SET Continuous_Isra = 0 // DESIGNATED 7
+
+	OUTER_SET Continuous_Kivan = 0 // DESIGNATED 10
+
+	OUTER_SET Continuous_Tiax = 0 // DESIGNATED 8
+
+	OUTER_SET Continuous_Walahnan = 0 // DESIGNATED 6
+
+	OUTER_SET Continuous_Xan = 0 // DESIGNATED 3
+
+	OUTER_SET Continuous_Yeslick = 0 // DESIGNATED 9
+
+// 
+
+ACTION_IF (GAME_IS ~eet~) BEGIN
+
+	ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~1~) BEGIN
+
+		OUTER_SET Continuous_Alora = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~2~) BEGIN
+
+		OUTER_SET Continuous_Ajantis = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~XAN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~3~) BEGIN
+
+		OUTER_SET Continuous_Xan = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~CORAN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~4~) BEGIN
+
+		OUTER_SET Continuous_Coran = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~5~) BEGIN
+
+		OUTER_SET Continuous_Branwen = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~6~) BEGIN
+
+		OUTER_SET Continuous_Walahnan = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~7~) BEGIN
+
+		OUTER_SET Continuous_Isra = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~TIAX.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~8~) BEGIN
+
+		OUTER_SET Continuous_Tiax = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~9~) BEGIN
+
+		OUTER_SET Continuous_Yeslick = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~10~) BEGIN
+
+		OUTER_SET Continuous_Kivan = 1
+
+	END
+
+END
+
+// 
+
+// Load travelers selection
+
+		INCLUDE ~JOining_Party_Select/Lib/Always_as_traveler.tpa~

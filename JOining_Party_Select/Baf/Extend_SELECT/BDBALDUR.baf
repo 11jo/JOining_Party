@@ -4,18 +4,18 @@ IF
 	!HasItemEquipedReal("BDSW2H01","%Death_var%")  // Lame du dragon +3
 THEN
 	RESPONSE #100
-		ApplySpellRES("BDDRAGB2","%Death_var%")  // No such index
+		ApplySpellRES("BDDRAGB2","%Death_var%")
 		Continue()
 END
 
-IF
-	Allegiance("%Death_var%",FAMILIAR)
-	!StateCheck("%Death_var%",STATE_REALLY_DEAD)
-	Class("%Death_var%",PALADIN_ALL)
-	!Kit("%Death_var%",Blackguard)
-	TriggerOverride("%Death_var%",Global("ChultRobe","LOCALS",0))
-THEN
-	RESPONSE #100
-		ActionOverride("%Death_var%",ApplySpellRES("60CLCKIR",Myself))  // No such index
-		ActionOverride("%Death_var%",SetGlobal("ChultRobe","LOCALS",1))
-END
+// 60CLCKIR_IWD2_EET IF
+// 60CLCKIR_IWD2_EET 	Allegiance("%Death_var%",FAMILIAR)
+// 60CLCKIR_IWD2_EET 	!StateCheck("%Death_var%",STATE_REALLY_DEAD)
+// 60CLCKIR_IWD2_EET 	Class("%Death_var%",PALADIN_ALL)
+// 60CLCKIR_IWD2_EET 	!Kit("%Death_var%",Blackguard)
+// 60CLCKIR_IWD2_EET 	TriggerOverride("%Death_var%",Global("ChultRobe","LOCALS",0))
+// 60CLCKIR_IWD2_EET THEN
+// 60CLCKIR_IWD2_EET 	RESPONSE #100
+// 60CLCKIR_IWD2_EET 		ActionOverride("%Death_var%",ApplySpellRES("60CLCKIR",Myself))
+// 60CLCKIR_IWD2_EET 		ActionOverride("%Death_var%",SetGlobal("ChultRobe","LOCALS",1))
+// 60CLCKIR_IWD2_EET END

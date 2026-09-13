@@ -2,32 +2,50 @@
 
 ACTION_FOR_EACH Death_var IN
 
-~%IMOEN_DV%~ // ImoenIren ~Imoen~ // ~ttimoen~    // Imoen
-~Edwin~                               // Edwin
-~Jaheira~    // ~ttjaheir~            // Jaheira
-~Minsc~      // ~ttminsc~             // Minsc
-~Viconia~                             // Viconia
-~Dorn~                                // Dorn
-~Neera~                               // Neera
-~Rasaad~                              // Rasaad
+~%IMOEN_DV%~ // ImoenIren ~Imoen~ // ~ttimoen~       // Imoen
+~Edwin~                                              // Edwin
+~Jaheira~                         // ~ttjaheir~      // Jaheira
+~Minsc~                           // ~ttminsc~       // Minsc
+~Viconia~                                            // Viconia
+~Dorn~                                               // Dorn
+~Neera~                                              // Neera
+~Rasaad~                                             // Rasaad
 
 /////////////////////////// Continuous ///////////////////////////
 
-~cmnikita~                            // Nikita
+~cmnikita~                          // Nikita
 
-~Alora~                            // Alora_Continuous
+~Alora~                             // Alora_Continuous
+
+~Ajantis~                           // Ajantis_Continuous
+
+~Kivan~                             // Kivan_Continuous
+
+~L#WALAH~                           // Walahnan_Continuous
+
+~Coran~                             // Coran_Continuous 
+
+~Yeslick~                           // Yeslick_Continuous 
+
+~Xan~                               // Xan_Continuous 
+
+~Branwen~                           // Branwen_Continuous 
+
+~Tiax~                              // Tiax_Continuous 
+
+~rh#isra~                           // Isra_Continuous 
 
 // Next_Traveler Continuous
 
 BEGIN
 
-							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 1
+//							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 1
 
-							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
 
 								OUTER_SET EVAL ~%Death_var%_SoD_Content~ = 0
 
@@ -96,7 +114,7 @@ ACTION_FOR_EACH Death_var IN
 
 // Dark Horizons
 ~CMTTHOR~                             // Thorin
-~CMTMORW~                            // Morwen
+~CMTMORW~                             // Morwen
 
 // DSotSC
 ~DSBARDO~                              // Bardo
@@ -143,17 +161,22 @@ ACTION_FOR_EACH Death_var IN
 ~Namiir~
 ~Miranda~
 
+// Walahnan BG1
+~L#WALAH~
+
+~B2#Aeri~                             // Aerie 
+
 // Next_Traveler BG1
 
 BEGIN
 
-							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 1
+//							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 1
 
-							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
 
 								OUTER_SET EVAL ~%Death_var%_SoD_Content~ = 0
 
@@ -176,13 +199,13 @@ ACTION_FOR_EACH Death_var IN
 
 BEGIN
 
-							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 1
+//							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 1
 
-							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 0
 
 								OUTER_SET EVAL ~%Death_var%_SoD_Content~ = 0
 
@@ -214,7 +237,7 @@ ACTION_FOR_EACH Death_var IN
 /////////////////////////// Mods BG2 ///////////////////////////
 
 // Alora BG2
-~%CMALORA%~                              // Alora
+~CMALORA~                              // Alora
 
 // Yeslick BG2
 ~LK#YESLK~                             // Yeslick
@@ -313,17 +336,26 @@ ACTION_FOR_EACH Death_var IN
 // Kale BG2
 ~X3Kal~
 
+// Walahnan_BG2
+~L#2WALAH~
+
+// Autumns Twilight
+~P_Dusk~                             // Dusk 
+~P_Fall~                             // Fall 
+~P_Chon~                             // Cho'Nuja 
+~P_Alen~                             // Alendir 
+
 // Next_Traveler BG2
 
 BEGIN
 
-							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~Continuous_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~BG1_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
+//							OUTER_SET EVAL ~SoD_%Death_var%_Select~ = 0
 
-							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 1
+//							OUTER_SET EVAL ~BG2_%Death_var%_Select~ = 1
 
 END
 

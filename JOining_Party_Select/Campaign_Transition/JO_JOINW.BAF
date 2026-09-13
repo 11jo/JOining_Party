@@ -1,0 +1,38 @@
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_JUMP_JO2608
+
+///////////////////////////////////////////////////////////////////////////////
+// Note :
+	// Jump to JO2608 to perform area script after traveler leave for transition
+		// Related to JO_JOIN_CAMPAIGN_TRANSITION (Jo_joinI / All_in)
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+//
+	AreaCheck("JO2608")
+	Global("JO2608_Create","LOCALS",1)
+THEN
+	RESPONSE #100
+		FadeToColor([00.0],0)
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2)
+		DisplayStringHead(Myself,~...~)
+		AddMapNote([1894.1155],~Travelers Items~)
+		Wait(5)
+		DisplayStringHead(Myself,~Hum...~)
+		SetGlobal("JO2608_Create","LOCALS",2)
+END
+
+IF
+//
+	AreaCheck("JO2608")
+	Global("JO2608_Create","LOCALS",2)
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",3)
+		SetGlobal("JO2608_Create","LOCALS",0)
+		ChangeAIScript("JO_JOINP",OVERRIDE)
+END
