@@ -625,7 +625,10 @@ COPY ~JOining_Party_Select/Baf/All_In.baf~ ~weidu_external/JOining_Party_Select/
 
 // Charname override script JO_JOINP.baf (allow to know if no traveler are present).
 COPY ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER
-	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+	REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_NumInParty~ ~OR(3)
+	Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+	!InMyArea("%Death_var%")
+	!Allegiance("%Death_var%",FAMILIAR)
 	\0~
 
 // JO_JOIN_COUNT_TRAVELER for JO_JOINC.baf allow to count traveler.
