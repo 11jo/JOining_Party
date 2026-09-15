@@ -371,7 +371,19 @@ COPY ~JOining_Party_Select/Spl/JO_JOIN.spl~ ~override~
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
 		END
 
+
+
+// JONEAN28
+
+COPY ~JOining_Party_Select/Cre/JONEAN28.CRE~ ~override/JOINEAN.CRE~
+	SAY NAME1 ~Eye of <CHARNAME>~
+	SAY NAME2 ~Eye of <CHARNAME>~
+	WRITE_ASCII SCRIPT_OVERRIDE ~JOINEAN~ (8)
+	WRITE_ASCII DEATHVAR ~JOINEAN~ (32)
+	WRITE_ASCII DIALOG ~JOINEAN~ (8)
+
 COPY ~JOining_Party_Select/Spl/JOIN647.SPL~ ~override~
+
 COPY ~JOining_Party_Select/Eff/jo_vali0.eff~ ~override~
 
 // JOJOINNE
@@ -462,8 +474,10 @@ END
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-// JO_JOINP / JO_JOINI transitions addition
+// JO_JOINP / JO_JOINW / JO_JOINI ...transitions additions
 	INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_to_BG2.tph~
+
+		EXTEND_BOTTOM ~JO_JOINW.bcs~ ~JOining_Party_Select/Campaign_Transition/JO_JOINW_EXTEND_TOP_end.baf~ EVALUATE_BUFFER
 
 // Traveler dedicated scripts
 

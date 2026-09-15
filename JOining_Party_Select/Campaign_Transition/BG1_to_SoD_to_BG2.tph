@@ -3,9 +3,12 @@
  // NBaldursGate_DucalPalace_L1 and Undercity_TempleofBhaal
 ///////////////////////////////////////////////////////////////////////////
 
+// For JO_JOINP.baf
 ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 
-	OUTER_SPRINT "BG1_to_SoD" ~~~~~IF // Undercity_TempleofBhaal
+	OUTER_SPRINT "BG1_to_SoD" ~~~~~
+
+IF // Undercity_TempleofBhaal
 //
 	OR(2)
 		!AreaCheck("%Undercity_TempleofBhaal%")
@@ -42,20 +45,26 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
-END~~~~~
+END
+
+~~~~~
 
 END ELSE BEGIN
 
 	OUTER_SPRINT "BG1_to_SoD" ""
 
 END
+
 ///////////////////////////////////////////////////////////////////////////
  // Workaround for unused Player1 scripts override
 ///////////////////////////////////////////////////////////////////////////
 
+// For JO_JOINP.baf
 ACTION_IF GAME_IS ~eet~ BEGIN
 
-	OUTER_SPRINT "Player1_DLG_for_EET" ~~~~~IF
+	OUTER_SPRINT "Player1_DLG_for_EET" ~~~~~
+
+IF
 	Global("JO_JOIN_CAMPAIGN","GLOBAL",3)
 	Global("JO_JOIN_Player1_DLG","ar0602",0)
 THEN
@@ -90,7 +99,9 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 		StartDialogOverride("bddebug",Myself)
-END~~~~~
+END
+
+~~~~~
 
 END ELSE BEGIN
 
@@ -100,17 +111,22 @@ END ELSE BEGIN
 
 END
 
+
 ///////////////////////////////////////////////////////////////////////////
  // JO_JOIN_JUMP_JO2608
 ///////////////////////////////////////////////////////////////////////////
 
+// For JO_JOINP.baf
 ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 
-	OUTER_SPRINT "JO_JOIN_JUMP_for_Transitions" ~~~~~IF
+	OUTER_SPRINT "JO_JOIN_JUMP_for_Transitions" ~~~~~
+
+IF
 //
-	OR(2)
+	OR(3)
 		AreaCheck("BD6000")
 		AreaCheck("BD0120")
+		Global("JO_JOIN_c#ebg122","GLOBAL",1)
 //
 	Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
 	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
@@ -125,51 +141,47 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
-		FadeToColor([30.0],0)
-		StorePartyLocations()
-		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
 		Wait(2)
-		LeaveAreaLUA("JO2608","",[1232.891],1)
-		ChangeAIScript("JO_JOINW",OVERRIDE)
+		ChangeAIScript("JO_JOINW",GENERAL)
+		SetInterrupt(TRUE)
 END
 
 IF
-//
-	AreaCheck("JO2608")
-	Global("JO_JOIN_JUMP_JO2608","LOCALS",3)
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
 	Delay(4)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
-		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
-		RestorePartyLocations()
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5)
 		FadeFromColor([45.0],0)
 		Wait(1)
-		SetCutSceneLite(FALSE)
-		UnhideGUI()
-		SetGlobal("JO2608_Create","LOCALS",0)
+		EndCutSceneMode()
 		SetInterrupt(TRUE)
 END
 
 
 // EndlessBG1 compat (See BG1_to_SoD_compat.tph.tph)
 
-		%JO_JOINP_Check_c#ebg122%
-
  		%Cut_c#ebg122%
 
 IF
 //
+	!AreaCheck("BD6200")
+	!AreaCheck("BD6100")
 	!AreaCheck("BD6000")
 	!AreaCheck("BD0120")
 	!AreaCheck("BD0130")
 	!AreaCheck("JO2608")
 	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	!AreaCheck("%NBaldursGate%")
 	!Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",0)
-END~~~~~
+END
+
+~~~~~
 
 END ELSE BEGIN
 
@@ -181,16 +193,21 @@ END
  // JO_JOIN_CAMPAIGN_TRANSITION
 ///////////////////////////////////////////////////////////////////////////
 
+// For All_in.baf
 ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 
-	OUTER_SPRINT "JO_JOIN_CAMPAIGN_TRANSITION" ~~~~~IF
-	OR(2)
+	OUTER_SPRINT "JO_JOIN_CAMPAIGN_TRANSITION" ~~~~~
+
+IF
+	OR(3)
 		AreaCheck("BD6000")
 		AreaCheck("BD0120")
-	OR(3)
+		Global("JO_JOIN_c#ebg122","GLOBAL",1)
+	OR(4)
 		AreaCheck("BD6000")
 		Dead("bdkorlas")
 		Global("BD_KORLASZ_SURRENDER","GLOBAL",1)
+		Global("JO_JOIN_c#ebg122","GLOBAL",1)
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch inactive
@@ -199,7 +216,9 @@ ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
 	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
-	Delay(15)
+	OR(2)
+		Delay(15)
+		Global("JO_JOIN_c#ebg122","GLOBAL",1)
 //
 	OR(2)
 		!ActuallyInCombat()
@@ -211,23 +230,27 @@ ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 THEN
 	RESPONSE #0
 		SetInterrupt(FALSE)
-		ClearAllActions()
+		ClearActions(Myself)
+		MoveToObjectOffset(Player1,[-15.-15])
+		Wait(1)
+		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
 		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
-		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
-		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
+		SetCutSceneLite(TRUE)
 		ChangeAIScript("",GENERAL)
 		SetInterrupt(TRUE)
 	RESPONSE #1
 		SetInterrupt(FALSE)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+		ClearActions(Myself)
+		MoveToObjectOffset(Player1,[-15.-15])
+		Wait(1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
+		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		ChangeAIScript("",GENERAL)
 		SetInterrupt(TRUE)
 END
-
-%c#ebg122_CAMPAIGN_TRANSITION%
 
 ~~~~~
 

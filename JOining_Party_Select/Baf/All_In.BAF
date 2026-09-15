@@ -626,6 +626,34 @@ END
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Ally not in party
+
+/////////////////////////////////////////////////////////////////////////////////
+
+IF
+	!Global("JO_JOIN_ALLY","LOCALS",0)
+//
+	!InParty(Myself)
+	!Allegiance(Myself,FAMILIAR)
+	Global("JO_Myself_LeaveParty","LOCALS",0)
+	Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+	Switch("JO_JOIN_ALLY","LOCALS")
+THEN
+	RESPONSE #1
+		DisplayStringHead(Myself,~No problem.~)
+		SetGlobal("JO_JOIN_ALLY","LOCALS",0)
+		ChangeEnemyAlly(Myself,CONTROLLED)
+		ChangeAIScript("JO_JOINA",GENERAL)
+	RESPONSE #2
+		DisplayStringHead(Myself,~Farewell.~)
+		SetGlobal("JO_JOIN_ALLY","LOCALS",0)
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		ChangeAIScript("JO_JOINA",GENERAL)
+END
+
+
+///////////////////////////////////////////////////////////////////////////////
+
 // Security
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -633,7 +661,6 @@ END
 // Cas d'un recrutement non standard (ctrl+Q par exemple)
 IF
 //
-	
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
@@ -780,7 +807,7 @@ IF // ChangeEnemyAlly(Myself,FAMILIAR)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		MakeGlobal()
+		MakeGlobalOverride()
 		LeaveParty()
 		SmallWait(1)
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)

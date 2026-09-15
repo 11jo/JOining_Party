@@ -1,0 +1,35 @@
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// JO_JOIN_JUMP_JO2608
+
+///////////////////////////////////////////////////////////////////////////////
+// Note :
+	// Jump to JO2608 to perform area script after traveler leave for transition
+		// Related to JO_JOIN_CAMPAIGN_TRANSITION (Jo_joinI / All_in)
+///////////////////////////////////////////////////////////////////////////////
+
+// To EXTEND_TOP at the end
+IF
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",1)
+THEN
+	RESPONSE #100
+		StorePartyLocations()
+		FadeToColor([200.0],0)
+		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
+		LeaveAreaLUA("JO2608","",[1232.891],1)
+		SetInterrupt(TRUE)
+END
+
+IF
+	AreaCheck("JO2608")
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2)
+		CreateCreature("JOINEAN",[861.467],0)
+		CreateCreature("JOINEAN",[1921.1092],0)
+		CreateCreature("JOINEAN",[1314.1522],0)
+		SetInterrupt(TRUE)
+END

@@ -13,24 +13,48 @@ ACTION_IF MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
 
 	COMPILE ~weidu_external/JOining_Party_Select/Compat/JOebg122.Baf~
 
+// For JO_JOINP.baf
+			OUTER_SPRINT "Cut_c#ebg122" ~~~~~
 
-			OUTER_SPRINT ~JO_JOINP_Check_c#ebg122~ ~~~~~IF
+IF
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
 	Global("JO_JOIN_c#ebg122","GLOBAL",1)
-//
-	Global("JO_JOIN_JUMP_JO2608","LOCALS",0)
-	Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
-		FadeToColor([30.0],0)
-		StorePartyLocations()
-		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
-		Wait(2)
-		LeaveAreaLUA("JO2608","",[1232.891],1)
-		ChangeAIScript("JO_JOINW",OVERRIDE)
-END~~~~~
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,~Allons-y !~)
+		Wait(1)
+		SetGlobal("JO_JOIN_c#ebg122","GLOBAL",2)
+		FadeFromColor([30.0],0)
+		ActionOverride(Player1,LeaveAreaLUA("BG0200","",[1925.2877],1))
+		ActionOverride(Player2,LeaveAreaLUA("BG0200","",[2027.2670],1))
+		ActionOverride(Player3,LeaveAreaLUA("BG0200","",[1868.2792],1))
+		ActionOverride(Player4,LeaveAreaLUA("BG0200","",[2011.2825],1))
+		ActionOverride(Player5,LeaveAreaLUA("BG0200","",[1978.2728],1))
+		ActionOverride(Player6,LeaveAreaLUA("BG0200","",[1947.2777],1))
+		LeaveAreaLUAPanic("BG0200","",[1925.2877],1)
+		LeaveAreaLUA("BG0200","",[1925.2877],1)
+		MultiPlayerSync()
+		SetInterrupt(TRUE)
+END
 
-			OUTER_SPRINT ~c#ebg122_END_OF_WATCH~ ~~~~~IF
+IF
+	AreaCheck("%NBaldursGate%")
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
+	Global("JO_JOIN_c#ebg122","GLOBAL",2)
+THEN
+	RESPONSE #100
+		Wait(1)
+		StartCutSceneMode()
+		StartCutSceneEx("JOebg122",TRUE)
+END
+
+~~~~~
+
+// To END_OF_WATCH.tph for All_in.baf
+			OUTER_SPRINT ~c#ebg122_END_OF_WATCH~ ~~~~~
+
+IF
 	Global("JO_JOIN_c#ebg122","GLOBAL",1)
 //
 	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
@@ -50,65 +74,30 @@ THEN
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
 		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
 		CreateVisualEffectObject("JOBG402",Myself)
-		DestroySelf()
 		SetInterrupt(TRUE)
+		DestroySelf()
 	RESPONSE #1
 		SetInterrupt(FALSE)
 		MakeGlobalOverride()
+		DisplayStringHead(Myself,~It was a great... We will meet again !~)
 		SetGlobal("K#PartySoD","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
 		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
-		DisplayStringHead(Myself,~It was a great... We will meet again !~)
-		SetCutSceneLite(TRUE)
-		HideGUI()
+		SetCutSceneLite(FALSE)
 		CreateVisualEffectObject("JOBG402",Myself)
+		SetInterrupt(TRUE)
 		DestroySelf()
-		SetInterrupt(TRUE)
-END~~~~~
+END
 
-			OUTER_SPRINT "Cut_c#ebg122" ~~~~~IF
-	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
-	Global("JO_JOIN_c#ebg122","GLOBAL",1)
-THEN
-	RESPONSE #100
-		Wait(1)
-		SetGlobal("JO_JOIN_c#ebg122","GLOBAL",0)
-		StartCutSceneMode()
-		StartCutSceneEx("JOebg122",TRUE)
-END~~~~~
-
-OUTER_SPRINT "c#ebg122_CAMPAIGN_TRANSITION" ~~~~~IF
-	Global("JO_JOIN_c#ebg122","GLOBAL",1)
-//
-	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
-	Switch("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL") // Only one traveler say something (Reset in JO2608.baf)
-THEN
-	RESPONSE #0
-		SetInterrupt(FALSE)
-		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
-		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
-		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
-		ChangeAIScript("",GENERAL)
-		SetInterrupt(TRUE)
-	RESPONSE #1
-		SetInterrupt(FALSE)
-		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
-		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
-		ChangeAIScript("",GENERAL)
-		SetInterrupt(TRUE)
-END~~~~~
+~~~~~
 
 
 END ELSE BEGIN
 
-	OUTER_SPRINT ~c#ebg122_CAMPAIGN_TRANSITION~ ~~
-
 	OUTER_SPRINT ~Cut_c#ebg122~ ~~
 
-	OUTER_SPRINT "c#ebg122_END_OF_WATCH" ~~
+	OUTER_SPRINT ~c#ebg122_CAMPAIGN_TRANSITION~ ~~
 
-	OUTER_SPRINT ~JO_JOINP_Check_c#ebg122~ ~~
+	OUTER_SPRINT "c#ebg122_END_OF_WATCH" ~~
 
 END
