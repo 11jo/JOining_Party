@@ -141,6 +141,7 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
 		Wait(2)
+		FadeToColor([45.0],0)
 		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
 

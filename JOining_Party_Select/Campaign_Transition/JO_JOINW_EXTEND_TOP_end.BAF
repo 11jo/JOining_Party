@@ -16,7 +16,6 @@ IF
 THEN
 	RESPONSE #100
 		StorePartyLocations()
-		FadeToColor([10.0],0)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2)
 		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
 		LeaveAreaLUA("JO2608","",[1232.891],1)

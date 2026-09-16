@@ -10,19 +10,6 @@
 				// REPLACE_TRAVELER_JO_JOIN_LOAD (Set in JOining_Party_End.tph Expand the trigger with OR(3) for each travelers))
 					// REPLACE_TRAVELER_JO_LOAD_TRAVELER (Set in JOining_Party_End.tph by JO_LOAD_TRAVELER.tpa Expand JO_JOINL.BAF for each travelers))
 ///////////////////////////////////////////////////////////////////////////////
-IF
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
-	Global("JO_JOIN_LOADING_BREAKABLE","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetAreaScript("JO_JOINB",OVERRIDE)
-		SetCutSceneBreakable(TRUE)
-		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
-		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",1)
-		SetInterrupt(TRUE)
-		Continue()
-END
 
 //	REPLACE_TRAVELER_JO_LOAD_TRAVELER
 
@@ -60,6 +47,20 @@ THEN
 		Continue()
 END
 
+IF
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+	Global("JO_JOIN_LOADING_BREAKABLE","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetAreaScript("JO_JOINB",OVERRIDE)
+		SetCutSceneBreakable(TRUE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",1)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
 // Active loading switch sequence
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -86,9 +87,6 @@ THEN
 	RESPONSE #100
 		ClearAllActions()
 		SetInterrupt(FALSE)
-		SetAreaScript("JO_JOINB",OVERRIDE)
-		SetCutSceneBreakable(TRUE)
-		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
 		MoveViewObject(Player1,INSTANT)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
@@ -290,6 +288,9 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetCutSceneBreakable(FALSE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
+		SetAreaScript("",OVERRIDE)
 		SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
 		ChangeAIScript("JO_JOINP",OVERRIDE) // Go to JO_JOINP.baf
 		SetGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
@@ -297,9 +298,6 @@ THEN
 		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",32)
 		DisplayStringHead(Myself,~Let's return to venture forth !!~)
-		SetCutSceneBreakable(FALSE)
-		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",0)
-		SetAreaScript("",OVERRIDE)
 		SetCutSceneLite(FALSE) // Prevent players to mess around when switch at loading.
 		FadeToColor([20.0],0)
 		CreateVisualEffectObject("JOBG402",Player1)

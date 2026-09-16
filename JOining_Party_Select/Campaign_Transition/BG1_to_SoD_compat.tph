@@ -12,7 +12,61 @@ ACTION_IF MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
 	COMPILE ~JOining_Party_Select/Campaign_Transition/c#ebg122.BAF~
 
 	COMPILE ~weidu_external/JOining_Party_Select/Compat/JOebg122.Baf~
+	
+ACTION_IF GAME_IS ~eet~ BEGIN
+	COPY_EXISTING ~C#AJANJ.DLG~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~SetGlobal("IWasKickedOut","LOCALS",0)
+^[%TAB% ]*TakePartyItem("x#ajshld")
+^[%TAB% ]*DestroyItem("x#ajshld")
+^[%TAB% ]*GivePartyAllEquipment()
+^[%TAB% ]*LeaveParty()
+^[%TAB% ]*SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+^[%TAB% ]*SetGlobal("JO_TRAVELER_Myself","LOCALS",1)
+^[%TAB% ]*ChangeAIScript("",DEFAULT)
+^[%TAB% ]*SetLeavePartyDialogueFile()
+^[%TAB% ]*EscapeArea()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MakeGlobalOverride()
+		SetGlobal("K#PartySoD","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
+	\0~	
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+					~
+			END
+		END
+BUT_ONLY
 
+END ELSE BEGIN
+	COPY_EXISTING ~AJANTJ.DLG~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~SetGlobal("IWasKickedOut","LOCALS",0)
+^[%TAB% ]*TakePartyItem("x#ajshld")
+^[%TAB% ]*DestroyItem("x#ajshld")
+^[%TAB% ]*GivePartyAllEquipment()
+^[%TAB% ]*LeaveParty()
+^[%TAB% ]*SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
+^[%TAB% ]*SetGlobal("JO_TRAVELER_Myself","LOCALS",1)
+^[%TAB% ]*ChangeAIScript("",DEFAULT)
+^[%TAB% ]*SetLeavePartyDialogueFile()
+^[%TAB% ]*EscapeArea()~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MakeGlobalOverride()
+		SetGlobal("K#PartySoD","LOCALS",1)
+		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
+		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
+	\0~	
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // AddAreaFlag(NOSAVE) found in %SOURCE_FILESPEC%
+					~
+			END
+		END
+BUT_ONLY
+END
 
 // For JO_JOINP.baf
 	// Launch EndlessBG1 original cutscene

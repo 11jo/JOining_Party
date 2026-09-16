@@ -19,12 +19,13 @@ ACTION_IF (~%Death_var%_SoD_Content~ = 0 ) AND (~%Death_var%_BG2_Content~ = 0 OR
 		!InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
+			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",0))
 			SetGlobal("JO2608_Create","MYAREA",1)
 			MoveGlobal("JO2608","%Death_var%",[%x_coo%.%y_coo%])
-			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",0))
 			ReallyForceSpell("%Death_var%",HOLD_PARTY)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_HOLD_WATCH","LOCALS",1))
-			ActionOverride("JO_JOIN_Room_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("JO_JOIN_BG1_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("%Death_var%",RandomWalk())
 			Continue()
 	END
 
@@ -48,10 +49,11 @@ ACTION_IF (~%Death_var%_SoD_Content~ = 1) AND (NOT ~%Death_var%_BG2_Content~ = 1
 		!InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
-			SetGlobal("JO2608_Create","MYAREA",1)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",0))
+			SetGlobal("JO2608_Create","MYAREA",1)
 			MoveGlobal("JO2608","%Death_var%",[%x_coo%.%y_coo%])
-			ActionOverride("JO_JOIN_Room_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("JO_JOIN_SoD_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("%Death_var%",RandomWalk())
 			Continue()
 	END
 
@@ -100,10 +102,11 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND NOT ~%Death_var%_SoD_Content~ = 1) 
 		!InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
-			SetGlobal("JO2608_Create","MYAREA",1)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",0))
+			SetGlobal("JO2608_Create","MYAREA",1)
 			MoveGlobal("JO2608","%Death_var%",[%x_coo%.%y_coo%])
-			ActionOverride("JO_JOIN_Room_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("JO_JOIN_BG2_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("%Death_var%",RandomWalk())
 			Continue()
 	END
 
@@ -152,10 +155,12 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 		!InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
-			SetGlobal("JO2608_Create","MYAREA",1)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",0))
+			SetGlobal("JO2608_Create","MYAREA",1)
 			MoveGlobal("JO2608","%Death_var%",[%x_coo%.%y_coo%])
-			ActionOverride("JO_JOIN_Room_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("JO_JOIN_BG2_Container",TakeCreatureItems("%Death_var%",BACKPACK))
+			ActionOverride("%Death_var%",RandomWalk())
+			Continue()
 	END
 
 	IF
@@ -168,7 +173,6 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 			SmallWait(2)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",0))
 			ActionOverride("%Death_var%",DestroySelf())
-			Continue()
 	END
 
 	IF
@@ -181,7 +185,6 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 			SmallWait(2)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",0))
 			ActionOverride("%Death_var%",DestroySelf())
-			Continue()
 	END
 
 	>>>>>>>>
@@ -305,6 +308,7 @@ THEN
 END
 
 IF
+	Global("JO_Myself_AllowDead","LOCALS",0)
 	InMyArea([PC])
 	AreaCheck("JO2608")
 	InMyArea("%Death_var%")
@@ -319,6 +323,7 @@ THEN
 END
 
 IF
+	Global("JO_Myself_AllowDead","LOCALS",0)
 	InMyArea([PC])
 	AreaCheck("JO2608")
 	InMyArea("%Death_var%")
@@ -333,6 +338,7 @@ THEN
 END
 
 IF
+	Global("JO_Myself_AllowDead","LOCALS",0)
 	InMyArea([PC])
 	AreaCheck("JO2608")
 	InMyArea("%Death_var%")
@@ -356,6 +362,7 @@ EXTEND_BOTTOM ~JO2608AL.bcs~ ~.../JOining_stay_JO2608AL.baf~ EVALUATE_BUFFER
 <<<<<<<< .../JOining_stay_JO2608.baf
 
 IF
+	Global("JO_Myself_AllowDead","LOCALS",0)
 	InMyArea([PC])
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0)
 	InMyArea("%Death_var%")

@@ -29,9 +29,8 @@ IF
 	Global("JO2608_Create","MYAREA",1)
 THEN
 	RESPONSE #100
-		FadeToColor([45.0],0)
+		FadeToColor([30.0],0)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",3)
-		AddMapNote([1894.1155],~Travelers Items~)
 		DisplayStringHead(Myself,~Hum...~)
 		Wait(2)
 		SetGlobal("JO2608_Create","MYAREA",2)
