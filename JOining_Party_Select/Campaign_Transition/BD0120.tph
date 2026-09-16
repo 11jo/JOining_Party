@@ -58,8 +58,8 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetDialog("ishyhi") // Recrutement dialog
 		SetGlobal("JO_JOIN_bd0120_#Ishy","LOCALS",1)
-		DisplayStringHead(Myself,~See you on the other side !~)
-// MoveBetweenAreas("BD0010",[1069.533],7)
+		DisplayStringHead(Myself,@1000)  /* See you on the other side ! */
+		Wait(2)
 EscapeAreaObjectMove("BD0010",Myself,1069,533,7)
 		SetInterrupt(TRUE)
 		Continue()
@@ -93,7 +93,7 @@ THEN
 		MoveGlobal("JO2608","#Ishy",[1866.1348])
 		ActionOverride("%Death_var%",MoveToPointNoInterrupt([1712.806]))
 		Wait(3)
-		DisplayStringHead("#Ishy",~I...I still don't know what to think... But I will make up my mind over here.~)
+		DisplayStringHead("#Ishy",@1001) /* I...I still don't know what to think... But I will make up my mind over here. */
 		Continue()
 END
 
