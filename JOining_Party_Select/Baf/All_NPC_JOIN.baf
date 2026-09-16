@@ -17,7 +17,7 @@ END
 // Non-traveler NPCs
 
 IF
-	!Global("JO_JOIN_PARTY_MEMBER","LOCALS",1)
+	Global("JO_JOIN_PARTY_MEMBER","LOCALS",0)
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_PARTY_MEMBER","LOCALS",1)
@@ -96,6 +96,17 @@ THEN
 END
 
 ///////////////////////////////////////////////////////////////////////////////////
+
+// For party member before Main Loading Switch 3 // Special non-traveler NPCs
+
+IF
+	GlobalGT("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Loading switch active
+	GlobalLT("JO_JOIN_LOADING_SWITCH","GLOBAL",4) // Loading switch active
+	!Global("JO_JOIN_LOADING_PLAYER","LOCALS",0) // Is deactivated
+THEN
+	RESPONSE #100
+		NoAction()
+END
 
 // For party member After Main Loading Switch 3 // Special non-traveler NPCs
 

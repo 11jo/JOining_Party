@@ -1,0 +1,564 @@
+// Add D / Baf
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                            Special DLG                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+		COMPILE ~JOining_Party_Select/D/JO_JOINJ.D~
+
+					OUTER_SPRINT "joining_dlg" "JO_JOINJ"
+
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/All_In.D~
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                            Regular DLG                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_FOR_EACH joining_dlg IN
+
+// Original Imoen                ~%IMOEN_JOINED%~    ~IMOEN10~    ~IMOEN25J~   ~BDIMOEN~    // ~TTIMOENJ~ // BDIMOEN is for Imoen4Ever     // Imoen
+// Original Edwin                ~%EDWIN_JOINED%~    ~EDWIN25J~   ~BDEDWINJ~                                                               // Edwin
+// Original Jaheira              ~%JAHEIRA_JOINED%~  ~JAHEI25J~   ~BDJAHEIJ~                // ~TTJAHEIJ~                                  // Jaheira
+// Original Minsc                ~%MINSC_JOINED%~    ~MINSC25J~   ~BDMINSCJ~                // ~TTMINSCJ~                                  // Minsc
+// Original Viconia              ~%VICONIA_JOINED%~  ~VICON25J~   ~BDVICONJ~                                                               // Viconia
+// Original Dorn                 ~%DORN_JOINED%~     ~DORN25J~    ~BDDORNJ~                                                                // Dorn
+// Original Neera                ~%NEERA_JOINED%~    ~NEERA25J~   ~BDNEERAJ~                                                               // Neera
+// Original Rasaad               ~%RASAAD_JOINED%~   ~RASAA25J~   ~BDRASAAJ~                                                               // Rasaad
+
+/////////////////////////// bg1 ///////////////////////////
+
+
+// Original Ajantis              ~%AJANTIS_JOINED%~  ~BDAJANTJ~                  // Ajantis
+// Original Alora                ~%ALORA_JOINED%~    ~BDALORAJ~                  // Alora
+// Original Branwen              ~%BRANWEN_JOINED%~  ~BDBRANWJ~  // ~TTBRANJ~    // Branwen
+// Original Coran                ~%CORAN_JOINED%~    ~BDCORANJ~                  // Coran
+// Original Dynaheir             ~%DYNAHEIR_JOINED%~ ~BDDYNAHJ~                  // Dynaheir
+
+// Original Eldoth               ~%ELDOTH_JOINED%~   ~BDELDOTJ~                  // Eldoth
+// Original Faldorn              ~%FALDORN_JOINED%~  ~BDFALDOJ~                  // Faldorn
+// Original Garrick              ~%GARRICK_JOINED%~  ~BDGARRIJ~                  // Garrick
+
+// Original Kagain               ~%KAGAIN_JOINED%~   ~BDKAGAIJ~                  // Kagain
+// Original Khalid               ~%KHALID_JOINED%~   ~BDKHALIJ~                  // Khalid
+// Original Kivan                ~%KIVAN_JOINED%~    ~BDKIVANJ~                  // Kivan
+
+// Original Montaron             ~%MONTARON_JOINED%~ ~BDMONTAJ~                  // Montaron
+// Original Quayle               ~%QUAYLE_JOINED%~   ~BDQUAYLJ~                  // Quayle
+// Original Safana               ~%SAFANA_JOINED%~   ~BDSAFANJ~                  // Safana
+// Original Sharteel             ~%SHARTEEL_JOINED%~ ~BDSHARTJ~                  // Sharteel
+// Original Skie                 ~%SKIE_JOINED%~     ~BDSKIEJ~                   // Skie
+// Original Tiax                 ~%TIAX_JOINED%~     ~BDTIAXJ~                   // Tiax
+
+// Original Xan                  ~%XAN_JOINED%~      ~BDXANJ~    // ~TTXANJ~     // Xan
+// Original Xzar                 ~%XZAR_JOINED%~     ~BDXZARJ~                   // Xzar
+// Original Yeslick              ~%YESLICK_JOINED%~  ~BDYESLIJ~                  // Yeslick
+
+// Original Baeloth              ~BAELOTHJ~          ~BDBAELOJ~                  // Baeloth
+
+
+/////////////////////////// SoD ///////////////////////////
+
+
+// Original Voghiln              ~BDVOGHIJ~                                    // Voghiln
+// Original Corwin               ~BDCORWIJ~                                    // Corwin
+// Original Mkhiin               ~BDMKHIIJ~                                    // Mkhiin
+// Original Glint                ~BDGLINTJ~                                    // Glint
+
+
+/////////////////////////// bg2 ///////////////////////////
+
+
+// Original Aerie               ~AERIEJ~   ~AERIE25J~                          // Aerie
+// Original Anomen              ~ANOMENJ~  ~ANOME25J~                          // Anomen
+// Original Cernd               ~CERNDJ~   ~CERND25J~                          // Cernd
+// Original Haerdalis           ~HAERDAJ~  ~HAERD25J~                          // Haerdalis
+// Original Hexxat              ~HEXXATJ~  ~HEXXA25J~                          // Hexxat
+// Original Jan                 ~JANJ~     ~JAN25J~                            // Jan
+// Original Keldorn             ~KELDORJ~  ~KELDO25J~                          // Keldorn
+// Original Korgan              ~KORGANJ~  ~KORGA25J~                          // Korgan
+// Original Mazzy               ~MAZZYJ~   ~MAZZY25J~                          // Mazzy
+// Original Nalia               ~NALIAJ~   ~NALIA25J~                          // Nalia
+// Original Sarevok             ~SAREV25J~                                     // Sarevok
+// Original Valygar             ~VALYGARJ~ ~VALYG25J~                          // Valygar
+// Original Wilson              ~WILSONJ~                                      // Wilson
+// Original Yoshimo             ~YOSHJ~                                        // Yoshimo
+
+
+/////////////////////////// Mods BG1 ///////////////////////////
+
+// Ishlilka
+// Mod Ishlilka                  ~IshyD~ ~bdishy~                     // Ishlilka
+
+// ChaosKnight-kit
+// Mod Jacob                     ~ZYJCOBJ~                            // Jacob
+
+// Askaria-Quest
+// Mod Askaria                   ~ZYASKAJ~                            // Askaria
+
+// Isra BG1
+// Mod Isra_BG1                  ~RH#ISRAJ~                           // Isra
+
+// Finch
+// Mod Finch                     ~SUFINCHJ~                           // Finch
+
+// Drizzt Saga
+// Mod Jarlaxle_Saga             ~F_JARLAJ~                           // Jarlaxle
+// Mod Artemis_Enteri_Saga       ~F_ARTEMJ~                           // Artemis Enteri
+// Mod Catti-Brie_Saga           ~F_CATTIJ~                           // Catti-Brie
+// Mod Bruenor_Saga              ~F_BRUENJ~                           // Bruenor
+// Mod Regis_Saga                ~F_REGISJ~                           // Regis
+// Mod Drizzt_Saga               ~F_DRIZTJ~                           // Drizzt
+// Mod Wulfgar_Saga              ~F_WULFGJ~                           // Wulfgar
+
+// Dark Horizons
+// Mod Thorin                    ~CMTTHORJ~                           // Thorin
+// Mod Morwen                    ~CMTMORWJ~                           // Morwen
+
+// DSotSC
+// Mod Bardo                     ~BARDOJ~                              // Bardo
+// Mod Bub_Snikt                 ~BUBJ~                                // Bub Snikt
+// Mod Conchobhair               ~CONCHOJ~                             // Conchobhair
+// Mod CuChoinneach              ~CUCHOINJ~                            // CuChoinneach
+// Mod Ferthgil_Trollslayer      ~FERTHJ~                              // Ferthgil Trollslayer
+// Mod Jet'laya                  ~JETLAJ~                              // Jet'laya
+// Mod Keiria_Silverstring       ~KEIRIJ~                              // Keiria Silverstring
+// Mod Skeezer_Lumpkin_VI        ~SKEEZJ~                              // Skeezer Lumpkin VI
+// Mod Thorfinn_Hauskluniff      ~THORFJ~                              // Thorfinn Hauskluniff
+
+// NTotSC
+// Mod Will_Scarlet              ~WILLJ~
+
+// Valerie
+// Mod Valerie                   ~T2VALJ~
+
+// Indira
+// Mod Indira                   ~J#IndiJ~
+
+// Bristlelick
+// Mod Bristlelick              ~L#BRISTJ~ ~L#2BRISJ~
+
+// Glam's npc pack
+// Mod Dave                     ~GV#DAVEJ~
+// Mod Flara                    ~GV#FLARJ~
+// Mod Littlun                  ~GV#LITTJ~
+// Mod Moidre                   ~GV#MOIDJ~
+// Mod Vynd                     ~GV#VYNDJ~
+
+// Kale BG1
+// Mod Kale_BG1                 ~X3KaleJ~ ~X32KaleJ~
+
+// New Tales of the Sword Coast
+// Mod Kasandra                 ~KasandrJ~
+// Mod Masambe                  ~MasambeJ~
+// Mod Alethra                  ~AlethraJ~
+// Mod Rimardo                  ~RimardoJ~
+// Mod Talindra                 ~TalindraJ~
+// Mod Theodor                  ~TheodorJ~
+// Mod Ariadne                  ~AriadneJ~
+// Mod Nathan                   ~NathanJ~
+// Mod Namiir                   ~NamiirJ~
+// Mod Miranda                  ~MirandaJ~
+
+// Walahnan
+// Mod Walahnan                 ~L#WALAHJ~ ~L#SWALAJ~
+
+// Aerie in BG:EE
+// Mod Aerie_BG1                  ~B2#AeriJ~
+
+// Next_Traveler BG1
+
+/////////////////////////// Mods BG2 ///////////////////////////
+
+// Alora BG2
+// Mod Alora BG2                 ~CMALORAJ~  ~CMALO25J~                                // Alora
+
+// Yeslick BG2
+// Mod Yeslick BG2               ~LK#YESJ~   ~LK#YE25J~                                // Yeslick
+
+// The Undying
+// Mod Undying                   ~CMNINAFJ~  ~CMNINA25~                                // Ninafer
+// Mod Undying                   ~CMCALLIJ~                                            // Callisto
+
+// Summon Bhaalspawn
+// Mod Sandra                    ~bhalspwj~  ~bhal25j~                                 // Sandra
+
+// VampireTales
+// Mod Miriam                    ~CMGMIRIj~  ~CMGMI25J~                                // Miriam
+
+// Kim
+// Mod Kim                       ~KimJ~      ~Kim25J~                                  // Kim
+
+// Severian
+// Mod Severian                  ~#SeverJ~   ~#Sev25J~                                 // Severian
+
+// Frennedan
+// Mod Frennedan                 ~frenJ~                                               // Frennedan
+
+// Branwen BG2
+// Mod Branwen_BG2               ~O#BranJ~   ~O#BrA25J~                                // Branwen
+// Tiax BG2
+// Mod Tiax_BG2                  ~O#TiaxJ~   ~O#Tia25J~                                // Tiax
+// Xan BG2
+// Mod Xan_BG2                   ~O#XANJ~    ~O#XAN25J~                                // Xan
+// Coran BG2
+// Mod Coran_BG2                 ~O#CoranJ~  ~O#Cor25J~                                // Coran
+
+// Auren Aseph
+// Mod Auren                     ~K#AurenJ~  ~K#Aur25J~                                // Auren
+
+// Isra BG2
+// Mod Isra_BG2                  ~rh#isrj~   ~rh#is25j~                                // Isra
+
+// Nephele
+// Mod Nephele_Samios            ~LK#NEPJ~   ~LK#NE25J~                                // Nephele
+
+// Sheena
+// Mod Sheena                    ~SHEENAJ~                                             // Sheena
+
+// Kiara / Zaiya
+// Mod Kiara                     ~KIARAJ~    ~KIAR25J~                                 // Kiara
+// Mod Zaiya                     ~ZAIYAJ~    ~ZAI25J~                                  // Zaiya
+
+// The Beaurin Legacy
+// Mod Minyae                    ~QI#MIJ~    ~QI#M25J~                                 // Minyae
+// Mod Elaryn                    ~QI#ELAJ~   ~QI#E25J~                                 // Elaryn
+
+// Tyris Flare
+// Mod Tyris                     ~g#tyrisj~  ~g#trs25j~                                // Tyris
+
+// Region of Terror
+// Mod Wulfgar_Terror            ~Wulfg2J~                                          // Wulfgar
+// Mod Regis_Terror              ~Reg2J~                                            // Regis
+// Mod Drizzt_Terror             ~Driz2J~                                           // Drizz
+// Mod Bruenor_Terror            ~Brue2J~                                           // Bruenor
+// Mod Catti-Brie_Terror         ~Catt2J~                                           // Catti-Brie
+// Mod Artemis_Entreri_Terror    ~Enter2J~                                          // Artemis
+// Mod Jarlaxle_Terror           ~Jarlax2J~                                         // Jarlaxle
+// Mod Tapio_Perkiomaki_Terror   ~TapioJ~                                           // Tapio
+// Mod Randall_Terror            ~RandallJ~                                         // Randall
+// Mod Alissa_Terror             ~Alissa1J~                                         // Alissa
+// Mod Mordragon_Terror          ~MordrgJ~                                          // Mordragon
+
+// Shadow over Soubar
+// Mod Selence_Hillstar_Soubar   ~SELENCEJ~                                          // Selence
+// Mod Charlotte_Soubar          ~CHARLOTJ~                                          // Charlotte
+// Mod Bolivar_Soubar            ~BOLIVARJ~                                          // Bolivar
+// Mod Tomas_Tomalson_Soubar     ~TOMASTOJ~                                          // Tomas
+
+// Ajantis_BG2
+// Mod Ajantis_BG2               ~C#AjanJ~   ~C#Aja25J~                              // Ajantis
+
+// Kivan and Deheriana
+// Mod Kivan_BG2                 ~P#KIVJ~    ~P#KI25J~                               // Kivan
+// Mod Deheriana                 ~P#DEHJ~    ~P#DE25J~                               // Deheriana
+
+// Yvette
+// Mod Yvette                    ~YxYveJ~ ~YXYV25J~
+
+// The Luxley Family
+// Mod Sebastian                 ~fhlsebJ~
+// Mod Andrei                    ~FHLANDJ~
+
+//  Beyond the Law
+// Mod Kiyone                    ~z#kiyoJ~
+// Mod Kova                      ~Z#kovaJ~
+
+// Petsy
+// Mod Petsy                     ~L3PetsyJ~ ~L3Pet25~
+
+// Kale BG2
+// Mod Kale_BG2                  ~X3KalJ~ ~X3Kal25J~
+
+// Walahnan BG2
+// Mod Walahnan_BG2              ~L#2WHJ~ ~L#2WH25J~
+
+// Autumns Twilight
+// Mod Dusk                      ~P_DuskJ~ ~P_Dus25J~
+// Mod Fall                      ~P_FallJ~ ~P_Fal25J~
+// Mod Cho'Nuja                  ~P_ChonJ~ ~P_Cho25J~
+// Mod Alendir                   ~P_AlenJ~ ~P_Ale25J~
+
+// Next_Traveler BG2
+
+/////////////////////////// Mods Continuous ///////////////////////////
+
+// EET Nikita                     ~CMTNIKJ~ ~CMNIKITJ~                                         // Nikita
+
+// EET Alora_Continuous           ~%ALORA_JOINED%~ ~BDALORAJ~ ~CMALORAJ~ ~CMALO25J~            // Alora_Continuous
+
+// EET Ajantis_Continuous         ~%AJANTIS_JOINED%~ ~BDAJANTJ~ ~C#AjanJ~ ~C#Aja25J~           // Ajantis_Continuous
+
+// EET Kivan_Continuous           ~%KIVAN_JOINED%~ ~BDKIVANJ~ ~P#KIVJ~ ~P#KI25J~               // Kivan_Continuous
+
+// EET Walahnan_Continuous        ~L#WALAHJ~ ~L#SWALAJ~ ~L#2WHJ~ ~L#2WH25J~                    // Walahnan_Continuous
+
+// EET Coran_Continuous           ~%CORAN_JOINED%~ ~BDCORANJ~ ~O#CoranJ~ ~O#Cor25J~            // Coran_Continuous
+
+// EET Yeslick_Continuous         ~%YESLICK_JOINED%~ ~BDYESLIJ~ ~LK#YESJ~ ~LK#YE25J~           // Yeslick_Continuous
+
+// EET Xan_Continuous             ~%XAN_JOINED%~ ~BDXANJ~ ~O#XANJ~ ~O#XAN25J~                  // Xan_Continuous
+
+// EET Branwen_Continuous         ~%BRANWEN_JOINED%~ ~BDBRANWJ~ ~O#BranJ~ ~O#BrA25J~           // EET Branwen_Continuous
+
+// EET Tiax_Continuous            ~%TIAX_JOINED%~ ~BDTIAXJ~ ~O#TiaxJ~ ~O#Tia25J~               // EET Tiax_Continuous
+
+// Next_Traveler Continuous
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%joining_dlg%.dlg~ BEGIN
+
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/All_In.D~
+
+	END ELSE BEGIN
+
+		COPY_EXISTING ~JO_JOINJ.DLG~ ~override/%joining_dlg%.dlg~
+
+	END
+
+END
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                                ITM SPL                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Files
+
+COPY ~JOining_Party_Select/Spl/JOIN648.SPL~ ~override~
+	SAY NAME1 ~Dying~
+	SAY NAME2 ~Dying~
+
+COPY ~JOining_Party_Select/Spl/JOIR648.SPL~ ~override~
+	SAY NAME1 ~Recovering~
+	SAY NAME2 ~Recovering~
+
+COPY ~JOining_Party_Select/Itm/JOMINHP1.itm~ ~override~
+	SAY NAME1 ~JOMINHP1~
+	SAY NAME2 ~JOMINHP1~
+	SAY DESC @101
+	SAY UNIDENTIFIED_DESC @101
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT3)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT6)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT5)
+	WRITE_LONG 0x18 (THIS BAND BNOT BIT2)
+
+COPY ~JOining_Party_Select/Spl/JO_JOIN.spl~ ~override~
+	SAY NAME1 ~Engagement~
+	SAY NAME2 ~Engagement~
+	SAY DESC @101
+	SAY UNIDENTIFIED_DESC @101
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=318
+		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
+			opcode=139
+			target = 1
+			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
+		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
+			opcode=267
+			target = 9
+			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
+		END
+
+
+
+// JONEAN28
+
+COPY ~JOining_Party_Select/Cre/JONEAN28.CRE~ ~override/JOINEAN.CRE~
+	SAY NAME1 ~Eye of <CHARNAME>~
+	SAY NAME2 ~Eye of <CHARNAME>~
+	WRITE_ASCII SCRIPT_OVERRIDE ~JOINEAN~ (8)
+	WRITE_ASCII DEATHVAR ~JOINEAN~ (32)
+	WRITE_ASCII DIALOG ~JOINEAN~ (8)
+
+COPY ~JOining_Party_Select/Spl/JOIN647.SPL~ ~override~
+
+COPY ~JOining_Party_Select/Eff/jo_vali0.eff~ ~override~
+
+// JOJOINNE
+
+COPY ~JOining_Party_Select/Cre/JOJOINNE.CRE~ ~override~
+	SAY NAME1 ~<CHARNAME>~
+	SAY NAME2 ~<CHARNAME>~
+	WRITE_ASCII SCRIPT_OVERRIDE ~JOJOINNE~ (8)
+	WRITE_ASCII DEATHVAR ~JOJOINNE~ (32)
+	WRITE_ASCII DIALOG ~JOJOINNE~ (8)
+
+		COMPILE ~JOining_Party_Select/Baf/JOJOINNE.baf~ EVALUATE_BUFFER
+
+// JO2608.cre
+
+COPY ~JOining_Party_Select/Cre/JO2608.CRE~ ~override/JO2608AL.CRE~
+	SAY NAME1 ~Avatar of Alaundo~
+	SAY NAME2 ~Avatar of Alaundo~
+	WRITE_ASCII SCRIPT_OVERRIDE ~JO2608AL~ (8)
+	WRITE_ASCII DEATHVAR ~JO2608AL~ (32)
+	WRITE_ASCII DIALOG ~JO2608AL~ (8)
+
+// JO2608
+/*
+In Not_So_Always.tpa
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
+
+	COMPILE ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
+
+END
+*/
+	COMPILE ~JOining_Party_Select/Baf/JO260801.baf~ EVALUATE_BUFFER
+
+ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
+
+	EXTEND_TOP ~JO2608.bcs~ ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.are~ BEGIN
+
+	COPY_EXISTING ~JO2608.ARE~ ~override~
+		WRITE_SHORT 0x48 THIS | BIT0 | BIT2
+
+END
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~JOBG402.SPL~ BEGIN
+
+		APPEND ~SPELL.IDS~ ~1011 NOSTALGIA_DOOR~  UNLESS ~1011 NOSTALGIA_DOOR~ // Will use SPPR011.SPL ressouce
+
+	COPY ~JOining_Party_Select/Spl/SpDoor/JOBG402.SPL~			~override/SPPR011.SPL~ // correspond to  : 1011 NOSTALGIA_DOOR
+		SAY NAME1 ~Dimensional gate~
+		SAY NAME2 ~Dimensional gate~
+		SAY UNIDENTIFIED_DESC ~Dimensional gate
+(Alteration)
+
+Level : 4
+Range: 0
+Duration: Instant
+Casting Time : 1
+Area of Effect : The caster
+Saving Throw : None
+
+This spell transports the caster to any place within the visual range of the caster. When the spell is cast, a gate appear in front of the caster, who immediately steps through it. Upon passing through the gate, the caster finds <PRO_HIMHER>self at <PRO_HISHER> chosen destination.~
+  SAY DESC ~Dimensional gate
+(Alteration)
+
+Level : 4
+Range: 0
+Duration: Instant
+Casting Time : 1
+Area of Effect : The caster
+Saving Throw : None
+
+This spell transports the caster to any place within the visual range of the caster. When the spell is cast, a gate appear in front of the caster, who immediately steps through it. Upon passing through the gate, the caster finds <PRO_HIMHER>self at <PRO_HISHER> chosen destination.~
+
+// Stolen from Nostalgia pack
+
+	COPY ~JOining_Party_Select/Spl/DiDoor~							~override~
+
+END
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//                                Scripts                                           //
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// JO_JOINP / JO_JOINW / JO_JOINI ...transitions additions
+	INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_to_BG2.tph~
+
+		EXTEND_TOP ~JO_JOINW.bcs~ ~JOining_Party_Select/Campaign_Transition/JO_JOINW_EXTEND_TOP_end.baf~ EVALUATE_BUFFER
+
+// Traveler dedicated scripts
+
+		COMPILE ~weidu_external/JOining_Party_Select/JO_JOINI.baf~ EVALUATE_BUFFER
+
+		COMPILE ~JOining_Party_Select/Baf/JO_JOINX.baf~ EVALUATE_BUFFER
+
+		COMPILE ~JOining_Party_Select/Baf/JO_JOINM.baf~ EVALUATE_BUFFER
+
+// Irregular party members
+
+	COPY ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~
+
+		COMPILE ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~ EVALUATE_BUFFER
+
+// CutSceneBreakable
+
+		COMPILE ~JOining_Party_Select/Baf/JO_JOINB.baf~ EVALUATE_BUFFER
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Player1 script override additions
+	// Modified in JOining_Party_Select_End before compiling.
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Loading Switch
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL.baf~ EVALUATE_BUFFER
+
+		COMPILE ~JOining_Party_Select/Baf/Join_ability/JO_JOINK.baf~ EVALUATE_BUFFER
+
+// Charname override script JO_JOINP.baf
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINP.baf~ EVALUATE_BUFFER // Join_ability.baf
+			/*PATCH_IF GAME_IS ~bgee bgt eet~ BEGIN
+				REPLACE_TEXTUALLY ~//	REPLACE_BG1toSoD~ ~~
+			END
+			PATCH_IF GAME_IS ~eet~ BEGIN
+				REPLACE_TEXTUALLY ~//	REPLACE_SoDtoBG2~ ~~
+			END*/
+
+
+// JO_JOIN_COUNT_TRAVELER for JO_JOINC.baf
+		COMPILE ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINC.baf~ EVALUATE_BUFFER
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// EXTEND_BOTTOM ~PLAYER1D.bcs~ ~JOining_Party_Select/Baf/Join_ability/Player1D.baf~ // Dream talk
+
+	EXTEND_BOTTOM ~BALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
+
+ACTION_IF FILE_EXISTS_IN_GAME ~BDBALDUR.bcs~ BEGIN
+
+	EXTEND_BOTTOM ~BDBALDUR.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~BALDUR25.bcs~ BEGIN
+
+	EXTEND_BOTTOM ~BALDUR25.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability_TOP.baf~ EVALUATE_BUFFER
+
+END
+
+
+// Starting areas additions (Set variables for campaigns)
+ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
+
+	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
+
+END
+
+ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
+
+	EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~BD0120.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
+
+END
+
+ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
+
+	EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR4000.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
+
+END

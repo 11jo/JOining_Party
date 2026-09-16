@@ -358,9 +358,8 @@ END
 // Basic without script
 
 IF
-	OR(3)
+	OR(2)
 		Allegiance(Myself,FAMILIAR)
-		Allegiance(Myself,CONTROLLED)
 		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
 	Global("JO_JOIN_SET_JOINX","LOCALS",3)
 THEN
