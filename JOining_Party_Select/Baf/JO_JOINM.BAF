@@ -315,5 +315,6 @@ THEN
 	RESPONSE #1
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",0)
 		SetGlobal("JO_JOIN_JOINM_NOTALK","LOCALS",0)
+		DisplayStringHead(Myself,~...~)
 		ChangeAIScript("",RACE)
 END

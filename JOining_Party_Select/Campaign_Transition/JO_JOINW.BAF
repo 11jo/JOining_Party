@@ -47,4 +47,5 @@ THEN
 		SetGlobal("JO2608_Create","MYAREA",0)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
 		RestorePartyLocations()
+		ChangeAIScript("JO_JOINP",OVERRIDE)
 END

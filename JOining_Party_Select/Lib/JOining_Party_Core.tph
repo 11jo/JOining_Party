@@ -477,7 +477,7 @@ END
 // JO_JOINP / JO_JOINW / JO_JOINI ...transitions additions
 	INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_to_BG2.tph~
 
-		EXTEND_BOTTOM ~JO_JOINW.bcs~ ~JOining_Party_Select/Campaign_Transition/JO_JOINW_EXTEND_TOP_end.baf~ EVALUATE_BUFFER
+		EXTEND_TOP ~JO_JOINW.bcs~ ~JOining_Party_Select/Campaign_Transition/JO_JOINW_EXTEND_TOP_end.baf~ EVALUATE_BUFFER
 
 // Traveler dedicated scripts
 

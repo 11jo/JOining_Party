@@ -9,6 +9,33 @@ EXTEND_BOTTOM JOJOINNE 3
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",1))
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player1))~ EXIT
+
+// Ally / Neutral
+  IF ~Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!InParty("%Death_var%")
+		See("%Death_var%")
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
+		BeenInParty("%Death_var%")
+		Allegiance("%Death_var%",NEUTRAL)
+//		!TriggerOverride("%Death_var%",Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0))
+		IsActive("%Death_var%")
+		CheckStat("%Death_var%",0,CASTERHOLD)
+		!StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	~ THEN REPLY ~^-Hello %%Death_var%_name% ! Can you be our ally in this area ?^-~
+			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN_ALLY","LOCALS",1))~ EXIT
+
+  IF ~Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		!InParty("%Death_var%")
+		See("%Death_var%")
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
+		BeenInParty("%Death_var%")
+		Allegiance("%Death_var%",CONTROLLED)
+//		!TriggerOverride("%Death_var%",Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0))
+		IsActive("%Death_var%")
+		CheckStat("%Death_var%",0,CASTERHOLD)
+		!StateCheck("%Death_var%",CD_STATE_NOTVALID)
+	~ THEN REPLY ~^-Hello %%Death_var%_name% ! Thanks for your help, I hope we'll meet again.^-~
+			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN_ALLY","LOCALS",2))~ EXIT
 END
 
 // Player2

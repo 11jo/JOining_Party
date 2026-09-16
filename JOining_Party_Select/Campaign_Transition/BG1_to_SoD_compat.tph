@@ -13,15 +13,18 @@ ACTION_IF MOD_IS_INSTALLED ~C#ENDLESSBG1.TP2~ ~0~ BEGIN
 
 	COMPILE ~weidu_external/JOining_Party_Select/Compat/JOebg122.Baf~
 
+
 // For JO_JOINP.baf
+	// Launch EndlessBG1 original cutscene
 			OUTER_SPRINT "Cut_c#ebg122" ~~~~~
 
 IF
-	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",5)
 	Global("JO_JOIN_c#ebg122","GLOBAL",1)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		SetCutSceneLite(TRUE)
 		DisplayStringHead(Myself,~Allons-y !~)
 		Wait(1)
 		SetGlobal("JO_JOIN_c#ebg122","GLOBAL",2)
@@ -40,11 +43,12 @@ END
 
 IF
 	AreaCheck("%NBaldursGate%")
-	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
+	!AreaCheck("%NBaldursGate_DucalPalace_L1%")
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",5)
 	Global("JO_JOIN_c#ebg122","GLOBAL",2)
 THEN
 	RESPONSE #100
-		Wait(1)
+		SetCutSceneLite(FALSE)
 		StartCutSceneMode()
 		StartCutSceneEx("JOebg122",TRUE)
 END
@@ -83,7 +87,6 @@ THEN
 		SetGlobal("K#PartySoD","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
 		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)
-		SetCutSceneLite(FALSE)
 		CreateVisualEffectObject("JOBG402",Myself)
 		SetInterrupt(TRUE)
 		DestroySelf()
@@ -95,8 +98,6 @@ END
 END ELSE BEGIN
 
 	OUTER_SPRINT ~Cut_c#ebg122~ ~~
-
-	OUTER_SPRINT ~c#ebg122_CAMPAIGN_TRANSITION~ ~~
 
 	OUTER_SPRINT "c#ebg122_END_OF_WATCH" ~~
 

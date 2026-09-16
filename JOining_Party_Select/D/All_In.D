@@ -171,6 +171,8 @@ StartDialogueNoSet(Player6)~ EXIT
 
 		IF ~Global("JO_Myself_LeaveParty","LOCALS",0)~ THEN REPLY ~Leave the group please !~ DO ~SetGlobal("JO_Myself_LeaveParty","LOCALS",1)~ GOTO JO_JOINYes
 
+		IF ~Global("JO_Myself_LeaveParty","LOCALS",0)~ THEN REPLY ~^GCan you leave the group and stay our ally in this area ?^-~ DO ~SetGlobal("JO_Myself_LeaveParty","LOCALS",1) SetGlobal("JO_JOIN_ALLY","LOCALS",1)~ EXIT
+
 // Indepandance
 		IF ~IsGabber(Player1)~ THEN REPLY ~^0xFF82E6FFIndependance behavior.^-~ GOTO INDEPENDANCE
 

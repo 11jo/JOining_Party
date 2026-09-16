@@ -139,11 +139,9 @@ IF
 		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
 THEN
 	RESPONSE #100
-		SetInterrupt(FALSE)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
 		Wait(2)
-		ChangeAIScript("JO_JOINW",GENERAL)
-		SetInterrupt(TRUE)
+		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
 
 IF
@@ -156,8 +154,10 @@ THEN
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5)
 		FadeFromColor([45.0],0)
 		Wait(1)
-		EndCutSceneMode()
+		UnhideGUI()
+		SetCutSceneLite(FALSE)
 		SetInterrupt(TRUE)
+			Continue()
 END
 
 
@@ -193,7 +193,7 @@ END
  // JO_JOIN_CAMPAIGN_TRANSITION
 ///////////////////////////////////////////////////////////////////////////
 
-// For All_in.baf
+// For Jo_joinI.baf
 ACTION_IF GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~ BEGIN
 
 	OUTER_SPRINT "JO_JOIN_CAMPAIGN_TRANSITION" ~~~~~
@@ -216,9 +216,7 @@ IF
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0) // Not implemented
 //
 	Global("JO_JOIN_END_OF_WATCH","LOCALS",0)
-	OR(2)
-		Delay(15)
-		Global("JO_JOIN_c#ebg122","GLOBAL",1)
+	Delay(5)
 //
 	OR(2)
 		!ActuallyInCombat()
@@ -231,25 +229,24 @@ THEN
 	RESPONSE #0
 		SetInterrupt(FALSE)
 		ClearActions(Myself)
-		MoveToObjectOffset(Player1,[-15.-15])
-		Wait(1)
 		SetGlobal("JO_JOIN_CAMPAIGN_TRANSITION","GLOBAL",1)
 		SetGlobal("JO_JOIN_TALK_TRANSITION","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		DisplayStringHead(Myself,~<CHARNAME>, Some of us have to go.~)
 		SetCutSceneLite(TRUE)
+		HideGUI()
 		ChangeAIScript("",GENERAL)
 		SetInterrupt(TRUE)
+		MoveToObjectOffset(Player1,[-3.-3])
 	RESPONSE #1
 		SetInterrupt(FALSE)
 		ClearActions(Myself)
-		MoveToObjectOffset(Player1,[-15.-15])
-		Wait(1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",1)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",1)
 		ChangeAIScript("",GENERAL)
 		SetInterrupt(TRUE)
+		MoveToObjectOffset(Player1,[-3.-3])
 END
 
 ~~~~~
