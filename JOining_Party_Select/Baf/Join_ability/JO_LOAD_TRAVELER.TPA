@@ -16,7 +16,9 @@ ACTION_IF FILE_EXISTS ~weidu_external/JOining_Party_Select/Join_ability/JO_JOINL
 		REPLACE_TEXTUALLY ~//	REPLACE_TRAVELER_JO_LOAD_TRAVELER~ ~~~~~IF
 		Global("JO_JOIN_LOADING_SWITCH","GLOBAL",3)
 		// JO_JOIN_LOAD is increment until it equals JO_JOIN_LOADING_MAX
-		!LocalsEqual("JO_JOIN_LOAD","JO_JOIN_LOADING_MAX")
+		OR(2)
+			!LocalsEqual("JO_JOIN_LOAD","JO_JOIN_LOADING_MAX")
+			NumInPartyLT(5)
 		Global("JO_TRAVELER_%Death_var%","GLOBAL",1)
 		Global("JO_TRAVELER_%Death_var%_SET","GLOBAL",0)
 		NumInPartyLT(6)

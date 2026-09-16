@@ -1,6 +1,6 @@
 
 // Player1
-EXTEND_BOTTOM JOJOINNE 3
+EXTEND_BOTTOM JOJOINNE 5
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -9,37 +9,10 @@ EXTEND_BOTTOM JOJOINNE 3
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
 				ActionOverride("%Death_var%",SetGlobal("JO_JOIN_TALK_PLAYER","LOCALS",1))
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player1))~ EXIT
-
-// Ally / Neutral
-  IF ~Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!InParty("%Death_var%")
-		See("%Death_var%")
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
-		BeenInParty("%Death_var%")
-		Allegiance("%Death_var%",NEUTRAL)
-//		!TriggerOverride("%Death_var%",Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0))
-		IsActive("%Death_var%")
-		CheckStat("%Death_var%",0,CASTERHOLD)
-		!StateCheck("%Death_var%",CD_STATE_NOTVALID)
-	~ THEN REPLY ~^-Hello %%Death_var%_name% ! Can you be our ally in this area ?^-~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN_ALLY","LOCALS",1))~ EXIT
-
-  IF ~Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!InParty("%Death_var%")
-		See("%Death_var%")
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))
-		BeenInParty("%Death_var%")
-		Allegiance("%Death_var%",CONTROLLED)
-//		!TriggerOverride("%Death_var%",Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0))
-		IsActive("%Death_var%")
-		CheckStat("%Death_var%",0,CASTERHOLD)
-		!StateCheck("%Death_var%",CD_STATE_NOTVALID)
-	~ THEN REPLY ~^-Hello %%Death_var%_name% ! Thanks for your help, I hope we'll meet again.^-~
-			DO ~ActionOverride("%Death_var%",SetGlobal("JO_JOIN_ALLY","LOCALS",2))~ EXIT
 END
 
 // Player2
-EXTEND_BOTTOM JOJOINNE 6
+EXTEND_BOTTOM JOJOINNE 8
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -50,7 +23,7 @@ EXTEND_BOTTOM JOJOINNE 6
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player2))~ EXIT
 END
 
-EXTEND_BOTTOM JOJOINNE 9
+EXTEND_BOTTOM JOJOINNE 11
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -65,7 +38,7 @@ EXTEND_BOTTOM JOJOINNE 9
 END
 
 // Player3
-EXTEND_BOTTOM JOJOINNE 12
+EXTEND_BOTTOM JOJOINNE 14
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -77,7 +50,7 @@ EXTEND_BOTTOM JOJOINNE 12
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player3))~ EXIT
 END
 
-EXTEND_BOTTOM JOJOINNE 15
+EXTEND_BOTTOM JOJOINNE 17
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -93,7 +66,7 @@ EXTEND_BOTTOM JOJOINNE 15
 END
 
 // Player4
-EXTEND_BOTTOM JOJOINNE 18
+EXTEND_BOTTOM JOJOINNE 20
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -105,7 +78,7 @@ EXTEND_BOTTOM JOJOINNE 18
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player4))~ EXIT
 END
 
-EXTEND_BOTTOM JOJOINNE 21
+EXTEND_BOTTOM JOJOINNE 23
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -119,7 +92,7 @@ EXTEND_BOTTOM JOJOINNE 21
 END
 
 // Player5
-EXTEND_BOTTOM JOJOINNE 24
+EXTEND_BOTTOM JOJOINNE 26
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -131,7 +104,7 @@ EXTEND_BOTTOM JOJOINNE 24
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player5))~ EXIT
 END
 
-EXTEND_BOTTOM JOJOINNE 27
+EXTEND_BOTTOM JOJOINNE 29
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
@@ -145,7 +118,7 @@ EXTEND_BOTTOM JOJOINNE 27
 END
 
 // Player6
-EXTEND_BOTTOM JOJOINNE 30
+EXTEND_BOTTOM JOJOINNE 32
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
@@ -157,7 +130,7 @@ EXTEND_BOTTOM JOJOINNE 30
 				ActionOverride("%Death_var%",StartDialogueNoSet(Player6))~ EXIT
 END
 
-EXTEND_BOTTOM JOJOINNE 33
+EXTEND_BOTTOM JOJOINNE 35
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))

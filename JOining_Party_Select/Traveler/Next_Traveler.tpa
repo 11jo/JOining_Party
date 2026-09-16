@@ -177,6 +177,14 @@ END
 
 // %Next_Traveler Traveler_Game%~~~~~
 
+/////////////////////////// JOining_Party_JOJOINNE.tph ///////////////////////////
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_JOJOINNE.tph~	~JOining_Party_Select/Lib/JOining_Party_JOJOINNE.tph~
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// %Mod% %NEW_TRAVELER_NAME%            ~%NEW_TRAVELER_DeathVar%~
+
+// %Next_Traveler Traveler_Game%~~~~~
+
 /////////////////////////// JOining_Party_Core.tph ///////////////////////////
 
 

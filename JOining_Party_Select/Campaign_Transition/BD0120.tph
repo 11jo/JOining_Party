@@ -20,6 +20,17 @@ COPY_EXISTING ~ISHYSCRP.bcs~ ~override~
 				PATCH_PRINT ~... // Ishy_ENDOFBG1 : SaveGame found in %SOURCE_FILESPEC% for Ishilka
 				~
 			END
+			SPRINT textToReplace ~^[%TAB% ]*MoveBetweenAreas("BD0010",[1069.533],NNW)
+^[%TAB% ]*SetGlobal("IshyFistHelp","GLOBAL",1)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~
+		DisplayStringHead(Myself,@1000)
+	\0~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // Ishy_MoveBetweenAreas : SaveGame found in %SOURCE_FILESPEC% for Ishilka
+				~
+			END
 		END
 
 <<<<<<<< .../JOining_#Ishy_bd0120.baf
@@ -47,8 +58,8 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetDialog("ishyhi") // Recrutement dialog
 		SetGlobal("JO_JOIN_bd0120_#Ishy","LOCALS",1)
-		DisplayStringHead(Myself,~See you on the other side !~)
-// MoveBetweenAreas("BD0010",[1069.533],7)
+		DisplayStringHead(Myself,@1000)  /* See you on the other side ! */
+		Wait(2)
 EscapeAreaObjectMove("BD0010",Myself,1069,533,7)
 		SetInterrupt(TRUE)
 		Continue()
@@ -56,6 +67,39 @@ END
 
 >>>>>>>>
 EXTEND_TOP ~ISHYSCRP.bcs~ ~.../JOining_#Ishy_bd0120.baf~ EVALUATE_BUFFER
+
+<<<<<<<< .../JOining_#Ishy_JO2608.baf
+
+IF
+	AreaCheck("JO2608")
+	!InMyArea("#Ishy")
+	InMyArea(Player1)
+	Global("IshySkieDeadLeave","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("JO_JOIN_#Ishy_JO2608","MYAREA",ONE_WEEK)
+		Continue()
+END
+
+IF
+	AreaCheck("JO2608")
+	!InMyArea("#Ishy")
+	InMyArea(Player1)
+	Global("IshySkieDeadLeave","GLOBAL",1)
+	!GlobalTimerNotExpired("JO_JOIN_#Ishy_JO2608","MYAREA")
+THEN
+	RESPONSE #100
+		SetGlobal("IshySkieDeadLeave","GLOBAL",2)
+		MoveGlobal("JO2608","#Ishy",[1866.1348])
+		ActionOverride("%Death_var%",MoveToPointNoInterrupt([1712.806]))
+		Wait(3)
+		DisplayStringHead("#Ishy",@1001) /* I...I still don't know what to think... But I will make up my mind over here. */
+		Continue()
+END
+
+>>>>>>>>
+EXTEND_BOTTOM ~ISHYSCRP.bcs~ ~.../JOining_#Ishy_JO2608.baf~ EVALUATE_BUFFER
+
 
 	END
 

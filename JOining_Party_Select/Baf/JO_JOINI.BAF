@@ -641,7 +641,53 @@ THEN
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
 		Continue()
 END
+///////////////////////////////////////////////////////////////////////////////
 
+// Inventory management
+
+///////////////////////////////////////////////////////////////////////////////
+/*
+IF // Carry my items
+	Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_Move_Around","GLOBAL",0)
+	Global("JO_JOIN_Move_Done","LOCALS",0)
+	Global("JO_JOIN","LOCALS",0)
+	Global("JO_NOJOIN","GLOBAL",0)
+	Global("JO_JOIN_IS_JOINING","LOCALS",0)
+	Global("JO_JOINI","LOCALS",0)
+	Global("JO_JOIN_SET_JOINX","LOCALS",0)
+	Global("JO_JOIN_QUICK_FORCE_JOIN","LOCALS",0)
+	Global("JO_JOIN_FILL_PARTY","LOCALS",0)
+	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
+//
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Switch("JO_JOIN_MANAGE","LOCALS")
+THEN
+	RESPONSE #1
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(Player1,BACKPACK)
+	RESPONSE #2
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(Player2,BACKPACK)
+	RESPONSE #3
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(Player3,BACKPACK)
+	RESPONSE #4
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(Player4,BACKPACK)
+	RESPONSE #5
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(Player5,BACKPACK)
+	RESPONSE #6
+		SetGlobal("JO_JOIN_MANAGE","LOCALS",0)
+		TakeCreatureItems(Player6,BACKPACK)
+END
+*/
 ///////////////////////////////////////////////////////////////////////////////
 
 // Security
@@ -754,6 +800,8 @@ IF
 	NumInPartyLT(6)
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Quick Switch
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",2) // Enable next block
 END
 
@@ -2523,6 +2571,8 @@ IF // First check
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2592,6 +2642,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2657,6 +2709,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2717,6 +2771,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -2771,6 +2827,8 @@ IF //
 		TriggerOverride(PartySlot6,Global("JO_JOIN_READY_TO_SWITCH","LOCALS",1))
 THEN
 	RESPONSE #100
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Switching party
 		SetGlobal("JO_JOIN_SWITCHING_PARTY","GLOBAL",1)
 		SetGlobal("JO_JOIN_READY_TO_SWITCH","LOCALS",2) // It is my switching party
 END
@@ -3282,24 +3340,32 @@ IF
 		!Global("JO_JOIN_FORCE_FILL_PARTY","LOCALS",0)
 THEN
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
 		DisplayStringHead(Myself,~Let me in !~)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
 		DisplayStringHead(Myself,~Incoming !~)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
 		DisplayStringHead(Myself,~There is plenty of room in this group...~)
 		Continue()
 	RESPONSE #25
+		SetGlobal("JO_JOIN_NOSAVE_AREA","LOCALS",1)
+		AddAreaFlag(NOSAVE) // AreaFlag Fill party
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",1)
 		SetGlobal("JO_NOJOIN","GLOBAL",1)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",2)
@@ -3368,7 +3434,7 @@ THEN
 		Continue()
 END
 
-// Secondary Fill Party 1 // Reset variable
+// Secondary Fill Party 2 // Reset variable
 
 IF
 	OR(2)
