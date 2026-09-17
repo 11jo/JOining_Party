@@ -537,6 +537,13 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
   COUNT_REGEXP_INSTANCES  ~^Cho'Nuja[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                          Cho'Nuja_as_Real_traveler
   COUNT_REGEXP_INSTANCES  ~^Alendir[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                           Alendir_as_Real_traveler
 
+// Lysre, dragonne de poche
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Lysre[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Lysre_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Lysre[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Lysre_as_Real_traveler
+
 // Next_Traveler BG2
 
 

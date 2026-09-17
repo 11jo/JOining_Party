@@ -3093,6 +3093,30 @@ ACTION_IF (MOD_IS_INSTALLED ~Autumns_Twilight.TP2~ ~0~) THEN BEGIN
 
 END
 
+// Lysre, dragonne de poche
+
+
+ACTION_IF (MOD_IS_INSTALLED ~LYSRE.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Lysre_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Lysre~ ~~
+			PRINT ~    Lysre as traveler
+			~
+
+	END ELSE ACTION_IF Lysre_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Lysre~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Lysre~ ~~
+			PRINT ~    Lysre as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 
