@@ -2039,6 +2039,30 @@ ACTION_IF (MOD_IS_INSTALLED ~BG1Aerie.TP2~ ~5000~) THEN BEGIN
 
 END
 
+// Margarita Zelleod
+
+
+ACTION_IF (MOD_IS_INSTALLED ~MARGARITA.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Margarita_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Margarita~ ~~
+			PRINT ~    Margarita as traveler
+			~
+
+	END ELSE ACTION_IF Margarita_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Margarita~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Margarita~ ~~
+			PRINT ~    Margarita as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG1
 
 

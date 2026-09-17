@@ -430,6 +430,8 @@ END
 
 
 /////////////////////////// Always_as_traveler.tpa ///////////////////////////
+	// OUTER_SET ~%NEW_TRAVELER_DeathVar%_SoD_Content~ = 1 and  OUTER_SET ~%NEW_TRAVELER_DeathVar%_BG2_Content~ = 1
+		 // To add if needed
 
 		COPY ~JOining_Party_Select/Lib/Always_as_traveler.tpa~	~JOining_Party_Select/Lib/Always_as_traveler.tpa~
 			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%

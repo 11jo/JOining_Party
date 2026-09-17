@@ -1865,7 +1865,7 @@ OUTER_SPRINT "BG1_DREAM" ""
 
 ACTION_FOR_EACH bcs IN
 
-// Mod Aerie_BG1 ~B2#Aeri2~ ~~
+// Mod Aerie_BG1 ~B2#Aeri2~
 
 BEGIN
 
@@ -1876,6 +1876,48 @@ BEGIN
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/B2#Aeri_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG1.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG1.tph~
+
+	END
+END
+
+// Margarita Zelleod
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "RL#MARGJ"
+OUTER_SPRINT "BG1_BCS" "RL#MARG"
+OUTER_SPRINT "BG1_BANTER" "RL#MARGB"
+OUTER_SPRINT "BG1_DREAM" "RL#MARGD"
+	// SoD
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+	OUTER_SPRINT "SoD_JOINED" "RL#MARGJ"
+	END ELSE BEGIN
+	OUTER_SPRINT "SoD_JOINED" ""
+	END
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Margarita ~RL#MARG~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/RL#MARG_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG1.tpa~
 
