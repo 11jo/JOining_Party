@@ -497,7 +497,7 @@ END
 
 // Irregular party members
 
-	COPY ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~
+	COPY ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~ EVALUATE_BUFFER
 
 		COMPILE ~weidu_external/JOining_Party_Select/Baf/JO_JOINJ.baf~ EVALUATE_BUFFER
 

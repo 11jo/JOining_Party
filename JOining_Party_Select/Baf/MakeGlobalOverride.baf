@@ -1,0 +1,13 @@
+///////////////////////////////////////////////////////////////////////////////
+
+// STARTING_BLOCK (See JOining_Party_Joined.tph, Start.baf, JOINSET.BAF)
+
+///////////////////////////////////////////////////////////////////////////////
+
+IF
+	Global("JO_JOIN_STARTING_BLOCK","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_STARTING_BLOCK","LOCALS",1)
+		MakeGlobalOverride()
+END
