@@ -4,8 +4,8 @@ IF
 THEN
 	RESPONSE #100
 		MakeGlobal()
-		SetGlobal("JO_Myself_InParty","LOCALS",1)
-		SetGlobal("JO_Myself_Valid","LOCALS",1)
-		SetGlobal("JO_Myself_AllowDead","LOCALS",1)
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		DestroySelf()
 END
