@@ -85,41 +85,6 @@ END
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 */
 
-// Aura_BG1_2_EET
-	ACTION_IF MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~ BEGIN
-
-			COPY ~JOining_Party_Select/cre/JO2608.cre~  ~override/JOINC0Au.CRE~
-				SAY NAME1 ~C0Aura~
-				SAY NAME2 ~C0Aura~
-				WRITE_LONG 0x28 IDS_OF_SYMBOL ("ANIMATE" "DOOM_GUARD") // ~0x6405~
-				WRITE_ASCII DEATHVAR ~C0Aura~ (32)
-				WRITE_ASCII SCRIPT_OVERRIDE ~JOINSET~ (8)
-				WRITE_ASCII DIALOG ~~ (8)
-				
-					PATCH_PRINT ~C0Aura : added...
-										~
-
-			COPY ~weidu_external/JOining_Party_Select/START.baf~  ~weidu_external/JOining_Party_Select/START.baf~ EVALUATE_BUFFER
-				REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("JOINC0Au",[-1.-1],0)
-		\0~	
-					PATCH_PRINT ~JOINC0Au C0Aura : added to %SOURCE_FILE%...
-											~
-
-
-		ACTION_FOR_EACH bcs IN
-			
-				~C0AURA2~ ~C0AURA25~
-			
-			BEGIN
-			
-				ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
-			
-							EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/MakeGlobalOverride.baf~ EVALUATE_BUFFER
-			END
-		END
-
-	END
-
 //JOINABLE NPCS ARRAY MACRO__________________________________________________________
 //
 DEFINE_ACTION_MACRO JOINABLE_NPC_ARRAYS BEGIN
