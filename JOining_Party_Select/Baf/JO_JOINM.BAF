@@ -27,11 +27,12 @@ END
 // Check for non potential traveler
 IF
 	Global("JO_JOIN_PARTY_MEMBER","LOCALS",1)
-	OR(4)
+	OR(5)
 		!Global("JO_JOIN_READY_TO_SWITCH","LOCALS",0)
 		!Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 		!Global("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		!Global("JO_JOIN_FILL_PARTY","LOCALS",0)
+		!Global("JO_JOIN","LOCALS",0)
 	InPartyAllowDead(Myself)
 THEN
 	RESPONSE #100
@@ -41,6 +42,7 @@ THEN
 		SetGlobal("JO_JOIN_WANNABE_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_QUICK_SWITCH","LOCALS",0)
 		SetGlobal("JO_JOIN_FILL_PARTY","LOCALS",0)
+		SetGlobal("JO_JOIN","LOCALS",0)
 END
 */
 
