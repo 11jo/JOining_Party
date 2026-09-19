@@ -6,8 +6,7 @@
 
 	ACTION_IF MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~ BEGIN
 
-			COPY ~JOining_Party_Select/cre/C0AURA2.cre~  ~override/JOINC0Au.CRE~
-				WRITE_ASCII DEATHVAR ~C0Aura~ (32)
+			COPY_EXISTING ~C0AURA2.cre~  ~override/JOINC0Au.CRE~
 				WRITE_ASCII SCRIPT_DEFAULT ~JOINSET~ (8)
 				
 					PATCH_PRINT ~C0Aura : added...

@@ -481,7 +481,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////
 
 // Starting Block
-	// 		COMPILE ~JOining_Party_Select/Baf/JOINSET.baf~ EVALUATE_BUFFER
+		COMPILE ~JOining_Party_Select/Baf/JOINSET.baf~ EVALUATE_BUFFER
 
 // JO_JOINP / JO_JOINW / JO_JOINI ...transitions additions
 	INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_to_BG2.tph~
@@ -555,7 +555,7 @@ ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
 
 	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
 // Starting Block_BG1
-	// EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
 
 END
 
@@ -563,7 +563,7 @@ ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
 
 	EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 // Starting Block_SoD
-	// EXTEND_BOTTOM ~BD0103.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~BD0103.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
 
 	EXTEND_BOTTOM ~BD0120.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 
@@ -573,12 +573,12 @@ ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
 
 	EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
 // Starting Block_BG2
-	// EXTEND_BOTTOM ~AR0602.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR0602.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
 
 	EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 
 	EXTEND_BOTTOM ~AR4000.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 // Starting Block_ToB
-	// EXTEND_BOTTOM ~AR4000.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR4000.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
 
 END
