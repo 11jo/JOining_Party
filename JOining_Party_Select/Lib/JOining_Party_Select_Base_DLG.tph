@@ -89,7 +89,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Detect("\2")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
@@ -123,7 +123,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~\(^[%TAB% ]*InParty("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Detect("\2")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : InParty found in %SOURCE_FILESPEC%
 				~

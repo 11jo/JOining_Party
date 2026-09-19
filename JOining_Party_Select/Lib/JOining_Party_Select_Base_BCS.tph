@@ -75,11 +75,11 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Detect("\2")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END
+			END/*
 // !InParty("Dorn, Neera, ohhfak") // BG2301 / BG3300 / AR0406
 			SPRINT textToReplace ~TriggerOverride("Dorn",Global("JO_Myself_InParty","LOCALS",0))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -104,7 +104,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END
+			END*/
 	// Myself
 		SPRINT textToReplace ~^[%TAB% ]*!InParty(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -118,7 +118,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~\(^[%TAB% ]*InParty("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("\2",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Detect("\2")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : InParty found in %SOURCE_FILESPEC%
 				~
