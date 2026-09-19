@@ -1,23 +1,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 // Aura_BG1_2_EET
-	// Probably because of triggers structure	// OR(3)
-													// !InParty("C0Aura")
-													// !InMyArea("C0Aura")
-													// StateCheck("C0Aura",CD_STATE_NOTVALID)
-		// It lead to issue when Aura hasn't be encountered.
 
 ///////////////////////////////////////////////////////////////////////////////
 
 	ACTION_IF MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~ BEGIN
 
-			COPY ~JOining_Party_Select/cre/JO2608.cre~  ~override/JOINC0Au.CRE~
-				SAY NAME1 ~C0Aura~
-				SAY NAME2 ~C0Aura~
-				WRITE_LONG 0x28 IDS_OF_SYMBOL ("ANIMATE" "DOOM_GUARD") // ~0x6405~
+			COPY ~JOining_Party_Select/cre/C0AURA2.cre~  ~override/JOINC0Au.CRE~
 				WRITE_ASCII DEATHVAR ~C0Aura~ (32)
-				WRITE_ASCII SCRIPT_OVERRIDE ~JOINSET~ (8)
-				WRITE_ASCII DIALOG ~~ (8)
+				WRITE_ASCII SCRIPT_DEFAULT ~JOINSET~ (8)
 				
 					PATCH_PRINT ~C0Aura : added...
 										~
@@ -28,7 +19,7 @@
 					PATCH_PRINT ~JOINC0Au C0Aura : added to %SOURCE_FILE%...
 											~
 
-
+/*
 		ACTION_FOR_EACH bcs IN
 			
 				~C0AURA2~ ~C0AURA25~
@@ -40,5 +31,6 @@
 							EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/MakeGlobalOverride.baf~ EVALUATE_BUFFER
 			END
 		END
+*/
 
 	END
