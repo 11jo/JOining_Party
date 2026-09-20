@@ -215,7 +215,9 @@
 
 		COMPILE ~JOining_Party_Select/Campaign_Transition/JO_JOINW.baf~
 
-		COPY ~JOining_Party_Select/Baf/START.baf~ ~weidu_external/JOining_Party_Select/START.baf~
+		COPY ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
+
+		COPY ~JOining_Party_Select/Mod_Compatibility/START.baf~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~
 
 
 // CD_STATE_NOTVALID without STATE_SILENCED but with STATE_CHARMED ? scripts may be not active

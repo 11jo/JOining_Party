@@ -5,9 +5,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 IF
-	Global("JO_JOIN_STARTING_BLOCK","LOCALS",0)
+	OR(2)
+		InPartyAllowDead(Myself)
+		Global("JO_Myself_AllowDead","LOCALS",1)
+	Global("JO_JOIN_STARTING_Override","LOCALS",0)
 THEN
 	RESPONSE #100
-		SetGlobal("JO_JOIN_STARTING_BLOCK","LOCALS",1)
+		SetGlobal("JO_JOIN_STARTING_Override","LOCALS",1)
 		MakeGlobalOverride()
 END

@@ -1,89 +1,3 @@
-/*
-// STARTING_BLOCK (See All_NPC_JOIN.baf, All_TRAVELER_JOIN.baf, Start.baf, JOINSET.BAF)
-
-//JOINABLE NPCS ARRAY MACRO__________________________________________________________
-//
-DEFINE_ACTION_MACRO JOINABLE_NPC_death_vars BEGIN
-	//PDIALOG.2DA exists in all games
-	ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~PDIALOG~ => ~~ END
-	//Check PDIALOG.2DA file variants referenced in CAMPAIGN.2DA
-	ACTION_IF FILE_EXISTS_IN_GAME ~CAMPAIGN.2DA~ BEGIN
-		COPY_EXISTING ~CAMPAIGN.2DA~ ~CAMPAIGN.2DA~
-			COUNT_2DA_ROWS 32 "cntrow"
-			FOR (i = 0; i < cntrow; i = i + 1) BEGIN
-				READ_2DA_ENTRY i 11 32 file
-				TO_UPPER file
-				DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~%file%~ => ~~ END
-			END
-		BUT_ONLY
-	END
-	//Generate array with joinable NPC DV
-	ACTION_PHP_EACH JOINABLE_NPC_ARRAY_2da AS file => ~~ BEGIN
-		ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN
-			COPY_EXISTING ~%file%.2da~ ~override~
-				COUNT_2DA_ROWS 3 "cntrow"
-				FOR (i = 1; i < cntrow; i = i + 1) BEGIN
-					READ_2DA_ENTRY i 0 3 "dv"
-					TO_UPPER dv
-					// Starting Block
-					DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN ~%dv%~ => ~~ END
-				END
-			BUT_ONLY
-		END
-	END
-END
-//__________________________________________________________________________________
-
-
-
-LAM JOINABLE_NPC_death_vars
-
-ACTION_PHP_EACH JOINABLE_NPC_ARRAY_dv AS death_vars => dv BEGIN
-		PRINT ~%death_vars% => %dv%~
-
-		OUTER_SET JOIN000 = RANDOM(0 4900)
-	
-	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JOIN%JOIN000%.CRE~ AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~IMOEN~) AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~%IMOEN_DV%~) BEGIN
-	
-	// Starting Block
-		COPY ~JOining_Party_Select/cre/JO2608.cre~  ~override/JOIN%JOIN000%.CRE~
-			SAY NAME1 ~%death_vars%~
-			SAY NAME2 ~%death_vars%~
-			WRITE_LONG 0x28 IDS_OF_SYMBOL ("ANIMATE" "DOOM_GUARD") // ~0x6405~
-			WRITE_ASCII DEATHVAR ~%death_vars%~ (32)
-			WRITE_ASCII SCRIPT_OVERRIDE ~JOINSET~ (8)
-			WRITE_ASCII DIALOG ~~ (8)
-									PATCH_PRINT ~JOIN%JOIN000% %death_vars% : added...
-									~
-	END ELSE ACTION_IF (NOT ~%death_vars%~ STRING_EQUAL_CASE ~IMOEN~) AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~%IMOEN_DV%~) BEGIN 
-	
-			PRINT ~JOIN%JOIN000% %death_vars% : already exist... randomise again...
-									~
-	
-		OUTER_SET JOIN000 = RANDOM(4901 9999)
-	
-	// Starting Block_BG1
-		COPY ~JOining_Party_Select/cre/JO2608.cre~  ~override/JOIN%JOIN000%.CRE~
-			WRITE_ASCII DEATHVAR ~%death_vars%~ (32)
-			WRITE_ASCII SCRIPT_OVERRIDE ~JOINSET~ (8)
-			WRITE_ASCII DIALOG ~~ (8)
-									PATCH_PRINT ~JOIN%JOIN000% %death_vars% : added...
-									~
-	END
-	
-	// Starting Block
-	ACTION_IF (NOT ~%death_vars%~ STRING_EQUAL_CASE ~IMOEN~) AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~%IMOEN_DV%~) BEGIN 
-		COPY ~weidu_external/JOining_Party_Select/START.baf~  ~weidu_external/JOining_Party_Select/START.baf~ EVALUATE_BUFFER
-									REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("JOIN%JOIN000%",[-1.-1],0)
-	\0~
-									PATCH_PRINT ~JOIN%JOIN000% %death_vars% : added to %SOURCE_FILE%...
-									~
-	END
-
-END
-// STARTING_BLOCK END
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-*/
 
 //JOINABLE NPCS ARRAY MACRO__________________________________________________________
 //
@@ -115,17 +29,6 @@ DEFINE_ACTION_MACRO JOINABLE_NPC_ARRAYS BEGIN
 			BUT_ONLY
 		END
 	END
-	//Generate array with joinable NPC cre files
-	COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
-		READ_ASCII DEATHVAR "dv" (32) NULL
-		TO_UPPER dv
-		PATCH_IF VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
-			DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
-		END
-		PATCH_IF NOT VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
-			DEFINE_ASSOCIATIVE_ARRAY NON_JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
-		END
-	BUT_ONLY
 	//Generate array with joinable NPC cre files
 	COPY_EXISTING_REGEXP GLOB ~.+\.CRE~ ~override~
 		READ_ASCII DEATHVAR "dv" (32) NULL

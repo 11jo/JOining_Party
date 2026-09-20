@@ -1,0 +1,7 @@
+
+
+		COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
+				REPLACE_TEXTUALLY ~//	only_one_comp~ ~~~~~						AND NOT (~DeathVar_comp~ STRING_EQUAL_CASE ~%only_one_comp%~)
+\0~~~~~
+				REPLACE_TEXTUALLY ~~~~~AND NOT (~DeathVar_~~~~~ ~~~~~AND NOT (~%DeathVar_~~~~~
+				REPLACE_TEXTUALLY ~~~~~_comp~ STRING_EQUAL_CASE~~~~~ ~~~~~_comp%~ STRING_EQUAL_CASE~~~~~
