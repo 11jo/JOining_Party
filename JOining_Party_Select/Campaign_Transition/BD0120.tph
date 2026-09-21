@@ -3,7 +3,7 @@
 // Ishilka mod special
 
 
-	ACTION_IF FILE_EXISTS_IN_GAME ~ISHYSCRP.bcs~ THEN BEGIN
+	ACTION_IF FILE_EXISTS_IN_GAME ~ISHYSCRP.bcs~ AND (Ishlilka_the_Wizard_Slayer_as_traveler = 1 OR Ishlilka_the_Wizard_Slayer_as_Real_traveler = 1)  THEN BEGIN
 
 
 COPY_EXISTING ~ISHYSCRP.bcs~ ~override~
