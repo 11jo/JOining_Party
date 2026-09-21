@@ -13,4 +13,5 @@ THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_STARTING_Override","LOCALS",1)
 		MakeGlobalOverride()
+		DisplayString(Myself,@1012)
 END

@@ -10,6 +10,7 @@ THEN
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		SetGlobal("JO_Myself_STARTING_SET","LOCALS",1)
+		DisplayString(Myself,@1011)
 		DestroySelf()
 END
 
@@ -35,6 +36,7 @@ THEN
 		SetGlobal("JO_Myself_Valid","LOCALS",0)
 		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
 		SetGlobal("JO_Myself_STARTING_SET","LOCALS",1)
+		DisplayString(Myself,@1011)
 		DestroySelf()
 END
 
@@ -90,6 +92,7 @@ END
 
 				COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~ EVALUATE_BUFFER
 					REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("%crecomp%",[-1.-1],0)
+DisplayString("%DeathVar_comp%",@1010)
 \0~
 						PATCH_PRINT ~%crecomp% %DeathVar_comp% : added to %SOURCE_FILE%...
 												~
