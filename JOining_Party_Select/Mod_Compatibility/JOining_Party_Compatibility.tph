@@ -38,6 +38,7 @@
 
 IF
 	Global("JO_%DeathVar_comp%_STARTING","GLOBAL",0)
+	Global("JO_JOIN_STARTING_Override","LOCALS",0)
 THEN
 	RESPONSE #100
 		MakeGlobal()
