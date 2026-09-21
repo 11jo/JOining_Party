@@ -1,127 +1,4 @@
-
-ACTION_IF GAME_IS ~eet~ BEGIN
-// Continuous_comp
-							OUTER_SPRINT "Continuous_comp" ~~~~~ ~DORN~ ~NEERA~ ~RASAAD~ ~~~~~
-
-// Mod_Continuous_comp
-							OUTER_SPRINT "Mod_Continuous_comp" ~~~~~ ~C0AURA~ ~~~~~
-
-END ELSE  BEGIN
-OUTER_SPRINT "Continuous_comp" ""
-OUTER_SPRINT "Mod_Continuous_comp" ""
-END
-
-ACTION_IF GAME_IS ~bgee eet~ BEGIN
-// BG1_comp
-							OUTER_SPRINT "BG1_comp" ~~~~~ ~BAELOT7~ ~~~~~
-
-// Mod_BG1_comp
-
-
-END ELSE  BEGIN
-OUTER_SPRINT "BG1_comp" ""
-
-END
-
-ACTION_IF GAME_IS ~bg2ee~ BEGIN
-// BG2_Continuous_comp
-							OUTER_SPRINT "BG2_Continuous_comp" ~~~~~ ~DORN8~ ~NEERA8~ ~RASAAD8~ ~~~~~
-
-// Mod_Continuous_BG2_comp
-							OUTER_SPRINT "Mod_Continuous_BG2_comp" ~~~~~ ~C0AURA2~ ~~~~~
-
-						PRINT ~%BG2_Continuous_comp% %Mod_Continuous_BG2_comp%...
-											~
-END ELSE  BEGIN
-OUTER_SPRINT "BG2_Continuous_comp" ""
-OUTER_SPRINT "Mod_Continuous_BG2_comp" ""
-END
-
-ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
-// BG2_comp
-							OUTER_SPRINT "BG2_comp" ~~~~~ ~OHHEX8~ ~OHHFAK8~ ~~~~~
-
-// Mod_BG2_comp
-
-
-						PRINT ~%BG2_comp% %Mod_BG2_comp%...
-											~
-END ELSE  BEGIN
-OUTER_SPRINT "BG2_comp" ""
-
-END
-
-	ACTION_FOR_EACH cre_comp IN
-
-// Continuous_comp // eet only
-%Continuous_comp%
-
-
-// Mod_Continuous_comp // eet only
-%Mod_Continuous_comp%
-
-
-// BG1_comp // bgee / eet only
-%BG1_comp%
-
-// Mod_BG1_comp
-
-
-// BG2_Continuous_comp // bg2ee only
-%BG2_Continuous_comp%
-
-
-// Mod_Continuous_BG2_comp // bg2ee only
-%Mod_Continuous_BG2_comp%
-
-
-// BG2_comp // bg2ee / eet only
-%BG2_comp%
-
-// Mod_BG2_comp // bg2ee / eet only 
-
-	BEGIN
-
-
-		ACTION_IF FILE_EXISTS_IN_GAME ~%cre_comp%.cre~ BEGIN
-
-				COPY_EXISTING ~%cre_comp%.cre~  ~override~
-					READ_ASCII 0x248 override_script_comp
-					READ_ASCII 0x288 Default_script_comp
-					READ_ASCII 0x260 general_script_comp
-					READ_ASCII 0x280 DeathVar_comp
-
-					PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
-						WRITE_ASCII SCRIPT_DEFAULT ~JOINSETD~ (8)
-
-					END ELSE PATCH_IF (~%general_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
-								WRITE_ASCII SCRIPT_GENERAL ~JOINSETG~ (8)
-
-					END // PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~)
-
-						PATCH_PRINT ~%cre_comp%.CRE : added...
-											~
-
-				COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~ EVALUATE_BUFFER
-					REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("%cre_comp%",[-1.-1],0)
-			\0~
-						PATCH_PRINT ~%cre_comp% %DeathVar_comp% : added to %SOURCE_FILE%...
-												~
-
-
-
-					ACTION_IF FILE_EXISTS_IN_GAME ~%override_script_comp%.bcs~ BEGIN
-
-								EXTEND_TOP ~%override_script_comp%.bcs~ ~JOining_Party_Select/Mod_Compatibility/MakeGlobalOverride.baf~ EVALUATE_BUFFER
-
-						PATCH_PRINT ~MakeGlobalOverride : added to %SOURCE_FILE%...
-												~
-					END
-
-		END
-
-	END
-
+// JOINSETG
 	<<<<<<<< .../JOining_JOINSET_GENERAL.baf
 
 IF
@@ -146,7 +23,7 @@ END
 
 	>>>>>>>>
 	EXTEND_TOP ~JOINSETG.bcs~ ~.../JOining_JOINSET_GENERAL.baf~ EVALUATE_BUFFER
-
+// JOINSETD
 	<<<<<<<< .../JOining_JOINSET_DEFAULT.baf
 
 IF
@@ -171,6 +48,65 @@ END
 
 	>>>>>>>>
 	EXTEND_TOP ~JOINSETD.bcs~ ~.../JOining_JOINSET_DEFAULT.baf~ EVALUATE_BUFFER
+
+
+
+	ACTION_FOR_EACH crecomp IN
+
+// Continuous_comp
+~%DORN_CRE%~
+~%NEERA_CRE%~
+~%RASAAD_CRE%~
+~%BAELOTH_CRE%~
+~%CLARA_CRE%~
+~%HEXXAT_CRE%~
+
+
+// Mod_Continuous_comp
+~%C0AURA_CRE%~
+
+
+	BEGIN
+
+
+		ACTION_IF FILE_EXISTS_IN_GAME ~%crecomp%.cre~ BEGIN
+
+				COPY_EXISTING ~%crecomp%.cre~  ~override~
+					READ_ASCII 0x248 override_script_comp
+					READ_ASCII 0x288 Default_script_comp
+					READ_ASCII 0x260 general_script_comp
+					READ_ASCII 0x280 DeathVar_comp
+
+					PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
+						WRITE_ASCII SCRIPT_DEFAULT ~JOINSETD~ (8)
+
+					END ELSE PATCH_IF (~%general_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
+								WRITE_ASCII SCRIPT_GENERAL ~JOINSETG~ (8)
+
+					END // PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~)
+
+						PATCH_PRINT ~%crecomp%.CRE : added...
+											~
+
+				COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~ EVALUATE_BUFFER
+					REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("%crecomp%",[-1.-1],0)
+\0~
+						PATCH_PRINT ~%crecomp% %DeathVar_comp% : added to %SOURCE_FILE%...
+												~
+
+
+
+					ACTION_IF FILE_EXISTS_IN_GAME ~%override_script_comp%.bcs~ BEGIN
+
+								EXTEND_TOP ~%override_script_comp%.bcs~ ~JOining_Party_Select/Mod_Compatibility/MakeGlobalOverride.baf~ EVALUATE_BUFFER
+
+						PATCH_PRINT ~MakeGlobalOverride : added to %SOURCE_FILE%...
+												~
+					END
+
+		END
+
+	END
 
 
 

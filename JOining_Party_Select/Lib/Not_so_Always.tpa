@@ -492,7 +492,41 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 
 END
 
-//
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// JOining_Party_Compatibility.tph
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~bgee eet~ BEGIN
+// Continuous_comp
+							OUTER_SPRINT "DORN_CRE" ~DORN~
+							OUTER_SPRINT "NEERA_CRE" ~NEERA~
+							OUTER_SPRINT "RASAAD_CRE" ~RASAAD~
+							OUTER_SPRINT "BAELOTH_CRE" ~BAELOT7~
+
+// Mod_Continuous_comp
+							OUTER_SPRINT "C0AURA_CRE" ~C0AURA~
+END
+
+ACTION_IF GAME_IS ~bg2ee~ BEGIN
+// BG2_Continuous_comp
+							OUTER_SPRINT "DORN_CRE" ~DORN8~
+							OUTER_SPRINT "NEERA_CRE" ~NEERA8~
+							OUTER_SPRINT "RASAAD_CRE" ~RASAAD8~
+
+// Mod_Continuous_BG2_comp
+							OUTER_SPRINT "C0AURA_CRE" ~C0AURA2~
+
+END
+
+// Same_comp
+							OUTER_SPRINT "CLARA_CRE" ~OHHFAK8~
+							OUTER_SPRINT "HEXXAT_CRE" ~OHHEX8~
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////
 
 // Load travelers selection
 
