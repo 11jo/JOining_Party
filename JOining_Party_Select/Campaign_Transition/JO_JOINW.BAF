@@ -33,6 +33,7 @@ THEN
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",3)
 		DisplayStringHead(Myself,~Hum...~)
 		Wait(2)
+		FadeToColor([45.0],0)
 		SetGlobal("JO2608_Create","MYAREA",2)
 END
 
@@ -44,6 +45,7 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO2608_Create","MYAREA",0)
+		ApplySpellRES("JOINEPUR",Myself)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
 		RestorePartyLocations()
 		ChangeAIScript("JO_JOINP",OVERRIDE)

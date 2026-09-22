@@ -377,6 +377,46 @@ COPY ~JOining_Party_Select/Spl/JO_JOIN.spl~ ~override~
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
 		END
 
+COPY_EXISTING ~SPPR309.SPL~ ~override/JOINEPUR.SPL~
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=139
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=141
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=215
+		END
+
+
+COPY_EXISTING ~SPWI206.SPL~ ~override/JOINBLUR.SPL~
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=139
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=321
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=141
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=174
+		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
+			opcode = 65
+			target = 1
+			Timming = 0
+			duration = 40
+		END
+
 
 
 // JONEAN28

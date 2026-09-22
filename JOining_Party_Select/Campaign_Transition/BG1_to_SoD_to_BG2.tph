@@ -139,10 +139,11 @@ IF
 		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
 THEN
 	RESPONSE #100
+		ApplySpellRES("JOINBLUR",Myself)
+		FadeToColor([45.0],0)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
 		Wait(2)
 		SetCutSceneLite(TRUE)
-		FadeToColor([60.0],0)
 		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
 

@@ -18,5 +18,6 @@ THEN
 		StorePartyLocations()
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2)
 		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
+		FadeFromColor([30.0],0)
 		LeaveAreaLUA("JO2608","",[1232.891],1)
 END
