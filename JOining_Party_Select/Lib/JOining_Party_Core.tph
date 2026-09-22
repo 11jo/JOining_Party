@@ -390,6 +390,13 @@ COPY_EXISTING ~SPPR309.SPL~ ~override/JOINEPUR.SPL~
 		INT_VAR
 			opcode_to_delete=215
 		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
+			opcode = 337
+			target = 1
+			parameter1 = 23 // Only if opcode = 65 have 23 in parameter2 (23 is random)
+			parameter2 = 65 // opcode = 65
+		END
 
 
 COPY_EXISTING ~SPWI206.SPL~ ~override/JOINBLUR.SPL~
@@ -411,10 +418,11 @@ COPY_EXISTING ~SPWI206.SPL~ ~override/JOINBLUR.SPL~
 		END
 		LPF ADD_SPELL_EFFECT
 		INT_VAR
-			opcode = 65
+			opcode = 65 // Blur
 			target = 1
-			Timming = 0
-			duration = 40
+			Timming = 1
+			duration = 100
+			parameter2 = 23 // Special for opcode = 337 to delete only this Blur effect
 		END
 
 
