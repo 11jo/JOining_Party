@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 
 EXTEND_BOTTOM T2VALP 0
-IF ~GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~Yes, you can stay in the Switching room while waiting for the crusade end.~ DO ~SetGlobal("JO_JOIN_ValSwitching_room","LOCALS",1)~ GOTO Val_GotoSwitching_room
+IF ~GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",1)~ THEN REPLY ~Yes, you can stay in the Switching room while waiting for the crusade to end.~ DO ~SetGlobal("JO_JOIN_ValSwitching_room","LOCALS",1)~ GOTO Val_GotoSwitching_room
 IF ~GlobalGT("JO_JOIN_CAMPAIGN","GLOBAL",2)~ THEN REPLY ~Yes, Atkathla is like your home anyway.~  DO ~SetGlobal("JO_JOIN_ValAtkathla","LOCALS",1)~ GOTO Val_GotoAtkathla
 END
 

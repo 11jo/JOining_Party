@@ -1,0 +1,318 @@
+// JOining_Party_Post.tph
+
+ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
+
+<<<<<<<< JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt
+
+END
+>>>>>>>>
+
+/////////////////////////// BG1 ///////////////////////////
+
+// Alora
+
+	ACTION_IF  Alora_as_traveler = 1 OR Alora_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDALORA.dlg~ BEGIN
+			COPY_EXISTING ~ALORAP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ALORAP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/ALORAP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ALORAP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDALORA~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+
+								PRINT ~ ALORAP in BDALORA
+								~
+								
+		END ELSE BEGIN
+			COPY_EXISTING ~ALORAP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ALORAP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/ALORAP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ALORAP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDALORA~
+								PRINT ~ BDALORA
+								~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/ALORAP.d~
+	END
+
+// Branwen 
+
+	ACTION_IF  Branwen_as_traveler = 1 OR Branwen_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDBRANWE.dlg~ BEGIN
+			COPY_EXISTING ~BRANWP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/BRANWP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/BRANWP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/BRANWP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDBRANWE~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ BRANWP to BDBRANWE
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~BRANWP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/BRANWP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/BRANWP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/BRANWP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDBRANWE~
+								PRINT ~ BRANWP to BDBRANWE
+								~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/BRANWP.d~
+	END
+
+// Eldoth // TODO Sod MOD
+
+	ACTION_IF  Eldoth_as_traveler = 1 OR Eldoth_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDELDOTH.dlg~ BEGIN
+			COPY_EXISTING ~ELDOTP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ELDOTP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/ELDOTP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ELDOTP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDELDOTH~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ ELDOTP to BDELDOTH
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~ELDOTP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ELDOTP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/ELDOTP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/ELDOTP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDELDOTH~
+						PRINT ~ BDELDOTH
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/ELDOTP.d~
+	END
+
+// Faldorn // TODO Sod MOD
+
+	ACTION_IF  Faldorn_as_traveler = 1 OR Faldorn_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDFALDOR.dlg~ BEGIN
+			COPY_EXISTING ~FALDOP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/FALDOP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/FALDOP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/FALDOP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND FALDOP~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ FALDOP to BDFALDOR
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~FALDOP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/FALDOP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/FALDOP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/FALDOP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDFALDOR~
+						PRINT ~ BDFALDOR
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/FALDOP.d~
+	END
+
+// Kagain
+
+	ACTION_IF  Kagain_as_traveler = 1 OR Kagain_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDKAGAIN.dlg~ BEGIN
+			COPY_EXISTING ~KAGAIP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KAGAIP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/KAGAIP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KAGAIP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDKAGAIN~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ KAGAIP to BDKAGAIN
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~KAGAIP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KAGAIP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/KAGAIP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KAGAIP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDKAGAIN~
+						PRINT ~ BDKAGAIN
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/KAGAIP.d~
+	END
+
+// Kivan
+
+	ACTION_IF  Kivan_as_traveler = 1 OR Kivan_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDKIVAN.dlg~ BEGIN
+			COPY_EXISTING ~KIVANP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KIVANP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/KIVANP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KIVANP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDKIVAN~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ KIVANP to BDKIVAN
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~KIVANP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KIVANP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/KIVANP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/KIVANP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDKIVAN~
+						PRINT ~ BDKIVAN
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/KIVANP.d~
+	END
+
+// Montaron
+
+	ACTION_IF  Montaron_as_traveler = 1 OR Montaron_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDMONTAR.dlg~ BEGIN
+			COPY_EXISTING ~MONTAP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/MONTAP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/MONTAP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/MONTAP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDMONTAR~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ MONTAP to BDMONTAR
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~MONTAP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/MONTAP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/MONTAP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/MONTAP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDMONTAR~
+						PRINT ~ BDMONTAR
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/MONTAP.d~
+	END
+
+// Quayle
+
+	ACTION_IF  Quayle_as_traveler = 1 OR Quayle_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDQUAYLE.dlg~ BEGIN
+			COPY_EXISTING ~QUAYLP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/QUAYLP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/QUAYLP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/QUAYLP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDQUAYLE~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ QUAYLP to BDQUAYLE
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~QUAYLP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/QUAYLP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/QUAYLP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/QUAYLP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDQUAYLE~
+						PRINT ~ BDQUAYLE
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/QUAYLP.d~
+	END
+
+// Tiax // TODO Sod MOD ?
+
+	ACTION_IF  Tiax_as_traveler = 1 OR Tiax_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDTIAX.dlg~ BEGIN
+			COPY_EXISTING ~TIAXP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/TIAXP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/TIAXP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/TIAXP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDTIAX~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ TIAXP to BDTIAX
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~TIAXP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/TIAXP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/TIAXP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/TIAXP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDTIAX~
+						PRINT ~ BDTIAX
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/TIAXP.d~
+	END
+
+// Xan
+
+	ACTION_IF  Xan_as_traveler = 1 OR Xan_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDXAN.dlg~ BEGIN
+			COPY_EXISTING ~XANP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XANP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/XANP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XANP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDXAN~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ XANP to BDXAN
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~XANP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XANP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/XANP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XANP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDXAN~
+						PRINT ~ BDXAN
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/XANP.d~
+	END
+
+// Xzar
+
+	ACTION_IF  Xzar_as_traveler = 1 OR Xzar_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDXZAR.dlg~ BEGIN
+			COPY_EXISTING ~XZARP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XZARP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/XZARP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XZARP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDXZAR~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ XZARP to BDXZAR
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~XZARP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XZARP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/XZARP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/XZARP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDXZAR~
+						PRINT ~ BDXZAR
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/XZARP.d~
+	END
+
+// Yeslick
+
+	ACTION_IF Yeslick_as_traveler = 1 OR Yeslick_as_Real_traveler = 1 BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~BDYESLIC.dlg~ BEGIN
+			COPY_EXISTING ~YESLIP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/YESLIP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/YESLIP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/YESLIP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~APPEND BDYESLIC~
+						REPLACE_TEXTUALLY CASE_SENSITIVE "THEN BEGIN \([0-9]+\)" "THEN BEGIN ~%SOURCE_RES%\1~"
+						REPLACE_TEXTUALLY CASE_SENSITIVE "GOTO \([0-9]+\)" "GOTO ~%SOURCE_RES%\1~"
+							APPEND_FILE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post_END.txt~
+								PRINT ~ YESLIP to BDYESLIC
+								~
+		END ELSE BEGIN
+			COPY_EXISTING ~YESLIP.dlg~ ~weidu_external/JOining_Party_Select/Campaign_Transition/YESLIP.d~
+				DECOMPILE_DLG_TO_D
+					COPY ~weidu_external/JOining_Party_Select/Campaign_Transition/YESLIP.d~ ~weidu_external/JOining_Party_Select/Campaign_Transition/YESLIP.d~
+						REPLACE_TEXTUALLY  ~~~~~^BEGIN \(~\)%SOURCE_RES%\(~\)$~~~~~ ~BEGIN BDYESLIC~
+						PRINT ~ BDYESLIC
+						~
+		END
+	
+		COMPILE ~weidu_external/JOining_Party_Select/Campaign_Transition/YESLIP.d~
+	END
+
+/////////////////////////// BG1 ///////////////////////////
+
+END
+
+

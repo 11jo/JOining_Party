@@ -139,10 +139,11 @@ IF
 		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
 THEN
 	RESPONSE #100
-		ApplySpellRES("JOINBLUR",Myself)
 		FadeToColor([45.0],0)
+		ApplySpellRES("JOINBLUR",Myself)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
 		Wait(2)
+		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
 		SetCutSceneLite(TRUE)
 		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
@@ -153,6 +154,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		MoveViewObject(Player1,INSTANT)
 		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5)
 		FadeFromColor([45.0],0)

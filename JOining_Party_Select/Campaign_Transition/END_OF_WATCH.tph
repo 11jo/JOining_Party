@@ -64,7 +64,6 @@ ACTION_IF (~%Death_var%_SoD_Content~ = 1) AND (NOT ~%Death_var%_BG2_Content~ = 1
 	THEN
 		RESPONSE #100
 			CreateVisualEffectObject("JOBG402","%Death_var%")
-			MoveViewObject("%Death_var%",STANDARD)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the crusade.~)
 			ReallyForceSpell("%Death_var%",NOHOLD_PARTY)
@@ -111,7 +110,6 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND NOT ~%Death_var%_SoD_Content~ = 1) 
 	THEN
 		RESPONSE #100
 			CreateVisualEffectObject("JOBG402","%Death_var%")
-			MoveViewObject("%Death_var%",STANDARD)
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the city of coins.~)
 			ReallyForceSpell("%Death_var%",NOHOLD_PARTY)
@@ -157,7 +155,6 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
-			MoveViewObject("%Death_var%",STANDARD)
 			CreateVisualEffectObject("JOBG402","%Death_var%")
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the crusade.~)
@@ -172,7 +169,6 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
-			MoveViewObject("%Death_var%",STANDARD)
 			CreateVisualEffectObject("JOBG402","%Death_var%")
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the city of coins.~)

@@ -15,9 +15,11 @@ IF
 	Global("JO_JOIN_JUMP_JO2608","LOCALS",1)
 THEN
 	RESPONSE #100
+		StoreZoomLevel()
 		StorePartyLocations()
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",2)
-		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
-		FadeFromColor([30.0],0)
+		FadeFromColor([50.0],0)
 		LeaveAreaLUA("JO2608","",[1232.891],1)
+		SetZoomViewport([2357.1646])
+		MoveViewObject(Player1,INSTANT)
 END
