@@ -275,6 +275,7 @@ ACTION_IF GAME_IS ~eet~ BEGIN
 	OUTER_SPRINT "GlobalLTENDOFBG1" ~~~~~GlobalLT("ENDOFBG1","GLOBAL",2)~~~~~
 END ELSE BEGIN
 	OUTER_SPRINT "GlobalENDOFBG1" ""
+	OUTER_SPRINT "GlobalLTENDOFBG1" ""
 END
 
 	<<<<<<<<DPLAYER2_rep.baf
@@ -331,6 +332,7 @@ ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
 		%GlobalLTENDOFBG1%
 		Global("JO_Myself_AllowDead","LOCALS",0)
 		GlobalGT("bd_plot","global",0)
+		Global("JO_JOIN_END_OF_BG1","LOCALS",0)
 	THEN
 		RESPONSE #100
 			SetGlobal("KickedOut","LOCALS",0)
