@@ -47,19 +47,6 @@ THEN
 		Continue()
 END
 
-IF
-	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
-	Global("JO_JOIN_LOADING_BREAKABLE","LOCALS",0)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		SetAreaScript("JO_JOINB",OVERRIDE)
-		SetCutSceneBreakable(TRUE)
-		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
-		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",1)
-		SetInterrupt(TRUE)
-END
-
 // Active loading switch sequence
 IF
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
@@ -93,6 +80,10 @@ THEN
 		SetGlobal("JO_JOIN_LOAD","LOCALS",0)
 		DisplayStringHead(Myself,~Travelers !~)
 		IncrementGlobal("JO_JOIN_LOADING_SWITCH","GLOBAL",1)
+		SetAreaScript("JO_JOINB",OVERRIDE)
+		SetCutSceneBreakable(TRUE)
+		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
+		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",1)
 		SetInterrupt(TRUE)
 END
 
