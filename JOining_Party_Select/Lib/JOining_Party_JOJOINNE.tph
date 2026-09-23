@@ -2,6 +2,8 @@
 // JOJOINNE.d added before being extended (by Extend_JOJOINNE.D)
 		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/JOJOINNE.D~
 
+// JO2608AL.d added before being extended (by Extend_JO2608AL.D)
+		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/JO2608AL.D~
 
 ACTION_FOR_EACH Death_var IN
 
@@ -22,6 +24,16 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~JOJOINNE.dlg~ BEGIN
 
 		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE.D~
+
+	END
+
+		OUTER_SET x_cooo = RANDOM(1530 1691)
+		OUTER_SET y_cooo = RANDOM(1158 1283)
+
+// JO2608AL.d Extended by each traveler
+	ACTION_IF FILE_EXISTS_IN_GAME ~JO2608AL.dlg~ BEGIN
+
+	COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JO2608AL.D~
 
 	END
 
@@ -78,6 +90,16 @@ BEGIN
 
 	END
 
+		OUTER_SET x_cooo = RANDOM(1530 1691)
+		OUTER_SET y_cooo = RANDOM(1158 1283)
+
+// JO2608AL.d Extended by each traveler
+	ACTION_IF FILE_EXISTS_IN_GAME ~JO2608AL.dlg~ BEGIN
+
+	COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JO2608AL.D~
+
+	END
+
 END 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -109,6 +131,16 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~JOJOINNE.dlg~ BEGIN
 
 		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE.D~
+
+	END
+
+		OUTER_SET x_cooo = RANDOM(1530 1691)
+		OUTER_SET y_cooo = RANDOM(1158 1283)
+
+// JO2608AL.d Extended by each traveler
+	ACTION_IF FILE_EXISTS_IN_GAME ~JO2608AL.dlg~ BEGIN
+
+	COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JO2608AL_BG2.D~
 
 	END
 
@@ -214,6 +246,16 @@ BEGIN
 		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE.D~
 
 //		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE_BG1.D~
+
+	END
+
+		OUTER_SET x_cooo = RANDOM(1530 1691)
+		OUTER_SET y_cooo = RANDOM(1158 1283)
+
+// JO2608AL.d Extended by each traveler
+	ACTION_IF FILE_EXISTS_IN_GAME ~JO2608AL.dlg~ BEGIN
+
+	COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JO2608AL.D~
 
 	END
 
@@ -352,6 +394,16 @@ BEGIN
 
 	END
 
+		OUTER_SET x_cooo = RANDOM(1530 1691)
+		OUTER_SET y_cooo = RANDOM(1158 1283)
+
+// JO2608AL.d Extended by each traveler
+	ACTION_IF FILE_EXISTS_IN_GAME ~JO2608AL.dlg~ BEGIN
+
+	COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JO2608AL_BG2.D~
+
+	END
+
 END 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -392,6 +444,16 @@ BEGIN
 	ACTION_IF FILE_EXISTS_IN_GAME ~JOJOINNE.dlg~ BEGIN
 
 		COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JOJOINNE.D~
+
+	END
+
+		OUTER_SET x_cooo = RANDOM(1530 1691)
+		OUTER_SET y_cooo = RANDOM(1158 1283)
+
+// JO2608AL.d Extended by each traveler
+	ACTION_IF FILE_EXISTS_IN_GAME ~JO2608AL.dlg~ BEGIN
+
+	COMPILE EVALUATE_BUFFER ~JOining_Party_Select/D/Extend_JO2608AL.D~
 
 	END
 

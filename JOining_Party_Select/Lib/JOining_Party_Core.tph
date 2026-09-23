@@ -459,6 +459,12 @@ COPY ~JOining_Party_Select/Cre/JO2608.CRE~ ~override/JO2608AL.CRE~
 	WRITE_ASCII SCRIPT_OVERRIDE ~JO2608AL~ (8)
 	WRITE_ASCII DEATHVAR ~JO2608AL~ (32)
 	WRITE_ASCII DIALOG ~JO2608AL~ (8)
+		LPF ADD_CRE_EFFECT
+		INT_VAR
+			opcode = 315 // Remove animation
+			target = 1
+			Timming = 1
+		END
 
 // JO2608
 /*
