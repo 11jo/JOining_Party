@@ -1,6 +1,6 @@
 
 // All
-EXTEND_BOTTOM JO2608AL 0 1 2 3
+EXTEND_BOTTOM JO2608AL 0
 	IF ~InMyArea("%Death_var%")
 		!See("%Death_var%")
 		!Dead("%Death_var%")
@@ -13,14 +13,14 @@ EXTEND_BOTTOM JO2608AL 0 1 2 3
 END
 
 // BG2 / ToB
-EXTEND_BOTTOM JO2608AL 2 3
+EXTEND_BOTTOM JO2608AL 4 5
 	IF ~!InMyArea("%Death_var%")
 		!Dead("%Death_var%")
 		BeenInParty("%Death_var%")
 		!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_SOD","LOCALS",0)) // No BG2 content
 		TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))~ THEN REPLY ~Can you call %%Death_var%_name% at my side ?~ DO ~
+		!TriggerOverride("%Death_var%",Global("JO_JOIN_PARTY_TRAVELER","LOCALS",0))~ THEN REPLY ~%%Death_var%_name%...~ DO ~
 		CreateVisualEffect("JOBG402",[%x_cooo%.%y_cooo%])
 		Wait(1)
-		MoveGlobal("JO2608","%Death_var%",[%x_cooo%.%y_cooo%])~ GOTO 4
+		MoveGlobal("JO2608","%Death_var%",[%x_cooo%.%y_cooo%])~ GOTO 6
 END

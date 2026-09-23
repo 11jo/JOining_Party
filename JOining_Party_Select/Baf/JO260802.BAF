@@ -1,0 +1,15 @@
+IF
+	Clicked([ANYONE])
+	!InMyArea("JO2608AL")
+THEN
+	RESPONSE #100
+		CreateCreatureImpassable("JO2608AL",[1725.1325],0)
+END
+
+IF
+	Clicked([ANYONE])
+	InMyArea("JO2608AL")
+THEN
+	RESPONSE #100
+		ActionOverride("JO2608AL",DestroySelf()
+END

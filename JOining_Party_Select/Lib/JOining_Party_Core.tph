@@ -420,7 +420,7 @@ COPY_EXISTING ~SPWI206.SPL~ ~override/JOINBLUR.SPL~
 		INT_VAR
 			opcode = 65 // Blur
 			target = 1
-			Timming = 1
+			Timing = 1
 			duration = 100
 			parameter2 = 23 // Special for opcode = 337 to delete only this Blur effect
 		END
@@ -453,30 +453,21 @@ COPY ~JOining_Party_Select/Cre/JOJOINNE.CRE~ ~override~
 
 // JO2608.cre
 
-COPY ~JOining_Party_Select/Cre/JO2608.CRE~ ~override/JO2608AL.CRE~
+COPY ~JOining_Party_Select/Cre/JONEAN28.CRE~ ~override/JO2608AL.CRE~
 	SAY NAME1 ~Avatar of Alaundo~
 	SAY NAME2 ~Avatar of Alaundo~
 	WRITE_ASCII SCRIPT_OVERRIDE ~JO2608AL~ (8)
 	WRITE_ASCII DEATHVAR ~JO2608AL~ (32)
 	WRITE_ASCII DIALOG ~JO2608AL~ (8)
-		LPF ADD_CRE_EFFECT
-		INT_VAR
-			opcode = 315 // Remove animation
-			target = 1
-			Timming = 1
-		END
 
-// JO2608
-/*
-In Not_So_Always.tpa
+// JO2608AL.CRE SCRIPT_OVERRIDE
+	COMPILE ~JOining_Party_Select/Baf/JO2608AL.baf~ EVALUATE_BUFFER
 
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
-
-	COMPILE ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
-
-END
-*/
+// JO2608.are teleport trigger
 	COMPILE ~JOining_Party_Select/Baf/JO260801.baf~ EVALUATE_BUFFER
+
+// JO2608.are Statue trigger JO2608AL.CRE 
+	COMPILE ~JOining_Party_Select/Baf/JO260802.baf~ EVALUATE_BUFFER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
 
