@@ -140,10 +140,10 @@ IF
 THEN
 	RESPONSE #100
 		FadeToColor([45.0],0)
-		ApplySpellRES("JOINBLUR",Myself)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
 		Wait(2)
 		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
+		ApplySpellRES("JOINBLUR",Myself)
 		SetCutSceneLite(TRUE)
 		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
