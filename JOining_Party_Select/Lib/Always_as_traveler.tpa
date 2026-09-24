@@ -3117,6 +3117,30 @@ ACTION_IF (MOD_IS_INSTALLED ~LYSRE.TP2~ ~0~) THEN BEGIN
 
 END
 
+// Tashia
+
+
+ACTION_IF (MOD_IS_INSTALLED ~TASHIA.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Tashia_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Tashia~ ~~
+			PRINT ~    Tashia as traveler
+			~
+
+	END ELSE ACTION_IF Tashia_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Tashia~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Tashia~ ~~
+			PRINT ~    Tashia as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 
