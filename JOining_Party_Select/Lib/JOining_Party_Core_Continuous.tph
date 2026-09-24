@@ -225,7 +225,7 @@ OUTER_SPRINT "BG1_DREAM" "L#WALAHD"
 	// SoD
 	OUTER_SPRINT "SoD_JOINED" "L#SWALAJ"
 	OUTER_SPRINT "SoD_BCS" "L#SWALAH"
-	OUTER_SPRINT "SoD_BANTER" "L#SWALAD"
+	OUTER_SPRINT "SoD_BANTER" ""
 	OUTER_SPRINT "SoD_DREAM" "L#SWALAD"
 		// BG2
 		OUTER_SPRINT "BG2_JOINED" "L#2WHJ"
@@ -536,6 +536,53 @@ BEGIN
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/rh#isra_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+// Ascalon's Breagar
+// BG1
+OUTER_SPRINT "BG1_JOINED" "ACBreJ"
+OUTER_SPRINT "BG1_BCS" "ACBRE"
+OUTER_SPRINT "BG1_BANTER" "ACBreB"
+OUTER_SPRINT "BG1_DREAM" "ACBreD"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" "ACBreJ"
+	OUTER_SPRINT "SoD_BCS" "ACBRE"
+	OUTER_SPRINT "SoD_BANTER" "ACBreD"
+	OUTER_SPRINT "SoD_DREAM" "ACBreD"
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "ACBreJ"
+		OUTER_SPRINT "BG2_BCS" "ACBRE"
+		OUTER_SPRINT "BG2_BANTER" "ACBreB"
+		OUTER_SPRINT "BG2_DREAM" "ACBreD"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "ACBre25J"
+			OUTER_SPRINT "TOB_BCS" "ACBRE25"
+			OUTER_SPRINT "TOB_BANTER" "ACBre25B"
+			OUTER_SPRINT "TOB_DREAM" "ACBre25D"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Breagar ~ACBRE~ ~ACBRE25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ACBRE_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
 

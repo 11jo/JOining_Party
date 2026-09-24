@@ -3391,6 +3391,30 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+// Ascalon's Breagar
+
+
+ACTION_IF (MOD_IS_INSTALLED ~ACBRE.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Breagar_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Breagar~ ~~
+			PRINT ~    Breagar as traveler
+			~
+
+	END ELSE ACTION_IF Breagar_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Breagar~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Breagar~ ~~
+			PRINT ~    Breagar as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler Continuous
 
 END
