@@ -3141,6 +3141,30 @@ ACTION_IF (MOD_IS_INSTALLED ~TASHIA.TP2~ ~0~) THEN BEGIN
 
 END
 
+// Dace Linton
+
+
+ACTION_IF (MOD_IS_INSTALLED ~DACE.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Dace_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dace~ ~~
+			PRINT ~    Dace as traveler
+			~
+
+	END ELSE ACTION_IF Dace_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dace~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Dace~ ~~
+			PRINT ~    Dace as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 
@@ -3427,6 +3451,8 @@ ACTION_IF (MOD_IS_INSTALLED ~ACBRE.TP2~ ~0~) THEN BEGIN
 			PRINT ~    Breagar as traveler
 			~
 
+				OUTER_SET ACBRE_BG2_Content = 1
+
 	END ELSE ACTION_IF Breagar_as_Real_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -3434,6 +3460,8 @@ ACTION_IF (MOD_IS_INSTALLED ~ACBRE.TP2~ ~0~) THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod Real Breagar~ ~~
 			PRINT ~    Breagar as real traveler
 			~
+
+				OUTER_SET ACBRE_BG2_Content = 1
 
 	END
 

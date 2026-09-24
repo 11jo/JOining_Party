@@ -555,7 +555,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Ajantis",ChangeAIScript("BDAJANTI",OVERRIDE))
+		ActionOverride("Ajantis",ChangeAIScript("%SoD_BCS_Ajantis_bd0120%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Ajantis","MYAREA",1)
 		Continue()
 END
@@ -681,7 +681,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS%",OVERRIDE))
+		ActionOverride("Branwen",ChangeAIScript("%BRANWEN_BCS_Branwen_bd0120%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Branwen","MYAREA",1)
 		Continue()
 END
@@ -925,7 +925,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS%",OVERRIDE))
+		ActionOverride("Faldorn",ChangeAIScript("%FALDORN_BCS_Faldorn_bd0120%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Faldorn","MYAREA",1)
 		Continue()
 END
@@ -990,7 +990,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS%",OVERRIDE))
+		ActionOverride("Garrick",ChangeAIScript("%GARRICK_BCS_Garrick_bd0120%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Garrick","MYAREA",1)
 		Continue()
 END
@@ -1474,7 +1474,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS%",OVERRIDE))
+		ActionOverride("Skie",ChangeAIScript("%SKIE_BCS_Skie_bd0120%",OVERRIDE))
 		SetGlobal("JO_JOIN_bd0120_Skie","MYAREA",1)
 		Continue()
 END
