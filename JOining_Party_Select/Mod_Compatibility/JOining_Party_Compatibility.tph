@@ -1,35 +1,140 @@
-///////////////////////////////////////////////////////////////////////////////
 
-// Aura_BG1_2_EET
+	ACTION_FOR_EACH crecomp IN
 
-///////////////////////////////////////////////////////////////////////////////
+// Continuous_comp
+~%DORN_CRE%~
+~%NEERA_CRE%~
+~%RASAAD_CRE%~
+~%BAELOTH_CRE%~
+~%CLARA_CRE%~
+~%HEXXAT_CRE%~
 
-	ACTION_IF MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~0~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~1~ OR MOD_IS_INSTALLED ~Setup-Aura_BG1_2_EET.tp2~ ~2~ BEGIN
 
-			COPY_EXISTING ~C0AURA2.cre~  ~override/JOINC0Au.CRE~
-				WRITE_ASCII SCRIPT_DEFAULT ~JOINSET~ (8)
-				
-					PATCH_PRINT ~C0Aura : added...
-										~
+// Mod_Continuous_comp
+~%C0AURA_CRE%~
 
-			COPY ~weidu_external/JOining_Party_Select/START.baf~  ~weidu_external/JOining_Party_Select/START.baf~ EVALUATE_BUFFER
-				REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("JOINC0Au",[-1.-1],0)
-		\0~	
-					PATCH_PRINT ~JOINC0Au C0Aura : added to %SOURCE_FILE%...
+
+	BEGIN
+
+
+		ACTION_IF FILE_EXISTS_IN_GAME ~%crecomp%.cre~ BEGIN
+
+				COPY_EXISTING ~%crecomp%.cre~  ~override~
+					READ_ASCII 0x248 override_script_comp
+//					READ_ASCII 0x268 Default_script_comp
+//					READ_ASCII 0x260 general_script_comp
+					READ_ASCII 0x280 DeathVar_comp
+/*
+					PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
+							OUTER_SPRINT "DEFAULT" ~script_comp~
+					END ELSE PATCH_IF (~%general_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
+							OUTER_SPRINT "GENERAL" ~script_comp~
+								WRITE_ASCII SCRIPT_GENERAL ~JOINSETG~ (8)
+					END // PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~)
+*/
+			INNER_ACTION BEGIN
+// JOINSETG
+	<<<<<<<< .../JOining_JOINSET.baf
+
+IF
+	Global("JO_%DeathVar_comp%_STARTING","GLOBAL",0)
+	Global("JO_JOIN_STARTING_Override","LOCALS",0)
+THEN
+	RESPONSE #100
+		MakeGlobal()
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
+		SetGlobal("JO_%DeathVar_comp%_STARTING","GLOBAL",1)
+		DisplayString(Myself,@1011)
+		DestroySelf()
+END
+/*
+IF
+	Global("JO_%DeathVar_comp%_STARTING","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_%DeathVar_comp%_STARTING","GLOBAL",2)
+		ChangeAIScript("",%script_comp%)
+END
+*/
+	>>>>>>>>
+	EXTEND_TOP ~%override_script_comp%.bcs~ ~.../JOining_JOINSET.baf~ EVALUATE_BUFFER
+		END
+
+//						WRITE_ASCII SCRIPT_DEFAULT ~JOINSET~ (8)
+
+						PATCH_PRINT ~%crecomp%.CRE : added...
 											~
 
-/*
-		ACTION_FOR_EACH bcs IN
-			
-				~C0AURA2~ ~C0AURA25~
-			
-			BEGIN
-			
-				ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
-			
-							EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/MakeGlobalOverride.baf~ EVALUATE_BUFFER
-			END
+				COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~ EVALUATE_BUFFER
+					REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("%crecomp%",[-1.-1],0)
+DisplayString("%DeathVar_comp%",@1010)
+\0~
+						PATCH_PRINT ~%crecomp% %DeathVar_comp% : added to %SOURCE_FILE%...
+												~
+
+
+
+					ACTION_IF FILE_EXISTS_IN_GAME ~%override_script_comp%.bcs~ BEGIN
+
+								EXTEND_TOP ~%override_script_comp%.bcs~ ~JOining_Party_Select/Mod_Compatibility/MakeGlobalOverride.baf~ EVALUATE_BUFFER
+
+						PATCH_PRINT ~MakeGlobalOverride : added to %SOURCE_FILE%...
+												~
+					END
+
 		END
-*/
 
 	END
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+// Valerie for SoD / BG2
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF (MOD_IS_INSTALLED ~VALERIE.TP2~ ~0~) AND (Valerie_as_traveler = 1 OR Valerie_as_Real_traveler = 1) THEN BEGIN
+
+	/* fetch language in which the mod is installed in - thanks to argent77 */
+		// Valerie BG1
+	// Language folder names listed in the order of LANGUAGE definitions in the mod.
+		ACTION_DEFINE_ARRAY languages BEGIN
+		"english" "russian" /*"german" "french" "polish" "spanish" "italian" "Schinese" "Polish" "korean"*/
+			END
+
+			// Fetching language index from the WeiDU.log
+			OUTER_SET language_number = "-1"
+			COPY "WeiDU.log" "WeiDU.log"
+			REPLACE_EVALUATE CASE_INSENSITIVE
+				"^~.*VALERIE\.tp2~ #\([0-9]+\) #5\b"
+				BEGIN
+				PATCH_IF (IS_AN_INT "MATCH1") BEGIN
+					SET language_number = MATCH1
+				END
+				END
+				"%MATCH0%"
+			BUT_ONLY IF_EXISTS
+
+			ACTION_IF (language_number >= 0) BEGIN
+			OUTER_SPRINT mod_language $languages("Valerie_language_%")
+		END
+
+			WITH_TRA  "Valerie/lang/english/t2valp.TRA" // fallback
+							"Valerie/lang/%VALERIE_language_%/t2valp.TRA" // Valerie installation language
+			BEGIN
+						OUTER_SET yes_t2valp = RESOLVE_STR_REF (@6)
+						OUTER_SET yes_yes_t2valp = RESOLVE_STR_REF (@7)
+						OUTER_SET no_t2valp = RESOLVE_STR_REF (@8)
+			END
+
+	COMPILE EVALUATE_BUFFER ~JOining_Party_Select/Mod_Compatibility/D/Special_Valerie_BG1.d~
+
+END
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//
+
+/////////////////////////////////////////////////////////////////////////////////////////

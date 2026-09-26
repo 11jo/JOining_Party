@@ -141,7 +141,7 @@ Starting a new game, Charname receive a special ability the "Engagement.
 
 - **Travelers will "fill party"** unless the option is deactivated in PID travelers will reinteger the party when it include less than three members.
 
-- **Travelers will "switch"** in party some time to time to allow them **to be considered as party member** continually.
+- **Travelers will "Quick switch"** in party some time to time to allow them **to be considered as party member** continually.
 	- If a party slot remain empty.
 	- Every custom time.
 	- When loading a save (very important !!!).
@@ -152,7 +152,7 @@ Starting a new game, Charname receive a special ability the "Engagement.
 	- The Banter dialogs will adapt depending of the campaign.
 	- The Dream talk scripts will adapt depending of the campaign.
 
-- **Travelers will "switch their places with party member"** some time to time **if a party member is eligible and willing** to be traveler.
+- **Travelers will "Switch their places with party member"** some time to time **if a party member is eligible and willing** to be traveler.
 	- Every custom time.
 	- If not in combat or in the process of doing something.
 

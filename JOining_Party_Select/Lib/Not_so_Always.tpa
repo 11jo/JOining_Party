@@ -215,7 +215,9 @@
 
 		COMPILE ~JOining_Party_Select/Campaign_Transition/JO_JOINW.baf~
 
-		COPY ~JOining_Party_Select/Baf/START.baf~ ~weidu_external/JOining_Party_Select/START.baf~
+		COPY ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
+
+		COPY ~JOining_Party_Select/Mod_Compatibility/START.baf~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~
 
 
 // CD_STATE_NOTVALID without STATE_SILENCED but with STATE_CHARMED ? scripts may be not active
@@ -395,9 +397,12 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 			OUTER_SPRINT "P_Chon_name"                 "Cho'Nuja"
 			OUTER_SPRINT "P_Alen_name"                 "Alendir"
 			OUTER_SPRINT "CKLysre_name"                "Lysre"
+			OUTER_SPRINT "TASHIA_name"                 "Tashia"
+			OUTER_SPRINT "T#DACE_name"                 "Dace"
 // Next_Traveler BG2
 //////////////////////////////////////////////////////////////////////////////////////
 			OUTER_SPRINT "cmnikita_name"               "Nikita"
+			OUTER_SPRINT "ACBRE_name"                  "Breagar"
 // Next_Traveler Continuous
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -490,7 +495,41 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 
 END
 
-//
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// JOining_Party_Compatibility.tph
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~bgee eet~ BEGIN
+// Continuous_comp
+							OUTER_SPRINT "DORN_CRE" ~DORN~
+							OUTER_SPRINT "NEERA_CRE" ~NEERA~
+							OUTER_SPRINT "RASAAD_CRE" ~RASAAD~
+							OUTER_SPRINT "BAELOTH_CRE" ~BAELOT7~
+
+// Mod_Continuous_comp
+							OUTER_SPRINT "C0AURA_CRE" ~C0AURA~
+END
+
+ACTION_IF GAME_IS ~bg2ee~ BEGIN
+// BG2_Continuous_comp
+							OUTER_SPRINT "DORN_CRE" ~DORN8~
+							OUTER_SPRINT "NEERA_CRE" ~NEERA8~
+							OUTER_SPRINT "RASAAD_CRE" ~RASAAD8~
+
+// Mod_Continuous_BG2_comp
+							OUTER_SPRINT "C0AURA_CRE" ~C0AURA2~
+
+END
+
+// Same_comp
+							OUTER_SPRINT "CLARA_CRE" ~OHHFAK8~
+							OUTER_SPRINT "HEXXAT_CRE" ~OHHEX8~
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////
 
 // Load travelers selection
 

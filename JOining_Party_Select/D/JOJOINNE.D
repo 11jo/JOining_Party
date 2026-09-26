@@ -310,7 +310,9 @@ IF ~True()~ THEN BEGIN 0
 		OR(2)
 			!Global("JO_JOIN_AREA","MYAREA",0)
 			!Global("JO_JOIN_BLOP","GLOBAL",0)
-		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~^GLet's try a Loading Switch !^-~ DO ~SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1)~ EXIT
+		Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)
+		Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
+		Global("JO_NOJOIN","GLOBAL",0)~ THEN REPLY ~^GLet's try a Loading Switch !^-~ DO ~SetGlobal("JO_JOIN_FORCE_LOAD","GLOBAL",1)~ EXIT
 
 	IF ~Global("JO_JOIN_BLOP","GLOBAL",0)
 		!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",0)~ THEN REPLY ~Loading Switch isn't available here.^-~ EXIT 

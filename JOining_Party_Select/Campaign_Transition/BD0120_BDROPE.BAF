@@ -8,9 +8,9 @@ IF
 	GlobalGT("bd_plot","global",25)
 THEN
 	RESPONSE #100
-		CreateVisualEffectObject("JOBG402",Player1)
+		CreateVisualEffect("JOBG402",[748.1601])
 		Wait(2)
-		MoveGlobalObject("%IMOEN_DV%",Player1)
+		MoveGlobal("BD0120","%IMOEN_DV%",[748.1601])
 		ActionOverride("%IMOEN_DV%",SetDialog("BDIMOEN"))
 		Wait(2)
 		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
@@ -25,9 +25,9 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("bd_plot","global",26)
-		CreateVisualEffectObject("JOBG402",Player1)
+		CreateVisualEffect("JOBG402",[748.1601])
 		Wait(2)
-		MoveGlobalObject("%IMOEN_DV%",Player1)
+		MoveGlobal("BD0120","%IMOEN_DV%",[748.1601])
 		ActionOverride("%IMOEN_DV%",SetDialog("BDIMOEN"))
 		Wait(2)
 		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))
@@ -42,9 +42,9 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("bd_plot","global",27)
-		CreateVisualEffectObject("JOBG402",Player1)
+		CreateVisualEffect("JOBG402",[748.1601])
 		Wait(2)
-		MoveGlobalObject("%IMOEN_DV%",Player1)
+		MoveGlobal("BD0120","%IMOEN_DV%",[748.1601])
 		ActionOverride("%IMOEN_DV%",SetDialog("BDIMOEN"))
 		Wait(2)
 		ActionOverride("%IMOEN_DV%",StartDialogueNoSet(Player1))

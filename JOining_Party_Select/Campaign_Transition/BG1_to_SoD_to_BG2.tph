@@ -139,21 +139,26 @@ IF
 		!Global("JO_JOIN_BLOP","GLOBAL",0) // Dev test for See([ENEMY])
 THEN
 	RESPONSE #100
+		FadeToColor([45.0],0)
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",1)
 		Wait(2)
+		DisplayStringHead(Myself,~I wonder if idle travelers will wait in the switching room...~)
+		ApplySpellRES("JOINBLUR",Myself)
 		SetCutSceneLite(TRUE)
-		FadeToColor([60.0],0)
 		ChangeAIScript("JO_JOINW",OVERRIDE)
 END
 
 IF
-	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
+//	Global("JO_JOIN_JUMP_JO2608","LOCALS",4) // See end of JO_JOINW
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",5)
 	Delay(4)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
+		MoveViewObject(Player1,INSTANT)
 		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
-		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5)
+//		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5) // See end of JO_JOINW
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",6)
 		FadeFromColor([45.0],0)
 		Wait(1)
 		UnhideGUI()
@@ -260,4 +265,117 @@ END ELSE BEGIN
 END
 
 
+///////////////////////////////////////////////////////////////////////////
+ // DPLAYER2 when LeaveParty
+///////////////////////////////////////////////////////////////////////////
 
+ // ACTION_IF MOD_IS_INSTALLED ~IWD_EET_END.TP2~ ~0~ BEGIN TODO to see
+// OUTER_SPRINT "AreaTypeIWDAREA" "!AreaType(IWDAREA)"
+// END ELSE BEGIN
+	OUTER_SPRINT "AreaTypeIWDAREA" ""
+// END
+ACTION_IF GAME_IS ~eet~ BEGIN
+	OUTER_SPRINT "GlobalENDOFBG1" ~~~~~Global("ENDOFBG1","GLOBAL",2)~~~~~
+	OUTER_SPRINT "GlobalLTENDOFBG1" ~~~~~GlobalLT("ENDOFBG1","GLOBAL",2)~~~~~
+END ELSE BEGIN
+	OUTER_SPRINT "GlobalENDOFBG1" ""
+	OUTER_SPRINT "GlobalLTENDOFBG1" ""
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ BEGIN
+	<<<<<<<<DPLAYER2_rep.baf
+	IF
+		%AreaTypeIWDAREA%
+		%GlobalENDOFBG1%
+		Global("JO_Myself_InParty","LOCALS",0)
+		HPGT(Myself,0)
+	THEN
+		RESPONSE #100
+			SetLeavePartyDialogFile()
+			SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+			Dialogue(Player1)
+			ChangeAIScript("",DEFAULT)
+	END
+	>>>>>>>>
+
+	<<<<<<<<DPLAYER2_add.baf
+	IF
+		%AreaTypeIWDAREA%
+		%GlobalENDOFBG1%
+		Global("JO_Myself_InParty","LOCALS",0)
+		HPGT(Myself,0)
+		!AreaCheck("JO2608")
+	THEN
+		RESPONSE #100
+			SetLeavePartyDialogFile()
+			SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+			Dialogue(Player1)
+			ChangeAIScript("",DEFAULT)
+	END
+
+	IF
+		%AreaTypeIWDAREA%
+		%GlobalENDOFBG1%
+		Global("JO_Myself_InParty","LOCALS",0)
+		HPGT(Myself,0)
+		AreaCheck("JO2608")
+	THEN
+		RESPONSE #100
+			SetLeavePartyDialogFile()
+			SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
+			ChangeAIScript("",DEFAULT)
+	END
+	>>>>>>>>
+	COPY_EXISTING ~DPLAYER2.bcs~ ~override~
+	REPLACE_BCS_BLOCK EVALUATE_BUFFER ~DPLAYER2_rep.baf~ ~DPLAYER2_add.baf~
+END
+
+
+ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
+	<<<<<<<<DPLAYER2_SoD_rep.baf
+	IF
+		%AreaTypeIWDAREA%
+		%GlobalLTENDOFBG1%
+		Global("JO_Myself_AllowDead","LOCALS",0)
+		GlobalGT("bd_plot","global",0)
+	THEN
+		RESPONSE #100
+			SetGlobal("KickedOut","LOCALS",0)
+			SetGlobal("bd_joined","locals",1)
+			SetGlobal("bd_npc_camp","locals",0)
+			ChangeAIScript("bdparty",DEFAULT)
+	END
+	>>>>>>>>
+
+	<<<<<<<<DPLAYER2_SoD_add.baf
+	IF
+		%AreaTypeIWDAREA%
+		%GlobalLTENDOFBG1%
+		Global("JO_Myself_AllowDead","LOCALS",0)
+		GlobalGT("bd_plot","global",0)
+		Global("JO_JOIN_END_OF_BG1","LOCALS",0) // Have SoD content
+	THEN
+		RESPONSE #100
+			SetGlobal("KickedOut","LOCALS",0)
+			SetGlobal("bd_joined","locals",1)
+			SetGlobal("bd_npc_camp","locals",0)
+			ChangeAIScript("bdparty",DEFAULT)
+	END
+
+	IF
+		%AreaTypeIWDAREA%
+		%GlobalLTENDOFBG1%
+		GlobalLT("ENDOFBG1","GLOBAL",2)
+		Global("JO_Myself_AllowDead","LOCALS",0)
+		GlobalGT("bd_plot","global",0)
+		!Global("JO_JOIN_END_OF_BG1","LOCALS",0) // Don't have SoD content
+	THEN
+		RESPONSE #100
+			ChangeAIScript("",DEFAULT)
+	END
+
+	>>>>>>>>
+	COPY_EXISTING ~DPLAYER2.bcs~ ~override~
+	REPLACE_BCS_BLOCK EVALUATE_BUFFER ~DPLAYER2_SoD_rep.baf~ ~DPLAYER2_SoD_add.baf~
+
+END

@@ -30,6 +30,7 @@ END
 
 IF
 	OnCreation()
+	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_SAFE_LOAD","LOCALS",1)

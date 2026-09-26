@@ -63,6 +63,7 @@ ACTION_IF (~%Death_var%_SoD_Content~ = 1) AND (NOT ~%Death_var%_BG2_Content~ = 1
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
+			CreateVisualEffectObject("JOBG402","%Death_var%")
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the crusade.~)
 			ReallyForceSpell("%Death_var%",NOHOLD_PARTY)
@@ -108,6 +109,7 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND NOT ~%Death_var%_SoD_Content~ = 1) 
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
+			CreateVisualEffectObject("JOBG402","%Death_var%")
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the city of coins.~)
 			ReallyForceSpell("%Death_var%",NOHOLD_PARTY)
@@ -153,6 +155,7 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
+			CreateVisualEffectObject("JOBG402","%Death_var%")
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the crusade.~)
 			ReallyForceSpell("%Death_var%",NOHOLD_PARTY)
@@ -166,6 +169,7 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
+			CreateVisualEffectObject("JOBG402","%Death_var%")
 			ActionOverride("%Death_var%",SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",0))
 			DisplayStringHead(Player1,~%%Death_var%_name% has heard about the city of coins.~)
 			ReallyForceSpell("%Death_var%",NOHOLD_PARTY)
@@ -274,6 +278,10 @@ END
 
 //		END
 
+
+		OUTER_SET x_cooo = RANDOM(1530 1691)
+		OUTER_SET y_cooo = RANDOM(1158 1283)
+
 // For JO2608AL.baf
 	// Avatar of Alaundo
 <<<<<<<< .../JOining_stay_JO2608AL.baf
@@ -294,7 +302,7 @@ THEN
 END
 
 IF
-	Global("JO_Myself_AllowDead","LOCALS",0)
+	TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
 	InMyArea([PC])
 	AreaCheck("JO2608")
 	InMyArea("%Death_var%")
@@ -304,35 +312,18 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SEE_JO2608AL","LOCALS",1)
-		ActionOverride("%Death_var%",MoveToObjectNoInterrupt("JO2608AL"))
+		ActionOverride("%Death_var%",MoveToPointNoInterrupt([%x_cooo%.%y_cooo%]))
 		Continue()
 END
 
 IF
-	Global("JO_Myself_AllowDead","LOCALS",0)
+	TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))
 	InMyArea([PC])
 	AreaCheck("JO2608")
 	InMyArea("%Death_var%")
 	!Dead("%Death_var%")
-	TriggerOverride("%Death_var%",Global("JO_JOIN_SEE_JO2608AL","LOCALS",2))
-	TriggerOverride("%Death_var%",See("JO2608AL"))
-THEN
-	RESPONSE #100
-		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SEE_JO2608AL","LOCALS",3)
-		ActionOverride("%Death_var%",RandomWalk())
-		Continue()
-END
-
-IF
-	Global("JO_Myself_AllowDead","LOCALS",0)
-	InMyArea([PC])
-	AreaCheck("JO2608")
-	InMyArea("%Death_var%")
-	!Dead("%Death_var%")
-	TriggerOverride("%Death_var%",Global("JO_JOIN_SEE_JO2608AL","LOCALS",3))
-	OR(2)
-		!TriggerOverride("%Death_var%",See("JO2608AL"))
-		Global("JO_JOIN_GATHER_JO2608","MYAREA",0)
+	TriggerOverride("%Death_var%",Global("JO_JOIN_SEE_JO2608AL","LOCALS",1))
+	Global("JO_JOIN_GATHER_JO2608","MYAREA",0)
 THEN
 	RESPONSE #100
 		ActionOverride("%Death_var%",SetGlobal("JO_JOIN_SEE_JO2608AL","LOCALS",0)
@@ -342,7 +333,6 @@ END
 
 >>>>>>>>
 EXTEND_BOTTOM ~JO2608AL.bcs~ ~.../JOining_stay_JO2608AL.baf~ EVALUATE_BUFFER
-
 
 // For JO2608.baf
 <<<<<<<< .../JOining_stay_JO2608.baf
