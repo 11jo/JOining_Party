@@ -149,14 +149,16 @@ THEN
 END
 
 IF
-	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
+//	Global("JO_JOIN_JUMP_JO2608","LOCALS",4) // See end of JO_JOINW
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",5)
 	Delay(4)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		MoveViewObject(Player1,INSTANT)
 		DisplayStringHead(Myself,~...I need to stop thinking and keep my eyes wide open.~)
-		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5)
+//		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5) // See end of JO_JOINW
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",6)
 		FadeFromColor([45.0],0)
 		Wait(1)
 		UnhideGUI()

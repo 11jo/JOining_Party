@@ -48,5 +48,50 @@ THEN
 		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",4)
 		RestorePartyLocations()
 		RestoreZoomLevel() 
+//		ChangeAIScript("JO_JOINP",OVERRIDE) // See next blocks
+END
+
+IF
+//
+	!AreaCheck("JO2608")
+	OR(2)
+		InMyArea(Player2)
+		!InParty(Player2)
+	OR(2)
+		!InMyArea(Player3)
+		!InParty(Player3)
+	OR(2)
+		!InMyArea(Player4)
+		!InParty(Player4)
+	OR(2)
+		!InMyArea(Player5)
+		!InParty(Player5)
+	OR(2)
+		!InMyArea(Player6)
+		!InParty(Player6)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5)
+		ChangeAIScript("JO_JOINP",OVERRIDE)
+END
+
+IF
+//
+	!AreaCheck("JO2608")
+	OR(5)
+		!InMyArea(Player2)
+		!InMyArea(Player3)
+		!InMyArea(Player4)
+		!InMyArea(Player5)
+		!InMyArea(Player6)
+	Global("JO_JOIN_JUMP_JO2608","LOCALS",4)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_JUMP_JO2608","LOCALS",5)
+		MoveGlobalObject(Player2,Player1)
+		MoveGlobalObject(Player3,Player1)
+		MoveGlobalObject(Player4,Player1)
+		MoveGlobalObject(Player5,Player1)
+		MoveGlobalObject(Player6,Player1)
 		ChangeAIScript("JO_JOINP",OVERRIDE)
 END
