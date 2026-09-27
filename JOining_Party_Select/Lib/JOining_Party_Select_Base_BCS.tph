@@ -24,7 +24,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InPartyAllowDead found in %SOURCE_FILESPEC%
 				~
-			END
+			END/*
 // !InPartyAllowDead("Rasaad") // BG4800
 			SPRINT textToReplace ~TriggerOverride("Rasaad",Global("JO_Myself_AllowDead","LOCALS",0))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -33,7 +33,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END
+			END*/
 	// Myself
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead(Myself)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -79,7 +79,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END
+			END/*
 // !InParty("Dorn, Neera, ohhfak") // BG2301 / BG3300 / AR0406
 			SPRINT textToReplace ~TriggerOverride("Dorn",Global("JO_Myself_InParty","LOCALS",0))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -104,7 +104,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END
+			END*/
 	// Myself
 		SPRINT textToReplace ~^[%TAB% ]*!InParty(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -171,7 +171,7 @@ OUTER_SPRINT "slashdeux" "\2"
 // LeaveParty situation // BD0103.BCS 
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",LeaveParty())~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BD0103.BCS~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~BDCUT61.BCS~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
 		ActionOverride("\1",SetGlobal("JO_Myself_LeaveParty","LOCALS",1))
 		SetGlobal("JO_TRAVELER_\1","GLOBAL",0)~

@@ -1,6 +1,9 @@
 # Explore dialog options with traveler
 --------------------------------------
 
+- PID for travelers
+- PID for Charname
+
 
 ### PID for travelers
 

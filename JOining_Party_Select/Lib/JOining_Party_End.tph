@@ -590,6 +590,12 @@ ACTION_FOR_EACH Death_var IN
 // Lysre, dragonne de poche
 // Mod Lysre                   ~CKLysre~
 
+// Tashia
+// Mod Tashia                  ~TASHIA~
+
+// Dace Linton
+// Mod Dace                    ~T#DACE~
+
 // Next_Traveler BG2
 
 
@@ -616,6 +622,9 @@ ACTION_FOR_EACH Death_var IN
 // EET Tiax_Continuous         ~Tiax~                                      // Tiax_Continuous
 
 // EET Isra_Continuous         ~rh#isra~                                  // Isra_Continuous
+
+// Ascalon's Breagar
+// Mod Breagar                 ~ACBRE~
 
 // Next_Traveler Continuous
 
@@ -929,6 +938,9 @@ ACTION_IF (GAME_IS ~eet~ OR GAME_INCLUDES ~SoD~) BEGIN
 
 // EET Isra_Continuous         ~rh#isra~                                  // Isra_Continuous
 
+// Ascalon's Breagar
+// Mod Breagar                 ~ACBRE~
+
 // Next_Traveler Continuous
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -996,8 +1008,6 @@ INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
 
 	OUTER_SPRINT ~bdmenhi~ ~bdmenhi6~
 INCLUDE ~JOining_Party_Select/Baf/Extend_SELECT/replace_bcs_block/BDMENHI.tph~
-
-	END
 
 END // ACTION_FOR_EACH BGSoD
 
@@ -1155,6 +1165,12 @@ ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
 // Lysre, dragonne de poche
 // Mod Lysre                   ~CKLysre~
 
+// Tashia
+// Mod Tashia                  ~TASHIA~
+
+// Dace Linton
+// Mod Dace                    ~T#DACE~
+
 // Next_Traveler BG2
 
 /////////////////////////// Mods Continuous ///////////////////////////
@@ -1180,6 +1196,9 @@ ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
 // EET Tiax_Continuous         ~Tiax~                                      // Tiax_Continuous
 
 // EET Isra_Continuous         ~rh#isra~                                  // Isra_Continuous
+
+// Ascalon's Breagar
+// Mod Breagar                 ~ACBRE~
 
 // Next_Traveler Continuous
 
@@ -1291,8 +1310,17 @@ END // ACTION_FOR_EACH BG2
 				PATCH_PRINT ~... //  InMyArea found in %SOURCE_FILESPEC%
 				~
 			END
+			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",ChangeAIScript("",OVERRIDE))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... //  InMyArea found in %SOURCE_FILESPEC%
+				~
+			END
 		END
 			BUT_ONLY
+	END
 
 
 // Safana situation // Delete JoinPartyOverride

@@ -1,0 +1,274 @@
+
+/*
+LAM JOINABLE_NPC_ARRAYS // Use DEFINE_ACTION_MACRO from JOining_Party_Joined.tph
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
+// 	PRINT ~%cre% => %dv%~
+
+// No tutorial characters
+	ACTION_IF NOT (~%cre%~ STRING_EQUAL_CASE ~TTBRAN.CRE~)
+			AND NOT (~%cre%~ STRING_EQUAL_CASE ~TTIMOEN.CRE~)
+			AND NOT (~%cre%~ STRING_EQUAL_CASE ~TTJAHIER.CRE~)
+			AND NOT (~%cre%~ STRING_EQUAL_CASE ~TTMINSC.CRE~)
+			AND NOT (~%cre%~ STRING_EQUAL_CASE ~TTXAN.CRE~) THEN BEGIN
+
+		COPY_EXISTING ~%cre%~ ~override~
+			READ_ASCII 0x248 override_script_comp
+			READ_ASCII 0x288 Default_script_comp
+			READ_ASCII 0x260 general_script_comp
+			READ_ASCII 0x2cc dialog_comp
+			READ_ASCII 0x280 DeathVar_comp
+			READ_BYTE 0x234 level_comp
+
+// No every associated to DeathVar joignable characters
+				PATCH_IF NOT (~%override_script_comp%~ STRING_EQUAL_CASE ~idiot01~)
+					AND NOT (~%override_script_comp%~ STRING_EQUAL_CASE ~NONE~)
+					AND NOT (~%override_script_comp%~ STRING_EQUAL_CASE ~SHOUT~)
+					AND NOT (~%override_script_comp%~ STRING_EQUAL_CASE ~INITDLG~)
+					AND NOT (~%dialog_comp%~ STRING_EQUAL_CASE ~~)
+					AND NOT (~%dialog_comp%~ STRING_EQUAL_CASE ~NONE~)
+					AND (~%Default_script_comp%~ STRING_EQUAL_CASE ~~ OR ~%general_script_comp%~ STRING_EQUAL_CASE ~~)
+
+// No original already global characters
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Imoen2~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Imoen~)
+
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Edwin~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Jaheira~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Minsc~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Viconia~)
+
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Ajantis~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Alora~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Branwen~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Coran~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Dynaheir~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Eldoth~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Faldorn~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Garrick~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Kagain~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Khalid~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Kivan~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Montaron~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Quayle~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Safana~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Sharteel~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Skie~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Tiax~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Xan~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Xzar~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Yeslick~)
+
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~BAELOTH7.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~A.CRE~)
+
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Osprey~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Deeder~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Deder~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Arkanis~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Mordaine~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Canderous~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Obe~)
+
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~BDCAELAR~)
+
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Aerie~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Anomen~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Cernd~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Haerdalis~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Jan~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Keldorn~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Korgan~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Mazzy~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Nalia~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Sarevok~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Valygar~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Wilson~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~Yoshimo~)
+
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN2.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN4.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN6.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN7.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN9.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN10.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN12.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~DORN14.CRE~)
+
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA2.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA4.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA6.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA7.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA10.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA11.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA12.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA13.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~NEERA15.CRE~)
+
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD2.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD4.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD6.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD7.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD9.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD10.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD11.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD12.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~RASAAD13.CRE~)
+
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHEX9.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHEX10.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHEX11.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHEX13.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHEX15.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHEX25.CRE~)
+
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHFAK9.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHFAK10.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHFAK11.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHFAK13.CRE~)
+						AND NOT (~%cre%~ STRING_EQUAL_CASE ~OHHFAK15.CRE~)
+// Mod
+						AND (~%cre%~ STRING_CONTAINS_REGEXP ~X32\.*.CRE~)
+						AND (~%cre%~ STRING_CONTAINS_REGEXP ~\.*25.CRE~)
+						AND NOT (~%DeathVar_comp%~ STRING_EQUAL_CASE ~%only_one_comp%~)
+//	only_one_comp
+					BEGIN
+
+							PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
+								WRITE_ASCII SCRIPT_DEFAULT ~JOINSETD~ (8)
+
+							END ELSE PATCH_IF (~%general_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
+										WRITE_ASCII SCRIPT_GENERAL ~JOINSETG~ (8)
+								PATCH_PRINT ~%cre% %dv% : added...
+													~
+							END // PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~)
+
+					INNER_ACTION BEGIN
+		COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~ EVALUATE_BUFFER
+				REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("%cre%",[-1.-1],0)
+\0~
+						PATCH_PRINT ~%cre%  %dv% : added to %SOURCE_FILE%...
+													~
+
+		COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~ EVALUATE_BUFFER
+				REPLACE_TEXTUALLY ~\.cre~ ~~
+
+						ACTION_IF FILE_EXISTS_IN_GAME ~%override_script_comp%.bcs~ BEGIN
+
+									EXTEND_TOP ~%override_script_comp%.bcs~ ~JOining_Party_Select/Mod_Compatibility/MakeGlobalOverride.baf~ EVALUATE_BUFFER
+
+// Only one cre
+		OUTER_SPRINT "only_one_comp" "%DeathVar_comp%"
+
+// INCLUDE ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Only_One.tph~
+
+						END // ACTION_IF FILE_EXISTS_IN_GAME
+
+					END // INNER_ACTION
+
+				END // PATCH_IF NOT (~%override_script_comp%~ STRING_EQUAL_CASE ~idiot01~)
+
+	END // ACTION_IF NOT (~%cre%~ STRING_EQUAL_CASE ~TTBRAN.CRE~)
+
+
+END // ACTION_PHP_EACH JOINABLE_NPC_ARRAY
+*/
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+// STARTING_BLOCK (See All_NPC_JOIN.baf, All_TRAVELER_JOIN.baf, Start.baf, JOINSET.BAF)
+
+//JOINABLE NPCS ARRAY MACRO__________________________________________________________
+//
+DEFINE_ACTION_MACRO JOINABLE_NPC_death_vars BEGIN
+	//PDIALOG.2DA exists in all games
+	ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~PDIALOG~ => ~~ END
+	//Check PDIALOG.2DA file variants referenced in CAMPAIGN.2DA
+	ACTION_IF FILE_EXISTS_IN_GAME ~CAMPAIGN.2DA~ BEGIN
+		COPY_EXISTING ~CAMPAIGN.2DA~ ~CAMPAIGN.2DA~
+			COUNT_2DA_ROWS 32 "cntrow"
+			FOR (i = 0; i < cntrow; i = i + 1) BEGIN
+				READ_2DA_ENTRY i 11 32 file
+				TO_UPPER file
+				DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~%file%~ => ~~ END
+			END
+		BUT_ONLY
+	END
+	//Generate array with joinable NPC DV
+	ACTION_PHP_EACH JOINABLE_NPC_ARRAY_2da AS file => ~~ BEGIN
+		ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN
+			COPY_EXISTING ~%file%.2da~ ~override~
+				COUNT_2DA_ROWS 3 "cntrow"
+				FOR (i = 1; i < cntrow; i = i + 1) BEGIN
+					READ_2DA_ENTRY i 0 3 "dv"
+					TO_UPPER dv
+					// Starting Block
+					DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN ~%dv%~ => ~~ END
+				END
+			BUT_ONLY
+		END
+	END
+END
+//__________________________________________________________________________________
+
+
+
+LAM JOINABLE_NPC_death_vars
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY_dv AS death_vars => dv BEGIN
+		PRINT ~%death_vars% => %dv%~
+
+		OUTER_SET JOIN000 = RANDOM(0 4900)
+
+	ACTION_IF NOT FILE_EXISTS_IN_GAME ~JOIN%JOIN000%.CRE~ AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~IMOEN~) AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~%IMOEN_DV%~) BEGIN
+
+	// Starting Block
+		COPY ~JOining_Party_Select/cre/JO2608.cre~  ~override/JOIN%JOIN000%.CRE~
+			SAY NAME1 ~%death_vars%~
+			SAY NAME2 ~%death_vars%~
+			WRITE_LONG 0x28 IDS_OF_SYMBOL ("ANIMATE" "DOOM_GUARD") // ~0x6405~
+			WRITE_ASCII DEATHVAR ~%death_vars%~ (32)
+			WRITE_ASCII SCRIPT_OVERRIDE ~JOINSET~ (8)
+			WRITE_ASCII DIALOG ~~ (8)
+									PATCH_PRINT ~JOIN%JOIN000% %death_vars% : added...
+									~
+	END ELSE ACTION_IF (NOT ~%death_vars%~ STRING_EQUAL_CASE ~IMOEN~) AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~%IMOEN_DV%~) BEGIN
+
+			PRINT ~JOIN%JOIN000% %death_vars% : already exist... randomise again...
+									~
+
+		OUTER_SET JOIN000 = RANDOM(4901 9999)
+
+	// Starting Block_BG1
+		COPY ~JOining_Party_Select/cre/JO2608.cre~  ~override/JOIN%JOIN000%.CRE~
+			WRITE_ASCII DEATHVAR ~%death_vars%~ (32)
+			WRITE_ASCII SCRIPT_OVERRIDE ~JOINSET~ (8)
+			WRITE_ASCII DIALOG ~~ (8)
+									PATCH_PRINT ~JOIN%JOIN000% %death_vars% : added...
+									~
+	END
+
+	// Starting Block
+	ACTION_IF (NOT ~%death_vars%~ STRING_EQUAL_CASE ~IMOEN~) AND (NOT ~%death_vars%~ STRING_EQUAL_CASE ~%IMOEN_DV%~) BEGIN
+		COPY ~weidu_external/JOining_Party_Select/START.baf~  ~weidu_external/JOining_Party_Select/START.baf~ EVALUATE_BUFFER
+									REPLACE_TEXTUALLY ~//	REPLACE_STARTING_BLOCK~ ~		CreateCreatureImpassable("JOIN%JOIN000%",[-1.-1],0)
+	\0~
+									PATCH_PRINT ~JOIN%JOIN000% %death_vars% : added to %SOURCE_FILE%...
+									~
+	END
+
+END
+// STARTING_BLOCK END
+*/
+//__________________________________________________________________________________
+
+
+		COPY ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~  ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
+				REPLACE_TEXTUALLY ~//	only_one_comp~ ~~~~~						AND NOT (~DeathVar_comp~ STRING_EQUAL_CASE ~%only_one_comp%~)
+\0~~~~~
+				REPLACE_TEXTUALLY ~~~~~AND NOT (~DeathVar_~~~~~ ~~~~~AND NOT (~%DeathVar_~~~~~
+				REPLACE_TEXTUALLY ~~~~~_comp~ STRING_EQUAL_CASE~~~~~ ~~~~~_comp%~ STRING_EQUAL_CASE~~~~~

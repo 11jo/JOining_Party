@@ -289,6 +289,12 @@ ACTION_FOR_EACH joining_dlg IN
 // Lysre, dragonne de poche
 // Mod Lysre                     ~CKLysreJ~ ~CKLys25J~
 
+// Tashia
+// Mod Tashia                    ~TASHIAJ~ ~TASHI25J~
+
+// Dace Linton
+// Mod Dace                      ~T#DACEJ~ ~T#DAC25J~
+
 // Next_Traveler BG2
 
 /////////////////////////// Mods Continuous ///////////////////////////
@@ -312,6 +318,9 @@ ACTION_FOR_EACH joining_dlg IN
 // EET Branwen_Continuous         ~%BRANWEN_JOINED%~ ~BDBRANWJ~ ~O#BranJ~ ~O#BrA25J~           // EET Branwen_Continuous
 
 // EET Tiax_Continuous            ~%TIAX_JOINED%~ ~BDTIAXJ~ ~O#TiaxJ~ ~O#Tia25J~               // EET Tiax_Continuous
+
+// Mod Breagar                    ~ACBreJ~ ~ACBre25J~                                          // Breagar
+
 
 // Next_Traveler Continuous
 
@@ -377,6 +386,54 @@ COPY ~JOining_Party_Select/Spl/JO_JOIN.spl~ ~override~
 			parameter1= RESOLVE_STR_REF (~We are now fellow travelers.~)
 		END
 
+COPY_EXISTING ~SPPR309.SPL~ ~override/JOINEPUR.SPL~
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=139
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=141
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=215
+		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
+			opcode = 337
+			target = 1
+			parameter1 = 23 // Only if opcode = 65 have 23 in parameter2 (23 is random)
+			parameter2 = 65 // opcode = 65
+		END
+
+
+COPY_EXISTING ~SPWI206.SPL~ ~override/JOINBLUR.SPL~
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=139
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=321
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=141
+		END
+		LPF DELETE_SPELL_EFFECT
+		INT_VAR
+			opcode_to_delete=174
+		END
+		LPF ADD_SPELL_EFFECT
+		INT_VAR
+			opcode = 65 // Blur
+			target = 1
+			Timing = 1
+			duration = 100
+			parameter2 = 23 // Special for opcode = 337 to delete only this Blur effect
+		END
+
 
 
 // JONEAN28
@@ -405,24 +462,21 @@ COPY ~JOining_Party_Select/Cre/JOJOINNE.CRE~ ~override~
 
 // JO2608.cre
 
-COPY ~JOining_Party_Select/Cre/JO2608.CRE~ ~override/JO2608AL.CRE~
+COPY ~JOining_Party_Select/Cre/JONEAN28.CRE~ ~override/JO2608AL.CRE~
 	SAY NAME1 ~Avatar of Alaundo~
 	SAY NAME2 ~Avatar of Alaundo~
 	WRITE_ASCII SCRIPT_OVERRIDE ~JO2608AL~ (8)
 	WRITE_ASCII DEATHVAR ~JO2608AL~ (32)
 	WRITE_ASCII DIALOG ~JO2608AL~ (8)
 
-// JO2608
-/*
-In Not_So_Always.tpa
+// JO2608AL.CRE SCRIPT_OVERRIDE
+	EXTEND_BOTTOM ~JO2608AL.bcs~ ~JOining_Party_Select/Baf/JO2608AL.baf~ EVALUATE_BUFFER
 
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
-
-	COMPILE ~JOining_Party_Select/Baf/JO2608.baf~ EVALUATE_BUFFER
-
-END
-*/
+// JO2608.are teleport trigger
 	COMPILE ~JOining_Party_Select/Baf/JO260801.baf~ EVALUATE_BUFFER
+
+// JO2608.are Statue trigger JO2608AL.CRE 
+	COMPILE ~JOining_Party_Select/Baf/JO260802.baf~ EVALUATE_BUFFER
 
 ACTION_IF FILE_EXISTS_IN_GAME ~JO2608.bcs~ BEGIN
 
@@ -481,7 +535,7 @@ END
 //////////////////////////////////////////////////////////////////////////////////////
 
 // Starting Block
-		COMPILE ~JOining_Party_Select/Baf/JOINSET.baf~ EVALUATE_BUFFER
+	//		COMPILE ~JOining_Party_Select/Mod_Compatibility/JOINSET.baf~ EVALUATE_BUFFER
 
 // JO_JOINP / JO_JOINW / JO_JOINI ...transitions additions
 	INCLUDE ~JOining_Party_Select/Campaign_Transition/BG1_to_SoD_to_BG2.tph~
@@ -555,7 +609,7 @@ ACTION_IF GAME_IS ~bgee bgt eet~ BEGIN
 
 	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BGEE.baf~  EVALUATE_BUFFER
 // Starting Block_BG1
-	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~%Candlekeep_BCS%.bcs~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  EVALUATE_BUFFER
 
 END
 
@@ -563,7 +617,7 @@ ACTION_IF GAME_INCLUDES ~SoD~ BEGIN
 
 	EXTEND_BOTTOM ~BD0103.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 // Starting Block_SoD
-	EXTEND_BOTTOM ~BD0103.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~BD0103.bcs~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  EVALUATE_BUFFER
 
 	EXTEND_BOTTOM ~BD0120.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-SoD.baf~  EVALUATE_BUFFER
 
@@ -573,12 +627,12 @@ ACTION_IF GAME_IS ~bg2ee bgt eet~ BEGIN
 
 	EXTEND_BOTTOM ~AR0602.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-BG2EE.baf~ EVALUATE_BUFFER
 // Starting Block_BG2
-	EXTEND_BOTTOM ~AR0602.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR0602.bcs~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  EVALUATE_BUFFER
 
 	EXTEND_BOTTOM ~AR4500.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 
 	EXTEND_BOTTOM ~AR4000.bcs~ ~JOining_Party_Select/Baf/Join_ability/Join_ability-ToB.baf~ EVALUATE_BUFFER
 // Starting Block_ToB
-	EXTEND_BOTTOM ~AR4000.bcs~ ~weidu_external/JOining_Party_Select/START.baf~  EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR4000.bcs~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~  EVALUATE_BUFFER
 
 END

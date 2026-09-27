@@ -1,0 +1,44 @@
+
+// JOINSET NO MakeGlobal
+IF
+	Global("JO_Myself_STARTING_SET","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
+		SetGlobal("JO_Myself_STARTING_SET","LOCALS",1)
+		DestroySelf()
+END
+
+
+// JOINSET MakeGlobal
+IF
+	Global("JO_Myself_STARTING_SET","LOCALS",0)
+THEN
+	RESPONSE #100
+		MakeGlobal()
+		SetGlobal("JO_Myself_InParty","LOCALS",0)
+		SetGlobal("JO_Myself_Valid","LOCALS",0)
+		SetGlobal("JO_Myself_AllowDead","LOCALS",0)
+		SetGlobal("JO_Myself_STARTING_SET","LOCALS",1)
+		DestroySelf()
+END
+
+// JOINSETG
+IF
+	Global("JO_Myself_STARTING_SET","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Myself_STARTING_SET","LOCALS",2)
+		ChangeAIScript("",GENERAL)
+END
+
+// JOINSETD
+IF
+	Global("JO_Myself_STARTING_SET","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_Myself_STARTING_SET","LOCALS",2)
+		ChangeAIScript("",DEFAULT)
+END

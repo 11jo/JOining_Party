@@ -1,0 +1,13 @@
+IF
+	NumberOfTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+
+IF
+	!NumberOfTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
