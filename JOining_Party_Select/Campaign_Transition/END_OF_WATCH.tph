@@ -59,7 +59,9 @@ ACTION_IF (~%Death_var%_SoD_Content~ = 1) AND (NOT ~%Death_var%_BG2_Content~ = 1
 
 	IF
 		AreaCheck("JO2608")
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_BG1","LOCALS",0))
+		OR(2)
+			!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_BG1","LOCALS",0))
+			!TriggerOverride(Player1,Global("JO_JOIN_END_OF_BG1","LOCALS",0))
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
@@ -105,7 +107,9 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND NOT ~%Death_var%_SoD_Content~ = 1) 
 
 	IF
 		AreaCheck("JO2608")
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_SOD","LOCALS",0))
+		OR(2)
+			!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_SOD","LOCALS",0))
+			!TriggerOverride(Player1,Global("JO_JOIN_END_OF_SOD","LOCALS",0))
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
@@ -151,7 +155,9 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 
 	IF
 		AreaCheck("JO2608")
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_BG1","LOCALS",0))
+		OR(2)
+			!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_BG1","LOCALS",0))
+			!TriggerOverride(Player1,Global("JO_JOIN_END_OF_BG1","LOCALS",0))
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
@@ -165,7 +171,9 @@ ACTION_IF (~%Death_var%_BG2_Content~ = 1 AND ~%Death_var%_SoD_Content~ = 1) AND 
 
 	IF
 		AreaCheck("JO2608")
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_SOD","LOCALS",0))
+		OR(2)
+			!TriggerOverride("%Death_var%",Global("JO_JOIN_END_OF_SOD","LOCALS",0))
+			!TriggerOverride(Player1,Global("JO_JOIN_END_OF_SOD","LOCALS",0))
 		InMyArea("%Death_var%")
 	THEN
 		RESPONSE #100
@@ -228,6 +236,7 @@ THEN
 	RESPONSE #1
 		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,~We will meet again.~)
+		ActionOverride(Player1,SetGlobal("JO_JOIN_END_OF_BG1","LOCALS",1))
 		MakeGlobalOverride()
 		SetGlobal("K#PartySoD","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
@@ -263,6 +272,7 @@ THEN
 		SetInterrupt(FALSE)
 		MakeGlobalOverride()
 		DisplayStringHead(Myself,~Gonna make a diversion, the Flamming Fist will search for you everywhere...~)
+		ActionOverride(Player1,SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1))
 		SetGlobal("K#PartySoD","LOCALS",1)
 		SetGlobal("JO_JOIN_END_OF_WATCH","LOCALS",2)
 		SetGlobal("JO_JOIN_END_OF_SOD","LOCALS",1)

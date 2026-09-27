@@ -658,6 +658,8 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 				PRINT ~    Skie as traveler
 				~
 
+				 OUTER_SET Skie_SoD_Content = 1
+
 				 OUTER_SET Skie_BG2_Content = 1
 
 	END ELSE ACTION_IF Skie_as_Real_traveler = 1 THEN BEGIN
@@ -667,6 +669,8 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 				REPLACE_TEXTUALLY ~// Original Real Skie~ ~~
 				PRINT ~    Skie Real as traveler
 				~
+
+				 OUTER_SET Skie_SoD_Content = 1
 
 				 OUTER_SET Skie_BG2_Content = 1
 
@@ -679,6 +683,8 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 				PRINT ~    Tiax as traveler
 				~
 
+				 OUTER_SET Tiax_SoD_Content = 1
+
 				 OUTER_SET Tiax_BG2_Content = 1
 
 	END ELSE ACTION_IF Tiax_as_Real_traveler = 1 AND NOT Continuous_Tiax = 1 THEN BEGIN
@@ -688,6 +694,8 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 				REPLACE_TEXTUALLY ~// Original Real Tiax~ ~~
 				PRINT ~    Tiax Real as traveler
 				~
+
+				 OUTER_SET Tiax_SoD_Content = 1
 
 				 OUTER_SET Tiax_BG2_Content = 1
 
@@ -1235,7 +1243,7 @@ ACTION_IF (MOD_IS_INSTALLED ~FINCHNPC.TP2~ ~0~) THEN BEGIN
 END
 
 
-ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
+ACTION_IF (FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ AND NOT Continuous_Region_of_Terror = 1) BEGIN
 
 	ACTION_IF Jarlaxle_Saga_as_traveler = 1 THEN BEGIN
 
@@ -2516,7 +2524,7 @@ ACTION_IF (MOD_IS_INSTALLED ~TYRISFLARE.TP2~ ~0~) THEN BEGIN
 END
 
 
-ACTION_IF (MOD_IS_INSTALLED ~ROT.TP2~ ~0~) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~ROT.TP2~ ~0~ AND NOT Continuous_Region_of_Terror = 1) THEN BEGIN
 
 	ACTION_IF Wulfgar_Terror_as_traveler = 1 THEN BEGIN
 
@@ -3402,6 +3410,8 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 			PRINT ~    Tiax_Continuous as traveler
 			~
 
+				OUTER_SET Tiax_SoD_Content = 1
+
 				OUTER_SET Tiax_BG2_Content = 1
 
 	END ELSE ACTION_IF Tiax_Continuous_as_Real_traveler = 1 OR (Tiax_as_Real_traveler = 1 AND Continuous_Tiax = 1) OR (Tiax_BG2_as_Real_traveler = 1 AND Continuous_Tiax = 1) THEN BEGIN
@@ -3411,6 +3421,8 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 			REPLACE_TEXTUALLY ~// EET Real Tiax_Continuous~ ~~
 			PRINT ~    Tiax_Continuous as real traveler
 			~
+
+				OUTER_SET Tiax_SoD_Content = 1
 
 				OUTER_SET Tiax_BG2_Content = 1
 
@@ -3451,6 +3463,8 @@ ACTION_IF (MOD_IS_INSTALLED ~ACBRE.TP2~ ~0~) THEN BEGIN
 			PRINT ~    Breagar as traveler
 			~
 
+				OUTER_SET ACBRE_SoD_Content = 1
+
 				OUTER_SET ACBRE_BG2_Content = 1
 
 	END ELSE ACTION_IF Breagar_as_Real_traveler = 1 THEN BEGIN
@@ -3460,6 +3474,8 @@ ACTION_IF (MOD_IS_INSTALLED ~ACBRE.TP2~ ~0~) THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod Real Breagar~ ~~
 			PRINT ~    Breagar as real traveler
 			~
+
+				OUTER_SET ACBRE_SoD_Content = 1
 
 				OUTER_SET ACBRE_BG2_Content = 1
 
