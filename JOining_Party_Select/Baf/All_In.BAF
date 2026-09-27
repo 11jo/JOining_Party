@@ -240,6 +240,10 @@ THEN
 		SetGlobal("JO_JOIN_JOINM_NOTALK","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
 		Continue()*/
+	RESPONSE #33
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
+		Continue()
 END
 
 
@@ -359,7 +363,7 @@ END
 // TODO : add in dialog to let players decide if the party member should stay in party for while
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
@@ -487,7 +491,7 @@ THEN
 		JoinParty()
 END
 
-IF 
+IF
 	InParty(Myself)
 	Global("JO_JOIN_RETURNSLOT_WAIT","LOCALS",1)
 //
@@ -688,7 +692,7 @@ END
 // ChangeEnemyAlly par exemple
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
@@ -719,7 +723,7 @@ END
 
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
@@ -734,11 +738,11 @@ END
 
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
 //
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
@@ -762,7 +766,7 @@ END
 
 IF // TODO : Seem to execute several times when a traveler reintegrate the party...
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
