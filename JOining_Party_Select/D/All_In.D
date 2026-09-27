@@ -251,10 +251,49 @@ StartDialogueNoSet(Player6)~ EXIT
 		ActionOverride("JOJOINNE",StartDialogueNoSet(Player1))~ EXIT
 
 // Strategy
-
 		IF ~~ THEN REPLY ~^0xFF6B4763We need to adjust our strategy.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG2
 
 		IF ~~ THEN REPLY ~^0xFF705268We need to adjust our position.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG3
+
+
+// Formation
+
+	// No Formation
+		IF ~Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)~ THEN REPLY ~^0xFF5b5b5bDon't join the formation.^-~ DO ~
+		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",1)
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)~ GOTO JO_JOINYes
+
+	// No Base
+		IF ~Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+		Global("JO_JOIN_8FORMATION","GLOBAL",9)
+		Global("JO_JOIN_2FORMATION","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bLeave the formation.^-~ DO ~
+		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",1)
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
+		IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",-1)~ GOTO JO_JOINYes
+
+	// No Circle
+		IF ~Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+		Global("JO_JOIN_FORMATION","GLOBAL",13)
+		Global("JO_JOIN_2FORMATION","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bLeave the formation.^-~ DO ~
+		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",1)
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
+		IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",-1)~ GOTO JO_JOINYes
+
+	// No Two on me
+		IF ~Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+		Global("JO_JOIN_FORMATION","GLOBAL",13)
+		Global("JO_JOIN_8FORMATION","GLOBAL",9)~ THEN REPLY ~^0xFF5b5b5bLeave the formation.^-~ DO ~
+		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",1)
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
+		IncrementGlobal("JO_JOIN_2FORMATION","GLOBAL",-1)~ GOTO JO_JOINYes
+
+		IF ~!Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFWhen possible join the formation.^-~ DO ~
+		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)~ GOTO JO_JOINYes
 
 /*
 		IF ~~ THEN REPLY ~^0xFF2968A6We need to adjust our party.^-~ DO ~SetGlobal("JO_JOIN","LOCALS",0)~ GOTO JO_JOINDLG4
@@ -480,9 +519,9 @@ StartDialogueNoSet(Player6)~ EXIT
 			SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",0)
 			SetGlobal("JO_JOIN_DREAM_DONE","LOCALS",0)
 			SetGlobal("JO_JOIN_DREAM_REST","LOCALS",0)
-	
+
 			SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
-	
+
 			SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
 			SetGlobal("JO_JOIN_HIDE_CUTSCENE","LOCALS",0)
 			SetGlobal("JO_JOIN_IS_HIDDEN","LOCALS",0)
@@ -495,7 +534,7 @@ StartDialogueNoSet(Player6)~ EXIT
 			SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
 			SetGlobal("JO_JOIN_LOADING_MAX","LOCALS",0)
 			SetGlobal("JO_JOIN_LOAD_PARTY_WAIT","GLOBAL",0)
-	
+
 			SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",1)
 			SetGlobal("JO_Myself_Valid","LOCALS",1)
 			SetGlobal("JO_Myself_InParty","LOCALS",1)
@@ -762,7 +801,7 @@ StartDialogueNoSet(Player6)~ EXIT
 			IF ~!HasItemSlot("%Death_var%",SLOT_WEAPON)~ THEN REPLY ~Equip one of the weapon in you inventory.~ DO ~FillSlot(SLOT_WEAPON)~ GOTO JO_JOINequip
 			IF ~HasItemSlot("%Death_var%",SLOT_WEAPON)~ THEN REPLY ~I already have a weapon.~ GOTO JO_JOINequip
 
-			IF ~!HasItemSlot("%Death_var%",SLOT_AMMO) 
+			IF ~!HasItemSlot("%Death_var%",SLOT_AMMO)
 			OR(3)
 				!HasItemCategory("%Death_var%",BULLET,FALSE)
 				!HasItemCategory("%Death_var%",ARROW,FALSE)

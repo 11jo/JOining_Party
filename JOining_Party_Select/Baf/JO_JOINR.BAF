@@ -1,0 +1,392 @@
+
+IF
+//
+	!InParty(Player3)
+//
+	!Global("JO_JOIN_3FOLLOW","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_3FOLLOW","LOCALS",0)
+		SetGlobal("JO_JOIN_FOLLOW_PLAYER3","GLOBAL",0)
+END
+
+IF
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+//
+	InParty(Player3)
+//
+	Global("JO_JOIN_3FOLLOW","LOCALS",0)
+	GlobalLT("JO_JOIN_FOLLOW_PLAYER3","GLOBAL",4)
+//
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+THEN
+	RESPONSE #100
+		SetGlobal("JO_JOIN_3FOLLOW","LOCALS",1)
+		IncrementGlobal("JO_JOIN_FOLLOW_PLAYER3","GLOBAL",1)
+	RESPONSE #100
+		SetGlobal("JO_JOIN_3FOLLOW","LOCALS",2)
+		IncrementGlobal("JO_JOIN_FOLLOW_PLAYER3","GLOBAL",1)
+	RESPONSE #100
+		SetGlobal("JO_JOIN_3FOLLOW","LOCALS",3)
+		IncrementGlobal("JO_JOIN_FOLLOW_PLAYER3","GLOBAL",1)
+	RESPONSE #100
+		SetGlobal("JO_JOIN_3FOLLOW","LOCALS",4)
+		IncrementGlobal("JO_JOIN_FOLLOW_PLAYER3","GLOBAL",1)
+END
+
+IF
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!See([ENEMY])
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	InParty(Player3)
+	!Range(Player3,8)
+//
+	Global("JO_JOIN_3FOLLOW","LOCALS",0)
+	GlobalLT("JO_JOIN_FOLLOW_PLAYER3","GLOBAL",4)
+//
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+	Switch("JO_JOIN_3FOLLOW","LOCALS")
+THEN
+	RESPONSE #1
+		FollowObjectFormation(Player3,1,6)
+	RESPONSE #2
+		FollowObjectFormation(Player3,1,5)
+	RESPONSE #3
+		FollowObjectFormation(Player3,2,6)
+	RESPONSE #4
+		FollowObjectFormation(Player3,2,5)
+END
+
+
+// Some order for Traveler
+
+IF
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!See([ENEMY])
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+THEN
+	RESPONSE #100
+		ChangeAIScript("JOINFOR1",Race)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		ChangeAIScript("",Race)
+END
+
+//////////
+
+// Two on me 2 travelers
+IF
+//
+	Global("JO_JOIN_FORMATION","GLOBAL",12) // Base Deactivated
+	Global("JO_JOIN_8FORMATION","GLOBAL",9) // Circle Deactivated
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0) // Allowed
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+	Global("JO_JOIN_IN_FORMATION","GLOBAL",0) // Not on formation already
+//
+	GlobalLT("JO_JOIN_2FORMATION","GLOBAL",2) // Two on me
+//
+	Switch("JO_JOIN_2FORMATION","GLOBAL")
+THEN
+	RESPONSE #0
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",1)
+		IncrementGlobal("JO_JOIN_2FORMATION","GLOBAL",1)
+	RESPONSE #1
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",2)
+		IncrementGlobal("JO_JOIN_2FORMATION","GLOBAL",1)
+END
+
+IF
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0) // Allowed
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!See([ENEMY])
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Switch("JO_JOIN_IN_FORMATION","LOCALS")
+THEN
+	RESPONSE #1
+		Formation(Player1,[-2.-6])
+		Continue()
+	RESPONSE #2
+		Formation(Player1,[2.6])
+		Continue()
+END
+
+// Circle 8 travelers
+IF
+//
+	Global("JO_JOIN_FORMATION","GLOBAL",12) // Deactivated
+	Global("JO_JOIN_2FORMATION","GLOBAL",3) // Two on me Deactivated
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0) // Allowed
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+	GlobalLT("JO_JOIN_8FORMATION","GLOBAL",8) // Circle
+//
+	Switch("JO_JOIN_8FORMATION","GLOBAL")
+THEN
+  RESPONSE #0
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",1)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+  RESPONSE #1
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",2)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+  RESPONSE #2
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",3)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+  RESPONSE #3
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",4)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+  RESPONSE #4
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",5)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+  RESPONSE #5
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",6)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+  RESPONSE #6
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",7)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+  RESPONSE #7
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",8)
+	IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",1)
+END
+
+IF
+//
+	Global("JO_JOIN_FORMATION","GLOBAL",12) // Deactivated
+	Global("JO_JOIN_2FORMATION","GLOBAL",3) // Two on me Deactivated
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0) // Allowed
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	!AreaType(DUNGEON)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!See([ENEMY])
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Switch("JO_JOIN_IN_FORMATION","LOCALS")
+THEN
+  RESPONSE #1
+    Formation(Player1,[4.-6])
+		Continue()
+  RESPONSE #2
+    Formation(Player1,[-4.-3])
+		Continue()
+  RESPONSE #3
+    Formation(Player1,[6.3])
+		Continue()
+  RESPONSE #4
+    Formation(Player1,[-6.0])
+		Continue()
+  RESPONSE #5
+    Formation(Player1,[2.6])
+		Continue()
+  RESPONSE #6
+    Formation(Player1,[9.0])
+		Continue()
+  RESPONSE #7
+    Formation(Player1,[6.-3])
+		Continue()
+  RESPONSE #8
+    Formation(Player1,[-4.3])
+		Continue()
+END
+
+// Base 12 travelers
+IF
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0) // Allowed
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	!AreaType(DUNGEON)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!See([ENEMY])
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	GlobalLT("JO_JOIN_FORMATION","GLOBAL",11)
+	Global("JO_JOIN_IN_FORMATION","LOCALS",0)
+	Switch("JO_JOIN_FORMATION","GLOBAL")
+THEN
+  RESPONSE #0
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",1)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #1
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",2)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #2
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",3)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #3
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",4)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #4
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",5)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #5
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",6)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #6
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",7)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #7
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",8)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #8
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",9)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #9
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",10)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #10
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",11)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+  RESPONSE #11
+	SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",12)
+	IncrementGlobal("JO_JOIN_FORMATION","GLOBAL",1)
+END
+
+IF
+//
+	Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
+	Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0) // Allowed
+	Global("JO_JOIN_LINK_PLAYER_ID","LOCALS",0) // No assignation
+//
+	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
+	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
+	Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0) // Don't use this block when Switching Party
+	Global("JO_NOJOIN","GLOBAL",0)
+//
+	!AreaType(DUNGEON)
+//
+	ActionListEmpty()
+	!ActuallyInCombat()
+	!See([ENEMY])
+//
+	Global("JO_JOIN_CUTSCENE","GLOBAL",0)
+	OR(2)
+		Allegiance(Myself,FAMILIAR)
+		!Global("JO_JOIN_IS_TRAVELER","LOCALS",0)
+//
+	Global("JO_JOIN_8FORMATION","GLOBAL",9) // Circle Deactivated
+	Global("JO_JOIN_2FORMATION","GLOBAL",3) // Two on me Deactivated
+//
+	Switch("JO_JOIN_IN_FORMATION","LOCALS")
+THEN
+  RESPONSE #1 //
+    Formation(Player1,[14.-6])
+		Continue()
+  RESPONSE #2 // //
+    Formation(Player1,[14.0])
+		Continue()
+  RESPONSE #3
+    Formation(Player1,[14.6])
+		Continue()
+  RESPONSE #4 // /
+    Formation(Player1,[-14.-6])
+		Continue()
+  RESPONSE #5 // //
+    Formation(Player1,[-14.0])
+		Continue()
+  RESPONSE #6 // /
+    Formation(Player1,[-14.6])
+		Continue()
+  RESPONSE #7 // /
+    Formation(Player1,[6.14])
+		Continue()
+  RESPONSE #8 // /
+    Formation(Player1,[0.14])
+		Continue()
+  RESPONSE #9 //
+    Formation(Player1,[-6.14])
+		Continue()
+  RESPONSE #10 //
+    Formation(Player1,[-6.-14])
+		Continue()
+  RESPONSE #11 // //
+    Formation(Player1,[0.-14])
+		Continue()
+  RESPONSE #12
+    Formation(Player1,[6.-14])
+		Continue()
+END
