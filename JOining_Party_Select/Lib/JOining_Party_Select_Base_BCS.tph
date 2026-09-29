@@ -17,6 +17,8 @@ OUTER_SPRINT "slashdeux" "\2"
 // BASE
 ///////////////////////////////////////////////////////////////////////////////
 // !InPartyAllowDead("%Death_var%")
+// Replace_Death_in_NOT_AllowDead
+/*
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -24,7 +26,9 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InPartyAllowDead found in %SOURCE_FILESPEC%
 				~
-			END/*
+			END
+*/
+/*
 // !InPartyAllowDead("Rasaad") // BG4800
 			SPRINT textToReplace ~TriggerOverride("Rasaad",Global("JO_Myself_AllowDead","LOCALS",0))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -33,7 +37,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END*/
+			END
+*/
 	// Myself
 			SPRINT textToReplace ~\(^[%TAB% ]*!InPartyAllowDead(Myself)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -44,6 +49,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // InPartyAllowDead("%Death_var%")
+// Replace_Death_in_AllowDead
+/*
 			SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -52,6 +59,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // DeathVar : InPartyAllowDead found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 	// Myself
 		SPRINT textToReplace ~\(^[%TAB% ]*InPartyAllowDead(Myself)\)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -72,6 +80,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // !InParty("%Death_var%")
+// Replace_Death_in_NOT_InParty
+/*
 			SPRINT textToReplace ~\(^[%TAB% ]*!InParty("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -79,7 +89,9 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END/*
+			END
+*/
+/*
 // !InParty("Dorn, Neera, ohhfak") // BG2301 / BG3300 / AR0406
 			SPRINT textToReplace ~TriggerOverride("Dorn",Global("JO_Myself_InParty","LOCALS",0))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -104,7 +116,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // DeathVar : !InParty found in %SOURCE_FILESPEC%
 				~
-			END*/
+			END
+*/
 	// Myself
 		SPRINT textToReplace ~^[%TAB% ]*!InParty(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -115,6 +128,8 @@ OUTER_SPRINT "slashdeux" "\2"
 			~
 		END
 // InParty("%Death_var%")
+// Replace_Death_in_InParty
+/*
 			SPRINT textToReplace ~\(^[%TAB% ]*InParty("\([^)]*\)")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -123,6 +138,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // DeathVar : InParty found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 	// Myself
 		SPRINT textToReplace ~^[%TAB% ]*InParty(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -133,6 +149,8 @@ OUTER_SPRINT "slashdeux" "\2"
 			~
 		END
 // !Is(!If)ValidForPartyDialog(ue)
+// Replace_Death_in_NOT_Valid
+/*
 			SPRINT textToReplace ~!I[s|f]ValidForPartyDialog\(ue\)?("\([^)]*\)")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -141,6 +159,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // DeathVar : !(...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 	// Myself
 		SPRINT textToReplace ~^[%TAB% ]*!I[s|f]ValidForPartyDialog\(ue\)?(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -151,6 +170,8 @@ OUTER_SPRINT "slashdeux" "\2"
 			~
 		END
 // Is(If)ValidForPartyDialog(ue)
+// Replace_Death_in_Valid
+/*
 			SPRINT textToReplace ~I[s|f]ValidForPartyDialog\(ue\)?("\([^)]*\)")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -159,6 +180,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // DeathVar : (...)ValidForParty(...) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 	// Myself
 		SPRINT textToReplace ~^[%TAB% ]*I[s|f]ValidForPartyDialog\(ue\)?(Myself)~
 		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -838,14 +860,13 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated TODO : besoin de perfectionner la méthode, c'est convenable mais mieux serait mieux.
+// Replace_Death_in_StartDialog_1
+/*
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",StartDialog\(ue\)?("\([^)]*\)",\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
 	\0 ~
-/*					INNER_ACTION BEGIN
-			OUTER_SPRINT ~Done_Already~ ~\1~ 
-					END*/
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride(\1) StartDialog() found in %SOURCE_FILESPEC%
 				~
@@ -855,9 +876,6 @@ OUTER_SPRINT "slashdeux" "\2"
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~Activate("\1")
 	\0 ~
-/*					INNER_ACTION BEGIN
-			OUTER_SPRINT ~Done_Already~ ~\1~ 
-					END*/
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // ActionOverride(\1) StartDialog() found in %SOURCE_FILESPEC%
 				~
@@ -880,6 +898,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride() StartDialog(\2) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),Dialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -891,6 +910,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
+// Replace_Death_in_Dialog_2
+/*
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",Dialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -909,6 +930,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride() Dialog(\3) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),PlayerDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -920,6 +942,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
+// Replace_Death_in_PlayerDialog_3
+/*
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride("\([^)]*\)",PlayerDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -938,6 +962,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // ActionOverride() PlayerDialog(\3) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*StartDialog\([^)]*\)(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -949,6 +974,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
+// Replace_Death_in_StartDialog_4
+/*
 			SPRINT textToReplace ~^[%TAB% ]*StartDialog\(ue\)?("\([^)]*\)","\([^)]*\)")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -967,6 +994,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // StartDialog(/1) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*PlayerDialog\([^)]*\)(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -978,6 +1006,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
+// Replace_Death_in_PlayerDialog_5
+/*
 			SPRINT textToReplace ~^[%TAB% ]*PlayerDialog\([^)]*\)("\([^)]*\)")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -987,6 +1017,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // PlayerDialog(/2) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*Dialog\([^)]*\)(\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -998,6 +1029,8 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 // Special travelers need to be Activated very quick if deactivated
+// Replace_Death_in_Dialog_6
+/*
 			SPRINT textToReplace ~^[%TAB% ]*Dialog\([^)]*\)("\([^)]*\)")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -1007,6 +1040,7 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // Dialog(/2) found in %SOURCE_FILESPEC%
 				~
 			END
+*/
 ///////////////////////////////////////////////////////////////////////////////
 // Interact
 ///////////////////////////////////////////////////////////////////////////////

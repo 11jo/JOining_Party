@@ -193,6 +193,8 @@
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Base.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Base.tph~
+
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Fix.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~
 
 		COPY ~JOining_Party_Select/Lib/JOining_Party_Joined.tph~	~weidu_external/JOining_Party_Select/JOining_Party_Joined.tph~
@@ -215,7 +217,7 @@
 
 		COMPILE ~JOining_Party_Select/Campaign_Transition/JO_JOINW.baf~
 
-		COPY ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
+		COPY ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~ ~weidu_external/JOining_Party_Select/JOining_Party_Compatibility.tph~
 
 		COPY ~JOining_Party_Select/Mod_Compatibility/START.baf~ ~weidu_external/JOining_Party_Select/Mod_Compatibility/START.baf~
 
@@ -292,7 +294,7 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 			OUTER_SPRINT "F_ARTEMIS_name"               "Artemis"
 			OUTER_SPRINT "F_CATTIBR_name"               "Catti-Brie"
 			OUTER_SPRINT "F_BRUENOR_name"               "Bruenor"
-			OUTER_SPRINT "F_REGIS_name"                 "Regis"
+			OUTER_SPRINT "F_REGIS2_name"                 "Regis"
 			OUTER_SPRINT "F_DRIZZT_name"                "Drizzt"
 			OUTER_SPRINT "F_WULFGAR_name"               "Wulfgar"
 //////////////////////////////////////////////////////////////////////////////////////
@@ -421,6 +423,8 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 
 	OUTER_SET Continuous_Kivan = 0 // DESIGNATED 10
 
+	OUTER_SET Continuous_Region_of_Terror = 0 // DESIGNATED 11
+
 	OUTER_SET Continuous_Tiax = 0 // DESIGNATED 8
 
 	OUTER_SET Continuous_Walahnan = 0 // DESIGNATED 6
@@ -462,13 +466,13 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 		OUTER_SET Continuous_Branwen = 1
 
 	END
-
+/*
 	ACTION_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~6~) BEGIN
 
 		OUTER_SET Continuous_Walahnan = 1
 
 	END
-
+*/
 	ACTION_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~7~) BEGIN
 
 		OUTER_SET Continuous_Isra = 1
@@ -490,6 +494,12 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 	ACTION_IF (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~10~) BEGIN
 
 		OUTER_SET Continuous_Kivan = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~ AND MOD_IS_INSTALLED ~DRIZZTSAGA.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~11~) BEGIN
+
+		OUTER_SET Continuous_Region_of_Terror = 1
 
 	END
 

@@ -477,19 +477,19 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 						COPY_EXISTING_REGEXP ~BDMUMMY.dlg~ ~override~
 							DECOMPILE_AND_PATCH BEGIN
 						// khaild
-								SPRINT textToReplace ~  !I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
-								COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+								SPRINT textToReplacekhaild ~  !I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
+								COUNT_REGEXP_INSTANCES ~%textToReplacekhaild%~ num_matches
 								PATCH_IF (num_matches > 0) BEGIN
-									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!IsValidForPartyDialog("Khalid")~
-									PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplacekhaild%~ ~!IsValidForPartyDialog("Khalid")~
+									PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplacekhaild%~
 									PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
 									~
 								END
-								SPRINT textToReplace ~  I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
-								COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+								SPRINT textToReplacekhaild ~  I[s|f]ValidForPartyDialog\(ue\)?("khaild")~
+								COUNT_REGEXP_INSTANCES ~%textToReplacekhaild%~ num_matches
 								PATCH_IF (num_matches > 0) BEGIN
-									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~IsValidForPartyDialog("Khalid")~
-									PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+									REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplacekhaild%~ ~IsValidForPartyDialog("Khalid")~
+									PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplacekhaild%~
 									PATCH_PRINT ~... // khaild found in %SOURCE_FILESPEC%
 									~
 								END
@@ -1336,7 +1336,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ AND NOT Continuous_Region_of_Terro
 				PRINT ~    Regis_Saga as traveler
 				~
 
-				OUTER_SET F_REGIS_BG2_Content = 1
+				OUTER_SET F_REGIS2_BG2_Content = 1
 
 	END ELSE ACTION_IF Regis_Saga_as_Real_traveler = 1 THEN BEGIN
 
@@ -1346,7 +1346,7 @@ ACTION_IF (FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ AND NOT Continuous_Region_of_Terro
 				PRINT ~    Regis_Saga as real traveler
 				~
 
-				OUTER_SET F_REGIS_BG2_Content = 1
+				OUTER_SET F_REGIS2_BG2_Content = 1
 
 	END
 
@@ -2832,6 +2832,10 @@ ACTION_IF (MOD_IS_INSTALLED ~setup-kivan.TP2~ ~100~ AND NOT Continuous_Kivan = 1
 				~
 
 	END
+
+END
+
+ACTION_IF (MOD_IS_INSTALLED ~setup-kivan.TP2~ ~100~) THEN BEGIN
 
 	ACTION_IF Deheriana_as_traveler = 1 THEN BEGIN
 

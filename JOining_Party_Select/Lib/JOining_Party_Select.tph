@@ -97,7 +97,7 @@ ACTION_FOR_EACH Death_var IN
 // Mod Real Artemis_Enteri_Saga       ~F_ARTEMIS~                                        // Artemis Enteri
 // Mod Real Catti-Brie_Saga           ~F_CATTIBR~                                        // Catti-Brie
 // Mod Real Bruenor_Saga              ~F_BRUENOR~                                        // Bruenor
-// Mod Real Regis_Saga                ~F_REGIS~                                          // Regis
+// Mod Real Regis_Saga                ~F_REGIS2~                                          // Regis
 // Mod Real Drizzt_Saga               ~F_DRIZZT~                                         // Drizzt
 // Mod Real Wulfgar_Saga              ~F_WULFGAR~                                        // Wulfgar
 
@@ -604,6 +604,3 @@ END
 							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~1REPLACESetGlobal~ ~~
 							REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~2REPLACESetGlobal~ ~~
 
-		INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_BCS.tph~
-
-		INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base_DLG.tph~

@@ -643,12 +643,12 @@ THEN
 		DisplayStringHead(Myself,~No problem.~)
 		SetGlobal("JO_JOIN_ALLY","LOCALS",0)
 		ChangeEnemyAlly(Myself,CONTROLLED)
-		ChangeAIScript("JO_JOINA",GENERAL)
+//		ChangeAIScript("JO_JOINA",GENERAL)
 	RESPONSE #2
 		DisplayStringHead(Myself,~Farewell.~)
 		SetGlobal("JO_JOIN_ALLY","LOCALS",0)
 		ChangeEnemyAlly(Myself,NEUTRAL)
-		ChangeAIScript("JO_JOINA",GENERAL)
+//		ChangeAIScript("JO_JOINA",GENERAL)
 END
 
 
