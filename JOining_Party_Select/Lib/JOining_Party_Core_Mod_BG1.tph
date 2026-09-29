@@ -435,7 +435,7 @@ BEGIN
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_REGIS_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_REGIS2_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG1.tpa~
 
@@ -1823,7 +1823,7 @@ OUTER_SPRINT "BG1_DREAM" "L#WALAHD"
 
 ACTION_FOR_EACH bcs IN
 
-// Mod Walahnan ~L#WALAH~ ~L#SWALAH~
+// Mod Walahnan_BG1 ~L#WALAH~ ~L#SWALAH~
 
 BEGIN
 

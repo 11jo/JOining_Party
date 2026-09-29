@@ -1995,7 +1995,7 @@ END
 ACTION_IF Walahnan_as_traveler = 1 AND NOT Continuous_Walahnan = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Mod Walahnan~ ~~
+			REPLACE_TEXTUALLY ~// Mod Walahnan_BG1~ ~~
 			PRINT ~    Walahnan as traveler
 			~
 
@@ -2006,7 +2006,7 @@ ACTION_IF Walahnan_as_traveler = 1 AND NOT Continuous_Walahnan = 1 THEN BEGIN
 END ELSE ACTION_IF Walahnan_as_Real_traveler = 1 AND NOT Continuous_Walahnan = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Mod Walahnan~ ~~
+			REPLACE_TEXTUALLY ~// Mod Walahnan_BG1~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Walahnan~ ~~
 			PRINT ~    Walahnan as real traveler
 			~
