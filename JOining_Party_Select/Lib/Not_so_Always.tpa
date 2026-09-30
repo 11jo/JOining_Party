@@ -325,15 +325,15 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 //////////////////////////////////////////////////////////////////////////////////////
 			OUTER_SPRINT "X3Kale_name"                  "Kale"
 //////////////////////////////////////////////////////////////////////////////////////
-			OUTER_SPRINT "Kasandra_name"                 "Kasandra"
+			OUTER_SPRINT "Kasandra_name"                "Kasandra"
 			OUTER_SPRINT "Masambe_name"                 "Masambe"
 			OUTER_SPRINT "Alethra_name"                 "Alethra"
 			OUTER_SPRINT "Rimardo_name"                 "Rimardo"
-			OUTER_SPRINT "Talindra_name"                 "Talindra"
+			OUTER_SPRINT "Talindra_name"                "Talindra"
 			OUTER_SPRINT "Theodor_name"                 "Theodor"
 			OUTER_SPRINT "Ariadne_name"                 "Ariadne"
-			OUTER_SPRINT "Nathan_name"                 "Nathan"
-			OUTER_SPRINT "Namiir_name"                 "Namiir"
+			OUTER_SPRINT "Nathan_name"                  "Nathan"
+			OUTER_SPRINT "Namiir_name"                  "Namiir"
 			OUTER_SPRINT "Miranda_name"                 "Miranda"
 //////////////////////////////////////////////////////////////////////////////////////
 			OUTER_SPRINT "L#WALAH_name"                 "Walahnan"
@@ -394,20 +394,26 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 			OUTER_SPRINT "X3Kal_name"                   "Kale"
 			OUTER_SPRINT "L#2WALAH_name"                "Walahnan"
 //////////////////////////////////////////////////////////////////////////////////////
-			OUTER_SPRINT "P_Dusk_name"                 "Dusk"
-			OUTER_SPRINT "P_Fall_name"                 "Fall"
-			OUTER_SPRINT "P_Chon_name"                 "Cho'Nuja"
-			OUTER_SPRINT "P_Alen_name"                 "Alendir"
-			OUTER_SPRINT "CKLysre_name"                "Lysre"
-			OUTER_SPRINT "TASHIA_name"                 "Tashia"
-			OUTER_SPRINT "T#DACE_name"                 "Dace"
+			OUTER_SPRINT "P_Dusk_name"                  "Dusk"
+			OUTER_SPRINT "P_Fall_name"                  "Fall"
+			OUTER_SPRINT "P_Chon_name"                  "Cho'Nuja"
+			OUTER_SPRINT "P_Alen_name"                  "Alendir"
+			OUTER_SPRINT "CKLysre_name"                 "Lysre"
+			OUTER_SPRINT "TASHIA_name"                  "Tashia"
+			OUTER_SPRINT "T#DACE_name"                  "Dace"
 // Next_Traveler BG2
 //////////////////////////////////////////////////////////////////////////////////////
-			OUTER_SPRINT "cmnikita_name"               "Nikita"
-			OUTER_SPRINT "ACBRE_name"                  "Breagar"
+			OUTER_SPRINT "cmnikita_name"                "Nikita"
+			OUTER_SPRINT "ACBRE_name"                   "Breagar"
 // Next_Traveler Continuous
 //////////////////////////////////////////////////////////////////////////////////////
 
+
+// Special Continuous
+
+	OUTER_SET Continuous_Alora = 0
+
+	OUTER_SET Continuous_Sharteel = 0
 
 // Special Continuous_End
 
@@ -437,7 +443,9 @@ APPEND ~STATE.IDS~ ~0x80102FEF JO_STATE_NOTVALID~
 
 ACTION_IF (GAME_IS ~eet~) BEGIN
 
-	ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~1~) BEGIN
+// Special Continuous_End
+
+	ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~1~) BEGIN
 
 		OUTER_SET Continuous_Alora = 1
 
@@ -503,6 +511,20 @@ ACTION_IF (GAME_IS ~eet~) BEGIN
 
 	END
 
+// Special Continuous
+
+	ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~1~) BEGIN
+
+		OUTER_SET Continuous_Alora = 1
+
+	END
+
+	ACTION_IF (MOD_IS_INSTALLED ~Sharteel_BG2.TP2~ ~0~ OR MOD_IS_INSTALLED ~Sharteel_BG2.TP2~ ~1~) BEGIN
+
+		OUTER_SET Continuous_Sharteel = 1
+
+	END
+
 END
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -517,9 +539,6 @@ ACTION_IF GAME_IS ~bgee eet~ BEGIN
 							OUTER_SPRINT "NEERA_CRE" ~NEERA~
 							OUTER_SPRINT "RASAAD_CRE" ~RASAAD~
 							OUTER_SPRINT "BAELOTH_CRE" ~BAELOT7~
-
-// Mod_Continuous_comp
-							OUTER_SPRINT "C0AURA_CRE" ~C0AURA~
 END
 
 ACTION_IF GAME_IS ~bg2ee~ BEGIN
@@ -527,9 +546,6 @@ ACTION_IF GAME_IS ~bg2ee~ BEGIN
 							OUTER_SPRINT "DORN_CRE" ~DORN8~
 							OUTER_SPRINT "NEERA_CRE" ~NEERA8~
 							OUTER_SPRINT "RASAAD_CRE" ~RASAAD8~
-
-// Mod_Continuous_BG2_comp
-							OUTER_SPRINT "C0AURA_CRE" ~C0AURA2~
 
 END
 

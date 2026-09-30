@@ -595,5 +595,52 @@ BEGIN
 	END
 END
 
+// Continuous_Sharteel
+// BG1
+OUTER_SPRINT "BG1_JOINED" "%SHARTEEL_JOINED%"
+OUTER_SPRINT "BG1_BCS" "%SHARTEEL_BCS%"
+OUTER_SPRINT "BG1_BANTER" "BSHART"
+OUTER_SPRINT "BG1_DREAM" "SHARTD"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" "BDSHARTJ"
+	OUTER_SPRINT "SoD_BCS" "k9shar"
+	OUTER_SPRINT "SoD_BANTER" "BDSHARTB"
+	OUTER_SPRINT "SoD_DREAM" "SHARTD"
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "JOcharJ"
+		OUTER_SPRINT "BG2_BCS" "JOsharte"
+		OUTER_SPRINT "BG2_BANTER" ""
+		OUTER_SPRINT "BG2_DREAM" "JOcharD"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "JOchar25J"
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" "JOchar25D"
+
+ACTION_FOR_EACH bcs IN
+
+// EET Sharteel_Continuous ~%SHARTEEL_BCS%~ ~k9shar~ ~JOsharte~ ~~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
 // Next_Traveler Continuous
 

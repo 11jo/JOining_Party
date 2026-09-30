@@ -451,7 +451,7 @@ ACTION_IF Traveler_Content_BG2 = 1 THEN BEGIN
 		OUTER_SPRINT	"Traveler_Content_BG2" "
 
 				 OUTER_SET %NEW_TRAVELER_DeathVar%_BG2_Content = 1"
-END BEGIN
+END ELSE BEGIN
 		OUTER_SPRINT	"Traveler_Content_BG2" ""
 END
 
@@ -512,7 +512,10 @@ END
 /////////////////////////// JOining_Party_Compatibility.tph ///////////////////////////
 
 		COPY ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~	~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
-			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+			PATCH_IF NOT (~%NEW_TRAVELER_Cre_Level%~ STRING_EQUAL_CASE ~~) BEGIN
+				REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
 // %Mod% Real %NEW_TRAVELER_NAME%            ~%NEW_TRAVELER_Cre_Level%~
 
 // %Next_Traveler Traveler_Game%~~~~~
+			END
+

@@ -626,7 +626,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Sharteel_as_traveler = 1 THEN BEGIN
+	ACTION_IF Sharteel_as_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
@@ -637,7 +637,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Sharteel_BG2_Content = 1
 
-	END ELSE ACTION_IF Sharteel_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Sharteel_as_Real_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
@@ -3485,6 +3485,34 @@ ACTION_IF (MOD_IS_INSTALLED ~ACBRE.TP2~ ~0~) THEN BEGIN
 
 	END
 
+END
+
+// Continuous_Sharteel
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SHARTEEL_BG2.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Sharteel_Continuous_as_traveler = 1 OR (Sharteel_as_traveler = 1 AND Continuous_Sharteel = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Sharteel_Continuous~ ~~
+			PRINT ~    Sharteel_Continuous as traveler
+			~
+
+	END ELSE ACTION_IF Sharteel_Continuous_as_Real_traveler = 1 OR (Sharteel_as_Real_traveler = 1 AND Continuous_Sharteel = 1) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Sharteel_Continuous~ ~~
+			REPLACE_TEXTUALLY ~// EET Real Sharteel_Continuous~ ~~
+			PRINT ~    Sharteel_Continuous as real traveler
+			~
+
+	END
+
+
+				 OUTER_SET Sharteel_SoD_Content = 1
+
+				 OUTER_SET Sharteel_BG2_Content = 1
 END
 
 // Next_Traveler Continuous
