@@ -309,6 +309,9 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Margarita Zelleod
 // Mod Margarita AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RL#MARG~)
 
+// Verr'sza BG1
+// Mod Verr'sza_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l#1verr~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#1DVer~)
+
 // Next_Traveler BG1
 
 /////////////////////////// Mods BG2 ///////////////////////////
@@ -447,6 +450,22 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Sharteel_BG2
 // Mod Sharteel_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JOsharte~)
+
+// Amber
+// Mod Amber AND NOT (~%override_script%~ STRING_EQUAL_CASE ~m#amber~)
+
+// Evandra
+// Mod Evandra AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#Eva~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#ev25~)
+
+// Lena
+// Mod Lena AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EU#Lena~)
+
+// Paina
+// Mod Pai'Na AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C0Paina~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C0Pai25S~)
+
+// Verr'sza BG2
+// Mod Verr'sza_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2verr~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l#2ve25~)
+// Mod Phalh AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2phal~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2ph25~)
 
 // Next_Traveler BG2
 

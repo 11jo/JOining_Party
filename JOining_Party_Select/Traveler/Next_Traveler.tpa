@@ -514,7 +514,7 @@ END
 		COPY ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~	~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
 			PATCH_IF NOT (~%NEW_TRAVELER_Cre_Level%~ STRING_EQUAL_CASE ~~) BEGIN
 				REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
-// %Mod% Real %NEW_TRAVELER_NAME%            ~%NEW_TRAVELER_Cre_Level%~
+// %Mod% %NEW_TRAVELER_NAME%            ~%NEW_TRAVELER_Cre_Level%~
 
 // %Next_Traveler Traveler_Game%~~~~~
 			END

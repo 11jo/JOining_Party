@@ -2071,6 +2071,34 @@ ACTION_IF (MOD_IS_INSTALLED ~MARGARITA.TP2~ ~0~) THEN BEGIN
 
 END
 
+// Verr'sza BG1
+
+
+ACTION_IF (MOD_IS_INSTALLED ~VERRSZA.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Verr'sza_BG1_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Verr'sza_BG1~ ~~
+			PRINT ~    Verr'sza_BG1 as traveler
+			~
+
+	END ELSE ACTION_IF Verr'sza_as_BG1_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Verr'sza_BG1~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Verr'sza_BG1~ ~~
+			PRINT ~    Verr'sza_BG1 as real traveler
+			~
+
+	END
+
+
+				 OUTER_SET l#1verr_SoD_Content = 1
+
+				 OUTER_SET l#1verr_BG2_Content = 1
+END
+
 // Next_Traveler BG1
 
 
@@ -3195,6 +3223,143 @@ ACTION_IF (MOD_IS_INSTALLED ~SHARTEEL_BG2.TP2~ ~0~) THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod Sharteel_BG2~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Sharteel_BG2~ ~~
 			PRINT ~    Sharteel_BG2 as real traveler
+			~
+
+	END
+
+END
+
+// Amber
+
+
+ACTION_IF (MOD_IS_INSTALLED ~AMBER.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Amber_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Amber~ ~~
+			PRINT ~    Amber as traveler
+			~
+
+	END ELSE ACTION_IF Amber_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Amber~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Amber~ ~~
+			PRINT ~    Amber as real traveler
+			~
+
+	END
+
+END
+
+// Evandra
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-EVANDRA.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Evandra_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Evandra~ ~~
+			PRINT ~    Evandra as traveler
+			~
+
+	END ELSE ACTION_IF Evandra_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Evandra~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Evandra~ ~~
+			PRINT ~    Evandra as real traveler
+			~
+
+	END
+
+END
+
+// Lena
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-LENA.TP2~ ~1~) THEN BEGIN
+
+	ACTION_IF Lena_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Lena~ ~~
+			PRINT ~    Lena as traveler
+			~
+
+	END ELSE ACTION_IF Lena_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Lena~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Lena~ ~~
+			PRINT ~    Lena as real traveler
+			~
+
+	END
+
+END
+
+// Paina
+
+
+ACTION_IF (MOD_IS_INSTALLED ~PAINA.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Pai'Na_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Pai'Na~ ~~
+			PRINT ~    Pai'Na as traveler
+			~
+
+	END ELSE ACTION_IF Pai'Na_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Pai'Na~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Pai'Na~ ~~
+			PRINT ~    Pai'Na as real traveler
+			~
+
+	END
+
+END
+
+// Verr'sza BG2
+
+
+ACTION_IF (MOD_IS_INSTALLED ~VERRBG2.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Verr'sza_BG2_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Verr'sza_BG2~ ~~
+			PRINT ~    Verr'sza_BG2 as traveler
+			~
+
+	END ELSE ACTION_IF Verr'sza_BG2_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Verr'sza_BG2~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Verr'sza_BG2~ ~~
+			PRINT ~    Verr'sza_BG2 as real traveler
+			~
+
+	END
+
+	ACTION_IF Phalh_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Phalh~ ~~
+			PRINT ~    Phalh as traveler
+			~
+
+	END ELSE ACTION_IF Phalh_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Phalh~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Phalh~ ~~
+			PRINT ~    Phalh as real traveler
 			~
 
 	END

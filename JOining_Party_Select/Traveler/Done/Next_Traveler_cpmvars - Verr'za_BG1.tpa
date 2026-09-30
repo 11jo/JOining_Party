@@ -24,7 +24,7 @@
 
 
 // Choose = 1 if NPC is for BG1 / SoD and 0 if NPC is for BG2 or Continuous
-	OUTER_SET Traveler_BG1 = 0
+	OUTER_SET Traveler_BG1 = 1
 
 
 // Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1 / SoD or Continuous
@@ -43,19 +43,19 @@
 ////////////////////////////////////////////////////////////////////////////
 
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
-	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Verr'sza_BG1"
 
 
 // Use NPC name :
 	// (If another NPC already have a similar name use name_BG2 or name_BG1. ex : Alora_BG2 or Drizzt_Terror)
 		// If name have two parts use _ in between.
 			// (If Traveler is Continuous use name_Continuous. ex : Alora_Continuous)
-	OUTER_SPRINT "NEW_TRAVELER_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Verr'sza"
 
 
 // Use the DeathVar / Script Name of the NPC :
 	// Info in PDIALOG.2DA or on the NPC
-	OUTER_SPRINT "NEW_TRAVELER_DeathVar" ""
+	OUTER_SPRINT "NEW_TRAVELER_DeathVar" "l#1verr"
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -64,12 +64,12 @@
 
 // Override_script for BG1.
 	// Info in PDIALOG.2DA or BGDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" "l#1verr"
 
 
 // Override_script for SoD if any.
 	// Info in BDDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" "L#1DVer"
 
 
 // Override_script for BG2.
@@ -89,11 +89,11 @@
 
 // Joining_dialog for BG1.
 	// Info in PDIALOG.2DA or BGDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" "l#1verrJ"
 
 // Joining_dialog for SoD if any.
 	// Info in BDDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" "L#1DVERJ"
 
 // Joining_dialog for BG2.
 	// Info in PDIALOG.2DA
@@ -110,11 +110,11 @@
 
 // Dream_banter for BG1.
 	// Info in PDIALOG.2DA or BGDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG1" "l#1verrD"
 
 // Dream_banter for SoD if any.
 	// Info in BDDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_SoD" "L#1DVERD"
 
 // Dream_banter for BG2.
 	// Info in PDIALOG.2DA
@@ -131,7 +131,7 @@
 
 // Regular_banter for BG1.
 	// Info in INTERDIA.2DA or BGBANTER.2DA
-	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG1" "l#1verrB"
 
 // Regular_banter for SoD if any.
 	// Info in BDBANTER.2DA
@@ -152,11 +152,11 @@
 
 // Only for BG1 npc
 // Choose = 1 if NPC have content in SoD (Like Tiax or Jaheira)
-	OUTER_SET Traveler_Content_SoD = 0
+	OUTER_SET Traveler_Content_SoD = 1
 
 // Only for BG1 and SoD npc
 // Choose = 1 if NPC have content in BG2 (Like Khalid, or Jaheira or Safana)
-	OUTER_SET Traveler_Content_BG2 = 0
+	OUTER_SET Traveler_Content_BG2 = 1
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -167,7 +167,7 @@
 	// ex : for BG1 (DORN)
 		// ex : for BG2 (DORN8)
 // Used for JOining_Party_Compatibility.tph in order to initialize the NPC at the beginning of the game.
-	OUTER_SPRINT "NEW_TRAVELER_Cre_Level" ""
+	OUTER_SPRINT "NEW_TRAVELER_Cre_Level" "L#1verr1"
 
 ////////////////////////////////////////////////////////////////////////////
 ////////  MOD INSTALLATION
@@ -176,13 +176,13 @@
 // Use mod.tp2 name (ex : ajantisbg2 or setup-kivan).
 	// Visible in Weidu.log ex : for (~BRANWEN/BRANWEN.TP2~ #2 #0) use BRANWEN.
 		// ex : for (~ZDBAE/SETUP-ZDBAE.TP2~ #0 #0) use SETUP-ZDBAE.
-	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "VERRSZA"
 
 
 // Use the DESIGNATED number of the main componant mentionned in .tp2.
 	// (Visible in Weidu.log ex : for (~BRANWEN/BRANWEN.TP2~ #2 #0) use 0.
 		// ex : for (~KIVAN/SETUP-KIVAN.TP2~ #0 #100) use 100.
-	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "0"
 
 
 /////////////////////////////////////////////////////////////////////
