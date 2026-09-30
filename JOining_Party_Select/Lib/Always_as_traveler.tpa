@@ -285,7 +285,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Alora_as_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	ACTION_IF Alora_as_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1 AND NOT Continuous_Alora = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Alora~ ~~
@@ -294,7 +294,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Alora_BG2_Content = 1
 
-	END ELSE ACTION_IF Alora_as_Real_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	END ELSE ACTION_IF Alora_as_Real_traveler = 1 AND (NOT Alora_Continuous_as_traveler = 1 AND NOT Alora_Continuous_as_Real_traveler = 1 AND NOT Continuous_Alora = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Alora~ ~~
@@ -626,7 +626,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 	END
 
-	ACTION_IF Sharteel_as_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	ACTION_IF Sharteel_as_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1 AND NOT Continuous_Sharteel = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
@@ -637,7 +637,7 @@ ACTION_IF (GAME_IS ~bgee eet bgt~) THEN BEGIN
 
 				 OUTER_SET Sharteel_BG2_Content = 1
 
-	END ELSE ACTION_IF Sharteel_as_Real_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+	END ELSE ACTION_IF Sharteel_as_Real_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1 AND NOT Continuous_Sharteel = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 				REPLACE_TEXTUALLY ~// Original Sharteel~ ~~
@@ -3171,6 +3171,30 @@ ACTION_IF (MOD_IS_INSTALLED ~DACE.TP2~ ~0~) THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod Dace~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Dace~ ~~
 			PRINT ~    Dace as real traveler
+			~
+
+	END
+
+END
+
+// Sharteel_BG2
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SHARTEEL_BG2.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Sharteel_BG2_as_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1 AND NOT Continuous_Sharteel = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sharteel_BG2~ ~~
+			PRINT ~    Sharteel_BG2 as traveler
+			~
+
+	END ELSE ACTION_IF Sharteel_BG2_as_Real_traveler = 1 AND (NOT Sharteel_Continuous_as_traveler = 1 AND NOT Sharteel_Continuous_as_Real_traveler = 1 AND NOT Continuous_Sharteel = 1) OR (NOT GAME_IS ~eet~) THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sharteel_BG2~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Sharteel_BG2~ ~~
+			PRINT ~    Sharteel_BG2 as real traveler
 			~
 
 	END
