@@ -52,6 +52,14 @@ END
 
 // %Next_Traveler Traveler_Game%~~~~~
 
+/////////////////////////// JOining_Party_Select_Base.tph ///////////////////////////
+
+		COPY ~JOining_Party_Select/Lib/JOining_Party_Select_Base.tph~	~JOining_Party_Select/Lib/JOining_Party_Select_Base.tph~
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// %Mod% Real %NEW_TRAVELER_NAME%            ~%NEW_TRAVELER_DeathVar%~
+
+// %Next_Traveler Traveler_Game%~~~~~
+
 /////////////////////////// JOining_Party_Select_Fix.tph ///////////////////////////
 
 ACTION_IF Traveler_BG1 = 1 THEN BEGIN
@@ -430,6 +438,23 @@ END
 
 
 /////////////////////////// Always_as_traveler.tpa ///////////////////////////
+
+ACTION_IF Traveler_Content_SoD = 1 THEN BEGIN
+		OUTER_SPRINT	"Traveler_Content_SoD" "
+
+				 OUTER_SET %NEW_TRAVELER_DeathVar%_SoD_Content = 1"
+END ELSE BEGIN
+		OUTER_SPRINT	"Traveler_Content_SoD" ""
+END
+
+ACTION_IF Traveler_Content_BG2 = 1 THEN BEGIN
+		OUTER_SPRINT	"Traveler_Content_BG2" "
+
+				 OUTER_SET %NEW_TRAVELER_DeathVar%_BG2_Content = 1"
+END BEGIN
+		OUTER_SPRINT	"Traveler_Content_BG2" ""
+END
+
 	// OUTER_SET ~%NEW_TRAVELER_DeathVar%_SoD_Content~ = 1 and  OUTER_SET ~%NEW_TRAVELER_DeathVar%_BG2_Content~ = 1
 		 // To add if needed
 
@@ -455,7 +480,7 @@ ACTION_IF (MOD_IS_INSTALLED ~%NEW_TRAVELER_MOD_TP2%.TP2~ ~%NEW_TRAVELER_MOD_COMP
 			~
 
 	END
-
+%Traveler_Content_SoD%%Traveler_Content_BG2%
 END
 
 // %Next_Traveler Traveler_Game%~~~~~
@@ -482,3 +507,12 @@ END
 %NEW_TRAVELER_NAME%                       = 1
 
 # %Next_Traveler Traveler_Game%~~~~~
+
+
+/////////////////////////// JOining_Party_Compatibility.tph ///////////////////////////
+
+		COPY ~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~	~JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
+			REPLACE_TEXTUALLY ~// %Next_Traveler Traveler_Game%~ ~~~~~// %NEW_TRAVELER_MOD_NAME%
+// %Mod% Real %NEW_TRAVELER_NAME%            ~%NEW_TRAVELER_Cre_Level%~
+
+// %Next_Traveler Traveler_Game%~~~~~

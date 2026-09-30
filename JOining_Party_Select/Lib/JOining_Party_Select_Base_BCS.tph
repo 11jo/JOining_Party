@@ -14,7 +14,9 @@ OUTER_SPRINT "slashdeux" "\2"
 	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 ///////////////////////////////////////////////////////////////////////////////
+
 // BASE
+
 ///////////////////////////////////////////////////////////////////////////////
 // !InPartyAllowDead("%Death_var%")
 // Replace_Death_in_NOT_AllowDead
@@ -212,8 +214,11 @@ OUTER_SPRINT "slashdeux" "\2"
 				~
 			END
 ///////////////////////////////////////////////////////////////////////////////
+
 // REAL TRAVELER
+
 ///////////////////////////////////////////////////////////////////////////////
+/*
 // ApplySpell situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(Player3,ApplySpell(Myself,\([^)]*\)))
 ^[%TAB% ]*ActionOverride(Player4,ApplySpell(Myself,\([^)]*\)))~
@@ -755,6 +760,7 @@ OUTER_SPRINT "slashdeux" "\2"
 					PATCH_PRINT ~... // Death_var : CutSceneId found in %SOURCE_FILESPEC%
 					~
 			END
+*/
 // REPLACE_NEW_Real_Traveler
 // Not usefull at the moment and OR() issues see bderinye.BCS.
 /*// StateCheck situation
@@ -785,7 +791,9 @@ OUTER_SPRINT "slashdeux" "\2"
 		//NearLocation(Player5,491,878,10)
 		//NearLocation(Player6,491,878,10)*/
 ///////////////////////////////////////////////////////////////////////////////
+
 // CUTSCENES
+
 ///////////////////////////////////////////////////////////////////////////////
 	// StartCutSceneMode() situation
 			SPRINT textToReplace ~\(^[%TAB% ]*SetCursorState(TRUE)\)~
@@ -820,7 +828,7 @@ OUTER_SPRINT "slashdeux" "\2"
 //
 			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~XG_BREAK.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
 	SetCutSceneLite(TRUE)
 	Wait(1)
@@ -847,8 +855,11 @@ OUTER_SPRINT "slashdeux" "\2"
 				PATCH_PRINT ~... // EndCutSceneMode() found in %SOURCE_FILESPEC%
 				~
 			END
-//////// Activate ///////////
-//////// ////// ///////////
+///////////////////////////////////////////////////////////////////////////////
+
+// Activate
+
+///////////////////////////////////////////////////////////////////////////////
 // Normal addition
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),StartDialog\([^)]*\)(\([^)]*\)))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
@@ -1042,7 +1053,9 @@ OUTER_SPRINT "slashdeux" "\2"
 			END
 */
 ///////////////////////////////////////////////////////////////////////////////
+
 // Interact
+
 ///////////////////////////////////////////////////////////////////////////////
 	// Interact() situation
 			SPRINT textToReplace ~^[%TAB% ]*ActionOverride(\([^)]*\),Interact(\([^)]*\)))~
@@ -1050,7 +1063,6 @@ OUTER_SPRINT "slashdeux" "\2"
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(\2,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
 				ActionOverride(\1,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
-	Wait(1)
 	\0~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
@@ -1061,14 +1073,15 @@ OUTER_SPRINT "slashdeux" "\2"
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride(\1,SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1))
 				SetGlobal("JO_JOIN_BANTER_INTERACT","LOCALS",1)
-	Wait(1)
 	\0~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // Interact() found in %SOURCE_FILESPEC%
 				~
 			END
 ///////////////////////////////////////////////////////////////////////////////
+
 // AreaFlag / RemoveAreaFlag
+
 ///////////////////////////////////////////////////////////////////////////////
 	// (NOSAVE) situation
 			SPRINT textToReplace ~RemoveAreaFlag(NOSAVE)~

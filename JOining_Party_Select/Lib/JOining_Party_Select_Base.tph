@@ -524,7 +524,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // space %Death_var% : !InPartyAllowDead found in %SF_workaround%
+				PATCH_PRINT ~... //  %Death_var% : !InPartyAllowDead found in %SF_workaround%
 				~
 			END~~~~~
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~Replace_Death_in_AllowDead~ ~~~~~Replace_Death_in_AllowDead
@@ -542,7 +542,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // space %Death_var% : InPartyAllowDead found in %SF_workaround%
+				PATCH_PRINT ~... //  %Death_var% : InPartyAllowDead found in %SF_workaround%
 				~
 			END~~~~~
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~Replace_Death_in_NOT_InParty~ ~~~~~Replace_Death_in_NOT_InParty
@@ -560,7 +560,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // space %Death_var% : !InParty found in %SF_workaround%
+				PATCH_PRINT ~... //  %Death_var% : !InParty found in %SF_workaround%
 				~
 			END~~~~~
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~Replace_Death_in_InParty~ ~~~~~Replace_Death_in_InParty
@@ -578,7 +578,7 @@ BEGIN
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // space %Death_var% : InParty found in %SF_workaround%
+				PATCH_PRINT ~... //  %Death_var% : InParty found in %SF_workaround%
 				~
 			END~~~~~
 			REPLACE_TEXTUALLY CASE_SENSITIVE EXACT_MATCH ~Replace_Death_in_NOT_Valid~ ~~~~~Replace_Death_in_NOT_Valid
