@@ -96,7 +96,7 @@
 // Mod Margarita                 ~RL#MARG~
 
 // Verr'sza BG1
-// Mod Verr'sza_BG1              ~L#1verr1~
+// // Mod Verr'sza_BG1              ~L#1verr1~ // Statue cannot run script
 
 // Next_Traveler BG1
 
@@ -244,28 +244,14 @@
 
 // EET Nikita                  ~cmnikita~                                   // Nikita
 
-// // EET Alora_Continuous        ~Alora~                                     // Alora_Continuous
-
-// // EET Ajantis_Continuous      ~Ajantis~                                   // Ajantis_Continuous
-
-// // EET Kivan_Continuous        ~Kivan~                                     // Kivan_Continuous
-
 // EET Walahnan_Continuous     ~L#WALAH~                                   // Walahnan_Continuous
-
-// // EET Coran_Continuous        ~Coran~                                     // Coran_Continuous
-
-// // EET Yeslick_Continuous      ~Yeslick~                                   // Yeslick_Continuous
-
-// // EET Xan_Continuous          ~Xan~                                       // Xan_Continuous
-
-// // EET Branwen_Continuous      ~Branwen~                                   // Branwen_Continuous
-
-// // EET Tiax_Continuous         ~Tiax~                                      // Tiax_Continuous
 
 // EET Isra_Continuous         ~rh#isra~                                  // Isra_Continuous
 
 // Ascalon's Breagar
-// Mod Breagar                 ~ACBRE~
+// // Mod Breagar                 ~ACBRE~ // Breagar not for BG2 should not be a problem
+
+// EET Region_of_Terror_Continuous     ~F_JARLAX~ ~F_ARTEMI~ ~F_CATTIB~ ~F_BRUENO~ ~F_REGIS2~ ~F_DRIZZT~ // ~F_WULFGA~ // Wulfgar not for BG2
 
 // Next_Traveler Continuous
 
@@ -279,7 +265,7 @@
 					READ_ASCII 0x248 override_script_comp
 //					READ_ASCII 0x268 Default_script_comp
 //					READ_ASCII 0x260 general_script_comp
-					READ_ASCII 0x280 DeathVar_comp
+					READ_ASCII 0x280 DeathVar_comp (32)
 /*
 					PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
 							OUTER_SPRINT "DEFAULT" ~script_comp~

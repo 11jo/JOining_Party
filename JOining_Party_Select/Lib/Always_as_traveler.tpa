@@ -2673,6 +2673,10 @@ ACTION_IF (MOD_IS_INSTALLED ~ROT.TP2~ ~0~ AND NOT Continuous_Region_of_Terror = 
 
 	END
 
+END
+
+ACTION_IF (MOD_IS_INSTALLED ~ROT.TP2~ ~0~) THEN BEGIN
+
 	ACTION_IF Tapio_Perkiomaki_Terror_as_traveler = 1 THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -3702,6 +3706,37 @@ ACTION_IF (MOD_IS_INSTALLED ~SHARTEEL_BG2.TP2~ ~0~) THEN BEGIN
 				 OUTER_SET Sharteel_SoD_Content = 1
 
 				 OUTER_SET Sharteel_BG2_Content = 1
+END
+
+// Continuous_Region_of_Terror
+
+
+ACTION_IF (Continuous_Region_of_Terror = 1) THEN BEGIN
+
+	ACTION_IF Region_of_Terror_Continuous_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Region_of_Terror_Continuous~ ~~
+			PRINT ~    Region_of_Terror_Continuous as traveler
+			~
+
+	END ELSE ACTION_IF Region_of_Terror_Continuous_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// EET Region_of_Terror_Continuous~ ~~
+			REPLACE_TEXTUALLY ~// EET Real Region_of_Terror_Continuous~ ~~
+			PRINT ~    Region_of_Terror_Continuous as real traveler
+			~
+
+	END
+
+				 OUTER_SET F_CATTIBR_BG2_Content = 1
+				 OUTER_SET F_BRUENOR_BG2_Content = 1
+				 OUTER_SET F_REGIS2_BG2_Content = 1
+				 OUTER_SET F_DRIZZT_BG2_Content = 1
+				 OUTER_SET F_WULFGAR_BG2_Content = 1
+				 OUTER_SET F_ARTEMIS_BG2_Content = 1
+				 OUTER_SET F_JARLAXE_BG2_Content = 1
 END
 
 // Next_Traveler Continuous
