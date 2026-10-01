@@ -3370,6 +3370,30 @@ ACTION_IF (MOD_IS_INSTALLED ~VERRBG2.TP2~ ~0~) THEN BEGIN
 
 END
 
+// Saradas magic for BG2
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SARADAS_MAGIC_2.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Saradas_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Saradas~ ~~
+			PRINT ~    Saradas as traveler
+			~
+
+	END ELSE ACTION_IF Saradas_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Saradas~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Saradas~ ~~
+			PRINT ~    Saradas as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 

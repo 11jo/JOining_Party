@@ -612,6 +612,13 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
 // 2
   COUNT_REGEXP_INSTANCES  ~^Phalh[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Phalh_as_Real_traveler
 
+// Saradas magic for BG2
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Saradas[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Saradas_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Saradas[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Saradas_as_Real_traveler
+
 // Next_Traveler BG2
 
 
