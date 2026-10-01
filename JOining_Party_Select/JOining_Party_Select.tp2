@@ -26,6 +26,61 @@ LANGUAGE ~English~
          ~JOining_Party_Select/Languages/english/setup.tra~
 
 
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+BEGIN ~JOining Party~
+DESIGNATED 0
+LABEL ~JOining_Party-Out~
+REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Necessite BGEE / BG2EE / EET~
+
+///////////////////////////////////////////////////////////////////////////////
+
+		INCLUDE ~JOining_Party_Select/Lib/JOining_Party_Outer.tph~
+
+///////////////////////////////////////////////////////////////////////////////
+
+		INCLUDE ~JOining_Party_Select/Lib/Not_so_Always.tpa~
+
+///////////////////////////////////////////////////////////////////////////////
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base.tph~
+
+///////////////////////////////////////////////////////////////////////////////
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~ // Real traveler only
+
+///////////////////////////////////////////////////////////////////////////////
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Joined.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_End.tph~
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Core_Original.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Core_Mod_BG1.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Core_Mod_BG2.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Core_Continuous.tph~
+
+///////////////////////////////////////////////////////////////////////////////
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Compatibility.tph~
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post.tph~
+
+///////////////////////////////////////////////////////////////////////////////
+
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Core.tph~
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+/*
 // Special componant only use for adding new NPC to the mod.
 // Will expend mod files with data added to Next_Traveler_cpmvars.tpa
 BEGIN ~Next Traveler~
@@ -34,4 +89,731 @@ LABEL ~JOining_Party-Next_Traveler~
 NO_LOG_RECORD
 INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler_cpmvars.tpa~
 INCLUDE ~JOining_Party_Select/Traveler/Next_Traveler.tpa~
+*/
 
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Traveler Quick Switch Timer
+
+
+BEGIN ~One hour (5 mn)~
+DESIGNATED 20
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-ONE_HOUR~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "ONE_HOUR"
+
+			OUTER_SPRINT "Switch_Timer_random" "ONE_HOUR,FOUR_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Two hours (10 mn)~
+DESIGNATED 21
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-TWO_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "TWO_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_HOURS,SIX_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Four hours (20 mn)~
+DESIGNATED 22
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-FOUR_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "FOUR_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_HOURS,EIGHT_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Six hours (30 mn)~
+DESIGNATED 23
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-SIX_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "SIX_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIX_HOURS,TEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Eight hours (40 mn)~
+DESIGNATED 24
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-EIGHT_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "EIGHT_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHT_HOURS,TWELVE_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Ten hours (50 mn / 10 hours in game)~
+DESIGNATED 25
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-TEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "TEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TEN_HOURS,FOURTEEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Twelve hours (60 mn)~
+DESIGNATED 26
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-TWELVE_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "TWELVE_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWELVE_HOURS,SIXTEEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Fourteen hours (70 mn)~
+DESIGNATED 27
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-FOURTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "FOURTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOURTEEN_HOURS,EIGHTEEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Sixteen hours (80 mn)~
+DESIGNATED 28
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-SIXTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "SIXTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIXTEEN_HOURS,TWENTY_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Eighteen hours (90 mn)~
+DESIGNATED 29
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-EIGHTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "EIGHTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHTEEN_HOURS,ONE_DAY"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Twenty hours (100 mn / 20 hours in game)~
+DESIGNATED 30
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-TWENTY_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "TWENTY_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWENTY_HOURS,TWO_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~One day (2 hours)~
+DESIGNATED 31
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-ONE_DAY~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "ONE_DAY"
+
+			OUTER_SPRINT "Switch_Timer_random" "ONE_DAY,THREE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Two days (4 hours / 48 hours in game)~
+DESIGNATED 32
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-TWO_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "TWO_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_DAYS,FOUR_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Three days (6 hours)~
+DESIGNATED 33
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-THREE_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "THREE_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "THREE_DAYS,FIVE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Four days (8 hours)~
+DESIGNATED 34
+SUBCOMPONENT ~Quick Switch Timer (Default : TWO_DAYS / 4 hours / 48 hours in game)~
+LABEL ~JOining_Party-Switch_Timer-FOUR_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 0
+
+			OUTER_SPRINT "Switch_Timer" "FOUR_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_DAYS,SIX_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+// Banter Timer
+
+
+BEGIN ~One hour (5 mn)~
+DESIGNATED 120
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_ONE_HOUR~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "ONE_HOUR"
+
+			OUTER_SPRINT "Switch_Timer_random" "ONE_HOUR,FOUR_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Two hours (10 mn)~
+DESIGNATED 121
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_TWO_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "TWO_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_HOURS,SIX_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Four hours (20 mn)~
+DESIGNATED 122
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_FOUR_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "FOUR_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_HOURS,EIGHT_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Six hours (30 mn)~
+DESIGNATED 123
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_SIX_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "SIX_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIX_HOURS,TEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Eight hours (40 mn)~
+DESIGNATED 124
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_EIGHT_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "EIGHT_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHT_HOURS,TWELVE_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Ten hours (50 mn / 10 hours in game)~
+DESIGNATED 125
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_TEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "TEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TEN_HOURS,FOURTEEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Twelve hours (60 mn)~
+DESIGNATED 126
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_TWELVE_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "TWELVE_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWELVE_HOURS,SIXTEEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Fourteen hours (70 mn)~
+DESIGNATED 127
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_FOURTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "FOURTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOURTEEN_HOURS,EIGHTEEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Sixteen hours (80 mn)~
+DESIGNATED 128
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_SIXTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "SIXTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIXTEEN_HOURS,TWENTY_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+BEGIN ~Eighteen hours (90 mn)~
+DESIGNATED 129
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_EIGHTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "EIGHTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHTEEN_HOURS,ONE_DAY"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Twenty hours (100 mn / 20 hours in game)~
+DESIGNATED 130
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_TWENTY_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "TWENTY_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWENTY_HOURS,TWO_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~One day (2 hours)~
+DESIGNATED 131
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_ONE_DAY~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "ONE_DAY"
+
+			OUTER_SPRINT "Switch_Timer_random" "ONE_DAY,THREE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Two days (4 hours / 48 hours in game)~
+DESIGNATED 132
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_TWO_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "TWO_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_DAYS,FOUR_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Three days (6 hours)~
+DESIGNATED 133
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_THREE_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "THREE_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "THREE_DAYS,FIVE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+BEGIN ~Four days (8 hours)~
+DESIGNATED 134
+SUBCOMPONENT ~Banter Timer (Default : FOUR HOURS / 20 mn)~
+LABEL ~JOining_Party-Switch_Timer-BANTER_FOUR_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 1
+
+			OUTER_SPRINT "banter_timer" "FOUR_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_DAYS,SIX_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+// Switching Party Timer : Switch between Party Member and Travelers 
+
+
+BEGIN ~Two hours (10 mn)~
+DESIGNATED 220
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_TWO_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "TWO_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_HOURS,FOUR_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Four hours (20 mn)~
+DESIGNATED 221
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_FOUR_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "FOUR_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_HOURS,EIGHT_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Six hours (30 mn)~
+DESIGNATED 222
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_SIX_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "SIX_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIX_HOURS,TWELVE_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Eight hours (40 mn)~
+DESIGNATED 223
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_EIGHT_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "EIGHT_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHT_HOURS,SIXTEEN_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Ten hours (50 mn)~
+DESIGNATED 224
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_TEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "TEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TEN_HOURS,TWENTY_HOURS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Twelve hours (60 mn)~
+DESIGNATED 225
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_TWELVE_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "TWELVE_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWELVE_HOURS,ONE_DAY"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Fourteen hours (70 mn)~
+DESIGNATED 226
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_FOURTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "FOURTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOURTEEN_HOURS,ONE_DAY"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Sixteen hours (80 mn)~
+DESIGNATED 227
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_SIXTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "SIXTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "SIXTEEN_HOURS,ONE_DAY"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Eighteen hours (90 mn)~
+DESIGNATED 228
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_EIGHTEEN_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "EIGHTEEN_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "EIGHTEEN_HOURS,TWO_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Twenty hours (100 mn / 20 hours in game)~
+DESIGNATED 229
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_TWENTY_HOURS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "TWENTY_HOURS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWENTY_HOURS,TWO_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~One day (2 hours)~
+DESIGNATED 230
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_ONE_DAY~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "ONE_DAY"
+
+			OUTER_SPRINT "Switch_Timer_random" "ONE_DAY,THREE_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Two days (4 hours / 48 hours in game)~
+DESIGNATED 231
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_TWO_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "TWO_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "TWO_DAYS,FOUR_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Three days (6 hours)~
+DESIGNATED 232
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_THREE_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "THREE_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "THREE_DAYS,SIX_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
+
+BEGIN ~Four days (8 hours)~
+DESIGNATED 233
+SUBCOMPONENT ~Switching Party Timer (Default : ONE DAY / 2 hours)~
+LABEL ~JOining_Party-Switch_Timer-PARTY_FOUR_DAYS~
+REQUIRE_PREDICATE (FILE_EXISTS_IN_GAME ~JO_JOINI.BCS~) ~Necessite Main component~
+  NO_LOG_RECORD
+
+			OUTER_SET switch_componant_timer = 2
+
+			OUTER_SPRINT "Switch_Timer" "FOUR_DAYS"
+
+			OUTER_SPRINT "Switch_Timer_random" "FOUR_DAYS,EIGHT_DAYS"
+
+INCLUDE ~JOining_Party_Select/Lib/Switch_Timer.tph~
+
+//
