@@ -60,6 +60,7 @@ There is no real limitation as for the number of familiars / travelers that play
 
 - Compatibility : BGEE, SOD, BG2EE and EET.  
 	- Recommanded : [EEex](https://github.com/Bubb13/EEex) from Bubb, to benefit of the increased number of characters clearing the Fog of War.
+	- Recommanded : [bubb_revert_pathfinding](https://github.com/Bubb13/IE-Snippets) from Bubb
 	- Warning : [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is probably incompatible if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
 	- Compatible with : [Continuous_End](https://github.com/11jo/Continuous_End) mod that allow several NPCs to be continuous For EET.
 
