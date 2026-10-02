@@ -240,6 +240,19 @@
 // Saradas magic for BG2
 // Mod Saradas                ~!sartob~
 
+// Varshoon
+// Mod Varshoon               ~VxVar01~
+
+// Skie the Cost of One girl Soul
+// Mod Skie                   ~l#2sdski~
+// Mod Eddard                 ~l#2eddrd~
+
+// Anishai
+// Mod Anishai                ~Anishai~
+
+// Will of the Wisps
+// Mod WispWill               ~L0will~
+
 // Next_Traveler BG2
 
 
@@ -268,7 +281,7 @@
 					READ_ASCII 0x248 override_script_comp
 //					READ_ASCII 0x268 Default_script_comp
 //					READ_ASCII 0x260 general_script_comp
-					READ_ASCII 0x280 DeathVar_comp (32)
+					READ_ASCII 0x280 DeathVar_comp (32) NULL
 /*
 					PATCH_IF (~%Default_script_comp%~ STRING_EQUAL_CASE ~~) BEGIN
 							OUTER_SPRINT "DEFAULT" ~script_comp~

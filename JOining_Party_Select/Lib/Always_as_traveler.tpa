@@ -3394,6 +3394,124 @@ ACTION_IF (MOD_IS_INSTALLED ~SARADAS_MAGIC_2.TP2~ ~0~) THEN BEGIN
 
 END
 
+// Varshoon
+
+
+ACTION_IF (MOD_IS_INSTALLED ~VARSHOON.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Varshoon_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Varshoon~ ~~
+			PRINT ~    Varshoon as traveler
+			~
+
+	END ELSE ACTION_IF Varshoon_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Varshoon~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Varshoon~ ~~
+			PRINT ~    Varshoon as real traveler
+			~
+
+	END
+
+END
+
+// Skie the Cost of One girl Soul
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SKIECOST.TP2~ ~1~) THEN BEGIN
+
+	ACTION_IF Skie_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Skie~ ~~
+			PRINT ~    Skie as traveler
+			~
+
+	END ELSE ACTION_IF Skie_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Skie~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Skie~ ~~
+			PRINT ~    Skie as real traveler
+			~
+
+	END
+
+END
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SKIECOST.TP2~ ~3~) THEN BEGIN
+
+	ACTION_IF Eddard_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Eddard~ ~~
+			PRINT ~    Eddard as traveler
+			~
+
+	END ELSE ACTION_IF Eddard_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Eddard~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Eddard~ ~~
+			PRINT ~    Eddard as real traveler
+			~
+
+	END
+
+END
+
+// Anishai
+
+
+ACTION_IF (MOD_IS_INSTALLED ~ANISHAI.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Anishai_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Anishai~ ~~
+			PRINT ~    Anishai as traveler
+			~
+
+	END ELSE ACTION_IF Anishai_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Anishai~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Anishai~ ~~
+			PRINT ~    Anishai as real traveler
+			~
+
+	END
+
+END
+
+// Will of the Wisps
+
+
+ACTION_IF (MOD_IS_INSTALLED ~WILLOWISP.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF WispWill_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod WispWill~ ~~
+			PRINT ~    Will as traveler
+			~
+
+	END ELSE ACTION_IF WispWill_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod WispWill~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real WispWill~ ~~
+			PRINT ~    Will as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 
