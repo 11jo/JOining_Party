@@ -28,7 +28,7 @@
 
 
 // Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1 / SoD or Continuous
-	OUTER_SET Traveler_BG2 = 0
+	OUTER_SET Traveler_BG2 = 1
 
 /* Not implemented for the moment
 // Choose = 1 if NPC is for SoD only and 0 if NPC is for BG1 / SoD, BG2 or Continuous
@@ -43,19 +43,19 @@
 ////////////////////////////////////////////////////////////////////////////
 
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
-	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Anishai"
 
 
 // Use NPC name :
 	// (If another NPC already have a similar name use name_BG2 or name_BG1. ex : Alora_BG2 or Drizzt_Terror)
 		// If name have two parts use _ in between.
 			// (If Traveler is Continuous use name_Continuous. ex : Alora_Continuous)
-	OUTER_SPRINT "NEW_TRAVELER_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Anishai"
 
 
 // Use the DeathVar / Script Name of the NPC :
 	// Info in PDIALOG.2DA or on the NPC
-	OUTER_SPRINT "NEW_TRAVELER_DeathVar" ""
+	OUTER_SPRINT "NEW_TRAVELER_DeathVar" "Anishai"
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@
 
 // Override_script for ToB if any.
 	// Info in PDIALOG.2DA or 25DIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_ToB" "Anishai25"
 // SPECIAL : Check if override ToB script is associated to an cre, if not JOining_Party_Joined.tph and Switch_Timer.tph need an addition
 
 
@@ -97,11 +97,11 @@
 
 // Joining_dialog for BG2.
 	// Info in PDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" "AnishaiJ"
 
 // Joining_dialog for ToB if any.
 	// Info in PDIALOG.2DA or 25DIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" "AnishaiJ"
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -118,11 +118,11 @@
 
 // Dream_banter for BG2.
 	// Info in PDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG2" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG2" "AnishaiD"
 
 // Dream_banter for ToB if any.
 	// Info in PDIALOG.2DA or 25DIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_TOB" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_TOB" "AnishaiD"
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -167,7 +167,7 @@
 	// ex : for BG1 (DORN)
 		// ex : for BG2 (DORN8)
 // Used for JOining_Party_Compatibility.tph in order to initialize the NPC at the beginning of the game.
-	OUTER_SPRINT "NEW_TRAVELER_Cre_Level" ""
+	OUTER_SPRINT "NEW_TRAVELER_Cre_Level" "Anishai"
 
 ////////////////////////////////////////////////////////////////////////////
 ////////  MOD INSTALLATION
@@ -176,13 +176,13 @@
 // Use mod.tp2 name (ex : ajantisbg2 or setup-kivan).
 	// Visible in Weidu.log ex : for (~BRANWEN/BRANWEN.TP2~ #2 #0) use BRANWEN.
 		// ex : for (~ZDBAE/SETUP-ZDBAE.TP2~ #0 #0) use SETUP-ZDBAE.
-	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "ANISHAI"
 
 
 // Use the DESIGNATED number of the main componant mentionned in .tp2.
 	// (Visible in Weidu.log ex : for (~BRANWEN/BRANWEN.TP2~ #2 #0) use 0.
 		// ex : for (~KIVAN/SETUP-KIVAN.TP2~ #0 #100) use 100.
-	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "0"
 
 
 /////////////////////////////////////////////////////////////////////

@@ -435,7 +435,7 @@ BEGIN
 
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_REGIS_All_In.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_REGIS2_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG1.tpa~
 
@@ -1823,7 +1823,7 @@ OUTER_SPRINT "BG1_DREAM" "L#WALAHD"
 
 ACTION_FOR_EACH bcs IN
 
-// Mod Walahnan ~L#WALAH~ ~L#SWALAH~
+// Mod Walahnan_BG1 ~L#WALAH~ ~L#SWALAH~
 
 BEGIN
 
@@ -1918,6 +1918,48 @@ BEGIN
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/RL#MARG_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG1.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG1.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG1.tph~
+
+	END
+END
+
+// Verr'sza BG1
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "l#1verrJ"
+OUTER_SPRINT "BG1_BCS" "l#1verr"
+OUTER_SPRINT "BG1_BANTER" "l#1verrB"
+OUTER_SPRINT "BG1_DREAM" "l#1verrD"
+	// SoD
+	ACTION_IF (GAME_IS ~eet~) BEGIN
+	OUTER_SPRINT "SoD_JOINED" "l#1verrJ"
+	END ELSE BEGIN
+	OUTER_SPRINT "SoD_JOINED" "L#1DVERJ"
+	END
+	OUTER_SPRINT "SoD_BCS" "L#1DVer"
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" "L#1DVERD"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Verr'sza_BG1 ~l#1verr~ ~L#1DVer~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/l#1verr_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG1.tpa~
 

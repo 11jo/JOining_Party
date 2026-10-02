@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/JOining_Party_Select/backup~
 AUTHOR ~~
 
-VERSION ~Beta.1.5~
+VERSION ~Beta.1.6~
 
 AUTO_EVAL_STRINGS
 
@@ -50,6 +50,8 @@ REQUIRE_PREDICATE GAME_IS ~bgee bg2ee eet~ ~Necessite BGEE / BG2EE / EET~
 
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select.tph~
 
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Base.tph~
+
 ///////////////////////////////////////////////////////////////////////////////
 
 INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Select_Fix.tph~ // Real traveler only
@@ -66,7 +68,7 @@ INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Core_Continuous.tph~
 
 ///////////////////////////////////////////////////////////////////////////////
 
-INCLUDE ~weidu_external/JOining_Party_Select/Mod_Compatibility/JOining_Party_Compatibility.tph~
+INCLUDE ~weidu_external/JOining_Party_Select/JOining_Party_Compatibility.tph~
 
 		INCLUDE ~JOining_Party_Select/Campaign_Transition/JOining_Party_Post.tph~
 

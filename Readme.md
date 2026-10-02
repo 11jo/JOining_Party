@@ -23,8 +23,8 @@
 **Installation could last between 10 to 30+ minutes depending of the number of NPCs chosen and the number of mods installed**
 
 - Use the Charname **special ability** to convert NPC to Familiar / traveler.
-	- You can use the **special ability** on an traveler then talk to the traveler to acces a PID and manage the traveler.
-	- You can use the **special ability** **on Charname** to launch a dialog to manage travelers.
+	- Use the **special ability** on an traveler then talk to the traveler to acces a PID and manage the traveler.
+	- Use the **special ability** **on Charname** to launch a dialog to manage travelers.
 
 - **Loading Switch :**
 	- **When loading a save the Travelers have to switch once before being reliably available for script and dialog.**
@@ -53,6 +53,8 @@ This mod aims to provide a way to extend the limit of 6 characters in party by u
 
 There is no real limitation as for the number of familiars / travelers that players can have along side them. However, to prevent the scripts from being overwhelmed, it’s advisable not to have more than five or six travelers.
 
+Check [available travelers here](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini).
+
 
 ### Instruction : 
 ----------------
@@ -60,6 +62,7 @@ There is no real limitation as for the number of familiars / travelers that play
 
 - Compatibility : BGEE, SOD, BG2EE and EET.  
 	- Recommanded : [EEex](https://github.com/Bubb13/EEex) from Bubb, to benefit of the increased number of characters clearing the Fog of War.
+	- Recommanded : [bubb_revert_pathfinding](https://github.com/Bubb13/IE-Snippets) from Bubb
 	- Warning : [More Interjections](https://gibberlings3.github.io/Documentation/readmes/readme-cdtweaks.html#contents_1010), from Tweak Anthology, [componant 1010](https://github.com/Gibberlings3/Tweaks-Anthology/blob/master/cdtweaks/lib/comp_1010.tpa) is probably incompatible if installed BEFORE JOining Party... But should be okay if installed AFTER... Still need to be investigated !
 	- Compatible with : [Continuous_End](https://github.com/11jo/Continuous_End) mod that allow several NPCs to be continuous For EET.
 
@@ -75,7 +78,7 @@ There is no real limitation as for the number of familiars / travelers that play
 **Before installing the mod** select the NPCs that could become travelers in [JOining_Traveler.ini](https://github.com/11jo/JOining_Party/blob/main/JOining_Party_Select/JOining_Traveler.ini)
 - 0 the NPC is not expanded to become a traveler.
 - 1 Npc will be expended to be traveler (Familiar fully considered as party member.)
-	- By default all NPC integrated to the mod will be set to 1. (Except for Continuous original game NPC)
+	- By default all NPC integrated to the mod will be set to 1.
 <!--
 - 2 Npc will be expended to be a real traveler :
 	- By default all Continuous original game NPC, will be set to 2. (Imoen, Edwin, Jaheira, Minsc, Viconia, Dorn, Neera and Rasaad)
@@ -84,7 +87,7 @@ There is no real limitation as for the number of familiars / travelers that play
 	- (Warning Option 2 is Experimental and will expend installation time significaly, to use only with few traveler.)
 -->
 
-You can check [PID options and what they do here](https://github.com/11jo/JOining_Party/blob/main/PID_References.md).
+Check [PID options and what they do here](https://github.com/11jo/JOining_Party/blob/main/PID_References.md).
 
 
 ### Componants :
@@ -128,7 +131,7 @@ Starting a new game, Charname receive a special ability the "Engagement.
 	- Follow (Close or at sight) the party member who initiate the talk.
 	- Make the Travelers joining the party as regular party member.
 	- Make the Travelers joining the party just an instant, to deal with statistic, inventory or level, then automatically returning to familiar state.
-	- Choose if you want the familier to be deactivate for Cutscenes.
+	- Choose if the traveler to be deactivate for Cutscenes.
 	- Make the Travelers completly leave the party, will automatically be added an instant to the group then removed, in order to set leaving dialog.
 
  - **Using the ability**, on Charname, will [open a dialog](https://github.com/11jo/JOining_Party/blob/main/PID_References.md#pid-for-charname).
@@ -176,7 +179,7 @@ Starting a new game, Charname receive a special ability the "Engagement.
 
   
 **Before** a switch they will look to Charname or a party member and say "Hey", before joining the group.
-When returning temporarly in party, statistic, inventory or level are available. (Use Pause to take your time if actions on it are needed.)
+When returning temporarly in party, statistic, inventory or level are available. (Use Pause to take the time if actions on it are needed.)
 **After** the switch is completed they will say "Yeah", after leaving the group.
 
 At the moment **several indication texts will appear in dialog box** to inform the player about what is currently processing.
@@ -189,18 +192,12 @@ At the moment **several indication texts will appear in dialog box** to inform t
 ---------------------------------
 
 
-Double-click the JOining_Party.exe file and install to your main game directory
+Double-click the JOining_Party.exe file and install to main game directory
 Once the install program has finished, it will launce the WeiDU installer program. Simply follow the on-screen instructions in the new DOS window. 
 
 Though this mod is made using the WeiDU standard, and *should* be compatible with all other WeiDU-based mods, there is always the possibility for conflicts. 
 
 Uninstalling is simple. Double-click the setup-JOining_Party.exe file and enter the given commands for Uninstallation.
-Afterwards, you may delete the following files:
-
-    JOining_Party.exe
-    JOining_Party.tp2
-    JOining_Party.debug
-    and the contents of the "JOining_Party" subfolder 
 
 
 ### Credits / Remerciements :
@@ -214,6 +211,13 @@ Afterwards, you may delete the following files:
 ### Version History :
 --------------------
 
+- Beta v1.6
+	- Installation take time depending of the number of selected travelers and the number of mod installed
+	- Don't modify non selected NPC
+	- Initialize selected travelers at the beginning of the game
+	- New travelers (Verr'sza, Lysre, Tashia, Dace, Sharteel_BG2, Amber, Evandra, Saradas, Lena, Pai'Na, Varshoon, Skie, Eddard, Anishai, Will of the Wisps, Angelo, Adrian, Hubelpot)
+	- Many others things... 
+
 - Beta v1.5
 	- Rework Leave Party
 	- Rework Campaign transitions
@@ -221,11 +225,7 @@ Afterwards, you may delete the following files:
 	- Rework Installation for scripts
 	- Rename files
 	- Add support for Continuous_End mod
-	- Add support for Autumn Twilight mod
-	- Add support for New Tales of the Sword Coast mod
-	- Add support for Walahnan mods
-	- Add support for Imoen Forever mod
-	- Add support for Endless BG1 mod
+	- New travelers (Autumns Twilight, Walahnan, Kale, Margarita, AerieBG:EE, New Tales of the Sword Coast)
 	- Clean up
 	- Typos and errors corrections
 	- Add infos in scripts files

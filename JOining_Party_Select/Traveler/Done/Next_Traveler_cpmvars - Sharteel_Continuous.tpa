@@ -36,26 +36,26 @@
 */
 
 // Choose = 1 if NPC is for BG2 and 0 if NPC is for BG1 / SoD or BG2
-	OUTER_SET Traveler_Continuous = 0
+	OUTER_SET Traveler_Continuous = 1
 
 ////////////////////////////////////////////////////////////////////////////
 ////////  NAME
 ////////////////////////////////////////////////////////////////////////////
 
 // Use mod name (ex : Ajantis BG2 or Kivan and Deheriana)
-	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_NAME" "Continuous_Sharteel"
 
 
 // Use NPC name :
 	// (If another NPC already have a similar name use name_BG2 or name_BG1. ex : Alora_BG2 or Drizzt_Terror)
 		// If name have two parts use _ in between.
 			// (If Traveler is Continuous use name_Continuous. ex : Alora_Continuous)
-	OUTER_SPRINT "NEW_TRAVELER_NAME" ""
+	OUTER_SPRINT "NEW_TRAVELER_NAME" "Sharteel_Continuous"
 
 
 // Use the DeathVar / Script Name of the NPC :
 	// Info in PDIALOG.2DA or on the NPC
-	OUTER_SPRINT "NEW_TRAVELER_DeathVar" ""
+	OUTER_SPRINT "NEW_TRAVELER_DeathVar" "Sharteel"
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -64,17 +64,17 @@
 
 // Override_script for BG1.
 	// Info in PDIALOG.2DA or BGDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG1" "%SHARTEEL_BCS%"
 
 
 // Override_script for SoD if any.
 	// Info in BDDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_SoD" "k9shar"
 
 
 // Override_script for BG2.
 	// Info in PDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" ""
+	OUTER_SPRINT "NEW_TRAVELER_OVERRIDE_SCRIPT_NAME_BG2" "JOsharte"
 
 
 // Override_script for ToB if any.
@@ -89,19 +89,19 @@
 
 // Joining_dialog for BG1.
 	// Info in PDIALOG.2DA or BGDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG1" "%SHARTEEL_JOINED%"
 
 // Joining_dialog for SoD if any.
 	// Info in BDDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_SoD" "BDSHARTJ"
 
 // Joining_dialog for BG2.
 	// Info in PDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_BG2" "JOcharJ"
 
 // Joining_dialog for ToB if any.
 	// Info in PDIALOG.2DA or 25DIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" ""
+	OUTER_SPRINT "NEW_TRAVELER_JOINING_DIALOG_NAME_ToB" "JOchar25J"
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -110,19 +110,19 @@
 
 // Dream_banter for BG1.
 	// Info in PDIALOG.2DA or BGDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG1" "SHARTD"
 
 // Dream_banter for SoD if any.
 	// Info in BDDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_SoD" "SHARTD"
 
 // Dream_banter for BG2.
 	// Info in PDIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG2" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_BG2" "JOcharD"
 
 // Dream_banter for ToB if any.
 	// Info in PDIALOG.2DA or 25DIALOG.2DA
-	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_TOB" ""
+	OUTER_SPRINT "NEW_TRAVELER_DREAM_BANTER_NAME_TOB" "JOchar25D"
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -131,11 +131,11 @@
 
 // Regular_banter for BG1.
 	// Info in INTERDIA.2DA or BGBANTER.2DA
-	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG1" ""
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_BG1" "BSHART"
 
 // Regular_banter for SoD if any.
 	// Info in BDBANTER.2DA
-	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_SoD" ""
+	OUTER_SPRINT "NEW_TRAVELER_REGULAR_BANTER_NAME_SoD" "BDSHARTB"
 
 // Regular_banter for BG2.
 	// Info in INTERDIA.2DA
@@ -152,11 +152,11 @@
 
 // Only for BG1 npc
 // Choose = 1 if NPC have content in SoD (Like Tiax or Jaheira)
-	OUTER_SET Traveler_Content_SoD = 0
+	OUTER_SET Traveler_Content_SoD = 1
 
 // Only for BG1 and SoD npc
 // Choose = 1 if NPC have content in BG2 (Like Khalid, or Jaheira or Safana)
-	OUTER_SET Traveler_Content_BG2 = 0
+	OUTER_SET Traveler_Content_BG2 = 1
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -176,13 +176,13 @@
 // Use mod.tp2 name (ex : ajantisbg2 or setup-kivan).
 	// Visible in Weidu.log ex : for (~BRANWEN/BRANWEN.TP2~ #2 #0) use BRANWEN.
 		// ex : for (~ZDBAE/SETUP-ZDBAE.TP2~ #0 #0) use SETUP-ZDBAE.
-	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_TP2" "SHARTEEL_BG2"
 
 
 // Use the DESIGNATED number of the main componant mentionned in .tp2.
 	// (Visible in Weidu.log ex : for (~BRANWEN/BRANWEN.TP2~ #2 #0) use 0.
 		// ex : for (~KIVAN/SETUP-KIVAN.TP2~ #0 #100) use 100.
-	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" ""
+	OUTER_SPRINT "NEW_TRAVELER_MOD_COMPONANT" "0"
 
 
 /////////////////////////////////////////////////////////////////////

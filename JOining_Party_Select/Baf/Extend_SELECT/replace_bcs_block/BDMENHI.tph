@@ -4,7 +4,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		Activate("%bdmenhi%")
 		ActionOverride("%bdmenhi%",StartDialogueNoSet(Player6))
 END
 >>>>>>>>
@@ -15,7 +14,6 @@ IF
 THEN
 	RESPONSE #100
 		SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",0)
-		Activate("%bdmenhi%")
 		ActionOverride("%bdmenhi%",StartDialogueNoSet(Player6))
 END
 

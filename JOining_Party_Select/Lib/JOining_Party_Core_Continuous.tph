@@ -595,5 +595,387 @@ BEGIN
 	END
 END
 
+// Continuous_Sharteel
+// BG1
+OUTER_SPRINT "BG1_JOINED" "%SHARTEEL_JOINED%"
+OUTER_SPRINT "BG1_BCS" "%SHARTEEL_BCS%"
+OUTER_SPRINT "BG1_BANTER" "BSHART"
+OUTER_SPRINT "BG1_DREAM" "SHARTD"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" "BDSHARTJ"
+	OUTER_SPRINT "SoD_BCS" "k9shar"
+	OUTER_SPRINT "SoD_BANTER" "BDSHARTB"
+	OUTER_SPRINT "SoD_DREAM" "SHARTD"
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "JOcharJ"
+		OUTER_SPRINT "BG2_BCS" "JOsharte"
+		OUTER_SPRINT "BG2_BANTER" ""
+		OUTER_SPRINT "BG2_DREAM" "JOcharD"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "JOchar25J"
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" "JOchar25D"
+
+ACTION_FOR_EACH bcs IN
+
+// EET Sharteel_Continuous ~%SHARTEEL_BCS%~ ~k9shar~ ~JOsharte~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Sharteel_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+// Region_of_Terror_Continuous
+
+ACTION_IF FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ BEGIN
+		COPY_EXISTING ~F_JARLAX.CRE~ ~override/F_JARLAX.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~F_JARLAX~ (8)
+		WRITE_ASCII SCRIPT_CLASS ~~ (8)
+	END
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "F_JARLAJ"
+OUTER_SPRINT "BG1_BCS" "F_JARLAX"
+OUTER_SPRINT "BG1_BANTER" "F_JARLAB"
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "Jarlax2J" // Missing (created at installation)
+		OUTER_SPRINT "BG2_BCS" "Jarlax2"
+		OUTER_SPRINT "BG2_BANTER" "BJarlax2"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// EET Region_of_Terror_Continuous ~F_JARLAX~ ~Jarlax2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_JARLAXE_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~F_ARTEMI.cre~ BEGIN
+		COPY_EXISTING ~F_ARTEMI.CRE~ ~override/F_ARTEMI.CRE~
+		WRITE_ASCII SCRIPT_OVERRIDE ~F_ASSASI~ (8)
+		WRITE_ASCII SCRIPT_CLASS ~~ (8)
+	END
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "F_ARTEMJ"
+OUTER_SPRINT "BG1_BCS" "F_ASSASI"
+OUTER_SPRINT "BG1_BANTER" "F_ARTEMB"
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "Enter2J" // Missing (created at installation)
+		OUTER_SPRINT "BG2_BCS" "ENTER2"
+		OUTER_SPRINT "BG2_BANTER" "BEnter2"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// EET Region_of_Terror_Continuous ~F_ASSASI~ ~Enter2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_ARTEMIS_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "F_CATTIJ"
+OUTER_SPRINT "BG1_BCS" "F_CATTIB"
+OUTER_SPRINT "BG1_BANTER" "F_CATTIB"
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "Catt2J"
+		OUTER_SPRINT "BG2_BCS" "Catt2"
+		OUTER_SPRINT "BG2_BANTER" "BCatt2"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// EET Region_of_Terror_Continuous ~F_CATTIB~ ~Catt2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_CATTIBR_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "F_BRUENJ"
+OUTER_SPRINT "BG1_BCS" "F_BRUENO"
+OUTER_SPRINT "BG1_BANTER" "F_BRUENB"
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "Brue2J"
+		OUTER_SPRINT "BG2_BCS" "Brue2"
+		OUTER_SPRINT "BG2_BANTER" "BBrue2"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// EET Region_of_Terror_Continuous ~F_BRUENO~ ~Brue2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_BRUENOR_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "F_REGISJ"
+OUTER_SPRINT "BG1_BCS" "F_REGIS2"
+OUTER_SPRINT "BG1_BANTER" "F_REGISB"
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "Reg2J"
+		OUTER_SPRINT "BG2_BCS" "REG2"
+		OUTER_SPRINT "BG2_BANTER" "BReg2"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// EET Region_of_Terror_Continuous ~F_REGIS2~ ~Reg2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_REGIS2_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
+// BG1
+OUTER_SPRINT "BG1_JOINED" "F_DRIZTJ"
+OUTER_SPRINT "BG1_BCS" "F_DRIZZT"
+OUTER_SPRINT "BG1_BANTER" "F_DRIZTB"
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "Driz2J"
+		OUTER_SPRINT "BG2_BCS" "DRIZ21"
+		OUTER_SPRINT "BG2_BANTER" "BDriz2"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// EET Region_of_Terror_Continuous ~F_DRIZZT~ ~Driz21~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_DRIZZT_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+// BG1
+OUTER_SPRINT "BG1_JOINED" "F_WULFGJ"
+OUTER_SPRINT "BG1_BCS" "F_WULFGA"
+OUTER_SPRINT "BG1_BANTER" "F_WULFGB"
+OUTER_SPRINT "BG1_DREAM" ""
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" ""
+	OUTER_SPRINT "SoD_BCS" ""
+	OUTER_SPRINT "SoD_BANTER" ""
+	OUTER_SPRINT "SoD_DREAM" ""
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "Wulfg2J"
+		OUTER_SPRINT "BG2_BCS" "WULFG2"
+		OUTER_SPRINT "BG2_BANTER" "BWulfg2"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" ""
+			OUTER_SPRINT "TOB_BCS" ""
+			OUTER_SPRINT "TOB_BANTER" ""
+			OUTER_SPRINT "TOB_DREAM" ""
+
+ACTION_FOR_EACH bcs IN
+
+// EET Region_of_Terror_Continuous ~F_WULFGA~ ~WULFG2~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/F_WULFGAR_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
 // Next_Traveler Continuous
 
