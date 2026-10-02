@@ -2747,4 +2747,124 @@ BEGIN
 	END
 END
 
+// Angelo
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "ADANGELJ"
+		OUTER_SPRINT "BG2_BCS" "ADANGEL"
+		OUTER_SPRINT "BG2_BANTER" "BADANGEL"
+		OUTER_SPRINT "BG2_DREAM" "ADANGELD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "ADANGELJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "ADANG25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "BADANG25"
+			OUTER_SPRINT "TOB_DREAM" "ADANG25D"
+			OUTER_SPRINT "TOB_BCS" "ADANG25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Angelo ~ADANGEL~ ~ADANG25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/ADANGEL_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Adrian
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "rh#adrj"
+		OUTER_SPRINT "BG2_BCS" "RH#ADR"
+		OUTER_SPRINT "BG2_BANTER" "brh#adr"
+		OUTER_SPRINT "BG2_DREAM" "rh#adrD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "rh#adrj"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "rh#ad25j"
+				END
+			OUTER_SPRINT "TOB_BANTER" "brh#ad25"
+			OUTER_SPRINT "TOB_DREAM" "rh#ad25d"
+			OUTER_SPRINT "TOB_BCS" "rh#ad25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Adrian ~RH#ADR~ ~rh#ad25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/rh#Adrian_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Hubelpot the Vegetable Merchant
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "sc#hubj"
+		OUTER_SPRINT "BG2_BCS" "sc#hub"
+		OUTER_SPRINT "BG2_BANTER" "bsc#hub"
+		OUTER_SPRINT "BG2_DREAM" "sc#hubd"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "sc#hubj"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "sc#hb25j"
+				END
+			OUTER_SPRINT "TOB_BANTER" "bsc#hu25"
+			OUTER_SPRINT "TOB_DREAM" "sc#hb25d"
+			OUTER_SPRINT "TOB_BCS" "sc#hub25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Hubelpot ~sc#hub~ ~sc#hub25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Hubelpot_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
 // Next_Traveler BG2

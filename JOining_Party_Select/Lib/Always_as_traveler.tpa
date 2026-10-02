@@ -3512,6 +3512,78 @@ ACTION_IF (MOD_IS_INSTALLED ~WILLOWISP.TP2~ ~0~) THEN BEGIN
 
 END
 
+// Angelo
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-ANGELO.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Angelo_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Angelo~ ~~
+			PRINT ~    Angelo as traveler
+			~
+
+	END ELSE ACTION_IF Angelo_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Angelo~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Angelo~ ~~
+			PRINT ~    Angelo as real traveler
+			~
+
+	END
+
+END
+
+// Adrian
+
+
+ACTION_IF (MOD_IS_INSTALLED ~ADRIAN.TP2~ ~0~ OR MOD_IS_INSTALLED ~ADRIAN.TP2~ ~1~ OR MOD_IS_INSTALLED ~ADRIAN.TP2~ ~2~) THEN BEGIN
+
+	ACTION_IF Adrian_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Adrian~ ~~
+			PRINT ~    Adrian as traveler
+			~
+
+	END ELSE ACTION_IF Adrian_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Adrian~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Adrian~ ~~
+			PRINT ~    Adrian as real traveler
+			~
+
+	END
+
+END
+
+// Hubelpot the Vegetable Merchant
+
+
+ACTION_IF (MOD_IS_INSTALLED ~HUBELPOT.TP2~ ~0~ OR MOD_IS_INSTALLED ~HUBELPOT.TP2~ ~1~ OR MOD_IS_INSTALLED ~HUBELPOT.TP2~ ~2~) THEN BEGIN
+
+	ACTION_IF Hubelpot_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Hubelpot~ ~~
+			PRINT ~    Hubelpot as traveler
+			~
+
+	END ELSE ACTION_IF Hubelpot_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Hubelpot~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Hubelpot~ ~~
+			PRINT ~    Hubelpot as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 

@@ -652,6 +652,27 @@ COPY - ~JOining_Party_Select/JOining_Traveler.ini~ ~weidu_external/JOining_Party
 // 2
   COUNT_REGEXP_INSTANCES  ~^WillWisp[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              WillWisp_as_Real_traveler
 
+// Angelo
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Angelo[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Angelo_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Angelo[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Angelo_as_Real_traveler
+
+// Adrian
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Adrian[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Adrian_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Adrian[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Adrian_as_Real_traveler
+
+// Hubelpot the Vegetable Merchant
+
+// 1
+  COUNT_REGEXP_INSTANCES  ~^Hubelpot[^A-Za-z0-9_]*=[^0-9]1[^0-9]*$~                              Hubelpot_as_traveler
+// 2
+  COUNT_REGEXP_INSTANCES  ~^Hubelpot[^A-Za-z0-9_]*=[^0-9]2[^0-9]*$~                              Hubelpot_as_Real_traveler
+
 // Next_Traveler BG2
 
 
