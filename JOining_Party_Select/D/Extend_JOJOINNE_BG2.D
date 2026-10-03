@@ -3,7 +3,7 @@
 EXTEND_BOTTOM JOJOINNE 5
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^-... With %%Death_var%_name%^- !~
 			DO ~ActionOverride("JOJOINNE",DestroySelf())
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
@@ -15,7 +15,7 @@ END
 EXTEND_BOTTOM JOJOINNE 8
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000... With %%Death_var%_name%^- !~
 			DO ~ActionOverride("JOJOINNE",DestroySelf())
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
@@ -27,7 +27,7 @@ EXTEND_BOTTOM JOJOINNE 11
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player2,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	TriggerOverride(Player2,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFF16537e... With %%Death_var%_name%^- !~
@@ -42,7 +42,7 @@ EXTEND_BOTTOM JOJOINNE 14
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000... With %%Death_var%_name%^- !~
 			DO ~ActionOverride("JOJOINNE",DestroySelf())
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
@@ -54,7 +54,7 @@ EXTEND_BOTTOM JOJOINNE 17
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player3,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	TriggerOverride(Player3,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFF16537e... With %%Death_var%_name%^- !~
@@ -70,7 +70,7 @@ EXTEND_BOTTOM JOJOINNE 20
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000... With %%Death_var%_name%^- !~
 			DO ~ActionOverride("JOJOINNE",DestroySelf())
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
@@ -81,7 +81,7 @@ END
 EXTEND_BOTTOM JOJOINNE 23
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player4,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	TriggerOverride(Player4,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFF16537e... With %%Death_var%_name%^- !~
@@ -96,7 +96,7 @@ EXTEND_BOTTOM JOJOINNE 26
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000... With %%Death_var%_name%^- !~
 			DO ~ActionOverride("JOJOINNE",DestroySelf())
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
@@ -107,7 +107,7 @@ END
 EXTEND_BOTTOM JOJOINNE 29
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player5,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	TriggerOverride(Player5,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFF16537e... With %%Death_var%_name%^- !~
@@ -122,7 +122,7 @@ EXTEND_BOTTOM JOJOINNE 32
   IF ~Global("JO_JOIN_SWITCHING_PARTY","GLOBAL",0)
   	OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~ THEN REPLY ~^0xFF7f6000... With %%Death_var%_name%^- !~
 			DO ~ActionOverride("JOJOINNE",DestroySelf())
 //				ActionOverride("%Death_var%",SetGlobal("JO_JOIN","LOCALS",1))
@@ -133,7 +133,7 @@ END
 EXTEND_BOTTOM JOJOINNE 35
   IF ~OR(2)
 		!Global("JO_TRAVELER_%Death_var%","GLOBAL",0)
-		!TriggerOverride("%Death_var%",Global("JO_JOIN_IS_TRAVELER","LOCALS",0))
+		!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)
 	!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))
 	!TriggerOverride(Player6,Global("JO_JOIN_WANNABE_TRAVELER","LOCALS",0))
 	TriggerOverride(Player6,Global("JO_JOIN_PARTY_MEMBER","LOCALS",0))~ THEN REPLY ~^0xFF16537e... With %%Death_var%_name%^- !~
