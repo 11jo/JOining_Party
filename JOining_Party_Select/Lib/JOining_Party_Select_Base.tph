@@ -567,7 +567,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%%TAB%% ]*!InPartyAllowDead("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : !InPartyAllowDead found in %SF_workaround%
 				~
@@ -575,7 +575,7 @@ BEGIN
 			SPRINT textToReplace ~  !InPartyAllowDead("%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... //  %Death_var% : !InPartyAllowDead found in %SF_workaround%
 				~
@@ -585,7 +585,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%%TAB%% ]*InPartyAllowDead("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : InPartyAllowDead found in %SF_workaround%
 				~
@@ -593,7 +593,7 @@ BEGIN
 			SPRINT textToReplace ~  InPartyAllowDead("%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_AllowDead","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... //  %Death_var% : InPartyAllowDead found in %SF_workaround%
 				~
@@ -603,7 +603,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%%TAB%% ]*!InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : !InParty found in %SF_workaround%
 				~
@@ -611,7 +611,7 @@ BEGIN
 			SPRINT textToReplace ~  !InParty("%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... //  %Death_var% : !InParty found in %SF_workaround%
 				~
@@ -621,7 +621,7 @@ BEGIN
 			SPRINT textToReplace ~\(^[%%TAB%% ]*InParty("%Death_var%")\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : InParty found in %SF_workaround%
 				~
@@ -629,7 +629,7 @@ BEGIN
 			SPRINT textToReplace ~  InParty("%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_InParty","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... //  %Death_var% : InParty found in %SF_workaround%
 				~
@@ -639,7 +639,7 @@ BEGIN
 			SPRINT textToReplace ~!I[s|f]ValidForPartyDialog\(ue\)?("%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : !(...)ValidForParty(...) found in %SF_workaround%
 				~
@@ -649,7 +649,7 @@ BEGIN
 			SPRINT textToReplace ~I[s|f]ValidForPartyDialog\(ue\)?("%Death_var%")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!TriggerOverride("%Death_var%",Global("JO_Myself_Valid","LOCALS",0))~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Global("JO_%Death_var%_TRAVELER","GLOBAL",0)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SF_workaround% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %Death_var% : (...)ValidForParty(...) found in %SF_workaround%
 				~
