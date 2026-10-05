@@ -4385,6 +4385,34 @@ ACTION_IF (Continuous_Region_of_Terror = 1) THEN BEGIN
 				 OUTER_SET F_JARLAXE_BG2_Content = 1
 END
 
+// Husam
+
+
+ACTION_IF (MOD_IS_INSTALLED ~C#HUSAM.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Husam_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Husam~ ~~
+			PRINT ~    Husam as traveler
+			~
+
+	END ELSE ACTION_IF Husam_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Husam~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Husam~ ~~
+			PRINT ~    Husam as real traveler
+			~
+
+	END
+
+
+				 OUTER_SET C#Husam1_SoD_Content = 1
+
+				 OUTER_SET C#Husam1_BG2_Content = 1
+END
+
 // Next_Traveler Continuous
 
 END
