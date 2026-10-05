@@ -3661,14 +3661,14 @@ END
 
 ACTION_IF (MOD_IS_INSTALLED ~INLOVEUNDEATH.TP2~ ~0~) THEN BEGIN
 
-	ACTION_IF Xzelë_as_traveler = 1 THEN BEGIN
+	ACTION_IF Xzele_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Xzelë~ ~~
 			PRINT ~    Xzelë as traveler
 			~
 
-	END ELSE ACTION_IF Xzelë_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF Xzele_as_Real_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
 			REPLACE_TEXTUALLY ~// Mod Xzelë~ ~~
