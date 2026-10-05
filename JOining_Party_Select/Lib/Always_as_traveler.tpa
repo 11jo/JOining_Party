@@ -3800,6 +3800,222 @@ ACTION_IF (MOD_IS_INSTALLED ~WHINHILL.TP2~ ~2~) THEN BEGIN
 
 END
 
+// Dvaradime
+
+
+ACTION_IF (MOD_IS_INSTALLED ~DVARADIME.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Dvaradime_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dvaradime~ ~~
+			PRINT ~    Dvaradime as traveler
+			~
+
+	END ELSE ACTION_IF Dvaradime_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Dvaradime~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Dvaradime~ ~~
+			PRINT ~    Dvaradime as real traveler
+			~
+
+	END
+
+END
+
+// Fade
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-FADE.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Fade_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fade~ ~~
+			PRINT ~    Fade as traveler
+			~
+
+	END ELSE ACTION_IF Fade_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fade~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Fade~ ~~
+			PRINT ~    Fade as real traveler
+			~
+
+	END
+
+END
+
+// Ehlastra
+
+
+ACTION_IF (MOD_IS_INSTALLED ~EHLASTRA.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Ehlastra_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Ehlastra~ ~~
+			PRINT ~    Ehlastra as traveler
+			~
+
+	END ELSE ACTION_IF Ehlastra_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Ehlastra~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Ehlastra~ ~~
+			PRINT ~    Ehlastra as real traveler
+			~
+
+	END
+
+END
+
+// Sime NPC
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SIMENPC.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Sime_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sime~ ~~
+			PRINT ~    Sime as traveler
+			~
+
+	END ELSE ACTION_IF Sime_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sime~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Sime~ ~~
+			PRINT ~    Sime as real traveler
+			~
+
+	END
+
+END
+
+// Ninde Amblecrown
+
+
+ACTION_IF (MOD_IS_INSTALLED ~NINDE.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Ninde_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Ninde~ ~~
+			PRINT ~    Ninde as traveler
+			~
+
+	END ELSE ACTION_IF Ninde_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Ninde~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Ninde~ ~~
+			PRINT ~    Ninde as real traveler
+			~
+
+	END
+
+END
+
+// Sarah ToB
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-SARAHTOB.TP2~ ~0~ OR MOD_IS_INSTALLED ~SETUP-SARAHTOB.TP2~ ~1~) THEN BEGIN
+
+	ACTION_IF Sarah_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sarah~ ~~
+			PRINT ~    Sarah as traveler
+			~
+
+	END ELSE ACTION_IF Sarah_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Sarah~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Sarah~ ~~
+			PRINT ~    Sarah as real traveler
+			~
+
+	END
+
+END
+
+// Lhannd
+
+
+ACTION_IF (MOD_IS_INSTALLED ~LHANND.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Lhannd_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Lhannd~ ~~
+			PRINT ~    Lhannd as traveler
+			~
+
+	END ELSE ACTION_IF Lhannd_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Lhannd~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Lhannd~ ~~
+			PRINT ~    Lhannd as real traveler
+			~
+
+	END
+
+END
+
+// Fhaugy
+
+
+ACTION_IF (MOD_IS_INSTALLED ~FHAUGY.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Fhaugy_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fhaugy~ ~~
+			PRINT ~    Fhaugy as traveler
+			~
+
+	END ELSE ACTION_IF Fhaugy_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fhaugy~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Fhaugy~ ~~
+			PRINT ~    Fhaugy as real traveler
+			~
+
+	END
+
+END
+
+// Gahesh
+
+
+ACTION_IF (MOD_IS_INSTALLED ~GAHESH.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Gahesh_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Gahesh~ ~~
+			PRINT ~    Gahesh as traveler
+			~
+
+	END ELSE ACTION_IF Gahesh_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Gahesh~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Gahesh~ ~~
+			PRINT ~    Gahesh as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG2
 
 
