@@ -2099,6 +2099,30 @@ ACTION_IF (MOD_IS_INSTALLED ~VERRSZA.TP2~ ~0~) THEN BEGIN
 				 OUTER_SET l#1verr_BG2_Content = 1
 END
 
+// Mur'neth
+
+
+ACTION_IF (MOD_IS_INSTALLED ~MUR'NETH.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Mur'neth_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Mur'neth~ ~~
+			PRINT ~    Mur'neth as traveler
+			~
+
+	END ELSE ACTION_IF Mur'neth_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Mur'neth~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Mur'neth~ ~~
+			PRINT ~    Mur'neth as real traveler
+			~
+
+	END
+
+END
+
 // Next_Traveler BG1
 
 
@@ -3373,7 +3397,7 @@ END
 // Saradas magic for BG2
 
 
-ACTION_IF (MOD_IS_INSTALLED ~SARADAS_MAGIC_2.TP2~ ~0~) THEN BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~SARADAS_MAGIC_2.TP2~ ~0~ OR MOD_IS_INSTALLED ~SARADAS_MAGIC_2.TP2~ ~1~) THEN BEGIN
 
 	ACTION_IF Saradas_as_traveler = 1 THEN BEGIN
 
@@ -3578,6 +3602,198 @@ ACTION_IF (MOD_IS_INSTALLED ~HUBELPOT.TP2~ ~0~ OR MOD_IS_INSTALLED ~HUBELPOT.TP2
 			REPLACE_TEXTUALLY ~// Mod Hubelpot~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Hubelpot~ ~~
 			PRINT ~    Hubelpot as real traveler
+			~
+
+	END
+
+END
+
+// Living Clara
+
+
+ACTION_IF (MOD_IS_INSTALLED ~LIVINGCLARA.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Clara_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Clara~ ~~
+			PRINT ~    Clara as traveler
+			~
+
+	END ELSE ACTION_IF Clara_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Clara~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Clara~ ~~
+			PRINT ~    Clara as real traveler
+			~
+
+	END
+
+END
+
+// Arath
+
+
+ACTION_IF (MOD_IS_INSTALLED ~ARATH.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Arath_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Arath~ ~~
+			PRINT ~    Arath as traveler
+			~
+
+	END ELSE ACTION_IF Arath_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Arath~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Arath~ ~~
+			PRINT ~    Arath as real traveler
+			~
+
+	END
+
+END
+
+// In Love Undeath, Xzelë Melaenitt
+
+
+ACTION_IF (MOD_IS_INSTALLED ~INLOVEUNDEATH.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Xzelë_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Xzelë~ ~~
+			PRINT ~    Xzelë as traveler
+			~
+
+	END ELSE ACTION_IF Xzelë_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Xzelë~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Xzelë~ ~~
+			PRINT ~    Xzelë as real traveler
+			~
+
+	END
+
+END
+
+// Juniper and the Stone Leech
+
+
+ACTION_IF (MOD_IS_INSTALLED ~JUNIPERANDTHESTONELEECH.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Juniper_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Juniper~ ~~
+			PRINT ~    Juniper as traveler
+			~
+
+	END ELSE ACTION_IF Juniper_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Juniper~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Juniper~ ~~
+			PRINT ~    Juniper as real traveler
+			~
+
+	END
+
+END
+
+// Baeloth BG2
+
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-ZDBAE.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF BG2_Baeloth_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod BG2_Baeloth~ ~~
+			PRINT ~    BG2_Baeloth as traveler
+			~
+
+	END ELSE ACTION_IF BG2_Baeloth_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod BG2_Baeloth~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real BG2_Baeloth~ ~~
+			PRINT ~    BG2_Baeloth as real traveler
+			~
+
+	END
+
+END
+
+// Hephernaan BG2
+
+
+ACTION_IF (MOD_IS_INSTALLED ~HEPHERNAANBG2.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Hephernaan_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Hephernaan~ ~~
+			PRINT ~    Hephernaan as traveler
+			~
+
+	END ELSE ACTION_IF Hephernaan_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Hephernaan~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Hephernaan~ ~~
+			PRINT ~    Hephernaan as real traveler
+			~
+
+	END
+
+END
+
+// Fyalvara
+
+
+ACTION_IF (MOD_IS_INSTALLED ~fyalvara.TP2~ ~0~ OR MOD_IS_INSTALLED ~fyalvara.TP2~ ~1~ OR MOD_IS_INSTALLED ~fyalvara.TP2~ ~2~) THEN BEGIN
+
+	ACTION_IF Fyalvara_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fyalvara~ ~~
+			PRINT ~    Fyalvara as traveler
+			~
+
+	END ELSE ACTION_IF Fyalvara_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Fyalvara~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Fyalvara~ ~~
+			PRINT ~    Fyalvara as real traveler
+			~
+
+	END
+
+END
+
+// The Journey to the Whin Hill
+
+
+ACTION_IF (MOD_IS_INSTALLED ~WHINHILL.TP2~ ~2~) THEN BEGIN
+
+	ACTION_IF Afu-Zuuvi_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Afu-Zuuvi~ ~~
+			PRINT ~    Afu-Zuuvi as traveler
+			~
+
+	END ELSE ACTION_IF Afu-Zuuvi_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Afu-Zuuvi~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Afu-Zuuvi~ ~~
+			PRINT ~    Afu-Zuuvi as real traveler
 			~
 
 	END

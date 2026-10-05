@@ -312,6 +312,9 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Verr'sza BG1
 // Mod Verr'sza_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l#1verr~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#1DVer~)
 
+// Mur'neth
+// Mod Mur'neth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~A#MURN~)
+
 // Next_Traveler BG1
 
 /////////////////////////// Mods BG2 ///////////////////////////
@@ -492,6 +495,30 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Hubelpot the Vegetable Merchant
 // Mod Hubelpot AND NOT (~%override_script%~ STRING_EQUAL_CASE ~sc#hub~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~sc#hub25~)
 
+// Living Clara
+// Mod Clara AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YF_CLARA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YF_CLA25~)
+
+// Arath
+// Mod Arath AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#ARATH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#AR25~)
+
+// In Love Undeath, Xzelë Melaenitt
+// Mod Xzelë AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#XZE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#XZE25~)
+
+// Juniper and the Stone Leech
+// Mod Juniper AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#JN25~)
+
+// Baeloth BG2
+// Mod BG2_Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ZDBAES~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ZDBAE25S~)
+
+// Hephernaan BG2
+// Mod Hephernaan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#HPH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#HPH25~)
+
+// Fyalvara
+// Mod Fyalvara AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#fya~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#fya25~)
+
+// The Journey to the Whin Hill
+// Mod Afu-Zuuvi AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#AFU~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#AFU25~)
+
 // Next_Traveler BG2
 
 /////////////////////////// Mods Continuous ///////////////////////////
@@ -583,6 +610,12 @@ END
   ACTION_IF (FILE_EXISTS_IN_GAME ~YxYv25.bcs~ AND NOT Yvette_as_traveler = 1 AND NOT Yvette_as_Real_traveler = 1) BEGIN
     EXTEND_TOP ~YxYv25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ EVALUATE_BUFFER
 	PRINT ~YxYv25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~L#HPH25.bcs~ AND NOT Hephernaan_as_traveler = 1 AND NOT Hephernaan_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~L#HPH25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ EVALUATE_BUFFER
+	PRINT ~L#HPH25.BCS extended with All_NPC_JOIN.baf
 	~
   END
 
