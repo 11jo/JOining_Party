@@ -4052,6 +4052,8 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 // Alora_Continuous
 
+ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~1~) BEGIN
+
 	ACTION_IF Alora_Continuous_as_traveler = 1 OR (Alora_as_traveler = 1 AND Continuous_Alora = 1) THEN BEGIN
 
 			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
@@ -4073,7 +4075,11 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
 // Ajantis_Continuous
+
+ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~2~) BEGIN
 
 	ACTION_IF Ajantis_Continuous_as_traveler = 1 OR (Ajantis_as_traveler = 1 AND Continuous_Ajantis = 1) THEN BEGIN
 
@@ -4100,7 +4106,11 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
 // Kivan_Continuous
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~10~) BEGIN
 
 	ACTION_IF Kivan_Continuous_as_traveler = 1 OR (Kivan_as_traveler = 1 AND Continuous_Kivan = 1) THEN BEGIN
 
@@ -4123,7 +4133,12 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
+/*
 // Walahnan_Continuous
+
+ACTION_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~) BEGIN
 
 	ACTION_IF Walahnan_Continuous_as_traveler = 1 OR (Walahnan_as_traveler = 1 AND Continuous_Walahnan = 1) THEN BEGIN
 
@@ -4150,7 +4165,12 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+*/
+
 // Coran_Continuous
+
+ACTION_IF (MOD_IS_INSTALLED ~CORAN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~4~) BEGIN
 
 	ACTION_IF Coran_Continuous_as_traveler = 1 OR (Coran_as_traveler = 1 AND Continuous_Coran = 1) OR (Coran_BG2_as_traveler = 1 AND Continuous_Coran = 1) THEN BEGIN
 
@@ -4177,7 +4197,11 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
 // Continuous_Yeslick
+
+ACTION_IF (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~9~) BEGIN
 
 	ACTION_IF Yeslick_Continuous_as_traveler = 1 OR (Yeslick_as_traveler = 1 AND Continuous_Yeslick = 1) OR (Yeslick_BG2_as_traveler = 1 AND Continuous_Yeslick = 1) THEN BEGIN
 
@@ -4200,7 +4224,11 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
 // Continuous_Xan
+
+ACTION_IF (MOD_IS_INSTALLED ~XAN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~3~) BEGIN
 
 	ACTION_IF Xan_Continuous_as_traveler = 1 OR (Xan_as_traveler = 1 AND Continuous_Xan = 1) OR (Xan_BG2_as_traveler = 1 AND Continuous_Xan = 1) THEN BEGIN
 
@@ -4223,7 +4251,11 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
 // Continuous_Branwen
+
+ACTION_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~5~) BEGIN
 
 	ACTION_IF Branwen_Continuous_as_traveler = 1 OR (Branwen_as_traveler = 1 AND Continuous_Branwen = 1) OR (Branwen_BG2_as_traveler = 1 AND Continuous_Branwen = 1) THEN BEGIN
 
@@ -4244,7 +4276,11 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
 // Continuous_Tiax
+
+ACTION_IF (MOD_IS_INSTALLED ~TIAX.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~8~) BEGIN
 
 	ACTION_IF Tiax_Continuous_as_traveler = 1 OR (Tiax_as_traveler = 1 AND Continuous_Tiax = 1) OR (Tiax_BG2_as_traveler = 1 AND Continuous_Tiax = 1) THEN BEGIN
 
@@ -4271,7 +4307,11 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 
 	END
 
+END
+
 // Continuous_Isra
+
+ACTION_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~7~) BEGIN
 
 	ACTION_IF Isra_Continuous_as_traveler = 1 OR (Isra_as_traveler = 1 AND Continuous_Isra = 1) OR (Isra_BG2_as_traveler = 1 AND Continuous_Isra = 1) THEN BEGIN
 
@@ -4293,6 +4333,8 @@ ACTION_IF (GAME_IS ~eet~) THEN BEGIN
 				OUTER_SET rh#isra_BG2_Content = 1
 
 	END
+
+END
 
 // Ascalon's Breagar
 
@@ -4357,7 +4399,7 @@ END
 // Continuous_Region_of_Terror
 
 
-ACTION_IF (Continuous_Region_of_Terror = 1) THEN BEGIN
+ACTION_IF (Continuous_Region_of_Terror = 1) AND (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~11~) THEN BEGIN
 
 	ACTION_IF Region_of_Terror_Continuous_as_traveler = 1 THEN BEGIN
 
