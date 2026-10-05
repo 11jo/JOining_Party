@@ -204,8 +204,14 @@ Uninstalling is simple. Double-click the setup-JOining_Party.exe file and enter 
 ---------------------------------
 
 - Rivvers / @RiwsPy (Co author)
- 
-- @Darpaek (Beta testing)
+
+Beta testing
+- @Darpaek 
+- @joel-downey
+- @SiriusVI87
+- @Niewiemu
+- @Dziadekkk
+
 
 
 ### Version History :
@@ -214,8 +220,8 @@ Uninstalling is simple. Double-click the setup-JOining_Party.exe file and enter 
 - Beta v1.6
 	- Installation take time depending of the number of selected travelers and the number of mod installed
 	- Don't modify non selected NPC
-	- Initialize selected travelers at the beginning of the game
-	- New travelers (Verr'sza, Lysre, Tashia, Dace, Sharteel_BG2, Amber, Evandra, Saradas, Lena, Pai'Na, Varshoon, Skie, Eddard, Anishai, Will of the Wisps, Angelo, Adrian, Hubelpot)
+	- Change NextTriggerObject with LOCALS to a simple GLOBAL for DLG triggers
+	- New travelers (Verr'sza, Mur'neth, Lysre, Tashia, Dace, Sharteel_BG2, Amber, Evandra, Saradas, Lena, Pai'Na, Varshoon, Skie, Eddard, Anishai, Will of the Wisps, Angelo, Adrian, Hubelpot, Afu-Zuuvi, Arath, Baeloth, Clara, Fyalvara, Hephernaan, Juniper, Xzelë)
 	- Many others things... 
 
 - Beta v1.5

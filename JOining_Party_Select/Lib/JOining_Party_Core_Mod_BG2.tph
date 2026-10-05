@@ -1432,18 +1432,24 @@ BEGIN
 	END
 END
 
+ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVAR1.dlg~ BEGIN
+	COPY_EXISTING ~BOLIVAR1.dlg~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+			REPLACE_TEXTUALLY CASE_INSENSITIVE ~ChangeAIScript("",OVERRIDE)~ ~ChangeAIScript("BOLIVAR1",OVERRIDE)~
+		END
+END
 ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVR09.cre~ BEGIN
 		COPY_EXISTING ~BOLIVR09.CRE~ ~override/BOLIVR09.CRE~
 		WRITE_ASCII SCRIPT_OVERRIDE ~BOLIVAR1~ (8)
-	END
+END
 ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVR15.cre~ BEGIN
 		COPY_EXISTING ~BOLIVR15.CRE~ ~override/BOLIVR15.CRE~
 		WRITE_ASCII SCRIPT_OVERRIDE ~BOLIVAR1~ (8)
-	END
+END
 ACTION_IF FILE_EXISTS_IN_GAME ~BOLIVR09.cre~ BEGIN
 		COPY_EXISTING ~BOLIVR20.CRE~ ~override/BOLIVR20.CRE~
 		WRITE_ASCII SCRIPT_OVERRIDE ~BOLIVAR1~ (8)
-	END
+END
 
 COPY ~JOining_Party_Select/Baf/JO_JOIN/EMPTY.baf~ ~override/BOLIVAR1.bcs~
 
@@ -2855,6 +2861,686 @@ BEGIN
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Hubelpot_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Living Clara
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "YF_clarj"
+		OUTER_SPRINT "BG2_BCS" "YF_CLARA"
+		OUTER_SPRINT "BG2_BANTER" "bYF_clar"
+		OUTER_SPRINT "BG2_DREAM" "YF_clard"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "YF_clarj"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "YF_cl25j"
+				END
+			OUTER_SPRINT "TOB_BANTER" "bYF_cl25"
+			OUTER_SPRINT "TOB_DREAM" "YF_cl25d"
+			OUTER_SPRINT "TOB_BCS" "YF_CLA25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Clara ~YF_CLARA~ ~YF_CLA25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/YF_Clara_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Arath
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "LK#ARATJ"
+		OUTER_SPRINT "BG2_BCS" "LK#ARATH"
+		OUTER_SPRINT "BG2_BANTER" "BLK#ARAT"
+		OUTER_SPRINT "BG2_DREAM" "LK#ARATD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "LK#ARATJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "LK#AR25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "BLK#AR25"
+			OUTER_SPRINT "TOB_DREAM" "LK#AR25D"
+			OUTER_SPRINT "TOB_BCS" "LK#AR25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Arath ~LK#ARATH~ ~LK#AR25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Arath_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// In Love Undeath, Xzelë Melaenitt
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#XZEJ"
+		OUTER_SPRINT "BG2_BCS" "L#XZE"
+		OUTER_SPRINT "BG2_BANTER" "L#XZEB"
+		OUTER_SPRINT "BG2_DREAM" "L#XZED"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#XZEJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#XZE25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#XZE25B"
+			OUTER_SPRINT "TOB_DREAM" "L#XZE25D"
+			OUTER_SPRINT "TOB_BCS" "L#XZE25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Xzelë ~L#XZE~ ~L#XZE25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#XZE_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Juniper and the Stone Leech
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#JN25J"
+		OUTER_SPRINT "BG2_BCS" "L#JN25"
+		OUTER_SPRINT "BG2_BANTER" "L#JN25B"
+		OUTER_SPRINT "BG2_DREAM" "L#JN25D"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#JN25J"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#JN25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#JN25B"
+			OUTER_SPRINT "TOB_DREAM" "L#JN25D"
+			OUTER_SPRINT "TOB_BCS" "L#JN25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Juniper ~L#JN25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#JN_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Baeloth BG2
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "zdbaej"
+		OUTER_SPRINT "BG2_BCS" "ZDBAES"
+		OUTER_SPRINT "BG2_BANTER" "zdbaeb"
+		OUTER_SPRINT "BG2_DREAM" "zdbaed"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "zdbaej"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "zdbae25j"
+				END
+			OUTER_SPRINT "TOB_BANTER" "zdbae25b"
+			OUTER_SPRINT "TOB_DREAM" "zdbae25d"
+			OUTER_SPRINT "TOB_BCS" "ZDBAE25S"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod BG2_Baeloth ~ZDBAES~ ~ZDBAE25S~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/zdbae_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Hephernaan BG2
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#HPHJ"
+		OUTER_SPRINT "BG2_BCS" "L#HPH"
+		OUTER_SPRINT "BG2_BANTER" "L#HPHB"
+		OUTER_SPRINT "BG2_DREAM" "L#HPHD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#HPHJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#HPH25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#HPH25B"
+			OUTER_SPRINT "TOB_DREAM" "L#HPH25D"
+			OUTER_SPRINT "TOB_BCS" "L#HPH25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Hephernaan ~L#HPH~ ~L#HPH25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#HPH_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Fyalvara
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#fyaJ"
+		OUTER_SPRINT "BG2_BCS" "L#fya"
+		OUTER_SPRINT "BG2_BANTER" "L#fyaB"
+		OUTER_SPRINT "BG2_DREAM" "L#fyaD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#fyaJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#fya25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#fya25B"
+			OUTER_SPRINT "TOB_DREAM" "L#fya25D"
+			OUTER_SPRINT "TOB_BCS" "L#fya25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Fyalvara ~L#fya~ ~L#fya25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#fya_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// The Journey to the Whin Hill
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#AFUJ"
+		OUTER_SPRINT "BG2_BCS" "L#AFU"
+		OUTER_SPRINT "BG2_BANTER" "L#AFUB"
+		OUTER_SPRINT "BG2_DREAM" "L#AFUD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#AFUJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#AFU25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#AFU25B"
+			OUTER_SPRINT "TOB_DREAM" "L#AFU25D"
+			OUTER_SPRINT "TOB_BCS" "L#AFU25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Afu-Zuuvi ~L#AFU~ ~L#AFU25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#AFU_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Dvaradime
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#DVAJ"
+		OUTER_SPRINT "BG2_BCS" "L#DVA"
+		OUTER_SPRINT "BG2_BANTER" "L#DVAB"
+		OUTER_SPRINT "BG2_DREAM" "L#DVAD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#DVAJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#DVA25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#DVA25B"
+			OUTER_SPRINT "TOB_DREAM" "L#DVA25D"
+			OUTER_SPRINT "TOB_BCS" "L#DVA25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Dvaradime ~L#DVA~ ~L#DVA25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#DVA_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Fade
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "E3FadeJ"
+		OUTER_SPRINT "BG2_BCS" "E3Fade"
+		OUTER_SPRINT "BG2_BANTER" "BE3Fade"
+		OUTER_SPRINT "BG2_DREAM" "E3FadeD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "E3FadeJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "E3Fad25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "BE3Fad25"
+			OUTER_SPRINT "TOB_DREAM" "E3Fad25D"
+			OUTER_SPRINT "TOB_BCS" "E3Fade25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Fade ~E3Fade~ ~E3Fade25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/E3Fade_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Ehlastra
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "EhlastJ"
+		OUTER_SPRINT "BG2_BCS" "HG_Ehla"
+		OUTER_SPRINT "BG2_BANTER" "EhlastJ"
+		OUTER_SPRINT "BG2_DREAM" "EhlastD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "EhlastJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "EhlastJ"
+				END
+			OUTER_SPRINT "TOB_BANTER" "EhlastJ"
+			OUTER_SPRINT "TOB_DREAM" "EhlastD"
+			OUTER_SPRINT "TOB_BCS" "HG_Ehla"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Ehlastra ~HG_Ehla~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/HGSLV01_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Sime NPC
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "SimeJ"
+		OUTER_SPRINT "BG2_BCS" "PPSime"
+		OUTER_SPRINT "BG2_BANTER" "SimeJ"
+		OUTER_SPRINT "BG2_DREAM" "SimeD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "SimeJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "SimeJ"
+				END
+			OUTER_SPRINT "TOB_BANTER" "SimeJ"
+			OUTER_SPRINT "TOB_DREAM" "SimeD"
+			OUTER_SPRINT "TOB_BCS" "PPSime"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Sime ~PPSime~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/PPSime_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Ninde Amblecrown
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "LK#NINDJ"
+		OUTER_SPRINT "BG2_BCS" "lk#nins"
+		OUTER_SPRINT "BG2_BANTER" "BLK#NIND"
+		OUTER_SPRINT "BG2_DREAM" "LK#NIND"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "LK#NINDJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "LK#NI25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "BLK#NI25"
+			OUTER_SPRINT "TOB_DREAM" "LK#NI25D"
+			OUTER_SPRINT "TOB_BCS" "LK#NI25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Ninde ~lk#nins~ ~LK#NI25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Ninde_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Sarah ToB
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "K#SarahJ"
+		OUTER_SPRINT "BG2_BCS" "K#Sarah"
+		OUTER_SPRINT "BG2_BANTER" "K#SarahB"
+		OUTER_SPRINT "BG2_DREAM" "K#SarahD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "K#SarahJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "K#Sar25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "K#Sar25B"
+			OUTER_SPRINT "TOB_DREAM" "K#Sar25D"
+			OUTER_SPRINT "TOB_BCS" "K#Sara25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Sarah ~K#Sarah~ ~K#Sara25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/K#Sarah_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Lhannd
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#LHAJ"
+		OUTER_SPRINT "BG2_BCS" "L#LHA"
+		OUTER_SPRINT "BG2_BANTER" "L#LHAB"
+		OUTER_SPRINT "BG2_DREAM" "L#LHAD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#LHAJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#LHA25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#LHA25B"
+			OUTER_SPRINT "TOB_DREAM" "L#LHA25D"
+			OUTER_SPRINT "TOB_BCS" "L#LHA25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Lhannd ~L#LHA~ ~L#LHA25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#LHA_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Fhaugy
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "L#FHAJ"
+		OUTER_SPRINT "BG2_BCS" "L#FHA"
+		OUTER_SPRINT "BG2_BANTER" "L#FHAB"
+		OUTER_SPRINT "BG2_DREAM" "L#FHAD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#FHAJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "L#FHA25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "L#FHA25B"
+			OUTER_SPRINT "TOB_DREAM" "L#FHA25D"
+			OUTER_SPRINT "TOB_BCS" "L#FHA25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Fhaugy ~L#FHA~ ~L#FHA25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/L#FHA_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Gahesh
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "G1GaheJ"
+		OUTER_SPRINT "BG2_BCS" "G1Gahe"
+		OUTER_SPRINT "BG2_BANTER" "G1GaheB"
+		OUTER_SPRINT "BG2_DREAM" "G1GaheD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "G1GaheJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "G1Gah25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "G1Gah25B"
+			OUTER_SPRINT "TOB_DREAM" "G1Gah25D"
+			OUTER_SPRINT "TOB_BCS" "G1Gahe25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Gahesh ~G1Gahe~ ~G1Gahe25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Gahesh_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
 

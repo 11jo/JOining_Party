@@ -977,5 +977,52 @@ BEGIN
 	END
 END
 
+// Husam
+// BG1
+OUTER_SPRINT "BG1_JOINED" "C#HusamJ"
+OUTER_SPRINT "BG1_BCS" "C#Husam1"
+OUTER_SPRINT "BG1_BANTER" "C#HusamB"
+OUTER_SPRINT "BG1_DREAM" "C#HusamD"
+	// SoD
+	OUTER_SPRINT "SoD_JOINED" "C#HusamJ"
+	OUTER_SPRINT "SoD_BCS" "C#Husam1"
+	OUTER_SPRINT "SoD_BANTER" "C#HusamB"
+	OUTER_SPRINT "SoD_DREAM" "C#HusamD"
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "C#HusamJ"
+		OUTER_SPRINT "BG2_BCS" "C#Husam1"
+		OUTER_SPRINT "BG2_BANTER" "C#HusamB"
+		OUTER_SPRINT "BG2_DREAM" "C#HusamD"
+			// ToB
+			OUTER_SPRINT "TOB_JOINED" "C#HusamJ"
+			OUTER_SPRINT "TOB_BCS" "C#Husam1"
+			OUTER_SPRINT "TOB_BANTER" "C#HusamB"
+			OUTER_SPRINT "TOB_DREAM" "C#HusamD"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Husam ~C#Husam1~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+		INCLUDE ~JOining_Party_Select/Campaign_Transition/DestroySelf.tph~
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/C#Husam1_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Continuous.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_Continuous.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_Continuous.tph~
+
+	END
+END
+
 // Next_Traveler Continuous
 

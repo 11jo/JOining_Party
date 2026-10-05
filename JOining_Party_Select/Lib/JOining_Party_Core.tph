@@ -176,6 +176,9 @@ ACTION_FOR_EACH joining_dlg IN
 // Verr'sza BG1
 // Mod Verr'sza_BG1             ~l#1verrJ~ ~L#1DVERJ~
 
+// Mur'neth
+// Mod Mur'neth                 ~A#MURNJ~
+
 // Next_Traveler BG1
 
 /////////////////////////// Mods BG2 ///////////////////////////
@@ -342,6 +345,57 @@ ACTION_FOR_EACH joining_dlg IN
 // Hubelpot the Vegetable Merchant
 // Mod Hubelpot                  ~sc#hubj~ ~sc#hb25j~
 
+// Living Clara
+// Mod Clara                     ~YF_clarj~ ~YF_cl25j~
+
+// Arath
+// Mod Arath                     ~LK#ARATJ~ ~LK#AR25J~
+
+// In Love Undeath, XzelÃ« Melaenitt
+// Mod XzelÃ«                     ~L#XZEJ~ ~L#XZE25J~
+
+// Juniper and the Stone Leech
+// Mod Juniper                   ~L#JN25J~
+
+// Baeloth BG2
+// Mod BG2_Baeloth               ~zdbaej~ ~zdbae25j~
+
+// Hephernaan BG2
+// Mod Hephernaan                ~L#HPHJ~ ~L#HPH25J~
+
+// Fyalvara
+// Mod Fyalvara                  ~L#fyaJ~ ~L#fya25J~
+
+// The Journey to the Whin Hill
+// Mod Afu-Zuuvi                  ~L#AFUJ~ ~L#AFU25J~
+
+// Dvaradime
+// Mod Dvaradime                  ~L#DVAJ~ ~L#DVA25J~
+
+// Fade
+// Mod Fade                       ~E3FadeJ~ ~E3Fad25J~
+
+// Ehlastra
+// Mod Ehlastra                   ~EhlastJ~
+
+// Sime NPC
+// Mod Sime                       ~SimeJ~
+
+// Ninde Amblecrown
+// Mod Ninde                      ~LK#NINDJ~ ~LK#NI25J~
+
+// Sarah ToB
+// Mod Sarah                      ~K#SarahJ~ ~K#Sar25J~
+
+// Lhannd
+// Mod Lhannd                     ~L#LHAJ~ ~L#LHA25J~
+
+// Fhaugy
+// Mod Fhaugy                     ~L#FHAJ~ ~L#FHA25J~
+
+// Gahesh
+// Mod Gahesh                     ~G1GaheJ~ ~G1Gah25J~
+
 // Next_Traveler BG2
 
 /////////////////////////// Mods Continuous ///////////////////////////
@@ -366,11 +420,15 @@ ACTION_FOR_EACH joining_dlg IN
 
 // EET Tiax_Continuous            ~%TIAX_JOINED%~ ~BDTIAXJ~ ~O#TiaxJ~ ~O#Tia25J~               // EET Tiax_Continuous
 
-// Mod Breagar                    ~ACBreJ~ ~ACBre25J~                                          // Breagar
+// Ascalon's Breagar
+// Mod Breagar                     ~ACBreJ~ ~ACBre25J~                                          // Breagar
 
 // EET Sharteel_Continuous        ~%SHARTEEL_JOINED%~ ~BDSHARTJ~ ~JOcharJ~ ~JOchar25J~         // EET Sharteel_Continuous
 
 // EET Region_of_Terror_Continuous     ~Jarlax2J~ ~Enter2J~ ~Catt2J~ ~Brue2J~ ~Reg2J~ ~Driz2J~ ~Wulfg2J~
+
+// Husam
+// Mod Husam                      ~C#HusamJ~                                                  // Husam
 
 
 // Next_Traveler Continuous
@@ -552,23 +610,23 @@ ACTION_IF NOT FILE_EXISTS_IN_GAME ~JOBG402.SPL~ BEGIN
 		SAY UNIDENTIFIED_DESC ~Dimensional gate
 (Alteration)
 
-Level : 4
+LevelÂ : 4
 Range: 0
 Duration: Instant
 Casting Time : 1
-Area of Effect : The caster
-Saving Throw : None
+Area of EffectÂ : The caster
+Saving ThrowÂ : None
 
 This spell transports the caster to any place within the visual range of the caster. When the spell is cast, a gate appear in front of the caster, who immediately steps through it. Upon passing through the gate, the caster finds <PRO_HIMHER>self at <PRO_HISHER> chosen destination.~
   SAY DESC ~Dimensional gate
 (Alteration)
 
-Level : 4
+LevelÂ : 4
 Range: 0
 Duration: Instant
 Casting Time : 1
-Area of Effect : The caster
-Saving Throw : None
+Area of EffectÂ : The caster
+Saving ThrowÂ : None
 
 This spell transports the caster to any place within the visual range of the caster. When the spell is cast, a gate appear in front of the caster, who immediately steps through it. Upon passing through the gate, the caster finds <PRO_HIMHER>self at <PRO_HISHER> chosen destination.~
 
