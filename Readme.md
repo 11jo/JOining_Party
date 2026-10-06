@@ -219,7 +219,7 @@ Beta testing
 
 - Beta v1.6
 	- Installation take time depending of the number of selected travelers and the number of mod installed
-	- Don't modify non selected NPC
+	- Non selected NPC don't have base triggers modified anymore
 	- Change NextTriggerObject with LOCALS to a simple GLOBAL for DLG triggers
 	- New travelers (Verr'sza, Mur'neth, Lysre, Tashia, Dace, Sharteel_BG2, Amber, Evandra, Saradas, Lena, Pai'Na, Varshoon, Skie, Eddard, Anishai, Will of the Wisps, Angelo, Adrian, Hubelpot, Afu-Zuuvi, Arath, Baeloth, Clara, Fyalvara, Hephernaan, Juniper, Xzelë, Valkrana, Husam, Dvaradime, Fade, Ehlastra, Sime, Ninde, Sarah, Lhannd, Fhaugy, Gahesh)
 	- Many others things... 

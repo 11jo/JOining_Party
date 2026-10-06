@@ -831,7 +831,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~XG_BREAK.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
 	SetCutSceneLite(TRUE)
-	Wait(1)
+//	Wait(1)
 	StartCutSceneMode()~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // StartCutSceneMode() found in %SOURCE_FILESPEC%
