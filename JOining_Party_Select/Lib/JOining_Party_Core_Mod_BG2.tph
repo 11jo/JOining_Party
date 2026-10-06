@@ -3553,4 +3553,44 @@ BEGIN
 	END
 END
 
+// Valkrana
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "vvVALKJ"
+		OUTER_SPRINT "BG2_BCS" "vvVALK"
+		OUTER_SPRINT "BG2_BANTER" "vvVALK"
+		OUTER_SPRINT "BG2_DREAM" ""
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "vvVALKJ"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "vvVAL25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "vvVALK"
+			OUTER_SPRINT "TOB_DREAM" ""
+			OUTER_SPRINT "TOB_BCS" "vvVALK25"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Valkrana ~vvVALK~ ~vvVALK25~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/vvVALK_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
 // Next_Traveler BG2
