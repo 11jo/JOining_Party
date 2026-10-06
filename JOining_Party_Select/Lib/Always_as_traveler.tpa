@@ -3447,19 +3447,19 @@ END
 
 ACTION_IF (MOD_IS_INSTALLED ~SKIECOST.TP2~ ~1~) THEN BEGIN
 
-	ACTION_IF Skie_as_traveler = 1 THEN BEGIN
+	ACTION_IF BG2_Skie_as_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Mod Skie~ ~~
-			PRINT ~    Skie as traveler
+			REPLACE_TEXTUALLY ~// Mod BG2_Skie~ ~~
+			PRINT ~    Skie BG2 as traveler
 			~
 
-	END ELSE ACTION_IF Skie_as_Real_traveler = 1 THEN BEGIN
+	END ELSE ACTION_IF BG2_Skie_as_Real_traveler = 1 THEN BEGIN
 
 		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-			REPLACE_TEXTUALLY ~// Mod Skie~ ~~
-			REPLACE_TEXTUALLY ~// Mod Real Skie~ ~~
-			PRINT ~    Skie as real traveler
+			REPLACE_TEXTUALLY ~// Mod BG2_Skie~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real BG2_Skie~ ~~
+			PRINT ~    Skie BG2 as real traveler
 			~
 
 	END
