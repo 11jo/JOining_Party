@@ -345,46 +345,6 @@ BEGIN
 	END
 END
 
-/////////////////////////// Frennedan ///////////////////////////
-
-		// BG2
-		OUTER_SPRINT "BG2_JOINED" ""
-		OUTER_SPRINT "BG2_BCS" ""
-		OUTER_SPRINT "BG2_BANTER" ""
-		OUTER_SPRINT "BG2_DREAM" ""
-			// ToB
-				ACTION_IF (GAME_IS ~eet~) BEGIN
-			OUTER_SPRINT "TOB_JOINED" ""
-				END ELSE BEGIN
-			OUTER_SPRINT "TOB_JOINED" ""
-				END
-			OUTER_SPRINT "TOB_BCS" ""
-			OUTER_SPRINT "TOB_BANTER" ""
-			OUTER_SPRINT "TOB_DREAM" ""
-
-ACTION_FOR_EACH bcs IN
-
-// Mod Frennedan ~fren~
-
-BEGIN
-
-	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
-
-				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
-
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/Frennedan_All_In.baf~ EVALUATE_BUFFER
-
-		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
-
-		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
-
-		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
-
-		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
-
-	END
-END
-
 /////////////////////////// Branwen BG2 ///////////////////////////
 
 		// BG2
@@ -3581,6 +3541,46 @@ BEGIN
 				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
 
 		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/vvVALK_All_In.baf~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN.BAF~ EVALUATE_BUFFER
+
+		INCLUDE ~JOining_Party_Select/Baf/Banter/Banter_BG2.tph~
+
+		INCLUDE ~JOining_Party_Select/Baf/Dream/Dream_BG2.tph~
+
+	END
+END
+
+// Frennedan_NPC
+
+		// BG2
+		OUTER_SPRINT "BG2_JOINED" "SHAPE"
+		OUTER_SPRINT "BG2_BCS" "FREN"
+		OUTER_SPRINT "BG2_BANTER" "frenB"
+		OUTER_SPRINT "BG2_DREAM" "frenD"
+			// ToB
+				ACTION_IF (GAME_IS ~eet~) BEGIN
+			OUTER_SPRINT "TOB_JOINED" "SHAPE"
+				END ELSE BEGIN
+			OUTER_SPRINT "TOB_JOINED" "fren25J"
+				END
+			OUTER_SPRINT "TOB_BANTER" "fren25B"
+			OUTER_SPRINT "TOB_DREAM" "fren25D"
+			OUTER_SPRINT "TOB_BCS" "FREN"
+
+ACTION_FOR_EACH bcs IN
+
+// Mod Frennedan ~FREN~
+
+BEGIN
+
+	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ BEGIN
+
+				EXTEND_TOP ~%bcs%.bcs~ ~JOining_Party_Select/Baf/All_TRAVELER_JOIN.baf~ EVALUATE_BUFFER
+
+		EXTEND_BOTTOM ~%bcs%.bcs~ ~weidu_external/JOining_Party_Select/All_In/FRENDAN_All_In.baf~ EVALUATE_BUFFER
 
 		INCLUDE ~JOining_Party_Select/Baf/JO_JOIN/JO_JOIN_Mod_BG2.tpa~
 
