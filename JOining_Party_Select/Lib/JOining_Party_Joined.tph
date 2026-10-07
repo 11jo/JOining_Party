@@ -301,13 +301,19 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Mod Miranda AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Miranda~)
 
 // Walahnan
-// Mod Walahnan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#WALAH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#SWALAH~)
+// Mod Walahnan_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#WALAH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#SWALAH~)
 
 // Aerie in BG:EE
 // Mod Aerie_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~B2#Aeri2~)
 
 // Margarita Zelleod
 // Mod Margarita AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RL#MARG~)
+
+// Verr'sza BG1
+// Mod Verr'sza_BG1 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l#1verr~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#1DVer~)
+
+// Mur'neth
+// Mod Mur'neth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~A#MURN~)
 
 // Next_Traveler BG1
 
@@ -445,6 +451,104 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 // Dace Linton
 // Mod Dace AND NOT (~%override_script%~ STRING_EQUAL_CASE ~T#DACE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~T#DAC25~)
 
+// Sharteel_BG2
+// Mod Sharteel_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JOsharte~)
+
+// Amber
+// Mod Amber AND NOT (~%override_script%~ STRING_EQUAL_CASE ~m#amber~)
+
+// Evandra
+// Mod Evandra AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#Eva~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#ev25~)
+
+// Lena
+// Mod Lena AND NOT (~%override_script%~ STRING_EQUAL_CASE ~EU#Lena~)
+
+// Paina
+// Mod Pai'Na AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C0Paina~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C0Pai25S~)
+
+// Verr'sza BG2
+// Mod Verr'sza_BG2 AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2verr~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l#2ve25~)
+// Mod Phalh AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2phal~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2ph25~)
+
+// Saradas magic for BG2
+// Mod Saradas AND NOT (~%override_script%~ STRING_EQUAL_CASE ~!SARTOB~)
+
+// Varshoon
+// Mod Varshoon AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VXVAR~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~VxVar25~)
+
+// Skie the Cost of One girl Soul
+// Mod BG2_Skie AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#2SDSKI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l#2sd25~)
+// Mod Eddard AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#L#2ED~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l#2ED25~)
+
+// Anishai
+// Mod Anishai AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Anishai~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Anishai25~)
+
+// Will of the Wisps
+// Mod WispWill AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L0will~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~l0wil25~)
+
+// Angelo
+// Mod Angelo AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ADANGEL~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ADANG25~)
+
+// Adrian
+// Mod Adrian AND NOT (~%override_script%~ STRING_EQUAL_CASE ~RH#ADR~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~rh#ad25~)
+
+// Hubelpot the Vegetable Merchant
+// Mod Hubelpot AND NOT (~%override_script%~ STRING_EQUAL_CASE ~sc#hub~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~sc#hub25~)
+
+// Living Clara
+// Mod Clara AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YF_CLARA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~YF_CLA25~)
+
+// Arath
+// Mod Arath AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#ARATH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#AR25~)
+
+// In Love Undeath, Xzelë Melaenitt
+// Mod Xzelë AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#XZE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#XZE25~)
+
+// Juniper and the Stone Leech
+// Mod Juniper AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#JN25~)
+
+// Baeloth BG2
+// Mod BG2_Baeloth AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ZDBAES~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ZDBAE25S~)
+
+// Hephernaan BG2
+// Mod Hephernaan AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#HPH~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#HPH25~)
+
+// Fyalvara
+// Mod Fyalvara AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#fya~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#fya25~)
+
+// The Journey to the Whin Hill
+// Mod Afu-Zuuvi AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#AFU~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#AFU25~)
+
+// Dvaradime
+// Mod Dvaradime AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#DVA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#DVA25~)
+
+// Fade
+// Mod Fade AND NOT (~%override_script%~ STRING_EQUAL_CASE ~E3Fade~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~E3Fade25~)
+
+// Ehlastra
+// Mod Ehlastra AND NOT (~%override_script%~ STRING_EQUAL_CASE ~HG_Ehla~)
+
+// Sime NPC
+// Mod Sime AND NOT (~%override_script%~ STRING_EQUAL_CASE ~PPSime~)
+
+// Ninde Amblecrown
+// Mod Ninde AND NOT (~%override_script%~ STRING_EQUAL_CASE ~lk#nins~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~LK#NI25~)
+
+// Sarah ToB
+// Mod Sarah AND NOT (~%override_script%~ STRING_EQUAL_CASE ~K#Sarah~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~K#Sara25~)
+
+// Lhannd
+// Mod Lhannd AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#LHA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#LHA25~)
+
+// Fhaugy
+// Mod Fhaugy AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#FHA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~L#FHA25~)
+
+// Gahesh
+// Mod Gahesh AND NOT (~%override_script%~ STRING_EQUAL_CASE ~G1Gahe~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~G1Gahe25~)
+
+// Valkrana
+// Mod Valkrana AND NOT (~%override_script%~ STRING_EQUAL_CASE ~vvVALK~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~vvVALK25~)
+
 // Next_Traveler BG2
 
 /////////////////////////// Mods Continuous ///////////////////////////
@@ -475,6 +579,13 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS cre => dv BEGIN
 
 // Ascalon's Breagar
 // Mod Breagar AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ACBRE~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~ACBRE25~)
+
+// EET Sharteel_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~%SHARTEEL_BCS%~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~k9shar~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~JOsharte~)
+
+// EET Region_of_Terror_Continuous AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_JARLAX~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Jarlax2~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_ASSASI~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Enter2~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_CATTIB~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Catt2~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_BRUENO~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Brue2~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_REGIS2~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Reg2~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_DRIZZT~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~Driz21~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~F_WULFGA~) AND NOT (~%override_script%~ STRING_EQUAL_CASE ~WULFG2~)
+
+// Husam
+// Mod Husam AND NOT (~%override_script%~ STRING_EQUAL_CASE ~C#Husam1~)
 
 // Next_Traveler Continuous
 
@@ -532,6 +643,12 @@ END
   ACTION_IF (FILE_EXISTS_IN_GAME ~YxYv25.bcs~ AND NOT Yvette_as_traveler = 1 AND NOT Yvette_as_Real_traveler = 1) BEGIN
     EXTEND_TOP ~YxYv25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ EVALUATE_BUFFER
 	PRINT ~YxYv25.BCS extended with All_NPC_JOIN.baf
+	~
+  END
+
+  ACTION_IF (FILE_EXISTS_IN_GAME ~L#HPH25.bcs~ AND NOT Hephernaan_as_traveler = 1 AND NOT Hephernaan_as_Real_traveler = 1) BEGIN
+    EXTEND_TOP ~L#HPH25.bcs~ ~JOining_Party_Select/Baf/All_NPC_JOIN.baf~ EVALUATE_BUFFER
+	PRINT ~L#HPH25.BCS extended with All_NPC_JOIN.baf
 	~
   END
 

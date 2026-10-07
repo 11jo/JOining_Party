@@ -28,7 +28,7 @@ IF ~True()~ THEN BEGIN 0
 	SAY ~Ahem !~
 	= ~Fellow travelers !~
 
-	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
+	IF ~~ THEN REPLY ~Sorry, I'm just trying to draw some attention...~ EXIT
 
 	IF ~~ THEN REPLY ~^GI like to ...^-~ GOTO MOVE_AROUND
 
@@ -446,7 +446,7 @@ IF ~True()~ THEN BEGIN 0
 	IF ~!Global("JO_JOIN_DEV_MODE","GLOBAL",0)
 	OR(2)
 		!Global("JO_JOIN_NOSAVE","MYAREA",1)
-		Global("JO_JOIN_SAVE_AREA","MYAREA",1)~ THEN REPLY ~RemoveAreaFlag (NOSAVE)~ DO ~RemoveAreaFlag(NOSAVE)~ EXIT
+		Global("JO_JOIN_SAVE_AREA","MYAREA",1)~ THEN REPLY ~^0xFF2968A6RemoveAreaFlag (NOSAVE)^-~ DO ~RemoveAreaFlag(NOSAVE)~ EXIT
 
 END //  BEGIN 0
 
@@ -461,6 +461,7 @@ IF ~~ THEN BEGIN MOVE_AROUND
 	SAY ~Heu...~
 
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 
 // Cutscenes
 	IF ~Global("JO_JOIN_FORCE_HIDE","GLOBAL",0)~ THEN REPLY ~I don't want to see any of you right now !~ DO ~SetGlobal("JO_JOIN_FORCE_HIDE","GLOBAL",1)~ EXIT
@@ -801,6 +802,7 @@ IF ~~ THEN BEGIN INDEPENDANCE
 	SAY ~Independance menu~
 
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 
 	IF ~Global("JO_JOIN_NOINDEPANDANCE","GLOBAL",0)~ THEN REPLY ~Independance not allowed~ DO ~SetGlobal("JO_JOIN_NOINDEPANDANCE","GLOBAL",1)~ GOTO 0
 
@@ -829,6 +831,7 @@ IF ~~ THEN BEGIN SWITCH_PARTY
 	SAY ~Switch party menu~
 
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 
 	IF ~Global("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",0)~ THEN REPLY ~Switching party not allowed~ DO ~SetGlobal("JO_JOIN_NO_SWITCH_PARTY","GLOBAL",1)~ GOTO 0
 
@@ -863,6 +866,7 @@ IF ~~ THEN BEGIN QUICK_SWITCH
 	SAY ~Quick switch menu~
 
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 
 	IF ~Global("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",0)~ THEN REPLY ~Quick switch not allowed~ DO ~SetGlobal("JO_JOIN_NO_QUICK_SWITCH","GLOBAL",1)~ GOTO 0
 
@@ -897,10 +901,11 @@ IF ~~ THEN BEGIN FILL_PARTY
 	SAY ~Fill party menu~
 
 	IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO 0
+	IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 
-	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~Fill party not allowed~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",1)~ GOTO 0
+	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~Fill party not allowed.~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",1)~ GOTO 0
 
-	IF ~!Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~^GFill party allowed^-~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ GOTO 0
+	IF ~!Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ THEN REPLY ~^GFill party allowed.^-~ DO ~SetGlobal("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)~ GOTO 0
 
 	IF ~Global("JO_JOIN_NO_FILL_PARTY","GLOBAL",0)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)

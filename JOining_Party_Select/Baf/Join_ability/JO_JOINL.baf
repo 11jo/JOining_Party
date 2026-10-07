@@ -73,6 +73,7 @@ THEN
 	RESPONSE #100
 		ClearAllActions()
 		SetInterrupt(FALSE)
+		SetCutSceneLite(TRUE) // Prevent players to mess around when switch at loading.
 		MoveViewObject(Player1,INSTANT)
 		SetGlobalTimer("JO_JOIN_BANTER_TIMER","LOCALS",ONE_HOUR)
 		SetGlobal("JO_JOIN_LOADING_PLAYER","LOCALS",0)
@@ -83,7 +84,6 @@ THEN
 		SetAreaScript("JO_JOINB",OVERRIDE)
 		SetCutSceneBreakable(TRUE)
 		SetGlobal("JO_JOIN_BREAKABLE","GLOBAL",1)
-		SetGlobal("JO_JOIN_LOADING_BREAKABLE","LOCALS",1)
 		SetInterrupt(TRUE)
 END
 

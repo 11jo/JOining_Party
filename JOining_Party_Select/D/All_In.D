@@ -566,6 +566,7 @@ StartDialogueNoSet(Player6)~ EXIT
 		SAY ~What can I do?~
 
 		IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ DO ~~ GOTO LEGION
+		IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 
 		IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("BDAI_DISABLE_ATTACK","LOCALS",0)
 													SetGlobal("BDAI_ATTACK_MODE","LOCALS",0)
@@ -622,6 +623,7 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~~ THEN BEGIN JO_JOINDLG3
 		SAY ~What do you need ?~
 		IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ DO ~~ GOTO LEGION
+		IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 		IF ~~ THEN REPLY ~Do whatever you want.~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",0)
 														SetGlobal("JO_JOIN_LINK_PLAYER_ID","LOCALS",0)~ GOTO JO_JOINYes
 		IF ~~ THEN REPLY ~Stay at this location.~ DO ~SetGlobal("JO_JOIN_LINK_TYPE","LOCALS",-1)~ GOTO JO_JOINYes
@@ -682,6 +684,8 @@ StartDialogueNoSet(Player6)~ EXIT
 
 	IF ~~ THEN BEGIN JO_JOINStat
 		SAY ~Hum...~
+		IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ DO ~~ GOTO LEGION
+		IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 		IF ~!HasItem("JOMINHP1",Myself)~ THEN REPLY ~I don't have the engagement scroll.~ GOTO JO_JOINStatEnd // Je n'ai pas notre parchemin d'engagement.
 
 		IF ~NumItemsGT("JOMINHP1",Myself,1)~ THEN REPLY ~I engage myself too much...~ GOTO JO_JOINStatEnd
@@ -748,7 +752,8 @@ StartDialogueNoSet(Player6)~ EXIT
 	IF ~~ THEN BEGIN INDEPENDANCE
 		SAY ~More independance with <GABBER>~
 
-		IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ GOTO LEGION
+		IF ~~ THEN REPLY ~^GOn second thought, let's start over.^-~ DO ~~ GOTO LEGION
+		IF ~~ THEN REPLY ~Nevermind, let's continue.~ EXIT
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ THEN REPLY ~Follow me when I walk away from the group, better stick together.~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",0)~ GOTO JO_JOINYes
 
 		IF ~!Global("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ THEN REPLY ~I am pretty independant, don't follow me when I walk ^0xFF82E6FF30 steps away from the group !^-~ DO ~SetGlobal("JO_JOIN_NEED_INDEPANDANT","LOCALS",3)~ GOTO JO_JOINYes
