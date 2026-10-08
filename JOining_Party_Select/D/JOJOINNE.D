@@ -493,17 +493,19 @@ IF ~~ THEN BEGIN MOVE_AROUND
 	
 	// Base
 	IF ~!AreaType(DUNGEON)
-		Global("JO_JOIN_Move_Around","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFIn formation !^-~ DO ~
+		Global("JO_JOIN_Move_Around","GLOBAL",0)
+		NumInPartyGT(2)~ THEN REPLY ~^0xFF82E6FFIn formation !^-~ DO ~
 		SetGlobal("JO_JOIN_NO_FORMATION","GLOBAL",0)
 		SetGlobal("JO_JOIN_FORMATION","GLOBAL",0)
 		SetGlobal("JO_JOIN_2FORMATION","GLOBAL",3)
-		SetGlobal("JO_JOIN_8FORMATION","GLOBAL",9)
+		SetGlobal("JO_JOIN_6FORMATION","GLOBAL",13)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",33)~ EXIT
 	IF ~!AreaType(DUNGEON)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)
 		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
-		Global("JO_JOIN_8FORMATION","GLOBAL",9)
-		Global("JO_JOIN_2FORMATION","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bChange formation.^-~ DO ~
+		Global("JO_JOIN_6FORMATION","GLOBAL",13)
+		Global("JO_JOIN_2FORMATION","GLOBAL",3)
+		NumInPartyGT(2)~ THEN REPLY ~^0xFF5b5b5bChange formation.^-~ DO ~
 		SetGlobal("JO_JOIN_FORMATION","GLOBAL",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",33)~ EXIT
 
@@ -518,27 +520,27 @@ IF ~~ THEN BEGIN MOVE_AROUND
 		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFCircle formation !^-~ DO ~
 		SetGlobal("JO_JOIN_FORMATION","GLOBAL",13)
 		SetGlobal("JO_JOIN_2FORMATION","GLOBAL",3)
-		SetGlobal("JO_JOIN_8FORMATION","GLOBAL",0)
+		SetGlobal("JO_JOIN_6FORMATION","GLOBAL",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",33)~ EXIT
 	IF ~!AreaType(DUNGEON)
 		Global("JO_JOIN_Move_Around","GLOBAL",0)
 		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
 		Global("JO_JOIN_FORMATION","GLOBAL",13)
 		Global("JO_JOIN_2FORMATION","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bChange formation.^-~ DO ~
-		SetGlobal("JO_JOIN_8FORMATION","GLOBAL",0)
+		SetGlobal("JO_JOIN_6FORMATION","GLOBAL",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",33)~ EXIT
 
 	// Two on me
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
 		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)~ THEN REPLY ~^0xFF82E6FFTwo on me !^-~ DO ~
 		SetGlobal("JO_JOIN_FORMATION","GLOBAL",13)
-		SetGlobal("JO_JOIN_8FORMATION","GLOBAL",9)
+		SetGlobal("JO_JOIN_6FORMATION","GLOBAL",13)
 		SetGlobal("JO_JOIN_2FORMATION","GLOBAL",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",33)~ EXIT
 	IF ~Global("JO_JOIN_Move_Around","GLOBAL",0)
 		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
 		Global("JO_JOIN_FORMATION","GLOBAL",13)
-		Global("JO_JOIN_8FORMATION","GLOBAL",9)~ THEN REPLY ~^0xFF5b5b5bChange formation.^-~ DO ~
+		Global("JO_JOIN_6FORMATION","GLOBAL",13)~ THEN REPLY ~^0xFF5b5b5bChange formation.^-~ DO ~
 		SetGlobal("JO_JOIN_2FORMATION","GLOBAL",0)
 		SetGlobal("JO_JOIN_Move_Around","GLOBAL",33)~ EXIT
 

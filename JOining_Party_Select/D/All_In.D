@@ -266,7 +266,7 @@ StartDialogueNoSet(Player6)~ EXIT
 	// No Base
 		IF ~Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
 		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
-		Global("JO_JOIN_8FORMATION","GLOBAL",9)
+		Global("JO_JOIN_6FORMATION","GLOBAL",13)
 		Global("JO_JOIN_2FORMATION","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bLeave the formation.^-~ DO ~
 		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",1)
 		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
@@ -279,13 +279,13 @@ StartDialogueNoSet(Player6)~ EXIT
 		Global("JO_JOIN_2FORMATION","GLOBAL",3)~ THEN REPLY ~^0xFF5b5b5bLeave the formation.^-~ DO ~
 		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",1)
 		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
-		IncrementGlobal("JO_JOIN_8FORMATION","GLOBAL",-1)~ GOTO JO_JOINYes
+		IncrementGlobal("JO_JOIN_6FORMATION","GLOBAL",-1)~ GOTO JO_JOINYes
 
 	// No Two on me
 		IF ~Global("JO_JOIN_NOT_IN_FORMATION","LOCALS",0)
 		Global("JO_JOIN_NO_FORMATION","GLOBAL",0)
 		Global("JO_JOIN_FORMATION","GLOBAL",13)
-		Global("JO_JOIN_8FORMATION","GLOBAL",9)~ THEN REPLY ~^0xFF5b5b5bLeave the formation.^-~ DO ~
+		Global("JO_JOIN_6FORMATION","GLOBAL",13)~ THEN REPLY ~^0xFF5b5b5bLeave the formation.^-~ DO ~
 		SetGlobal("JO_JOIN_NOT_IN_FORMATION","LOCALS",1)
 		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
 		IncrementGlobal("JO_JOIN_2FORMATION","GLOBAL",-1)~ GOTO JO_JOINYes
