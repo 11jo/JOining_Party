@@ -10,6 +10,7 @@ THEN
 		ActionOverride("%Death_var%",EquipItemEx("JOMINHP1",1))
 		SmallWait(1)
 		ActionOverride("%Death_var%",DestroyItem("JOMINHP1"))
+		ActionOverride("%Death_var%",RemoveSpellRES("jo_join"))
 		SmallWait(2)
 		ActionOverride("%Death_var%",ChangeAIScript("WTASIGHT",GENERAL))
 		ActionOverride("%Death_var%",RemoveFamiliar())

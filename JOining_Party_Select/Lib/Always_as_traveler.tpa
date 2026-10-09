@@ -2287,29 +2287,6 @@ ACTION_IF (MOD_IS_INSTALLED ~TheUndying.TP2~ ~0~) THEN BEGIN
 
 END
 
-	/*
-		ACTION_IF (MOD_IS_INSTALLED ~Frennedan.TP2~ ~0~) THEN BEGIN
-
-	ACTION_IF Frennedan_as_traveler = 1 THEN BEGIN
-
-			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
-				PRINT ~    Frennedan as traveler
-				~
-
-	END ELSE ACTION_IF Frennedan_as_Real_traveler = 1 THEN BEGIN
-
-			COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
-				REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
-				REPLACE_TEXTUALLY ~// Mod Real Frennedan~ ~~
-				PRINT ~    Frennedan as real traveler
-				~
-
-	END
-
-		END
-	*/
-
 ACTION_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~) AND NOT Continuous_Branwen = 1 THEN BEGIN
 
 	ACTION_IF Branwen_BG2_as_traveler = 1 THEN BEGIN
@@ -4034,6 +4011,30 @@ ACTION_IF (MOD_IS_INSTALLED ~setup-valkrana.TP2~ ~0~) THEN BEGIN
 			REPLACE_TEXTUALLY ~// Mod Valkrana~ ~~
 			REPLACE_TEXTUALLY ~// Mod Real Valkrana~ ~~
 			PRINT ~    Valkrana as real traveler
+			~
+
+	END
+
+END
+
+// Frennedan_NPC
+
+
+ACTION_IF (MOD_IS_INSTALLED ~Frennedan_NPC.TP2~ ~0~) THEN BEGIN
+
+	ACTION_IF Frennedan_as_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
+			PRINT ~    Frennedan as traveler
+			~
+
+	END ELSE ACTION_IF Frennedan_as_Real_traveler = 1 THEN BEGIN
+
+		COPY ~weidu_external/JOining_Party_Select~ ~weidu_external/JOining_Party_Select~
+			REPLACE_TEXTUALLY ~// Mod Frennedan~ ~~
+			REPLACE_TEXTUALLY ~// Mod Real Frennedan~ ~~
+			PRINT ~    Frennedan as real traveler
 			~
 
 	END

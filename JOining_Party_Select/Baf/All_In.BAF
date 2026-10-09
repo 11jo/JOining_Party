@@ -188,6 +188,7 @@ THEN
 
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 		DisplayString(Myself,@103)
 		Continue()
 /*	RESPONSE #17
@@ -256,6 +257,10 @@ THEN
 		SetGlobal("JO_JOIN_JOINM_NOTALK","LOCALS",1)
 		SetGlobal("JO_JOIN_SET_JOINM","LOCALS",1)
 		Continue()*/
+	RESPONSE #33
+		SetGlobal("JO_JOIN_Move_Done","LOCALS",1)
+		SetGlobal("JO_JOIN_IN_FORMATION","LOCALS",0)
+		Continue()
 END
 
 
@@ -375,7 +380,7 @@ END
 // TODO : add in dialog to let players decide if the party member should stay in party for while
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 	!Global("JO_JOIN_TRAVELER_NUM","GLOBAL",0) // Should prevent Loading switch if no traveler exists
@@ -503,7 +508,7 @@ THEN
 		JoinParty()
 END
 
-IF 
+IF
 	InParty(Myself)
 	Global("JO_JOIN_RETURNSLOT_WAIT","LOCALS",1)
 //
@@ -608,6 +613,7 @@ THEN
 		SetGlobal("JO_JOIN_NEVER_SWITCH","LOCALS",0)
 		SetGlobal("JO_TRAVELER_Myself","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_%Death_var%_TRAVELER","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
 		SetGlobal("JO_JOIN","LOCALS",0)
@@ -615,6 +621,7 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 		ChangeAIScript("WTASIGHT",GENERAL)
 		RemoveFamiliar()
 		ChangeEnemyAlly(Myself,NEUTRAL)
@@ -704,7 +711,7 @@ END
 // ChangeEnemyAlly par exemple
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
@@ -723,6 +730,7 @@ THEN
 		// reset block
 		SetGlobal("JO_TRAVELER_Myself","LOCALS",0)
 		SetGlobal("JO_TRAVELER_%Death_var%","GLOBAL",0)
+		SetGlobal("JO_%Death_var%_TRAVELER","GLOBAL",0)
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		SetGlobal("JO_Myself_LeaveParty","LOCALS",0)
 		SetGlobal("JO_JOIN_IS_JOINING","LOCALS",0)
@@ -735,7 +743,7 @@ END
 
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
@@ -750,11 +758,11 @@ END
 
 IF
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
-	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1) 
+	!Global("JO_JOIN_AREA_TRANSITION","GLOBAL",1)
 //
 	Global("JO_JOIN_SLEEPING_DEAD","LOCALS",0)
 	OR(2)
@@ -778,7 +786,7 @@ END
 
 IF // TODO : Seem to execute several times when a traveler reintegrate the party...
 //
-	
+
 	Global("JO_JOIN_LOADING_SWITCH","GLOBAL",0) // Don't use this block at loading
 	Global("JO_JOIN_RETURN_SLOT","GLOBAL",0)
 //
@@ -791,6 +799,7 @@ THEN
 	RESPONSE #100
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -826,6 +835,7 @@ THEN
 		MakeGlobalOverride()
 		LeaveParty()
 		SmallWait(1)
+		AddSpecialAbility("jo_join")
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)
@@ -917,6 +927,7 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SmallWait(1)
+		AddSpecialAbility("jo_join")
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)

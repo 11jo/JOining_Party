@@ -798,7 +798,7 @@ OUTER_SPRINT "slashdeux" "\2"
 	// StartCutSceneMode() situation
 			SPRINT textToReplace ~\(^[%TAB% ]*SetCursorState(TRUE)\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~XG_BREAK.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~rr_break.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",2)
 	SetCursorState(TRUE)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
@@ -818,7 +818,7 @@ OUTER_SPRINT "slashdeux" "\2"
 			SPRINT textToReplace ~^[%TAB% ]*StartCutSceneEx(\([^)]*\)
 			^[%TAB% ]*StartCutSceneMode()~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~XG_BREAK.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~rr_break.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartCutSceneMode()
 	StartCutSceneEx(\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
@@ -828,7 +828,7 @@ OUTER_SPRINT "slashdeux" "\2"
 //
 			SPRINT textToReplace ~\(^[%TAB% ]*StartCutSceneMode()\)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~XG_BREAK.bcs~) BEGIN
+			PATCH_IF (num_matches > 0) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip1.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~cutskip2.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~XG_BREAK.bcs~) AND NOT (~%SOURCE_FILESPEC%~ STRING_EQUAL_CASE ~rr_break.bcs~) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetGlobal("JO_JOIN_CUTSCENE","GLOBAL",1)
 	SetCutSceneLite(TRUE)
 //	Wait(1)

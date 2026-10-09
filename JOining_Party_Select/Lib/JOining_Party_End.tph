@@ -150,7 +150,7 @@ APPEND ~SODMAREA.2da~ ~JO2608 value~ UNLESS ~JO2608~
 //////////////////////////////////////////////////////////////////////////////////////
 
 // CutSceneBreakable
-ACTION_FOR_EACH bcs IN cutskip cutskip1 cutskip2 XG_BREAK BEGIN
+ACTION_FOR_EACH bcs IN cutskip cutskip1 cutskip2 XG_BREAK RR_BREAK BEGIN
 
 	ACTION_IF FILE_EXISTS_IN_GAME ~%bcs%.bcs~ THEN BEGIN
 	  COPY_EXISTING_REGEXP ~%bcs%.bcs~ ~override~
@@ -506,9 +506,6 @@ ACTION_FOR_EACH Death_var IN
 // Severian
 // Mod Severian                  ~#Severian~                                        // Severian
 
-// Frennedan
-// Mod Frennedan                 ~Frennedan~                                        // Frennedan
-
 // Branwen BG2
 // Mod Branwen_BG2               ~O#Bran~                                           // Branwen
 // Tiax BG2
@@ -699,6 +696,9 @@ ACTION_FOR_EACH Death_var IN
 
 // Valkrana
 // Mod Valkrana               ~vvVALK~
+
+// Frennedan_NPC
+// Mod Frennedan              ~FRENDAN~
 
 // Next_Traveler BG2
 
@@ -1199,9 +1199,6 @@ ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
 // Severian
 // Mod Severian                  ~#Severian~                                        // Severian
 
-// Frennedan
-// Mod Frennedan                 ~Frennedan~                                        // Frennedan
-
 // Branwen BG2
 // Mod Branwen_BG2               ~O#Bran~                                           // Branwen
 // Tiax BG2
@@ -1392,6 +1389,9 @@ ACTION_IF GAME_IS ~bgt bg2ee eet~ BEGIN
 
 // Valkrana
 // Mod Valkrana               ~vvVALK~
+
+// Frennedan_NPC
+// Mod Frennedan              ~FRENDAN~
 
 // Next_Traveler BG2
 
