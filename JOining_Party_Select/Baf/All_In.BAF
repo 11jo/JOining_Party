@@ -188,6 +188,7 @@ THEN
 
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 		DisplayString(Myself,@103)
 		Continue()
 /*	RESPONSE #17
@@ -620,6 +621,7 @@ THEN
 		SetGlobal("JO_JOIN_Move_Done","LOCALS",0)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 		ChangeAIScript("WTASIGHT",GENERAL)
 		RemoveFamiliar()
 		ChangeEnemyAlly(Myself,NEUTRAL)
@@ -797,6 +799,7 @@ THEN
 	RESPONSE #100
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 END
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -832,6 +835,7 @@ THEN
 		MakeGlobalOverride()
 		LeaveParty()
 		SmallWait(1)
+		AddSpecialAbility("jo_join")
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)
@@ -923,6 +927,7 @@ THEN
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
 		SmallWait(1)
+		AddSpecialAbility("jo_join")
 		GiveItemCreate("JOMINHP1",Myself,0,0,0)
 		SmallWait(1)
 		EquipItemEx("JOMINHP1",0)

@@ -985,6 +985,7 @@ THEN
 		SetGlobal("JO_JOIN_SET_JOINX","LOCALS",1) // ScriptAction All_in_Baf
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 		DisplayString(Myself,~Hey.~)
 		RemoveFamiliar()
 		SetInterrupt(TRUE)
@@ -3957,6 +3958,7 @@ THEN
 		SetGlobal("JO_JOIN_IS_TRAVELER","LOCALS",0)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 		RemoveFamiliar()
 		SetInterrupt(TRUE)
 		JoinParty()
@@ -4072,6 +4074,7 @@ THEN
 		SetInterrupt(FALSE)
 		EquipItemEx("JOMINHP1",1)
 		DestroyItem("JOMINHP1")
+		RemoveSpellRES("jo_join")
 		SetGlobal("JO_JOIN","LOCALS",0)
 		SetGlobal("JO_NOJOIN","GLOBAL",0)
 		SetGlobal("JO_NOJOIN_LOCALS","LOCALS",0)
